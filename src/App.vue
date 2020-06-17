@@ -177,6 +177,9 @@ div.v-card__title i.v-icon {
     margin: 0 5px;
     color: #ffffff;
 }
+div.v-card__actions a {
+    text-decoration: none;
+}
 li i.v-icon {
     margin-right: 5px;
 }
