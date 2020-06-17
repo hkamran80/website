@@ -65,7 +65,7 @@
                             <v-divider></v-divider>
 
                             <v-card-actions>
-                                <a href="https://github.com/hkamran80">
+                                <a href="https://github.com/hkamran80" target="_blank">
                                     <v-btn icon>
                                         <v-icon>mdi-github</v-icon>
                                     </v-btn>
@@ -95,7 +95,7 @@
                                 <v-spacer />
 
                                 <a
-                                    href="https://twitter.com/https://stackoverflow.com/users/7313822/h-kamran"
+                                    href="https://stackoverflow.com/users/7313822/h-kamran"
                                     target="_blank"
                                 >
                                     <v-btn icon>
