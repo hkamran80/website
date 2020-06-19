@@ -104,7 +104,7 @@
                                 </a>
                                 <v-spacer />
                                 <a
-                                    href="https://reprint.unisontech.org"
+                                    href="https://reprint.hkamran.com"
                                     target="_blank"
                                 >
                                     <v-btn icon>
