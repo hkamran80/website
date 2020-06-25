@@ -65,7 +65,10 @@
                             <v-divider></v-divider>
 
                             <v-card-actions>
-                                <a href="https://github.com/hkamran80" target="_blank">
+                                <a
+                                    href="https://github.com/hkamran80"
+                                    target="_blank"
+                                >
                                     <v-btn icon>
                                         <v-icon>mdi-github</v-icon>
                                     </v-btn>
