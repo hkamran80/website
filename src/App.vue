@@ -3,132 +3,198 @@
         <v-main>
             <v-container class="fill-height" fluid>
                 <v-row align="center" justify="center">
-                    <v-col cols="12" sm="8" md="4">
-                        <v-card>
-                            <v-card-title
-                                class="headline lighten-2"
-                                color="primary"
-                                primary-title
-                            >
-                                H. Kamran
-                                <v-spacer />
-                                <v-icon>mdi-language-python</v-icon>
-                                <v-icon>mdi-language-swift</v-icon>
-                                <v-icon>mdi-language-javascript</v-icon>
-                            </v-card-title>
+                    <v-col id="page_container" cols="12" sm="8" md="4">
+                        <h1>H. Kamran</h1>
+                        <h3>
+                            Developer
+                            <v-spacer />
+                            <v-icon>mdi-language-python</v-icon>
+                            <v-icon>mdi-language-swift</v-icon>
+                            <v-icon>mdi-language-javascript</v-icon>
+                        </h3>
+                        <v-divider />
+                        <!-- Creations -->
+                        <h3>
+                            My Creations
+                        </h3>
+                        <v-spacer />
+                        <v-card class="mx-auto" outlined>
+                            <v-card-title>
+                                Schedules
 
-                            <v-divider></v-divider>
+                                <v-spacer></v-spacer>
 
-                            <v-card-text style="padding: 24px;">
-                                <p>
-                                    I'm H. Kamran. I'm a Python, Swift, and
-                                    JavaScript developer.
-                                </p>
-                                <div>
-                                    <b>My Creations</b>
-                                    <ul>
-                                        <li>
-                                            <v-icon>mdi-github</v-icon>
-                                            <a
-                                                href="https://schedules.unisontech.org"
-                                                target="_blank"
-                                                >Schedules</a
-                                            >: An app for all schedules
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="https://buzzloop.unisontech.org"
-                                                target="_blank"
-                                                >Buzzloop</a
-                                            >: Get notifications for changes in
-                                            your School Loop account (only
-                                            available for students at this time)
-                                        </li>
-                                    </ul>
-                                </div>
-                                <p></p>
-                                <div>
-                                    <b>Planned Creations</b>
-                                    <ul>
-                                        <li>
-                                            iOS and Android apps for Schedules
-                                        </li>
-                                        <li>
-                                            iOS and Android apps for Buzzloop
-                                        </li>
-                                        <li>Material redesign for Schedules</li>
-                                        <li>Material redesign for Buzzloop</li>
-                                    </ul>
-                                </div>
-                            </v-card-text>
-
-                            <v-divider></v-divider>
-
-                            <v-card-actions>
                                 <a
-                                    href="https://github.com/hkamran80"
+                                    href="https://github.com/hkamran80/schedules"
+                                    title="Schedules GitHub repository"
                                     target="_blank"
                                 >
                                     <v-btn icon>
                                         <v-icon>mdi-github</v-icon>
                                     </v-btn>
                                 </a>
-                                <v-spacer />
                                 <a
-                                    href="https://twitter.com/hkamran80"
+                                    href="https://schedules.unisontech.org"
+                                    title="Schedules website"
                                     target="_blank"
                                 >
                                     <v-btn icon>
-                                        <v-icon>mdi-twitter</v-icon>
+                                        <v-icon>mdi-web</v-icon>
                                     </v-btn>
                                 </a>
-                                <v-spacer />
-                                <a
-                                    href="https://medium.com/@hkamran80"
-                                    target="_blank"
-                                >
-                                    <v-btn icon>
-                                        <svgicon
-                                            icon="medium"
-                                            width="24"
-                                            height="24"
-                                        ></svgicon>
-                                    </v-btn>
-                                </a>
-                                <v-spacer />
+                            </v-card-title>
+                            <v-card-subtitle>Status: Completed</v-card-subtitle>
+                            <v-card-text>
+                                An app for all schedules, currently supporting
+                                Acalanes High School, Campolindo High School,
+                                and the AUHSD Distance Learning Schedule.
+                            </v-card-text>
+                        </v-card>
+
+                        <!-- Creations: In Progress -->
+                        <v-card class="mx-auto" outlined>
+                            <v-card-title>
+                                Remembrance
+
+                                <v-spacer></v-spacer>
 
                                 <a
-                                    href="https://stackoverflow.com/users/7313822/h-kamran"
+                                    href="https://github.com/hkamran80/remembrance"
+                                    title="Remembrance GitHub repository"
                                     target="_blank"
                                 >
                                     <v-btn icon>
-                                        <v-icon>mdi-stack-overflow</v-icon>
+                                        <v-icon>mdi-github</v-icon>
                                     </v-btn>
                                 </a>
-                                <v-spacer />
+                            </v-card-title>
+                            <v-card-subtitle>
+                                Status: In Progress
+                            </v-card-subtitle>
+                            <v-card-text>
+                                A read-later bookmark site built with Vue.js and
+                                Firebase.
+                            </v-card-text>
+                        </v-card>
+                        <v-card class="mx-auto" outlined>
+                            <v-card-title>
+                                Lockbook
+
+                                <v-spacer></v-spacer>
+
+                                <v-icon>mdi-help-circle-outline</v-icon>
                                 <a
-                                    href="https://reprint.hkamran.com"
+                                    href="https://github.com/hkamran80/lockbook"
+                                    title="Lockbook GitHub repository"
                                     target="_blank"
                                 >
                                     <v-btn icon>
-                                        <v-icon>mdi-script-text-outline</v-icon>
+                                        <v-icon>mdi-github</v-icon>
                                     </v-btn>
                                 </a>
-                            </v-card-actions>
+                            </v-card-title>
+                            <v-card-subtitle>
+                                Status: In Progress, Help Needed
+                            </v-card-subtitle>
+                            <v-card-text>
+                                A read-later bookmark site built with Vue.js and
+                                Firebase.
+                            </v-card-text>
+                        </v-card>
+
+                        <v-card class="mx-auto" outlined>
+                            <v-card-title>
+                                Buzzloop
+                                <v-spacer></v-spacer>
+                                <v-icon>mdi-puzzle-remove-outline</v-icon>
+                            </v-card-title>
+                            <v-card-subtitle>Status: Cancelled</v-card-subtitle>
+                            <v-card-text>
+                                Get notifications for changes in your School
+                                Loop account (only available for students at
+                                this time)
+                            </v-card-text>
                         </v-card>
                     </v-col>
                 </v-row>
 
-                <v-btn
-                    fab
-                    dark
+                <v-speed-dial
+                    v-model="fab"
                     fixed
                     right
                     bottom
-                    v-on:click="toggle_dark_mode"
+                    direction="top"
+                    transition="slide-y-reverse-transition"
                 >
-                    <v-icon dark>mdi-theme-light-dark</v-icon>
-                </v-btn>
+                    <template v-slot:activator>
+                        <v-btn v-model="fab" dark fab>
+                            <v-icon v-if="fab">mdi-close</v-icon>
+                            <v-icon v-else>mdi-menu</v-icon>
+                        </v-btn>
+                    </template>
+                    <v-btn fab dark small @click="toggle_dark_mode">
+                        <v-icon>mdi-theme-light-dark</v-icon>
+                    </v-btn>
+                    <v-btn fab dark small color="teal darken-4">
+                        <a
+                            href="https://github.com/hkamran80"
+                            title="GitHub"
+                            target="_blank"
+                        >
+                            <v-btn icon>
+                                <v-icon>mdi-github</v-icon>
+                            </v-btn>
+                        </a>
+                    </v-btn>
+                    <v-btn fab dark small color="teal darken-4">
+                        <a
+                            href="https://twitter.com/hkamran80"
+                            title="Twitter"
+                            target="_blank"
+                        >
+                            <v-btn icon>
+                                <v-icon>mdi-twitter</v-icon>
+                            </v-btn>
+                        </a>
+                    </v-btn>
+                    <v-btn fab dark small color="teal darken-4">
+                        <a
+                            href="https://medium.com/@hkamran80"
+                            title="Medium"
+                            target="_blank"
+                        >
+                            <v-btn icon>
+                                <svgicon
+                                    icon="medium"
+                                    width="24"
+                                    height="24"
+                                ></svgicon>
+                            </v-btn>
+                        </a>
+                    </v-btn>
+                    <v-btn fab dark small color="teal darken-4">
+                        <a
+                            href="https://reprint.hkamran.com"
+                            title="Reprint: A Medium mirror"
+                            target="_blank"
+                        >
+                            <v-btn icon>
+                                <v-icon>mdi-script-text-outline</v-icon>
+                            </v-btn>
+                        </a>
+                    </v-btn>
+                    <v-btn fab dark small color="teal darken-4">
+                        <a
+                            href="https://stackoverflow.com/users/7313822/h-kamran"
+                            title="StackOverflow"
+                            target="_blank"
+                        >
+                            <v-btn icon>
+                                <v-icon>mdi-stack-overflow</v-icon>
+                            </v-btn>
+                        </a>
+                    </v-btn>
+                </v-speed-dial>
             </v-container>
         </v-main>
     </v-app>
@@ -139,6 +205,9 @@ import "./compiled-icons/medium";
 
 export default {
     name: "App",
+    data: () => ({
+        fab: false
+    }),
     methods: {
         toggle_dark_mode: function() {
             this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
@@ -172,18 +241,20 @@ export default {
 </script>
 
 <style scoped>
-div.v-card__title {
-    background-color: #185468;
-    color: #ffffff;
+#page_container {
+    padding: 50px 0;
 }
+
 div.v-card__title i.v-icon {
     margin: 0 5px;
-    color: #ffffff;
 }
-div.v-card__actions a {
-    text-decoration: none;
+hr {
+    margin: 10px 0;
 }
-li i.v-icon {
-    margin-right: 5px;
+h3 i.v-icon {
+    margin-right: 7.5px;
+}
+div.v-card {
+    margin: 12.5px auto;
 }
 </style>
