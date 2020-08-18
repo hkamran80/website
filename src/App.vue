@@ -242,7 +242,17 @@ export default {
 
 <style scoped>
 #page_container {
-    padding: 50px 0;
+    padding: 75px 0;
+}
+
+@media only screen and (orientation: portrait) and (max-width: 768px) {
+    #page_container {
+        padding: 35px 36px;
+    }
+}
+
+a {
+    text-decoration: none;
 }
 
 div.v-card__title i.v-icon {
