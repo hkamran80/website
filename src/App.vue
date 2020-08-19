@@ -102,11 +102,22 @@
                             </v-card-text>
                         </v-card>
 
-                        <v-card class="mx-auto" outlined>
+                        <!-- Creations: Cancelled -->
+                        <v-divider />
+                        <v-card class="mx-auto status-cancelled" outlined>
                             <v-card-title>
                                 Buzzloop
                                 <v-spacer></v-spacer>
                                 <v-icon>mdi-puzzle-remove-outline</v-icon>
+                                <a
+                                    href="https://buzzloop.unisontech.org"
+                                    title="Buzzloop website"
+                                    target="_blank"
+                                >
+                                    <v-btn icon>
+                                        <v-icon>mdi-web</v-icon>
+                                    </v-btn>
+                                </a>
                             </v-card-title>
                             <v-card-subtitle>Status: Cancelled</v-card-subtitle>
                             <v-card-text>
@@ -242,7 +253,7 @@ export default {
 
 <style scoped>
 #page_container {
-    padding: 75px 0;
+    padding: 55px 0;
 }
 
 @media only screen and (orientation: portrait) and (max-width: 768px) {
@@ -258,11 +269,18 @@ a {
 div.v-card__title i.v-icon {
     margin: 0 5px;
 }
+
+div.v-card.status-cancelled {
+    border-left: 8px solid rgb(255, 0, 0) !important;
+}
 hr {
     margin: 10px 0;
 }
 h3 i.v-icon {
-    margin-right: 7.5px;
+    margin: 7.5px;
+}
+h3 i.v-icon:nth-of-type(1) {
+    margin-left: 0;
 }
 div.v-card {
     margin: 12.5px auto;
