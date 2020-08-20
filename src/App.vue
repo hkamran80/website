@@ -52,6 +52,7 @@
                         </v-card>
 
                         <!-- Creations: In Progress -->
+                        <v-divider />
                         <v-card class="mx-auto" outlined>
                             <v-card-title>
                                 Remembrance
