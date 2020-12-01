@@ -15,6 +15,14 @@
                             >
                                 <v-btn icon>
                                     <v-icon>mdi-language-python</v-icon>
+                                </v-btn> </a
+                            ><a
+                                href="https://github.com/hkamran80?tab=repositories&language=javascript"
+                                title="JavaScript-based GitHub repositories"
+                                target="_blank"
+                            >
+                                <v-btn icon>
+                                    <v-icon>mdi-language-javascript</v-icon>
                                 </v-btn>
                             </a>
                             <a
@@ -24,14 +32,6 @@
                             >
                                 <v-btn icon>
                                     <v-icon>mdi-language-swift</v-icon>
-                                </v-btn> </a
-                            ><a
-                                href="https://github.com/hkamran80?tab=repositories&language=javascript"
-                                title="JavaScript-based GitHub repositories"
-                                target="_blank"
-                            >
-                                <v-btn icon>
-                                    <v-icon>mdi-language-javascript</v-icon>
                                 </v-btn>
                             </a>
                         </h3>
@@ -45,63 +45,161 @@
                         <v-divider />
 
                         <!-- Creations -->
-                        <div id="creations" v-if="tabs == 0">
+                        <div id="creations" v-if="tabs === 0">
                             <h3>
                                 My Creations
                             </h3>
                             <v-spacer />
-                            <v-card
+                            <div
                                 v-for="creation in creations"
                                 :key="creation.name"
-                                class="mx-auto"
-                                :class="{
-                                    status_cancelled: creation.cancelled
-                                }"
-                                outlined
                             >
-                                <v-card-title>
-                                    {{ creation.name }}
+                                <v-card
+                                    class="mx-auto"
+                                    :class="{
+                                        status_cancelled: creation.cancelled
+                                    }"
+                                    outlined
+                                >
+                                    <v-card-title>
+                                        {{ creation.name }}
 
-                                    <v-spacer></v-spacer>
+                                        <v-spacer></v-spacer>
 
-                                    <v-icon v-if="creation.cancelled">
-                                        mdi-puzzle-remove-outline
-                                    </v-icon>
-                                    <v-icon v-if="creation.help">
-                                        mdi-help-circle-outline
-                                    </v-icon>
-                                    <a
-                                        v-if="creation.repository != ''"
-                                        :href="creation.repository"
-                                        :title="creation.name + ' - Repository'"
-                                        target="_blank"
-                                    >
-                                        <v-btn icon>
-                                            <v-icon>mdi-github</v-icon>
+                                        <v-icon v-if="creation.cancelled">
+                                            mdi-puzzle-remove-outline
+                                        </v-icon>
+                                        <v-icon v-if="creation.help">
+                                            mdi-help-circle-outline
+                                        </v-icon>
+                                        <v-btn
+                                            icon
+                                            v-if="
+                                                Object.keys(
+                                                    creation.contributors
+                                                ).length !== 0
+                                            "
+                                            @click="
+                                                creation.dialogs.contributors = true
+                                            "
+                                        >
+                                            <v-icon>
+                                                mdi-account-multiple-outline
+                                            </v-icon>
                                         </v-btn>
-                                    </a>
-                                    <a
-                                        v-if="creation.site != ''"
-                                        :href="creation.site"
-                                        :title="creation.name + ' - Website'"
-                                        target="_blank"
-                                    >
-                                        <v-btn icon>
-                                            <v-icon>mdi-web</v-icon>
-                                        </v-btn>
-                                    </a>
-                                </v-card-title>
-                                <v-card-subtitle>
-                                    Status: {{ creation.status }}
-                                </v-card-subtitle>
-                                <v-card-text>
-                                    {{ creation.description }}
-                                </v-card-text>
-                            </v-card>
+                                        <a
+                                            v-if="creation.repository != ''"
+                                            :href="creation.repository"
+                                            :title="
+                                                creation.name + ' - Repository'
+                                            "
+                                            target="_blank"
+                                        >
+                                            <v-btn icon>
+                                                <v-icon>mdi-github</v-icon>
+                                            </v-btn>
+                                        </a>
+                                        <a
+                                            v-if="creation.site != ''"
+                                            :href="creation.site"
+                                            :title="
+                                                creation.name + ' - Website'
+                                            "
+                                            target="_blank"
+                                        >
+                                            <v-btn icon>
+                                                <v-icon>mdi-web</v-icon>
+                                            </v-btn>
+                                        </a>
+                                    </v-card-title>
+                                    <v-card-subtitle>
+                                        Status: {{ creation.status }}
+                                    </v-card-subtitle>
+                                    <v-card-text>
+                                        {{ creation.description }}
+                                    </v-card-text>
+                                </v-card>
+
+                                <v-dialog
+                                    v-model="creation.dialogs.contributors"
+                                    v-if="
+                                        Object.keys(creation.contributors)
+                                            .length !== 0
+                                    "
+                                    width="500"
+                                >
+                                    <v-card>
+                                        <v-card-title>
+                                            {{ creation.name }}: Contributors
+                                        </v-card-title>
+                                        <v-card-text>
+                                            <v-list>
+                                                <v-list-item
+                                                    v-for="(collaborator,
+                                                    name) in creation.contributors"
+                                                    :key="name"
+                                                    :three-line="
+                                                        collaborator.role
+                                                            .length > 56
+                                                    "
+                                                >
+                                                    <v-list-item-content>
+                                                        <v-list-item-title
+                                                            v-text="name"
+                                                        ></v-list-item-title>
+                                                        <v-list-item-subtitle
+                                                            v-text="
+                                                                collaborator.role
+                                                            "
+                                                        ></v-list-item-subtitle>
+                                                    </v-list-item-content>
+
+                                                    <v-list-item-icon
+                                                        @click="
+                                                            open_link(
+                                                                collaborator
+                                                                    .link.url,
+                                                                creation
+                                                            )
+                                                        "
+                                                        :title="
+                                                            collaborator.link
+                                                                .url
+                                                        "
+                                                    >
+                                                        <v-btn icon>
+                                                            <v-icon
+                                                                v-text="
+                                                                    collaborator
+                                                                        .link
+                                                                        .icon
+                                                                "
+                                                                v-if="
+                                                                    collaborator
+                                                                        .link
+                                                                        .icon !==
+                                                                        'icon--medium'
+                                                                "
+                                                            ></v-icon>
+
+                                                            <svgicon
+                                                                v-else
+                                                                icon="medium"
+                                                                width="24"
+                                                                height="24"
+                                                            ></svgicon>
+                                                        </v-btn>
+                                                    </v-list-item-icon>
+                                                </v-list-item>
+                                            </v-list>
+                                        </v-card-text>
+                                    </v-card>
+                                </v-dialog>
+                            </div>
                         </div>
 
                         <!-- About Me -->
-                        <div id="aboutme" v-if="tabs == 1">
+                        <div id="aboutme" v-if="tabs === 1">
                             <h3>About Me</h3>
                             <v-spacer />
 
@@ -115,8 +213,9 @@
                                 </v-card-title>
                                 <v-card-text>
                                     My name is H. Kamran and I'm a developer. I
-                                    program mainly in Python, but I also know
-                                    Swift and JavaScript.
+                                    program mainly in Python. I've been using
+                                    JavaScript and Vue.js a lot more these days,
+                                    and dabble in SwiftUI.
                                 </v-card-text>
                             </v-card>
                             <v-card
@@ -187,19 +286,71 @@ export default {
                 name: "Schedules",
                 repository: "https://github.com/hkamran80/schedules",
                 site: "https://schedules.unisontech.org",
-                status: "Completed | Redesigning",
+                status: "Completed",
+                contributors: {},
                 cancelled: false,
                 help: false,
+                dialogs: {
+                    contributors: false
+                },
                 description:
-                    "An app for all schedules, currently supporting Acalanes High School, Campolindo High School, and the AUHSD Distance Learning Schedule."
+                    "An app for all schedules, currently supporting the AUHSD Standard and the AUHSD Distance Learning Schedules."
+            },
+            {
+                name: "SupportDocs",
+                repository: "https://github.com/aheze/SupportDocs",
+                site: "",
+                status: "Completed",
+                contributors: {
+                    "A. Zheng": {
+                        role: "Creator (Created the library)",
+                        link: {
+                            url: "https://aheze.medium.com",
+                            icon: "icon--medium"
+                        }
+                    },
+                    "H. Kamran": {
+                        role:
+                            "Contributor (Created automatic generation code, wrote documentation, configured dark mode)",
+                        link: {
+                            url: "https://hkamran.com",
+                            icon: "mdi-web"
+                        }
+                    }
+                },
+                cancelled: false,
+                help: false,
+                dialogs: {
+                    contributors: false
+                },
+                description:
+                    "Generate help centers for your iOS apps, with Markdown! All you need to do is write your documents on GitHub, and install the library in your app. SupportDocs' custom GitHub Action and GitHub Pages will take care of the rest."
+            },
+            {
+                name: "Diario",
+                repository: "",
+                site: "https://diario.unisontech.org",
+                status: "Completed",
+                contributors: {},
+                cancelled: false,
+                help: false,
+                dialogs: {
+                    contributors: false
+                },
+                description:
+                    "A simple web-based diary application. Write entries in Markdown and store them in the cloud."
             },
             {
                 name: "Userscripts Site",
                 repository: "https://github.com/hkamran80/userscripts_site",
                 site: "https://userscripts.hkamran.com",
                 status: "Completed",
+                contributors: {},
                 cancelled: false,
                 help: false,
+                dialogs: {
+                    contributors: false
+                },
                 description: "A place to hold the userscripts I've created."
             },
             {
@@ -207,8 +358,12 @@ export default {
                 repository: "https://github.com/hkamran80/remembrance",
                 site: "",
                 status: "In Progress",
+                contributors: {},
                 cancelled: false,
                 help: false,
+                dialogs: {
+                    contributors: false
+                },
                 description:
                     "A read-later bookmark site built with Vue.js and Firebase."
             },
@@ -216,19 +371,27 @@ export default {
                 name: "Lockbook",
                 repository: "https://github.com/hkamran80/lockbook",
                 site: "",
-                status: "In Progress | Help Needed",
+                status: "Paused | Help Needed",
+                contributors: {},
                 cancelled: false,
                 help: true,
+                dialogs: {
+                    contributors: false
+                },
                 description:
-                    "A diary application that enforces security and privacy."
+                    "A diary application that enforces security and privacy"
             },
             {
                 name: "Buzzloop",
                 repository: "",
                 site: "https://buzzloop.unisontech.org",
                 status: "Cancelled",
+                contributors: {},
                 cancelled: true,
                 help: false,
+                dialogs: {
+                    contributors: false
+                },
                 description:
                     "Get notifications for changes in your School Loop account (only available for students at this time)"
             }
@@ -268,6 +431,12 @@ export default {
                 "dark_theme",
                 this.$vuetify.theme.dark.toString()
             );
+        },
+        open_link: function(link, creation) {
+            creation.dialogs.contributors = false;
+            if (link !== "https://hkamran.com") {
+                window.open(link, "_blank");
+            }
         }
     },
     mounted() {
@@ -293,7 +462,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+#app {
+    font-family: Lato, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 #page_container {
     padding: 55px 0;
 }
