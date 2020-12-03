@@ -327,6 +327,20 @@ export default {
                     "Generate help centers for your iOS apps, with Markdown! All you need to do is write your documents on GitHub, and install the library in your app. SupportDocs' custom GitHub Action and GitHub Pages will take care of the rest."
             },
             {
+                name: "Control Surface for Spotify",
+                repository: "",
+                site: "https://spotify-controlsurface.unisontech.org",
+                status: "Completed | Active Development",
+                contributors: {},
+                cancelled: false,
+                help: false,
+                dialogs: {
+                    contributors: false
+                },
+                description:
+                    "Control Surface for Spotify is a utility to allow users to control their Spotify playback without opening the web version of Spotify. It aims to be a simple, easy-to-use application to control playback and view currently playing information. "
+            },
+            {
                 name: "Diario",
                 repository: "",
                 site: "https://diario.unisontech.org",
