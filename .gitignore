@@ -20,6 +20,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
-
-# Project-specific directories and files
-svg-icons/
+.dccache

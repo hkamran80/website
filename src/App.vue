@@ -4,7 +4,20 @@
             <v-container class="fill-height" fluid>
                 <v-row align="center" justify="center">
                     <v-col id="page_container" cols="12" sm="8" md="4">
-                        <h1>H. Kamran</h1>
+                        <h1>
+                            <v-row dense no-gutters>
+                                <v-col>
+                                    H. Kamran
+                                </v-col>
+                                <v-col class="text-align--right">
+                                    <v-btn icon @click="toggle_dark_mode">
+                                        <v-icon color="primary">
+                                            mdi-theme-light-dark
+                                        </v-icon>
+                                    </v-btn>
+                                </v-col>
+                            </v-row>
+                        </h1>
                         <h3>
                             Developer
                             <v-spacer />
@@ -14,7 +27,9 @@
                                 target="_blank"
                             >
                                 <v-btn icon>
-                                    <v-icon>mdi-language-python</v-icon>
+                                    <v-icon color="primary"
+                                        >mdi-language-python</v-icon
+                                    >
                                 </v-btn> </a
                             ><a
                                 href="https://github.com/hkamran80?tab=repositories&language=javascript"
@@ -22,7 +37,18 @@
                                 target="_blank"
                             >
                                 <v-btn icon>
-                                    <v-icon>mdi-language-javascript</v-icon>
+                                    <v-icon color="primary"
+                                        >mdi-language-javascript</v-icon
+                                    >
+                                </v-btn>
+                            </a>
+                            <a
+                                href="https://github.com/hkamran80?tab=repositories&language=vue"
+                                title="Vue-based GitHub repositories"
+                                target="_blank"
+                            >
+                                <v-btn icon>
+                                    <v-icon color="primary">mdi-vuejs</v-icon>
                                 </v-btn>
                             </a>
                             <a
@@ -31,25 +57,24 @@
                                 target="_blank"
                             >
                                 <v-btn icon>
-                                    <v-icon>mdi-language-swift</v-icon>
+                                    <v-icon color="primary"
+                                        >mdi-language-swift</v-icon
+                                    >
                                 </v-btn>
                             </a>
                         </h3>
                         <v-divider />
 
-                        <v-tabs fixed-tabs v-model="tabs">
+                        <v-tabs fixed-tabs center-active v-model="tabs">
                             <v-tab>Creations</v-tab>
                             <v-tab>About Me</v-tab>
+                            <v-tab>Quick Programs</v-tab>
                         </v-tabs>
 
                         <v-divider />
 
                         <!-- Creations -->
                         <div id="creations" v-if="tabs === 0">
-                            <h3>
-                                My Creations
-                            </h3>
-                            <v-spacer />
                             <div
                                 v-for="creation in creations"
                                 :key="creation.name"
@@ -66,10 +91,16 @@
 
                                         <v-spacer></v-spacer>
 
-                                        <v-icon v-if="creation.cancelled">
+                                        <v-icon
+                                            color="primary"
+                                            v-if="creation.cancelled"
+                                        >
                                             mdi-puzzle-remove-outline
                                         </v-icon>
-                                        <v-icon v-if="creation.help">
+                                        <v-icon
+                                            color="primary"
+                                            v-if="creation.help"
+                                        >
                                             mdi-help-circle-outline
                                         </v-icon>
                                         <v-btn
@@ -83,7 +114,7 @@
                                                 creation.dialogs.contributors = true
                                             "
                                         >
-                                            <v-icon>
+                                            <v-icon color="primary">
                                                 mdi-account-multiple-outline
                                             </v-icon>
                                         </v-btn>
@@ -96,7 +127,9 @@
                                             target="_blank"
                                         >
                                             <v-btn icon>
-                                                <v-icon>mdi-github</v-icon>
+                                                <v-icon color="primary"
+                                                    >mdi-github</v-icon
+                                                >
                                             </v-btn>
                                         </a>
                                         <a
@@ -108,7 +141,9 @@
                                             target="_blank"
                                         >
                                             <v-btn icon>
-                                                <v-icon>mdi-web</v-icon>
+                                                <v-icon color="primary"
+                                                    >mdi-web</v-icon
+                                                >
                                             </v-btn>
                                         </a>
                                     </v-card-title>
@@ -169,6 +204,7 @@
                                                     >
                                                         <v-btn icon>
                                                             <v-icon
+                                                                color="primary"
                                                                 v-text="
                                                                     collaborator
                                                                         .link
@@ -185,6 +221,7 @@
                                                             <svgicon
                                                                 v-else
                                                                 icon="medium"
+                                                                class="primary--text"
                                                                 width="24"
                                                                 height="24"
                                                             ></svgicon>
@@ -200,9 +237,6 @@
 
                         <!-- About Me -->
                         <div id="aboutme" v-if="tabs === 1">
-                            <h3>About Me</h3>
-                            <v-spacer />
-
                             <v-card
                                 id="aboutme_information"
                                 class="mx-auto"
@@ -241,52 +275,40 @@
                                     >
                                         <v-btn icon>
                                             <v-icon
-                                                v-if="sma.name != 'Medium'"
+                                                color="primary"
                                                 v-text="sma.icon"
                                             ></v-icon>
-                                            <svgicon
-                                                v-if="sma.name == 'Medium'"
-                                                icon="medium"
-                                                width="24"
-                                                height="24"
-                                            ></svgicon>
                                         </v-btn>
                                     </a>
                                 </v-card-text>
                             </v-card>
                         </div>
+
+                        <!-- Quick Programs -->
+                        <quick-programs id="quickprograms" v-if="tabs === 2" />
                     </v-col>
                 </v-row>
-
-                <v-btn
-                    fab
-                    dark
-                    fixed
-                    right
-                    bottom
-                    v-on:click="toggle_dark_mode"
-                >
-                    <v-icon dark>mdi-theme-light-dark</v-icon>
-                </v-btn>
             </v-container>
         </v-main>
     </v-app>
 </template>
 
 <script>
-import "./compiled-icons/medium";
+import QuickPrograms from "./components/QuickPrograms.vue";
 
 export default {
     name: "App",
+    components: {
+        QuickPrograms
+    },
     data: () => ({
-        fab: false,
         tabs: null,
         creations: [
             {
-                name: "Schedules",
-                repository: "https://github.com/hkamran80/schedules",
-                site: "https://schedules.unisontech.org",
-                status: "Completed",
+                name: "Control Surface for Spotify",
+                repository: "",
+                site: "https://spotify-controlsurface.unisontech.org",
+                status: "Completed | Active Development",
                 contributors: {},
                 cancelled: false,
                 help: false,
@@ -294,13 +316,13 @@ export default {
                     contributors: false
                 },
                 description:
-                    "An app for all schedules, currently supporting the AUHSD Standard and the AUHSD Distance Learning Schedules."
+                    "Control Surface for Spotify is a utility to allow users to control their Spotify playback without opening the web version of Spotify. It aims to be a simple, easy-to-use application to control playback and view currently playing information. "
             },
             {
                 name: "SupportDocs",
                 repository: "https://github.com/aheze/SupportDocs",
                 site: "",
-                status: "Completed",
+                status: "Completed | Active Development",
                 contributors: {
                     "A. Zheng": {
                         role: "Creator (Created the library)",
@@ -327,10 +349,10 @@ export default {
                     "Generate help centers for your iOS apps, with Markdown! All you need to do is write your documents on GitHub, and install the library in your app. SupportDocs' custom GitHub Action and GitHub Pages will take care of the rest."
             },
             {
-                name: "Control Surface for Spotify",
+                name: "Final Grade Calculator",
                 repository: "",
-                site: "https://spotify-controlsurface.unisontech.org",
-                status: "Completed | Active Development",
+                site: "",
+                status: "Completed",
                 contributors: {},
                 cancelled: false,
                 help: false,
@@ -338,7 +360,7 @@ export default {
                     contributors: false
                 },
                 description:
-                    "Control Surface for Spotify is a utility to allow users to control their Spotify playback without opening the web version of Spotify. It aims to be a simple, easy-to-use application to control playback and view currently playing information. "
+                    'Available under the "Quick Programs" tabs! The final grade calculator is simple tool to calculate what you need to get on a final in order to get a particular grade.'
             },
             {
                 name: "Diario",
@@ -353,6 +375,34 @@ export default {
                 },
                 description:
                     "A simple web-based diary application. Write entries in Markdown and store them in the cloud."
+            },
+            {
+                name: "Schedules",
+                repository: "https://github.com/hkamran80/schedules",
+                site: "https://schedules.unisontech.org",
+                status: "Completed",
+                contributors: {},
+                cancelled: false,
+                help: false,
+                dialogs: {
+                    contributors: false
+                },
+                description:
+                    "An app for all schedules, currently supporting the AUHSD Standard and the AUHSD Distance Learning Schedules."
+            },
+            {
+                name: "Reprint",
+                repository: "https://github.com/hkamran80/reprint",
+                site: "https://beta-reprint.hkamran.com",
+                status: "In Progress | Semi-active Development",
+                contributors: {},
+                cancelled: false,
+                help: false,
+                dialogs: {
+                    contributors: false
+                },
+                description:
+                    "The complete redesign of Reprint, my personal blog. Powered by Vue.js and Vuetify. Currently a work-in-progress."
             },
             {
                 name: "Userscripts Site",
@@ -423,8 +473,8 @@ export default {
             },
             {
                 name: "Medium",
-                url: "https://medium.com/@hkamran80",
-                icon: ""
+                url: "https://hkamran.medium.com",
+                icon: "$medium"
             },
             {
                 name: "Reprint",
@@ -501,6 +551,23 @@ div.v-card__title i.v-icon {
     margin: 0 5px;
 }
 
+hr {
+    margin: 10px 0;
+}
+h3 i.v-icon {
+    margin: 7.5px;
+}
+div.v-card {
+    margin: 12.5px auto;
+}
+
+/* Text Styles */
+.text-align--right {
+    text-align: right;
+}
+</style>
+
+<style scoped>
 div.v-card.status_cancelled {
     border-left: 8px solid rgb(255, 0, 0) !important;
 }
@@ -510,18 +577,5 @@ div#aboutme_socialmedia div.v-card__text {
 }
 div#aboutme_socialmedia button.v-btn {
     margin: 0 15px;
-}
-
-hr {
-    margin: 10px 0;
-}
-h3 i.v-icon {
-    margin: 7.5px;
-}
-h3 i.v-icon:nth-of-type(1) {
-    margin-left: 0;
-}
-div.v-card {
-    margin: 12.5px auto;
 }
 </style>
