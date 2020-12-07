@@ -66,7 +66,7 @@
                         <v-divider />
 
                         <v-tabs fixed-tabs center-active v-model="tabs">
-                            <v-tab>Creations</v-tab>
+                            <v-tab>Projects</v-tab>
                             <v-tab>About Me</v-tab>
                             <v-tab>Quick Programs</v-tab>
                         </v-tabs>
@@ -138,7 +138,13 @@
                                             :title="
                                                 creation.name + ' - Website'
                                             "
-                                            target="_blank"
+                                            :target="
+                                                creation.site.indexOf(
+                                                    url_host
+                                                ) > -1
+                                                    ? ''
+                                                    : '_blank'
+                                            "
                                         >
                                             <v-btn icon>
                                                 <v-icon color="primary"
@@ -302,7 +308,13 @@ export default {
         QuickPrograms
     },
     data: () => ({
-        tabs: null,
+        url_host: window.location.host,
+        tabs:
+            window.location.pathname === "/quickprograms"
+                ? 2
+                : window.location.pathname === "/about"
+                ? 1
+                : 0,
         creations: [
             {
                 name: "Control Surface for Spotify",
@@ -349,9 +361,9 @@ export default {
                     "Generate help centers for your iOS apps, with Markdown! All you need to do is write your documents on GitHub, and install the library in your app. SupportDocs' custom GitHub Action and GitHub Pages will take care of the rest."
             },
             {
-                name: "Final Grade Calculator",
+                name: "Grade Calculators",
                 repository: "",
-                site: "",
+                site: `${window.location.protocol}//${window.location.host}/quickprograms`,
                 status: "Completed",
                 contributors: {},
                 cancelled: false,
@@ -360,7 +372,7 @@ export default {
                     contributors: false
                 },
                 description:
-                    'Available under the "Quick Programs" tabs! The final grade calculator is simple tool to calculate what you need to get on a final in order to get a particular grade.'
+                    'Available under the "Quick Programs" tabs! The grade calculators are simple tools to calculate what you need to get on a final in order to get a particular grade or to see what your grade will look like after you\'ve taken the final.'
             },
             {
                 name: "Diario",

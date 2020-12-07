@@ -34,7 +34,7 @@
                     outlined
                 />
                 <v-text-field
-                    v-model="final_grade_calculator.final_percentage"
+                    v-model="final_grade_calculator.final_weight"
                     label="How Much is Your Final Worth?"
                     type="number"
                     append-icon="mdi-percent-outline"
@@ -65,6 +65,72 @@
                 />
             </v-card-text>
         </v-card>
+
+        <v-card
+            id="overall_grade_after_final_calculator"
+            class="mx-auto"
+            outlined
+        >
+            <v-card-title>
+                Overall Grade After Final Calculator
+                <v-spacer />
+                <v-btn
+                    icon
+                    @click="
+                        overall_grade_after_final.hidden = !overall_grade_after_final.hidden
+                    "
+                >
+                    <v-icon v-if="overall_grade_after_final.hidden">
+                        mdi-chevron-down
+                    </v-icon>
+                    <v-icon v-else>
+                        mdi-chevron-up
+                    </v-icon>
+                </v-btn>
+            </v-card-title>
+            <v-card-text v-if="!overall_grade_after_final.hidden">
+                <v-text-field
+                    v-model="overall_grade_after_final.before"
+                    label="Grade Before Final"
+                    type="number"
+                    append-icon="mdi-percent-outline"
+                    outlined
+                />
+                <v-text-field
+                    v-model="overall_grade_after_final.final_score"
+                    label="Score on Your Final"
+                    type="number"
+                    append-icon="mdi-percent-outline"
+                    outlined
+                />
+                <v-text-field
+                    v-model="overall_grade_after_final.final_weight"
+                    label="How Much is Your Final Worth?"
+                    type="number"
+                    append-icon="mdi-percent-outline"
+                    outlined
+                />
+                <v-btn
+                    text
+                    block
+                    class="pb-2"
+                    @click="calculate_overall_grade_after_final"
+                >
+                    Calculate
+                </v-btn>
+
+                <v-divider v-if="overall_grade_after_final.grade" />
+
+                <v-text-field
+                    v-model="overall_grade_after_final.grade"
+                    v-if="overall_grade_after_final.grade"
+                    label="Final Grade"
+                    append-icon="mdi-percent-outline"
+                    outlined
+                    readonly
+                />
+            </v-card-text>
+        </v-card>
     </div>
 </template>
 
@@ -74,12 +140,19 @@ export default {
     data: function() {
         return {
             final_grade_calculator: {
-                hidden: false,
+                hidden: true,
                 current: null,
                 wanted: null,
-                final_percentage: null,
+                final_weight: null,
                 needed: null,
                 needed_message: ""
+            },
+            overall_grade_after_final: {
+                hidden: true,
+                before: null,
+                final_score: null,
+                final_weight: null,
+                grade: null
             }
         };
     },
@@ -88,22 +161,40 @@ export default {
             if (
                 this.final_grade_calculator.current &&
                 this.final_grade_calculator.wanted &&
-                this.final_grade_calculator.final_percentage
+                this.final_grade_calculator.final_weight
             ) {
-                let needed = (
+                let needed =
                     (this.final_grade_calculator.wanted * 100 -
                         this.final_grade_calculator.current *
-                            (100 -
-                                this.final_grade_calculator.final_percentage)) /
-                    this.final_grade_calculator.final_percentage
-                ).toFixed(2);
-                this.final_grade_calculator.needed = needed;
+                            (100 - this.final_grade_calculator.final_weight)) /
+                    this.final_grade_calculator.final_weight;
+                this.final_grade_calculator.needed = needed.toFixed(2);
                 this.final_grade_calculator.needed_message =
-                    Number(needed) > 100
+                    needed > 100
                         ? 'Impossible. But as Nelson Mandela said, "It always seems impossible until its done."'
-                        : Number(needed) < 0
+                        : needed < 0
                         ? "Uhhh...yeah, go ahead and flunk the final, you should get the grade you want."
                         : "";
+            }
+        },
+        calculate_overall_grade_after_final: function() {
+            if (
+                this.overall_grade_after_final.before &&
+                this.overall_grade_after_final.final_score &&
+                this.overall_grade_after_final.final_weight
+            ) {
+                let before_decimal =
+                        this.overall_grade_after_final.before / 100,
+                    score_decimal =
+                        this.overall_grade_after_final.final_score / 100,
+                    weight_decimal =
+                        this.overall_grade_after_final.final_weight / 100;
+
+                let grade =
+                    ((1 - weight_decimal) * before_decimal +
+                        weight_decimal * score_decimal) *
+                    100;
+                this.overall_grade_after_final.grade = grade.toFixed(2);
             }
         }
     }
