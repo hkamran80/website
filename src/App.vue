@@ -139,9 +139,7 @@
                                                 creation.name + ' - Website'
                                             "
                                             :target="
-                                                creation.site.indexOf(
-                                                    url_host
-                                                ) > -1
+                                                creation.site.indexOf(url) > -1
                                                     ? ''
                                                     : '_blank'
                                             "
@@ -308,7 +306,7 @@ export default {
         QuickPrograms
     },
     data: () => ({
-        url_host: window.location.host,
+        url: window.location.protocol + "//" + window.location.host,
         tabs:
             window.location.pathname === "/quickprograms"
                 ? 2
