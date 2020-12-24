@@ -253,7 +253,22 @@
                                     My name is H. Kamran and I'm a developer. I
                                     program mainly in Python. I've been using
                                     JavaScript and Vue.js a lot more these days,
-                                    and dabble in SwiftUI.
+                                    and dabble in Swift and SwiftUI. I write
+                                    articles about topics that interest me or
+                                    that I feel like are useful to the world on
+                                    my blog,
+                                    <a
+                                        href="https://reprint.hkamran.com"
+                                        target="_blank"
+                                        title="Reprint"
+                                        >Reprint</a
+                                    >, and on
+                                    <a
+                                        href="https://hkamran.medium.com"
+                                        target="_blank"
+                                        title="Medium"
+                                        >Medium</a
+                                    >.
                                 </v-card-text>
                             </v-card>
                             <v-card
@@ -404,7 +419,7 @@ export default {
                 name: "Reprint",
                 repository: "https://github.com/hkamran80/reprint",
                 site: "https://beta-reprint.hkamran.com",
-                status: "In Progress | Semi-active Development",
+                status: "Completed",
                 contributors: {},
                 cancelled: false,
                 help: false,
@@ -412,7 +427,7 @@ export default {
                     contributors: false
                 },
                 description:
-                    "The complete redesign of Reprint, my personal blog. Powered by Vue.js and Vuetify. Currently a work-in-progress."
+                    "The complete redesign of Reprint, my personal blog. Powered by Vue.js and Vuetify. Now complete!"
             },
             {
                 name: "Userscripts Site",
