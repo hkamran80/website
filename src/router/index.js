@@ -15,6 +15,45 @@ const routes = [
         name: "Programs",
         component: () =>
             import(/* webpackChunkName: "programs" */ "../views/Programs.vue")
+    },
+    {
+        path: "/creations",
+        name: "Creations",
+        component: () =>
+            import(/* webpackChunkName: "creations" */ "../views/Creations.vue")
+    },
+    {
+        path: "/blog",
+        name: "Blog",
+        component: () =>
+            import(/* webpackChunkName: "blogfeed" */ "../views/blog/Feed.vue")
+    },
+    {
+        path: "/blog/posts/:post",
+        name: "Post",
+        component: () =>
+            import(/* webpackChuckName: "blogpost" */ "../views/blog/Post.vue")
+    },
+    {
+        path: "/blog/category/:category",
+        name: "Category",
+        component: () =>
+            import(
+                /* webpackChuckName: "blogcategory" */ "../views/blog/Category.vue"
+            )
+    },
+    {
+        path: "/notfound",
+        name: "NotFound",
+        component: () =>
+            import(/* webpackChuckName: "notfound" */ "../views/NotFound.vue")
+    },
+    {
+        path: "*",
+        redirect: from => ({
+            name: "NotFound",
+            query: { path: window.location.origin + from.path }
+        })
     }
 ];
 

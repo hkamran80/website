@@ -11,10 +11,20 @@
 
 <script>
 import NavigationBar from "@/components/NavigationBar";
+import posts from "@/blog/posts.json";
+
 export default {
     name: "App",
     components: {
         NavigationBar
+    },
+    watch: {
+        $route(to) {
+            document.title =
+                to.name === "Post"
+                    ? `${posts[to.params.post].title} - H. Kamran`
+                    : "H. Kamran";
+        }
     }
 };
 </script>
@@ -27,11 +37,10 @@ export default {
     padding: 15px 45px;
 }
 
-#nav {
-    padding: 30px 0;
-}
-
-#nav a.router-link-exact-active {
-    color: #42b983;
+/* Global Styles */
+.text-wrap--break {
+    display: inline-block;
+    word-break: break-word;
+    word-wrap: break-word;
 }
 </style>

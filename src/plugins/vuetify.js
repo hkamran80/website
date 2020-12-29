@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuetify from "vuetify/lib/framework";
 
+import MediumIcon from "@/components/icons/Medium.vue";
+
 Vue.use(Vuetify);
 
 export default new Vuetify({
@@ -11,6 +13,13 @@ export default new Vuetify({
             },
             dark: {
                 primary: "#F06292"
+            }
+        }
+    },
+    icons: {
+        values: {
+            medium: {
+                component: MediumIcon
             }
         }
     }

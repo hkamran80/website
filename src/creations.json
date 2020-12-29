@@ -1,0 +1,157 @@
+[
+    {
+        "name": "Control Surface for Spotify",
+        "repository": "",
+        "site": "https://spotify-controlsurface.unisontech.org",
+        "status": "Completed",
+        "featured": true,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "Control Surface for Spotify is a utility to allow users to control their Spotify playback without opening the web version of Spotify. It aims to be a simple, easy-to-use application to control playback and view currently playing information."
+    },
+    {
+        "name": "SupportDocs",
+        "repository": "https://github.com/aheze/SupportDocs",
+        "site": "",
+        "status": "Completed",
+        "featured": true,
+        "contributors": {
+            "A. Zheng": {
+                "role": "Creator (Created the library)",
+                "link": {
+                    "url": "https://aheze.medium.com",
+                    "icon": "$medium"
+                }
+            },
+            "H. Kamran": {
+                "role": "Contributor (Created automatic generation code, wrote documentation, configured dark mode)",
+                "link": {
+                    "url": "https://hkamran.com",
+                    "icon": "mdi-web"
+                }
+            }
+        },
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "Generate help centers for your iOS apps, with Markdown! All you need to do is write your documents on GitHub, and install the library in your app. SupportDocs' custom GitHub Action and GitHub Pages will take care of the rest."
+    },
+    {
+        "name": "Grade Calculators",
+        "repository": "",
+        "site": "/programs",
+        "status": "Completed",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "To access, go to the \"Quick Programs\". The grade calculators are simple tools to calculate what you need to get on a final in order to get a particular grade or to see what your grade will look like after you've taken the final."
+    },
+    {
+        "name": "Diario",
+        "repository": "",
+        "site": "https://diario.unisontech.org",
+        "status": "Completed",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A simple web-based diary application. Write entries in Markdown and store them in the cloud."
+    },
+    {
+        "name": "Schedules",
+        "repository": "https://github.com/hkamran80/schedules",
+        "site": "https://schedules.unisontech.org",
+        "status": "Completed",
+        "featured": true,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "An app for all schedules, currently supporting the AUHSD Standard and the AUHSD Distance Learning Schedules."
+    },
+    {
+        "name": "Reprint",
+        "repository": "https://github.com/hkamran80/reprint",
+        "site": "https://beta-reprint.hkamran.com",
+        "status": "Completed",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "The complete redesign of Reprint, my personal blog. Powered by Vue.js and Vuetify. Now complete!"
+    },
+    {
+        "name": "Userscripts Site",
+        "repository": "https://github.com/hkamran80/userscripts_site",
+        "site": "https://userscripts.hkamran.com",
+        "status": "Completed",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A place to hold the userscripts I've created."
+    },
+    {
+        "name": "Remembrance",
+        "repository": "https://github.com/hkamran80/remembrance",
+        "site": "",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A read-later bookmark site built with Vue.js and Firebase."
+    },
+    {
+        "name": "Lockbook",
+        "repository": "https://github.com/hkamran80/lockbook",
+        "site": "",
+        "status": "Paused | Help Needed",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": true,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A diary application that enforces security and privacy"
+    },
+    {
+        "name": "Buzzloop",
+        "repository": "",
+        "site": "https://buzzloop.unisontech.org",
+        "status": "Cancelled",
+        "featured": false,
+        "contributors": {},
+        "cancelled": true,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "Get notifications for changes in your School Loop account (only available for students at this time)"
+    }
+]

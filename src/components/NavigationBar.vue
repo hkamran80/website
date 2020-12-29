@@ -101,6 +101,9 @@ export default {
 #navigation a.navigation-item {
     padding: 0 12px;
 }
+#navigation a.navigation-item:nth-of-type(1) {
+    padding-left: 0;
+}
 
 #navigation a.router-link-exact-active {
     color: #e91e63;
