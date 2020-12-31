@@ -1,24 +1,10 @@
-# hkamran
+# Personal Website
 
-## Project setup
-```
-npm install
-```
+Auto-deploys to [hkamran.com](https://hkamran.com)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Development
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+-   Set up the project: `npm install`
+-   Lint files: `npm run lint`
+-   Compile and activate hot-reload for development: `npm run serve`
+-   Compile and minify for production: `npm run build`
