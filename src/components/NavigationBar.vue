@@ -41,7 +41,7 @@
 
             <v-btn
                 icon
-                class="navigation-item"
+                class="navigation-item umami--click--theme-toggle"
                 title="Toggle Theme"
                 aria-label="Toggle Theme"
                 @click="toggle_theme"

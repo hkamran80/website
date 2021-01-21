@@ -9,7 +9,7 @@
                     href="https://github.com/hkamran80?tab=repositories&language=python"
                     title="Python-based GitHub repositories"
                     target="_blank"
-                    class="icon-bar-icon"
+                    class="icon-bar-icon umami--click--github-python"
                 >
                     <v-btn icon>
                         <v-icon color="primary">mdi-language-python</v-icon>
@@ -18,7 +18,7 @@
                     href="https://github.com/hkamran80?tab=repositories&language=javascript"
                     title="JavaScript-based GitHub repositories"
                     target="_blank"
-                    class="icon-bar-icon"
+                    class="icon-bar-icon umami--click--github-javascript"
                 >
                     <v-btn icon>
                         <v-icon color="primary">mdi-language-javascript</v-icon>
@@ -28,7 +28,7 @@
                     href="https://github.com/hkamran80?tab=repositories&language=vue"
                     title="Vue-based GitHub repositories"
                     target="_blank"
-                    class="icon-bar-icon"
+                    class="icon-bar-icon umami--click--github-vuejs"
                 >
                     <v-btn icon>
                         <v-icon color="primary">mdi-vuejs</v-icon>
@@ -38,7 +38,7 @@
                     href="https://github.com/hkamran80?tab=repositories&language=swift"
                     title="Swift-based GitHub repositories"
                     target="_blank"
-                    class="icon-bar-icon"
+                    class="icon-bar-icon umami--click--github-swift"
                 >
                     <v-btn icon>
                         <v-icon color="primary">mdi-language-swift</v-icon>
@@ -83,7 +83,11 @@
                 Latest Post
             </h3>
             <p class="pb-4">
-                <a :href="`/blog/posts/${latest_post_id}`" id="latest-post">
+                <a
+                    :href="`/blog/posts/${latest_post_id}`"
+                    id="latest-post"
+                    class="umami--click--home-latest-post"
+                >
                     <v-row align="center">
                         <v-col md="5" cols="12">
                             <v-img

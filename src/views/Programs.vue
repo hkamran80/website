@@ -16,6 +16,7 @@
                         <v-spacer />
                         <v-btn
                             icon
+                            class="umami--click--programs-fgc-toggle"
                             @click="
                                 final_grade_calculator.hidden = !final_grade_calculator.hidden
                             "
@@ -87,6 +88,7 @@
                         <v-spacer />
                         <v-btn
                             icon
+                            class="umami--click--programs-ogafc-toggle"
                             @click="
                                 overall_grade_after_final.hidden = !overall_grade_after_final.hidden
                             "
