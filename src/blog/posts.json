@@ -1,6 +1,6 @@
 {
     "vuetify-dark-mode-toggle": {
-        "featured": "https://images.ctfassets.net/53bz5nlaavpb/dTsYYJyvXtmq9XRgkiY6z/73b7326f9a52840445f5bede6fadc2cf/unnamed.png",
+        "featured": "https://images2.imgbox.com/a3/77/O73ZGebi_o.png",
         "title": "Dark Mode Toggle for Vue.js Apps with Vuetify",
         "publish_date": "June 4, 2020",
         "update_date": "December 24, 2020",
@@ -9,7 +9,7 @@
         "categories": ["vuejs", "vuetify", "darkmode", "development"]
     },
     "inaccurate-pushing-to-github-with-git": {
-        "featured": "https://images.ctfassets.net/53bz5nlaavpb/5n5yjC5BrGdinxdlEpLKcx/d72414a7e9de3398045f096db2687c05/github_website_updated.png",
+        "featured": "https://images2.imgbox.com/37/52/lLcBXIPp_o.png",
         "title": "Pushing to GitHub with Git [Inaccurate]",
         "publish_date": "June 20, 2020",
         "update_date": "",
@@ -18,7 +18,7 @@
         "categories": ["inaccurate", "git", "github", "development"]
     },
     "getting-balenaetcher-to-work-on-macos-catalina": {
-        "featured": "https://cdn-images-1.medium.com/max/3648/1*BBIgFjFdgiWAvFkTXWsHAA.png",
+        "featured": "https://images2.imgbox.com/ed/6a/LE2ICip8_o.png",
         "title": "Getting balenaEtcher to Work on macOS Catalina",
         "publish_date": "January 30, 2020",
         "update_date": "",
@@ -27,8 +27,7 @@
         "categories": ["macos"]
     },
     "extracting-pkgs-on-macos": {
-        "featured":
-            "https://images.ctfassets.net/53bz5nlaavpb/2qMDlZRn95tXdWOorMQjUf/9d5ad2998a9aa75ce8f3b187d68f9388/0_mOEteJMBT9FvBbEI",
+        "featured": "https://images2.imgbox.com/b0/b8/6bZ5aeNJ_o.jpg",
         "title": "Expanding PKGs on macOS",
         "publish_date": "January 30, 2020",
         "update_date": "",
