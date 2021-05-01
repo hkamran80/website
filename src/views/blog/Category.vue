@@ -2,23 +2,23 @@
     <center-layout>
         <div v-if="error">
             <div id="error">
-                <v-alert type="error" v-text="error"></v-alert>
+                <v-alert type="error" v-text="error" />
             </div>
         </div>
         <div v-else>
-            <h1>
-                Category:
-                {{ $options.categories[this.$route.params.category].name }}
-            </h1>
-            <h2
-                class="pb-7"
-                v-text="
+            <cds-header
+                :title="
+                    `Category:
+                    ${$options.categories[this.$route.params.category].name}`
+                "
+                :subtitle="
                     `${found_posts.length} Post${
                         found_posts.length !== 1 ? 's' : ''
                     }`
                 "
             />
-            <feed-card
+
+            <post-card
                 v-for="post_id in found_posts"
                 :key="post_id"
                 :id="post_id"
@@ -38,13 +38,14 @@
 import posts from "@/blog/posts.json";
 import categories from "@/blog/categories.json";
 import CenterLayout from "@/components/CenterLayout";
-import FeedCard from "@/components/blog/FeedCard.vue";
+import PostCard from "@/components/blog/PostCard.vue";
+import CdsHeader from "@/components/cds/CdsHeader.vue";
 
 export default {
     name: "BlogFeed",
     posts: posts,
     categories: categories,
-    components: { FeedCard, CenterLayout },
+    components: { PostCard, CenterLayout, CdsHeader },
     data: function() {
         return {
             found_posts: null,

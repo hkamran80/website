@@ -23,13 +23,15 @@
             "A. Zheng": {
                 "role": "Creator (Created the library)",
                 "link": {
+                    "title": "A. Zheng on Medium",
                     "url": "https://aheze.medium.com",
-                    "icon": "$medium"
+                    "icon": "medium"
                 }
             },
             "H. Kamran": {
                 "role": "Contributor (Created automatic generation code, wrote documentation, configured dark mode)",
                 "link": {
+                    "title": "H. Kamran's website",
                     "url": "https://hkamran.com",
                     "icon": "mdi-web"
                 }
@@ -41,6 +43,30 @@
             "contributors": false
         },
         "description": "Generate help centers for your iOS apps, with Markdown! All you need to do is write your documents on GitHub, and install the library in your app. SupportDocs' custom GitHub Action and GitHub Pages will take care of the rest."
+    },
+    {
+        "name": "Xenon Reader",
+        "repository": "https://github.com/hkamran80/xenon-reader",
+        "site": "",
+        "status": "In Progress",
+        "featured": true,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": { "contributors": false },
+        "description": "A new EPUB reader for macOS, built with the latest technologies"
+    },
+    {
+        "name": "Ramadan Tracker",
+        "repository": "https://github.com/hkamran80/ramadan-tracker",
+        "site": "",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": { "contributors": false },
+        "description": "An Android app to help track your progress throughout Ramadan"
     },
     {
         "name": "Grade Calculators",
@@ -82,16 +108,98 @@
         "dialogs": {
             "contributors": false
         },
-        "description": "An app for all schedules, currently supporting the AUHSD Standard and the AUHSD Distance Learning Schedules."
+        "description": "An app for schedules. Find out exactly how much time is remaining in a period or what the period is. Currently supports the AUHSD Standard and Hybrid schedules."
+    },
+    {
+        "name": "Schedules for Apple",
+        "repository": "https://github.com/hkamran80/schedules-apple",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A Schedules client for iOS, iPadOS, macOS, and watchOS."
+    },
+    {
+        "name": "Schedules for Android",
+        "repository": "https://github.com/hkamran80/schedules-android",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A Schedules client for Android and Wear OS."
+    },
+    {
+        "name": "SmartThings API (Swift)",
+        "repository": "https://github.com/hkamran80/smartthings-api-swift",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "An Swift SmartThings API library"
+    },
+    {
+        "name": "Control Surface for SmartThings",
+        "repository": "https://github.com/hkamran80/cs-smartthings",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A macOS SmartThings controller"
+    },
+    {
+        "name": "QuickOCR",
+        "repository": "https://github.com/aheze/QuickOCR",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {
+            "A. Zheng": {
+                "role": "Creator",
+                "link": {
+                    "title": "A. Zheng on Medium",
+                    "url": "https://aheze.medium.com",
+                    "icon": "medium"
+                }
+            },
+            "H. Kamran": {
+                "role": "Contributor",
+                "link": {
+                    "title": "H. Kamran's website",
+                    "url": "https://hkamran.com",
+                    "icon": "mdi-web"
+                }
+            }
+        },
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "Drag-and-drop to find text. Powered by Apple's Vision framework."
     },
     {
         "name": "Reprint",
         "repository": "https://github.com/hkamran80/reprint",
         "site": "https://beta-reprint.hkamran.com",
-        "status": "Completed",
+        "status": "Cancelled",
         "featured": false,
         "contributors": {},
-        "cancelled": false,
+        "cancelled": true,
         "help": false,
         "dialogs": {
             "contributors": false
@@ -130,10 +238,10 @@
         "name": "Lockbook",
         "repository": "https://github.com/hkamran80/lockbook",
         "site": "",
-        "status": "Paused | Help Needed",
+        "status": "Cancelled",
         "featured": false,
         "contributors": {},
-        "cancelled": false,
+        "cancelled": true,
         "help": true,
         "dialogs": {
             "contributors": false

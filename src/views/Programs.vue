@@ -1,13 +1,7 @@
 <template>
     <center-layout>
-        <header class="pt-7 pb-7">
-            <h2 class="pb-1">
-                Programs
-            </h2>
-            <h3>
-                Some hopefully useful programs!
-            </h3>
-        </header>
+        <cds-header title="Programs" subtitle="Some quick little programs" />
+
         <article>
             <p>
                 <v-card id="final_grade_calculator" class="mx-auto" outlined>
@@ -151,10 +145,13 @@
 
 <script>
 import CenterLayout from "../components/CenterLayout.vue";
+import CdsHeader from "../components/cds/CdsHeader.vue";
+
 export default {
     name: "Programs",
     components: {
-        CenterLayout
+        CenterLayout,
+        CdsHeader
     },
     data: function() {
         return {
@@ -219,5 +216,3 @@ export default {
     }
 };
 </script>
-
-<style scoped></style>

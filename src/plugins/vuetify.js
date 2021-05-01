@@ -14,6 +14,9 @@ export default new Vuetify({
             dark: {
                 primary: "#F06292"
             }
+        },
+        options: {
+            customProperties: true
         }
     },
     icons: {

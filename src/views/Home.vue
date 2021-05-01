@@ -1,51 +1,87 @@
 <template>
     <center-layout>
-        <header class="pt-7 pb-7">
-            <h2>
-                Hello world! I'm H. Kamran and I'm a developer.
-            </h2>
-            <h3 class="icon-bar">
-                <a
-                    href="https://github.com/hkamran80?tab=repositories&language=python"
-                    title="Python-based GitHub repositories"
+        <cds-header title="Hello world! I'm H. Kamran and I'm a developer.">
+            <template v-slot:icons>
+                <v-btn
+                    icon
+                    href="https://github.com/hkamran80"
                     target="_blank"
-                    class="icon-bar-icon umami--click--github-python"
+                    class="umami-click--social-github"
                 >
-                    <v-btn icon>
-                        <v-icon color="primary">mdi-language-python</v-icon>
-                    </v-btn> </a
-                ><a
-                    href="https://github.com/hkamran80?tab=repositories&language=javascript"
-                    title="JavaScript-based GitHub repositories"
+                    <v-icon color="primary">mdi-github</v-icon>
+                </v-btn>
+
+                <v-btn
+                    icon
+                    href="https://twitter.com/hkamran80"
                     target="_blank"
-                    class="icon-bar-icon umami--click--github-javascript"
+                    class="umami-click--social-twitter"
                 >
-                    <v-btn icon>
-                        <v-icon color="primary">mdi-language-javascript</v-icon>
-                    </v-btn>
-                </a>
-                <a
-                    href="https://github.com/hkamran80?tab=repositories&language=vue"
-                    title="Vue-based GitHub repositories"
+                    <v-icon color="primary">mdi-twitter</v-icon>
+                </v-btn>
+
+                <v-btn
+                    icon
+                    href="https://stackoverflow.com/users/7313822/h-kamran"
                     target="_blank"
-                    class="icon-bar-icon umami--click--github-vuejs"
+                    class="umami-click--social-stack-overflow"
                 >
-                    <v-btn icon>
-                        <v-icon color="primary">mdi-vuejs</v-icon>
-                    </v-btn>
-                </a>
-                <a
-                    href="https://github.com/hkamran80?tab=repositories&language=swift"
-                    title="Swift-based GitHub repositories"
+                    <v-icon color="primary">mdi-stack-overflow</v-icon>
+                </v-btn>
+
+                <v-btn
+                    icon
+                    href="https://hkamran.medium.com"
                     target="_blank"
-                    class="icon-bar-icon umami--click--github-swift"
+                    class="umami-click--social-medium"
                 >
-                    <v-btn icon>
-                        <v-icon color="primary">mdi-language-swift</v-icon>
-                    </v-btn>
-                </a>
-            </h3>
-        </header>
+                    <medium-icon size="1.5x" class="simple-icon" />
+                </v-btn>
+            </template>
+        </cds-header>
+
+        <h3 class="icon-bar">
+            <a
+                href="https://github.com/hkamran80?tab=repositories&language=python"
+                title="Python-based GitHub repositories"
+                target="_blank"
+                class="icon-bar-icon umami--click--github-python"
+            >
+                <v-btn icon>
+                    <v-icon color="primary">mdi-language-python</v-icon>
+                </v-btn> </a
+            ><a
+                href="https://github.com/hkamran80?tab=repositories&language=javascript"
+                title="JavaScript-based GitHub repositories"
+                target="_blank"
+                class="icon-bar-icon umami--click--github-javascript"
+            >
+                <v-btn icon>
+                    <v-icon color="primary">mdi-language-javascript</v-icon>
+                </v-btn>
+            </a>
+            <a
+                href="https://github.com/hkamran80?tab=repositories&language=vue"
+                title="Vue-based GitHub repositories"
+                target="_blank"
+                class="icon-bar-icon umami--click--github-vuejs"
+            >
+                <v-btn icon>
+                    <v-icon color="primary">mdi-vuejs</v-icon>
+                </v-btn>
+            </a>
+            <a
+                href="https://github.com/hkamran80?tab=repositories&language=swift"
+                title="Swift-based GitHub repositories"
+                target="_blank"
+                class="icon-bar-icon umami--click--github-swift"
+            >
+                <v-btn icon>
+                    <v-icon color="primary">mdi-language-swift</v-icon>
+                </v-btn>
+            </a>
+        </h3>
+
         <article>
             <p>
                 I mostly program in Python, but I've started using JavaScript
@@ -83,57 +119,19 @@
                 Latest Post
             </h3>
             <p class="pb-4">
-                <a
-                    :href="`/blog/posts/${latest_post_id}`"
-                    id="latest-post"
+                <post-card
                     class="umami--click--home-latest-post"
-                >
-                    <v-row align="center">
-                        <v-col md="5" cols="12">
-                            <v-img
-                                class="align-end"
-                                width="100%"
-                                :src="latest_post.featured"
-                            />
-                        </v-col>
-                        <v-col>
-                            <strong
-                                class="primary--text"
-                                v-text="latest_post.title"
-                            />
-                            <br />
-                            <span v-text="latest_post.excerpt" />
-                            <br />
-                            <br />
-                            <span v-text="latest_post.publish_date" />
-                            <span
-                                v-if="
-                                    latest_post.update_date !== 'null' &&
-                                        latest_post.update_date !== undefined &&
-                                        typeof latest_post.update_date ===
-                                            'string' &&
-                                        latest_post.update_date !== ''
-                                "
-                                v-text="
-                                    ` / ${latest_post.update_date} (Updated)`
-                                "
-                            />
-                            <br />
-                            <span v-text="latest_post.reading_time" />
-                            <br />
-                            <br />
-                            <v-chip
-                                v-for="category of latest_post.categories"
-                                :key="category"
-                                class="mr-2"
-                                :href="`/blog/category/${category}`"
-                                v-text="$options.categories[category].name"
-                                label
-                            />
-                        </v-col>
-                    </v-row>
-                </a>
+                    :id="id"
+                    :featured-image-src="post.featured"
+                    :title="post.title"
+                    :publishDate="post.publish_date"
+                    :updateDate="post.update_date"
+                    :readingTime="post.reading_time"
+                    :excerpt="post.excerpt"
+                    :categories="post.categories"
+                />
             </p>
+
             <h3 class="pb-4">
                 Featured Creations
             </h3>
@@ -145,7 +143,13 @@
                         md="4"
                         cols="12"
                     >
-                        <creation :creation="fc" />
+                        <creation
+                            :creation="fc"
+                            :uniformHeight="
+                                $vuetify.breakpoint.mobile ? '' : 300
+                            "
+                            :bottomMargin="false"
+                        />
                     </v-col>
                 </v-row>
             </p>
@@ -156,21 +160,27 @@
 <script>
 import CenterLayout from "@/components/CenterLayout.vue";
 import Creation from "@/components/Creation.vue";
+import PostCard from "@/components/blog/PostCard.vue";
+import CdsHeader from "@/components/cds/CdsHeader.vue";
 
 import posts from "@/blog/posts.json";
-import categories from "@/blog/categories.json";
 import creations from "@/creations.json";
+
+import { MediumIcon } from "vue-simple-icons";
 
 export default {
     name: "Home",
     components: {
         CenterLayout,
-        Creation
+        Creation,
+        PostCard,
+        CdsHeader,
+        MediumIcon
     },
     data: function() {
         return {
-            latest_post_id: null,
-            latest_post: {
+            id: null,
+            post: {
                 featured: null,
                 title: null,
                 publish_date: null,
@@ -182,21 +192,36 @@ export default {
         };
     },
     mounted() {
-        this.latest_post_id = Object.keys(posts)[0];
-        this.latest_post = posts[this.latest_post_id];
-        this.featured = creations.filter(creation => creation.featured);
-    },
-    categories: categories
+        this.id = Object.keys(posts)[0];
+        this.post = posts[this.id];
+        this.featured = creations
+            .filter(creation => creation.featured)
+            .sort((a, b) => {
+                let creationA = a.name.toLowerCase(),
+                    creationB = b.name.toLowerCase();
+
+                return creationA < creationB
+                    ? -1
+                    : creationA > creationB
+                    ? 1
+                    : 0;
+            });
+    }
 };
 </script>
+
+<style>
+a {
+    text-decoration: none;
+}
+.simple-icon path {
+    fill: var(--v-primary-base);
+}
+</style>
 
 <style scoped>
 h3.icon-bar * {
     margin-left: 0;
     padding-right: 8px;
-}
-a#latest-post {
-    text-decoration: none;
-    color: currentColor;
 }
 </style>
