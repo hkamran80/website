@@ -4,6 +4,21 @@
             <v-container fluid>
                 <navigation-bar />
                 <router-view />
+
+                <v-snackbar bottom right :value="updateExists" :timeout="-1">
+                    An update is available for the website!
+
+                    <template v-slot:action="{ attrs }">
+                        <v-btn
+                            text
+                            color="primary"
+                            @click="refreshApp"
+                            v-bind="attrs"
+                        >
+                            Update
+                        </v-btn>
+                    </template>
+                </v-snackbar>
             </v-container>
         </v-main>
     </v-app>
@@ -13,12 +28,14 @@
 import NavigationBar from "@/components/NavigationBar";
 import posts from "@/blog/posts.json";
 import categories from "@/blog/categories.json";
+import update from "@/mixins/update";
 
 export default {
     name: "App",
     components: {
         NavigationBar
     },
+    mixins: [update],
     watch: {
         $route(to) {
             let title = "H. Kamran";

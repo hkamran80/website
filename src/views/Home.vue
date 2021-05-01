@@ -40,48 +40,6 @@
             </template>
         </cds-header>
 
-        <h3 class="icon-bar">
-            <a
-                href="https://github.com/hkamran80?tab=repositories&language=python"
-                title="Python-based GitHub repositories"
-                target="_blank"
-                class="icon-bar-icon umami--click--github-python"
-            >
-                <v-btn icon>
-                    <v-icon color="primary">mdi-language-python</v-icon>
-                </v-btn> </a
-            ><a
-                href="https://github.com/hkamran80?tab=repositories&language=javascript"
-                title="JavaScript-based GitHub repositories"
-                target="_blank"
-                class="icon-bar-icon umami--click--github-javascript"
-            >
-                <v-btn icon>
-                    <v-icon color="primary">mdi-language-javascript</v-icon>
-                </v-btn>
-            </a>
-            <a
-                href="https://github.com/hkamran80?tab=repositories&language=vue"
-                title="Vue-based GitHub repositories"
-                target="_blank"
-                class="icon-bar-icon umami--click--github-vuejs"
-            >
-                <v-btn icon>
-                    <v-icon color="primary">mdi-vuejs</v-icon>
-                </v-btn>
-            </a>
-            <a
-                href="https://github.com/hkamran80?tab=repositories&language=swift"
-                title="Swift-based GitHub repositories"
-                target="_blank"
-                class="icon-bar-icon umami--click--github-swift"
-            >
-                <v-btn icon>
-                    <v-icon color="primary">mdi-language-swift</v-icon>
-                </v-btn>
-            </a>
-        </h3>
-
         <article>
             <p>
                 I mostly program in Python, but I've started using JavaScript
@@ -216,12 +174,5 @@ a {
 }
 .simple-icon path {
     fill: var(--v-primary-base);
-}
-</style>
-
-<style scoped>
-h3.icon-bar * {
-    margin-left: 0;
-    padding-right: 8px;
 }
 </style>
