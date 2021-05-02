@@ -1,7 +1,12 @@
-/* global __precacheManifest, workbox */
+/* eslint-disable no-undef, no-restricted-globals */
 
-// eslint-disable-next-line no-unused-vars
-self.addEventListener("fetch", function(event) {});
+// Source: https://dev.to/drbragg/handling-service-worker-updates-in-your-vue-pwa-1pip
+self.addEventListener("message", event => {
+    if (event.data && event.data.type === "SKIP_WAITING") {
+        self.skipWaiting();
+    }
+});
 
-self.__precacheManifest = [].concat(__precacheManifest || []);
+// The precaching code provided by Workbox
+self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});

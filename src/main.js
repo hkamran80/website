@@ -5,6 +5,7 @@ import router from "./router";
 import vuetify from "./plugins/vuetify";
 
 Vue.config.productionTip = false;
+Vue.prototype.$developmentMode = process.env.NODE_ENV === "development";
 
 new Vue({
     router,

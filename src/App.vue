@@ -21,21 +21,59 @@
                 </v-snackbar>
             </v-container>
         </v-main>
+
+        <v-footer padless>
+            <v-card flat tile width="100%">
+                <v-card-text>
+                    All page views and click events are anonymously logged using
+                    <a
+                        href="https://umami.is"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Umami</a
+                    >. If you would like to opt out of being tracked, click
+                    <a title="Open privacy dialog" @click="privacyDialog = true"
+                        >here</a
+                    >.
+                </v-card-text>
+                <v-divider />
+                <v-card-text>
+                    Copyright © 2020-{{ new Date().getFullYear() }} H. Kamran.
+                    The materials on this on this website may be freely copied
+                    and distributed so long as the copyright notice and website
+                    are included.
+                </v-card-text>
+            </v-card>
+        </v-footer>
+
+        <v-dialog v-model="privacyDialog" width="750" scrollable>
+            <privacy
+                @installUmami="installUmami"
+                @uninstallUmami="uninstallUmami"
+                @close="closeDialog"
+            />
+        </v-dialog>
     </v-app>
 </template>
 
 <script>
-import NavigationBar from "@/components/NavigationBar";
+import NavigationBar from "@/components/NavigationBar.vue";
+import Privacy from "@/components/dialogs/Privacy.vue";
 import posts from "@/blog/posts.json";
 import categories from "@/blog/categories.json";
 import update from "@/mixins/update";
+import umami from "@/mixins/umami";
 
 export default {
     name: "App",
     components: {
-        NavigationBar
+        NavigationBar,
+        Privacy
     },
-    mixins: [update],
+    mixins: [update, umami],
+    data: function() {
+        return { privacyDialog: false };
+    },
     watch: {
         $route(to) {
             let title = "H. Kamran";
@@ -61,6 +99,11 @@ export default {
             }
 
             document.title = title;
+        }
+    },
+    methods: {
+        closeDialog: function() {
+            this.privacyDialog = false;
         }
     }
 };

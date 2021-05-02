@@ -11,35 +11,50 @@
                     <v-col cols="4" class="text-right">
                         <v-btn
                             icon
+                            title="Contributor list"
+                            aria-label="Contributor list"
                             v-if="
                                 Object.keys(creation.contributors).length !== 0
                             "
                             @click="creation.dialogs.contributors = true"
                         >
-                            <v-icon color="primary">
-                                mdi-account-multiple-outline
-                            </v-icon>
-                        </v-btn>
-                        <v-btn icon v-if="creation.cancelled">
-                            <v-icon color="primary">
-                                mdi-puzzle-remove-outline
-                            </v-icon>
+                            <v-icon
+                                color="primary"
+                                v-text="mdiAccountMultipleOutline"
+                            />
                         </v-btn>
                         <v-btn
                             icon
+                            title="Cancelled"
+                            aria-label="Cancelled"
+                            v-if="creation.cancelled"
+                        >
+                            <v-icon
+                                color="primary"
+                                v-text="mdiPuzzleRemoveOutline"
+                            />
+                        </v-btn>
+                        <v-btn
+                            icon
+                            title="GitHub repository"
+                            aria-label="GitHub repository"
                             v-if="creation.repository"
                             :href="creation.repository"
                             target="_blank"
+                            rel="noopener noreferrer"
                         >
-                            <v-icon color="primary">mdi-github</v-icon>
+                            <v-icon color="primary" v-text="mdiGithub" />
                         </v-btn>
                         <v-btn
                             icon
+                            title="Website"
+                            aria-label="Website"
                             v-if="creation.site"
                             :href="creation.site"
                             target="_blank"
+                            rel="noopener noreferrer"
                         >
-                            <v-icon color="primary">mdi-web</v-icon>
+                            <v-icon color="primary" v-text="mdiWeb" />
                         </v-btn>
                     </v-col>
                 </v-row>
@@ -79,7 +94,9 @@
                                 <v-btn icon>
                                     <v-icon
                                         color="primary"
-                                        v-text="collaborator.link.icon"
+                                        title="Collaborator link"
+                                        aria-label="Collaborator link"
+                                        v-text="icons[collaborator.link.icon]"
                                         v-if="
                                             collaborator.link.icon !== 'medium'
                                         "
@@ -101,6 +118,13 @@
 
 <script>
 import { MediumIcon } from "vue-simple-icons";
+import {
+    mdiAccountMultipleOutline,
+    mdiPuzzleRemoveOutline,
+    mdiGithub,
+    mdiWeb
+} from "@mdi/js";
+import * as mdiIcons from "@mdi/js";
 
 export default {
     name: "Creation",
@@ -125,6 +149,15 @@ export default {
     components: {
         MediumIcon
     },
+    data: function() {
+        return {
+            mdiAccountMultipleOutline: mdiAccountMultipleOutline,
+            mdiPuzzleRemoveOutline: mdiPuzzleRemoveOutline,
+            mdiGithub: mdiGithub,
+            mdiWeb: mdiWeb,
+            icons: {}
+        };
+    },
     created() {
         if (this.bottomMargin) {
             document.documentElement.style.setProperty(
@@ -132,6 +165,13 @@ export default {
                 "15px"
             );
         }
+
+        this.icons = Object.fromEntries(
+            Object.values(this.creation.contributors)
+                .map(contributor => contributor.link.icon)
+                .filter(icon => icon.startsWith("mdi"))
+                .map(icon => [icon, mdiIcons[icon]])
+        );
     }
 };
 </script>

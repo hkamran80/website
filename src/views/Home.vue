@@ -6,33 +6,45 @@
                     icon
                     href="https://github.com/hkamran80"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    title="GitHub"
+                    aria-label="GitHub"
                     class="umami-click--social-github"
                 >
-                    <v-icon color="primary">mdi-github</v-icon>
+                    <v-icon color="primary" v-text="mdiGithub" />
                 </v-btn>
 
                 <v-btn
                     icon
                     href="https://twitter.com/hkamran80"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    title="Twitter"
+                    aria-label="Twitter"
                     class="umami-click--social-twitter"
                 >
-                    <v-icon color="primary">mdi-twitter</v-icon>
+                    <v-icon color="primary" v-text="mdiTwitter" />
                 </v-btn>
 
                 <v-btn
                     icon
                     href="https://stackoverflow.com/users/7313822/h-kamran"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    title="Stack Overflow"
+                    aria-label="Stack Overflow"
                     class="umami-click--social-stack-overflow"
                 >
-                    <v-icon color="primary">mdi-stack-overflow</v-icon>
+                    <v-icon color="primary" v-text="mdiStackOverflow" />
                 </v-btn>
 
                 <v-btn
                     icon
                     href="https://hkamran.medium.com"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    title="Medium"
+                    aria-label="Medium"
                     class="umami-click--social-medium"
                 >
                     <medium-icon size="1.5x" class="simple-icon" />
@@ -54,7 +66,12 @@
                     my blog
                 </router-link>
                 and on
-                <a href="https://hkamran.medium.com" target="_blank"> Medium </a
+                <a
+                    href="https://hkamran.medium.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Medium </a
                 >. If you want to see what I've created, pop on over to
                 <router-link
                     to="/creations"
@@ -125,6 +142,7 @@ import posts from "@/blog/posts.json";
 import creations from "@/creations.json";
 
 import { MediumIcon } from "vue-simple-icons";
+import { mdiGithub, mdiTwitter, mdiStackOverflow } from "@mdi/js";
 
 export default {
     name: "Home",
@@ -146,7 +164,10 @@ export default {
                 excerpt: null,
                 reading_time: null
             },
-            featured: null
+            featured: null,
+            mdiGithub: mdiGithub,
+            mdiTwitter: mdiTwitter,
+            mdiStackOverflow: mdiStackOverflow
         };
     },
     mounted() {

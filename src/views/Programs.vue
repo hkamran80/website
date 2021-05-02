@@ -10,17 +10,18 @@
                         <v-spacer />
                         <v-btn
                             icon
+                            title="Toggle Final Grade Calculator Visibility"
+                            aria-label="Toggle Final Grade Calculator Visibility"
                             class="umami--click--programs-fgc-toggle"
                             @click="
                                 final_grade_calculator.hidden = !final_grade_calculator.hidden
                             "
                         >
-                            <v-icon v-if="final_grade_calculator.hidden">
-                                mdi-chevron-down
-                            </v-icon>
-                            <v-icon v-else>
-                                mdi-chevron-up
-                            </v-icon>
+                            <v-icon
+                                v-if="final_grade_calculator.hidden"
+                                v-text="mdiChevronDown"
+                            />
+                            <v-icon v-else v-text="mdiChevronUp" />
                         </v-btn>
                     </v-card-title>
                     <v-card-text v-if="!final_grade_calculator.hidden">
@@ -28,21 +29,21 @@
                             v-model="final_grade_calculator.current"
                             label="Current Grade"
                             type="number"
-                            append-icon="mdi-percent-outline"
+                            append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-text-field
                             v-model="final_grade_calculator.wanted"
                             label="Grade Wanted"
                             type="number"
-                            append-icon="mdi-percent-outline"
+                            append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-text-field
                             v-model="final_grade_calculator.final_weight"
                             label="How Much is Your Final Worth?"
                             type="number"
-                            append-icon="mdi-percent-outline"
+                            append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-btn
@@ -64,7 +65,7 @@
                             :persistent-hint="
                                 final_grade_calculator.needed_message !== ''
                             "
-                            append-icon="mdi-percent-outline"
+                            append-icon="mdiPercentOutline"
                             outlined
                             readonly
                         />
@@ -82,17 +83,18 @@
                         <v-spacer />
                         <v-btn
                             icon
+                            title="Toggle Overall Grade After Final Calculator Visibility"
+                            aria-label="Toggle Overall Grade After Final Calculator Visibility"
                             class="umami--click--programs-ogafc-toggle"
                             @click="
                                 overall_grade_after_final.hidden = !overall_grade_after_final.hidden
                             "
                         >
-                            <v-icon v-if="overall_grade_after_final.hidden">
-                                mdi-chevron-down
-                            </v-icon>
-                            <v-icon v-else>
-                                mdi-chevron-up
-                            </v-icon>
+                            <v-icon
+                                v-if="overall_grade_after_final.hidden"
+                                v-text="mdiChevronDown"
+                            />
+                            <v-icon v-else v-text="mdiChevronUp" />
                         </v-btn>
                     </v-card-title>
                     <v-card-text v-if="!overall_grade_after_final.hidden">
@@ -100,21 +102,21 @@
                             v-model="overall_grade_after_final.before"
                             label="Grade Before Final"
                             type="number"
-                            append-icon="mdi-percent-outline"
+                            append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-text-field
                             v-model="overall_grade_after_final.final_score"
                             label="Score on Your Final"
                             type="number"
-                            append-icon="mdi-percent-outline"
+                            append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-text-field
                             v-model="overall_grade_after_final.final_weight"
                             label="How Much is Your Final Worth?"
                             type="number"
-                            append-icon="mdi-percent-outline"
+                            append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-btn
@@ -132,7 +134,7 @@
                             v-model="overall_grade_after_final.grade"
                             v-if="overall_grade_after_final.grade"
                             label="Final Grade"
-                            append-icon="mdi-percent-outline"
+                            append-icon="mdiPercentOutline"
                             outlined
                             readonly
                         />
@@ -147,6 +149,8 @@
 import CenterLayout from "../components/CenterLayout.vue";
 import CdsHeader from "../components/cds/CdsHeader.vue";
 
+import { mdiChevronDown, mdiChevronUp, mdiPercentOutline } from "@mdi/js";
+
 export default {
     name: "Programs",
     components: {
@@ -155,6 +159,9 @@ export default {
     },
     data: function() {
         return {
+            mdiChevronDown: mdiChevronDown,
+            mdiChevronUp: mdiChevronUp,
+            mdiPercentOutline: mdiPercentOutline,
             final_grade_calculator: {
                 hidden: true,
                 current: null,

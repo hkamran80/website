@@ -33,7 +33,7 @@
                 "link": {
                     "title": "H. Kamran's website",
                     "url": "https://hkamran.com",
-                    "icon": "mdi-web"
+                    "icon": "mdiWeb"
                 }
             }
         },
@@ -181,7 +181,7 @@
                 "link": {
                     "title": "H. Kamran's website",
                     "url": "https://hkamran.com",
-                    "icon": "mdi-web"
+                    "icon": "mdiWeb"
                 }
             }
         },

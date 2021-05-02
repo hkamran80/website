@@ -46,17 +46,20 @@
                 aria-label="Toggle Theme"
                 @click="toggle_theme"
             >
-                <v-icon color="primary">
-                    mdi-theme-light-dark
-                </v-icon>
+                <v-icon color="primary" v-text="mdiThemeLightDark" />
             </v-btn>
         </v-col>
     </v-row>
 </template>
 
 <script>
+import { mdiThemeLightDark } from "@mdi/js";
+
 export default {
     name: "NavigationBar",
+    data: function() {
+        return { mdiThemeLightDark: mdiThemeLightDark };
+    },
     mounted() {
         const theme = localStorage.getItem("dark_theme");
         if (theme) {
