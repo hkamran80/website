@@ -124,7 +124,6 @@ import {
     mdiGithub,
     mdiWeb
 } from "@mdi/js";
-import * as mdiIcons from "@mdi/js";
 
 export default {
     name: "Creation",
@@ -155,7 +154,9 @@ export default {
             mdiPuzzleRemoveOutline: mdiPuzzleRemoveOutline,
             mdiGithub: mdiGithub,
             mdiWeb: mdiWeb,
-            icons: {}
+            icons: {
+                mdiWeb: mdiWeb
+            }
         };
     },
     created() {
@@ -165,13 +166,6 @@ export default {
                 "15px"
             );
         }
-
-        this.icons = Object.fromEntries(
-            Object.values(this.creation.contributors)
-                .map(contributor => contributor.link.icon)
-                .filter(icon => icon.startsWith("mdi"))
-                .map(icon => [icon, mdiIcons[icon]])
-        );
     }
 };
 </script>

@@ -1,6 +1,6 @@
 {
     "name": "hkamran",
-    "version": "0.1.0",
+    "version": "3.5.0",
     "private": true,
     "scripts": {
         "lint": "vue-cli-service lint",
