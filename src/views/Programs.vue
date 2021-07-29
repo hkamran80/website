@@ -29,21 +29,21 @@
                             v-model="final_grade_calculator.current"
                             label="Current Grade"
                             type="number"
-                            append-icon="mdiPercentOutline"
+                            :append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-text-field
                             v-model="final_grade_calculator.wanted"
                             label="Grade Wanted"
                             type="number"
-                            append-icon="mdiPercentOutline"
+                            :append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-text-field
                             v-model="final_grade_calculator.final_weight"
                             label="How Much is Your Final Worth?"
                             type="number"
-                            append-icon="mdiPercentOutline"
+                            :append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-btn
@@ -65,7 +65,7 @@
                             :persistent-hint="
                                 final_grade_calculator.needed_message !== ''
                             "
-                            append-icon="mdiPercentOutline"
+                            :append-icon="mdiPercentOutline"
                             outlined
                             readonly
                         />
@@ -102,21 +102,21 @@
                             v-model="overall_grade_after_final.before"
                             label="Grade Before Final"
                             type="number"
-                            append-icon="mdiPercentOutline"
+                            :append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-text-field
                             v-model="overall_grade_after_final.final_score"
                             label="Score on Your Final"
                             type="number"
-                            append-icon="mdiPercentOutline"
+                            :append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-text-field
                             v-model="overall_grade_after_final.final_weight"
                             label="How Much is Your Final Worth?"
                             type="number"
-                            append-icon="mdiPercentOutline"
+                            :append-icon="mdiPercentOutline"
                             outlined
                         />
                         <v-btn
@@ -134,7 +134,7 @@
                             v-model="overall_grade_after_final.grade"
                             v-if="overall_grade_after_final.grade"
                             label="Final Grade"
-                            append-icon="mdiPercentOutline"
+                            :append-icon="mdiPercentOutline"
                             outlined
                             readonly
                         />
@@ -159,9 +159,9 @@ export default {
     },
     data: function() {
         return {
-            mdiChevronDown: mdiChevronDown,
-            mdiChevronUp: mdiChevronUp,
-            mdiPercentOutline: mdiPercentOutline,
+            mdiChevronDown,
+            mdiChevronUp,
+            mdiPercentOutline,
             final_grade_calculator: {
                 hidden: true,
                 current: null,

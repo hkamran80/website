@@ -150,12 +150,12 @@ export default {
     },
     data: function() {
         return {
-            mdiAccountMultipleOutline: mdiAccountMultipleOutline,
-            mdiPuzzleRemoveOutline: mdiPuzzleRemoveOutline,
-            mdiGithub: mdiGithub,
-            mdiWeb: mdiWeb,
+            mdiAccountMultipleOutline,
+            mdiPuzzleRemoveOutline,
+            mdiGithub,
+            mdiWeb,
             icons: {
-                mdiWeb: mdiWeb
+                mdiWeb
             }
         };
     },
