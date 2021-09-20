@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import NavigationButton from "../components/NavigationButton.vue";
+import DarkNavigationBar from "../components/DarkNavigationBar.vue";
+import LightNavigationBar from "../components/LightNavigationBar.vue";
+</script>
 
 <template>
-    <div class="flex">
-        <button class="p-4 bg-purple-500">Magic.</button>
-    </div>
+    <light-navigation-bar />
 </template>
