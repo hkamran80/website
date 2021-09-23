@@ -14,7 +14,7 @@ import SvgButton from "../components/SvgButton.vue";
             relative
             items-center
         "
-        style="background-image: url('/src/assets/background.jpg')"
+        style="background-image: url('/img/background.jpg')"
     >
         <div class="absolute bg-black opacity-70 inset-0 z-0" />
 

@@ -61,7 +61,7 @@ const props = defineProps<{
                         </span>
                         <img
                             class="h-10 w-10 rounded-full"
-                            src="/src/assets/profile.png"
+                            src="/img/profile.png"
                             alt="H. Kamran's profile photo"
                         />
                     </a>

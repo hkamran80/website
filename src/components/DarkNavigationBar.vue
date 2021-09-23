@@ -16,12 +16,12 @@ const emit = defineEmits<{
                     <div class="flex-shrink-0">
                         <img
                             class="block lg:hidden h-8 w-auto rounded-full"
-                            src="/src/assets/profile.png"
+                            src="/img/profile.png"
                             alt="Profile picture"
                         />
                         <img
                             class="h-8 w-auto rounded-full"
-                            src="/src/assets/profile.png"
+                            src="/img/profile.png"
                             alt="Profile picture"
                         />
                     </div>
