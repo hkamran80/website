@@ -21,7 +21,7 @@ const route = useRoute();
 
         <div class="pt-12 px-8 max-w-7xl mx-auto">
             <page-header
-                :title="`The ${blogTags[route.params.id].name} Tag`"
+                :title="`The Tag Page`"
                 :header-text-color="headerTextColor"
                 class="mb-4"
             />
