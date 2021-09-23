@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import Home from "../views/Home.vue";
 import Creations from "../views/Creations.vue";
 import BlogFeed from "../views/BlogFeed.vue";
-// import BlogTag from "../views/BlogTag.vue";
+import BlogTag from "../views/BlogTag.vue";
 
 const routes = [
     {
@@ -20,11 +20,11 @@ const routes = [
         name: "BlogFeed",
         component: BlogFeed,
     },
-    // {
-    //     path: "/blog/tag/:id",
-    //     name: "BlogTag",
-    //     component: BlogTag,
-    // },
+    {
+        path: "/blog/tag/:id",
+        name: "BlogTag",
+        component: BlogTag,
+    },
 ];
 
 const router = createRouter({

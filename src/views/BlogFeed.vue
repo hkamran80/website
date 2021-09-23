@@ -7,8 +7,6 @@ import blogPosts from "../data/blogPosts.json";
 
 import { initialize } from "../composables/theming";
 const { switchTheme, background, headerTextColor } = initialize();
-
-console.debug(blogPosts);
 </script>
 
 <template>
@@ -40,7 +38,7 @@ console.debug(blogPosts);
                     :excerpt="details.excerpt"
                     :publish-date="details.publishDate"
                     :reading-time="details.readingTime"
-                    :tags="details.categories"
+                    :tags="details.tags"
                 />
             </div>
         </div>

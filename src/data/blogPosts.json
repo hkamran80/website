@@ -6,7 +6,7 @@
         "updateDate": "2020-12-24",
         "readingTime": "5 min",
         "excerpt": "Here's a simple way to set Vuetify's dark mode state and make it user-changeable",
-        "categories": ["vuejs", "vuetify", "darkmode", "development"]
+        "tags": ["vuejs", "vuetify", "darkmode", "development"]
     },
     "getting-balenaetcher-to-work-on-macos-catalina": {
         "featured": "https://images2.imgbox.com/ed/6a/LE2ICip8_o.png",
@@ -15,7 +15,7 @@
         "updateDate": "",
         "readingTime": "1 min",
         "excerpt": "balenaEtcher was throwing an error when trying to flash an image to a microSD card, here's how I fixed it",
-        "categories": ["macos"]
+        "tags": ["macos"]
     },
     "extracting-pkgs-on-macos": {
         "featured": "https://images2.imgbox.com/b0/b8/6bZ5aeNJ_o.jpg",
@@ -24,6 +24,6 @@
         "updateDate": "",
         "readingTime": "2 min",
         "excerpt": "Ever needed to expand a PKG without using Installer? Here's a guide.",
-        "categories": ["macos"]
+        "tags": ["macos"]
     }
 }

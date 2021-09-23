@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import NavigationButton from "./NavigationButton.vue";
 import ThemeSwitcher from "./ThemeSwitcher.vue";
 import NavigationButtons from "./NavigationButtons.vue";
 
@@ -13,7 +12,7 @@ const emit = defineEmits<{
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex">
-                    <div class="flex-shrink-0 flex items-center">
+                    <router-link to="/" class="flex-shrink-0 flex items-center">
                         <img
                             class="block lg:hidden h-8 w-auto rounded-full"
                             src="/img/profile.png"
@@ -24,7 +23,7 @@ const emit = defineEmits<{
                             src="/img/profile.png"
                             alt="Profile picture"
                         />
-                    </div>
+                    </router-link>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                         <navigation-buttons />
                     </div>

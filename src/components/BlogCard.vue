@@ -35,7 +35,7 @@ const props = defineProps<{
                     "
                 >
                     <router-link
-                        to="/creations"
+                        :to="`/blog/tag/${tag}`"
                         class="hover:underline"
                         v-for="tag in props.tags"
                         :key="tag"

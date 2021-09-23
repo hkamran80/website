@@ -102,6 +102,7 @@ const contributorsModal = ref(false);
                         <creation-card
                             :name="creation.name"
                             :description="creation.description"
+                            :url="creation.site ? creation.site : null"
                             :state="creation.status"
                             :github="creation.repository"
                             :contributors="
