@@ -1,0 +1,195 @@
+[
+    {
+        "name": "Control Surface for Spotify",
+        "repository": "",
+        "site": "https://spotify-controlsurface.unisontech.org",
+        "status": "Completed",
+        "featured": true,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "Control Surface for Spotify is a utility to allow users to control their Spotify playback without opening the web version of Spotify. It aims to be a simple, easy-to-use application to control playback and view currently playing information."
+    },
+    {
+        "name": "SupportDocs",
+        "repository": "https://github.com/aheze/SupportDocs",
+        "site": "",
+        "status": "Completed",
+        "featured": true,
+        "contributors": {
+            "A. Zheng": {
+                "role": "Creator (Created the library)",
+                "link": {
+                    "title": "A. Zheng on Medium",
+                    "url": "https://aheze.medium.com",
+                    "icon": "medium"
+                }
+            },
+            "H. Kamran": {
+                "role": "Contributor (Created automatic generation code, wrote documentation, configured dark mode)",
+                "link": {
+                    "title": "H. Kamran's website",
+                    "url": "https://hkamran.com",
+                    "icon": "mdiWeb"
+                }
+            }
+        },
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "Generate help centers for your iOS apps, with Markdown! All you need to do is write your documents on GitHub, and install the library in your app. SupportDocs' custom GitHub Action and GitHub Pages will take care of the rest."
+    },
+    {
+        "name": "Xenon Reader",
+        "repository": "https://github.com/hkamran80/xenon-reader",
+        "site": "",
+        "status": "In Progress",
+        "featured": true,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": { "contributors": false },
+        "description": "A new EPUB reader for macOS, built with the latest technologies"
+    },
+    {
+        "name": "Ramadan Tracker",
+        "repository": "https://github.com/hkamran80/ramadan-tracker",
+        "site": "",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": { "contributors": false },
+        "description": "An Android app to help track your progress throughout Ramadan"
+    },
+    {
+        "name": "Grade Calculators",
+        "repository": "",
+        "site": "/programs",
+        "status": "Completed",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "The grade calculators are simple tools to calculate what you need to get on a final in order to get a particular grade or to see what your grade will look like after you've taken the final."
+    },
+    {
+        "name": "Notetap",
+        "repository": "",
+        "site": "https://notetap.unisontech.org",
+        "status": "Completed",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A simple web-based journal app. Write entries in Markdown and store them in the cloud."
+    },
+    {
+        "name": "Schedules",
+        "repository": "https://github.com/hkamran80/schedules",
+        "site": "https://schedules.unisontech.org",
+        "status": "Completed",
+        "featured": true,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "Schedules is the app for all your schedules. It tells you exactly what the current period is and how much time is remaining in a period, as well as the next period and starting time."
+    },
+    {
+        "name": "Schedules for Apple",
+        "repository": "https://github.com/hkamran80/schedules-apple",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A Schedules client for iOS, iPadOS, macOS, and watchOS"
+    },
+    {
+        "name": "Schedules for Android",
+        "repository": "https://github.com/hkamran80/schedules-android",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A Schedules client for Android and Wear OS"
+    },
+    {
+        "name": "SmartThings API (Swift)",
+        "repository": "https://github.com/hkamran80/smartthings-api-swift",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "An Swift SmartThings API library"
+    },
+    {
+        "name": "Control Surface for SmartThings",
+        "repository": "https://github.com/hkamran80/cs-smartthings",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {},
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "A macOS SmartThings controller"
+    },
+    {
+        "name": "QuickOCR",
+        "repository": "https://github.com/aheze/QuickOCR",
+        "status": "In Progress",
+        "featured": false,
+        "contributors": {
+            "A. Zheng": {
+                "role": "Creator",
+                "link": {
+                    "title": "A. Zheng on Medium",
+                    "url": "https://aheze.medium.com",
+                    "icon": "medium"
+                }
+            },
+            "H. Kamran": {
+                "role": "Contributor",
+                "link": {
+                    "title": "H. Kamran's website",
+                    "url": "https://hkamran.com",
+                    "icon": "mdiWeb"
+                }
+            }
+        },
+        "cancelled": false,
+        "help": false,
+        "dialogs": {
+            "contributors": false
+        },
+        "description": "Drag-and-drop to find text. Powered by Apple's Vision framework."
+    }
+]

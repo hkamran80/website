@@ -1,0 +1,25 @@
+{
+    "macos": {
+        "name": "macOS",
+        "posts": [
+            "extracting-pkgs-on-macos",
+            "getting-balenaetcher-to-work-on-macos-catalina"
+        ]
+    },
+    "vuejs": {
+        "name": "Vue.js",
+        "posts": ["vuetify-dark-mode-toggle"]
+    },
+    "darkmode": {
+        "name": "Dark Mode",
+        "posts": ["vuetify-dark-mode-toggle"]
+    },
+    "development": {
+        "name": "Development",
+        "posts": ["vuetify-dark-mode-toggle"]
+    },
+    "vuetify": {
+        "name": "Vuetify",
+        "posts": ["vuetify-dark-mode-toggle"]
+    }
+}

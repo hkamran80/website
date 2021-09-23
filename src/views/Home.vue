@@ -70,7 +70,7 @@ import SvgButton from "../components/SvgButton.vue";
                     <router-link to="/creations">
                         <main-button content="Creations" />
                     </router-link>
-                    <router-link to="/">
+                    <router-link to="/blog">
                         <main-button content="Blog" />
                     </router-link>
                     <router-link to="/">
@@ -81,7 +81,10 @@ import SvgButton from "../components/SvgButton.vue";
         </div>
 
         <!-- Theme Switch -->
-        <theme-switcher />
+
+        <div class="absolute top-10 right-10">
+            <theme-switcher />
+        </div>
 
         <!-- Photo Credit -->
         <div class="absolute bottom-5 right-5 text-gray-500 text-xs">
