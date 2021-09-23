@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import _tags from "../data/blogTags.json";
+import blogTags from "../data/blogTags.json";
 import { Tags } from "../interfaces/Blog";
 
-const tags = _tags as any as Tags;
+const tags = blogTags as any as Tags;
 
 const props = defineProps<{
     featuredImageUrl: string;
@@ -37,7 +37,7 @@ const props = defineProps<{
                     <router-link
                         to="/creations"
                         class="hover:underline"
-                        v-for="tag in tags"
+                        v-for="tag in props.tags"
                         :key="tag"
                         v-text="tags[tag].name"
                     />

@@ -7,6 +7,8 @@ import blogPosts from "../data/blogPosts.json";
 
 import { initialize } from "../composables/theming";
 const { switchTheme, background, headerTextColor } = initialize();
+
+console.debug(blogPosts);
 </script>
 
 <template>
