@@ -5,6 +5,7 @@ import { Tags } from "../interfaces/Blog";
 const tags = blogTags as any as Tags;
 
 const props = defineProps<{
+    postId: string;
     featuredImageUrl: string;
     title: string;
     excerpt: string;
@@ -15,7 +16,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <router-link to="/" class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+    <router-link to="/blog" class="flex flex-col rounded-lg shadow-lg overflow-hidden">
         <div class="flex-shrink-0">
             <img
                 class="h-48 w-full object-cover"

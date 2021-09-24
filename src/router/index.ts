@@ -3,6 +3,8 @@ import Home from "../views/Home.vue";
 import Creations from "../views/Creations.vue";
 import BlogFeed from "../views/BlogFeed.vue";
 import BlogTag from "../views/BlogTag.vue";
+// import BlogPost from "../views/BlogPost.vue";
+import Programs from "../views/Programs.vue";
 
 const routes = [
     {
@@ -24,6 +26,16 @@ const routes = [
         path: "/blog/tag/:id",
         name: "BlogTag",
         component: BlogTag,
+    },
+    // {
+    //     path: "/blog/post/:id",
+    //     name: "BlogPost",
+    //     component: BlogPost,
+    // },
+    {
+        path: "/programs",
+        name: "Programs",
+        component: Programs,
     },
 ];
 

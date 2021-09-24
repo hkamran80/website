@@ -73,7 +73,7 @@ import SvgButton from "../components/SvgButton.vue";
                     <router-link to="/blog">
                         <main-button content="Blog" />
                     </router-link>
-                    <router-link to="/">
+                    <router-link to="/programs">
                         <main-button content="Programs" />
                     </router-link>
                 </div>

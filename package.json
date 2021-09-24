@@ -1,5 +1,5 @@
 {
-    "name": "personal-site",
+    "name": "website",
     "version": "0.0.0",
     "private": true,
     "scripts": {
@@ -9,6 +9,7 @@
         "serve": "vite preview"
     },
     "dependencies": {
+        "marked": "^3.0.4",
         "vue": "^3.2.6",
         "vue-router": "^4.0.11"
     },
@@ -21,6 +22,9 @@
         "tailwindcss": "^2.2.15",
         "typescript": "^4.3.2",
         "vite": "^2.5.4",
+        "vite-plugin-plain-text": "^1.1.4",
+        "vite-raw-plugin": "^1.0.1",
+        "vite-remark-html": "^1.1.1",
         "vue-tsc": "^0.3.0"
     }
 }

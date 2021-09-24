@@ -6,7 +6,19 @@ const route = useRoute();
 </script>
 
 <template>
-    <navigation-button to="/creations" content="Creations" :active="route.path === '/creations'" />
-    <navigation-button to="/blog" content="Blog" :active="route.path.startsWith('/blog')" />
-    <navigation-button to="/" content="Programs" :active="route.path === '/programs'" />
+    <navigation-button
+        to="/creations"
+        content="Creations"
+        :active="route.path === '/creations'"
+    />
+    <navigation-button
+        to="/blog"
+        content="Blog"
+        :active="route.path.startsWith('/blog')"
+    />
+    <navigation-button
+        to="/programs"
+        content="Programs"
+        :active="route.path === '/programs'"
+    />
 </template>

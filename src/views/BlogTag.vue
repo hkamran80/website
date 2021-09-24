@@ -45,6 +45,7 @@ blogTags[tagId].posts.forEach(
                 <blog-card
                     v-for="(details, id) in posts"
                     :key="id"
+                    :post-id="id"
                     :featured-image-url="details.featured"
                     :title="details.title"
                     :excerpt="details.excerpt"

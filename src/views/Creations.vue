@@ -70,7 +70,7 @@ const contributorsModal = ref(false);
     <div :class="[background]">
         <navigation-bar @update-theme="switchTheme" />
 
-        <div class="pt-12 px-8 max-w-7xl mx-auto">
+        <div class="md:pt-12 sm:pt-12 px-8 max-w-7xl mx-auto">
             <page-header
                 title="Creations"
                 :header-text-color="headerTextColor"
@@ -90,7 +90,7 @@ const contributorsModal = ref(false);
                 <div
                     class="
                         mt-6
-                        grid grid-cols-3 grid-flow-row grid-auto-row-dense
+                        grid md:grid-cols-3 sm:grid-cols-1 grid-flow-row grid-auto-row-dense
                         gap-6
                         sm:mr-4
                     "
