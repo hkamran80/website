@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ThemeSwitcher from "../components/ThemeSwitcher.vue";
-import MainButton from "../components/MainButton.vue";
+import MainButton from "../components/HomepageButton.vue";
 import SvgButton from "../components/SvgButton.vue";
 </script>
 
@@ -21,8 +21,8 @@ import SvgButton from "../components/SvgButton.vue";
         <!-- Main Intro Card -->
         <div
             class="
-                max-w-xl
-                w-full
+                sm:w-1/2
+                lg:max-w-xl lg:w-full
                 space-y-8
                 px-10
                 py-6
@@ -67,15 +67,9 @@ import SvgButton from "../components/SvgButton.vue";
                     </p>
                 </div>
                 <div class="mt-6 grid grid-cols-3 gap-4">
-                    <router-link to="/creations">
-                        <main-button content="Creations" />
-                    </router-link>
-                    <router-link to="/blog">
-                        <main-button content="Blog" />
-                    </router-link>
-                    <router-link to="/programs">
-                        <main-button content="Programs" />
-                    </router-link>
+                    <main-button to="/creations" content="Creations" />
+                    <main-button to="/blog" content="Blog" />
+                    <main-button to="/programs" content="Programs" />
                 </div>
             </div>
         </div>

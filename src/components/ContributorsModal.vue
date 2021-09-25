@@ -11,7 +11,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-    <div class="bg-gray-300">
+    <div class="bg-gray-700">
         <div class="fixed z-10 inset-0 overflow-y-auto">
             <div
                 class="
@@ -60,6 +60,7 @@ const emit = defineEmits<{
                             inline-block
                             align-bottom
                             bg-white
+                            dark:bg-gray-700
                             rounded-lg
                             px-4
                             pt-5
@@ -83,6 +84,7 @@ const emit = defineEmits<{
                                         leading-6
                                         font-medium
                                         text-gray-900
+                                        dark:text-white
                                     "
                                     id="modal-headline"
                                 >

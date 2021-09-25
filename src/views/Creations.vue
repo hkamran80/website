@@ -9,6 +9,7 @@ import PageHeader from "../components/PageHeader.vue";
 import SectionHeader from "../components/SectionHeader.vue";
 import ContributorsModal from "../components/ContributorsModal.vue";
 import { initialize } from "../composables/theming";
+import MainLayout from "../components/MainLayout.vue";
 
 const { switchTheme, background, headerTextColor } = initialize();
 
@@ -67,54 +68,44 @@ const contributorsModal = ref(false);
         @close="contributorsModal = false"
     />
 
-    <div :class="[background]">
-        <navigation-bar @update-theme="switchTheme" />
-
-        <div class="md:pt-12 sm:pt-12 px-8 max-w-7xl mx-auto">
-            <page-header
-                title="Creations"
-                :header-text-color="headerTextColor"
-                class="mb-4"
-            />
+    <main-layout title="Creations" no-grid>
+        <div
+            v-for="(categoryFilter, key) in categories"
+            :key="key"
+            class="mb-8"
+        >
+            <section-header :title="key" :header-text-color="headerTextColor" />
 
             <div
-                v-for="(categoryFilter, key) in categories"
-                :key="key"
-                class="mb-8"
+                class="
+                    mt-6
+                    grid
+                    md:grid-cols-3
+                    sm:grid-cols-1
+                    grid-flow-row grid-auto-row-dense
+                    gap-6
+                    sm:mr-4
+                "
             >
-                <section-header
-                    :title="key"
-                    :header-text-color="headerTextColor"
-                />
-
                 <div
-                    class="
-                        mt-6
-                        grid md:grid-cols-3 sm:grid-cols-1 grid-flow-row grid-auto-row-dense
-                        gap-6
-                        sm:mr-4
-                    "
+                    v-for="creation in categoryFilter(creations)"
+                    :key="creation.name"
                 >
-                    <div
-                        v-for="creation in categoryFilter(creations)"
-                        :key="creation.name"
-                    >
-                        <creation-card
-                            :name="creation.name"
-                            :description="creation.description"
-                            :url="creation.site ? creation.site : null"
-                            :state="creation.status"
-                            :github="creation.repository"
-                            :contributors="
-                                Object.keys(creation.contributors).length > 0
-                                    ? creation.contributors
-                                    : null
-                            "
-                            @open-contributors="openContributorsModal"
-                        />
-                    </div>
+                    <creation-card
+                        :name="creation.name"
+                        :description="creation.description"
+                        :url="creation.site ? creation.site : null"
+                        :state="creation.status"
+                        :github="creation.repository"
+                        :contributors="
+                            Object.keys(creation.contributors).length > 0
+                                ? creation.contributors
+                                : null
+                        "
+                        @open-contributors="openContributorsModal"
+                    />
                 </div>
             </div>
         </div>
-    </div>
+    </main-layout>
 </template>

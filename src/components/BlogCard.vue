@@ -5,7 +5,7 @@ import { Tags } from "../interfaces/Blog";
 const tags = blogTags as any as Tags;
 
 const props = defineProps<{
-    postId: string;
+    postId: string | number;
     featuredImageUrl: string;
     title: string;
     excerpt: string;
@@ -16,7 +16,10 @@ const props = defineProps<{
 </script>
 
 <template>
-    <router-link to="/blog" class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+    <router-link
+        to="/blog"
+        class="flex flex-col rounded-lg shadow-lg overflow-hidden"
+    >
         <div class="flex-shrink-0">
             <img
                 class="h-48 w-full object-cover"
@@ -24,7 +27,16 @@ const props = defineProps<{
                 :alt="`Featured image for ${props.title}`"
             />
         </div>
-        <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+        <div
+            class="
+                flex-1
+                bg-white
+                dark:bg-gray-700
+                p-6
+                flex flex-col
+                justify-between
+            "
+        >
             <div class="flex-1">
                 <p
                     class="
@@ -45,11 +57,16 @@ const props = defineProps<{
                 </p>
                 <div class="block mt-2">
                     <p
-                        class="text-xl font-semibold text-gray-900"
+                        class="
+                            text-xl
+                            font-semibold
+                            text-gray-900
+                            dark:text-white
+                        "
                         v-text="props.title"
                     />
                     <p
-                        class="mt-3 text-base text-gray-500"
+                        class="mt-3 text-base text-gray-500 dark:text-gray-400"
                         v-text="props.excerpt"
                     />
                 </div>
@@ -68,21 +85,34 @@ const props = defineProps<{
                     </a>
                 </div>
                 <div class="ml-3">
-                    <p class="text-sm font-medium text-gray-900">
+                    <p
+                        class="
+                            text-sm
+                            font-medium
+                            text-gray-900
+                            dark:text-white
+                        "
+                    >
                         <a href="#" class="hover:underline"> H. Kamran </a>
                     </p>
-                    <div class="flex space-x-1 text-sm text-gray-500">
+                    <div
+                        class="
+                            flex
+                            space-x-1
+                            text-sm text-gray-500
+                            dark:text-gray-400
+                        "
+                    >
                         <time
                             :datetime="props.publishDate"
                             v-text="
-                                new Date(props.publishDate + 'T12:00:00').toLocaleDateString(
-                                    undefined,
-                                    {
-                                        year: 'numeric',
-                                        month: 'long',
-                                        day: 'numeric',
-                                    }
-                                )
+                                new Date(
+                                    props.publishDate + 'T12:00:00'
+                                ).toLocaleDateString(undefined, {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric',
+                                })
                             "
                         />
                         <span aria-hidden="true"> · </span>

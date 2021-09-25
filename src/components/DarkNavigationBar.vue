@@ -25,7 +25,7 @@ const emit = defineEmits<{
                         </div>
                     </div>
                 </div>
-                <div class="hidden sm:ml-6 sm:block">
+                <div class="sm:ml-6 sm:block">
                     <div class="flex items-center">
                         <div class="ml-3 relative">
                             <div>

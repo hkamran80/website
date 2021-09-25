@@ -19,6 +19,6 @@ const route = useRoute();
     <navigation-button
         to="/programs"
         content="Programs"
-        :active="route.path === '/programs'"
+        :active="route.path.startsWith('/programs')"
     />
 </template>

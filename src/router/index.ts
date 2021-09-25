@@ -5,6 +5,7 @@ import BlogFeed from "../views/BlogFeed.vue";
 import BlogTag from "../views/BlogTag.vue";
 // import BlogPost from "../views/BlogPost.vue";
 import Programs from "../views/Programs.vue";
+import Program from "../views/Program.vue";
 
 const routes = [
     {
@@ -36,6 +37,11 @@ const routes = [
         path: "/programs",
         name: "Programs",
         component: Programs,
+    },
+    {
+        path: "/programs/:id",
+        name: "Program",
+        component: Program,
     },
 ];
 

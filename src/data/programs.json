@@ -1,0 +1,12 @@
+[
+    {
+        "id": "final-grade-calculator",
+        "name": "Final Grade Calculator",
+        "description": "Calculate the grade you need to get on a final to get a particular grade"
+    },
+    {
+        "id": "overall-grade-after-final-calculator",
+        "name": "Overall Grade After Final Calculator",
+        "description": "Calculate the grade you'll get after taking a final"
+    }
+]

@@ -14,21 +14,16 @@ const emit = defineEmits<{
                 <div class="flex">
                     <router-link to="/" class="flex-shrink-0 flex items-center">
                         <img
-                            class="block lg:hidden h-8 w-auto rounded-full"
-                            src="/img/profile.png"
-                            alt="Profile picture"
-                        />
-                        <img
                             class="h-8 w-auto rounded-full"
                             src="/img/profile.png"
                             alt="Profile picture"
                         />
                     </router-link>
-                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <div class="ml-6 flex space-x-8">
                         <navigation-buttons />
                     </div>
                 </div>
-                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                <div class="ml-6 flex items-center">
                     <div class="ml-3 relative">
                         <div>
                             <button
@@ -40,7 +35,7 @@ const emit = defineEmits<{
                                     focus:outline-none
                                     focus:ring-2
                                     focus:ring-offset-2
-                                    focus:ring-indigo-500
+                                    focus:ring-pink-500
                                 "
                             >
                                 <span class="sr-only"> Switch theme </span>
