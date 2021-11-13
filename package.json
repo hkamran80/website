@@ -1,0 +1,29 @@
+{
+    "name": "version-two-b",
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc --noEmit && vite build",
+        "serve": "vite preview"
+    },
+    "dependencies": {
+        "@vueuse/core": "^6.8.0",
+        "cosmicjs": "^4.1.2",
+        "feather-icons": "^4.28.0",
+        "vue": "^3.2.16",
+        "vue-router": "^4.0.12",
+        "vuex": "^4.0.2"
+    },
+    "devDependencies": {
+        "@tailwindcss/typography": "^0.4.1",
+        "@types/feather-icons": "^4.7.0",
+        "@vitejs/plugin-vue": "^1.9.3",
+        "autoprefixer": "^10.4.0",
+        "postcss": "^8.3.11",
+        "tailwindcss": "^2.2.19",
+        "typescript": "^4.4.3",
+        "vite": "^2.6.4",
+        "vite-plugin-environment": "^1.0.1",
+        "vue-tsc": "^0.3.0"
+    }
+}
