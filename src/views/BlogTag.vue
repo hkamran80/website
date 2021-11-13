@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { ref, watch } from "vue";
 import { useTitle } from "@vueuse/core";
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
@@ -9,7 +9,6 @@ import MainLayout from "../components/MainLayout.vue";
 import PageHeader from "../components/PageHeader.vue";
 import BlogCard from "../components/BlogCard.vue";
 import Loading from "../components/Loading.vue";
-import BlogCardH from "../components/BlogCardH.vue";
 import { CosmicTag, Post, Tag } from "../models/blog";
 
 useTitle("Blog | H. Kamran");

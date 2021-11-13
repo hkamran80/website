@@ -14,7 +14,7 @@ watch(
     ([newGradeBeforeFinal, newFinalScore, newFinalWeight]) => {
         if (newGradeBeforeFinal && newFinalScore && newFinalWeight) {
             let finalWeightDecimal = newFinalWeight / 100;
-            
+
             gradeAfterFinal.value = (
                 ((1 - finalWeightDecimal) * (newGradeBeforeFinal / 100) +
                     finalWeightDecimal * (newFinalScore / 100)) *
@@ -39,6 +39,7 @@ const feather = _feather;
         "
     >
         <input-field
+            class="col-span-2 sm:col-span-1"
             type="number"
             placeholder="Grade Before Final"
             :svg="feather.icons.percent.toSvg()"
@@ -46,6 +47,7 @@ const feather = _feather;
             v-model="gradeBeforeFinal"
         />
         <input-field
+            class="col-span-2 sm:col-span-1"
             type="number"
             placeholder="Final Score"
             :svg="feather.icons.percent.toSvg()"
@@ -65,7 +67,6 @@ const feather = _feather;
             <hr class="mb-4" />
 
             <input-field
-                class=""
                 type="number"
                 placeholder="Grade After Final"
                 :svg="feather.icons.percent.toSvg()"

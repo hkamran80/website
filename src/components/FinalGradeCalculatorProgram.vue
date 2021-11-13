@@ -45,6 +45,7 @@ const feather = _feather;
         "
     >
         <input-field
+            class="col-span-2 sm:col-span-1"
             type="number"
             placeholder="Current Grade"
             :svg="feather.icons.percent.toSvg()"
@@ -52,6 +53,7 @@ const feather = _feather;
             v-model="currentGrade"
         />
         <input-field
+            class="col-span-2 sm:col-span-1"
             type="number"
             placeholder="Grade Wanted"
             :svg="feather.icons.percent.toSvg()"
@@ -71,7 +73,6 @@ const feather = _feather;
             <hr class="mb-4" />
 
             <input-field
-                class=""
                 type="number"
                 placeholder="Score Needed"
                 :svg="feather.icons.percent.toSvg()"

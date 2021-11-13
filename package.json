@@ -10,6 +10,7 @@
         "@vueuse/core": "^6.8.0",
         "cosmicjs": "^4.1.2",
         "feather-icons": "^4.28.0",
+        "v-tooltip": "^4.0.0-beta.2",
         "vue": "^3.2.16",
         "vue-router": "^4.0.12",
         "vuex": "^4.0.2"

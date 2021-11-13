@@ -4,6 +4,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 import { creationAlphabeticalSort } from "../utils/sort";
+import { Creation } from "../models/creations";
 
 import NavigationBar from "../components/NavigationBar.vue";
 import MainLayout from "../components/MainLayout.vue";
@@ -15,6 +16,28 @@ useTitle("Creations | H. Kamran");
 
 const store = useStore();
 const creations = computed(() => store.state.creations);
+
+const featuredCreations = computed(() =>
+    creations.value
+        .filter((creation: Creation) => creation.featured)
+        .sort(creationAlphabeticalSort)
+);
+const completedCreations = computed(() =>
+    creations.value
+        .filter(
+            (creation: Creation) =>
+                !creation.featured && creation.status !== "In Progress"
+        )
+        .sort(creationAlphabeticalSort)
+);
+const inProgressCreations = computed(() =>
+    creations.value
+        .filter(
+            (creation: Creation) =>
+                !creation.featured && creation.status !== "Completed"
+        )
+        .sort(creationAlphabeticalSort)
+);
 </script>
 
 <template>
@@ -29,9 +52,7 @@ const creations = computed(() => store.state.creations);
                 <div class="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center">
                     <creation-card
                         class="h-full"
-                        v-for="creation in creations
-                            .filter((creation) => creation.featured)
-                            .sort(creationAlphabeticalSort)"
+                        v-for="creation in featuredCreations"
                         :key="creation.name"
                         :name="creation.name"
                         :state="creation.status"
@@ -48,14 +69,7 @@ const creations = computed(() => store.state.creations);
                 <div class="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center">
                     <creation-card
                         class="h-full"
-                        v-for="creation in creations
-                            .filter(
-                                (creation) =>
-                                    !creation.featured &&
-                                    !creation.cancelled &&
-                                    creation.status !== 'In Progress'
-                            )
-                            .sort(creationAlphabeticalSort)"
+                        v-for="creation in completedCreations"
                         :key="creation.name"
                         :name="creation.name"
                         :state="creation.status"
@@ -72,14 +86,7 @@ const creations = computed(() => store.state.creations);
                 <div class="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center">
                     <creation-card
                         class="h-full"
-                        v-for="creation in creations
-                            .filter(
-                                (creation) =>
-                                    !creation.featured &&
-                                    !creation.cancelled &&
-                                    creation.status !== 'Completed'
-                            )
-                            .sort(creationAlphabeticalSort)"
+                        v-for="creation in inProgressCreations"
                         :key="creation.name"
                         :name="creation.name"
                         :state="creation.status"

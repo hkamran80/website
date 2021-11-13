@@ -59,10 +59,10 @@ const isOpen = ref(false);
                     <!-- Small screen hamburger menu start -->
                     <div class="sm:hidden">
                         <button
-                            @click="isOpen = !isOpen"
                             type="button"
                             class="focus:outline-none"
                             aria-label="Hamburger Menu"
+                            @click="isOpen = !isOpen"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

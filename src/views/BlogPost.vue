@@ -107,7 +107,18 @@ if (!store.state.tags) {
                 dark:text-gray-400
             "
         >
-            June 4, 2020
+            <time
+                :datetime="post?.metadata.published"
+                v-text="
+                    new Date(
+                        `${post?.metadata.published}T12:00:00-07:00`
+                    ).toLocaleDateString(undefined, {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                    })
+                "
+            />
             <span class="ml-1 mr-2" v-if="tags">•</span>
             <span v-for="tag of tags" :key="tag.slug" v-if="tags">
                 <router-link
@@ -133,15 +144,27 @@ if (!store.state.tags) {
             </span>
         </h3>
 
-        <div class="mt-7 flex justify-center">
+        <div class="mt-7">
             <div class="max-w-5xl mx-auto">
-                <img :src="post?.thumbnail" class="rounded-lg mb-7" />
+                <img
+                    :src="post?.thumbnail"
+                    class="rounded-lg mb-7"
+                    :alt="`Featured image for ${post?.title}`"
+                />
 
                 <div
                     class="max-w-5xl mx-auto prose prose-pink dark:prose-light"
                     v-html="post?.content"
-                ></div>
+                />
             </div>
         </div>
     </main-layout>
 </template>
+
+<style scoped>
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+}
+</style>

@@ -1,7 +1,9 @@
 import { createStore, Store } from "vuex";
+import { Post, Tag } from "../models/blog";
 import { Program } from "../models/programs";
 
 const store = createStore({
+    // @ts-ignore
     state() {
         return {
             creations: null,
@@ -20,26 +22,26 @@ const store = createStore({
                     name: "Overall Grade After Final Calculator",
                     description:
                         "Calculate the grade you'll get after taking a final",
-                    componentFilename: "OverallGradeAfterFinalCalculatorProgram",
+                    componentFilename:
+                        "OverallGradeAfterFinalCalculatorProgram",
                 },
             ] as Program[],
         };
     },
     mutations: {
-        SAVE_CREATIONS(state: Store<VuexState>, creations) {
+        SAVE_CREATIONS(state, creations) {
+            // @ts-ignore
             state.creations = creations;
         },
-        SAVE_POSTS(state: Store<VuexState>, posts) {
+        SAVE_POSTS(state, posts) {
+            // @ts-ignore
             state.posts = posts;
         },
-        SAVE_TAGS(state: Store<VuexState>, tags) {
+        SAVE_TAGS(state, tags) {
+            // @ts-ignore
             state.tags = tags;
         },
     },
 });
-
-interface VuexState {
-    creations: null | object;
-}
 
 export default store;

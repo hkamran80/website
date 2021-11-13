@@ -66,16 +66,12 @@ const props = defineProps<{
             </div>
             <div class="mt-6 flex items-center">
                 <div class="flex-shrink-0">
-                    <a href="#">
-                        <span class="sr-only">
-                            H. Kamran's profile picture
-                        </span>
-                        <img
-                            class="h-10 w-10 rounded-full"
-                            src="/assets/images/profile.png"
-                            alt="H. Kamran's profile photo"
-                        />
-                    </a>
+                    <span class="sr-only"> H. Kamran's profile picture </span>
+                    <img
+                        class="h-10 w-10 rounded-full"
+                        src="/assets/images/profile.png"
+                        alt="H. Kamran's profile picture"
+                    />
                 </div>
                 <div class="ml-3">
                     <p
@@ -86,16 +82,9 @@ const props = defineProps<{
                             dark:text-white
                         "
                     >
-                        <a href="#" class="hover:underline"> H. Kamran </a>
+                        H. Kamran
                     </p>
-                    <div
-                        class="
-                            flex
-                            space-x-1
-                            text-sm text-gray-500
-                            dark:text-gray-400
-                        "
-                    >
+                    <div class="text-sm text-gray-500 dark:text-gray-400">
                         <time
                             :datetime="props.publishDate"
                             v-text="

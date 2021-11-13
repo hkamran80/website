@@ -7,7 +7,7 @@ const toggleDark = useToggle(isDark);
 </script>
 
 <template>
-    <button @click="toggleDark">
+    <button type="button" @click="() => toggleDark()">
         <span v-html="feather.icons[isDark ? 'moon' : 'sun'].toSvg()" />
     </button>
 </template>

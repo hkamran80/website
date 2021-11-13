@@ -1,21 +1,23 @@
 <script setup lang="ts">
 import featherIcons from "feather-icons";
+import { CreationContributor, CreationStatus } from "../models/creations";
+import AnyLink from "./AnyLink.vue";
 
 const props = defineProps<{
     name: string;
     description: string;
     url?: string;
-    state: string;
+    state: CreationStatus;
     repository?: string;
-    contributors?: object;
+    contributors?: CreationContributor[];
 }>();
 
 const feather = featherIcons;
 </script>
 
 <template>
-    <a
-        :href="props.url || undefined"
+    <any-link
+        :href="props.url || null"
         class="
             w-full
             bg-white
@@ -25,7 +27,7 @@ const feather = featherIcons;
             divide-y divide-gray-200
         "
         :aria-label="props.name"
-        target="_blank"
+        :target="props.url && props.url.startsWith('/') ? '_self' : '_blank'"
         rel="noopener noreferrer"
     >
         <div class="w-full flex items-center justify-between p-6 space-x-6">
@@ -93,28 +95,51 @@ const feather = featherIcons;
                         />
                         <span> View on GitHub </span>
                     </a>
+
                     <div
-                        class="
-                            flex
-                            space-x-2
-                            hover:text-gray-600
-                            dark:hover:text-gray-300
-                        "
                         v-if="
                             props.contributors &&
                             Object.keys(props.contributors).length !== 0
                         "
                     >
-                        <span
-                            class="feather-icon"
-                            v-html="feather.icons.users.toSvg()"
-                        />
-                        <span> Contributors </span>
+                        <VDropdown :offset="[0, 16]">
+                            <div
+                                class="
+                                    flex
+                                    space-x-2
+                                    hover:text-gray-600
+                                    dark:hover:text-gray-300
+                                "
+                            >
+                                <span
+                                    class="feather-icon"
+                                    v-html="feather.icons.users.toSvg()"
+                                />
+                                <span> Contributors </span>
+                            </div>
+
+                            <template #popper>
+                                <p
+                                    v-for="contributor in props.contributors"
+                                    :key="contributor.name"
+                                >
+                                    <a
+                                        :href="contributor.link.url"
+                                        :aria-label="contributor.link.title"
+                                        target="_blank"
+                                        rel="noopener noreferrer nofollow"
+                                        class="underline"
+                                        v-text="contributor.name"
+                                    />
+                                    - {{ contributor.role }}
+                                </p>
+                            </template>
+                        </VDropdown>
                     </div>
                 </div>
             </div>
         </div>
-    </a>
+    </any-link>
 </template>
 
 <style scoped lang="postcss">

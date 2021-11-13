@@ -8,7 +8,8 @@ const post = store.state.posts[0];
 <template>
     <div class="mt-1 pt-5">
         <div class="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center">
-            <img :src="post.thumbnail" class="rounded-lg" />
+            <img :src="post.thumbnail" class="rounded-lg" 
+                :alt="`Featured image for ${post.title}`" />
             <div class="col-span-2">
                 <p class="text-sm text-gray-500 dark:text-gray-400">
                     <time
