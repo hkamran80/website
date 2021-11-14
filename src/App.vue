@@ -2,10 +2,8 @@
 import { useStore } from "vuex";
 import Cosmic from "cosmicjs";
 
-import { isDark } from "./composables/dark";
 import { datePostsSortAscending } from "./utils/sort";
 import { CREATIONS_URL, JSONBIN_HEADERS } from "./data/constants";
-isDark;
 
 const store = useStore();
 const api = Cosmic();

@@ -1,5 +1,4 @@
-import { createStore, Store } from "vuex";
-import { Post, Tag } from "../models/blog";
+import { createStore } from "vuex";
 import { Program } from "../models/programs";
 
 const store = createStore({

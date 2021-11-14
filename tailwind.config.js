@@ -1,7 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-    purge: ["./index.html", "./src/**/*.{vue,ts,html,css}"],
+    purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
     darkMode: "class",
     theme: {
         extend: {
@@ -84,6 +84,10 @@ module.exports = {
             }),
         },
     },
-    variants: { extend: { typography: ["dark"] } },
+    // variants: {
+        // extend: {
+        //     typography: ["dark"],
+        // },
+    // },
     plugins: [require("@tailwindcss/typography")],
 };
