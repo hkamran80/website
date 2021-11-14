@@ -1,7 +1,9 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-    purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+    // TODO: Figure why the purge doesn't work!
+    // purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+    purge: false,
     darkMode: "class",
     theme: {
         extend: {
@@ -84,10 +86,10 @@ module.exports = {
             }),
         },
     },
-    // variants: {
-        // extend: {
-        //     typography: ["dark"],
-        // },
-    // },
+    variants: {
+        extend: {
+            typography: ["dark"],
+        },
+    },
     plugins: [require("@tailwindcss/typography")],
 };
