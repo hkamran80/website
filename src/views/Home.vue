@@ -3,6 +3,7 @@ import { useTitle } from "@vueuse/core";
 import { useStore } from "vuex";
 import { computed, ref } from "@vue/reactivity";
 import { watch } from "@vue/runtime-core";
+import feather from "feather-icons";
 
 import { creationAlphabeticalSort } from "../utils/sort";
 
@@ -12,6 +13,7 @@ import LatestPost from "../components/LatestPost.vue";
 import CreationCard from "../components/CreationCard.vue";
 import Loading from "../components/Loading.vue";
 import PageHeader from "../components/PageHeader.vue";
+import { BRAND_LOGOS_PATH } from "../data/constants";
 
 useTitle("Home | H. Kamran");
 

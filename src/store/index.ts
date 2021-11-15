@@ -1,5 +1,7 @@
 import { createStore } from "vuex";
+import { BRAND_LOGOS_PATH } from "../data/constants";
 import { Program } from "../models/programs";
+import { Social } from "../models/socials";
 
 const store = createStore({
     // @ts-ignore
@@ -25,6 +27,28 @@ const store = createStore({
                         "OverallGradeAfterFinalCalculatorProgram",
                 },
             ] as Program[],
+            socials: [
+                {
+                    name: "GitHub",
+                    url: "https://github.com/hkamran80",
+                    svgPath: BRAND_LOGOS_PATH.github,
+                },
+                {
+                    name: "Twitter",
+                    url: "https://twitter.com/hkamran80",
+                    svgPath: BRAND_LOGOS_PATH.twitter,
+                },
+                {
+                    name: "Stack Overflow",
+                    url: "https://stackoverflow.com/users/7313822/h-kamran",
+                    svgPath: BRAND_LOGOS_PATH.stackOverflow,
+                },
+                {
+                    name: "Medium",
+                    url: "https://hkamran.medium.com",
+                    svgPath: BRAND_LOGOS_PATH.medium,
+                },
+            ] as Social[],
         };
     },
     mutations: {
