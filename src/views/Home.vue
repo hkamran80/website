@@ -38,7 +38,7 @@ if (store.state.posts && store.state.posts.length > 0) {
     <main-layout>
         <page-header
             header="Hello world! I'm H. Kamran!"
-            subheader="I'm a developer, experienced in Python, JavaScript (and TypeScript),
+            subheader="I'm a developer, experienced in Python, JavaScript, TypeScript,
             Vue.js, Java, Swift, and SwiftUI."
             main-header
         />

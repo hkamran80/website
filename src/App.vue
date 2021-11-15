@@ -123,9 +123,19 @@ fetch(CREATIONS_URL, { headers: JSONBIN_HEADERS })
                         mx-auto
                     "
                 >
-                    Copyright © 2020-2021 H. Kamran. The materials on this on
-                    this website may be freely copied and distributed so long as
-                    the copyright notice and website are included.
+                    Copyright © 2020-{{ new Date().getFullYear() }} H. Kamran.
+                    All rights reserved.
+                    <router-link
+                        to="/license"
+                        class="
+                            underline
+                            text-gray-400
+                            hover:text-gray-500
+                            dark:hover:text-gray-300
+                        "
+                    >
+                        License
+                    </router-link>
                 </p>
             </div>
         </footer>
