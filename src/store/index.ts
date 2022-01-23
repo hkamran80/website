@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import { BRAND_LOGOS_PATH } from "../data/constants";
+import { CreationPage } from "../models/creations";
 import { Program } from "../models/programs";
 import { Social } from "../models/socials";
 
@@ -7,9 +8,26 @@ const store = createStore({
     // @ts-ignore
     state() {
         return {
-            creations: null,
             posts: null,
             tags: null,
+            creations: null,
+            creationPages: [
+                {
+                    id: "music-analyzer",
+                    name: "Music Analyzer",
+                    description:
+                        "Music Analyzer is like Spotify Wrapped®, but year-round.",
+                    centerContent: true,
+                    componentFilename: "MusicAnalyzerPage",
+                },
+                {
+                    id: "nebula-new-tab",
+                    name: "Nebula New Tab",
+                    description: "A clean and simple new tab page",
+                    centerContent: false,
+                    componentFilename: "NebulaNewTabPage",
+                },
+            ] as CreationPage[],
             programs: [
                 {
                     id: "final-grade-calculator",

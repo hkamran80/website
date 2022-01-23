@@ -1,45 +1,60 @@
 import { createWebHistory, createRouter } from "vue-router";
 
+import Home from "../views/Home.vue"
+import Creations from "../views/Creations.vue"
+import Creation from "../views/Creation.vue"
+import BlogPosts from "../views/BlogPosts.vue"
+import BlogTag from "../views/BlogTag.vue"
+import BlogPost from "../views/BlogPost.vue"
+import Programs from "../views/Programs.vue"
+import Program from "../views/Program.vue"
+import License from "../views/License.vue"
+
 const routes = [
     {
         path: "/",
         name: "Home",
-        component: () => import("../views/Home.vue"),
+        component: Home,
     },
     {
         path: "/creations",
         name: "Creations",
-        component: () => import("../views/Creations.vue"),
+        component: Creations,
+    },
+    {
+        path: "/creations/:id",
+        name: "Creation",
+        component: Creation,
     },
     {
         path: "/blog",
         name: "BlogPosts",
-        component: () => import("../views/BlogPosts.vue"),
+        component: BlogPosts,
     },
     {
         path: "/blog/tag/:slug",
         name: "BlogTag",
-        component: () => import("../views/BlogTag.vue"),
+        component: BlogTag,
     },
     {
         path: "/blog/post/:slug",
         name: "BlogPost",
-        component: () => import("../views/BlogPost.vue"),
+        component: BlogPost,
     },
     {
         path: "/programs",
         name: "Programs",
-        component: () => import("../views/Programs.vue"),
+        component: Programs,
     },
     {
         path: "/programs/:id",
         name: "Program",
-        component: () => import("../views/Program.vue"),
+        component: Program,
     },
     {
         path: "/license",
         name: "License",
-        component: () => import("../views/License.vue"),
+        component: License,
     },
 ];
 

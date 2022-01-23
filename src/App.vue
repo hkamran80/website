@@ -3,7 +3,7 @@ import { useStore } from "vuex";
 import Cosmic from "cosmicjs";
 
 import { datePostsSortAscending } from "./utils/sort";
-import { CREATIONS_URL, JSONBIN_HEADERS } from "./data/constants";
+import { CREATIONS_URL } from "./data/constants";
 
 const store = useStore();
 const api = Cosmic();
@@ -25,7 +25,7 @@ bucket
     .getObjects({ query: { type: "tags" }, props: "slug,title,metadata" })
     .then((data: any) => store.commit("SAVE_TAGS", data.objects));
 
-fetch(CREATIONS_URL, { headers: JSONBIN_HEADERS })
+fetch(CREATIONS_URL)
     .then((response) => response.json())
     .then((json) => store.commit("SAVE_CREATIONS", json))
     .catch((error) => {
@@ -39,15 +39,7 @@ fetch(CREATIONS_URL, { headers: JSONBIN_HEADERS })
 
         <footer>
             <div
-                class="
-                    max-w-7xl
-                    mx-auto
-                    py-12
-                    px-4
-                    overflow-hidden
-                    sm:px-6
-                    lg:px-8
-                "
+                class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8"
             >
                 <nav
                     class="-mx-5 -my-2 flex flex-wrap justify-center space-x-5"
@@ -56,11 +48,7 @@ fetch(CREATIONS_URL, { headers: JSONBIN_HEADERS })
                     <div class="py-2">
                         <router-link
                             to="/creations"
-                            class="
-                                text-base text-gray-500
-                                hover:text-gray-900
-                                dark:text-gray-400 dark:hover:text-gray-300
-                            "
+                            class="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
                         >
                             Creations
                         </router-link>
@@ -69,11 +57,7 @@ fetch(CREATIONS_URL, { headers: JSONBIN_HEADERS })
                     <div class="py-2">
                         <router-link
                             to="/blog"
-                            class="
-                                text-base text-gray-500
-                                hover:text-gray-900
-                                dark:text-gray-400 dark:hover:text-gray-300
-                            "
+                            class="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
                         >
                             Blog
                         </router-link>
@@ -82,11 +66,7 @@ fetch(CREATIONS_URL, { headers: JSONBIN_HEADERS })
                     <div class="py-2">
                         <router-link
                             to="/programs"
-                            class="
-                                text-base text-gray-500
-                                hover:text-gray-900
-                                dark:text-gray-400 dark:hover:text-gray-300
-                            "
+                            class="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
                         >
                             Programs
                         </router-link>
@@ -99,11 +79,7 @@ fetch(CREATIONS_URL, { headers: JSONBIN_HEADERS })
                         :href="social.url"
                         :aria-label="social.name"
                         target="_blank"
-                        class="
-                            text-gray-500
-                            hover:text-gray-900
-                            dark:text-gray-400 dark:hover:text-gray-300
-                        "
+                        class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
                     >
                         <span class="sr-only" v-text="social.name" />
                         <svg
@@ -116,23 +92,13 @@ fetch(CREATIONS_URL, { headers: JSONBIN_HEADERS })
                     </a>
                 </div>
                 <p
-                    class="
-                        mt-8
-                        text-center text-base text-gray-400
-                        max-w-3xl
-                        mx-auto
-                    "
+                    class="mt-8 text-center text-base text-gray-400 max-w-3xl mx-auto"
                 >
                     Copyright © 2020-{{ new Date().getFullYear() }} H. Kamran.
                     All rights reserved.
                     <router-link
                         to="/license"
-                        class="
-                            underline
-                            text-gray-400
-                            hover:text-gray-500
-                            dark:hover:text-gray-300
-                        "
+                        class="underline text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
                     >
                         License
                     </router-link>
