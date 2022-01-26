@@ -10,6 +10,8 @@ const store = createStore({
         return {
             posts: null,
             tags: null,
+            notes: null,
+            noteTags: null,
             creations: null,
             creationPages: [
                 {
@@ -81,6 +83,14 @@ const store = createStore({
         SAVE_TAGS(state, tags) {
             // @ts-ignore
             state.tags = tags;
+        },
+        SAVE_NOTES(state, notes) {
+            // @ts-ignore
+            state.notes = notes;
+        },
+        SAVE_NOTES_TAGS(state, tags) {
+            // @ts-ignore
+            state.noteTags = tags;
         },
     },
 });

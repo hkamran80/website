@@ -7,11 +7,11 @@ import { useRoute, useRouter } from "vue-router";
 import NavigationBar from "../components/NavigationBar.vue";
 import MainLayout from "../components/MainLayout.vue";
 import PageHeader from "../components/PageHeader.vue";
-import BlogCard from "../components/BlogCard.vue";
+import NoteCard from "../components/NoteCard.vue";
 import Loading from "../components/Loading.vue";
-import { CosmicTag, Post, Tag } from "../models/blog";
+import { BasePost, CosmicNoteTag, Tag } from "../models/blog";
 
-useTitle("Blog | H. Kamran");
+useTitle("Notes | H. Kamran");
 
 const { back } = useRouter();
 const { params } = useRoute();
@@ -20,62 +20,62 @@ if (!params.slug) {
     back();
 }
 
-const pageHeader = ref<string>("Blog Tag");
+const pageHeader = ref<string>("Note Tag");
 const tag = ref<Tag | null>(null);
-const posts = ref<Post[] | null>(null);
+const notes = ref<BasePost[] | null>(null);
 
 const store = useStore();
 const loadPosts = () => {
-    if (!store.state.posts) {
+    if (!store.state.notes) {
         watch(
-            () => store.state.posts,
+            () => store.state.notes,
             () =>
-                (posts.value = store.state.posts.filter(
-                    (post: Post) =>
+                (notes.value = store.state.notes.filter(
+                    (post: BasePost) =>
                         tag.value!.slugs.indexOf(post.slug) !== -1
                 ))
         );
     } else {
-        posts.value = store.state.posts.filter(
-            (post: Post) => tag.value!.slugs.indexOf(post.slug) !== -1
+        notes.value = store.state.notes.filter(
+            (post: BasePost) => tag.value!.slugs.indexOf(post.slug) !== -1
         );
     }
 };
 
 if (!store.state.tags) {
     watch(
-        () => store.state.tags,
+        () => store.state.noteTags,
         () => {
-            tag.value = store.state.tags
-                .map((tag: CosmicTag) => {
+            tag.value = store.state.noteTags
+                .map((tag: CosmicNoteTag) => {
                     return {
                         slug: tag.slug,
                         title: tag.title,
-                        slugs: tag.metadata.posts.map(
-                            (post: Post) => post.slug
+                        slugs: tag.metadata.notes.map(
+                            (post: BasePost) => post.slug
                         ),
                     };
                 })
                 .find((tag: Tag) => tag.slug === params.slug);
 
             pageHeader.value = tag.value!.title;
-            useTitle(`${tag.value!.title} | Blog | H. Kamran`);
+            useTitle(`${tag.value!.title} | Notes | H. Kamran`);
             loadPosts();
         }
     );
 } else {
     tag.value = store.state.tags
-        .map((tag: CosmicTag) => {
+        .map((tag: CosmicNoteTag) => {
             return {
                 slug: tag.slug,
                 title: tag.title,
-                slugs: tag.metadata.posts.map((post: Post) => post.slug),
+                slugs: tag.metadata.notes.map((post: BasePost) => post.slug),
             };
         })
         .find((tag: Tag) => tag.slug === params.slug);
 
     pageHeader.value = tag.value!.title;
-    useTitle(`${tag.value!.title} | Blog | H. Kamran`);
+    useTitle(`${tag.value!.title} | Notes | H. Kamran`);
     loadPosts();
 }
 </script>
@@ -88,17 +88,16 @@ if (!store.state.tags) {
 
         <div
             class="mt-7 grid sm:grid-cols-3 grid-cols-1 gap-8 items-center"
-            v-if="posts !== null"
+            v-if="notes !== null"
         >
-            <blog-card
+            <note-card
                 class="h-full"
-                v-for="post in posts"
-                :key="post.slug"
-                :slug="post.slug"
-                :featured-image-url="post.thumbnail"
-                :title="post.title"
-                :description="post.metadata.description"
-                :publish-date="post.metadata.published"
+                v-for="note in notes"
+                :key="note.slug"
+                :slug="note.slug"
+                :title="note.title"
+                :description="note.metadata.description"
+                :publish-date="note.metadata.published"
             />
         </div>
         <div class="mt-7" v-else>

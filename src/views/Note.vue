@@ -8,9 +8,9 @@ import MainLayout from "../components/MainLayout.vue";
 import PageHeader from "../components/PageHeader.vue";
 import Loading from "../components/Loading.vue";
 import { useStore } from "vuex";
-import { CosmicTag, Post, Tag } from "../models/blog";
+import { CosmicTag, BasePost, Tag, CosmicNoteTag } from "../models/blog";
 
-useTitle("Blog | H. Kamran");
+useTitle("Notes | H. Kamran");
 
 const { back } = useRouter();
 const { params } = useRoute();
@@ -23,49 +23,49 @@ const pageTitle = ref<string>("Blog Post");
 const pageSubtitle = ref<string>("");
 
 const store = useStore();
-const post = ref<Post | null>(null);
+const note = ref<BasePost | null>(null);
 const tags = ref<Tag[] | null>(null);
 
-if (!store.state.posts) {
+if (!store.state.notes) {
     watch(
-        () => store.state.posts,
+        () => store.state.notes,
         () => {
-            post.value = store.state.posts.find(
+            note.value = store.state.notes.find(
                 (post: any) => post.slug === params.slug
             );
 
-            if (post.value) {
-                pageTitle.value = post.value.title;
-                pageSubtitle.value = post.value.metadata.description;
+            if (note.value) {
+                pageTitle.value = note.value.title;
+                pageSubtitle.value = note.value.metadata.description;
 
-                useTitle(`${post.value.title} | Blog | H. Kamran`);
+                useTitle(`${note.value.title} | Notes | H. Kamran`);
             }
         }
     );
 } else {
-    post.value = store.state.posts.find(
-        (post: Post) => post.slug === params.slug
+    note.value = store.state.notes.find(
+        (post: BasePost) => post.slug === params.slug
     );
 
-    if (post.value) {
-        pageTitle.value = post.value.title;
-        pageSubtitle.value = post.value.metadata.description;
+    if (note.value) {
+        pageTitle.value = note.value.title;
+        pageSubtitle.value = note.value.metadata.description;
 
-        useTitle(`${post.value.title} | Blog | H. Kamran`);
+        useTitle(`${note.value.title} | Notes | H. Kamran`);
     }
 }
 
-if (!store.state.tags) {
+if (!store.state.noteTags) {
     watch(
-        () => store.state.tags,
+        () => store.state.noteTags,
         () =>
-            (tags.value = store.state.tags
-                .map((tag: CosmicTag) => {
+            (tags.value = store.state.noteTags
+                .map((tag: CosmicNoteTag) => {
                     return {
                         slug: tag.slug,
                         title: tag.title,
-                        slugs: tag.metadata.posts.map(
-                            (post: Post) => post.slug
+                        slugs: tag.metadata.notes.map(
+                            (post: BasePost) => post.slug
                         ),
                     };
                 })
@@ -75,17 +75,15 @@ if (!store.state.tags) {
                 ))
     );
 } else {
-    tags.value = store.state.tags
-        .map((tag: CosmicTag) => {
+    tags.value = store.state.noteTags
+        .map((tag: CosmicNoteTag) => {
             return {
                 slug: tag.slug,
                 title: tag.title,
-                slugs: tag.metadata.posts.map((post: Post) => post.slug),
+                slugs: tag.metadata.notes.map((post: BasePost) => post.slug),
             };
         })
-        .filter(
-            (tag: Tag) => tag.slugs.indexOf(params.slug as string) !== -1
-        );
+        .filter((tag: Tag) => tag.slugs.indexOf(params.slug as string) !== -1);
 }
 </script>
 
@@ -95,23 +93,13 @@ if (!store.state.tags) {
     <main-layout>
         <page-header :header="pageTitle" :subheader="pageSubtitle" />
         <h3
-            class="
-                font-light
-                mt-2
-                text-base
-                sm:text-xl
-                text-center
-                sm:text-left
-                leading-snug
-                text-gray-600
-                dark:text-gray-400
-            "
+            class="font-light mt-2 text-base sm:text-xl text-center sm:text-left leading-snug text-gray-600 dark:text-gray-400"
         >
             <time
-                :datetime="post?.metadata.published"
+                :datetime="note?.metadata.published"
                 v-text="
                     new Date(
-                        `${post?.metadata.published}T12:00:00-07:00`
+                        `${note?.metadata.published}T12:00:00-07:00`
                     ).toLocaleDateString(undefined, {
                         year: 'numeric',
                         month: 'long',
@@ -122,14 +110,8 @@ if (!store.state.tags) {
             <span class="ml-1 mr-2" v-if="tags">•</span>
             <span v-for="tag of tags" :key="tag.slug" v-if="tags">
                 <router-link
-                    :to="`/blog/tag/${tag.slug}`"
-                    class="
-                        text-pink-700
-                        dark:text-pink-500
-                        hover:text-pink-800
-                        dark:hover:text-pink-600
-                        underline
-                    "
+                    :to="`/notes/tag/${tag.slug}`"
+                    class="text-pink-700 dark:text-pink-500 hover:text-pink-800 dark:hover:text-pink-600 underline"
                 >
                     {{ tag.title }}
                 </router-link>
@@ -146,15 +128,9 @@ if (!store.state.tags) {
 
         <div class="mt-7">
             <div class="max-w-5xl mx-auto">
-                <img
-                    :src="post?.thumbnail"
-                    class="rounded-lg mb-7"
-                    :alt="`Featured image for ${post?.title}`"
-                />
-
                 <div
                     class="max-w-5xl mx-auto prose prose-pink dark:prose-light"
-                    v-html="post?.content"
+                    v-html="note?.content"
                 />
             </div>
         </div>

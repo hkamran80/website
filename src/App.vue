@@ -7,12 +7,16 @@ import { CREATIONS_URL } from "./data/constants";
 
 const store = useStore();
 const api = Cosmic();
-const bucket = api.bucket({
-    slug: import.meta.env.VITE_APP_COSMIC_BUCKET_SLUG as string,
-    read_key: import.meta.env.VITE_APP_COSMIC_BUCKET_READ_KEY as string,
+const blogBucket = api.bucket({
+    slug: import.meta.env.VITE_APP_COSMIC_BLOG_BUCKET_SLUG as string,
+    read_key: import.meta.env.VITE_APP_COSMIC_BLOG_BUCKET_READ_KEY as string,
+});
+const notesBucket = api.bucket({
+    slug: import.meta.env.VITE_APP_COSMIC_NOTES_BUCKET_SLUG as string,
+    read_key: import.meta.env.VITE_APP_COSMIC_NOTES_BUCKET_READ_KEY as string,
 });
 
-bucket
+blogBucket
     .getObjects({
         query: { type: "posts" },
         props: "slug,title,metadata,thumbnail,content",
@@ -21,9 +25,22 @@ bucket
         store.commit("SAVE_POSTS", data.objects.sort(datePostsSortAscending))
     );
 
-bucket
+blogBucket
     .getObjects({ query: { type: "tags" }, props: "slug,title,metadata" })
     .then((data: any) => store.commit("SAVE_TAGS", data.objects));
+
+notesBucket
+    .getObjects({
+        query: { type: "notes" },
+        props: "slug,title,metadata,content",
+    })
+    .then((data: any) =>
+        store.commit("SAVE_NOTES", data.objects.sort(datePostsSortAscending))
+    );
+
+notesBucket
+    .getObjects({ query: { type: "tags" }, props: "slug,title,metadata" })
+    .then((data: any) => store.commit("SAVE_NOTES_TAGS", data.objects));
 
 fetch(CREATIONS_URL)
     .then((response) => response.json())
@@ -60,6 +77,15 @@ fetch(CREATIONS_URL)
                             class="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
                         >
                             Blog
+                        </router-link>
+                    </div>
+
+                    <div class="py-2">
+                        <router-link
+                            to="/notes"
+                            class="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
+                        >
+                            Notes
                         </router-link>
                     </div>
 

@@ -6,6 +6,9 @@ import Creation from "../views/Creation.vue"
 import BlogPosts from "../views/BlogPosts.vue"
 import BlogTag from "../views/BlogTag.vue"
 import BlogPost from "../views/BlogPost.vue"
+import Notes from "../views/Notes.vue"
+import NotesTag from "../views/NotesTag.vue"
+import Note from "../views/Note.vue"
 import Programs from "../views/Programs.vue"
 import Program from "../views/Program.vue"
 import License from "../views/License.vue"
@@ -40,6 +43,21 @@ const routes = [
         path: "/blog/post/:slug",
         name: "BlogPost",
         component: BlogPost,
+    },
+    {
+        path: "/notes",
+        name: "Notes",
+        component: Notes,
+    },
+    {
+        path: "/notes/tag/:slug",
+        name: "NotesTag",
+        component: NotesTag,
+    },
+    {
+        path: "/notes/note/:slug",
+        name: "Note",
+        component: Note,
     },
     {
         path: "/programs",
