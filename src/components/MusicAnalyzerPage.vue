@@ -109,6 +109,15 @@
 
         <small>
             <p>
+                Music Analyzer is licensed under the
+                <a
+                    href="https://snyk.io/learn/what-is-gpl-license-gplv3-explained/"
+                    target="_blank"
+                    rel="nofollow noreferrer"
+                    >GPLv3 license</a
+                >.
+            </p>
+            <p>
                 Spotify Wrapped is a registered trademark of Spotify AB. I am in
                 no way affiliated with Spotify AB.
             </p>

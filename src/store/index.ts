@@ -30,6 +30,7 @@ const store = createStore({
                     componentFilename: "NebulaNewTabPage",
                 },
             ] as CreationPage[],
+            creationChangelogs: {},
             programs: [
                 {
                     id: "final-grade-calculator",
@@ -68,6 +69,11 @@ const store = createStore({
                     url: "https://hkamran.medium.com",
                     svgPath: BRAND_LOGOS_PATH.medium,
                 },
+                {
+                    name: "Unsplash",
+                    url: "https://unsplash.com/@hkamran",
+                    svgPath: BRAND_LOGOS_PATH.unsplash,
+                },
             ] as Social[],
         };
     },
@@ -91,6 +97,11 @@ const store = createStore({
         SAVE_NOTES_TAGS(state, tags) {
             // @ts-ignore
             state.noteTags = tags;
+        },
+        //@ts-ignore
+        SAVE_CREATION_CHANGELOG(state, [creationName, changelog]) {
+            //@ts-ignore
+            state.creationChangelogs[creationName] = changelog;
         },
     },
 });

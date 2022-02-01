@@ -39,7 +39,7 @@ if (store.state.posts && store.state.posts.length > 0) {
         <page-header
             header="Hello world! I'm H. Kamran!"
             subheader="I'm a developer, experienced in Python, JavaScript, TypeScript,
-            Vue.js, Java, Swift, and SwiftUI."
+            Vue.js, Java, Kotlin, Swift, and SwiftUI. I also enjoy taking photos and writing articles on topics that interest me or seem useful."
             main-header
         />
 
