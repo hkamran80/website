@@ -16,8 +16,13 @@ const store = useStore();
 const downloadLinks = {
     Chrome: "https://github.com/hkamran80/nebula-new-tab#chromium-based-browsers-chrome-brave-etc",
     Firefox: "https://addons.mozilla.org/firefox/addon/nebula-new-tab/",
-    "Microsoft Edge":
-        "https://microsoftedge.microsoft.com/addons/detail/iagkoeigpdjjchjinnjjjgkanpcmknhj",
+    Edge: "https://microsoftedge.microsoft.com/addons/detail/iagkoeigpdjjchjinnjjjgkanpcmknhj",
+};
+
+const jumpLinks = {
+    "View on GitHub": "https://github.com/hkamran80/nebula-new-tab",
+    "View Features": "#features",
+    "View Changelog": "#changelog",
 };
 
 // Changelog
@@ -94,7 +99,7 @@ if (browserPrefix && browserPrefix[1] === "moz") {
     <div class="max-w-3xl mx-auto">
         <div
             id="download-buttons"
-            class="mt-8 md:space-x-4 max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
+            class="mt-8 mx-auto grid grid-cols-1 md:grid-cols-3 gap-4"
         >
             <a
                 v-for="(link, browser) in downloadLinks"
@@ -103,34 +108,19 @@ if (browserPrefix && browserPrefix[1] === "moz") {
                 rel="noopener noreferrer"
                 target="_blank"
                 v-text="`Install in ${browser}`"
-                class="mt-3 text-center flex items-center bg-white dark:bg-gray-900 text-black dark:text-white rounded-full font-medium group p-4 px-6 shadow-lg hover:text-purple-600 dark:hover:text-purple-400"
+                class="text-center bg-white dark:bg-gray-900 text-black dark:text-white hover:text-purple-600 dark:hover:text-purple-400 font-medium p-4 rounded-full shadow-lg"
             />
         </div>
 
-        <div
-            class="my-5 max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4"
-        >
+        <div class="my-5 mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
             <a
-                href="https://github.com/hkamran80/nebula-new-tab"
-                target="_blank"
-                class="text-center bg-purple-900 p-2 px-4 rounded-md text-white"
-            >
-                View on GitHub
-            </a>
-
-            <a
-                href="#features"
-                class="text-center bg-purple-900 p-2 px-4 rounded-md text-white"
-            >
-                View Features
-            </a>
-
-            <a
-                href="#changelog"
-                class="text-center bg-purple-900 p-2 px-4 rounded-md text-white"
-            >
-                View Changelog
-            </a>
+                v-for="(link, label) in jumpLinks"
+                :key="label"
+                :href="link"
+                :target="link.startsWith('http') ? '_blank' : ''"
+                class="text-center bg-purple-900 p-2 rounded-lg text-white"
+                v-text="label"
+            />
         </div>
     </div>
 
@@ -160,7 +150,7 @@ if (browserPrefix && browserPrefix[1] === "moz") {
             <dl class="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-8">
                 <div>
                     <div
-                        class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-900 text-white"
+                        class="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-900 text-white"
                         v-html="feather.icons.clock.toSvg()"
                     />
                     <div class="mt-5">
@@ -177,7 +167,7 @@ if (browserPrefix && browserPrefix[1] === "moz") {
 
                 <div>
                     <div
-                        class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-900 text-white"
+                        class="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-900 text-white"
                         v-html="feather.icons.image.toSvg()"
                     />
                     <div class="mt-5">
@@ -216,7 +206,7 @@ if (browserPrefix && browserPrefix[1] === "moz") {
 
                 <div>
                     <div
-                        class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-900 text-white"
+                        class="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-900 text-white"
                         v-html="feather.icons.globe.toSvg()"
                     />
                     <div class="mt-5">
@@ -238,7 +228,7 @@ if (browserPrefix && browserPrefix[1] === "moz") {
 
                 <div>
                     <div
-                        class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-900 text-white"
+                        class="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-900 text-white"
                         v-html="feather.icons.clock.toSvg()"
                     />
                     <div class="mt-5">
@@ -310,7 +300,7 @@ if (browserPrefix && browserPrefix[1] === "moz") {
                                 leave-to-class="opacity-0"
                             >
                                 <ListboxOptions
-                                    class="absolute w-full py-1 mt-1 overflow-auto text-base bg-white dark:bg-gray-900 rounded-md shadow-lg max-h-60 ring-1 ring-black dark:ring-white ring-opacity-5 focus:outline-none sm:text-sm"
+                                    class="absolute w-full py-1 mt-1 overflow-auto text-base bg-white dark:bg-gray-900 rounded-lg shadow-lg max-h-60 ring-1 ring-black dark:ring-white ring-opacity-5 focus:outline-none sm:text-sm"
                                 >
                                     <ListboxOption
                                         v-slot="{ active, selected }"
