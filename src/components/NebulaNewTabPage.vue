@@ -278,8 +278,8 @@ if (browserPrefix && browserPrefix[1] === "moz") {
             </div>
             <div class="md:mt-5 w-full max-w-xs">
                 <div class="w-xs">
-                    <Listbox v-model="currentVersion"
-                        ><div class="relative mt-1">
+                    <Listbox v-model="currentVersion">
+                        <div class="relative mt-1">
                             <ListboxButton
                                 class="relative w-full py-2 pl-3 pr-10 text-left bg-white dark:bg-gray-900 rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm"
                             >

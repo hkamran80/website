@@ -23,11 +23,17 @@ blogBucket
     })
     .then((data: any) =>
         store.commit("SAVE_POSTS", data.objects.sort(datePostsSortAscending))
-    );
+    )
+    .catch((error: any) => {
+        throw new Error(`CosmicJS Error: ${error}`);
+    });
 
 blogBucket
     .getObjects({ query: { type: "tags" }, props: "slug,title,metadata" })
-    .then((data: any) => store.commit("SAVE_TAGS", data.objects));
+    .then((data: any) => store.commit("SAVE_TAGS", data.objects))
+    .catch((error: any) => {
+        throw new Error(`CosmicJS Error: ${error}`);
+    });
 
 notesBucket
     .getObjects({
@@ -36,11 +42,17 @@ notesBucket
     })
     .then((data: any) =>
         store.commit("SAVE_NOTES", data.objects.sort(datePostsSortAscending))
-    );
+    )
+    .catch((error: any) => {
+        throw new Error(`CosmicJS Error: ${error}`);
+    });
 
 notesBucket
     .getObjects({ query: { type: "tags" }, props: "slug,title,metadata" })
-    .then((data: any) => store.commit("SAVE_NOTES_TAGS", data.objects));
+    .then((data: any) => store.commit("SAVE_NOTES_TAGS", data.objects))
+    .catch((error: any) => {
+        throw new Error(`CosmicJS Error: ${error}`);
+    });
 
 fetch(CREATIONS_URL)
     .then((response) => response.json())
