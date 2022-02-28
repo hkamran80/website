@@ -8,6 +8,22 @@ const description =
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    creations: [
+                        "./src/components/MusicAnalyzerPage.vue",
+                        "./src/components/NebulaNewTabPage.vue",
+                    ],
+                    programs: [
+                        "./src/components/FinalGradeCalculatorProgram.vue",
+                        "./src/components/OverallGradeAfterFinalCalculatorProgram.vue",
+                    ],
+                },
+            },
+        },
+    },
     plugins: [
         htmlConfig({
             metas: [
