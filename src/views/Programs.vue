@@ -22,7 +22,8 @@ const programs = computed(() => store.state.programs as Program[]);
 
         <div class="mt-7 grid sm:grid-cols-2 grid-cols-1 gap-8 items-center">
             <program-card
-                v-for="program of programs" :key="program.id"
+                v-for="program of programs"
+                :key="program.id"
                 :program-id="program.id"
                 :name="program.name"
                 :description="program.description"

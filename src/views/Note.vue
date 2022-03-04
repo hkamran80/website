@@ -31,7 +31,7 @@ if (!store.state.notes) {
         () => store.state.notes,
         () => {
             note.value = store.state.notes.find(
-                (post: any) => post.slug === params.slug
+                (post: any) => post.slug === params.slug,
             );
 
             if (note.value) {
@@ -40,11 +40,11 @@ if (!store.state.notes) {
 
                 useTitle(`${note.value.title} | Notes | H. Kamran`);
             }
-        }
+        },
     );
 } else {
     note.value = store.state.notes.find(
-        (post: BasePost) => post.slug === params.slug
+        (post: BasePost) => post.slug === params.slug,
     );
 
     if (note.value) {
@@ -65,14 +65,14 @@ if (!store.state.noteTags) {
                         slug: tag.slug,
                         title: tag.title,
                         slugs: tag.metadata.notes.map(
-                            (post: BasePost) => post.slug
+                            (post: BasePost) => post.slug,
                         ),
                     };
                 })
                 .filter(
                     (tag: Tag) =>
-                        tag.slugs.indexOf(params.slug as string) !== -1
-                ))
+                        tag.slugs.indexOf(params.slug as string) !== -1,
+                )),
     );
 } else {
     tags.value = store.state.noteTags
@@ -99,7 +99,7 @@ if (!store.state.noteTags) {
                 :datetime="note?.metadata.published"
                 v-text="
                     new Date(
-                        `${note?.metadata.published}T12:00:00-07:00`
+                        `${note?.metadata.published}T12:00:00-07:00`,
                     ).toLocaleDateString(undefined, {
                         year: 'numeric',
                         month: 'long',

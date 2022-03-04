@@ -16,7 +16,7 @@ const props = defineProps<{
                         :datetime="props.publishDate"
                         v-text="
                             new Date(
-                                `${props.publishDate}T12:00:00-07:00`
+                                `${props.publishDate}T12:00:00-07:00`,
                             ).toLocaleDateString(undefined, {
                                 year: 'numeric',
                                 month: 'long',

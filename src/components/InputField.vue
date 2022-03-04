@@ -17,22 +17,7 @@ const emit =
         <input
             :type="props.type"
             :placeholder="props.placeholder"
-            class="
-                px-3
-                py-3
-                relative
-                bg-white
-                dark:bg-gray-900
-                rounded
-                text-sm
-                border-0
-                shadow
-                outline-none
-                focus:outline-none focus:ring focus:ring-pink-700
-                w-full
-                pr-10
-                appearance-none
-            "
+            class="px-3 py-3 relative bg-white dark:bg-gray-900 rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring focus:ring-pink-700 w-full pr-10 appearance-none"
             :step="props.step"
             :value="props.modelValue"
             :readonly="props.readonly"
@@ -40,23 +25,7 @@ const emit =
             @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         />
         <span
-            class="
-                z-10
-                h-full
-                leading-snug
-                font-normal
-                absolute
-                text-center
-                bg-transparent
-                rounded
-                text-base
-                items-center
-                justify-center
-                w-8
-                right-0
-                pr-3
-                py-3
-            "
+            class="z-10 h-full leading-snug font-normal absolute text-center bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3"
             v-html="props.svg"
             v-if="props.svg"
         />

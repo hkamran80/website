@@ -25,7 +25,7 @@ watch(
     () => store.state.posts,
     () =>
         (latestPostAvailable.value =
-            store.state.posts.length > 0 ? true : false)
+            store.state.posts.length > 0 ? true : false),
 );
 if (store.state.posts && store.state.posts.length > 0) {
     latestPostAvailable.value = true;

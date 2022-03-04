@@ -1,4 +1,6 @@
 <script setup lang="ts">
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useStore } from "vuex";
 import Cosmic from "cosmicjs";
 
@@ -22,7 +24,7 @@ blogBucket
         props: "slug,title,metadata,thumbnail,content",
     })
     .then((data: any) =>
-        store.commit("SAVE_POSTS", data.objects.sort(datePostsSortAscending))
+        store.commit("SAVE_POSTS", data.objects.sort(datePostsSortAscending)),
     )
     .catch((error: any) => {
         throw new Error(`CosmicJS Error: ${error}`);
@@ -41,7 +43,7 @@ notesBucket
         props: "slug,title,metadata,content",
     })
     .then((data: any) =>
-        store.commit("SAVE_NOTES", data.objects.sort(datePostsSortAscending))
+        store.commit("SAVE_NOTES", data.objects.sort(datePostsSortAscending)),
     )
     .catch((error: any) => {
         throw new Error(`CosmicJS Error: ${error}`);
@@ -110,7 +112,8 @@ fetch(CREATIONS_URL)
                         </router-link>
                     </div>
                 </nav>
-                <div class="mt-8 flex justify-center space-x-6">
+
+                <div class="mt-8 flex justify-center space-x-8">
                     <a
                         v-for="social in store.state.socials"
                         :key="social.name"
@@ -129,16 +132,29 @@ fetch(CREATIONS_URL)
                         </svg>
                     </a>
                 </div>
+
                 <p
                     class="mt-8 text-center text-base text-gray-400 max-w-3xl mx-auto"
                 >
-                    Copyright © 2020-{{ new Date().getFullYear() }} H. Kamran.
-                    All rights reserved.
+                    Copyright © {{ new Date().getFullYear() }} H. Kamran. All
+                    rights reserved.
+                </p>
+
+                <p
+                    class="mt-2 text-center text-base underline text-gray-400 space-x-3"
+                >
                     <router-link
-                        to="/license"
-                        class="underline text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+                        to="/legal/license"
+                        class="hover:text-gray-500 dark:hover:text-gray-300"
                     >
                         License
+                    </router-link>
+
+                    <router-link
+                        to="/legal/privacy"
+                        class="hover:text-gray-500 dark:hover:text-gray-300"
+                    >
+                        Privacy Policy
                     </router-link>
                 </p>
             </div>

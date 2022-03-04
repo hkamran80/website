@@ -21,7 +21,7 @@ watch(
                 100
             ).toFixed(2);
         }
-    }
+    },
 );
 
 const feather = _feather;
@@ -29,14 +29,7 @@ const feather = _feather;
 
 <template>
     <div
-        class="
-            mt-7
-            grid
-            sm:grid-cols-2
-            grid-cols-1
-            gap-x-8 gap-y-2
-            items-center
-        "
+        class="mt-7 grid sm:grid-cols-2 grid-cols-1 gap-x-8 gap-y-2 items-center"
     >
         <input-field
             class="col-span-2 sm:col-span-1"

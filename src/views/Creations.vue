@@ -20,23 +20,23 @@ const creations = computed(() => store.state.creations);
 const featuredCreations = computed(() =>
     creations.value
         .filter((creation: Creation) => creation.featured)
-        .sort(creationAlphabeticalSort)
+        .sort(creationAlphabeticalSort),
 );
 const completedCreations = computed(() =>
     creations.value
         .filter(
             (creation: Creation) =>
-                !creation.featured && creation.status !== "In Progress"
+                !creation.featured && creation.status !== "In Progress",
         )
-        .sort(creationAlphabeticalSort)
+        .sort(creationAlphabeticalSort),
 );
 const inProgressCreations = computed(() =>
     creations.value
         .filter(
             (creation: Creation) =>
-                !creation.featured && creation.status !== "Completed"
+                !creation.featured && creation.status !== "Completed",
         )
-        .sort(creationAlphabeticalSort)
+        .sort(creationAlphabeticalSort),
 );
 </script>
 

@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import { createStore } from "vuex";
 import { BRAND_LOGOS_PATH } from "../data/constants";
-import { CreationPage } from "../models/creations";
-import { Program } from "../models/programs";
 import { Social } from "../models/socials";
+import type { Page } from "../models/pages";
 
 const store = createStore({
     // @ts-ignore
@@ -15,12 +16,12 @@ const store = createStore({
             creations: null,
             creationPages: [
                 {
-                    id: "music-analyzer",
-                    name: "Music Analyzer",
+                    id: "acoustats",
+                    name: "Acoustats",
                     description:
-                        "Music Analyzer is like Spotify Wrapped®, but year-round.",
+                        "Acoustats is like Spotify Wrapped®, but year-round.",
                     centerContent: true,
-                    componentFilename: "MusicAnalyzerPage",
+                    componentFilename: "AcoustatsPage",
                 },
                 {
                     id: "nebula-new-tab",
@@ -29,7 +30,7 @@ const store = createStore({
                     centerContent: false,
                     componentFilename: "NebulaNewTabPage",
                 },
-            ] as CreationPage[],
+            ] as Page[],
             creationChangelogs: {},
             programs: [
                 {
@@ -37,6 +38,7 @@ const store = createStore({
                     name: "Final Grade Calculator",
                     description:
                         "Calculate the grade you need to get on a final to get a particular grade",
+                    centerContent: true,
                     componentFilename: "FinalGradeCalculatorProgram",
                 },
                 {
@@ -44,10 +46,11 @@ const store = createStore({
                     name: "Overall Grade After Final Calculator",
                     description:
                         "Calculate the grade you'll get after taking a final",
+                    centerContent: true,
                     componentFilename:
                         "OverallGradeAfterFinalCalculatorProgram",
                 },
-            ] as Program[],
+            ] as Page[],
             socials: [
                 {
                     name: "GitHub",

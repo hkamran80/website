@@ -32,12 +32,12 @@ const loadPosts = () => {
             () =>
                 (notes.value = store.state.notes.filter(
                     (post: BasePost) =>
-                        tag.value!.slugs.indexOf(post.slug) !== -1
-                ))
+                        tag.value!.slugs.indexOf(post.slug) !== -1,
+                )),
         );
     } else {
         notes.value = store.state.notes.filter(
-            (post: BasePost) => tag.value!.slugs.indexOf(post.slug) !== -1
+            (post: BasePost) => tag.value!.slugs.indexOf(post.slug) !== -1,
         );
     }
 };
@@ -52,7 +52,7 @@ if (!store.state.tags) {
                         slug: tag.slug,
                         title: tag.title,
                         slugs: tag.metadata.notes.map(
-                            (post: BasePost) => post.slug
+                            (post: BasePost) => post.slug,
                         ),
                     };
                 })
@@ -61,7 +61,7 @@ if (!store.state.tags) {
             pageHeader.value = tag.value!.title;
             useTitle(`${tag.value!.title} | Notes | H. Kamran`);
             loadPosts();
-        }
+        },
     );
 } else {
     tag.value = store.state.tags

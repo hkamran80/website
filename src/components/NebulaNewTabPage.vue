@@ -1,4 +1,6 @@
 <script setup lang="ts">
+/* eslint-disable vue/no-v-html */
+
 import { ref } from "vue";
 import _feather from "feather-icons";
 import { useStore } from "vuex";
@@ -26,25 +28,6 @@ const jumpLinks = {
 };
 
 // Changelog
-const months = [
-    "January",
-    "Feburary",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-];
-const humanizeDate = (isoDateString: string): string => {
-    const [year, month, day] = isoDateString.split("-");
-    return months[Number(month) - 1] + " " + Number(day) + ", " + year;
-};
-
 const currentVersion = ref<Release | null>(null);
 if (
     Object.keys(store.state.creationChangelogs).indexOf("nebula-new-tab") === -1
@@ -57,7 +40,14 @@ if (
                 .map((release) => {
                     return {
                         version: release[0],
-                        date: humanizeDate(release[1].releaseDate),
+                        // date: humanizeDate(release[1].releaseDate),
+                        date: new Date(
+                            `${release[1].releaseDate}T20:00:00`,
+                        ).toLocaleDateString(undefined, {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                        }),
                         changelog: release[1].changelog,
                     };
                 });
@@ -83,7 +73,7 @@ const screenshotElementValues = ref<{ src: string; alt: string }>({
 });
 
 const browserPrefix = Object.values(
-    window.getComputedStyle(document.documentElement)
+    window.getComputedStyle(document.documentElement),
 )
     .join("")
     .match(/-(moz|webkit|ms)/);
@@ -107,8 +97,8 @@ if (browserPrefix && browserPrefix[1] === "moz") {
                 :href="link"
                 rel="noopener noreferrer"
                 target="_blank"
-                v-text="`Install in ${browser}`"
                 class="text-center bg-white dark:bg-gray-900 text-black dark:text-white hover:text-purple-600 dark:hover:text-purple-400 font-medium p-4 rounded-full shadow-lg"
+                v-text="`Install in ${browser}`"
             />
         </div>
 
@@ -252,13 +242,13 @@ if (browserPrefix && browserPrefix[1] === "moz") {
     </div>
 
     <div
-        id="changelog"
-        class="py-12"
         v-if="
             Object.keys(store.state.creationChangelogs).indexOf(
-                'nebula-new-tab'
+                'nebula-new-tab',
             ) !== -1 && currentVersion
         "
+        id="changelog"
+        class="py-12"
     >
         <div
             class="max-w-7xl mx-auto pb-6 px-4 sm:pb-8 sm:px-6 lg:px-8 lg:flex lg:justify-between"
@@ -271,8 +261,8 @@ if (browserPrefix && browserPrefix[1] === "moz") {
                 </h2>
 
                 <p
-                    class="mt-3 mb-6 sm:mb-0 text-xl text-gray-600 dark:text-gray-400"
                     v-if="currentVersion"
+                    class="mt-3 mb-6 sm:mb-0 text-xl text-gray-600 dark:text-gray-400"
                     v-text="currentVersion.date"
                 />
             </div>
@@ -303,11 +293,11 @@ if (browserPrefix && browserPrefix[1] === "moz") {
                                     class="absolute w-full py-1 mt-1 overflow-auto text-base bg-white dark:bg-gray-900 rounded-lg shadow-lg max-h-60 ring-1 ring-black dark:ring-white ring-opacity-5 focus:outline-none sm:text-sm"
                                 >
                                     <ListboxOption
-                                        v-slot="{ active, selected }"
                                         v-for="version in store.state
                                             .creationChangelogs[
                                             'nebula-new-tab'
                                         ]"
+                                        v-slot="{ active, selected }"
                                         :key="version.version"
                                         :value="version"
                                         as="template"
@@ -341,8 +331,10 @@ if (browserPrefix && browserPrefix[1] === "moz") {
             </div>
         </div>
 
-        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-            <ul class="list-disc list-inside">
+        <div
+            class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 prose prose-pink dark:prose-light"
+        >
+            <ul>
                 <li
                     v-for="change in currentVersion.changelog"
                     :key="change"

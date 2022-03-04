@@ -31,13 +31,12 @@ const loadPosts = () => {
             () => store.state.posts,
             () =>
                 (posts.value = store.state.posts.filter(
-                    (post: Post) =>
-                        tag.value!.slugs.indexOf(post.slug) !== -1
-                ))
+                    (post: Post) => tag.value!.slugs.indexOf(post.slug) !== -1,
+                )),
         );
     } else {
         posts.value = store.state.posts.filter(
-            (post: Post) => tag.value!.slugs.indexOf(post.slug) !== -1
+            (post: Post) => tag.value!.slugs.indexOf(post.slug) !== -1,
         );
     }
 };
@@ -52,7 +51,7 @@ if (!store.state.tags) {
                         slug: tag.slug,
                         title: tag.title,
                         slugs: tag.metadata.posts.map(
-                            (post: Post) => post.slug
+                            (post: Post) => post.slug,
                         ),
                     };
                 })
@@ -61,7 +60,7 @@ if (!store.state.tags) {
             pageHeader.value = tag.value!.title;
             useTitle(`${tag.value!.title} | Blog | H. Kamran`);
             loadPosts();
-        }
+        },
     );
 } else {
     tag.value = store.state.tags

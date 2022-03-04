@@ -1,8 +1,8 @@
 <template>
-    <div class="max-w-2xl mx-auto prose prose-pink dark:prose-light">
+    <div class="prose prose-pink dark:prose-light max-w-none">
         <h3>Prerequisites</h3>
         <p>
-            To set up Music Analyzer, you must first create a Last.fm account.
+            To set up Acoustats, you must first create a Last.fm account.
             To create a Last.fm account, go to
             <a
                 href="https://www.last.fm/join"
@@ -29,9 +29,9 @@
         </p>
         <p>
             After your media platform is linked, start listening to music. After
-            you start listening, Music Analyzer (through Last.fm) will be able
+            you start listening, Acoustats (through Last.fm) will be able
             to access your listening history. At any time, if you want to check
-            what listening history Last.fm and Music Analyzer can see, go to
+            what listening history Last.fm and Acoustats can see, go to
             your Last.fm profile from either the
             <a
                 href="https://www.last.fm/home"
@@ -44,9 +44,9 @@
             <code>https://www.last.fm/user/YOUR_LASTFM_USERNAME</code>.
         </p>
 
-        <h3>Setting Up Music Analyzer</h3>
+        <h3>Setting Up Acoustats</h3>
         <p>
-            If you want to use a community version of Music Analyzer, join the
+            If you want to use a community version of Acoustats, join the
             <a
                 href="https://discord.gg/vSbKaB8wk3"
                 target="_blank"
@@ -70,9 +70,9 @@
             >.
         </p>
 
-        <h3>Using Music Analyzer</h3>
+        <h3>Using Acoustats</h3>
         <p>
-            To use Music Analyzer, all you have to do is go into a channel (or
+            To use Acoustats, all you have to do is go into a channel (or
             you can DM the bot) with a command. The following commands are
             available.
         </p>
@@ -109,7 +109,7 @@
 
         <small>
             <p>
-                Music Analyzer is licensed under the
+                Acoustats is licensed under the
                 <a
                     href="https://snyk.io/learn/what-is-gpl-license-gplv3-explained/"
                     target="_blank"

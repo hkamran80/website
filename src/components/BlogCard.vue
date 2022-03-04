@@ -21,14 +21,7 @@ const props = defineProps<{
             />
         </div>
         <div
-            class="
-                flex-1
-                bg-white
-                dark:bg-gray-900
-                p-6
-                flex flex-col
-                justify-between
-            "
+            class="flex-1 bg-white dark:bg-gray-900 p-6 flex flex-col justify-between"
         >
             <div class="flex-1">
                 <!-- <p
@@ -50,12 +43,7 @@ const props = defineProps<{
                 </p> mt-2-->
                 <div class="block">
                     <p
-                        class="
-                            text-xl
-                            font-semibold
-                            text-gray-900
-                            dark:text-white
-                        "
+                        class="text-xl font-semibold text-gray-900 dark:text-white"
                         v-text="props.title"
                     />
                     <p
@@ -75,12 +63,7 @@ const props = defineProps<{
                 </div>
                 <div class="ml-3">
                     <p
-                        class="
-                            text-sm
-                            font-medium
-                            text-gray-900
-                            dark:text-white
-                        "
+                        class="text-sm font-medium text-gray-900 dark:text-white"
                     >
                         H. Kamran
                     </p>
@@ -89,7 +72,7 @@ const props = defineProps<{
                             :datetime="props.publishDate"
                             v-text="
                                 new Date(
-                                    `${props.publishDate}T12:00:00-07:00`
+                                    `${props.publishDate}T12:00:00-07:00`,
                                 ).toLocaleDateString(undefined, {
                                     year: 'numeric',
                                     month: 'long',

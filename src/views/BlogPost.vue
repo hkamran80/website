@@ -31,7 +31,7 @@ if (!store.state.posts) {
         () => store.state.posts,
         () => {
             post.value = store.state.posts.find(
-                (post: any) => post.slug === params.slug
+                (post: any) => post.slug === params.slug,
             );
 
             if (post.value) {
@@ -40,11 +40,11 @@ if (!store.state.posts) {
 
                 useTitle(`${post.value.title} | Blog | H. Kamran`);
             }
-        }
+        },
     );
 } else {
     post.value = store.state.posts.find(
-        (post: Post) => post.slug === params.slug
+        (post: Post) => post.slug === params.slug,
     );
 
     if (post.value) {
@@ -65,14 +65,14 @@ if (!store.state.tags) {
                         slug: tag.slug,
                         title: tag.title,
                         slugs: tag.metadata.posts.map(
-                            (post: Post) => post.slug
+                            (post: Post) => post.slug,
                         ),
                     };
                 })
                 .filter(
                     (tag: Tag) =>
-                        tag.slugs.indexOf(params.slug as string) !== -1
-                ))
+                        tag.slugs.indexOf(params.slug as string) !== -1,
+                )),
     );
 } else {
     tags.value = store.state.tags
@@ -83,9 +83,7 @@ if (!store.state.tags) {
                 slugs: tag.metadata.posts.map((post: Post) => post.slug),
             };
         })
-        .filter(
-            (tag: Tag) => tag.slugs.indexOf(params.slug as string) !== -1
-        );
+        .filter((tag: Tag) => tag.slugs.indexOf(params.slug as string) !== -1);
 }
 </script>
 
@@ -95,23 +93,13 @@ if (!store.state.tags) {
     <main-layout>
         <page-header :header="pageTitle" :subheader="pageSubtitle" />
         <h3
-            class="
-                font-light
-                mt-2
-                text-base
-                sm:text-xl
-                text-center
-                sm:text-left
-                leading-snug
-                text-gray-600
-                dark:text-gray-400
-            "
+            class="font-light mt-2 text-base sm:text-xl text-center sm:text-left leading-snug text-gray-600 dark:text-gray-400"
         >
             <time
                 :datetime="post?.metadata.published"
                 v-text="
                     new Date(
-                        `${post?.metadata.published}T12:00:00-07:00`
+                        `${post?.metadata.published}T12:00:00-07:00`,
                     ).toLocaleDateString(undefined, {
                         year: 'numeric',
                         month: 'long',
@@ -123,13 +111,7 @@ if (!store.state.tags) {
             <span v-for="tag of tags" :key="tag.slug" v-if="tags">
                 <router-link
                     :to="`/blog/tag/${tag.slug}`"
-                    class="
-                        text-pink-700
-                        dark:text-pink-500
-                        hover:text-pink-800
-                        dark:hover:text-pink-600
-                        underline
-                    "
+                    class="text-pink-700 dark:text-pink-500 hover:text-pink-800 dark:hover:text-pink-600 underline"
                 >
                     {{ tag.title }}
                 </router-link>

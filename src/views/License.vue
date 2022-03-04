@@ -11,7 +11,7 @@ useTitle("License | H. Kamran");
 <template>
     <navigation-bar />
 
-    <main-layout>
+    <main-layout centered>
         <page-header
             header="License"
             subheader="Last Updated: January 31, 2022"

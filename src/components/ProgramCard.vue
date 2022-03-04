@@ -9,27 +9,14 @@ const props = defineProps<{
 <template>
     <router-link
         :to="`/programs/${props.programId}`"
-        class="
-            w-full
-            bg-white
-            dark:bg-gray-900
-            rounded-lg
-            shadow
-            divide-y divide-gray-200
-        "
+        class="w-full bg-white dark:bg-gray-900 rounded-lg shadow divide-y divide-gray-200"
         :aria-label="props.name"
     >
         <div class="w-full flex items-center justify-between p-6 space-x-6">
             <div class="flex-1">
                 <div class="flex items-center space-x-3">
                     <h3
-                        class="
-                            text-gray-900
-                            dark:text-white
-                            text-md
-                            font-medium
-                            truncate
-                        "
+                        class="text-gray-900 dark:text-white text-md font-medium truncate"
                         v-text="props.name"
                     />
                 </div>
