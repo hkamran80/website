@@ -3,7 +3,6 @@ import { useTitle } from "@vueuse/core";
 import { useStore } from "vuex";
 import { computed, ref } from "@vue/reactivity";
 import { watch } from "@vue/runtime-core";
-import feather from "feather-icons";
 
 import { creationAlphabeticalSort } from "../utils/sort";
 
@@ -13,7 +12,6 @@ import LatestPost from "../components/LatestPost.vue";
 import CreationCard from "../components/CreationCard.vue";
 import Loading from "../components/Loading.vue";
 import PageHeader from "../components/PageHeader.vue";
-import { BRAND_LOGOS_PATH } from "../data/constants";
 
 useTitle("Home | H. Kamran");
 
@@ -51,14 +49,14 @@ if (store.state.posts && store.state.posts.length > 0) {
 
         <div class="mt-12">
             <h3 class="text-xl font-bold">Featured Creations</h3>
-            <div class="mt-1 pt-5" v-if="creations">
+            <div v-if="creations" class="mt-1 pt-5">
                 <div class="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center">
                     <creation-card
-                        class="h-full"
                         v-for="creation in creations
                             .filter((creation: any) => creation.featured)
                             .sort(creationAlphabeticalSort)"
                         :key="creation.name"
+                        class="h-full"
                         :name="creation.name"
                         :state="creation.status"
                         :description="creation.description"
@@ -68,7 +66,7 @@ if (store.state.posts && store.state.posts.length > 0) {
                     />
                 </div>
             </div>
-            <div class="mt-3" v-else>
+            <div v-else class="mt-3">
                 <loading />
             </div>
         </div>

@@ -87,20 +87,20 @@ if (!store.state.tags) {
         <page-header :header="pageHeader" />
 
         <div
-            class="mt-7 grid sm:grid-cols-3 grid-cols-1 gap-8 items-center"
             v-if="notes !== null"
+            class="mt-7 grid sm:grid-cols-3 grid-cols-1 gap-8 items-center"
         >
             <note-card
-                class="h-full"
                 v-for="note in notes"
                 :key="note.slug"
+                class="h-full"
                 :slug="note.slug"
                 :title="note.title"
                 :description="note.metadata.description"
                 :publish-date="note.metadata.published"
             />
         </div>
-        <div class="mt-7" v-else>
+        <div v-else class="mt-7">
             <loading />
         </div>
     </main-layout>

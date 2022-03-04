@@ -46,14 +46,14 @@ const inProgressCreations = computed(() =>
     <main-layout>
         <page-header header="Creations" />
 
-        <div class="pt-5 space-y-8 divide-y" v-if="creations">
+        <div v-if="creations" class="pt-5 space-y-8 divide-y">
             <div>
                 <h3 class="text-xl font-bold mb-3">Featured</h3>
                 <div class="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center">
                     <creation-card
-                        class="h-full"
                         v-for="creation in featuredCreations"
                         :key="creation.name"
+                        class="h-full"
                         :name="creation.name"
                         :state="creation.status"
                         :description="creation.description"
@@ -68,9 +68,9 @@ const inProgressCreations = computed(() =>
                 <h3 class="text-xl font-bold mb-3">Completed</h3>
                 <div class="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center">
                     <creation-card
-                        class="h-full"
                         v-for="creation in completedCreations"
                         :key="creation.name"
+                        class="h-full"
                         :name="creation.name"
                         :state="creation.status"
                         :description="creation.description"
@@ -85,9 +85,9 @@ const inProgressCreations = computed(() =>
                 <h3 class="text-xl font-bold mb-3">In Progress</h3>
                 <div class="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center">
                     <creation-card
-                        class="h-full"
                         v-for="creation in inProgressCreations"
                         :key="creation.name"
+                        class="h-full"
                         :name="creation.name"
                         :state="creation.status"
                         :description="creation.description"
@@ -98,7 +98,7 @@ const inProgressCreations = computed(() =>
                 </div>
             </div>
         </div>
-        <div class="mt-3" v-else>
+        <div v-else class="mt-3">
             <loading />
         </div>
     </main-layout>

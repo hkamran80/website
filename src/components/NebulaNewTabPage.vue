@@ -1,6 +1,4 @@
 <script setup lang="ts">
-/* eslint-disable vue/no-v-html */
-
 import { ref } from "vue";
 import _feather from "feather-icons";
 import { useStore } from "vuex";

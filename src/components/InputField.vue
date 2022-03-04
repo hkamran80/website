@@ -25,9 +25,9 @@ const emit =
             @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         />
         <span
+            v-if="props.svg"
             class="z-10 h-full leading-snug font-normal absolute text-center bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3"
             v-html="props.svg"
-            v-if="props.svg"
         />
     </div>
 </template>

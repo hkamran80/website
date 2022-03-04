@@ -44,11 +44,11 @@ const feather = featherIcons;
                     class="mt-4 flex items-center justify-center space-x-8 text-gray-500 dark:text-gray-400 text-sm"
                 >
                     <a
+                        v-if="props.repository"
                         :href="props.repository"
                         class="flex space-x-2 hover:text-gray-600 dark:hover:text-gray-300"
                         target="_blank"
                         rel="noopener noreferrer"
-                        v-if="props.repository"
                     >
                         <span
                             class="feather-icon"

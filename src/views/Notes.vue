@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { useTitle } from "@vueuse/core";
 import { useStore } from "vuex";
 
@@ -22,20 +22,20 @@ const notes = computed(() => store.state.notes);
         <page-header header="Notes" />
 
         <div
-            class="mt-7 grid sm:grid-cols-2 grid-cols-1 gap-8 items-center"
             v-if="notes !== null"
+            class="mt-7 grid sm:grid-cols-2 grid-cols-1 gap-8 items-center"
         >
             <note-card
-                class="h-full"
                 v-for="note in notes"
                 :key="note.slug"
+                class="h-full"
                 :slug="note.slug"
                 :title="note.title"
                 :description="note.metadata.description"
                 :publish-date="note.metadata.published"
             />
         </div>
-        <div class="mt-7" v-else>
+        <div v-else class="mt-7">
             <loading />
         </div>
     </main-layout>

@@ -18,9 +18,9 @@ const props = defineProps<{
             v-text="props.header"
         />
         <h2
+            v-if="props.subheader"
             class="font-light mt-4 text-xl sm:text-2xl text-center sm:text-left leading-snug text-gray-700 dark:text-gray-300"
             v-text="props.subheader"
-            v-if="props.subheader"
         />
     </div>
 </template>

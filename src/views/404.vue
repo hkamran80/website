@@ -69,7 +69,8 @@ useTitle("Page Not Found | H. Kamran");
             </div>
 
             <p class="mt-8 text-lg">
-                Sometimes you gotta run before you can walk. So just pick an option.
+                Sometimes you gotta run before you can walk. So just pick an
+                option.
             </p>
         </div>
     </MainLayout>

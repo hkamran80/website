@@ -107,23 +107,25 @@ if (!store.state.noteTags) {
                     })
                 "
             />
-            <span class="ml-1 mr-2" v-if="tags">•</span>
-            <span v-for="tag of tags" :key="tag.slug" v-if="tags">
-                <router-link
-                    :to="`/notes/tag/${tag.slug}`"
-                    class="text-pink-700 dark:text-pink-500 hover:text-pink-800 dark:hover:text-pink-600 underline"
-                >
-                    {{ tag.title }}
-                </router-link>
-                <span
-                    v-if="
-                        tags.map((tag) => tag.slug).indexOf(tag.slug) !==
-                        tags.length - 1
-                    "
-                >
-                    ·
+            <span v-if="tags" class="ml-1 mr-2">•</span>
+            <div v-if="tags" class="contents">
+                <span v-for="tag of tags" :key="tag.slug">
+                    <router-link
+                        :to="`/notes/tag/${tag.slug}`"
+                        class="text-pink-700 dark:text-pink-500 hover:text-pink-800 dark:hover:text-pink-600 underline"
+                    >
+                        {{ tag.title }}
+                    </router-link>
+                    <span
+                        v-if="
+                            tags.map((tag) => tag.slug).indexOf(tag.slug) !==
+                            tags.length - 1
+                        "
+                    >
+                        ·
+                    </span>
                 </span>
-            </span>
+            </div>
         </h3>
 
         <div class="mt-7">

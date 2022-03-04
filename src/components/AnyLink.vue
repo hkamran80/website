@@ -9,20 +9,20 @@ const props = defineProps<{
 
 <template>
     <a
+        v-if="!href?.startsWith('/')"
         :href="props.href || undefined"
         :target="target"
         :rel="rel"
         :aria-label="ariaLabel"
-        v-if="!href?.startsWith('/')"
     >
         <slot />
     </a>
 
     <router-link
+        v-else
         :to="props.href || undefined"
         :target="target"
         :aria-label="ariaLabel"
-        v-else
     >
         <slot />
     </router-link>

@@ -2,8 +2,8 @@
     <div class="prose prose-pink dark:prose-light max-w-none">
         <h3>Prerequisites</h3>
         <p>
-            To set up Acoustats, you must first create a Last.fm account.
-            To create a Last.fm account, go to
+            To set up Acoustats, you must first create a Last.fm account. To
+            create a Last.fm account, go to
             <a
                 href="https://www.last.fm/join"
                 target="_blank"
@@ -29,10 +29,10 @@
         </p>
         <p>
             After your media platform is linked, start listening to music. After
-            you start listening, Acoustats (through Last.fm) will be able
-            to access your listening history. At any time, if you want to check
-            what listening history Last.fm and Acoustats can see, go to
-            your Last.fm profile from either the
+            you start listening, Acoustats (through Last.fm) will be able to
+            access your listening history. At any time, if you want to check
+            what listening history Last.fm and Acoustats can see, go to your
+            Last.fm profile from either the
             <a
                 href="https://www.last.fm/home"
                 target="_blank"
@@ -72,8 +72,8 @@
 
         <h3>Using Acoustats</h3>
         <p>
-            To use Acoustats, all you have to do is go into a channel (or
-            you can DM the bot) with a command. The following commands are
+            To use Acoustats, all you have to do is go into a channel (or you
+            can DM the bot) with a command. The following commands are
             available.
         </p>
         <ul>

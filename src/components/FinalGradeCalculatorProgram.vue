@@ -38,39 +38,39 @@ const feather = _feather;
         class="mt-7 grid sm:grid-cols-2 grid-cols-1 gap-x-8 gap-y-2 items-center"
     >
         <input-field
+            v-model="currentGrade"
             class="col-span-2 sm:col-span-1"
             type="number"
             placeholder="Current Grade"
             :svg="feather.icons.percent.toSvg()"
             step="any"
-            v-model="currentGrade"
         />
         <input-field
+            v-model="gradeWanted"
             class="col-span-2 sm:col-span-1"
             type="number"
             placeholder="Grade Wanted"
             :svg="feather.icons.percent.toSvg()"
             step="any"
-            v-model="gradeWanted"
         />
         <input-field
+            v-model="finalWeight"
             class="col-span-2"
             type="number"
             placeholder="Final Weight"
             :svg="feather.icons.percent.toSvg()"
             step="any"
-            v-model="finalWeight"
         />
 
         <div class="col-span-2">
             <hr class="mb-4" />
 
             <input-field
+                v-model="scoreNeeded"
                 type="number"
                 placeholder="Score Needed"
                 :svg="feather.icons.percent.toSvg()"
                 step="any"
-                v-model="scoreNeeded"
                 readonly
             />
             <span v-text="scoreNeededMessage" />

@@ -13,5 +13,5 @@ module.exports = {
         "plugin:vue/vue3-recommended",
         "prettier",
     ],
-    rules: { "vue/multi-word-component-names": "off" },
+    rules: { "vue/multi-word-component-names": "off", "vue/no-v-html": "off" },
 };

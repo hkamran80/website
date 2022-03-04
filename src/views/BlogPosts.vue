@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { useTitle } from "@vueuse/core";
 import { useStore } from "vuex";
 
@@ -22,13 +22,13 @@ const posts = computed(() => store.state.posts);
         <page-header header="Blog" />
 
         <div
-            class="mt-7 grid sm:grid-cols-3 grid-cols-1 gap-8 items-center"
             v-if="posts !== null"
+            class="mt-7 grid sm:grid-cols-3 grid-cols-1 gap-8 items-center"
         >
             <blog-card
-                class="h-full"
                 v-for="post in posts"
                 :key="post.slug"
+                class="h-full"
                 :slug="post.slug"
                 :featured-image-url="post.thumbnail"
                 :title="post.title"
@@ -36,7 +36,7 @@ const posts = computed(() => store.state.posts);
                 :publish-date="post.metadata.published"
             />
         </div>
-        <div class="mt-7" v-else>
+        <div v-else class="mt-7">
             <loading />
         </div>
     </main-layout>
