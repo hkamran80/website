@@ -40,6 +40,11 @@ export default defineConfig({
                         "./src/components/FinalGradeCalculatorProgram.vue",
                         "./src/components/OverallGradeAfterFinalCalculatorProgram.vue",
                     ],
+                    legal: [
+                        "./src/views/Legal.vue",
+                        "./src/views/License.vue",
+                        "./src/views/PrivacyPolicy.vue",
+                    ],
                 },
             },
         },

@@ -118,8 +118,9 @@
                 >.
             </p>
             <p>
-                Spotify Wrapped is a registered trademark of Spotify AB. I am in
-                no way affiliated with Spotify AB.
+                Spotify Wrapped is a registered trademark of Spotify AB. Last.fm
+                is a registered trademark of Audioscrobbler Limited. I am in no
+                way affiliated with Spotify AB or Audioscrobbler Limited.
             </p>
         </small>
     </div>
