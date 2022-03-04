@@ -22,8 +22,8 @@ useTitle("Page Not Found | H. Kamran");
                 </h3>
                 <h3>
                     You shouldn't be here...unless it was for a reason. You're
-                    not crazy. You just finally know what what you have to do.
-                    And you know in your heart that it’s right.
+                    not crazy. You just finally know what you have to do. And
+                    you know in your heart that it’s right.
                 </h3>
             </div>
 
@@ -69,8 +69,7 @@ useTitle("Page Not Found | H. Kamran");
             </div>
 
             <p class="mt-8 text-lg">
-                Sometimes you gotta run before you can walk. So just pick an
-                option.
+                Sometimes you gotta run before you can walk. So pick an option.
             </p>
         </div>
     </MainLayout>
