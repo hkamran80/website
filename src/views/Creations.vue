@@ -44,9 +44,9 @@ const inProgressCreations = computed(() =>
     <navigation-bar />
 
     <main-layout>
-        <page-header header="Creations" />
+        <page-header header="Creations" class="mb-7" />
 
-        <div v-if="creations" class="pt-5 space-y-8 divide-y">
+        <div v-if="creations" class="space-y-8 divide-y">
             <div>
                 <h3 class="text-xl font-bold mb-3">Featured</h3>
                 <div class="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center">

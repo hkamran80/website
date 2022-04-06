@@ -6,62 +6,132 @@ import Cosmic from "cosmicjs";
 
 import { datePostsSortAscending } from "./utils/sort";
 import { CREATIONS_URL } from "./data/constants";
+import { onBeforeMount } from "vue";
 
 const store = useStore();
-const api = Cosmic();
-const blogBucket = api.bucket({
-    slug: import.meta.env.VITE_APP_COSMIC_BLOG_BUCKET_SLUG as string,
-    read_key: import.meta.env.VITE_APP_COSMIC_BLOG_BUCKET_READ_KEY as string,
+// const api = Cosmic();
+// const blogBucket = api.bucket({
+//     slug: import.meta.env.VITE_APP_COSMIC_BLOG_BUCKET_SLUG as string,
+//     read_key: import.meta.env.VITE_APP_COSMIC_BLOG_BUCKET_READ_KEY as string,
+// });
+// const notesBucket = api.bucket({
+//     slug: import.meta.env.VITE_APP_COSMIC_NOTES_BUCKET_SLUG as string,
+//     read_key: import.meta.env.VITE_APP_COSMIC_NOTES_BUCKET_READ_KEY as string,
+// });
+
+// blogBucket
+// .getObjects({
+//     query: { type: "posts" },
+//     props: "slug,title,metadata,thumbnail,content",
+// })
+//     .then((data: any) =>
+//         store.commit("SAVE_POSTS", data.objects.sort(datePostsSortAscending)),
+//     )
+//     .catch((error: any) => {
+//         throw new Error(`CosmicJS Error: ${error}`);
+//     });
+
+// blogBucket
+//     .getObjects({ query: { type: "tags" }, props: "slug,title,metadata" })
+//     .then((data: any) => store.commit("SAVE_TAGS", data.objects))
+//     .catch((error: any) => {
+//         throw new Error(`CosmicJS Error: ${error}`);
+//     });
+
+// notesBucket
+// .getObjects({
+//     query: { type: "notes" },
+//     props: "slug,title,metadata,content",
+// })
+//     .then((data: any) =>
+//         store.commit("SAVE_NOTES", data.objects.sort(datePostsSortAscending)),
+//     )
+//     .catch((error: any) => {
+//         throw new Error(`CosmicJS Error: ${error}`);
+//     });
+
+// notesBucket
+//     .getObjects({ query: { type: "tags" }, props: "slug,title,metadata" })
+//     .then((data: any) => store.commit("SAVE_NOTES_TAGS", data.objects))
+//     .catch((error: any) => {
+//         throw new Error(`CosmicJS Error: ${error}`);
+//     });
+
+// fetch(CREATIONS_URL)
+//     .then((response) => response.json())
+//     .then((json) => store.commit("SAVE_CREATIONS", json))
+//     .catch((error) => {
+//         throw new Error(`API Error: ${error}`);
+//     });
+
+onBeforeMount(async () => {
+    // Creations
+    try {
+        store.commit(
+            "SAVE_CREATIONS",
+            await (await fetch(CREATIONS_URL)).json(),
+        );
+    } catch (error) {
+        console.error(error);
+    }
+
+    // Blog and Notes
+    try {
+        const api = Cosmic();
+        const blogBucket = api.bucket({
+            slug: import.meta.env.VITE_APP_COSMIC_BLOG_BUCKET_SLUG as string,
+            read_key: import.meta.env
+                .VITE_APP_COSMIC_BLOG_BUCKET_READ_KEY as string,
+        });
+        const notesBucket = api.bucket({
+            slug: import.meta.env.VITE_APP_COSMIC_NOTES_BUCKET_SLUG as string,
+            read_key: import.meta.env
+                .VITE_APP_COSMIC_NOTES_BUCKET_READ_KEY as string,
+        });
+
+        store.commit(
+            "SAVE_POSTS",
+            (
+                await blogBucket.getObjects({
+                    query: { type: "posts" },
+                    props: "slug,title,metadata,thumbnail,content",
+                })
+            ).objects.sort(datePostsSortAscending),
+        );
+
+        store.commit(
+            "SAVE_TAGS",
+            (
+                await blogBucket.getObjects({
+                    query: { type: "tags" },
+                    props: "slug,title,metadata",
+                })
+            ).objects,
+        );
+
+        store.commit(
+            "SAVE_NOTES",
+            (
+                await notesBucket.getObjects({
+                    query: { type: "notes" },
+                    props: "slug,title,metadata,content",
+                })
+            ).objects.sort(datePostsSortAscending),
+        );
+
+        store.commit(
+            "SAVE_NOTES_TAGS",
+            (
+                await notesBucket.getObjects({
+                    query: { type: "tags" },
+                    props: "slug,title,metadata",
+                })
+            ).objects,
+        );
+    } catch (error) {
+        console.error(error);
+    }
 });
-const notesBucket = api.bucket({
-    slug: import.meta.env.VITE_APP_COSMIC_NOTES_BUCKET_SLUG as string,
-    read_key: import.meta.env.VITE_APP_COSMIC_NOTES_BUCKET_READ_KEY as string,
-});
-
-blogBucket
-    .getObjects({
-        query: { type: "posts" },
-        props: "slug,title,metadata,thumbnail,content",
-    })
-    .then((data: any) =>
-        store.commit("SAVE_POSTS", data.objects.sort(datePostsSortAscending)),
-    )
-    .catch((error: any) => {
-        throw new Error(`CosmicJS Error: ${error}`);
-    });
-
-blogBucket
-    .getObjects({ query: { type: "tags" }, props: "slug,title,metadata" })
-    .then((data: any) => store.commit("SAVE_TAGS", data.objects))
-    .catch((error: any) => {
-        throw new Error(`CosmicJS Error: ${error}`);
-    });
-
-notesBucket
-    .getObjects({
-        query: { type: "notes" },
-        props: "slug,title,metadata,content",
-    })
-    .then((data: any) =>
-        store.commit("SAVE_NOTES", data.objects.sort(datePostsSortAscending)),
-    )
-    .catch((error: any) => {
-        throw new Error(`CosmicJS Error: ${error}`);
-    });
-
-notesBucket
-    .getObjects({ query: { type: "tags" }, props: "slug,title,metadata" })
-    .then((data: any) => store.commit("SAVE_NOTES_TAGS", data.objects))
-    .catch((error: any) => {
-        throw new Error(`CosmicJS Error: ${error}`);
-    });
-
-fetch(CREATIONS_URL)
-    .then((response) => response.json())
-    .then((json) => store.commit("SAVE_CREATIONS", json))
-    .catch((error) => {
-        throw new Error(`API Error: ${error}`);
-    });
 </script>
 
 <template>
