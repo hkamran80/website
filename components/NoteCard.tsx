@@ -1,0 +1,40 @@
+import type { BasePost } from "../types/blog";
+
+const NoteCard = ({ note }: { note: Writing }) => {
+    return (
+        <div className="mt-1 pt-5 hover:cursor-pointer">
+            <div className="items-center">
+                <div className="col-span-2">
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <time dateTime={note.published}>
+                            {new Date(
+                                `${note.published}T12:00:00-07:00`,
+                            ).toLocaleDateString(undefined, {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })}
+                        </time>
+                    </p>
+
+                    <span className="mt-2 block">
+                        <p className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                            {note.title}
+                        </p>
+                        <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
+                            {note.description}
+                        </p>
+                    </span>
+
+                    <div className="mt-3">
+                        <span className="text-base font-semibold text-pink-700 dark:text-pink-500 hover:text-pink-800 dark:hover:text-pink-600">
+                            Read the note
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default NoteCard;
