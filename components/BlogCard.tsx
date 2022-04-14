@@ -1,5 +1,5 @@
-import type { Post } from "../types/blog";
 import Image from "next/image";
+import type { Article } from "../types/writings";
 
 const BlogCard = ({ article }: { article: Article }) => {
     return (

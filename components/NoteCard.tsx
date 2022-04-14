@@ -1,4 +1,4 @@
-import type { BasePost } from "../types/blog";
+import type{ Writing } from "../types/writings";
 
 const NoteCard = ({ note }: { note: Writing }) => {
     return (

@@ -7,6 +7,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import WritingTags from "../../components/WritingTags";
 import { BASE_WRITINGS_URL } from "../../data/constants";
+import type{ Writing } from "../../types/writings";
 import { StateContext } from "../_app";
 
 const Note: NextPage = () => {

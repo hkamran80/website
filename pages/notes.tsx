@@ -3,7 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import NoteCard from "../components/NoteCard";
-import { notes } from "../data/notes";
 import { StateContext } from "./_app";
 
 const Notes: NextPage = () => {
