@@ -1,13 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { links } from "../data/navigation";
 import { classNames } from "../util/classNames";
-
-const links = [
-    { href: "/showcase", name: "Showcase", aliases: [] },
-    { href: "/articles", name: "Articles", aliases: ["/article"] },
-    { href: "/notes", name: "Notes", aliases: ["/note"] },
-    { href: "/programs", name: "Programs", aliases: ["/program"] },
-];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const router = useRouter();

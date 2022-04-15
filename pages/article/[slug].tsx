@@ -9,6 +9,7 @@ import MarkdownIt from "markdown-it";
 import { BASE_WRITINGS_URL } from "../../data/constants";
 import WritingTags from "../../components/WritingTags";
 import type { Article as ArticleType } from "../../types/writings";
+import absoluteUrl from "next-absolute-url";
 
 const Article: NextPage = () => {
     const router = useRouter();
@@ -59,6 +60,104 @@ const Article: NextPage = () => {
                 <>
                     <Head>
                         <title>{article.title} | H. Kamran</title>
+
+                        <meta
+                            name="description"
+                            content={article.description}
+                            key="description"
+                        />
+
+                        {/* Open Graph */}
+                        <meta
+                            property="og:type"
+                            content="article"
+                            key="og:type"
+                        />
+                        <meta
+                            property="og:title"
+                            content={article.title}
+                            key="og:title"
+                        />
+                        <meta
+                            property="og:url"
+                            content={`${
+                                typeof window !== "undefined" &&
+                                window.location.origin
+                                    ? window.location.origin
+                                    : ""
+                            }/article/${article.id}`}
+                            key="og:url"
+                        />
+                        <meta
+                            property="og:image"
+                            content={article.heroImage}
+                            key="og:image"
+                        />
+                        <meta
+                            property="og:image:alt"
+                            content={`Featured image for ${article.title}`}
+                            key="og:image:alt"
+                        />
+                        <meta
+                            property="og:description"
+                            content={article.description}
+                            key="og:description"
+                        />
+                        <meta
+                            property="article:author"
+                            content="H. Kamran"
+                            key="article:author"
+                        />
+                        <meta
+                            property="article:published_time"
+                            content={`${article.published}T07:00:00.000-08:00`}
+                            key="article:published_time"
+                        />
+
+                        {article.tags.map((tag, index) => (
+                            <meta
+                                key={index}
+                                property="article:tag"
+                                content={tag}
+                            />
+                        ))}
+
+                        {/* Twitter */}
+                        <meta
+                            name="twitter:card"
+                            content="summary_large_image"
+                            key="twitter:card"
+                        />
+                        <meta
+                            name="twitter:title"
+                            content={article.title}
+                            key="twitter:title"
+                        />
+                        <meta
+                            name="twitter:site"
+                            content="@hkamran80"
+                            key="twitter:site"
+                        />
+                        <meta
+                            name="twitter:creator"
+                            content="@hkamran80"
+                            key="twitter:creator"
+                        />
+                        <meta
+                            name="twitter:description"
+                            content={article.description}
+                            key="twitter:description"
+                        />
+                        <meta
+                            name="twitter:image"
+                            content={article.heroImage}
+                            key="twitter:image"
+                        />
+                        <meta
+                            name="twitter:image:alt"
+                            content={`Featured image for ${article.title}`}
+                            key="twitter:image:alt"
+                        />
                     </Head>
 
                     <Breadcrumbs
@@ -102,7 +201,7 @@ const Article: NextPage = () => {
                             alt={`Featured image for ${article.title}`}
                         />
                         <article
-                            className="max-w-none prose prose-invert prose-a:text-pink-400"
+                            className="max-w-none prose prose-invert prose-a:text-pink-400 prose-pre:bg-hk-grey"
                             dangerouslySetInnerHTML={{
                                 __html: content,
                             }}

@@ -7,10 +7,10 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import WritingTags from "../../components/WritingTags";
 import { BASE_WRITINGS_URL } from "../../data/constants";
-import type{ Writing } from "../../types/writings";
+import type { Writing } from "../../types/writings";
 import { StateContext } from "../_app";
 
-const Note: NextPage = () => {
+const Article: NextPage = () => {
     const router = useRouter();
     const { slug } = router.query;
 
@@ -59,6 +59,80 @@ const Note: NextPage = () => {
                 <>
                     <Head>
                         <title>{note.title} | H. Kamran</title>
+
+                        <meta
+                            name="description"
+                            content={note.description}
+                            key="description"
+                        />
+
+                        {/* Open Graph */}
+                        <meta property="og:type" content="note" key="og:type" />
+                        <meta
+                            property="og:title"
+                            content={note.title}
+                            key="og:title"
+                        />
+                        <meta
+                            property="og:url"
+                            content={`${
+                                typeof window !== "undefined" &&
+                                window.location.origin
+                                    ? window.location.origin
+                                    : ""
+                            }/note/${note.id}`}
+                            key="og:url"
+                        />
+                        <meta
+                            property="og:description"
+                            content={note.description}
+                            key="og:description"
+                        />
+                        <meta
+                            property="article:author"
+                            content="H. Kamran"
+                            key="article:author"
+                        />
+                        <meta
+                            property="article:published_time"
+                            content={`${note.published}T07:00:00.000-08:00`}
+                            key="article:published_time"
+                        />
+
+                        {note.tags.map((tag, index) => (
+                            <meta
+                                key={index}
+                                property="article:tag"
+                                content={tag}
+                            />
+                        ))}
+
+                        {/* Twitter */}
+                        <meta
+                            name="twitter:card"
+                            content="summary_large_image"
+                            key="twitter:card"
+                        />
+                        <meta
+                            name="twitter:title"
+                            content={note.title}
+                            key="twitter:title"
+                        />
+                        <meta
+                            name="twitter:site"
+                            content="@hkamran80"
+                            key="twitter:site"
+                        />
+                        <meta
+                            name="twitter:creator"
+                            content="@hkamran80"
+                            key="twitter:creator"
+                        />
+                        <meta
+                            name="twitter:description"
+                            content={note.description}
+                            key="twitter:description"
+                        />
                     </Head>
 
                     <Breadcrumbs
@@ -99,7 +173,7 @@ const Note: NextPage = () => {
 
                     <div className="mt-6 max-w-5xl mx-auto">
                         <article
-                            className="max-w-none prose prose-invert prose-a:text-pink-400"
+                            className="max-w-none prose prose-invert prose-a:text-pink-400 prose-pre:bg-hk-grey"
                             dangerouslySetInnerHTML={{
                                 __html: content,
                             }}
@@ -111,4 +185,4 @@ const Note: NextPage = () => {
     );
 };
 
-export default Note;
+export default Article;

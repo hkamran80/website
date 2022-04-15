@@ -13,7 +13,7 @@ const WritingTags = ({
             {tags.map((tag, index) => (
                 <Fragment key={index}>
                     <Link href={`/${basePath}/${tag.toLowerCase()}`} passHref>
-                        <a className="text-pink-400 hover:underline">{tag}</a>
+                        <a className="text-pink-400 hover:text-pink-700 transition-colors duration-300">{tag}</a>
                     </Link>{" "}
                     <span>{index !== tags.length - 1 ? "·" : ""}</span>{" "}
                 </Fragment>

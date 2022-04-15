@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { ChevronRight, Home } from "react-feather";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import { programs } from "../../data/pages";
 import type { Page } from "../../types/pages";
@@ -50,40 +51,11 @@ const Program: NextPage = () => {
                             program.centerContent ? "max-w-2xl" : "max-w-5xl",
                         )}
                     >
-                        <nav className="flex mb-6" aria-label="Breadcrumb">
-                            <ol className="flex items-center space-x-4">
-                                <li>
-                                    <Link href="/" passHref>
-                                        <span className="text-gray-500 hover:text-gray-400 hover:cursor-pointer">
-                                            <span className="sr-only">
-                                                Home
-                                            </span>
-                                            <Home />
-                                        </span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <div className="flex items-center">
-                                        <ChevronRight />
-
-                                        <Link href="/programs" passHref>
-                                            <span className="ml-4 text-sm font-medium text-gray-400 hover:text-gray-300 hover:cursor-pointer">
-                                                Programs
-                                            </span>
-                                        </Link>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="flex items-center">
-                                        <ChevronRight />
-
-                                        <span className="ml-4 text-sm font-medium text-gray-400 hover:text-gray-300 hover:cursor-pointer">
-                                            {program.name}
-                                        </span>
-                                    </div>
-                                </li>
-                            </ol>
-                        </nav>
+                        <Breadcrumbs
+                            basePath="/programs"
+                            baseLabel="Programs"
+                            currentLabel={program.name}
+                        />
 
                         <div className="space-y-2">
                             <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">

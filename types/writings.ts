@@ -1,10 +1,3 @@
-export type SiteState = {
-    articles: Article[];
-    notes: Writing[];
-    articleTags: string[];
-    noteTags: string[];
-};
-
 export type Writing = {
     id: string;
     title: string;

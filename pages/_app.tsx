@@ -1,30 +1,53 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { createContext, useEffect, useState } from "react";
-import { WRITINGS_URL } from "../data/constants";
-import type { SiteState, Writing, Article } from "../types/writings";
+import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
+import type { Writing, Article } from "../types/writings";
+import { SiteState } from "../types/state";
 
 export const StateContext = createContext<SiteState>({
     articles: [],
     notes: [],
-    articleTags: [],
-    noteTags: [],
+    articleTags: {},
+    noteTags: {},
+    showcase: [],
 });
 
 function Website({ Component, pageProps }: AppProps) {
     const [state, setState] = useState<SiteState>({
         articles: [],
         notes: [],
-        articleTags: [],
-        noteTags: [],
+        articleTags: {},
+        noteTags: {},
+        showcase: [],
     });
 
     useEffect(() => {
         const loadState = async () => {
             const newState = await (await fetch(WRITINGS_URL)).json();
+            const showcase = await (await fetch(SHOWCASE_URL)).json();
 
             setState({
-                ...newState,
+                articles: (newState.articles as Article[]).sort(
+                    ({ published: publishedA }, { published: publishedB }) => {
+                        if (publishedA < publishedB) {
+                            return 1;
+                        } else if (publishedA > publishedB) {
+                            return -1;
+                        }
+                        return 0;
+                    },
+                ),
+                notes: (newState.notes as Writing[]).sort(
+                    ({ published: publishedA }, { published: publishedB }) => {
+                        if (publishedA < publishedB) {
+                            return 1;
+                        } else if (publishedA > publishedB) {
+                            return -1;
+                        }
+                        return 0;
+                    },
+                ),
                 articleTags: Object.fromEntries(
                     Array.from(
                         new Set(
@@ -53,6 +76,7 @@ function Website({ Component, pageProps }: AppProps) {
                             .map(({ id }) => id),
                     ]),
                 ),
+                showcase,
             });
         };
 

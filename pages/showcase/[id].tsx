@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { ChevronRight, Home } from "react-feather";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import { showcasePages } from "../../data/pages";
 import type { Page } from "../../types/pages";
@@ -57,40 +58,11 @@ const ShowcasePage: NextPage = () => {
                                 : "max-w-5xl",
                         )}
                     >
-                        <nav className="flex mb-6" aria-label="Breadcrumb">
-                            <ol className="flex items-center space-x-4">
-                                <li>
-                                    <Link href="/" passHref>
-                                        <span className="text-gray-500 hover:text-gray-400 hover:cursor-pointer">
-                                            <span className="sr-only">
-                                                Home
-                                            </span>
-                                            <Home />
-                                        </span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <div className="flex items-center">
-                                        <ChevronRight />
-
-                                        <Link href="/showcase" passHref>
-                                            <span className="ml-4 text-sm font-medium text-gray-400 hover:text-gray-300 hover:cursor-pointer">
-                                                Showcase
-                                            </span>
-                                        </Link>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="flex items-center">
-                                        <ChevronRight />
-
-                                        <span className="ml-4 text-sm font-medium text-gray-400 hover:text-gray-300 hover:cursor-pointer">
-                                            {showcasePage.name}
-                                        </span>
-                                    </div>
-                                </li>
-                            </ol>
-                        </nav>
+                        <Breadcrumbs
+                            basePath="/showcase"
+                            baseLabel="Showcase"
+                            currentLabel={showcasePage.name}
+                        />
 
                         <div className="space-y-2">
                             <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">

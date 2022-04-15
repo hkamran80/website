@@ -19,6 +19,7 @@ specifiers:
     feather-icons: ^4.29.0
     markdown-it: ^12.3.2
     next: 12.1.4
+    next-absolute-url: ^1.2.2
     postcss: ^8.4.12
     prettier: ^2.6.2
     prettier-plugin-tailwindcss: ^0.1.8
@@ -38,6 +39,7 @@ dependencies:
     feather-icons: 4.29.0
     markdown-it: 12.3.2
     next: 12.1.4_react-dom@18.0.0+react@18.0.0
+    next-absolute-url: 1.2.2
     react: 18.0.0
     react-dom: 18.0.0_react@18.0.0
     react-feather: 2.0.9_react@18.0.0
@@ -2306,6 +2308,13 @@ packages:
     /natural-compare/1.4.0:
         resolution: { integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc= }
         dev: true
+
+    /next-absolute-url/1.2.2:
+        resolution:
+            {
+                integrity: sha512-Z2+LZXQTthhw2je9u4eq8QWXxXd57a6b54x9exBfQX4Dct6YxaMjcXZWNLHd9AOlCue84EsMpdSGP7wACqUnPg==,
+            }
+        dev: false
 
     /next/12.1.4_react-dom@18.0.0+react@18.0.0:
         resolution:

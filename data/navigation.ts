@@ -17,3 +17,10 @@ export const socialIcons = [
     { url: "https://hkamran.medium.com", icon: siMedium, color: null },
     { url: "https://unsplash.com/@hkamran", icon: siUnsplash, color: null },
 ];
+
+export const links = [
+    { href: "/showcase", name: "Showcase", aliases: [] },
+    { href: "/articles", name: "Articles", aliases: ["/article"] },
+    { href: "/notes", name: "Notes", aliases: ["/note"] },
+    { href: "/programs", name: "Programs", aliases: ["/program"] },
+];
