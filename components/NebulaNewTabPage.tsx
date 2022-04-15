@@ -259,7 +259,7 @@ const NebulaNewTabPage = () => {
                                 onChange={setCurrentVersion}
                             >
                                 <div className="relative mt-1">
-                                    <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white dark:bg-gray-900 rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
+                                    <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-hk-grey rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-indigo-500 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
                                         <span className="block truncate">
                                             Version {currentVersion?.version}
                                         </span>
@@ -268,16 +268,16 @@ const NebulaNewTabPage = () => {
                                         </span>
                                     </Listbox.Button>
 
-                                    <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white dark:bg-gray-900 rounded-lg shadow-lg max-h-60 ring-1 ring-black dark:ring-white ring-opacity-5 focus:outline-none sm:text-sm">
+                                    <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-hk-grey rounded-lg shadow-lg max-h-60 ring-1 ring-white ring-opacity-5 focus:outline-none sm:text-sm">
                                         {changelog.map((version, index) => (
                                             <Listbox.Option
                                                 key={index}
                                                 className={({ active }) =>
                                                     classNames(
-                                                        "cursor-default select-none relative py-2 px-4",
+                                                        "cursor-default select-none relative py-2 px-4 transition-colors duration-200 text-gray-100",
                                                         active
-                                                            ? "text-purple-900 dark:text-gray-100 bg-purple-100 dark:bg-purple-900"
-                                                            : "text-gray-900 dark:text-gray-100",
+                                                            ? "bg-purple-900"
+                                                            : "",
                                                     )
                                                 }
                                                 value={version}
