@@ -47,7 +47,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
 
             <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center mt-8 md:mt-12">
-                <div className="block text-black dark:text-white pb-8 w-full">
+                <div className="block text-white pb-8 w-full">
                     {children}
                 </div>
             </div>

@@ -7,10 +7,10 @@ const ProgramCard = ({ program }: { program: Page }) => {
             aria-label={program.name}
         >
             <div className="w-full p-6 space-y-0.5">
-                <span className="text-gray-900 dark:text-white text-md font-medium truncate">
+                <span className="text-white text-md font-medium truncate">
                     {program.name}
                 </span>
-                <p className="text-gray-500 dark:text-gray-400 text-sm">
+                <p className="text-gray-400 text-sm">
                     {program.description}
                 </p>
             </div>

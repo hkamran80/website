@@ -140,7 +140,7 @@ const NebulaNewTabPage = () => {
             <div id="features" className="py-12">
                 <div className="max-w-7xl mx-auto pb-6 px-4 sm:pb-12 sm:px-6 lg:px-8 lg:flex lg:justify-between">
                     <div className="max-w-xl">
-                        <h2 className="text-2xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-5xl sm:tracking-tight lg:text-4xl">
+                        <h2 className="text-2xl font-extrabold text-gray-100 sm:text-5xl sm:tracking-tight lg:text-4xl">
                             Features
                         </h2>
                     </div>
@@ -153,7 +153,7 @@ const NebulaNewTabPage = () => {
                                 <Clock />
                             </div>
                             <div className="mt-5">
-                                <dt className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
+                                <dt className="text-lg leading-6 font-medium text-gray-100">
                                     Time and Date
                                 </dt>
                                 <dd className="mt-2 text-base text-gray-500">
@@ -167,7 +167,7 @@ const NebulaNewTabPage = () => {
                                 <FeatherImage />
                             </div>
                             <div className="mt-5">
-                                <dt className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
+                                <dt className="text-lg leading-6 font-medium text-gray-100">
                                     Background Images
                                 </dt>
                                 <dd className="mt-2 text-base text-gray-500">
@@ -203,7 +203,7 @@ const NebulaNewTabPage = () => {
                                 <Globe />
                             </div>
                             <div className="mt-5">
-                                <dt className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
+                                <dt className="text-lg leading-6 font-medium text-gray-100">
                                     Top Sites
                                 </dt>
                                 <dd className="mt-2 text-base text-gray-500">
@@ -221,7 +221,7 @@ const NebulaNewTabPage = () => {
                                 <Clock />
                             </div>
                             <div className="mt-5">
-                                <dt className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
+                                <dt className="text-lg leading-6 font-medium text-gray-100">
                                     24-Hour Time
                                 </dt>
                                 <dd className="mt-2 text-base text-gray-500">
@@ -241,12 +241,12 @@ const NebulaNewTabPage = () => {
             <div id="changelog" className="py-12">
                 <div className="max-w-7xl mx-auto pb-6 px-4 sm:pb-8 sm:px-6 lg:px-8 lg:flex lg:justify-between">
                     <div className="max-w-xl">
-                        <h2 className="text-2xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-5xl sm:tracking-tight lg:text-4xl">
+                        <h2 className="text-2xl font-extrabold text-gray-100 sm:text-5xl sm:tracking-tight lg:text-4xl">
                             Changelog
                         </h2>
 
                         {currentVersion && (
-                            <p className="mt-3 mb-6 sm:mb-0 text-xl text-gray-600 dark:text-gray-400">
+                            <p className="mt-3 mb-6 sm:mb-0 text-xl text-gray-400">
                                 {currentVersion.date}
                             </p>
                         )}

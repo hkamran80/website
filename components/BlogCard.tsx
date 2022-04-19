@@ -15,7 +15,7 @@ const BlogCard = ({ article }: { article: Article }) => {
                 />
 
                 <div className="col-span-2">
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-gray-400">
                         <time dateTime={article.published}>
                             {new Date(
                                 `${article.published}T12:00:00-07:00`,
@@ -28,16 +28,16 @@ const BlogCard = ({ article }: { article: Article }) => {
                     </p>
 
                     <span className="mt-2 block">
-                        <p className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                        <p className="text-xl font-semibold text-gray-200">
                             {article.title}
                         </p>
-                        <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
+                        <p className="mt-2 text-base text-gray-400">
                             {article.description}
                         </p>
                     </span>
 
                     <div className="mt-3 hover:cursor-pointer">
-                        <span className="text-base font-semibold dark:text-pink-500 dark:hover:text-pink-600">
+                        <span className="text-base font-semibold text-pink-500 hover:text-pink-600">
                             Read full article
                         </span>
                     </div>
