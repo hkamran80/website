@@ -9,7 +9,6 @@ import MarkdownIt from "markdown-it";
 import { BASE_WRITINGS_URL } from "../../data/constants";
 import WritingTags from "../../components/WritingTags";
 import type { Article as ArticleType } from "../../types/writings";
-import absoluteUrl from "next-absolute-url";
 
 const Article: NextPage = () => {
     const router = useRouter();
@@ -44,8 +43,12 @@ const Article: NextPage = () => {
                     md
                         .render(markdown)
                         .replace(
-                            /<a([^>]+)>(.+?)<\/a>/gi,
+                            /<a([^>]+)>(.+?)<\/a>/gim,
                             `<a$1 target="_blank" rel="noopener noreferrer" title="$2" aria-label="$2">$2</a>`,
+                        )
+                        .replace(
+                            /<img([^>]+)>/gim,
+                            `<img$1 class="rounded-lg" />`,
                         ),
                 );
             }
