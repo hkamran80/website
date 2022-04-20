@@ -16,6 +16,20 @@ export const programs: Page[] = [
         centerContent: true,
         componentFilename: "OverallGradeAfterFinalCalculatorProgram",
     },
+    {
+        id: "text-reverser",
+        name: "Text Reverser",
+        description: "Reverse some text, because why not?",
+        centerContent: true,
+        componentFilename: "TextReverseProgram",
+    },
+    {
+        id: "web-utilities",
+        name: "Web Utilites",
+        description: "Some helpful web utilities",
+        centerContent: true,
+        componentFilename: "WebUtilitiesProgram",
+    },
 ];
 
 export const showcasePages: Page[] = [
