@@ -56,7 +56,6 @@ const Article: NextPage = () => {
 
         loadContent();
     }, [article, md]);
-
     return (
         <Layout>
             {article && (
@@ -202,6 +201,7 @@ const Article: NextPage = () => {
                             src={article.heroImage}
                             className="rounded-lg mb-7"
                             alt={`Featured image for ${article.title}`}
+                            loading="eager"
                         />
                         <article
                             className="max-w-none prose prose-invert prose-a:text-pink-400 prose-pre:bg-hk-grey"
