@@ -11,4 +11,5 @@ export type InputFieldProps = {
     step?: string | number;
     readonly?: boolean;
     disabled?: boolean;
+    copyAll?: boolean;
 };

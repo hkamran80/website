@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
     return (
         <div className="px-12 xl:px-0">
-            <div className="max-w-5xl mx-auto pt-10 md:pt-4 select-none">
+            <header className="max-w-5xl mx-auto pt-10 md:pt-4 select-none">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-6 pt-5">
                     <span className="flex-1 w-full -ml-2 sm:ml-0 text-xl md:text-base font-bold hover:text-pink-400 hover:cursor-pointer transition-colors duration-300">
                         <Link href="/" passHref>
@@ -44,10 +44,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         ))}
                     </div>
                 </div>
-            </div>
+            </header>
 
             <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center mt-8 md:mt-12">
-                <div className="block text-white pb-8 w-full">
+                <div className="block text-white pb-8 w-full" role="main">
                     {children}
                 </div>
             </div>

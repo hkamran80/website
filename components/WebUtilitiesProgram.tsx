@@ -20,6 +20,7 @@ const WebUtilitiesProgram = () => {
                     value={userAgent}
                     valueUpdate={(value) => {}}
                     readonly
+                    copyAll
                 />
             </div>
         </div>

@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from "react";
 import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
 import type { Writing, Article } from "../types/writings";
 import { SiteState } from "../types/state";
+import React from "react";
 
 export const StateContext = createContext<SiteState>({
     articles: [],
@@ -13,7 +14,23 @@ export const StateContext = createContext<SiteState>({
     showcase: [],
 });
 
-function Website({ Component, pageProps }: AppProps) {
+const isServerSideRendered = () => {
+    return typeof window === "undefined";
+};
+
+if (process.env.NODE_ENV !== "production" && !isServerSideRendered()) {
+    // we import react-dom and @axe-core/react dynamically
+    // so that we'll receive warning in our console about
+    // inaccessible code.
+
+    import("react-dom").then((ReactDOM) => {
+        import("@axe-core/react").then((axe) => {
+            axe.default(React, ReactDOM, 1000, {});
+        });
+    });
+}
+
+const Website = ({ Component, pageProps }: AppProps) => {
     const [state, setState] = useState<SiteState>({
         articles: [],
         notes: [],
@@ -88,6 +105,6 @@ function Website({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
         </StateContext.Provider>
     );
-}
+};
 
 export default Website;

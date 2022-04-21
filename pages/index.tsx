@@ -27,7 +27,10 @@ const Home: NextPage = () => {
                 <title>H. Kamran</title>
             </Head>
 
-            <main className="py-20 px-12 md:px-40 items-center justify-center space-y-8 max-w-7xl mx-auto">
+            <main
+                className="py-20 px-12 md:px-40 items-center justify-center space-y-8 max-w-7xl mx-auto"
+                role="main"
+            >
                 <section className="space-y-7">
                     <div className="space-y-3">
                         <h1 className="text-5xl sm:text-6xl font-bold">

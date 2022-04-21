@@ -39,6 +39,7 @@ const TextReverseProgram = () => {
                     value={reversedText || ""}
                     valueUpdate={(value) => {}}
                     disabled
+                    copyAll
                 />
             </div>
         </div>

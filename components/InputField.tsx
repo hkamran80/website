@@ -30,6 +30,7 @@ const InputField = ({ ...props }: InputFieldProps) => {
                         "px-3 py-3 relative bg-hk-grey rounded-lg text-sm border-0 shadow outline-none focus:outline-none w-full appearance-none",
                         !props.disabled ? "focus:ring focus:ring-pink-700" : "",
                         props.svg ? "pr-10" : "",
+                        props.copyAll ? "select-all" : "",
                     )}
                     step={props.step}
                     value={props.value}
