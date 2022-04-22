@@ -9,8 +9,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <div className="px-12 xl:px-0">
             <header className="max-w-5xl mx-auto pt-10 md:pt-4 select-none">
-                <div className="flex flex-col md:flex-row justify-between items-center mb-6 pt-5">
-                    <span className="flex-1 w-full -ml-2 sm:ml-0 text-xl md:text-base font-bold hover:text-pink-400 hover:cursor-pointer transition-colors duration-300">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pt-5">
+                    <span className="flex-1 w-full sm:ml-0 text-xl md:text-base font-bold hover:text-pink-400 hover:cursor-pointer transition-colors duration-300">
                         <Link href="/" passHref>
                             H. Kamran
                         </Link>

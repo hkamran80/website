@@ -4,7 +4,7 @@ specifiers:
   '@axe-core/react': ^4.4.2
   '@headlessui/react': ^1.5.0
   '@hkamran/prettier-config': ^1.1.1
-  '@hkamran/utility-web': ^1.0.0
+  '@hkamran/utility-web': ^1.0.1
   '@next/bundle-analyzer': ^12.1.4
   '@tailwindcss/typography': ^0.5.2
   '@types/feather-icons': ^4.7.0
@@ -36,7 +36,7 @@ specifiers:
 
 dependencies:
   '@headlessui/react': 1.5.0_react-dom@18.0.0+react@18.0.0
-  '@hkamran/utility-web': 1.0.0
+  '@hkamran/utility-web': 1.0.1
   feather-icons: 4.29.0
   markdown-it: 12.3.2
   next: 12.1.4_react-dom@18.0.0+react@18.0.0
@@ -146,8 +146,8 @@ packages:
     resolution: {integrity: sha512-VLAWG2W19Wonwl+uEz1qNgQINxCd5igOH1gUb+OsW46WEZlDOcFapTQyI/Mi/mB4NvTz2hd2hxUiAPAztH/xuA==}
     dev: true
 
-  /@hkamran/utility-web/1.0.0:
-    resolution: {integrity: sha512-3h8seY66GwqeeBjN/af4lgjDpjh6Mjks5j5p4kNO8bKjJ6klT1lyGAfNh2oi+/zKrzZ1vYa50fQpCGC579rMrA==}
+  /@hkamran/utility-web/1.0.1:
+    resolution: {integrity: sha512-gghNN0BxZBs4o+blZsNz1SwSWzKaFkNNOeKy4zYwpmwHHflq6jswIqj8iOSlOkAvgcnwJO2vhvEtHunXEiTlHw==}
     dev: false
 
   /@humanwhocodes/config-array/0.9.5:
