@@ -6,6 +6,7 @@ import { ChevronRight } from "react-feather";
 import CreationCard from "../components/CreationCardLinked";
 import { socialIcons } from "../data/navigation";
 import type { Article } from "../types/writings";
+import { classNames } from "../util/classNames";
 import { StateContext } from "./_app";
 
 // @ts-ignore
@@ -63,16 +64,16 @@ const Home: NextPage = () => {
                         ))}
                     </div>
 
-                    <div className="text-2xl font-light leading-normal space-y-3">
+                    <div className="text-2xl font-light leading-normal space-y-1">
                         <p>
                             I’m experienced with Python, JavaScript, TypeScript,
-                            Vue.js, Java, Kotlin, Swift, and SwiftUI
+                            Vue.js, Java, Kotlin, Swift, and SwiftUI.
                         </p>
 
                         <p>
                             I also write articles on topics that interest me and
                             that seem useful, as well as occasionally taking
-                            photos
+                            photos.
                         </p>
                     </div>
                 </section>
@@ -80,9 +81,9 @@ const Home: NextPage = () => {
                 <section className="space-y-5">
                     <div className="space-y-3">
                         <Link href="/articles" passHref>
-                            <span className="text-2xl font-semibold hover:cursor-pointer flex items-center">
+                            <span className="text-2xl font-semibold hover:cursor-pointer flex items-center group">
                                 <span className="flex-1">Articles</span>
-                                <ChevronRight />
+                                <ChevronRight className="group-hover:animate-bounce-side" />
                             </span>
                         </Link>
 
@@ -120,9 +121,9 @@ const Home: NextPage = () => {
 
                     <div className="space-y-3">
                         <Link href="/showcase" passHref>
-                            <span className="text-2xl font-semibold hover:cursor-pointer flex items-center">
+                            <span className="text-2xl font-semibold hover:cursor-pointer flex items-center group">
                                 <span className="flex-1">Showcase</span>
-                                <ChevronRight />
+                                <ChevronRight className="group-hover:animate-bounce-side" />
                             </span>
                         </Link>
 
@@ -151,17 +152,22 @@ const Home: NextPage = () => {
                                     />
                                 ))}
 
-                            {state.showcase.filter(
-                                ({ featured }) => featured === true,
-                            ).length < 4 && (
-                                <Link href="/showcase" passHref>
-                                    <div className="ring-2 ring-hk-grey hover:ring-pink-700 rounded-lg flex items-center justify-center py-6 transition duration-300">
-                                        <span className="text-[#b0b0b0] text-lg">
-                                            More
-                                        </span>
-                                    </div>
-                                </Link>
-                            )}
+                            <Link href="/showcase" passHref>
+                                <div
+                                    className={classNames(
+                                        "ring-2 ring-hk-grey hover:ring-pink-700 rounded-lg flex items-center justify-center transition duration-300",
+                                        state.showcase.filter(
+                                            ({ featured }) => featured === true,
+                                        ).length < 4
+                                            ? "py-6"
+                                            : "py-2",
+                                    )}
+                                >
+                                    <span className="text-[#b0b0b0] text-lg">
+                                        More
+                                    </span>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </section>
