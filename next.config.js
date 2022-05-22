@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    images: { domains: ["i.ibb.co"] },
+    images: { domains: ["i.imgur.com"] },
     webpack: (config) => {
         config.experiments = { topLevelAwait: true };
         return config;

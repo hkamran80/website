@@ -19,7 +19,7 @@ const isServerSideRendered = () => {
 };
 
 if (process.env.NODE_ENV !== "production" && !isServerSideRendered()) {
-    // we import react-dom and @axe-core/react dynamically
+    // We import react-dom and @axe-core/react dynamically
     // so that we'll receive warning in our console about
     // inaccessible code.
 

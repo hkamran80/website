@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { ChevronRight } from "react-feather";
 import CreationCard from "../components/CreationCardLinked";
+import Layout from "../components/Layout";
 import { socialIcons } from "../data/navigation";
 import type { Article } from "../types/writings";
 import { classNames } from "../util/classNames";
@@ -23,18 +24,17 @@ const Home: NextPage = () => {
     }, [state.articles]);
 
     return (
-        <>
+        <Layout>
             <Head>
                 <title>H. Kamran</title>
             </Head>
 
-            <main
-                className="py-20 px-12 md:px-40 items-center justify-center space-y-8 max-w-7xl mx-auto"
-                role="main"
+            <div
+                className="px-12 md:px-40 items-center justify-center space-y-8 max-w-7xl mx-auto"
             >
                 <section className="space-y-7">
                     <div className="space-y-3">
-                        <h1 className="text-5xl sm:text-6xl font-bold">
+                        <h1 className="text-5xl sm:text-6xl font-bold text-pink-400">
                             H. Kamran
                         </h1>
                         <h2 className="text-3xl sm:text-4xl font-semibold">
@@ -65,6 +65,7 @@ const Home: NextPage = () => {
                     </div>
 
                     <div className="text-2xl font-light leading-normal space-y-1">
+                        <p>Hello world!</p>
                         <p>
                             I’m experienced with Python, JavaScript, TypeScript,
                             Vue.js, Java, Kotlin, Swift, and SwiftUI.
@@ -88,7 +89,7 @@ const Home: NextPage = () => {
                         </Link>
 
                         {article && (
-                            <Link href={`/article/${article.id}`} passHref>
+                            <Link href={`/article/${article.id}`}>
                                 <a className="p-6 bg-hk-grey hover:bg-hk-grey-hover transition-colors duration-300 rounded-lg flex flex-col space-y-1">
                                     <span className="text-lg">
                                         {article.title}
@@ -161,6 +162,11 @@ const Home: NextPage = () => {
                                         ).length < 4
                                             ? "py-6"
                                             : "py-2",
+                                        state.showcase.filter(
+                                            ({ featured }) => featured === true,
+                                        ).length >= 4
+                                            ? "col-span-2"
+                                            : "",
                                     )}
                                 >
                                     <span className="text-[#b0b0b0] text-lg">
@@ -171,8 +177,8 @@ const Home: NextPage = () => {
                         </div>
                     </div>
                 </section>
-            </main>
-        </>
+            </div>
+        </Layout>
     );
 };
 

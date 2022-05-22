@@ -7,21 +7,21 @@ const Breadcrumbs = ({ ...props }: BreadcrumbsProps) => {
         <nav className="flex mb-6" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-4">
                 <li>
-                    <Link href="/" passHref>
-                        <span className="text-gray-500 hover:text-gray-400 transition-colors duration-200 ease-in-out hover:cursor-pointer">
+                    <Link href="/">
+                        <a className="text-gray-500 hover:text-gray-400 transition-colors duration-200 ease-in-out hover:cursor-pointer">
                             <span className="sr-only">Home</span>
                             <Home />
-                        </span>
+                        </a>
                     </Link>
                 </li>
                 <li>
                     <div className="flex items-center">
                         <ChevronRight />
 
-                        <Link href={props.basePath} passHref>
-                            <span className="ml-4 text-sm font-medium text-gray-400 hover:text-gray-300 transition-colors duration-200 ease-in-out hover:cursor-pointer">
+                        <Link href={props.basePath}>
+                            <a className="ml-4 text-sm font-medium text-gray-400 hover:text-gray-300 transition-colors duration-200 ease-in-out hover:cursor-pointer">
                                 {props.baseLabel}
-                            </span>
+                            </a>
                         </Link>
                     </div>
                 </li>

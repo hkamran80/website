@@ -47,4 +47,11 @@ export const showcasePages: Page[] = [
         centerContent: false,
         componentFilename: "NebulaNewTabPage",
     },
+    {
+        id: "reactor",
+        name: "Reactor",
+        description: "Automatically add reactions to specific users' messages",
+        centerContent: true,
+        componentFilename: "ReactorPage",
+    },
 ];

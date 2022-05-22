@@ -17,10 +17,7 @@ const CreationCardLinked = ({ creation }: { creation: Creation }) => {
             );
         } else if (creation.site && creation.site.startsWith("/")) {
             return (
-                <Link
-                    href={creation.site.replace("/creations", "/showcase")}
-                    passHref
-                >
+                <Link href={creation.site.replace("/creations", "/showcase")}>
                     <a title={`Open ${creation.name}`}>
                         <CreationCard creation={creation} />
                     </a>
