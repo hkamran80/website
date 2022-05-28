@@ -1,37 +1,30 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { ChevronRight } from "react-feather";
 import CreationCard from "../components/CreationCardLinked";
 import Layout from "../components/Layout";
+import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
 import { socialIcons } from "../data/navigation";
+import { Creation } from "../types/creations";
 import type { Article } from "../types/writings";
 import { classNames } from "../util/classNames";
 import { StateContext } from "./_app";
 
-// @ts-ignore
-const Home: NextPage = () => {
-    const state = useContext(StateContext);
-    const [article, setArticle] = useState<Article>();
+type Props = {
+    latestArticle: Article;
+    featuredShowcase: Creation[];
+};
 
-    useEffect(() => {
-        if (state.articles.length > 0) {
-            setArticle(
-                state.articles.filter(({ published }) => published !== "")[0],
-            );
-        }
-    }, [state.articles]);
-
+const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
     return (
         <Layout>
             <Head>
                 <title>H. Kamran</title>
             </Head>
 
-            <div
-                className="px-12 md:px-40 items-center justify-center space-y-8 max-w-7xl mx-auto"
-            >
+            <div className="px-12 md:px-40 items-center justify-center space-y-8 max-w-7xl mx-auto">
                 <section className="space-y-7">
                     <div className="space-y-3">
                         <h1 className="text-5xl sm:text-6xl font-bold text-pink-400">
@@ -88,30 +81,28 @@ const Home: NextPage = () => {
                             </span>
                         </Link>
 
-                        {article && (
-                            <Link href={`/article/${article.id}`}>
-                                <a className="p-6 bg-hk-grey hover:bg-hk-grey-hover transition-colors duration-300 rounded-lg flex flex-col space-y-1">
-                                    <span className="text-lg">
-                                        {article.title}
-                                    </span>
-                                    <span className="font-light">
-                                        {article.description}
-                                    </span>
-                                    <time
-                                        className="font-extralight"
-                                        dateTime={article.published}
-                                    >
-                                        {new Date(
-                                            `${article.published}T12:00:00-07:00`,
-                                        ).toLocaleDateString(undefined, {
-                                            year: "numeric",
-                                            month: "long",
-                                            day: "numeric",
-                                        })}
-                                    </time>
-                                </a>
-                            </Link>
-                        )}
+                        <Link href={`/article/${latestArticle.id}`}>
+                            <a className="p-6 bg-hk-grey hover:bg-hk-grey-hover transition-colors duration-300 rounded-lg flex flex-col space-y-1">
+                                <span className="text-lg">
+                                    {latestArticle.title}
+                                </span>
+                                <span className="font-light">
+                                    {latestArticle.description}
+                                </span>
+                                <time
+                                    className="font-extralight"
+                                    dateTime={latestArticle.published}
+                                >
+                                    {new Date(
+                                        `${latestArticle.published}T12:00:00-07:00`,
+                                    ).toLocaleDateString(undefined, {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    })}
+                                </time>
+                            </a>
+                        </Link>
 
                         <Link href="/articles" passHref>
                             <div className="ring-2 ring-hk-grey hover:ring-pink-700 rounded-lg flex items-center justify-center py-2 transition duration-300">
@@ -129,8 +120,7 @@ const Home: NextPage = () => {
                         </Link>
 
                         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                            {state.showcase
-                                .filter(({ featured }) => featured)
+                            {featuredShowcase
                                 .sort(
                                     (
                                         { name: rawNameA },
@@ -157,14 +147,10 @@ const Home: NextPage = () => {
                                 <div
                                     className={classNames(
                                         "ring-2 ring-hk-grey hover:ring-pink-700 rounded-lg flex items-center justify-center transition duration-300",
-                                        state.showcase.filter(
-                                            ({ featured }) => featured === true,
-                                        ).length < 4
+                                        featuredShowcase.length < 4
                                             ? "py-6"
                                             : "py-2",
-                                        state.showcase.filter(
-                                            ({ featured }) => featured === true,
-                                        ).length >= 4
+                                        featuredShowcase.length >= 4
                                             ? "col-span-2"
                                             : "",
                                     )}
@@ -180,6 +166,27 @@ const Home: NextPage = () => {
             </div>
         </Layout>
     );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    const featuredShowcase = (
+        (await (await fetch(SHOWCASE_URL)).json()) as Creation[]
+    ).filter(({ featured }) => featured === true);
+
+    const latestArticle = (
+        (await (await fetch(WRITINGS_URL)).json()).articles as Article[]
+    )
+        .filter(({ published }) => published !== "")
+        .sort(({ published: publishedA }, { published: publishedB }) => {
+            if (publishedA < publishedB) {
+                return 1;
+            } else if (publishedA > publishedB) {
+                return -1;
+            }
+            return 0;
+        })[0];
+
+    return { props: { latestArticle, featuredShowcase } };
 };
 
 export default Home;

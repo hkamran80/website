@@ -1,61 +1,18 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useContext, useEffect, useMemo, useState } from "react";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
-import { StateContext } from "../_app";
 import MarkdownIt from "markdown-it";
-import { BASE_WRITINGS_URL } from "../../data/constants";
+import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import WritingTags from "../../components/WritingTags";
-import type { Article as ArticleType } from "../../types/writings";
+import type { Article } from "../../types/writings";
 
-const Article: NextPage = () => {
-    const router = useRouter();
-    const { slug } = router.query;
+type Props = {
+    article: Article;
+    content: string;
+};
 
-    const state = useContext(StateContext);
-    const [content, setContent] = useState<string>("");
-
-    const md = useMemo(() => new MarkdownIt({}), []);
-
-    useEffect(() => {
-        if (
-            slug !== undefined &&
-            state.articles.length > 0 &&
-            state.articles.map(({ id }) => id).indexOf(slug as string) === -1
-        ) {
-            router.push("/articles");
-        }
-    });
-
-    const article = state.articles.find(
-        ({ id: articleId }) => slug === articleId,
-    ) as ArticleType;
-
-    useEffect(() => {
-        const loadContent = async () => {
-            if (article) {
-                const url = `${BASE_WRITINGS_URL}/articles/${article.filename}.md`;
-                const markdown = await (await fetch(url)).text();
-
-                setContent(
-                    md
-                        .render(markdown)
-                        .replace(
-                            /<a([^>]+)>(.+?)<\/a>/gim,
-                            `<a$1 target="_blank" rel="noopener noreferrer" title="$2" aria-label="$2">$2</a>`,
-                        )
-                        .replace(
-                            /<img([^>]+)>/gim,
-                            `<img$1 class="rounded-lg" />`,
-                        ),
-                );
-            }
-        };
-
-        loadContent();
-    }, [article, md]);
+const Article: NextPage<Props> = ({ article, content }) => {
     return (
         <Layout>
             {article && (
@@ -214,6 +171,35 @@ const Article: NextPage = () => {
             )}
         </Layout>
     );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+    const article = (
+        (await (await fetch(WRITINGS_URL)).json()).articles as Article[]
+    ).find((article) => article.id === query.slug);
+
+    if (article) {
+        const markdown = await (
+            await fetch(`${BASE_WRITINGS_URL}/articles/${article.filename}.md`)
+        ).text();
+
+        const content = new MarkdownIt({})
+            .render(markdown)
+            .replace(
+                /<a([^>]+)>(.+?)<\/a>/gim,
+                `<a$1 target="_blank" rel="noopener noreferrer" title="$2" aria-label="$2">$2</a>`,
+            )
+            .replace(/<img([^>]+)>/gim, `<img$1 class="rounded-lg" />`);
+
+        return { props: { article, content } };
+    } else {
+        return {
+            redirect: {
+                destination: "/articles",
+                permanent: false,
+            },
+        };
+    }
 };
 
 export default Article;
