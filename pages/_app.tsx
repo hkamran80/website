@@ -1,8 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { createContext, useEffect, useState } from "react";
-import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
-import type { Writing, Article } from "../types/writings";
+import { SHOWCASE_URL } from "../data/constants";
 import { SiteState } from "../types/state";
 import React from "react";
 import Script from "next/script";
