@@ -2,9 +2,18 @@
 const nextConfig = {
     reactStrictMode: true,
     images: { domains: ["i.imgur.com"] },
-    webpack: (config) => {
-        config.experiments = { topLevelAwait: true };
-        return config;
+    async rewrites() {
+        return [
+            {
+                source: "/feed",
+                destination: "/api/feed/rss",
+            },
+            {
+                // The /:slug part is a generic parameter handler to catch all other cases
+                source: "/feed/:slug",
+                destination: "/api/feed/:slug",
+            },
+        ];
     },
 };
 

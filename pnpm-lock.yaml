@@ -19,6 +19,7 @@ specifiers:
     eslint-config-next: 12.1.4
     eslint-config-prettier: ^8.5.0
     feather-icons: ^4.29.0
+    feed: ^4.2.2
     markdown-it: ^12.3.2
     next: 12.1.4
     next-absolute-url: ^1.2.2
@@ -40,6 +41,7 @@ dependencies:
     "@headlessui/react": 1.5.0_react-dom@18.0.0+react@18.0.0
     "@hkamran/utility-web": 1.0.1
     feather-icons: 4.29.0
+    feed: 4.2.2
     markdown-it: 12.3.2
     next: 12.1.4_react-dom@18.0.0+react@18.0.0
     next-absolute-url: 1.2.2
@@ -1643,6 +1645,16 @@ packages:
             core-js: 3.21.1
         dev: false
 
+    /feed/4.2.2:
+        resolution:
+            {
+                integrity: sha512-u5/sxGfiMfZNtJ3OvQpXcvotFpYkL0n9u9mM2vkui2nGo8b4wvDkJ8gAkYqbA8QpGyFCv3RK0Z+Iv+9veCS9bQ==,
+            }
+        engines: { node: ">=0.4.0" }
+        dependencies:
+            xml-js: 1.6.11
+        dev: false
+
     /file-entry-cache/6.0.1:
         resolution:
             {
@@ -2947,6 +2959,13 @@ packages:
             queue-microtask: 1.2.3
         dev: true
 
+    /sax/1.2.4:
+        resolution:
+            {
+                integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==,
+            }
+        dev: false
+
     /scheduler/0.21.0:
         resolution:
             {
@@ -3374,6 +3393,16 @@ packages:
             utf-8-validate:
                 optional: true
         dev: true
+
+    /xml-js/1.6.11:
+        resolution:
+            {
+                integrity: sha512-7rVi2KMfwfWFl+GpPg6m80IVMWXLRjO+PxTq7V2CDhoGak0wzYzFgUY2m4XJ47OGdXd8eLE8EmwfAmdjw7lC1g==,
+            }
+        hasBin: true
+        dependencies:
+            sax: 1.2.4
+        dev: false
 
     /xtend/4.0.2:
         resolution:

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { links } from "../data/navigation";
-import { classNames } from "../util/classNames";
+import { classNames } from "@hkamran/utility-web";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const router = useRouter();

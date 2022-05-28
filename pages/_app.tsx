@@ -8,6 +8,7 @@ import React from "react";
 import Script from "next/script";
 import { Router } from "next/router";
 import ProgressBar from "@badrap/bar-of-progress";
+import { loadWritings } from "../lib/writings";
 
 export const StateContext = createContext<SiteState>({
     articles: [],
@@ -17,9 +18,7 @@ export const StateContext = createContext<SiteState>({
     showcase: [],
 });
 
-const isServerSideRendered = () => {
-    return typeof window === "undefined";
-};
+const isServerSideRendered = () => typeof window === "undefined";
 
 if (process.env.NODE_ENV !== "production" && !isServerSideRendered()) {
     // We import react-dom and @axe-core/react dynamically
@@ -55,58 +54,11 @@ const Website = ({ Component, pageProps }: AppProps) => {
 
     useEffect(() => {
         const loadState = async () => {
-            const newState = await (await fetch(WRITINGS_URL)).json();
+            const writings = await loadWritings();
             const showcase = await (await fetch(SHOWCASE_URL)).json();
 
             setState({
-                articles: (newState.articles as Article[]).sort(
-                    ({ published: publishedA }, { published: publishedB }) => {
-                        if (publishedA < publishedB) {
-                            return 1;
-                        } else if (publishedA > publishedB) {
-                            return -1;
-                        }
-                        return 0;
-                    },
-                ),
-                notes: (newState.notes as Writing[]).sort(
-                    ({ published: publishedA }, { published: publishedB }) => {
-                        if (publishedA < publishedB) {
-                            return 1;
-                        } else if (publishedA > publishedB) {
-                            return -1;
-                        }
-                        return 0;
-                    },
-                ),
-                articleTags: Object.fromEntries(
-                    Array.from(
-                        new Set(
-                            (newState.articles as Article[]).flatMap(
-                                (article: Article) => article.tags,
-                            ),
-                        ),
-                    ).map((tag) => [
-                        tag,
-                        (newState.articles as Article[])
-                            .filter(({ tags }) => tags.indexOf(tag) !== -1)
-                            .map(({ id }) => id),
-                    ]),
-                ),
-                noteTags: Object.fromEntries(
-                    Array.from(
-                        new Set(
-                            (newState.notes as Writing[]).flatMap(
-                                (note: Writing) => note.tags,
-                            ),
-                        ),
-                    ).map((tag) => [
-                        tag,
-                        (newState.notes as Writing[])
-                            .filter(({ tags }) => tags.indexOf(tag) !== -1)
-                            .map(({ id }) => id),
-                    ]),
-                ),
+                ...writings,
                 showcase,
             });
         };

@@ -8,7 +8,7 @@ import {
     Image as FeatherImage,
 } from "react-feather";
 import type { Release, ReleaseDetails } from "../types/releaseNotes";
-import { classNames } from "../util/classNames";
+import { classNames } from "@hkamran/utility-web";
 
 const downloadLinks = {
     Chrome: "https://github.com/hkamran80/nebula-new-tab#chromium-based-browsers-chrome-brave-etc",

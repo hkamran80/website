@@ -9,7 +9,7 @@ import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
 import { socialIcons } from "../data/navigation";
 import { Creation } from "../types/creations";
 import type { Article } from "../types/writings";
-import { classNames } from "../util/classNames";
+import { classNames } from "@hkamran/utility-web";
 import { StateContext } from "./_app";
 
 type Props = {

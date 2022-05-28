@@ -195,6 +195,29 @@ class WebsiteDocument extends Document {
                         content="H. Kamran's profile picture"
                         key="twitter:image:alt"
                     />
+
+                    {/* RSS Feeds */}
+                    <link
+                        key="rss-feed"
+                        rel="alternative"
+                        type="application/rss+xml"
+                        title="RSS feed for H. Kamran's articles and notes"
+                        href="/feed"
+                    />
+                    <link
+                        key="atom-feed"
+                        rel="alternative"
+                        type="application/atom+xml"
+                        title="Atom feed for H. Kamran's articles and notes"
+                        href="/feed/atom"
+                    />
+                    <link
+                        key="json-feed"
+                        rel="alternative"
+                        type="application/feed+json"
+                        title="JSON feed for H. Kamran's articles and notes"
+                        href="/feed/json"
+                    />
                 </Head>
                 <body>
                     <style>{styles}</style>
