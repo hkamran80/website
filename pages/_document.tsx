@@ -136,6 +136,7 @@ class WebsiteDocument extends Document {
                     />
 
                     {/* Open Graph */}
+                    <meta property="og:site_name" content="H. Kamran" />
                     <meta property="og:type" content="website" key="og:type" />
                     <meta
                         property="og:title"
