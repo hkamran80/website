@@ -5,6 +5,7 @@ import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
 import type { Writing, Article } from "../types/writings";
 import { SiteState } from "../types/state";
 import React from "react";
+import Script from "next/script";
 
 export const StateContext = createContext<SiteState>({
     articles: [],
@@ -101,9 +102,23 @@ const Website = ({ Component, pageProps }: AppProps) => {
     }, []);
 
     return (
-        <StateContext.Provider value={state}>
-            <Component {...pageProps} />
-        </StateContext.Provider>
+        <>
+            {process.env.NODE_ENV === "development" ||
+            typeof window === "undefined" ? (
+                ""
+            ) : (
+                <Script
+                    async
+                    defer
+                    data-website-id="550f7666-3836-423b-8a19-f2e6746eeda5"
+                    src="https://umami.unisontech.org/umami.js"
+                />
+            )}
+
+            <StateContext.Provider value={state}>
+                <Component {...pageProps} />
+            </StateContext.Provider>
+        </>
     );
 };
 
