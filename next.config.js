@@ -2,6 +2,13 @@
 const nextConfig = {
     reactStrictMode: true,
     images: { domains: ["i.imgur.com"] },
+    webpack: (config) => {
+        // this will override the experiments
+        config.experiments = { topLevelAwait: true };
+        // this will just update topLevelAwait property of config.experiments
+        // config.experiments.topLevelAwait = true
+        return config;
+    },
     async rewrites() {
         return [
             {
@@ -9,7 +16,6 @@ const nextConfig = {
                 destination: "/api/feed/rss",
             },
             {
-                // The /:slug part is a generic parameter handler to catch all other cases
                 source: "/feed/:slug",
                 destination: "/api/feed/:slug",
             },

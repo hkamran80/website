@@ -1,3 +1,4 @@
+import { classNames } from "@hkamran/utility-web";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
@@ -9,7 +10,6 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import { showcasePages } from "../../data/pages";
 import type { Page } from "../../types/pages";
-import { classNames } from "../../util/classNames";
 
 const ShowcasePage: NextPage = () => {
     const router = useRouter();

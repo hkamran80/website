@@ -35,7 +35,7 @@ const FinalGradeCalculatorProgram = () => {
                 type="number"
                 placeholder="Current Grade"
                 label="Current Grade"
-                value={currentGrade || 0}
+                value={currentGrade || undefined}
                 valueUpdate={(value) => setCurrentGrade(value as number)}
                 svg={resizeIcon(feather.icons.percent.toSvg())}
             />
@@ -44,7 +44,7 @@ const FinalGradeCalculatorProgram = () => {
                 type="number"
                 placeholder="Grade Wanted"
                 label="Grade Wanted"
-                value={gradeWanted || 0}
+                value={gradeWanted || undefined}
                 valueUpdate={(value) => setGradeWanted(value as number)}
                 svg={resizeIcon(feather.icons.percent.toSvg())}
             />
@@ -53,7 +53,7 @@ const FinalGradeCalculatorProgram = () => {
                 type="number"
                 placeholder="Final Weight"
                 label="Final Weight"
-                value={finalWeight || 0}
+                value={finalWeight || undefined}
                 classes="md:col-span-2"
                 valueUpdate={(value) => setFinalWeight(value as number)}
                 svg={resizeIcon(feather.icons.percent.toSvg())}

@@ -29,7 +29,7 @@ const OverallGradeAfterFinalCalculatorProgram = () => {
                 type="number"
                 placeholder="Grade Before Final"
                 label="Grade Before Final"
-                value={gradeBeforeFinal || 0}
+                value={gradeBeforeFinal || undefined}
                 valueUpdate={(value) => setGradeBeforeFinal(value as number)}
                 svg={resizeIcon(feather.icons.percent.toSvg())}
             />
@@ -38,7 +38,7 @@ const OverallGradeAfterFinalCalculatorProgram = () => {
                 type="number"
                 placeholder="Final Score"
                 label="Final Score"
-                value={finalScore || 0}
+                value={finalScore || undefined}
                 valueUpdate={(value) => setFinalScore(value as number)}
                 svg={resizeIcon(feather.icons.percent.toSvg())}
             />
@@ -47,7 +47,7 @@ const OverallGradeAfterFinalCalculatorProgram = () => {
                 type="number"
                 placeholder="Final Weight"
                 label="Final Weight"
-                value={finalWeight || 0}
+                value={finalWeight || undefined}
                 classes="md:col-span-2"
                 valueUpdate={(value) => setFinalWeight(value as number)}
                 svg={resizeIcon(feather.icons.percent.toSvg())}
