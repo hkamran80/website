@@ -6,6 +6,8 @@ import type { Writing, Article } from "../types/writings";
 import { SiteState } from "../types/state";
 import React from "react";
 import Script from "next/script";
+import { Router } from "next/router";
+import ProgressBar from "@badrap/bar-of-progress";
 
 export const StateContext = createContext<SiteState>({
     articles: [],
@@ -30,6 +32,17 @@ if (process.env.NODE_ENV !== "production" && !isServerSideRendered()) {
         });
     });
 }
+
+const progress = new ProgressBar({
+    size: 2,
+    color: "#F472B6",
+    className: "bar-of-progress",
+    delay: 100,
+});
+
+Router.events.on("routeChangeStart", progress.start);
+Router.events.on("routeChangeComplete", progress.finish);
+Router.events.on("routeChangeError", progress.finish);
 
 const Website = ({ Component, pageProps }: AppProps) => {
     const [state, setState] = useState<SiteState>({

@@ -10,9 +10,7 @@ const ProgramCard = ({ program }: { program: Page }) => {
                 <span className="text-white text-md font-medium">
                     {program.name}
                 </span>
-                <p className="text-gray-400 text-sm">
-                    {program.description}
-                </p>
+                <p className="text-gray-400 text-sm">{program.description}</p>
             </div>
         </div>
     );

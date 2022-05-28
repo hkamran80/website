@@ -132,7 +132,7 @@ const AcoustatsPage = () => {
             <h2>Digest</h2>
             <p>
                 You can also subscribe to daily, weekly, and monthly digests of
-                Acoustats reports with{' '}
+                Acoustats reports with{" "}
                 <a
                     href="https://acoustats.unisontech.org"
                     target="_blank"
