@@ -133,15 +133,19 @@ const Article: NextPage<Props> = ({ article, content }) => {
                             {article.description}
                         </h2>
                         <h3 className="font-light sm:text-xl text-center sm:text-left leading-snug text-gray-400">
-                            <time dateTime={article.published}>
-                                {new Date(
-                                    `${article.published}T12:00:00-07:00`,
-                                ).toLocaleDateString(undefined, {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                })}
-                            </time>
+                            {article.published !== "" ? (
+                                <time dateTime={article.published}>
+                                    {new Date(
+                                        `${article.published}T12:00:00-07:00`,
+                                    ).toLocaleDateString(undefined, {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    })}
+                                </time>
+                            ) : (
+                                "Unpublished"
+                            )}
 
                             <span className="ml-1 mr-2">•</span>
 
