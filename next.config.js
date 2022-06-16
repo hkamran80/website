@@ -3,10 +3,7 @@ const nextConfig = {
     reactStrictMode: true,
     images: { domains: ["i.imgur.com"] },
     webpack: (config) => {
-        // this will override the experiments
-        config.experiments = { topLevelAwait: true };
-        // this will just update topLevelAwait property of config.experiments
-        // config.experiments.topLevelAwait = true
+        config.experiments = { topLevelAwait: true, layers: true };
         return config;
     },
     async rewrites() {
