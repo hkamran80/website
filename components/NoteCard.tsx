@@ -6,15 +6,19 @@ const NoteCard = ({ note }: { note: Writing }) => {
             <div className="items-center">
                 <div className="col-span-2">
                     <p className="text-sm text-gray-400">
-                        <time dateTime={note.published}>
-                            {new Date(
-                                `${note.published}T12:00:00-07:00`,
-                            ).toLocaleDateString(undefined, {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric",
-                            })}
-                        </time>
+                        {note.published !== "" ? (
+                            <time dateTime={note.published}>
+                                {new Date(
+                                    `${note.published}T12:00:00-07:00`,
+                                ).toLocaleDateString(undefined, {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                })}
+                            </time>
+                        ) : (
+                            "Unpublished"
+                        )}
                     </p>
 
                     <span className="mt-2 block">
