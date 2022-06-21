@@ -1,86 +1,72 @@
 import { classNames } from "@hkamran/utility-web";
-import type { NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { ChevronRight, Home } from "react-feather";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
 import { showcasePages } from "../../data/pages";
 import type { Page } from "../../types/pages";
 
-const ShowcasePage: NextPage = () => {
-    const router = useRouter();
-    const { id } = router.query;
-
-    let ShowcasePageComponent = dynamic(
-        () => import("../../components/Loading"),
+type Props = {
+    showcaseItem: Page;
+};
+const ShowcasePage: NextPage<Props> = ({ showcaseItem }: Props) => {
+    console.debug(showcaseItem);
+    const ShowcasePageComponent = dynamic(
+        () => import(`../../components/${showcaseItem.componentFilename}.tsx`),
     );
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-        if (
-            id !== undefined &&
-            showcasePages.map(({ id }) => id).indexOf(id as string) === -1
-        ) {
-            router.push("/showcase");
-        }
-    });
-
-    const showcasePage = showcasePages.find(
-        ({ id: showcasePageId }) => id === showcasePageId,
-    ) as Page;
-
-    if (showcasePage && showcasePage.componentFilename) {
-        ShowcasePageComponent = dynamic(
-            () =>
-                import(
-                    `../../components/${showcasePage.componentFilename}.tsx`
-                ),
-        );
-    }
 
     return (
-        <Layout>
-            {showcasePage && (
-                <>
-                    <Head>
-                        <title>{showcasePage.name} | H. Kamran</title>
-                    </Head>
+        <>
+            <Head>
+                <title>{showcaseItem.name} | H. Kamran</title>
+            </Head>
 
-                    <div
-                        className={classNames(
-                            "mx-auto",
-                            showcasePage.centerContent
-                                ? "max-w-2xl"
-                                : "max-w-5xl",
-                        )}
-                    >
-                        <Breadcrumbs
-                            basePath="/showcase"
-                            baseLabel="Showcase"
-                            currentLabel={showcasePage.name}
-                        />
+            <Layout>
+                <div
+                    className={classNames(
+                        "mx-auto",
+                        showcaseItem.centerContent ? "max-w-2xl" : "max-w-5xl",
+                    )}
+                >
+                    <Breadcrumbs
+                        basePath="/showcase"
+                        baseLabel="Showcase"
+                        currentLabel={showcaseItem.name}
+                    />
 
-                        <div className="space-y-2">
-                            <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">
-                                {showcasePage.name}
-                            </h1>
-                            <h2 className="font-light text-xl sm:text-2xl text-center sm:text-left leading-snug text-gray-300">
-                                {showcasePage.description}
-                            </h2>
-                        </div>
-
-                        <div className="mt-6">
-                            <ShowcasePageComponent />
-                        </div>
+                    <div className="space-y-2">
+                        <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">
+                            {showcaseItem.name}
+                        </h1>
+                        <h2 className="font-light text-xl sm:text-2xl text-center sm:text-left leading-snug text-gray-300">
+                            {showcaseItem.description}
+                        </h2>
                     </div>
-                </>
-            )}
-        </Layout>
+
+                    <div className="mt-6">
+                        <ShowcasePageComponent />
+                    </div>
+                </div>
+            </Layout>
+        </>
     );
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const paths = showcasePages.map(({ id }) => ({
+        params: { id },
+    }));
+
+    return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const showcaseItem = showcasePages.find(
+        (showcaseItem) => showcaseItem.id === (params as { id: string }).id,
+    );
+
+    return { props: { showcaseItem } };
 };
 
 export default ShowcasePage;
