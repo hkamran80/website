@@ -1,6 +1,7 @@
 import { WRITINGS_URL } from "../data/constants";
 import type { WritingState, WritingTags } from "../types/state";
 import type { Article, Writing } from "../types/writings";
+import { slugify } from "../util/string";
 
 export const sortByPublishDate = (
     { published: publishedA }: { published: string },
@@ -14,12 +15,15 @@ export const sortByPublishDate = (
     return 0;
 };
 
-export const getTags = (writings: Writing[]): WritingTags => {
+export const getTags = (
+    writings: Writing[],
+    slugifyTag: boolean = false,
+): WritingTags => {
     return Object.fromEntries(
         Array.from(
             new Set(writings.flatMap((writing: Writing) => writing.tags)),
         ).map((tag) => [
-            tag,
+            slugifyTag ? slugify(tag) : tag,
             writings
                 .filter(({ tags }) => tags.indexOf(tag) !== -1)
                 .map(({ id }) => id),
