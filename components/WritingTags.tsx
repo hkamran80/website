@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { cleanString } from "../util/string";
+import { slugify } from "../util/string";
 import { Fragment } from "react";
 
 const WritingTags = ({
@@ -13,7 +13,7 @@ const WritingTags = ({
         <div className="contents">
             {tags.map((tag, index) => (
                 <Fragment key={index}>
-                    <Link href={`/${basePath}/${cleanString(tag)}`} passHref>
+                    <Link href={`/${basePath}/${slugify(tag)}`} passHref>
                         <a className="text-pink-400 hover:text-pink-700 transition-colors duration-300">
                             {tag}
                         </a>
