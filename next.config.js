@@ -18,6 +18,26 @@ const nextConfig = {
             },
         ];
     },
+    async redirects() {
+        return [
+            {
+                source: "/blog/post/:slug",
+                destination: "/article/:slug",
+                permanent: true,
+            },
+            { source: "/creations", destination: "/showcase", permanent: true },
+            {
+                source: "/articles/:slug",
+                destination: "/tag/:slug",
+                permanent: true,
+            },
+            {
+                source: "/notes/:slug",
+                destination: "/tag/:slug",
+                permanent: true,
+            },
+        ];
+    },
 };
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
