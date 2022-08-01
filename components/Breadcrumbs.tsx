@@ -18,11 +18,17 @@ const Breadcrumbs = ({ ...props }: BreadcrumbsProps) => {
                     <div className="flex items-center">
                         <ChevronRight />
 
-                        <Link href={props.basePath}>
-                            <a className="ml-4 text-sm font-medium text-gray-400 hover:text-gray-300 transition-colors duration-200 ease-in-out hover:cursor-pointer">
+                        {props.basePath ? (
+                            <Link href={props.basePath}>
+                                <a className="ml-4 text-sm font-medium text-gray-400 hover:text-gray-300 transition-colors duration-200 ease-in-out hover:cursor-pointer">
+                                    {props.baseLabel}
+                                </a>
+                            </Link>
+                        ) : (
+                            <span className="ml-4 text-sm font-medium text-gray-400">
                                 {props.baseLabel}
-                            </a>
-                        </Link>
+                            </span>
+                        )}
                     </div>
                 </li>
                 <li>

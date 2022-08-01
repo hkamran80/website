@@ -1,5 +1,5 @@
 export type BreadcrumbsProps = {
-    basePath: string;
+    basePath?: string;
     baseLabel: string;
     currentLabel: string;
 };
