@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/prism-theme.css";
 import ProgressBar from "@badrap/bar-of-progress";
 import React from "react";
 import Script from "next/script";
