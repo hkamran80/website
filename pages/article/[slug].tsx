@@ -4,8 +4,9 @@ import Layout from "../../components/Layout";
 import MarkdownIt from "markdown-it";
 import WritingTags from "../../components/WritingTags";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Article } from "../../types/writings";
+import markdownItPrism from "markdown-it-prism";
 
 type Props = {
     article: Article;
@@ -177,10 +178,24 @@ const Article: NextPage<Props> = ({ article, content }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-    const article = (
-        (await (await fetch(WRITINGS_URL)).json()).articles as Article[]
-    ).find((article) => article.id === query.slug);
+export const getStaticPaths: GetStaticPaths = async () => {
+    const res = await fetch(WRITINGS_URL);
+    const writings = await res.json();
+
+    const paths = (writings.articles as Article[]).map((article) => ({
+        params: { slug: article.id },
+    }));
+
+    return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const res = await fetch(WRITINGS_URL);
+    const writings = await res.json();
+
+    const article = (writings.articles as Article[]).find(
+        (article) => article.id === params?.slug,
+    );
 
     if (article) {
         const markdown = await (
@@ -188,6 +203,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         ).text();
 
         const content = new MarkdownIt({})
+            .use(markdownItPrism)
             .render(markdown)
             .replace(
                 /<a([^>]+)>(.+?)<\/a>/gim,

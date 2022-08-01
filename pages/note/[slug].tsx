@@ -4,8 +4,14 @@ import Layout from "../../components/Layout";
 import MarkdownIt from "markdown-it";
 import WritingTags from "../../components/WritingTags";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
-import type { GetServerSideProps, NextPage } from "next";
-import type { Writing } from "../../types/writings";
+import type {
+    GetServerSideProps,
+    GetStaticPaths,
+    GetStaticProps,
+    NextPage,
+} from "next";
+import type { Article, Writing } from "../../types/writings";
+import markdownItPrism from "markdown-it-prism";
 
 type Props = {
     note: Writing;
@@ -133,10 +139,24 @@ const Note: NextPage<Props> = ({ note, content }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-    const note = (
-        (await (await fetch(WRITINGS_URL)).json()).notes as Writing[]
-    ).find((note) => note.id === query.slug);
+export const getStaticPaths: GetStaticPaths = async () => {
+    const res = await fetch(WRITINGS_URL);
+    const writings = await res.json();
+
+    const paths = (writings.notes as Writing[]).map((note) => ({
+        params: { slug: note.id },
+    }));
+
+    return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const res = await fetch(WRITINGS_URL);
+    const writings = await res.json();
+
+    const note = (writings.notes as Writing[]).find(
+        (note) => note.id === params?.slug,
+    );
 
     if (note) {
         const markdown = await (
@@ -144,17 +164,19 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         ).text();
 
         const content = new MarkdownIt({})
+            .use(markdownItPrism)
             .render(markdown)
             .replace(
                 /<a([^>]+)>(.+?)<\/a>/gim,
                 `<a$1 target="_blank" rel="noopener noreferrer" title="$2" aria-label="$2">$2</a>`,
-            );
+            )
+            .replace(/<img([^>]+)>/gim, `<img$1 class="rounded-lg" />`);
 
         return { props: { note, content } };
     } else {
         return {
             redirect: {
-                destination: "/notes",
+                destination: "/articles",
                 permanent: false,
             },
         };
