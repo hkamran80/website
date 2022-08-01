@@ -27,6 +27,18 @@ export const getTags = (writings: Writing[]): WritingTags => {
     );
 };
 
+export const arrayUnique = (array: any[]): any[] => {
+    var a = array.concat();
+
+    for (var i = 0; i < a.length; ++i) {
+        for (var j = i + 1; j < a.length; ++j) {
+            if (a[i] === a[j]) a.splice(j--, 1);
+        }
+    }
+
+    return a;
+};
+
 export const loadWritings = async (): Promise<WritingState> => {
     const writings = await (await fetch(WRITINGS_URL)).json();
 
