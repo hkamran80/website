@@ -2,7 +2,7 @@ import { WRITINGS_URL } from "../data/constants";
 import type { WritingState, WritingTags } from "../types/state";
 import type { Article, Writing } from "../types/writings";
 
-const sortByPublishDate = (
+export const sortByPublishDate = (
     { published: publishedA }: { published: string },
     { published: publishedB }: { published: string },
 ): number => {
@@ -14,7 +14,7 @@ const sortByPublishDate = (
     return 0;
 };
 
-const getTags = (writings: Writing[]): WritingTags => {
+export const getTags = (writings: Writing[]): WritingTags => {
     return Object.fromEntries(
         Array.from(
             new Set(writings.flatMap((writing: Writing) => writing.tags)),
