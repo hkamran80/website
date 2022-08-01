@@ -4,17 +4,12 @@ import ProgressBar from "@badrap/bar-of-progress";
 import React from "react";
 import Script from "next/script";
 import { createContext, useEffect, useState } from "react";
-import { loadWritings } from "../lib/writings";
 import { Router } from "next/router";
 import { SHOWCASE_URL } from "../data/constants";
 import { SiteState } from "../types/state";
 import type { AppProps } from "next/app";
 
 export const StateContext = createContext<SiteState>({
-    articles: [],
-    notes: [],
-    articleTags: {},
-    noteTags: {},
     showcase: [],
 });
 
@@ -45,20 +40,14 @@ Router.events.on("routeChangeError", progress.finish);
 
 const Website = ({ Component, pageProps }: AppProps) => {
     const [state, setState] = useState<SiteState>({
-        articles: [],
-        notes: [],
-        articleTags: {},
-        noteTags: {},
         showcase: [],
     });
 
     useEffect(() => {
         const loadState = async () => {
-            const writings = await loadWritings();
             const showcase = await (await fetch(SHOWCASE_URL)).json();
 
             setState({
-                ...writings,
                 showcase,
             });
         };

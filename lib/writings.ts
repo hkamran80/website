@@ -42,14 +42,3 @@ export const arrayUnique = (array: any[]): any[] => {
 
     return a;
 };
-
-export const loadWritings = async (): Promise<WritingState> => {
-    const writings = await (await fetch(WRITINGS_URL)).json();
-
-    return {
-        articles: (writings.articles as Article[]).sort(sortByPublishDate),
-        notes: (writings.notes as Writing[]).sort(sortByPublishDate),
-        articleTags: getTags(writings.articles),
-        noteTags: getTags(writings.notes),
-    };
-};
