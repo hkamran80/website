@@ -17,7 +17,7 @@ export default function NavigationBar() {
                     <TextLink key={index} href={href}>
                         <span
                             className={classNames(
-                                "hover:text-pink-400 hover:cursor-pointer transition-colors duration-300",
+                                "uppercase text-xs tracking-wide hover:text-pink-400 hover:cursor-pointer transition-colors duration-300",
                                 router.asPath.startsWith(href) ||
                                     aliases
                                         .map(
@@ -26,7 +26,7 @@ export default function NavigationBar() {
                                                 -1,
                                         )
                                         .filter((alias) => alias).length > 0
-                                    ? "text-pink-400"
+                                    ? "text-pink-400 underline underline-offset-4"
                                     : "",
                             )}
                         >
