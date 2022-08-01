@@ -1,13 +1,13 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import Head from "next/head";
 import Layout from "../../components/Layout";
+import Link from "next/link";
 import NoteCard from "../../components/NoteCard";
 import { cleanString } from "../../util/string";
 import { StateContext } from "../_app";
+import { useContext, useEffect } from "react";
+import { useRouter } from "next/router";
+import type { NextPage } from "next";
 
 const NoteTag: NextPage = () => {
     const router = useRouter();

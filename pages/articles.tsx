@@ -1,10 +1,10 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import Layout from "../components/Layout";
 import BlogCard from "../components/BlogCard";
-import { StateContext } from "./_app";
 import feather from "feather-icons";
+import Head from "next/head";
+import Layout from "../components/Layout";
+import Link from "next/link";
+import { StateContext } from "./_app";
+import type { NextPage } from "next";
 
 const Articles: NextPage = () => {
     return (

@@ -1,5 +1,5 @@
-import type { InputFieldProps } from "../types/input";
 import { classNames } from "@hkamran/utility-web";
+import type { InputFieldProps } from "../types/input";
 
 const InputField = ({ ...props }: InputFieldProps) => {
     const inputId = `${props.label

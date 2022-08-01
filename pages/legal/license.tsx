@@ -1,7 +1,7 @@
-import type { NextPage } from "next";
-import Head from "next/head";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import Head from "next/head";
 import Layout from "../../components/Layout";
+import type { NextPage } from "next";
 
 const License: NextPage = () => {
     return (

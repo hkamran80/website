@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import InputField from "./InputField";
+import { useEffect, useState } from "react";
 
 const WebUtilitiesProgram = () => {
     const [userAgent, setUserAgent] = useState<string>("");

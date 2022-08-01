@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Fragment } from "react";
 import { cleanString } from "../util/string";
+import { Fragment } from "react";
 
 const WritingTags = ({
     basePath,

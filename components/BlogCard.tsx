@@ -1,9 +1,16 @@
 import Image from "next/image";
+import { classNames } from "@hkamran/utility-web";
 import type { Article } from "../types/writings";
 
-const BlogCard = ({ article }: { article: Article }) => {
+const BlogCard = ({
+    article,
+    topPadding = true,
+}: {
+    article: Article;
+    topPadding?: boolean;
+}) => {
     return (
-        <div className="mt-1 pt-5">
+        <div className={classNames(topPadding ? "mt-1 pt-5" : "")}>
             <div className="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center hover:cursor-pointer">
                 <Image
                     src={article.heroImage}

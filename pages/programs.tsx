@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import Layout from "../components/Layout";
+import Link from "next/link";
 import ProgramCard from "../components/ProgramCard";
 import { programs } from "../data/pages";
+import type { NextPage } from "next";
 
 const Programs: NextPage = () => {
     return (

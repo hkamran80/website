@@ -1,6 +1,6 @@
+import CreationCard from "./CreationCard";
 import Link from "next/link";
 import type { Creation } from "../types/creations";
-import CreationCard from "./CreationCard";
 
 const CreationCardLinked = ({ creation }: { creation: Creation }) => {
     if (creation) {

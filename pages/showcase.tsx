@@ -1,8 +1,8 @@
-import type { NextPage } from "next";
-import Head from "next/head";
 import CreationCard from "../components/CreationCardLinked";
+import Head from "next/head";
 import Layout from "../components/Layout";
 import { StateContext } from "./_app";
+import type { NextPage } from "next";
 
 const alphabeticalSort = (
     { name: rawNameA }: { name: string },

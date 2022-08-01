@@ -1,13 +1,13 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { createContext, useEffect, useState } from "react";
-import { SHOWCASE_URL } from "../data/constants";
-import { SiteState } from "../types/state";
+import ProgressBar from "@badrap/bar-of-progress";
 import React from "react";
 import Script from "next/script";
-import { Router } from "next/router";
-import ProgressBar from "@badrap/bar-of-progress";
+import { createContext, useEffect, useState } from "react";
 import { loadWritings } from "../lib/writings";
+import { Router } from "next/router";
+import { SHOWCASE_URL } from "../data/constants";
+import { SiteState } from "../types/state";
+import type { AppProps } from "next/app";
 
 export const StateContext = createContext<SiteState>({
     articles: [],

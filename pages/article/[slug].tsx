@@ -1,10 +1,10 @@
-import type { GetServerSideProps, NextPage } from "next";
-import Head from "next/head";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import Head from "next/head";
 import Layout from "../../components/Layout";
 import MarkdownIt from "markdown-it";
-import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import WritingTags from "../../components/WritingTags";
+import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
+import type { GetServerSideProps, NextPage } from "next";
 import type { Article } from "../../types/writings";
 
 type Props = {

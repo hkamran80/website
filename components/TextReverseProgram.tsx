@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import InputField from "./InputField";
+import { useEffect, useState } from "react";
 
 const TextReverseProgram = () => {
     const [text, setText] = useState<string>("");

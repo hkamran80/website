@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { classNames } from "@hkamran/utility-web";
 import { Listbox } from "@headlessui/react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import {
     ChevronDown,
     Clock,
@@ -8,7 +8,6 @@ import {
     Image as FeatherImage,
 } from "react-feather";
 import type { Release, ReleaseDetails } from "../types/releaseNotes";
-import { classNames } from "@hkamran/utility-web";
 
 const downloadLinks = {
     Chrome: "https://github.com/hkamran80/nebula-new-tab#chromium-based-browsers-chrome-brave-etc",
@@ -140,7 +139,7 @@ const NebulaNewTabPage = () => {
             <div id="features" className="py-12">
                 <div className="max-w-7xl mx-auto pb-6 px-4 sm:pb-12 sm:px-6 lg:px-8 lg:flex lg:justify-between">
                     <div className="max-w-xl">
-                        <h2 className="text-2xl font-extrabold text-gray-100 sm:text-5xl sm:tracking-tight lg:text-4xl">
+                        <h2 className="text-2xl font-bold text-gray-100 sm:text-5xl sm:tracking-tight lg:text-4xl">
                             Features
                         </h2>
                     </div>
@@ -241,7 +240,7 @@ const NebulaNewTabPage = () => {
             <div id="changelog" className="py-12">
                 <div className="max-w-7xl mx-auto pb-6 px-4 sm:pb-8 sm:px-6 lg:px-8 lg:flex lg:justify-between">
                     <div className="max-w-xl">
-                        <h2 className="text-2xl font-extrabold text-gray-100 sm:text-5xl sm:tracking-tight lg:text-4xl">
+                        <h2 className="text-2xl font-bold text-gray-100 sm:text-5xl sm:tracking-tight lg:text-4xl">
                             Changelog
                         </h2>
 

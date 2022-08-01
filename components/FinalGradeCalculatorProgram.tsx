@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import feather from "feather-icons";
 import InputField from "./InputField";
 import { resizeIcon } from "@hkamran/utility-web";
+import { useEffect, useState } from "react";
 
 const messages = (score: number): string => {
     if (score > 100) {

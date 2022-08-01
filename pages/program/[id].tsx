@@ -1,10 +1,10 @@
-import { classNames } from "@hkamran/utility-web";
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import Breadcrumbs from "../../components/Breadcrumbs";
 import Layout from "../../components/Layout";
+import { classNames } from "@hkamran/utility-web";
 import { programs } from "../../data/pages";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Page } from "../../types/pages";
 
 type Props = {

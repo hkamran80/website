@@ -1,10 +1,10 @@
-import type { NextPage } from "next";
+import feather from "feather-icons";
 import Head from "next/head";
-import Link from "next/link";
 import Layout from "../components/Layout";
+import Link from "next/link";
 import NoteCard from "../components/NoteCard";
 import { StateContext } from "./_app";
-import feather from "feather-icons";
+import type { NextPage } from "next";
 
 const Notes: NextPage = () => {
     return (
