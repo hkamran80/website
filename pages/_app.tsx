@@ -3,15 +3,8 @@ import "../styles/prism-theme.css";
 import ProgressBar from "@badrap/bar-of-progress";
 import React from "react";
 import Script from "next/script";
-import { createContext, useEffect, useState } from "react";
 import { Router } from "next/router";
-import { SHOWCASE_URL } from "../data/constants";
-import { SiteState } from "../types/state";
 import type { AppProps } from "next/app";
-
-export const StateContext = createContext<SiteState>({
-    showcase: [],
-});
 
 const isServerSideRendered = () => typeof window === "undefined";
 
@@ -39,22 +32,6 @@ Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
 
 const Website = ({ Component, pageProps }: AppProps) => {
-    const [state, setState] = useState<SiteState>({
-        showcase: [],
-    });
-
-    useEffect(() => {
-        const loadState = async () => {
-            const showcase = await (await fetch(SHOWCASE_URL)).json();
-
-            setState({
-                showcase,
-            });
-        };
-
-        loadState();
-    }, []);
-
     return (
         <>
             {process.env.NODE_ENV === "development" ||
@@ -69,9 +46,7 @@ const Website = ({ Component, pageProps }: AppProps) => {
                 />
             )}
 
-            <StateContext.Provider value={state}>
-                <Component {...pageProps} />
-            </StateContext.Provider>
+            <Component {...pageProps} />
         </>
     );
 };
