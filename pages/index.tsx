@@ -7,7 +7,7 @@ import { ChevronDown } from "react-feather";
 import { Creation } from "../types/creations";
 import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
 import { socialIcons } from "../data/navigation";
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import type { Article } from "../types/writings";
 
 type Props = {
@@ -184,7 +184,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const featuredShowcase = (
         (await (await fetch(SHOWCASE_URL)).json()) as Creation[]
     ).filter(({ featured }) => featured === true);
