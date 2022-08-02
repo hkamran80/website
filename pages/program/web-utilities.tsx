@@ -1,8 +1,8 @@
-import Breadcrumbs from "../../components/Breadcrumbs";
-import Head from "next/head";
-import InputField from "../../components/InputField";
-import Layout from "../../components/Layout";
-import { useEffect, useState } from "react";
+import Breadcrumbs from '../../components/Breadcrumbs';
+import Head from 'next/head';
+import InputField from '../../components/InputField';
+import Layout from '../../components/Layout';
+import { useEffect, useState } from 'react';
 import type { NextPage } from "next";
 
 const WebUtilitiesProgram: NextPage = () => {
