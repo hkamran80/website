@@ -1,8 +1,9 @@
-import CreationCard from "../components/CreationCardLinked";
-import Head from "next/head";
-import Layout from "../components/Layout";
-import { StateContext } from "./_app";
-import type { NextPage } from "next";
+import CreationCard from '../components/CreationCardLinked';
+import Head from 'next/head';
+import Layout from '../components/Layout';
+import { Creation } from '../types/creations';
+import { SHOWCASE_URL } from '../data/constants';
+import type { GetStaticProps, NextPage } from "next";
 
 const alphabeticalSort = (
     { name: rawNameA }: { name: string },
@@ -14,59 +15,53 @@ const alphabeticalSort = (
     return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
 };
 
-const Showcase: NextPage = () => {
+type Props = { showcase: Creation[] };
+
+const Showcase: NextPage<Props> = ({ showcase }) => {
     return (
-        <StateContext.Consumer>
-            {(state) => (
-                <>
-                    <Layout>
-                        <Head>
-                            <title>Showcase | H. Kamran</title>
-                        </Head>
+        <Layout>
+            <Head>
+                <title>Showcase | H. Kamran</title>
+            </Head>
 
-                        <h1 className="text-3xl font-semibold">Showcase</h1>
-                        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {state.showcase
-                                .filter(({ featured }) => featured)
-                                .sort(alphabeticalSort)
-                                .map((creation, index) => (
-                                    <CreationCard
-                                        key={index}
-                                        creation={creation}
-                                    />
-                                ))}
+            <h1 className="text-3xl font-semibold">Showcase</h1>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                {showcase
+                    .filter(({ featured }) => featured)
+                    .sort(alphabeticalSort)
+                    .map((creation, index) => (
+                        <CreationCard key={index} creation={creation} />
+                    ))}
 
-                            {state.showcase
-                                .filter(
-                                    ({ featured, status }) =>
-                                        !featured && status === "Completed",
-                                )
-                                .sort(alphabeticalSort)
-                                .map((creation, index) => (
-                                    <CreationCard
-                                        key={index}
-                                        creation={creation}
-                                    />
-                                ))}
+                {showcase
+                    .filter(
+                        ({ featured, status }) =>
+                            !featured && status === "Completed",
+                    )
+                    .sort(alphabeticalSort)
+                    .map((creation, index) => (
+                        <CreationCard key={index} creation={creation} />
+                    ))}
 
-                            {state.showcase
-                                .filter(
-                                    ({ featured, status }) =>
-                                        !featured && status === "In Progress",
-                                )
-                                .sort(alphabeticalSort)
-                                .map((creation, index) => (
-                                    <CreationCard
-                                        key={index}
-                                        creation={creation}
-                                    />
-                                ))}
-                        </div>
-                    </Layout>
-                </>
-            )}
-        </StateContext.Consumer>
+                {showcase
+                    .filter(
+                        ({ featured, status }) =>
+                            !featured && status === "In Progress",
+                    )
+                    .sort(alphabeticalSort)
+                    .map((creation, index) => (
+                        <CreationCard key={index} creation={creation} />
+                    ))}
+            </div>
+        </Layout>
     );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+    const res = await fetch(SHOWCASE_URL);
+    const showcase = (await res.json()) as Creation[];
+
+    return { props: { showcase } };
 };
 
 export default Showcase;
