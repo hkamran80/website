@@ -1,21 +1,16 @@
-import Breadcrumbs from "../../components/Breadcrumbs";
-import dynamic from "next/dynamic";
+import Breadcrumbs from "./Breadcrumbs";
 import Head from "next/head";
-import Layout from "../../components/Layout";
 import { classNames } from "@hkamran/utility-web";
-import { showcasePages } from "../../data/pages";
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import type { Page } from "../../types/pages";
+import { Layout } from "react-feather";
+import type { Page } from "../types/pages";
 
-type Props = {
+const ShowcasePageLayout = ({
+    showcaseItem,
+    children,
+}: {
     showcaseItem: Page;
-};
-const ShowcasePage: NextPage<Props> = ({ showcaseItem }: Props) => {
-    console.debug(showcaseItem);
-    const ShowcasePageComponent = dynamic(
-        () => import(`../../components/${showcaseItem.componentFilename}.tsx`),
-    );
-
+    children: React.ReactNode;
+}) => {
     return (
         <>
             <Head>
@@ -44,29 +39,11 @@ const ShowcasePage: NextPage<Props> = ({ showcaseItem }: Props) => {
                         </h2>
                     </div>
 
-                    <div className="mt-6">
-                        <ShowcasePageComponent />
-                    </div>
+                    <div className="mt-6">{children}</div>
                 </div>
             </Layout>
         </>
     );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = showcasePages.map(({ id }) => ({
-        params: { id },
-    }));
-
-    return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const showcaseItem = showcasePages.find(
-        (showcaseItem) => showcaseItem.id === (params as { id: string }).id,
-    );
-
-    return { props: { showcaseItem } };
-};
-
-export default ShowcasePage;
+export default ShowcasePageLayout;
