@@ -1,11 +1,9 @@
-import { classNames } from "@hkamran/utility-web";
+import { classNames } from '@hkamran/utility-web';
+import { slugify } from '../util/string';
 import type { InputFieldProps } from "../types/input";
 
 const InputField = ({ ...props }: InputFieldProps) => {
-    const inputId = `${props.label
-        .replaceAll(/[^A-Za-z0-9\s]/g, "")
-        .replaceAll(" ", "-")
-        .toLowerCase()}-input`;
+    const inputId = `${slugify(props.label)}-input`;
 
     return (
         <div
