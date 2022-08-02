@@ -1,8 +1,8 @@
-import CreationCard from '../components/CreationCardLinked';
-import Head from 'next/head';
-import Layout from '../components/Layout';
-import { Creation } from '../types/creations';
-import { SHOWCASE_URL } from '../data/constants';
+import CreationCard from "../components/CreationCardLinked";
+import Head from "next/head";
+import Layout from "../components/Layout";
+import { Creation } from "../types/creations";
+import { SHOWCASE_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
 
 const alphabeticalSort = (
