@@ -1,6 +1,4 @@
-import { WRITINGS_URL } from "../data/constants";
-import type { WritingState, WritingTags } from "../types/state";
-import type { Article, Writing } from "../types/writings";
+import type { Writing, WritingTags } from "../types/writings";
 import { slugify } from "../util/string";
 
 export const sortByPublishDate = (
