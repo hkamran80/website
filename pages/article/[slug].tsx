@@ -1,12 +1,12 @@
-import Breadcrumbs from "../../components/Breadcrumbs";
-import Head from "next/head";
-import Layout from "../../components/Layout";
-import MarkdownIt from "markdown-it";
-import WritingTags from "../../components/WritingTags";
-import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
+import Breadcrumbs from '../../components/Breadcrumbs';
+import Head from 'next/head';
+import Layout from '../../components/Layout';
+import MarkdownIt from 'markdown-it';
+import markdownItPrism from 'markdown-it-prism';
+import WritingTags from '../../components/WritingTags';
+import { BASE_WRITINGS_URL, WRITINGS_URL } from '../../data/constants';
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Article } from "../../types/writings";
-import markdownItPrism from "markdown-it-prism";
 
 type Props = {
     article: Article;

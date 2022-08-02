@@ -1,12 +1,12 @@
-import BlogCard from "../components/BlogCard";
-import CreationCard from "../components/CreationCardLinked";
-import Head from "next/head";
-import Layout from "../components/Layout";
-import TextLink from "../components/TextLink";
-import { ChevronDown } from "react-feather";
-import { Creation } from "../types/creations";
-import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
-import { socialIcons } from "../data/navigation";
+import BlogCard from '../components/BlogCard';
+import CreationCard from '../components/CreationCardLinked';
+import Head from 'next/head';
+import Layout from '../components/Layout';
+import TextLink from '../components/TextLink';
+import { ChevronDown } from 'react-feather';
+import { Creation } from '../types/creations';
+import { SHOWCASE_URL, WRITINGS_URL } from '../data/constants';
+import { socialIcons } from '../data/navigation';
 import type { GetStaticProps, NextPage } from "next";
 import type { Article } from "../types/writings";
 

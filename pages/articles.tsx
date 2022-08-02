@@ -1,12 +1,12 @@
-import BlogCard from "../components/BlogCard";
-import feather from "feather-icons";
-import Head from "next/head";
-import Layout from "../components/Layout";
-import Link from "next/link";
+import BlogCard from '../components/BlogCard';
+import feather from 'feather-icons';
+import Head from 'next/head';
+import Layout from '../components/Layout';
+import Link from 'next/link';
+import { Article } from '../types/writings';
+import { sortByPublishDate } from '../lib/writings';
+import { WRITINGS_URL } from '../data/constants';
 import type { GetStaticProps, NextPage } from "next";
-import { Article } from "../types/writings";
-import { WRITINGS_URL } from "../data/constants";
-import { sortByPublishDate } from "../lib/writings";
 
 type Props = {
     articles: Article[];

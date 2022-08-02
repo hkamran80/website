@@ -1,12 +1,12 @@
-import feather from "feather-icons";
-import Head from "next/head";
-import Layout from "../components/Layout";
-import Link from "next/link";
-import NoteCard from "../components/NoteCard";
+import feather from 'feather-icons';
+import Head from 'next/head';
+import Layout from '../components/Layout';
+import Link from 'next/link';
+import NoteCard from '../components/NoteCard';
+import { sortByPublishDate } from '../lib/writings';
+import { Writing } from '../types/writings';
+import { WRITINGS_URL } from '../data/constants';
 import type { GetStaticProps, NextPage } from "next";
-import { WRITINGS_URL } from "../data/constants";
-import { sortByPublishDate } from "../lib/writings";
-import { Writing } from "../types/writings";
 
 type Props = { notes: Writing[] };
 
