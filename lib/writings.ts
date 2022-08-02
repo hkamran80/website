@@ -1,6 +1,12 @@
 import type { Writing, WritingTags } from "../types/writings";
 import { slugify } from "../util/string";
 
+/**
+ * Sort an array by the `Writing` type's `published` property
+ * @param {Writing} writing0
+ * @param {Writing} writing1
+ * @returns {number} A number to sort with
+ */
 export const sortByPublishDate = (
     { published: publishedA }: { published: string },
     { published: publishedB }: { published: string },
@@ -13,6 +19,12 @@ export const sortByPublishDate = (
     return 0;
 };
 
+/**
+ * Generate a list of tags from an array of `Writing` objects
+ * @param {Writing[]} writings An array of `Writing` objects
+ * @param {boolean} [slugifyTag=false] Whether to slugify the tag names or not (defaults to `false`)
+ * @returns {WritingTags} A instance of `WritingTags`
+ */
 export const getTags = (
     writings: Writing[],
     slugifyTag: boolean = false,
@@ -29,6 +41,11 @@ export const getTags = (
     );
 };
 
+/**
+ * Remove duplicate entries from an array
+ * @param {any[]} array Remove duplicate entries from an array
+ * @returns {any[]} The array without duplicate entries
+ */
 export const arrayUnique = (array: any[]): any[] => {
     var a = array.concat();
 

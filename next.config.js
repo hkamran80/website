@@ -10,11 +10,11 @@ const nextConfig = {
         return [
             {
                 source: "/feed",
-                destination: "/api/feed/rss",
+                destination: "/feed.rss",
             },
             {
                 source: "/feed/:slug",
-                destination: "/api/feed/:slug",
+                destination: "/feed.:slug",
             },
         ];
     },
