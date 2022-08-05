@@ -1,4 +1,4 @@
-import BlogCard from "../components/BlogCard";
+import ArticleCard from "../components/ArticleCard";
 import CreationCard from "../components/CreationCardLinked";
 import Head from "next/head";
 import Layout from "../components/Layout";
@@ -129,7 +129,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
 
                             <div className="mt-4">
                                 <TextLink href={`/article/${latestArticle.id}`}>
-                                    <BlogCard
+                                    <ArticleCard
                                         article={latestArticle}
                                         topPadding={false}
                                     />

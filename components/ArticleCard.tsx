@@ -2,7 +2,7 @@ import Image from "next/image";
 import { classNames } from "@hkamran/utility-web";
 import type { Article } from "../types/writings";
 
-const BlogCard = ({
+const ArticleCard = ({
     article,
     topPadding = true,
 }: {
@@ -21,7 +21,7 @@ const BlogCard = ({
                     unoptimized={true}
                 />
 
-                <div className="col-span-2">
+                <div className="col-span-2 space-y-2">
                     <p className="text-sm text-gray-400">
                         {article.published !== "" ? (
                             <time dateTime={article.published}>
@@ -38,24 +38,21 @@ const BlogCard = ({
                         )}
                     </p>
 
-                    <span className="mt-2 block">
-                        <p className="text-xl font-semibold text-gray-200">
-                            {article.title}
-                        </p>
-                        <p className="mt-2 text-base text-gray-400">
-                            {article.description}
-                        </p>
-                    </span>
+                    <p className="text-xl font-semibold text-gray-200">
+                        {article.title}
+                    </p>
 
-                    <div className="mt-3 hover:cursor-pointer">
-                        <span className="text-base font-semibold text-pink-500 hover:text-pink-600">
-                            Read full article
-                        </span>
-                    </div>
+                    <p className="text-base text-gray-400">
+                        {article.description}
+                    </p>
+
+                    <p className="text-base font-semibold text-pink-500 hover:text-pink-600 hover:cursor-pointer transition-colors duration-300">
+                        Read full article
+                    </p>
                 </div>
             </div>
         </div>
     );
 };
 
-export default BlogCard;
+export default ArticleCard;

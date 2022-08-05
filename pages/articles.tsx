@@ -1,4 +1,4 @@
-import BlogCard from "../components/BlogCard";
+import ArticleCard from "../components/ArticleCard";
 import feather from "feather-icons";
 import Head from "next/head";
 import Layout from "../components/Layout";
@@ -42,7 +42,7 @@ const Articles: NextPage<Props> = ({ articles }) => {
                             passHref
                         >
                             <a>
-                                <BlogCard article={article} />
+                                <ArticleCard article={article} />
                             </a>
                         </Link>
                     ))}
