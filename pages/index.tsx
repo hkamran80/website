@@ -67,7 +67,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                                             role="img"
                                             viewBox="0 0 24 24"
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="fill-white hover:fill-pink-700 transition-colors duration-300 w-6 h-6"
+                                            className="fill-white hover:fill-pink-400 transition-colors duration-300 w-6 h-6"
                                         >
                                             <title>{icon.title}</title>
                                             <path d={icon.path} />

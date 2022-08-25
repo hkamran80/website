@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { slugify } from "../util/string";
+import { slugify } from "@hkamran/utility-strings";
 import { Fragment } from "react";
 
 const WritingTags = ({
@@ -14,7 +14,7 @@ const WritingTags = ({
             {tags.map((tag, index) => (
                 <Fragment key={index}>
                     <Link href={`/${basePath}/${slugify(tag)}`} passHref>
-                        <a className="text-pink-400 hover:text-pink-700 transition-colors duration-300">
+                        <a className="text-pink-400 hover:text-pink-400 transition-colors duration-300">
                             {tag}
                         </a>
                     </Link>{" "}

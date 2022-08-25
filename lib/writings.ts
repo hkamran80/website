@@ -1,5 +1,5 @@
 import type { Writing, WritingTags } from "../types/writings";
-import { slugify } from "../util/string";
+import { slugify } from "@hkamran/utility-strings";
 
 /**
  * Sort an array by the `Writing` type's `published` property

@@ -1,5 +1,5 @@
-import { classNames } from '@hkamran/utility-web';
-import { slugify } from '../util/string';
+import { classNames } from "@hkamran/utility-web";
+import { slugify } from "@hkamran/utility-strings";
 import type { InputFieldProps } from "../types/input";
 
 const InputField = ({ ...props }: InputFieldProps) => {
@@ -26,7 +26,7 @@ const InputField = ({ ...props }: InputFieldProps) => {
                     placeholder={props.placeholder}
                     className={classNames(
                         "px-3 py-3 relative bg-hk-grey rounded-lg text-sm border-0 shadow outline-none focus:outline-none w-full appearance-none",
-                        !props.disabled ? "focus:ring focus:ring-pink-700" : "",
+                        !props.disabled ? "focus:ring focus:ring-pink-400" : "",
                         props.svg ? "pr-10" : "",
                         props.copyAll ? "select-all" : "",
                     )}
