@@ -25,7 +25,7 @@ const Showcase: NextPage<Props> = ({ showcase }) => {
             </Head>
 
             <h1 className="text-3xl font-semibold">Showcase</h1>
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
                 {showcase
                     .filter(({ featured }) => featured)
                     .sort(alphabeticalSort)

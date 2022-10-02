@@ -1,27 +1,14 @@
-import CreationCard from "./CreationCard";
-import Link from "next/link";
+import CreationCard from './CreationCard';
+import TextLink from './TextLink';
 import type { Creation } from "../types/creations";
 
 const CreationCardLinked = ({ creation }: { creation: Creation }) => {
     if (creation) {
-        if (creation.site && !creation.site.startsWith("/")) {
+        if (creation.site) {
             return (
-                <a
-                    href={creation.site}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={`Open ${creation.name}`}
-                >
+                <TextLink href={creation.site}>
                     <CreationCard creation={creation} />
-                </a>
-            );
-        } else if (creation.site && creation.site.startsWith("/")) {
-            return (
-                <Link href={creation.site.replace("/creations", "/showcase")}>
-                    <a title={`Open ${creation.name}`}>
-                        <CreationCard creation={creation} />
-                    </a>
-                </Link>
+                </TextLink>
             );
         } else {
             return <CreationCard creation={creation} />;

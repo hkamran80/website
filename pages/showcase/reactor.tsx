@@ -32,10 +32,10 @@ const Reactor: NextPage = () => {
                     />
 
                     <div className="space-y-2">
-                        <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">
+                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
                             Reactor
                         </h1>
-                        <h2 className="font-light text-xl sm:text-2xl text-center sm:text-left leading-snug text-gray-300">
+                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
                             Automatically add reactions to specific users&apos;
                             messages
                         </h2>
@@ -47,12 +47,12 @@ const Reactor: NextPage = () => {
                                 href="https://go.hkamran.com/add-reactor"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full flex text-center align-center justify-center bg-hk-grey text-white hover:text-pink-400 transition-colors duration-200 ease-in-out font-medium p-4 rounded-full"
+                                className="align-center flex w-full justify-center rounded-full bg-hk-grey p-4 text-center font-medium text-white transition-colors duration-200 ease-in-out hover:text-pink-400"
                             >
                                 Add Reactor to your Discord server
                             </a>
 
-                            <div className="mt-8 max-w-none prose prose-invert prose-a:text-pink-400">
+                            <div className="prose prose-invert mt-8 max-w-none prose-a:text-pink-400">
                                 <h2>What Does Reactor Do?</h2>
                                 <p>
                                     Like the description says, Reactor adds

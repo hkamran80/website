@@ -7,6 +7,7 @@ import { Article } from "../types/writings";
 import { sortByPublishDate } from "../lib/writings";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
+import TextLink from "../components/TextLink";
 
 type Props = {
     articles: Article[];
@@ -19,7 +20,7 @@ const Articles: NextPage<Props> = ({ articles }) => {
                 <title>Articles | H. Kamran</title>
             </Head>
 
-            <h1 className="text-3xl font-semibold flex items-center">
+            <h1 className="flex items-center text-3xl font-semibold">
                 <span className="flex-1">Articles</span>
                 <a
                     href="/feed/atom"
@@ -36,15 +37,9 @@ const Articles: NextPage<Props> = ({ articles }) => {
                 {articles
                     .filter(({ published }) => published !== "")
                     .map((article, index) => (
-                        <Link
-                            key={index}
-                            href={`/article/${article.id}`}
-                            passHref
-                        >
-                            <a>
-                                <ArticleCard article={article} />
-                            </a>
-                        </Link>
+                        <TextLink key={index} href={`/article/${article.id}`}>
+                            <ArticleCard article={article} />
+                        </TextLink>
                     ))}
             </div>
         </Layout>

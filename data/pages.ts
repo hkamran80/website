@@ -31,27 +31,3 @@ export const programs: Page[] = [
         componentFilename: "WebUtilitiesProgram",
     },
 ];
-
-export const showcasePages: Page[] = [
-    {
-        id: "acoustats",
-        name: "Acoustats",
-        description: "Acoustats is like Spotify Wrapped®, but year-round.",
-        centerContent: true,
-        componentFilename: "AcoustatsPage",
-    },
-    {
-        id: "nebula-new-tab",
-        name: "Nebula New Tab",
-        description: "A clean and simple new tab page",
-        centerContent: false,
-        componentFilename: "NebulaNewTabPage",
-    },
-    {
-        id: "reactor",
-        name: "Reactor",
-        description: "Automatically add reactions to specific users' messages",
-        centerContent: true,
-        componentFilename: "ReactorPage",
-    },
-];

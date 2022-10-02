@@ -8,6 +8,7 @@ import { arrayUnique, getTags, sortByPublishDate } from "../../lib/writings";
 import { Article, Writing } from "../../types/writings";
 import { WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import TextLink from "../../components/TextLink";
 
 type Props = { tag: string; articles: Article[]; notes: Writing[] };
 
@@ -21,14 +22,14 @@ const Tag: NextPage<Props> = ({ tag, articles, notes }) => {
             <Breadcrumbs baseLabel="Tags" currentLabel={tag} />
 
             <div className="space-y-2">
-                <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">
+                <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
                     {tag}
                 </h1>
             </div>
 
             {articles.length > 0 ? (
                 <>
-                    <h2 className="mt-4 text-2xl font-semibold text-center mx-auto md:text-left">
+                    <h2 className="mx-auto mt-4 text-center text-2xl font-semibold md:text-left">
                         Articles
                     </h2>
 
@@ -36,15 +37,12 @@ const Tag: NextPage<Props> = ({ tag, articles, notes }) => {
                         {articles
                             .filter(({ published }) => published !== "")
                             .map((article, index) => (
-                                <Link
+                                <TextLink
                                     key={index}
                                     href={`/article/${article.id}`}
-                                    passHref
                                 >
-                                    <a>
-                                        <ArticleCard article={article} />
-                                    </a>
-                                </Link>
+                                    <ArticleCard article={article} />
+                                </TextLink>
                             ))}
                     </div>
                 </>
@@ -54,7 +52,7 @@ const Tag: NextPage<Props> = ({ tag, articles, notes }) => {
 
             {notes.length > 0 ? (
                 <>
-                    <h2 className="mt-4 text-2xl font-semibold text-center mx-auto md:text-left">
+                    <h2 className="mx-auto mt-4 text-center text-2xl font-semibold md:text-left">
                         Notes
                     </h2>
 
@@ -62,15 +60,12 @@ const Tag: NextPage<Props> = ({ tag, articles, notes }) => {
                         {notes
                             .filter(({ published }) => published !== "")
                             .map((article, index) => (
-                                <Link
+                                <TextLink
                                     key={index}
                                     href={`/note/${article.id}`}
-                                    passHref
                                 >
-                                    <a>
-                                        <NoteCard note={article} />
-                                    </a>
-                                </Link>
+                                    <NoteCard note={article} />
+                                </TextLink>
                             ))}
                     </div>
                 </>

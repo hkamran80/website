@@ -72,20 +72,20 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                     />
 
                     <div className="space-y-2">
-                        <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">
+                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
                             Nebula New Tab
                         </h1>
-                        <h2 className="font-light text-xl sm:text-2xl text-center sm:text-left leading-snug text-gray-300">
+                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
                             A clean and simple new tab page
                         </h2>
                     </div>
 
                     <div className="mt-6">
                         <div>
-                            <div className="max-w-3xl mx-auto">
+                            <div className="mx-auto max-w-3xl">
                                 <div
                                     id="download-buttons"
-                                    className="mt-8 mx-auto grid grid-cols-1 md:grid-cols-3 gap-4"
+                                    className="mx-auto mt-8 grid grid-cols-1 gap-4 md:grid-cols-3"
                                 >
                                     {Object.entries(downloadLinks).map(
                                         ([browser, link], index) => (
@@ -93,7 +93,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                 key={index}
                                                 href={link}
                                                 target="_blank"
-                                                className="text-center bg-hk-grey text-white hover:text-purple-400 transition-colors duration-200 ease-in-out font-medium p-4 rounded-full shadow-lg"
+                                                className="rounded-full bg-hk-grey p-4 text-center font-medium text-white shadow-lg transition-colors duration-200 ease-in-out hover:text-purple-400"
                                                 rel="noopener noreferrer"
                                             >
                                                 Install in {browser}
@@ -102,7 +102,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                     )}
                                 </div>
 
-                                <div className="my-5 mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="my-5 mx-auto grid grid-cols-1 gap-4 md:grid-cols-3">
                                     {Object.entries(jumpLinks).map(
                                         ([label, link], index) => (
                                             // eslint-disable-next-line react/jsx-no-target-blank
@@ -119,7 +119,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                         ? "noopener noreferrer"
                                                         : ""
                                                 }
-                                                className="text-center bg-purple-900 hover:bg-purple-800 transition-colors duration-200 ease-in-out p-2 rounded-lg text-white"
+                                                className="rounded-lg bg-purple-900 p-2 text-center text-white transition-colors duration-200 ease-in-out hover:bg-purple-800"
                                             >
                                                 {label}
                                             </a>
@@ -153,7 +153,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                             </picture>
 
                             <div id="features" className="py-12">
-                                <div className="max-w-7xl mx-auto pb-6 px-4 sm:pb-12 sm:px-6 lg:px-8 lg:flex lg:justify-between">
+                                <div className="mx-auto max-w-7xl px-4 pb-6 sm:px-6 sm:pb-12 lg:flex lg:justify-between lg:px-8">
                                     <div className="max-w-xl">
                                         <h2 className="text-2xl font-bold text-gray-100 sm:text-5xl sm:tracking-tight lg:text-4xl">
                                             Features
@@ -161,14 +161,14 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                     </div>
                                 </div>
 
-                                <div className="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-                                    <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-8">
+                                <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+                                    <dl className="space-y-10 lg:grid lg:grid-cols-4 lg:gap-8 lg:space-y-0">
                                         <div>
-                                            <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-900 text-white">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900 text-white">
                                                 <Clock />
                                             </div>
                                             <div className="mt-5">
-                                                <dt className="text-lg leading-6 font-medium text-gray-100">
+                                                <dt className="text-lg font-medium leading-6 text-gray-100">
                                                     Time and Date
                                                 </dt>
                                                 <dd className="mt-2 text-base text-gray-500">
@@ -178,11 +178,11 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                         </div>
 
                                         <div>
-                                            <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-900 text-white">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900 text-white">
                                                 <FeatherImage />
                                             </div>
                                             <div className="mt-5">
-                                                <dt className="text-lg leading-6 font-medium text-gray-100">
+                                                <dt className="text-lg font-medium leading-6 text-gray-100">
                                                     Background Images
                                                 </dt>
                                                 <dd className="mt-2 text-base text-gray-500">
@@ -206,7 +206,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                     </a>{" "}
                                                     are clean and simple, just
                                                     like Nebula
-                                                    <p className="text-sm mt-1">
+                                                    <p className="mt-1 text-sm">
                                                         Backgrounds refresh
                                                         every twelve hours or
                                                         manually in settings
@@ -216,17 +216,17 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                         </div>
 
                                         <div>
-                                            <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-900 text-white">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900 text-white">
                                                 <Globe />
                                             </div>
                                             <div className="mt-5">
-                                                <dt className="text-lg leading-6 font-medium text-gray-100">
+                                                <dt className="text-lg font-medium leading-6 text-gray-100">
                                                     Top Sites
                                                 </dt>
                                                 <dd className="mt-2 text-base text-gray-500">
                                                     View your top visited sites
                                                     in Nebula
-                                                    <p className="text-sm mt-1">
+                                                    <p className="mt-1 text-sm">
                                                         This feature can be
                                                         turned on from the
                                                         settings menu
@@ -236,17 +236,17 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                         </div>
 
                                         <div>
-                                            <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-900 text-white">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900 text-white">
                                                 <Clock />
                                             </div>
                                             <div className="mt-5">
-                                                <dt className="text-lg leading-6 font-medium text-gray-100">
+                                                <dt className="text-lg font-medium leading-6 text-gray-100">
                                                     24-Hour Time
                                                 </dt>
                                                 <dd className="mt-2 text-base text-gray-500">
                                                     An essential feature in many
                                                     people&quot;s eyes
-                                                    <p className="text-sm mt-1">
+                                                    <p className="mt-1 text-sm">
                                                         This feature can be
                                                         turned on from the
                                                         settings menu
@@ -259,39 +259,39 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                             </div>
 
                             <div id="changelog" className="py-12">
-                                <div className="max-w-7xl mx-auto pb-6 px-4 sm:pb-8 sm:px-6 lg:px-8 lg:flex lg:justify-between">
+                                <div className="mx-auto max-w-7xl px-4 pb-6 sm:px-6 sm:pb-8 lg:flex lg:justify-between lg:px-8">
                                     <div className="max-w-xl">
                                         <h2 className="text-2xl font-bold text-gray-100 sm:text-5xl sm:tracking-tight lg:text-4xl">
                                             Changelog
                                         </h2>
 
                                         {currentVersion && (
-                                            <p className="mt-3 mb-6 sm:mb-0 text-xl text-gray-400">
+                                            <p className="mt-3 mb-6 text-xl text-gray-400 sm:mb-0">
                                                 {currentVersion.date}
                                             </p>
                                         )}
                                     </div>
 
-                                    <div className="md:mt-5 w-full max-w-xs">
+                                    <div className="w-full max-w-xs md:mt-5">
                                         <div className="w-xs">
                                             <Listbox
                                                 value={currentVersion}
                                                 onChange={setCurrentVersion}
                                             >
                                                 <div className="relative mt-1">
-                                                    <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-hk-grey rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-indigo-500 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
+                                                    <Listbox.Button className="relative w-full cursor-default rounded-lg bg-hk-grey py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-500 sm:text-sm">
                                                         <span className="block truncate">
                                                             Version{" "}
                                                             {
                                                                 currentVersion?.version
                                                             }
                                                         </span>
-                                                        <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-gray-400">
-                                                            <ChevronDown className="w-5 h-5" />
+                                                        <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-gray-400">
+                                                            <ChevronDown className="h-5 w-5" />
                                                         </span>
                                                     </Listbox.Button>
 
-                                                    <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-hk-grey rounded-lg shadow-lg max-h-60 ring-1 ring-white ring-opacity-5 focus:outline-none sm:text-sm">
+                                                    <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-lg bg-hk-grey py-1 text-base shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none sm:text-sm">
                                                         {changelog.map(
                                                             (
                                                                 version,
@@ -303,7 +303,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                                         active,
                                                                     }) =>
                                                                         classNames(
-                                                                            "cursor-default select-none relative py-2 px-4 transition-colors duration-200 text-gray-100",
+                                                                            "relative cursor-default select-none py-2 px-4 text-gray-100 transition-colors duration-200",
                                                                             active
                                                                                 ? "bg-purple-900"
                                                                                 : "",
@@ -340,7 +340,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                     </div>
                                 </div>
 
-                                <div className="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 prose prose-invert">
+                                <div className="prose prose-invert mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                                     <ul>
                                         {currentVersion &&
                                             currentVersion.changelog.map(

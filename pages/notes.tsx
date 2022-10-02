@@ -7,6 +7,7 @@ import { sortByPublishDate } from "../lib/writings";
 import { Writing } from "../types/writings";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
+import TextLink from "../components/TextLink";
 
 type Props = { notes: Writing[] };
 
@@ -17,7 +18,7 @@ const Notes: NextPage<Props> = ({ notes }) => {
                 <title>Notes | H. Kamran</title>
             </Head>
 
-            <h1 className="text-3xl font-semibold flex items-center">
+            <h1 className="flex items-center text-3xl font-semibold">
                 <span className="flex-1">Notes</span>
                 <a
                     href="/feed/atom"
@@ -30,13 +31,11 @@ const Notes: NextPage<Props> = ({ notes }) => {
                     }}
                 />
             </h1>
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
                 {notes.map((note, index) => (
-                    <Link key={index} href={`/note/${note.id}`} passHref>
-                        <a>
+                    <TextLink key={index} href={`/note/${note.id}`}>
                             <NoteCard note={note} />
-                        </a>
-                    </Link>
+                    </TextLink>
                 ))}
             </div>
         </Layout>

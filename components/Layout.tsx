@@ -27,14 +27,14 @@ export default function Layout({
                     : "h-screen bg-black text-white",
             )}
         >
-            <div className="h-screen max-w-5xl mx-auto flex flex-col">
+            <div className="mx-auto flex h-screen max-w-5xl flex-col">
                 {navigationBar || navigationBar === undefined ? (
                     <NavigationBar />
                 ) : (
                     ""
                 )}
 
-                <div className="grow flex px-12 md:px-0">
+                <div className="flex grow px-12 md:px-0">
                     <div
                         className={classNames(
                             "w-full",
@@ -48,12 +48,12 @@ export default function Layout({
 
                 <footer
                     className={classNames(
-                        "flex-none mx-auto",
+                        "mx-auto flex-none",
                         !footerClasses || footerClasses.indexOf("pb-") === -1
                             ? "pb-10"
                             : "",
                         !footer
-                            ? "text-xs text-center text-gray-500 space-y-4"
+                            ? "space-y-4 text-center text-xs text-gray-500"
                             : "",
                         footerClasses ? footerClasses : "",
                     )}

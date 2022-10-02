@@ -29,16 +29,16 @@ const WebUtilitiesProgram: NextPage = () => {
                     />
 
                     <div className="space-y-2">
-                        <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">
+                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
                             Web Utilities
                         </h1>
-                        <h2 className="font-light text-xl sm:text-2xl text-center sm:text-left leading-snug text-gray-300">
+                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
                             Some helpful web utilities
                         </h2>
                     </div>
 
                     <div className="mt-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1">
+                        <div className="grid grid-cols-1 gap-x-4 gap-y-1 md:grid-cols-2">
                             <div className="md:col-span-2">
                                 <InputField
                                     type="text"

@@ -11,10 +11,10 @@ const ArticleCard = ({
 }) => {
     return (
         <div className={classNames(topPadding ? "mt-1 pt-5" : "")}>
-            <div className="grid sm:grid-cols-3 grid-cols-1 gap-8 items-center hover:cursor-pointer">
+            <div className="grid grid-cols-1 items-center gap-8 hover:cursor-pointer sm:grid-cols-3">
                 <Image
                     src={article.heroImage}
-                    className="rounded-lg object-cover object-center h-1/4"
+                    className="h-1/4 rounded-lg object-cover object-center"
                     alt={`Featured image for ${article.title}`}
                     width="100%"
                     height="100%"
@@ -46,7 +46,7 @@ const ArticleCard = ({
                         {article.description}
                     </p>
 
-                    <p className="text-base font-semibold text-pink-500 hover:text-pink-600 hover:cursor-pointer transition-colors duration-300">
+                    <p className="text-base font-semibold text-pink-500 transition-colors duration-300 hover:cursor-pointer hover:text-pink-600">
                         Read full article
                     </p>
                 </div>

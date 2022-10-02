@@ -1,29 +1,32 @@
 import Link from "next/link";
 import { ChevronRight, Home } from "react-feather";
 import type { BreadcrumbsProps } from "../types/breadcrumbs";
+import TextLink from "./TextLink";
 
 const Breadcrumbs = ({ ...props }: BreadcrumbsProps) => {
     return (
-        <nav className="flex mb-6" aria-label="Breadcrumb">
+        <nav className="mb-6 flex" aria-label="Breadcrumb">
             <ol className="flex items-center space-x-4">
                 <li>
-                    <Link href="/">
-                        <a className="text-gray-500 hover:text-gray-400 transition-colors duration-200 ease-in-out hover:cursor-pointer">
-                            <span className="sr-only">Home</span>
-                            <Home />
-                        </a>
-                    </Link>
+                    <TextLink
+                        href="/"
+                        className="text-gray-500 transition-colors duration-200 ease-in-out hover:cursor-pointer hover:text-gray-400"
+                    >
+                        <span className="sr-only">Home</span>
+                        <Home />
+                    </TextLink>
                 </li>
                 <li>
                     <div className="flex items-center">
                         <ChevronRight />
 
                         {props.basePath ? (
-                            <Link href={props.basePath}>
-                                <a className="ml-4 text-sm font-medium text-gray-400 hover:text-gray-300 transition-colors duration-200 ease-in-out hover:cursor-pointer">
-                                    {props.baseLabel}
-                                </a>
-                            </Link>
+                            <TextLink
+                                href={props.basePath}
+                                className="ml-4 text-sm font-medium text-gray-400 transition-colors duration-200 ease-in-out hover:cursor-pointer hover:text-gray-300"
+                            >
+                                {props.baseLabel}
+                            </TextLink>
                         ) : (
                             <span className="ml-4 text-sm font-medium text-gray-400">
                                 {props.baseLabel}
@@ -35,7 +38,7 @@ const Breadcrumbs = ({ ...props }: BreadcrumbsProps) => {
                     <div className="flex items-center">
                         <ChevronRight />
 
-                        <span className="ml-4 text-sm font-medium text-gray-400 hover:text-gray-300 transition-colors duration-200 ease-in-out hover:cursor-pointer">
+                        <span className="ml-4 text-sm font-medium text-gray-400 transition-colors duration-200 ease-in-out hover:cursor-pointer hover:text-gray-300">
                             {props.currentLabel}
                         </span>
                     </div>

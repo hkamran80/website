@@ -5,7 +5,7 @@ const CreationCard = ({ creation }: { creation: Creation }) => {
         return (
             <div
                 className={
-                    "h-full p-6 bg-hk-grey transition-colors duration-300 rounded-lg flex flex-col space-y-1 " +
+                    "flex h-full flex-col space-y-1 rounded-lg bg-hk-grey p-6 transition-colors duration-300 " +
                     (creation.site ? "hover:bg-hk-grey-hover" : "")
                 }
             >
@@ -17,7 +17,7 @@ const CreationCard = ({ creation }: { creation: Creation }) => {
                     {creation.description}
                 </span>
 
-                <div className="pt-3 text-sm font-light flex flex-row justify-center items-center">
+                <div className="flex flex-row items-center justify-center pt-3 text-sm font-light">
                     {creation.repository && (
                         <a
                             href={creation.repository}

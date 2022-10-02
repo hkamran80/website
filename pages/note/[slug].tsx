@@ -92,13 +92,13 @@ const Note: NextPage<Props> = ({ note, content }) => {
             />
 
             <div className="space-y-2">
-                <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">
+                <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
                     {note.title}
                 </h1>
-                <h2 className="font-light text-xl sm:text-2xl text-center sm:text-left leading-snug text-gray-300">
+                <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
                     {note.description}
                 </h2>
-                <h3 className="font-light sm:text-xl text-center sm:text-left leading-snug text-gray-400">
+                <h3 className="text-center font-light leading-snug text-gray-400 sm:text-left sm:text-xl">
                     {note.published !== "" ? (
                         <time dateTime={note.published}>
                             {new Date(
@@ -122,9 +122,9 @@ const Note: NextPage<Props> = ({ note, content }) => {
                 </h3>
             </div>
 
-            <div className="mt-6 max-w-5xl mx-auto">
+            <div className="mx-auto mt-6 max-w-5xl">
                 <article
-                    className="max-w-none prose prose-invert prose-a:text-pink-400 prose-pre:bg-hk-grey"
+                    className="prose prose-invert max-w-none prose-a:text-pink-400 prose-pre:bg-hk-grey"
                     dangerouslySetInnerHTML={{
                         __html: content,
                     }}

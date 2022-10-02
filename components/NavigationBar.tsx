@@ -1,24 +1,23 @@
+import favicon from "../public/favicon.png";
+import Image from "next/image";
 import TextLink from "./TextLink";
 import { classNames } from "@hkamran/utility-web";
 import { links } from "../data/navigation";
 import { useRouter } from "next/router";
-import Image from "next/image";
-
-import favicon from "../public/favicon.png";
 
 export default function NavigationBar() {
     const router = useRouter();
 
     return (
-        <nav className="flex-none pt-14 py-6 md:pt-12 px-12 md:px-0 flex flex-col md:flex-row items-start md:items-center text-sm md:space-x-8">
-            <div className="flex-1 text-right space-x-4 md:space-x-6">
+        <nav className="flex flex-none flex-col items-start py-6 px-12 pt-14 text-sm md:flex-row md:items-center md:space-x-8 md:px-0 md:pt-12">
+            <div className="flex-1 space-x-4 text-right md:space-x-6">
                 {links
                     .slice(0, links.length / 2)
                     .map(({ href, name, aliases }, index) => (
                         <TextLink key={index} href={href}>
                             <span
                                 className={classNames(
-                                    "uppercase text-xs tracking-wide hover:text-pink-400 hover:cursor-pointer transition-colors duration-300",
+                                    "text-xs uppercase tracking-wide transition-colors duration-300 hover:cursor-pointer hover:text-pink-400",
                                     router.asPath.startsWith(href) ||
                                         aliases
                                             .map(
@@ -38,7 +37,7 @@ export default function NavigationBar() {
                     ))}
             </div>
 
-            <TextLink href="/" className="text-base md:text-sm items-center">
+            <TextLink href="/" className="items-center text-base md:text-sm">
                 <Image
                     src={favicon}
                     width={45}
@@ -54,7 +53,7 @@ export default function NavigationBar() {
                         <TextLink key={index} href={href}>
                             <span
                                 className={classNames(
-                                    "uppercase text-xs tracking-wide hover:text-pink-400 hover:cursor-pointer transition-colors duration-300",
+                                    "text-xs uppercase tracking-wide transition-colors duration-300 hover:cursor-pointer hover:text-pink-400",
                                     router.asPath.startsWith(href) ||
                                         aliases
                                             .map(

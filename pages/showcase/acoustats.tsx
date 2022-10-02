@@ -44,16 +44,16 @@ const Acoustats: NextPage = () => {
                     />
 
                     <div className="space-y-2">
-                        <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">
+                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
                             Acoustats
                         </h1>
-                        <h2 className="font-light text-xl sm:text-2xl text-center sm:text-left leading-snug text-gray-300">
+                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
                             Acoustats is like Spotify Wrapped®, but year-round.
                         </h2>
                     </div>
 
                     <div className="mt-6">
-                        <div className="max-w-none prose prose-invert prose-a:text-pink-400">
+                        <div className="prose prose-invert max-w-none prose-a:text-pink-400">
                             <h2>Prerequisites</h2>
                             <p>
                                 To set up Acoustats, you must first create a

@@ -18,15 +18,15 @@ const License: NextPage = () => {
                 />
 
                 <div className="space-y-2">
-                    <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">
+                    <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
                         License
                     </h1>
-                    <h2 className="font-light text-xl sm:text-2xl text-center sm:text-left leading-snug text-gray-300">
+                    <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
                         Last Updated: April 7, 2022
                     </h2>
                 </div>
 
-                <div className="mt-6 max-w-none prose prose-invert">
+                <div className="prose prose-invert mt-6 max-w-none">
                     <ul>
                         <li>
                             You may copy and distribute the content on this

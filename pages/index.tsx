@@ -1,18 +1,33 @@
-import ArticleCard from "../components/ArticleCard";
-import CreationCard from "../components/CreationCardLinked";
-import Head from "next/head";
-import Layout from "../components/Layout";
-import TextLink from "../components/TextLink";
-import { ChevronDown } from "react-feather";
-import { Creation } from "../types/creations";
-import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
-import { socialIcons } from "../data/navigation";
+import ArticleCard from '../components/ArticleCard';
+import CreationCard from '../components/CreationCardLinked';
+import Head from 'next/head';
+import Image from 'next/future/image';
+import Layout from '../components/Layout';
+import profileImage from '../public/profile.png';
+import TextLink from '../components/TextLink';
+import { ChevronDown } from 'react-feather';
+import { Creation } from '../types/creations';
+import { KNOWN_LANGUAGES, SHOWCASE_URL, WRITINGS_URL } from '../data/constants';
+import { socialIcons } from '../data/navigation';
 import type { GetStaticProps, NextPage } from "next";
 import type { Article } from "../types/writings";
 
 type Props = {
     latestArticle: Article;
     featuredShowcase: Creation[];
+};
+
+// Source: https://stackoverflow.com/a/12043228/7313822
+const luminance = (c: string) => {
+    var c = c.substring(1); // strip #
+    var rgb = parseInt(c, 16); // convert rrggbb to decimal
+    var r = (rgb >> 16) & 0xff; // extract red
+    var g = (rgb >> 8) & 0xff; // extract green
+    var b = (rgb >> 0) & 0xff; // extract blue
+
+    var luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+
+    return luma < 40;
 };
 
 const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
@@ -23,94 +38,95 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
             </Head>
 
             <main>
-                <section id="overview">
-                    <Layout
-                        navigationBar={false}
-                        containerClasses="mt-6 md:mt-0"
-                        childrenClasses="my-auto flex flex-col space-y-8"
-                        footerClasses="pb-12 text-gray-500"
-                        footer={
-                            <button type="button">
-                                <ChevronDown
-                                    size={48}
-                                    onClick={() =>
-                                        document
-                                            .getElementById("creations")
-                                            ?.scrollIntoView({
-                                                behavior: "smooth",
-                                            })
-                                    }
-                                />
-                            </button>
-                        }
-                    >
-                        <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0">
-                            <div className="flex-1 flex flex-col space-y-1 md:space-y-4">
-                                <span className="text-4xl md:text-7xl text-left text-pink-400 font-bold">
-                                    H. Kamran
-                                </span>
-                                <span className="text-xl md:text-4xl font-semibold">
-                                    Developer and Amateur Photographer
-                                </span>
-                            </div>
+                <section id="overview" className="flex h-screen flex-col">
+                    <div className="relative top-14 mx-auto flex w-full max-w-7xl items-center">
+                        <h1 className="flex-1 text-4xl tracking-wide text-pink-700">
+                            H. Kamran
+                        </h1>
 
-                            <div className="flex flex-row space-x-7">
-                                {socialIcons.map(({ url, icon }, index) => (
-                                    <a
-                                        key={index}
-                                        href={url}
-                                        aria-label={icon.title}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                        <div className="flex flex-1 flex-row justify-end space-x-4">
+                            {KNOWN_LANGUAGES.map(({ name, icon }, index) => (
+                                <svg
+                                    key={index}
+                                    role="img"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-6 w-6 transition-colors duration-300 hover:fill-white"
+                                    style={{
+                                        fill:
+                                            name !== "SwiftUI"
+                                                ? !luminance(icon.hex)
+                                                    ? `#${icon.hex}`
+                                                    : "#FFFFFF"
+                                                : "#117AFF",
+                                    }}
+                                >
+                                    <title>{icon.title}</title>
+                                    <path d={icon.path} />
+                                </svg>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="mx-auto flex max-w-5xl grow flex-col items-center justify-center space-y-8 px-12 md:px-0">
+                      
+                        <Image
+                            src={profileImage}
+                            width={750}
+                            height={750}
+                            className="h-80 w-80 rounded-full border-2 border-pink-700"
+                            alt="H. Kamran's profile picture"
+                        />
+
+                        <h2 className="text-4xl tracking-wide text-pink-700">
+                            Developer and Amateur Photographer
+                        </h2>
+                    </div>
+
+                    <div className="relative bottom-10 mx-auto flex w-full max-w-7xl items-center">
+                        <h2 className="flex-1 text-2xl tracking-wide text-pink-700"></h2>
+
+                        <button type="button">
+                            <ChevronDown
+                                size={48}
+                                className="transition duration-300 hover:scale-125 hover:stroke-pink-700"
+                                onClick={() =>
+                                    document
+                                        .getElementById("creations")
+                                        ?.scrollIntoView({
+                                            behavior: "smooth",
+                                        })
+                                }
+                            />
+                        </button>
+
+                        <div className="flex flex-1 flex-row justify-end space-x-7">
+                            {socialIcons.map(({ url, icon }, index) => (
+                                <a
+                                    key={index}
+                                    href={url}
+                                    aria-label={icon.title}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <svg
+                                        role="img"
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-6 w-6 fill-pink-700 transition-colors duration-300 hover:fill-white"
                                     >
-                                        <svg
-                                            role="img"
-                                            viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="fill-white hover:fill-pink-400 transition-colors duration-300 w-6 h-6"
-                                        >
-                                            <title>{icon.title}</title>
-                                            <path d={icon.path} />
-                                        </svg>
-                                    </a>
-                                ))}
-                            </div>
+                                        <title>{icon.title}</title>
+                                        <path d={icon.path} />
+                                    </svg>
+                                </a>
+                            ))}
                         </div>
-
-                        <div className="max-w-3xl text-2xl font-light leading-snug space-y-2">
-                            <p>Hello world!</p>
-                            <p>
-                                I’m a developer, experienced in Python,
-                                JavaScript, TypeScript, Vue.js, React, Next.js,
-                                Java, Kotlin, Swift, and SwiftUI. I&apos;m
-                                currently learning Go.
-                            </p>
-
-                            <p>
-                                I also{" "}
-                                <TextLink
-                                    href="/articles"
-                                    className="text-pink-400 underline"
-                                >
-                                    write articles
-                                </TextLink>{" "}
-                                on topics that interest me and that seem useful,
-                                as well as{" "}
-                                <TextLink
-                                    href="https://unsplash.com/@hkamran"
-                                    className="text-pink-400 underline"
-                                >
-                                    occasionally taking photos
-                                </TextLink>
-                                .
-                            </p>
-                        </div>
-                    </Layout>
+                    </div>
                 </section>
 
                 <section
                     id="creations"
-                    className="h-screen max-w-5xl mx-auto flex flex-col text-white"
+                    className="mx-auto flex h-screen max-w-5xl flex-col text-white"
                 >
                     <Layout childrenClasses="space-y-12" footerClasses="py-10">
                         <section>
@@ -121,7 +137,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
 
                                 <TextLink
                                     href="/articles"
-                                    className="text-gray-500 hover:text-gray-300 transition-colors duration-200 ease-in-out"
+                                    className="text-gray-500 transition-colors duration-200 ease-in-out hover:text-gray-300"
                                 >
                                     See All
                                 </TextLink>
@@ -145,13 +161,13 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
 
                                 <TextLink
                                     href="/showcase"
-                                    className="text-gray-500 hover:text-gray-300 transition-colors duration-200 ease-in-out"
+                                    className="text-gray-500 transition-colors duration-200 ease-in-out hover:text-gray-300"
                                 >
                                     See All
                                 </TextLink>
                             </div>
 
-                            <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
                                 {featuredShowcase
                                     .sort(
                                         (

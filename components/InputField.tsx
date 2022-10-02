@@ -8,7 +8,7 @@ const InputField = ({ ...props }: InputFieldProps) => {
     return (
         <div
             className={classNames(
-                "ƒw-full items-center mb-3",
+                "ƒw-full mb-3 items-center",
                 props.classes || "",
             )}
         >
@@ -19,13 +19,13 @@ const InputField = ({ ...props }: InputFieldProps) => {
                 {props.label}
             </label>
 
-            <div className="mt-2 relative rounded-md shadow-sm">
+            <div className="relative mt-2 rounded-md shadow-sm">
                 <input
                     id={inputId}
                     type={props.type}
                     placeholder={props.placeholder}
                     className={classNames(
-                        "px-3 py-3 relative bg-hk-grey rounded-lg text-sm border-0 shadow outline-none focus:outline-none w-full appearance-none",
+                        "relative w-full appearance-none rounded-lg border-0 bg-hk-grey px-3 py-3 text-sm shadow outline-none focus:outline-none",
                         !props.disabled ? "focus:ring focus:ring-pink-400" : "",
                         props.svg ? "pr-10" : "",
                         props.copyAll ? "select-all" : "",
@@ -41,7 +41,7 @@ const InputField = ({ ...props }: InputFieldProps) => {
                     }}
                 />
 
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                     {props.svg && (
                         <span
                             className="text-gray-400"

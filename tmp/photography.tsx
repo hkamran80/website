@@ -1,13 +1,13 @@
 import Head from "next/head";
+import Image from "next/image";
 import Layout from "../components/Layout";
+import TextLink from "../components/TextLink";
+import { blurHashToDataURL } from "../util/image";
+import { Masonry } from "masonic";
+import { siUnsplash } from "simple-icons/icons";
 import { UNSPLASH_PHOTOS_URL, UNSPLASH_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
-import { siUnsplash } from "simple-icons/icons";
 import type { Photo, UnsplashPhoto } from "../types/photography";
-import { blurHashToDataURL } from "../util/image";
-import Image from "next/image";
-import { Masonry } from "masonic";
-import TextLink from "../components/TextLink";
 
 type Props = {
     photos: Photo[];
@@ -20,7 +20,7 @@ const Photography: NextPage<Props> = ({ photos }) => {
                 <title>Photography | H. Kamran</title>
             </Head>
 
-            <h1 className="text-3xl font-semibold flex items-center">
+            <h1 className="flex items-center text-3xl font-semibold">
                 <span className="flex-1">Photography</span>
                 <a
                     href={UNSPLASH_URL}
@@ -32,7 +32,7 @@ const Photography: NextPage<Props> = ({ photos }) => {
                         role="img"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
-                        className="fill-gray-400 hover:fill-pink-400 transition-colors duration-300 w-5 h-5"
+                        className="h-5 w-5 fill-gray-400 transition-colors duration-300 hover:fill-pink-400"
                     >
                         <title>{siUnsplash.title}</title>
                         <path d={siUnsplash.path} />
@@ -50,14 +50,14 @@ const Photography: NextPage<Props> = ({ photos }) => {
                             <TextLink
                                 key={index}
                                 href={photo.linkUrl}
-                                className="hover:scale-125 transform-transfrom duration-300"
+                                className="transform-transfrom duration-300 hover:scale-125"
                             >
                                 <Image
                                     src={photo.imageUrl}
                                     width={photo.width}
                                     height={photo.height}
                                     alt={photo.alt}
-                                    className="rounded-lg hover:scale-125 transform-transfrom duration-300"
+                                    className="transform-transfrom rounded-lg duration-300 hover:scale-125"
                                     // blurDataURL={photo.blurDataUrl ?? undefined}
                                 />
                             </TextLink>
