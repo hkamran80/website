@@ -5,7 +5,7 @@ import { classNames } from "@hkamran/utility-web";
 import { links } from "../data/navigation";
 import { useRouter } from "next/router";
 
-export default function NavigationBar() {
+const NavigationBar = () => {
     const router = useRouter();
 
     return (
@@ -74,4 +74,6 @@ export default function NavigationBar() {
             </div>
         </nav>
     );
-}
+};
+
+export default NavigationBar;
