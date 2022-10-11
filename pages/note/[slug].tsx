@@ -122,7 +122,7 @@ const Note: NextPage<Props> = ({ note, content }) => {
                 </h3>
             </div>
 
-            <div className="mx-auto mt-6 max-w-5xl">
+            <div className="mx-auto mt-6 max-w-3xl">
                 <article
                     className="prose prose-invert max-w-none prose-a:text-pink-400 prose-pre:bg-hk-grey"
                     dangerouslySetInnerHTML={{
@@ -158,6 +158,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             await fetch(`${BASE_WRITINGS_URL}/notes/${note.filename}.md`)
         ).text();
 
+        // TODO: Switch to global render function (in `lib/`)
         const content = new MarkdownIt({})
             .use(markdownItPrism)
             .render(markdown)

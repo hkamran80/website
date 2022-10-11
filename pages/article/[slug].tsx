@@ -167,7 +167,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                         />
 
                         <article
-                            className="prose prose-invert max-w-none prose-a:text-pink-400 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
+                            className="prose prose-invert mx-auto max-w-3xl prose-a:text-pink-400 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
                             dangerouslySetInnerHTML={{
                                 __html: content,
                             }}

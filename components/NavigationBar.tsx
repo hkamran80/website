@@ -1,5 +1,5 @@
 import favicon from "../public/favicon.png";
-import Image from "next/image";
+import Image from "next/future/image";
 import TextLink from "./TextLink";
 import { classNames } from "@hkamran/utility-web";
 import { links } from "../data/navigation";
@@ -9,68 +9,38 @@ const NavigationBar = () => {
     const router = useRouter();
 
     return (
-        <nav className="flex flex-none flex-col items-start py-6 px-12 pt-14 text-sm md:flex-row md:items-center md:space-x-8 md:px-0 md:pt-12">
-            <div className="flex-1 space-x-4 text-right md:space-x-6">
-                {links
-                    .slice(0, links.length / 2)
-                    .map(({ href, name, aliases }, index) => (
-                        <TextLink key={index} href={href}>
-                            <span
-                                className={classNames(
-                                    "text-xs uppercase tracking-wide transition-colors duration-300 hover:cursor-pointer hover:text-pink-400",
-                                    router.asPath.startsWith(href) ||
-                                        aliases
-                                            .map(
-                                                (alias) =>
-                                                    router.asPath.indexOf(
-                                                        alias,
-                                                    ) !== -1,
-                                            )
-                                            .filter((alias) => alias).length > 0
-                                        ? "text-pink-400 underline underline-offset-4"
-                                        : "",
-                                )}
-                            >
-                                {name}
-                            </span>
-                        </TextLink>
-                    ))}
-            </div>
-
-            <TextLink href="/" className="items-center text-base md:text-sm">
+        <nav className="flex flex-none flex-col items-start py-6 px-12 pt-14 text-sm md:flex-row md:items-center md:px-0 md:pt-12">
+            <TextLink href="/" className="flex-1 text-base md:text-sm">
                 <Image
-                    src={favicon}
-                    width={45}
-                    height={45}
-                    alt="HK website favicon"
+                    src="/profile.png"
+                    width={55}
+                    height={55}
+                    alt="H. Kamran profile picture"
+                    className="rounded-full border-[1px] border-pink-700"
                 />
             </TextLink>
 
-            <div className="flex-1 space-x-4 md:space-x-6">
-                {links
-                    .slice(links.length / 2, links.length)
-                    .map(({ href, name, aliases }, index) => (
-                        <TextLink key={index} href={href}>
-                            <span
-                                className={classNames(
-                                    "text-xs uppercase tracking-wide transition-colors duration-300 hover:cursor-pointer hover:text-pink-400",
-                                    router.asPath.startsWith(href) ||
-                                        aliases
-                                            .map(
-                                                (alias) =>
-                                                    router.asPath.indexOf(
-                                                        alias,
-                                                    ) !== -1,
-                                            )
-                                            .filter((alias) => alias).length > 0
-                                        ? "text-pink-400 underline underline-offset-4"
-                                        : "",
-                                )}
-                            >
-                                {name}
-                            </span>
-                        </TextLink>
-                    ))}
+            <div className="space-x-4 md:space-x-8">
+                {links.map(({ href, name, aliases }, index) => (
+                    <TextLink
+                        key={index}
+                        href={href}
+                        className={classNames(
+                            "text-xs uppercase tracking-wide transition-colors duration-300 hover:cursor-pointer ",
+                            router.asPath.startsWith(href) ||
+                                aliases
+                                    .map(
+                                        (alias) =>
+                                            router.asPath.indexOf(alias) !== -1,
+                                    )
+                                    .filter((alias) => alias).length > 0
+                                ? "text-pink-700 underline underline-offset-4"
+                                : "text-gray-500 hover:text-pink-700",
+                        )}
+                    >
+                        {name}
+                    </TextLink>
+                ))}
             </div>
         </nav>
     );
