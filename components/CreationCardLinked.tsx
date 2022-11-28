@@ -1,14 +1,14 @@
 import CreationCard from './CreationCard';
-import TextLink from './TextLink';
+import NavLink from './NavLink';
 import type { Creation } from "../types/creations";
 
 const CreationCardLinked = ({ creation }: { creation: Creation }) => {
     if (creation) {
         if (creation.site) {
             return (
-                <TextLink href={creation.site}>
+                <NavLink href={creation.site}>
                     <CreationCard creation={creation} />
-                </TextLink>
+                </NavLink>
             );
         } else {
             return <CreationCard creation={creation} />;

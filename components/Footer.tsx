@@ -1,4 +1,4 @@
-import TextLink from "./TextLink";
+import NavLink from "./NavLink";
 import { links, socialIcons } from "../data/navigation";
 
 const Footer = () => {
@@ -6,13 +6,13 @@ const Footer = () => {
         <>
             <nav aria-label="Footer" role="navigation" className="space-x-3">
                 {links.map(({ href, name }, index) => (
-                    <TextLink
+                    <NavLink
                         key={index}
                         href={href}
                         className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                     >
                         {name}
-                    </TextLink>
+                    </NavLink>
                 ))}
             </nav>
 
@@ -45,19 +45,19 @@ const Footer = () => {
                 </p>
 
                 <p className="space-x-3">
-                    <TextLink
+                    <NavLink
                         href="/legal/license"
                         className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                     >
                         License
-                    </TextLink>
+                    </NavLink>
 
-                    <TextLink
+                    <NavLink
                         href="/legal/privacy"
                         className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                     >
                         Privacy Policy
-                    </TextLink>
+                    </NavLink>
                 </p>
             </div>
         </>

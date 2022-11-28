@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { classNames } from "@hkamran/utility-web";
 import type { NextPage } from "next";
-import TextLink from "../components/TextLink";
+import NavLink from "../components/NavLink";
 
 const styling = `
 * {
@@ -53,7 +53,7 @@ const Error404: NextPage = () => {
                             { href: "/notes", name: "Notes" },
                             { href: "/programs", name: "Programs" },
                         ].map(({ href, name }, index) => (
-                            <TextLink
+                            <NavLink
                                 key={index}
                                 href={href}
                                 className={classNames(
@@ -65,7 +65,7 @@ const Error404: NextPage = () => {
                                 )}
                             >
                                 {name}
-                            </TextLink>
+                            </NavLink>
                         ))}
                     </div>
                 </div>

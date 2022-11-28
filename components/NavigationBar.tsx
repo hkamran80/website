@@ -1,6 +1,6 @@
 import favicon from "../public/favicon.png";
 import Image from "next/image";
-import TextLink from "./TextLink";
+import NavLink from "./NavLink";
 import { classNames } from "@hkamran/utility-web";
 import { links } from "../data/navigation";
 import { useRouter } from "next/router";
@@ -10,7 +10,7 @@ const NavigationBar = () => {
 
     return (
         <nav className="flex flex-none flex-col items-start py-6 px-12 pt-14 text-sm md:flex-row md:items-center md:px-0 md:pt-12">
-            <TextLink href="/" className="flex-1 text-base md:text-sm">
+            <NavLink href="/" className="flex-1 text-base md:text-sm">
                 <Image
                     src="/profile.png"
                     width={55}
@@ -18,11 +18,11 @@ const NavigationBar = () => {
                     alt="H. Kamran profile picture"
                     className="rounded-full border-[1px] border-pink-700"
                 />
-            </TextLink>
+            </NavLink>
 
             <div className="space-x-4 md:space-x-8">
                 {links.map(({ href, name, aliases }, index) => (
-                    <TextLink
+                    <NavLink
                         key={index}
                         href={href}
                         className={classNames(
@@ -39,7 +39,7 @@ const NavigationBar = () => {
                         )}
                     >
                         {name}
-                    </TextLink>
+                    </NavLink>
                 ))}
             </div>
         </nav>

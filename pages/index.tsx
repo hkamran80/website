@@ -2,7 +2,7 @@ import ArticleCard from "../components/ArticleCard";
 import CreationCard from "../components/CreationCardLinked";
 import Head from "next/head";
 import Layout from "../components/Layout";
-import TextLink from "../components/TextLink";
+import NavLink from "../components/NavLink";
 import { ChevronDown } from "react-feather";
 import { Creation } from "../types/creations";
 import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
@@ -96,21 +96,21 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                                     Latest Article
                                 </span>
 
-                                <TextLink
+                                <NavLink
                                     href="/articles"
                                     className="text-sm uppercase text-gray-500 transition-colors duration-200 ease-in hover:text-pink-700"
                                 >
                                     See All
-                                </TextLink>
+                                </NavLink>
                             </div>
 
                             <div className="mt-4">
-                                <TextLink href={`/article/${latestArticle.id}`}>
+                                <NavLink href={`/article/${latestArticle.id}`}>
                                     <ArticleCard
                                         article={latestArticle}
                                         topPadding={false}
                                     />
-                                </TextLink>
+                                </NavLink>
                             </div>
                         </section>
 
@@ -120,12 +120,12 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                                     Featured Showcase
                                 </span>
 
-                                <TextLink
+                                <NavLink
                                     href="/showcase"
                                     className="text-sm uppercase text-gray-500 transition-colors duration-200 ease-in hover:text-pink-700"
                                 >
                                     See All
-                                </TextLink>
+                                </NavLink>
                             </div>
 
                             <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">

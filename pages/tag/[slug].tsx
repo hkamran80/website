@@ -8,7 +8,7 @@ import { arrayUnique, getTags, sortByPublishDate } from "../../lib/writings";
 import { Article, Writing } from "../../types/writings";
 import { WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import TextLink from "../../components/TextLink";
+import NavLink from "../../components/NavLink";
 
 type Props = { tag: string; articles: Article[]; notes: Writing[] };
 
@@ -37,12 +37,12 @@ const Tag: NextPage<Props> = ({ tag, articles, notes }) => {
                         {articles
                             .filter(({ published }) => published !== "")
                             .map((article, index) => (
-                                <TextLink
+                                <NavLink
                                     key={index}
                                     href={`/article/${article.id}`}
                                 >
                                     <ArticleCard article={article} />
-                                </TextLink>
+                                </NavLink>
                             ))}
                     </div>
                 </>
@@ -60,12 +60,12 @@ const Tag: NextPage<Props> = ({ tag, articles, notes }) => {
                         {notes
                             .filter(({ published }) => published !== "")
                             .map((article, index) => (
-                                <TextLink
+                                <NavLink
                                     key={index}
                                     href={`/note/${article.id}`}
                                 >
                                     <NoteCard note={article} />
-                                </TextLink>
+                                </NavLink>
                             ))}
                     </div>
                 </>
