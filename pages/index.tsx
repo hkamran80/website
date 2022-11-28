@@ -73,10 +73,10 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                         }
                     >
                         <div className="mx-auto flex max-w-3xl grow flex-col items-center justify-center space-y-2 px-0 text-center uppercase">
-                            <span className="text-base tracking-wider md:text-2xl">
+                            <span className="text-sm tracking-wider md:text-2xl">
                                 H. Kamran
                             </span>
-                            <span className="text-4xl leading-tight font-extrabold md:leading-tight tracking-wide text-pink-700 md:text-7xl">
+                            <span className="text-3xl leading-tight font-extrabold md:leading-tight tracking-wide text-pink-700 md:text-7xl">
                                 Developer and
                                 <br />
                                 Amateur Photographer
