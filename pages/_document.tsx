@@ -1,8 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-// const description =
-//     "I'm a developer, experienced in Python, JavaScript, TypeScript, Vue.js, Java, Kotlin, Swift, and SwiftUI. I also enjoy taking photos and writing articles on topics that interest me or seem useful.";
-
 const styles = `/* latin-ext */
 @font-face {
   font-family: "Nunito Sans";
