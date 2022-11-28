@@ -1,10 +1,10 @@
-import Breadcrumbs from "../../components/Breadcrumbs";
-import Head from "next/head";
-import InputField from "../../components/InputField";
-import Layout from "../../components/Layout";
-import { useEffect, useState } from "react";
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Head from 'next/head';
+import InputField from '@/components/InputField';
+import Layout from '@/components/Layout';
+import { useEffect, useState } from 'react';
+import { WebPageJsonLd } from 'next-seo';
 import type { NextPage } from "next";
-import { WebPageJsonLd } from "next-seo";
 
 const TextReverseProgram: NextPage = () => {
     const [text, setText] = useState<string>("");

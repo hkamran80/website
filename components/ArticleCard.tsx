@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { classNames } from "@hkamran/utility-web";
-import type { Article } from "../types/writings";
+import type { Article } from "@/types/writings";
 
 const ArticleCard = ({
     article,

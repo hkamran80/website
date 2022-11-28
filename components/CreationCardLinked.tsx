@@ -1,6 +1,6 @@
-import CreationCard from "./CreationCard";
-import NavLink from "./NavLink";
-import type { Creation } from "../types/creations";
+import CreationCard from './CreationCard';
+import NavLink from './NavLink';
+import type { Creation } from "@/types/creations";
 
 const CreationCardLinked = ({ creation }: { creation: Creation }) => {
     if (creation) {

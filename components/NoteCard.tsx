@@ -1,4 +1,4 @@
-import type { Writing } from "../types/writings";
+import type { Writing } from "@/types/writings";
 
 const NoteCard = ({ note }: { note: Writing }) => {
     return (

@@ -1,8 +1,8 @@
-import Breadcrumbs from "../../components/Breadcrumbs";
-import Head from "next/head";
-import Layout from "../../components/Layout";
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import { WebPageJsonLd } from 'next-seo';
 import type { NextPage } from "next";
-import { WebPageJsonLd } from "next-seo";
 
 const commands = [
     {

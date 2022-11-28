@@ -1,4 +1,4 @@
-import type { Creation } from "../types/creations";
+import type { Creation } from "@/types/creations";
 
 const CreationCard = ({ creation }: { creation: Creation }) => {
     if (creation) {

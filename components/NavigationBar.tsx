@@ -1,9 +1,8 @@
-import favicon from "../public/favicon.png";
-import Image from "next/image";
-import NavLink from "./NavLink";
-import { classNames } from "@hkamran/utility-web";
-import { links } from "../data/navigation";
-import { useRouter } from "next/router";
+import Image from 'next/image';
+import NavLink from './NavLink';
+import { classNames } from '@hkamran/utility-web';
+import { links } from '../data/navigation';
+import { useRouter } from 'next/router';
 
 const NavigationBar = () => {
     const router = useRouter();

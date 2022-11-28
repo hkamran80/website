@@ -1,5 +1,5 @@
-import NavLink from "./NavLink";
-import { links, socialIcons } from "../data/navigation";
+import NavLink from './NavLink';
+import { links, socialIcons } from '../data/navigation';
 
 const Footer = () => {
     return (

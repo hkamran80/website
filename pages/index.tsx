@@ -1,15 +1,15 @@
-import ArticleCard from '../components/ArticleCard';
-import CreationCard from '../components/CreationCardLinked';
+import ArticleCard from '@/components/ArticleCard';
+import CreationCard from '@/components/CreationCardLinked';
 import Head from 'next/head';
-import Layout from '../components/Layout';
-import NavLink from '../components/NavLink';
+import Layout from '@/components/Layout';
+import NavLink from '@/components/NavLink';
 import { ChevronDown } from 'react-feather';
-import { Creation } from '../types/creations';
+import { Creation } from '@/types/creations';
 import { SHOWCASE_URL, WRITINGS_URL } from '../data/constants';
 import { socialIcons } from '../data/navigation';
 import { WebPageJsonLd } from 'next-seo';
 import type { GetStaticProps, NextPage } from "next";
-import type { Article } from "../types/writings";
+import type { Article } from "@/types/writings";
 
 type Props = {
     latestArticle: Article;

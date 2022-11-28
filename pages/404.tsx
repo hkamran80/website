@@ -1,8 +1,7 @@
-import Head from "next/head";
-import Link from "next/link";
-import { classNames } from "@hkamran/utility-web";
+import Head from 'next/head';
+import NavLink from '@/components/NavLink';
+import { classNames } from '@hkamran/utility-web';
 import type { NextPage } from "next";
-import NavLink from "../components/NavLink";
 
 const styling = `
 * {

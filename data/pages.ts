@@ -1,4 +1,4 @@
-import type { Page } from "../types/pages";
+import type { Page } from "@/types/pages";
 
 export const programs: Page[] = [
     {

@@ -1,15 +1,14 @@
-import ArticleCard from "../../components/ArticleCard";
-import Breadcrumbs from "../../components/Breadcrumbs";
-import Head from "next/head";
-import Layout from "../../components/Layout";
-import Link from "next/link";
-import NoteCard from "../../components/NoteCard";
-import { arrayUnique, getTags, sortByPublishDate } from "../../lib/writings";
-import { Article, Writing } from "../../types/writings";
-import { WRITINGS_URL } from "../../data/constants";
+import ArticleCard from '@/components/ArticleCard';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import NavLink from '@/components/NavLink';
+import NoteCard from '@/components/NoteCard';
+import { arrayUnique, getTags, sortByPublishDate } from '@/lib/writings';
+import { Article, Writing } from '@/types/writings';
+import { WebPageJsonLd } from 'next-seo';
+import { WRITINGS_URL } from '../../data/constants';
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import NavLink from "../../components/NavLink";
-import { WebPageJsonLd } from "next-seo";
 
 type Props = { tag: string; articles: Article[]; notes: Writing[] };
 

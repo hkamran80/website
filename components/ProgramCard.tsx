@@ -1,4 +1,4 @@
-import type { Page } from "../types/pages";
+import type { Page } from "@/types/pages";
 
 const ProgramCard = ({ program }: { program: Page }) => {
     return (

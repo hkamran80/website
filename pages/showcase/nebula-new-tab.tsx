@@ -1,10 +1,10 @@
-import Breadcrumbs from "../../components/Breadcrumbs";
-import Head from "next/head";
-import Layout from "../../components/Layout";
-import { classNames } from "@hkamran/utility-web";
-import { Listbox } from "@headlessui/react";
-import { useEffect, useState } from "react";
-import { WebPageJsonLd } from "next-seo";
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import { classNames } from '@hkamran/utility-web';
+import { Listbox } from '@headlessui/react';
+import { useEffect, useState } from 'react';
+import { WebPageJsonLd } from 'next-seo';
 import type { GetStaticProps, NextPage } from "next";
 import {
     ChevronDown,
@@ -12,7 +12,7 @@ import {
     Globe,
     Image as FeatherImage,
 } from "react-feather";
-import type { Release, ReleaseDetails } from "../../types/releaseNotes";
+import type { Release, ReleaseDetails } from "@/types/releaseNotes";
 
 const downloadLinks = {
     Chrome: "https://github.com/hkamran80/nebula-new-tab#chromium-based-browsers-chrome-brave-etc",

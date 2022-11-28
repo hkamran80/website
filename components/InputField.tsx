@@ -1,5 +1,5 @@
-import { classNames } from "@hkamran/utility-web";
-import { slugify } from "@hkamran/utility-strings";
+import { classNames } from '@hkamran/utility-web';
+import { slugify } from '@hkamran/utility-strings';
 
 type InputFieldType = "text" | "number";
 type InputFieldProps = {

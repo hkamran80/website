@@ -1,6 +1,6 @@
-import NavLink from "./NavLink";
-import { Fragment } from "react";
-import { slugify } from "@hkamran/utility-strings";
+import NavLink from './NavLink';
+import { Fragment } from 'react';
+import { slugify } from '@hkamran/utility-strings';
 
 const WritingTags = ({
     basePath,

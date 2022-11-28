@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import Layout from '../components/Layout';
-import NavLink from '../components/NavLink';
-import ProgramCard from '../components/ProgramCard';
+import Layout from '@/components/Layout';
+import NavLink from '@/components/NavLink';
+import ProgramCard from '@/components/ProgramCard';
 import { programs } from '../data/pages';
 import { WebPageJsonLd } from 'next-seo';
 import type { NextPage } from "next";

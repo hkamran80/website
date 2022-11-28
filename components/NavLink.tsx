@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { classNames } from "@hkamran/utility-web";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import { classNames } from '@hkamran/utility-web';
+import { useRouter } from 'next/router';
 
 const NavLink = ({
     href,

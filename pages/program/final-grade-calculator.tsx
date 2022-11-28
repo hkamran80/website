@@ -1,11 +1,11 @@
-import Breadcrumbs from "../../components/Breadcrumbs";
-import feather from "feather-icons";
-import Head from "next/head";
-import InputField from "../../components/InputField";
-import Layout from "../../components/Layout";
-import { resizeIcon } from "@hkamran/utility-web";
-import { useEffect, useState } from "react";
-import { WebPageJsonLd } from "next-seo";
+import Breadcrumbs from '@/components/Breadcrumbs';
+import feather from 'feather-icons';
+import Head from 'next/head';
+import InputField from '@/components/InputField';
+import Layout from '@/components/Layout';
+import { resizeIcon } from '@hkamran/utility-web';
+import { useEffect, useState } from 'react';
+import { WebPageJsonLd } from 'next-seo';
 import type { NextPage } from "next";
 
 const messages = (score: number): string => {
