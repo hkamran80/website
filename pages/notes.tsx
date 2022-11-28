@@ -34,7 +34,7 @@ const Notes: NextPage<Props> = ({ notes }) => {
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
                 {notes.map((note, index) => (
                     <NavLink key={index} href={`/note/${note.id}`}>
-                            <NoteCard note={note} />
+                        <NoteCard note={note} />
                     </NavLink>
                 ))}
             </div>

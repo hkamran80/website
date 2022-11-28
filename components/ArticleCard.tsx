@@ -11,10 +11,10 @@ const ArticleCard = ({
 }) => {
     return (
         <div className={topPadding ? "mt-1 pt-5" : undefined}>
-            <div className="grid grid-cols-1 items-center gap-y-4 md:gap-8 hover:cursor-pointer sm:grid-cols-3">
+            <div className="grid grid-cols-1 items-center gap-y-4 hover:cursor-pointer sm:grid-cols-3 md:gap-8">
                 <Image
                     src={article.heroImage}
-                    className="rounded-lg object-cover object-center w-full"
+                    className="w-full rounded-lg object-cover object-center"
                     alt={`Featured image for ${article.title}`}
                     width={1000}
                     height={500}

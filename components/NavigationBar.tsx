@@ -9,7 +9,7 @@ const NavigationBar = () => {
     const router = useRouter();
 
     return (
-        <nav className="flex flex-none flex-col items-start py-6 px-12 pt-12 text-sm md:flex-row md:items-center md:px-0 md:space-y-0 space-y-4">
+        <nav className="flex flex-none flex-col items-start space-y-4 py-6 px-12 pt-12 text-sm md:flex-row md:items-center md:space-y-0 md:px-0">
             <NavLink href="/" className="flex-1 text-base md:text-sm">
                 <Image
                     src="/profile.png"

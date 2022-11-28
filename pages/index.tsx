@@ -76,7 +76,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                             <span className="text-sm tracking-wider md:text-2xl">
                                 H. Kamran
                             </span>
-                            <span className="text-3xl leading-tight font-extrabold md:leading-tight tracking-wide text-pink-700 md:text-7xl">
+                            <span className="text-3xl font-extrabold leading-tight tracking-wide text-pink-700 md:text-7xl md:leading-tight">
                                 Developer and
                                 <br />
                                 Amateur Photographer
