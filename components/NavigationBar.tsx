@@ -26,7 +26,7 @@ const NavigationBar = () => {
                         key={index}
                         href={href}
                         className={classNames(
-                            "text-xs uppercase tracking-wide transition-colors duration-300 hover:cursor-pointer ",
+                            "text-xs uppercase tracking-wide transition-colors duration-300",
                             router.asPath.startsWith(href) ||
                                 aliases
                                     .map(
@@ -37,6 +37,7 @@ const NavigationBar = () => {
                                 ? "text-pink-700 underline underline-offset-4"
                                 : "text-gray-500 hover:text-pink-700",
                         )}
+                        conditionalClassNames="hover:cursor-pointer"
                     >
                         {name}
                     </NavLink>
