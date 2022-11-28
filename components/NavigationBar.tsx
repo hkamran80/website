@@ -1,5 +1,5 @@
 import favicon from "../public/favicon.png";
-import Image from "next/future/image";
+import Image from "next/image";
 import TextLink from "./TextLink";
 import { classNames } from "@hkamran/utility-web";
 import { links } from "../data/navigation";
