@@ -1,6 +1,7 @@
-import Breadcrumbs from "../../components/Breadcrumbs";
-import Head from "next/head";
-import Layout from "../../components/Layout";
+import Breadcrumbs from '../../components/Breadcrumbs';
+import Head from 'next/head';
+import Layout from '../../components/Layout';
+import { WebPageJsonLd } from 'next-seo';
 import type { NextPage } from "next";
 
 const License: NextPage = () => {
@@ -9,6 +10,14 @@ const License: NextPage = () => {
             <Head>
                 <title>License | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/legal/license`}
+            />
 
             <div className="mx-auto max-w-2xl">
                 <Breadcrumbs
