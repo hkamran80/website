@@ -134,8 +134,8 @@ class WebsiteDocument extends Document {
                     />
 
                     {/* Open Graph */}
-                    <meta property="og:site_name" content="H. Kamran" />
-                    <meta property="og:type" content="website" key="og:type" />
+                    {/* <meta property="og:site_name" content="H. Kamran" />
+                    <meta property="og:type" content="website" key="og:type" /> */}
                     <meta
                         property="og:title"
                         content="H. Kamran"
@@ -158,7 +158,7 @@ class WebsiteDocument extends Document {
                     />
 
                     {/* Twitter */}
-                    <meta
+                    {/* <meta
                         name="twitter:card"
                         content="summary"
                         key="twitter:card"
@@ -172,7 +172,7 @@ class WebsiteDocument extends Document {
                         name="twitter:creator"
                         content="@hkamran80"
                         key="twitter:creator"
-                    />
+                    /> */}
                     <meta
                         name="twitter:title"
                         content="H. Kamran"
