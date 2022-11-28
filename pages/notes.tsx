@@ -7,7 +7,7 @@ import { sortByPublishDate } from "../lib/writings";
 import { Writing } from "../types/writings";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
-import TextLink from "../components/TextLink";
+import NavLink from "../components/NavLink";
 
 type Props = { notes: Writing[] };
 
@@ -33,9 +33,9 @@ const Notes: NextPage<Props> = ({ notes }) => {
             </h1>
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
                 {notes.map((note, index) => (
-                    <TextLink key={index} href={`/note/${note.id}`}>
+                    <NavLink key={index} href={`/note/${note.id}`}>
                             <NoteCard note={note} />
-                    </TextLink>
+                    </NavLink>
                 ))}
             </div>
         </Layout>

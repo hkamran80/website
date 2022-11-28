@@ -7,7 +7,7 @@ import { Article } from "../types/writings";
 import { sortByPublishDate } from "../lib/writings";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
-import TextLink from "../components/TextLink";
+import NavLink from "../components/NavLink";
 
 type Props = {
     articles: Article[];
@@ -37,9 +37,9 @@ const Articles: NextPage<Props> = ({ articles }) => {
                 {articles
                     .filter(({ published }) => published !== "")
                     .map((article, index) => (
-                        <TextLink key={index} href={`/article/${article.id}`}>
+                        <NavLink key={index} href={`/article/${article.id}`}>
                             <ArticleCard article={article} />
-                        </TextLink>
+                        </NavLink>
                     ))}
             </div>
         </Layout>

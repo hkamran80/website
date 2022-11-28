@@ -8,7 +8,7 @@ const InputField = ({ ...props }: InputFieldProps) => {
     return (
         <div
             className={classNames(
-                "ƒw-full mb-3 items-center",
+                "w-full mb-3 items-center",
                 props.classes || "",
             )}
         >

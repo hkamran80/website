@@ -14,11 +14,10 @@ const ArticleCard = ({
             <div className="grid grid-cols-1 items-center gap-8 hover:cursor-pointer sm:grid-cols-3">
                 <Image
                     src={article.heroImage}
-                    className="h-1/4 rounded-lg object-cover object-center"
+                    className="rounded-lg object-cover object-center"
                     alt={`Featured image for ${article.title}`}
-                    width="100%"
-                    height="100%"
-                    unoptimized={true}
+                    width={1000}
+                    height={500}
                 />
 
                 <div className="col-span-2 space-y-2">

@@ -1,4 +1,4 @@
-import TextLink from './TextLink';
+import NavLink from './NavLink';
 import { Fragment } from 'react';
 import { slugify } from '@hkamran/utility-strings';
 
@@ -13,12 +13,12 @@ const WritingTags = ({
         <div className="contents">
             {tags.map((tag, index) => (
                 <Fragment key={index}>
-                    <TextLink
+                    <NavLink
                         href={`/${basePath}/${slugify(tag)}`}
                         className="text-pink-400 transition-colors duration-300 hover:text-pink-400"
                     >
                         {tag}
-                    </TextLink>{" "}
+                    </NavLink>{" "}
                     <span>{index !== tags.length - 1 ? "·" : ""}</span>{" "}
                 </Fragment>
             ))}
