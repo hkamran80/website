@@ -2,6 +2,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import type { NextPage } from "next";
+import { WebPageJsonLd } from "next-seo";
 
 const commands = [
     {
@@ -34,6 +35,14 @@ const Acoustats: NextPage = () => {
             <Head>
                 <title>Acoustats | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/showcase/acoustats`}
+            />
 
             <Layout>
                 <div className="mx-auto max-w-2xl">
