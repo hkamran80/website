@@ -13,7 +13,7 @@ const TextLink = ({
     const isInternalLink = href?.startsWith("/");
     if (isInternalLink) {
         return (
-            <NextLink href={href} passHref>
+            <NextLink href={href} passHref legacyBehavior>
                 <a className={className} {...rest}>
                     {children}
                 </a>
