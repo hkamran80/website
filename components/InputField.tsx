@@ -1,6 +1,20 @@
 import { classNames } from "@hkamran/utility-web";
 import { slugify } from "@hkamran/utility-strings";
-import type { InputFieldProps } from "../types/input";
+
+type InputFieldType = "text" | "number";
+type InputFieldProps = {
+    type: InputFieldType;
+    placeholder: string;
+    label: string;
+    value: string | number | undefined;
+    valueUpdate: (value: string | number) => void;
+    classes?: string;
+    svg?: string;
+    step?: string | number;
+    readonly?: boolean;
+    disabled?: boolean;
+    copyAll?: boolean;
+};
 
 const InputField = ({ ...props }: InputFieldProps) => {
     const inputId = `${slugify(props.label)}-input`;
@@ -8,7 +22,7 @@ const InputField = ({ ...props }: InputFieldProps) => {
     return (
         <div
             className={classNames(
-                "w-full mb-3 items-center",
+                "mb-3 w-full items-center",
                 props.classes || "",
             )}
         >
