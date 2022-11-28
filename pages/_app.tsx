@@ -5,6 +5,8 @@ import React from "react";
 import Script from "next/script";
 import { Router } from "next/router";
 import type { AppProps } from "next/app";
+import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
+import SEO from "next-seo.config";
 
 const isServerSideRendered = () => typeof window === "undefined";
 
@@ -34,6 +36,17 @@ Router.events.on("routeChangeError", progress.finish);
 const Website = ({ Component, pageProps }: AppProps) => {
     return (
         <>
+            <DefaultSeo {...SEO} />
+            <SocialProfileJsonLd
+                type="Person"
+                name="H. Kamran"
+                url="https://hkamran.com"
+                sameAs={[
+                    "https://twitter.com/hkamran80",
+                    "https://instagram.com/hkamran80",
+                ]}
+            />
+
             {process.env.NODE_ENV === "development" ||
             typeof window === "undefined" ? (
                 ""

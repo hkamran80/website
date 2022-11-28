@@ -4,6 +4,7 @@ import InputField from "../../components/InputField";
 import Layout from "../../components/Layout";
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
+import { WebPageJsonLd } from "next-seo";
 
 const TextReverseProgram: NextPage = () => {
     const [text, setText] = useState<string>("");
@@ -20,6 +21,15 @@ const TextReverseProgram: NextPage = () => {
             <Head>
                 <title>Text Reverser | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/program/text-reverser`}
+                description="Reverse some text, because why not?"
+            />
 
             <Layout>
                 <div className="mx-auto max-w-2xl">

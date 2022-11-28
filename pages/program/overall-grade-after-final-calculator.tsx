@@ -6,6 +6,7 @@ import Layout from "../../components/Layout";
 import { resizeIcon } from "@hkamran/utility-web";
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
+import { WebPageJsonLd } from "next-seo";
 
 const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
     const [gradeBeforeFinal, setGradeBeforeFinal] = useState<number | null>(
@@ -32,6 +33,15 @@ const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
             <Head>
                 <title>Overall Grade After Final Calculator | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/program/overall-grade-after-final-calculator`}
+                description="Calculate the grade you'll get after taking a final"
+            />
 
             <Layout>
                 <div className="mx-auto max-w-2xl">

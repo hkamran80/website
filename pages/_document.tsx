@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-const description =
-    "I'm a developer, experienced in Python, JavaScript, TypeScript, Vue.js, Java, Kotlin, Swift, and SwiftUI. I also enjoy taking photos and writing articles on topics that interest me or seem useful.";
+// const description =
+//     "I'm a developer, experienced in Python, JavaScript, TypeScript, Vue.js, Java, Kotlin, Swift, and SwiftUI. I also enjoy taking photos and writing articles on topics that interest me or seem useful.";
 
 const styles = `/* latin-ext */
 @font-face {
@@ -126,72 +126,6 @@ class WebsiteDocument extends Document {
                         name="keywords"
                         content="hkamran developer python javascript vue vue.js typescript java kotlin swift swiftui photography articles blog"
                         key="keywords"
-                    />
-                    <meta
-                        name="description"
-                        content={description}
-                        key="description"
-                    />
-
-                    {/* Open Graph */}
-                    <meta property="og:site_name" content="H. Kamran" />
-                    <meta property="og:type" content="website" key="og:type" />
-                    <meta
-                        property="og:title"
-                        content="H. Kamran"
-                        key="og:title"
-                    />
-                    <meta
-                        property="og:description"
-                        content={description}
-                        key="og:description"
-                    />
-                    <meta
-                        property="og:image"
-                        content="https://next.hkamran.com/profile.png"
-                        key="og:image"
-                    />
-                    <meta
-                        property="og:image:alt"
-                        content="H. Kamran's profile picture"
-                        key="og:image:alt"
-                    />
-
-                    {/* Twitter */}
-                    <meta
-                        name="twitter:card"
-                        content="summary"
-                        key="twitter:card"
-                    />
-                    <meta
-                        name="twitter:site"
-                        content="@hkamran80"
-                        key="twitter:site"
-                    />
-                    <meta
-                        name="twitter:creator"
-                        content="@hkamran80"
-                        key="twitter:creator"
-                    />
-                    <meta
-                        name="twitter:title"
-                        content="H. Kamran"
-                        key="twitter:title"
-                    />
-                    <meta
-                        name="twitter:description"
-                        content={description}
-                        key="twitter:description"
-                    />
-                    <meta
-                        name="twitter:image"
-                        content="https://next.hkamran.com/profile.png"
-                        key="twitter:image"
-                    />
-                    <meta
-                        name="twitter:image:alt"
-                        content="H. Kamran's profile picture"
-                        key="twitter:image:alt"
                     />
 
                     {/* RSS Feeds */}

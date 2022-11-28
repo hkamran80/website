@@ -4,6 +4,7 @@ import InputField from "../../components/InputField";
 import Layout from "../../components/Layout";
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
+import { WebPageJsonLd } from "next-seo";
 
 const WebUtilitiesProgram: NextPage = () => {
     const [userAgent, setUserAgent] = useState<string>("");
@@ -19,6 +20,15 @@ const WebUtilitiesProgram: NextPage = () => {
             <Head>
                 <title>Web Utilities | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/program/web-utilities`}
+                description="Some helpful web utilities"
+            />
 
             <Layout>
                 <div className="mx-auto max-w-2xl">

@@ -1,12 +1,13 @@
-import ArticleCard from "../components/ArticleCard";
-import CreationCard from "../components/CreationCardLinked";
-import Head from "next/head";
-import Layout from "../components/Layout";
-import NavLink from "../components/NavLink";
-import { ChevronDown } from "react-feather";
-import { Creation } from "../types/creations";
-import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
-import { socialIcons } from "../data/navigation";
+import ArticleCard from '../components/ArticleCard';
+import CreationCard from '../components/CreationCardLinked';
+import Head from 'next/head';
+import Layout from '../components/Layout';
+import NavLink from '../components/NavLink';
+import { ChevronDown } from 'react-feather';
+import { Creation } from '../types/creations';
+import { SHOWCASE_URL, WRITINGS_URL } from '../data/constants';
+import { socialIcons } from '../data/navigation';
+import { WebPageJsonLd } from 'next-seo';
 import type { GetStaticProps, NextPage } from "next";
 import type { Article } from "../types/writings";
 
@@ -21,6 +22,14 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
             <Head>
                 <title>H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/`}
+            />
 
             <main>
                 <section
@@ -76,7 +85,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                             <span className="text-sm tracking-wider md:text-2xl">
                                 H. Kamran
                             </span>
-                            <span className="text-3xl leading-tight font-extrabold md:leading-tight tracking-wide text-pink-700 md:text-7xl">
+                            <span className="text-3xl font-extrabold leading-tight tracking-wide text-pink-700 md:text-7xl md:leading-tight">
                                 Developer and
                                 <br />
                                 Amateur Photographer

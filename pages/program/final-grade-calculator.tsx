@@ -5,6 +5,7 @@ import InputField from "../../components/InputField";
 import Layout from "../../components/Layout";
 import { resizeIcon } from "@hkamran/utility-web";
 import { useEffect, useState } from "react";
+import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
 
 const messages = (score: number): string => {
@@ -38,6 +39,15 @@ const FinalGradeCalculatorProgram: NextPage = () => {
             <Head>
                 <title>Final Grade Calculator | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/program/final-grade-calculator`}
+                description="Calculate the score you need to get on a final to get a particular grade"
+            />
 
             <Layout>
                 <div className="mx-auto max-w-2xl">

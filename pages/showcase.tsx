@@ -3,6 +3,7 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import { Creation } from "../types/creations";
 import { SHOWCASE_URL } from "../data/constants";
+import { WebPageJsonLd } from "next-seo";
 import type { GetStaticProps, NextPage } from "next";
 
 const alphabeticalSort = (
@@ -23,6 +24,14 @@ const Showcase: NextPage<Props> = ({ showcase }) => {
             <Head>
                 <title>Showcase | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/showcase`}
+            />
 
             <h1 className="text-3xl font-semibold">Showcase</h1>
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">

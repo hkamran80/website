@@ -1,7 +1,8 @@
 import Breadcrumbs from "../../components/Breadcrumbs";
 import Head from "next/head";
-import type { NextPage } from "next";
 import Layout from "../../components/Layout";
+import { WebPageJsonLd } from "next-seo";
+import type { NextPage } from "next";
 
 const commands = [
     {
@@ -22,6 +23,14 @@ const Reactor: NextPage = () => {
             <Head>
                 <title>Reactor | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/showcase/reactor`}
+            />
 
             <Layout>
                 <div className="mx-auto max-w-2xl">

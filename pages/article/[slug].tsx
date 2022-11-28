@@ -7,6 +7,7 @@ import WritingTags from "../../components/WritingTags";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Article } from "../../types/writings";
+import { ArticleJsonLd, NextSeo } from "next-seo";
 
 type Props = {
     article: Article;
@@ -20,105 +21,63 @@ const Article: NextPage<Props> = ({ article, content }) => {
                 <>
                     <Head>
                         <title>{article.title} | H. Kamran</title>
+                    </Head>
 
-                        <meta
-                            name="description"
-                            content={article.description}
-                            key="description"
-                        />
-
-                        {/* Open Graph */}
-                        <meta
-                            property="og:type"
-                            content="article"
-                            key="og:type"
-                        />
-                        <meta
-                            property="og:title"
-                            content={article.title}
-                            key="og:title"
-                        />
-                        <meta
-                            property="og:url"
-                            content={`${
+                    <NextSeo
+                        title={article.title}
+                        description={article.description}
+                        canonical={`${
+                            typeof window !== "undefined" &&
+                            window.location.origin
+                                ? window.location.origin
+                                : ""
+                        }/article/${article.id}`}
+                        openGraph={{
+                            title: article.title,
+                            description: article.description,
+                            url: `${
                                 typeof window !== "undefined" &&
                                 window.location.origin
                                     ? window.location.origin
                                     : ""
-                            }/article/${article.id}`}
-                            key="og:url"
-                        />
-                        <meta
-                            property="og:image"
-                            content={article.heroImage}
-                            key="og:image"
-                        />
-                        <meta
-                            property="og:image:alt"
-                            content={`Featured image for ${article.title}`}
-                            key="og:image:alt"
-                        />
-                        <meta
-                            property="og:description"
-                            content={article.description}
-                            key="og:description"
-                        />
-                        <meta
-                            property="article:author"
-                            content="H. Kamran"
-                            key="article:author"
-                        />
-                        <meta
-                            property="article:published_time"
-                            content={`${article.published}T07:00:00.000-08:00`}
-                            key="article:published_time"
-                        />
+                            }/article/${article.id}`,
+                            type: "article",
+                            article: {
+                                publishedTime: `${article.published}T07:00:00.000-08:00`,
+                                tags: article.tags,
+                            },
+                            images: [
+                                {
+                                    url: article.heroImage,
+                                    width: 1000,
+                                    height: 500,
+                                    alt: `Featured image for ${article.title}`,
+                                },
+                            ],
+                        }}
+                        twitter={{
+                            cardType: "summary_large_image",
+                        }}
+                    />
 
-                        {article.tags.map((tag, index) => (
-                            <meta
-                                key={index}
-                                property="article:tag"
-                                content={tag}
-                            />
-                        ))}
-
-                        {/* Twitter */}
-                        <meta
-                            name="twitter:card"
-                            content="summary_large_image"
-                            key="twitter:card"
-                        />
-                        <meta
-                            name="twitter:title"
-                            content={article.title}
-                            key="twitter:title"
-                        />
-                        <meta
-                            name="twitter:site"
-                            content="@hkamran80"
-                            key="twitter:site"
-                        />
-                        <meta
-                            name="twitter:creator"
-                            content="@hkamran80"
-                            key="twitter:creator"
-                        />
-                        <meta
-                            name="twitter:description"
-                            content={article.description}
-                            key="twitter:description"
-                        />
-                        <meta
-                            name="twitter:image"
-                            content={article.heroImage}
-                            key="twitter:image"
-                        />
-                        <meta
-                            name="twitter:image:alt"
-                            content={`Featured image for ${article.title}`}
-                            key="twitter:image:alt"
-                        />
-                    </Head>
+                    <ArticleJsonLd
+                        url={`${
+                            typeof window !== "undefined" &&
+                            window.location.origin
+                                ? window.location.origin
+                                : ""
+                        }/article/${article.id}`}
+                        title={article.title}
+                        description={article.description}
+                        images={[article.heroImage]}
+                        datePublished={`${article.published}T07:00:00.000-08:00`}
+                        authorName={[
+                            { name: "H. Kamran", url: "https://hkamran.com" },
+                        ]}
+                        publisherName="H. Kamran"
+                        publisherLogo="https://hkamran.com/profile.png"
+                        isAccessibleForFree={true}
+                    />
 
                     <Breadcrumbs
                         baseLabel="Articles"

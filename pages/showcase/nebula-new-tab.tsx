@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import { classNames } from "@hkamran/utility-web";
 import { Listbox } from "@headlessui/react";
 import { useEffect, useState } from "react";
+import { WebPageJsonLd } from "next-seo";
 import type { GetStaticProps, NextPage } from "next";
 import {
     ChevronDown,
@@ -62,6 +63,14 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
             <Head>
                 <title>Nebula New Tab | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/showcase/nebula-new-tab`}
+            />
 
             <Layout>
                 <div className="mx-auto max-w-5xl">

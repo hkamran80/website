@@ -1,5 +1,5 @@
-import CreationCard from './CreationCard';
-import NavLink from './NavLink';
+import CreationCard from "./CreationCard";
+import NavLink from "./NavLink";
 import type { Creation } from "../types/creations";
 
 const CreationCardLinked = ({ creation }: { creation: Creation }) => {
@@ -13,9 +13,9 @@ const CreationCardLinked = ({ creation }: { creation: Creation }) => {
         } else {
             return <CreationCard creation={creation} />;
         }
-    } else {
-        return <></>;
     }
+
+    return null;
 };
 
 export default CreationCardLinked;

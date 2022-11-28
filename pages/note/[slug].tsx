@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import MarkdownIt from "markdown-it";
 import markdownItPrism from "markdown-it-prism";
 import WritingTags from "../../components/WritingTags";
+import { ArticleJsonLd, NextSeo } from "next-seo";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Writing } from "../../types/writings";
@@ -18,72 +19,50 @@ const Note: NextPage<Props> = ({ note, content }) => {
         <Layout>
             <Head>
                 <title>{note.title} | H. Kamran</title>
+            </Head>
 
-                <meta
-                    name="description"
-                    content={note.description}
-                    key="description"
-                />
-
-                {/* Open Graph */}
-                <meta property="og:type" content="note" key="og:type" />
-                <meta property="og:title" content={note.title} key="og:title" />
-                <meta
-                    property="og:url"
-                    content={`${
+            <NextSeo
+                title={note.title}
+                description={note.description}
+                canonical={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/note/${note.id}`}
+                openGraph={{
+                    title: note.title,
+                    description: note.description,
+                    url: `${
                         typeof window !== "undefined" && window.location.origin
                             ? window.location.origin
                             : ""
-                    }/note/${note.id}`}
-                    key="og:url"
-                />
-                <meta
-                    property="og:description"
-                    content={note.description}
-                    key="og:description"
-                />
-                <meta
-                    property="article:author"
-                    content="H. Kamran"
-                    key="article:author"
-                />
-                <meta
-                    property="article:published_time"
-                    content={`${note.published}T07:00:00.000-08:00`}
-                    key="article:published_time"
-                />
+                    }/note/${note.id}`,
+                    type: "article",
+                    article: {
+                        publishedTime: `${note.published}T07:00:00.000-08:00`,
+                        tags: note.tags,
+                    },
+                }}
+                twitter={{
+                    cardType: "summary_large_image",
+                }}
+            />
 
-                {note.tags.map((tag, index) => (
-                    <meta key={index} property="article:tag" content={tag} />
-                ))}
-
-                {/* Twitter */}
-                <meta
-                    name="twitter:card"
-                    content="summary_large_image"
-                    key="twitter:card"
-                />
-                <meta
-                    name="twitter:title"
-                    content={note.title}
-                    key="twitter:title"
-                />
-                <meta
-                    name="twitter:site"
-                    content="@hkamran80"
-                    key="twitter:site"
-                />
-                <meta
-                    name="twitter:creator"
-                    content="@hkamran80"
-                    key="twitter:creator"
-                />
-                <meta
-                    name="twitter:description"
-                    content={note.description}
-                    key="twitter:description"
-                />
-            </Head>
+            <ArticleJsonLd
+                url={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/note/${note.id}`}
+                title={note.title}
+                description={note.description}
+                images={[]}
+                datePublished={`${note.published}T12:00:00-07:00`}
+                authorName={[{ name: "H. Kamran", url: "https://hkamran.com" }]}
+                publisherName="H. Kamran"
+                publisherLogo="https://hkamran.com/profile.png"
+                isAccessibleForFree={true}
+            />
 
             <Breadcrumbs
                 baseLabel="Notes"

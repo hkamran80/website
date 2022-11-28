@@ -9,7 +9,7 @@ const NavigationBar = () => {
     const router = useRouter();
 
     return (
-        <nav className="flex flex-none flex-col items-start py-6 px-12 pt-12 text-sm md:flex-row md:items-center md:px-0 md:space-y-0 space-y-4">
+        <nav className="flex flex-none flex-col items-start space-y-4 py-6 px-12 pt-12 text-sm md:flex-row md:items-center md:space-y-0 md:px-0">
             <NavLink href="/" className="flex-1 text-base md:text-sm">
                 <Image
                     src="/profile.png"
@@ -26,7 +26,7 @@ const NavigationBar = () => {
                         key={index}
                         href={href}
                         className={classNames(
-                            "text-xs uppercase tracking-wide transition-colors duration-300 hover:cursor-pointer ",
+                            "text-xs uppercase tracking-wide transition-colors duration-300",
                             router.asPath.startsWith(href) ||
                                 aliases
                                     .map(
@@ -37,6 +37,7 @@ const NavigationBar = () => {
                                 ? "text-pink-700 underline underline-offset-4"
                                 : "text-gray-500 hover:text-pink-700",
                         )}
+                        conditionalClassNames="hover:cursor-pointer"
                     >
                         {name}
                     </NavLink>
