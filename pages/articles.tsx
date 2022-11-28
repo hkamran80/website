@@ -3,11 +3,12 @@ import feather from "feather-icons";
 import Head from "next/head";
 import Layout from "../components/Layout";
 import Link from "next/link";
+import NavLink from "../components/NavLink";
 import { Article } from "../types/writings";
 import { sortByPublishDate } from "../lib/writings";
+import { WebPageJsonLd } from "next-seo";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
-import NavLink from "../components/NavLink";
 
 type Props = {
     articles: Article[];
@@ -19,6 +20,14 @@ const Articles: NextPage<Props> = ({ articles }) => {
             <Head>
                 <title>Articles | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/articles`}
+            />
 
             <h1 className="flex items-center text-3xl font-semibold">
                 <span className="flex-1">Articles</span>

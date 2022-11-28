@@ -1,13 +1,13 @@
-import feather from "feather-icons";
-import Head from "next/head";
-import Layout from "../components/Layout";
-import Link from "next/link";
-import NoteCard from "../components/NoteCard";
-import { sortByPublishDate } from "../lib/writings";
-import { Writing } from "../types/writings";
-import { WRITINGS_URL } from "../data/constants";
+import feather from 'feather-icons';
+import Head from 'next/head';
+import Layout from '../components/Layout';
+import NavLink from '../components/NavLink';
+import NoteCard from '../components/NoteCard';
+import { sortByPublishDate } from '../lib/writings';
+import { WebPageJsonLd } from 'next-seo';
+import { Writing } from '../types/writings';
+import { WRITINGS_URL } from '../data/constants';
 import type { GetStaticProps, NextPage } from "next";
-import NavLink from "../components/NavLink";
 
 type Props = { notes: Writing[] };
 
@@ -17,6 +17,14 @@ const Notes: NextPage<Props> = ({ notes }) => {
             <Head>
                 <title>Notes | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/notes`}
+            />
 
             <h1 className="flex items-center text-3xl font-semibold">
                 <span className="flex-1">Notes</span>

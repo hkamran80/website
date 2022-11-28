@@ -9,6 +9,7 @@ import { Article, Writing } from "../../types/writings";
 import { WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import NavLink from "../../components/NavLink";
+import { WebPageJsonLd } from "next-seo";
 
 type Props = { tag: string; articles: Article[]; notes: Writing[] };
 
@@ -18,6 +19,16 @@ const Tag: NextPage<Props> = ({ tag, articles, notes }) => {
             <Head>
                 <title>{tag} | H. Kamran</title>
             </Head>
+
+            <WebPageJsonLd
+                id={
+                    typeof window !== "undefined" &&
+                    window.location.origin &&
+                    window.location.pathname
+                        ? window.location.origin + window.location.pathname
+                        : ""
+                }
+            />
 
             <Breadcrumbs baseLabel="Tags" currentLabel={tag} />
 
