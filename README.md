@@ -1,5 +1,5 @@
 # Website
-My personal website is powered by Next.js and is deployed by Vercel
+My personal website is powered by Next.js and is deployed by Vercel.
 
 ## Development
 1. Clone this repo

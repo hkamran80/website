@@ -1,21 +1,12 @@
-import "../styles/globals.css";
+import ProgressBar from '@badrap/bar-of-progress';
+import React from 'react';
+import Script from 'next/script';
+import SEO from 'next-seo.config';
+import { DefaultSeo, SocialProfileJsonLd } from 'next-seo';
+import { Router } from 'next/router';
+import '../styles/globals.css';
+import '../styles/prism-theme.css';
 import type { AppProps } from "next/app";
-import { createContext, useEffect, useState } from "react";
-import { SHOWCASE_URL } from "../data/constants";
-import { SiteState } from "../types/state";
-import React from "react";
-import Script from "next/script";
-import { Router } from "next/router";
-import ProgressBar from "@badrap/bar-of-progress";
-import { loadWritings } from "../lib/writings";
-
-export const StateContext = createContext<SiteState>({
-    articles: [],
-    notes: [],
-    articleTags: {},
-    noteTags: {},
-    showcase: [],
-});
 
 const isServerSideRendered = () => typeof window === "undefined";
 
@@ -43,30 +34,19 @@ Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
 
 const Website = ({ Component, pageProps }: AppProps) => {
-    const [state, setState] = useState<SiteState>({
-        articles: [],
-        notes: [],
-        articleTags: {},
-        noteTags: {},
-        showcase: [],
-    });
-
-    useEffect(() => {
-        const loadState = async () => {
-            const writings = await loadWritings();
-            const showcase = await (await fetch(SHOWCASE_URL)).json();
-
-            setState({
-                ...writings,
-                showcase,
-            });
-        };
-
-        loadState();
-    }, []);
-
     return (
         <>
+            <DefaultSeo {...SEO} />
+            <SocialProfileJsonLd
+                type="Person"
+                name="H. Kamran"
+                url="https://hkamran.com"
+                sameAs={[
+                    "https://twitter.com/hkamran80",
+                    "https://instagram.com/hkamran80",
+                ]}
+            />
+
             {process.env.NODE_ENV === "development" ||
             typeof window === "undefined" ? (
                 ""
@@ -79,9 +59,7 @@ const Website = ({ Component, pageProps }: AppProps) => {
                 />
             )}
 
-            <StateContext.Provider value={state}>
-                <Component {...pageProps} />
-            </StateContext.Provider>
+            <Component {...pageProps} />
         </>
     );
 };

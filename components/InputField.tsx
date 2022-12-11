@@ -1,16 +1,28 @@
-import type { InputFieldProps } from "../types/input";
-import { classNames } from "@hkamran/utility-web";
+import { classNames } from '@hkamran/utility-web';
+import { slugify } from '@hkamran/utility-strings';
+
+type InputFieldType = "text" | "number";
+type InputFieldProps = {
+    type: InputFieldType;
+    placeholder: string;
+    label: string;
+    value: string | number | undefined;
+    valueUpdate: (value: string | number) => void;
+    classes?: string;
+    svg?: string;
+    step?: string | number;
+    readonly?: boolean;
+    disabled?: boolean;
+    copyAll?: boolean;
+};
 
 const InputField = ({ ...props }: InputFieldProps) => {
-    const inputId = `${props.label
-        .replaceAll(/[^A-Za-z0-9\s]/g, "")
-        .replaceAll(" ", "-")
-        .toLowerCase()}-input`;
+    const inputId = `${slugify(props.label)}-input`;
 
     return (
         <div
             className={classNames(
-                "ƒw-full items-center mb-3",
+                "mb-3 w-full items-center",
                 props.classes || "",
             )}
         >
@@ -21,14 +33,14 @@ const InputField = ({ ...props }: InputFieldProps) => {
                 {props.label}
             </label>
 
-            <div className="mt-2 relative rounded-md shadow-sm">
+            <div className="relative mt-2 rounded-md shadow-sm">
                 <input
                     id={inputId}
                     type={props.type}
                     placeholder={props.placeholder}
                     className={classNames(
-                        "px-3 py-3 relative bg-hk-grey rounded-lg text-sm border-0 shadow outline-none focus:outline-none w-full appearance-none",
-                        !props.disabled ? "focus:ring focus:ring-pink-700" : "",
+                        "relative w-full appearance-none rounded-lg border-0 bg-hk-grey px-3 py-3 text-sm shadow outline-none focus:outline-none",
+                        !props.disabled ? "focus:ring focus:ring-pink-400" : "",
                         props.svg ? "pr-10" : "",
                         props.copyAll ? "select-all" : "",
                     )}
@@ -43,7 +55,7 @@ const InputField = ({ ...props }: InputFieldProps) => {
                     }}
                 />
 
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                     {props.svg && (
                         <span
                             className="text-gray-400"

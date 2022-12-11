@@ -5,6 +5,7 @@ import {
     siMedium,
     siUnsplash,
 } from "simple-icons/icons";
+import { UNSPLASH_URL } from "./constants";
 
 export const socialIcons = [
     { url: "https://github.com/hkamran80", icon: siGithub, color: null },
@@ -15,12 +16,12 @@ export const socialIcons = [
         color: "#F58025",
     },
     { url: "https://hkamran.medium.com", icon: siMedium, color: null },
-    { url: "https://unsplash.com/@hkamran", icon: siUnsplash, color: null },
+    { url: UNSPLASH_URL, icon: siUnsplash, color: null },
 ];
 
 export const links = [
     { href: "/showcase", name: "Showcase", aliases: [] },
-    { href: "/articles", name: "Articles", aliases: ["/article"] },
-    { href: "/notes", name: "Notes", aliases: ["/note"] },
+    { href: "/articles", name: "Articles", aliases: ["/article", "/tag"] },
+    { href: "/notes", name: "Notes", aliases: ["/note", "/tag"] },
     { href: "/programs", name: "Programs", aliases: ["/program"] },
 ];

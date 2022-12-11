@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Fragment } from "react";
-import { cleanString } from "../util/string";
+import NavLink from './NavLink';
+import { Fragment } from 'react';
+import { slugify } from '@hkamran/utility-strings';
 
 const WritingTags = ({
     basePath,
@@ -13,11 +13,12 @@ const WritingTags = ({
         <div className="contents">
             {tags.map((tag, index) => (
                 <Fragment key={index}>
-                    <Link href={`/${basePath}/${cleanString(tag)}`} passHref>
-                        <a className="text-pink-400 hover:text-pink-700 transition-colors duration-300">
-                            {tag}
-                        </a>
-                    </Link>{" "}
+                    <NavLink
+                        href={`/${basePath}/${slugify(tag)}`}
+                        className="text-pink-400 transition-colors duration-300 hover:text-pink-400"
+                    >
+                        {tag}
+                    </NavLink>{" "}
                     <span>{index !== tags.length - 1 ? "·" : ""}</span>{" "}
                 </Fragment>
             ))}

@@ -1,9 +1,10 @@
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import NavLink from '@/components/NavLink';
+import ProgramCard from '@/components/ProgramCard';
+import { programs } from '../data/pages';
+import { WebPageJsonLd } from 'next-seo';
 import type { NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import Layout from "../components/Layout";
-import ProgramCard from "../components/ProgramCard";
-import { programs } from "../data/pages";
 
 const Programs: NextPage = () => {
     return (
@@ -12,14 +13,20 @@ const Programs: NextPage = () => {
                 <title>Programs | H. Kamran</title>
             </Head>
 
+            <WebPageJsonLd
+                id={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/programs`}
+            />
+
             <h1 className="text-3xl font-semibold">Programs</h1>
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
                 {programs.map((program, index) => (
-                    <Link key={index} href={`/program/${program.id}`} passHref>
-                        <a>
-                            <ProgramCard program={program} />
-                        </a>
-                    </Link>
+                    <NavLink key={index} href={`/program/${program.id}`}>
+                        <ProgramCard program={program} />
+                    </NavLink>
                 ))}
             </div>
         </Layout>

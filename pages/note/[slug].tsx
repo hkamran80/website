@@ -1,11 +1,13 @@
-import MarkdownIt from "markdown-it";
-import type { GetServerSideProps, NextPage } from "next";
-import Head from "next/head";
-import Breadcrumbs from "../../components/Breadcrumbs";
-import Layout from "../../components/Layout";
-import WritingTags from "../../components/WritingTags";
-import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
-import type { Writing } from "../../types/writings";
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import MarkdownIt from 'markdown-it';
+import markdownItPrism from 'markdown-it-prism';
+import WritingTags from '@/components/WritingTags';
+import { ArticleJsonLd, NextSeo } from 'next-seo';
+import { BASE_WRITINGS_URL, WRITINGS_URL } from '../../data/constants';
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import type { Writing } from "@/types/writings";
 
 type Props = {
     note: Writing;
@@ -17,72 +19,50 @@ const Note: NextPage<Props> = ({ note, content }) => {
         <Layout>
             <Head>
                 <title>{note.title} | H. Kamran</title>
+            </Head>
 
-                <meta
-                    name="description"
-                    content={note.description}
-                    key="description"
-                />
-
-                {/* Open Graph */}
-                <meta property="og:type" content="note" key="og:type" />
-                <meta property="og:title" content={note.title} key="og:title" />
-                <meta
-                    property="og:url"
-                    content={`${
+            <NextSeo
+                title={note.title}
+                description={note.description}
+                canonical={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/note/${note.id}`}
+                openGraph={{
+                    title: note.title,
+                    description: note.description,
+                    url: `${
                         typeof window !== "undefined" && window.location.origin
                             ? window.location.origin
                             : ""
-                    }/note/${note.id}`}
-                    key="og:url"
-                />
-                <meta
-                    property="og:description"
-                    content={note.description}
-                    key="og:description"
-                />
-                <meta
-                    property="article:author"
-                    content="H. Kamran"
-                    key="article:author"
-                />
-                <meta
-                    property="article:published_time"
-                    content={`${note.published}T07:00:00.000-08:00`}
-                    key="article:published_time"
-                />
+                    }/note/${note.id}`,
+                    type: "article",
+                    article: {
+                        publishedTime: `${note.published}T07:00:00.000-08:00`,
+                        tags: note.tags,
+                    },
+                }}
+                twitter={{
+                    cardType: "summary_large_image",
+                }}
+            />
 
-                {note.tags.map((tag, index) => (
-                    <meta key={index} property="article:tag" content={tag} />
-                ))}
-
-                {/* Twitter */}
-                <meta
-                    name="twitter:card"
-                    content="summary_large_image"
-                    key="twitter:card"
-                />
-                <meta
-                    name="twitter:title"
-                    content={note.title}
-                    key="twitter:title"
-                />
-                <meta
-                    name="twitter:site"
-                    content="@hkamran80"
-                    key="twitter:site"
-                />
-                <meta
-                    name="twitter:creator"
-                    content="@hkamran80"
-                    key="twitter:creator"
-                />
-                <meta
-                    name="twitter:description"
-                    content={note.description}
-                    key="twitter:description"
-                />
-            </Head>
+            <ArticleJsonLd
+                url={`${
+                    typeof window !== "undefined" && window.location.origin
+                        ? window.location.origin
+                        : ""
+                }/note/${note.id}`}
+                title={note.title}
+                description={note.description}
+                images={[]}
+                datePublished={`${note.published}T12:00:00-07:00`}
+                authorName={[{ name: "H. Kamran", url: "https://hkamran.com" }]}
+                publisherName="H. Kamran"
+                publisherLogo="https://hkamran.com/profile.png"
+                isAccessibleForFree={true}
+            />
 
             <Breadcrumbs
                 baseLabel="Notes"
@@ -91,13 +71,13 @@ const Note: NextPage<Props> = ({ note, content }) => {
             />
 
             <div className="space-y-2">
-                <h1 className="text-4xl font-semibold text-center mx-auto md:text-left">
+                <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
                     {note.title}
                 </h1>
-                <h2 className="font-light text-xl sm:text-2xl text-center sm:text-left leading-snug text-gray-300">
+                <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
                     {note.description}
                 </h2>
-                <h3 className="font-light sm:text-xl text-center sm:text-left leading-snug text-gray-400">
+                <h3 className="text-center font-light leading-snug text-gray-400 sm:text-left sm:text-xl">
                     {note.published !== "" ? (
                         <time dateTime={note.published}>
                             {new Date(
@@ -121,9 +101,9 @@ const Note: NextPage<Props> = ({ note, content }) => {
                 </h3>
             </div>
 
-            <div className="mt-6 max-w-5xl mx-auto">
+            <div className="mx-auto mt-6 max-w-3xl">
                 <article
-                    className="max-w-none prose prose-invert prose-a:text-pink-400 prose-pre:bg-hk-grey"
+                    className="prose prose-invert max-w-none prose-a:text-pink-400 prose-pre:bg-hk-grey"
                     dangerouslySetInnerHTML={{
                         __html: content,
                     }}
@@ -133,28 +113,45 @@ const Note: NextPage<Props> = ({ note, content }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-    const note = (
-        (await (await fetch(WRITINGS_URL)).json()).notes as Writing[]
-    ).find((note) => note.id === query.slug);
+export const getStaticPaths: GetStaticPaths = async () => {
+    const res = await fetch(WRITINGS_URL);
+    const writings = await res.json();
+
+    const paths = (writings.notes as Writing[]).map((note) => ({
+        params: { slug: note.id },
+    }));
+
+    return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const res = await fetch(WRITINGS_URL);
+    const writings = await res.json();
+
+    const note = (writings.notes as Writing[]).find(
+        (note) => note.id === params?.slug,
+    );
 
     if (note) {
         const markdown = await (
             await fetch(`${BASE_WRITINGS_URL}/notes/${note.filename}.md`)
         ).text();
 
+        // TODO: Switch to global render function (in `lib/`)
         const content = new MarkdownIt({})
+            .use(markdownItPrism)
             .render(markdown)
             .replace(
                 /<a([^>]+)>(.+?)<\/a>/gim,
                 `<a$1 target="_blank" rel="noopener noreferrer" title="$2" aria-label="$2">$2</a>`,
-            );
+            )
+            .replace(/<img([^>]+)>/gim, `<img$1 class="rounded-lg" />`);
 
         return { props: { note, content } };
     } else {
         return {
             redirect: {
-                destination: "/notes",
+                destination: "/articles",
                 permanent: false,
             },
         };

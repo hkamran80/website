@@ -1,7 +1,7 @@
+import Head from 'next/head';
+import NavLink from '@/components/NavLink';
+import { classNames } from '@hkamran/utility-web';
 import type { NextPage } from "next";
-import Head from "next/head";
-import Link from "next/link";
-import { classNames } from "@hkamran/utility-web";
 
 const styling = `
 * {
@@ -32,19 +32,19 @@ const Error404: NextPage = () => {
                 <title>Page Not Found | H. Kamran</title>
             </Head>
 
-            <div className="select-none relative h-screen">
+            <div className="relative h-screen select-none">
                 <div
                     id="container"
-                    className="max-w-2xl md:max-w-5xl mx-auto w-full text-center leading-normal absolute left-1/2 top-1/2 px-8"
+                    className="absolute left-1/2 top-1/2 mx-auto w-full max-w-2xl px-8 text-center leading-normal md:max-w-5xl"
                 >
-                    <h1 className="text-outline-pink text-9xl md:text-[250px] font-black text-black uppercase">
+                    <h1 className="text-outline-pink text-9xl font-black uppercase text-black md:text-[250px]">
                         404
                     </h1>
-                    <h2 className="text-outline-pink text-5xl font-black text-black -mt-2 mb-8">
+                    <h2 className="text-outline-pink -mt-2 mb-8 text-5xl font-black text-black">
                         Page not found
                     </h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         {[
                             { href: "/", name: "Homepage" },
                             { href: "/showcase", name: "Showcase" },
@@ -52,19 +52,19 @@ const Error404: NextPage = () => {
                             { href: "/notes", name: "Notes" },
                             { href: "/programs", name: "Programs" },
                         ].map(({ href, name }, index) => (
-                            <Link key={index} href={href} passHref>
-                                <a
-                                    className={classNames(
-                                        "transition duration-300",
-                                        "inline-block py-2.5 px-10",
-                                        "text-sm text-pink-400 hover:text-pink-700 no-underline font-bold",
-                                        "border-2 border-pink-400 hover:border-pink-700",
-                                        index === 0 ? "md:col-span-2" : "",
-                                    )}
-                                >
-                                    {name}
-                                </a>
-                            </Link>
+                            <NavLink
+                                key={index}
+                                href={href}
+                                className={classNames(
+                                    "transition duration-300",
+                                    "inline-block py-2.5 px-10",
+                                    "text-sm font-bold text-pink-400 no-underline hover:text-pink-700",
+                                    "border-2 border-pink-400 hover:border-pink-700",
+                                    index === 0 ? "md:col-span-2" : "",
+                                )}
+                            >
+                                {name}
+                            </NavLink>
                         ))}
                     </div>
                 </div>
