@@ -6,7 +6,6 @@ const nextConfig = {
         config.experiments = { topLevelAwait: true, layers: true };
         return config;
     },
-    experimental: { images: { allowFutureImage: true } },
     async rewrites() {
         return [
             {
