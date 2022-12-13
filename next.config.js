@@ -27,6 +27,11 @@ const nextConfig = {
             },
             { source: "/creations", destination: "/showcase", permanent: true },
             {
+                source: "/creations/:slug",
+                destination: "/showcase/:slug",
+                permanent: true,
+            },
+            {
                 source: "/articles/:slug",
                 destination: "/tag/:slug",
                 permanent: true,
