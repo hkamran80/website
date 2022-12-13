@@ -1,5 +1,5 @@
-import NavLink from './NavLink';
-import { links, socialIcons } from '../data/navigation';
+import NavLink from "./NavLink";
+import { links, socialIcons } from "../data/navigation";
 
 const Footer = () => {
     return (
@@ -10,6 +10,7 @@ const Footer = () => {
                         key={index}
                         href={href}
                         className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                        target={!href.startsWith("/") ? "_blank" : ""}
                     >
                         {name}
                     </NavLink>

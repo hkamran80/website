@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import NavLink from './NavLink';
-import { classNames } from '@hkamran/utility-web';
-import { links } from '../data/navigation';
-import { useRouter } from 'next/router';
+import Image from "next/image";
+import NavLink from "./NavLink";
+import { classNames } from "@hkamran/utility-web";
+import { links } from "../data/navigation";
+import { useRouter } from "next/router";
 
 const NavigationBar = () => {
     const router = useRouter();
@@ -36,6 +36,7 @@ const NavigationBar = () => {
                                 ? "text-pink-700 underline underline-offset-4"
                                 : "text-gray-500 hover:text-pink-700",
                         )}
+                        target={!href.startsWith("/") ? "_blank" : ""}
                         conditionalClassNames="hover:cursor-pointer"
                     >
                         {name}

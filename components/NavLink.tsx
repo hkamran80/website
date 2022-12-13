@@ -1,17 +1,20 @@
-import Link from 'next/link';
-import { classNames } from '@hkamran/utility-web';
-import { useRouter } from 'next/router';
+import Link from "next/link";
+import { classNames } from "@hkamran/utility-web";
+import { useRouter } from "next/router";
+import { type HTMLAttributeAnchorTarget } from "react";
 
 const NavLink = ({
     href,
     children,
     className,
     conditionalClassNames,
+    target,
 }: {
     href: string;
     children: React.ReactNode;
     className?: string;
     conditionalClassNames?: string;
+    target?: HTMLAttributeAnchorTarget;
 }) => {
     const { asPath } = useRouter();
 
@@ -25,6 +28,7 @@ const NavLink = ({
                     className ?? "",
                     conditionalClassNames ?? "",
                 )}
+                target={target}
             >
                 {children}
             </Link>
