@@ -24,7 +24,7 @@ const Footer = () => {
                         href={url}
                         aria-label={icon.title}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer me"
                     >
                         <svg
                             role="img"
