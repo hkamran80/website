@@ -1,4 +1,4 @@
-import { slugify } from '@hkamran/utility-strings';
+import { slugify } from "@hkamran/utility-strings";
 import type { Writing, WritingTags } from "@/types/writings";
 
 /**

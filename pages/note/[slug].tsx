@@ -1,11 +1,11 @@
-import Breadcrumbs from '@/components/Breadcrumbs';
-import Head from 'next/head';
-import Layout from '@/components/Layout';
-import MarkdownIt from 'markdown-it';
-import markdownItPrism from 'markdown-it-prism';
-import WritingTags from '@/components/WritingTags';
-import { ArticleJsonLd, NextSeo } from 'next-seo';
-import { BASE_WRITINGS_URL, WRITINGS_URL } from '../../data/constants';
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Head from "next/head";
+import Layout from "@/components/Layout";
+import MarkdownIt from "markdown-it";
+import markdownItPrism from "markdown-it-prism";
+import WritingTags from "@/components/WritingTags";
+import { ArticleJsonLd, NextSeo } from "next-seo";
+import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
 

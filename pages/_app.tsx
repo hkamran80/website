@@ -1,11 +1,11 @@
-import ProgressBar from '@badrap/bar-of-progress';
-import React from 'react';
-import Script from 'next/script';
-import SEO from 'next-seo.config';
-import { DefaultSeo, SocialProfileJsonLd } from 'next-seo';
-import { Router } from 'next/router';
-import '../styles/globals.css';
-import '../styles/prism-theme.css';
+import ProgressBar from "@badrap/bar-of-progress";
+import React from "react";
+import Script from "next/script";
+import SEO from "next-seo.config";
+import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
+import { Router } from "next/router";
+import "../styles/globals.css";
+import "../styles/prism-theme.css";
 import type { AppProps } from "next/app";
 
 const isServerSideRendered = () => typeof window === "undefined";

@@ -1,6 +1,6 @@
-import Footer from './Footer';
-import NavigationBar from './NavigationBar';
-import { classNames } from '@hkamran/utility-web';
+import Footer from "./Footer";
+import NavigationBar from "./NavigationBar";
+import { classNames } from "@hkamran/utility-web";
 
 export default function Layout({
     navigationBar,

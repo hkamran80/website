@@ -1,6 +1,6 @@
-import NavLink from './NavLink';
-import { BreadcrumbJsonLd } from 'next-seo';
-import { ChevronRight, Home } from 'lucide-react';
+import NavLink from "./NavLink";
+import { BreadcrumbJsonLd } from "next-seo";
+import { ChevronRight, Home } from "lucide-react";
 
 type BreadcrumbsProps = {
     basePath?: string;

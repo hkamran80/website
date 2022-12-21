@@ -1,12 +1,12 @@
-import ArticleCard from '@/components/ArticleCard';
-import feather from 'feather-icons';
-import Head from 'next/head';
-import Layout from '@/components/Layout';
-import NavLink from '@/components/NavLink';
-import { Article } from '@/types/writings';
-import { sortByPublishDate } from '@/lib/writings';
-import { WebPageJsonLd } from 'next-seo';
-import { WRITINGS_URL } from '../data/constants';
+import ArticleCard from "@/components/ArticleCard";
+import feather from "feather-icons";
+import Head from "next/head";
+import Layout from "@/components/Layout";
+import NavLink from "@/components/NavLink";
+import { Article } from "@/types/writings";
+import { sortByPublishDate } from "@/lib/writings";
+import { WebPageJsonLd } from "next-seo";
+import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
 
 type Props = {

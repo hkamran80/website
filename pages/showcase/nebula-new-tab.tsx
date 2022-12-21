@@ -1,10 +1,10 @@
-import Breadcrumbs from '@/components/Breadcrumbs';
-import Head from 'next/head';
-import Layout from '@/components/Layout';
-import { classNames } from '@hkamran/utility-web';
-import { Listbox } from '@headlessui/react';
-import { useEffect, useState } from 'react';
-import { WebPageJsonLd } from 'next-seo';
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Head from "next/head";
+import Layout from "@/components/Layout";
+import { classNames } from "@hkamran/utility-web";
+import { Listbox } from "@headlessui/react";
+import { useEffect, useState } from "react";
+import { WebPageJsonLd } from "next-seo";
 import type { GetStaticProps, NextPage } from "next";
 import {
     ChevronDown,
