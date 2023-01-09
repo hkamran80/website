@@ -8,6 +8,7 @@ import { ArticleJsonLd, NextSeo } from "next-seo";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Article } from "@/types/writings";
+import Giscus from "@giscus/react";
 
 type Props = {
     article: Article;
@@ -116,11 +117,11 @@ const Article: NextPage<Props> = ({ article, content }) => {
                         </h3>
                     </div>
 
-                    <div className="mx-auto mt-6 max-w-5xl">
+                    <div className="mx-auto mt-6 max-w-5xl space-y-7">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                             src={article.heroImage}
-                            className="mb-7 rounded-lg"
+                            className="rounded-lg"
                             alt={`Featured image for ${article.title}`}
                             loading="eager"
                         />
@@ -130,6 +131,22 @@ const Article: NextPage<Props> = ({ article, content }) => {
                             dangerouslySetInnerHTML={{
                                 __html: content,
                             }}
+                        />
+
+                        <Giscus
+                            id="comments"
+                            repo="hkamran80/articles"
+                            repoId="MDEwOlJlcG9zaXRvcnkyNjY1MDgxMjU="
+                            category="Comments"
+                            categoryId="DIC_kwDOD-KXXc4CTfE-"
+                            mapping="pathname"
+                            strict="0"
+                            reactionsEnabled="1"
+                            emitMetadata="0"
+                            inputPosition="top"
+                            theme="dark"
+                            lang="en"
+                            loading="lazy"
                         />
                     </div>
                 </>
