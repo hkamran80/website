@@ -117,7 +117,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                         </h3>
                     </div>
 
-                    <div className="mx-auto mt-6 max-w-5xl space-y-7">
+                    <div className="mx-auto mt-6 max-w-5xl">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                             src={article.heroImage}
@@ -127,7 +127,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                         />
 
                         <article
-                            className="prose prose-invert mx-auto max-w-3xl prose-a:text-pink-400 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
+                            className="my-7 prose prose-invert mx-auto max-w-3xl prose-a:text-pink-400 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
                             dangerouslySetInnerHTML={{
                                 __html: content,
                             }}
