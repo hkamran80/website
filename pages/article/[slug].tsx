@@ -127,27 +127,29 @@ const Article: NextPage<Props> = ({ article, content }) => {
                         />
 
                         <article
-                            className="my-7 prose prose-invert mx-auto max-w-3xl prose-a:text-pink-400 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
+                            className="prose prose-invert my-7 mx-auto max-w-3xl prose-a:text-pink-400 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
                             dangerouslySetInnerHTML={{
                                 __html: content,
                             }}
                         />
 
-                        <Giscus
-                            id="comments"
-                            repo="hkamran80/articles"
-                            repoId="MDEwOlJlcG9zaXRvcnkyNjY1MDgxMjU="
-                            category="Comments"
-                            categoryId="DIC_kwDOD-KXXc4CTfE-"
-                            mapping="pathname"
-                            strict="0"
-                            reactionsEnabled="1"
-                            emitMetadata="0"
-                            inputPosition="top"
-                            theme="dark"
-                            lang="en"
-                            loading="lazy"
-                        />
+                        {article.published !== "" && (
+                            <Giscus
+                                id="comments"
+                                repo="hkamran80/articles"
+                                repoId="MDEwOlJlcG9zaXRvcnkyNjY1MDgxMjU="
+                                category="Comments"
+                                categoryId="DIC_kwDOD-KXXc4CTfE-"
+                                mapping="pathname"
+                                strict="0"
+                                reactionsEnabled="1"
+                                emitMetadata="0"
+                                inputPosition="top"
+                                theme="dark"
+                                lang="en"
+                                loading="lazy"
+                            />
+                        )}
                     </div>
                 </>
             )}
