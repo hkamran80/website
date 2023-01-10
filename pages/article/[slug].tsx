@@ -8,6 +8,7 @@ import { ArticleJsonLd, NextSeo } from "next-seo";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Article } from "@/types/writings";
+import Giscus from "@giscus/react";
 
 type Props = {
     article: Article;
@@ -120,17 +121,35 @@ const Article: NextPage<Props> = ({ article, content }) => {
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                             src={article.heroImage}
-                            className="mb-7 rounded-lg"
+                            className="rounded-lg"
                             alt={`Featured image for ${article.title}`}
                             loading="eager"
                         />
 
                         <article
-                            className="prose prose-invert mx-auto max-w-3xl prose-a:text-pink-400 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
+                            className="prose prose-invert my-7 mx-auto max-w-3xl prose-a:text-pink-400 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
                             dangerouslySetInnerHTML={{
                                 __html: content,
                             }}
                         />
+
+                        {article.published !== "" && (
+                            <Giscus
+                                id="comments"
+                                repo="hkamran80/articles"
+                                repoId="MDEwOlJlcG9zaXRvcnkyNjY1MDgxMjU="
+                                category="Comments"
+                                categoryId="DIC_kwDOD-KXXc4CTfE-"
+                                mapping="pathname"
+                                strict="0"
+                                reactionsEnabled="1"
+                                emitMetadata="0"
+                                inputPosition="top"
+                                theme="dark"
+                                lang="en"
+                                loading="lazy"
+                            />
+                        )}
                     </div>
                 </>
             )}
