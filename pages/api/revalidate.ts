@@ -22,7 +22,7 @@ const revalidationHandler = async (
         await res.revalidate(req.query.path as string);
         return res.json({ revalidated: true });
     } catch (error) {
-        return res.status(500).json({ error: "Error revalidating" });
+        return res.status(500).json({ message: "Error revalidating", error });
     }
 };
 
