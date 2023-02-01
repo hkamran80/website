@@ -9,6 +9,7 @@ import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Article } from "@/types/writings";
 import Giscus from "@giscus/react";
+import { FileEdit } from "lucide-react";
 
 type Props = {
     article: Article;
@@ -111,7 +112,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                             <span className="ml-1 mr-2">•</span>
 
                             <WritingTags
-                                basePath="articles"
+                                basePath="tag"
                                 tags={article.tags}
                             />
                         </h3>
@@ -133,7 +134,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                             }}
                         />
 
-                        {article.published !== "" && (
+                        {article.published !== "" ? (
                             <Giscus
                                 id="comments"
                                 repo="hkamran80/articles"
@@ -149,6 +150,17 @@ const Article: NextPage<Props> = ({ article, content }) => {
                                 lang="en"
                                 loading="lazy"
                             />
+                        ) : (
+                            <div className="flex justify-center text-sm uppercase tracking-wide text-gray-300">
+                                <a
+                                    href={`https://github.com/hkamran80/articles/blob/main/markdown/articles/${article.filename}.md`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="transition-colors duration-300 hover:text-pink-400"
+                                >
+                                    <FileEdit />
+                                </a>
+                            </div>
                         )}
                     </div>
                 </>
