@@ -58,7 +58,7 @@ const PrivacyPolicy: NextPage = () => {
                     <p>
                         When you visit my website, my servers may automatically
                         log the standard data provided by your web browser. It
-                        may include your device’s Internet Protocol (IP)
+                        may include your device&quot;s Internet Protocol (IP)
                         address, your browser type and version, the pages you
                         visit, the time and date of your visit, the time spent
                         on each page, other details about your visit, and
@@ -134,7 +134,7 @@ const PrivacyPolicy: NextPage = () => {
                         statistical purposes.
                     </p>
 
-                    <h3>Children’s Privacy</h3>
+                    <h3>Children&quot;s Privacy</h3>
                     <p>
                         I do not aim any of my products or services directly at
                         children under the age of 13, and I do not knowingly
@@ -175,8 +175,8 @@ const PrivacyPolicy: NextPage = () => {
                         party, I will protect it as set out in this privacy
                         policy. If you are a third party providing personal
                         information about somebody else, you represent and
-                        warrant that you have such person’s consent to provide
-                        the personal information to me.
+                        warrant that you have such person&quot;s consent to
+                        provide the personal information to me.
                     </p>
                     <p>
                         If you have previously agreed to me using your personal
