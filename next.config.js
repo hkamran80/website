@@ -41,6 +41,9 @@ const nextConfig = {
                 destination: "/tag/:slug",
                 permanent: true,
             },
+            { source: "/article", destination: "/articles", permanent: true },
+            { source: "/note", destination: "/notes", permanent: true },
+            { source: "/tag", destination: "/articles", permanent: true },
         ];
     },
 };
