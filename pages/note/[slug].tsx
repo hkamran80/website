@@ -8,6 +8,7 @@ import { ArticleJsonLd, NextSeo } from "next-seo";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
+import { renderMarkdown } from "@/lib/markdown";
 
 type Props = {
     note: Writing;
@@ -137,17 +138,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             await fetch(`${BASE_WRITINGS_URL}/notes/${note.filename}.md`)
         ).text();
 
-        // TODO: Switch to global render function (in `lib/`)
-        const content = new MarkdownIt({})
-            .use(markdownItPrism)
-            .render(markdown)
-            .replace(
-                /<a([^>]+)>(.+?)<\/a>/gim,
-                `<a$1 target="_blank" rel="noopener noreferrer" title="$2" aria-label="$2">$2</a>`,
-            )
-            .replace(/<img([^>]+)>/gim, `<img$1 class="rounded-lg" />`);
-
-        return { props: { note, content } };
+        return { props: { note, content: renderMarkdown(markdown, true) } };
     } else {
         return {
             redirect: {
