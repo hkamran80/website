@@ -62,7 +62,7 @@ const Acoustats: NextPage = () => {
                     </div>
 
                     <div className="mt-6">
-                        <div className="prose prose-invert max-w-none prose-a:text-pink-400">
+                        <div className="prose prose-invert max-w-none prose-a:text-pink-700">
                             <h2>Prerequisites</h2>
                             <p>
                                 To set up Acoustats, you must first create a

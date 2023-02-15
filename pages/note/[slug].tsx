@@ -104,7 +104,7 @@ const Note: NextPage<Props> = ({ note, content }) => {
 
             <div className="mx-auto mt-6 max-w-3xl">
                 <article
-                    className="prose prose-invert max-w-none prose-a:text-pink-400 prose-pre:bg-hk-grey"
+                    className="prose prose-invert max-w-none prose-a:text-pink-700 prose-pre:bg-hk-grey"
                     dangerouslySetInnerHTML={{
                         __html: content,
                     }}

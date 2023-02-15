@@ -35,7 +35,7 @@ const PrivacyPolicy: NextPage = () => {
                     </h2>
                 </div>
 
-                <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-400">
+                <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
                     <p>
                         Your privacy is important to me. It is my policy to
                         respect your privacy and comply with any applicable law

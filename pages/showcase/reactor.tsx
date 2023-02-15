@@ -61,7 +61,7 @@ const Reactor: NextPage = () => {
                                 Add Reactor to your Discord server
                             </a>
 
-                            <div className="prose prose-invert mt-8 max-w-none prose-a:text-pink-400">
+                            <div className="prose prose-invert mt-8 max-w-none prose-a:text-pink-700">
                                 <h2>What Does Reactor Do?</h2>
                                 <p>
                                     Like the description says, Reactor adds
