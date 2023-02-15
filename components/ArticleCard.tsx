@@ -44,7 +44,7 @@ const ArticleCard = ({
                         {article.description}
                     </p>
 
-                    <p className="text-base font-semibold text-pink-700 hover:text-pink-600 transition-colors duration-300 hover:cursor-pointer">
+                    <p className="text-base font-semibold text-pink-700 transition-colors duration-300 hover:cursor-pointer hover:text-pink-600">
                         Read full article
                     </p>
                 </div>

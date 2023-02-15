@@ -15,7 +15,7 @@ export const renderMarkdown = (
             rel: "noopener noreferrer",
         },
     });
-    
+
     if (code) {
         md = md.use(markdownItPrism, { plugins: ["toolbar", "autoloader"] });
     }
