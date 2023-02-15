@@ -31,7 +31,7 @@ const NoteCard = ({ note }: { note: Writing }) => {
                     </span>
 
                     <div className="mt-3">
-                        <span className="text-base font-semibold text-pink-500 hover:text-pink-600">
+                        <span className="text-base font-semibold text-pink-700 hover:text-pink-600">
                             Read the note
                         </span>
                     </div>
