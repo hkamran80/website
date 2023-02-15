@@ -31,11 +31,9 @@ const Tag: NextPage<Props> = ({ tag, articles, notes }) => {
 
             <Breadcrumbs baseLabel="Tags" currentLabel={tag} />
 
-            <div className="space-y-2">
-                <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                    {tag}
-                </h1>
-            </div>
+            <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
+                {tag}
+            </h1>
 
             {articles.length > 0 ? (
                 <>
@@ -62,7 +60,7 @@ const Tag: NextPage<Props> = ({ tag, articles, notes }) => {
 
             {notes.length > 0 ? (
                 <>
-                    <h2 className="mx-auto mt-4 text-center text-2xl font-semibold md:text-left">
+                    <h2 className="mx-auto mt-8 text-center text-2xl font-semibold md:text-left">
                         Notes
                     </h2>
 

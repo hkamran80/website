@@ -1,15 +1,14 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Giscus from "@giscus/react";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import MarkdownIt from "markdown-it";
-import markdownItPrism from "markdown-it-prism";
 import WritingTags from "@/components/WritingTags";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
+import { FileEdit } from "lucide-react";
+import { renderMarkdown } from "@/lib/markdown";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Article } from "@/types/writings";
-import Giscus from "@giscus/react";
-import { FileEdit } from "lucide-react";
 
 type Props = {
     article: Article;
@@ -111,10 +110,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
 
                             <span className="ml-1 mr-2">•</span>
 
-                            <WritingTags
-                                basePath="tag"
-                                tags={article.tags}
-                            />
+                            <WritingTags basePath="tag" tags={article.tags} />
                         </h3>
                     </div>
 
@@ -128,7 +124,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                         />
 
                         <article
-                            className="prose prose-invert my-7 mx-auto max-w-3xl prose-a:text-pink-400 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
+                            className="prose prose-invert my-7 mx-auto max-w-3xl prose-a:text-pink-700 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
                             dangerouslySetInnerHTML={{
                                 __html: content,
                             }}
@@ -156,7 +152,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                                     href={`https://github.com/hkamran80/articles/blob/main/markdown/articles/${article.filename}.md`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="transition-colors duration-300 hover:text-pink-400"
+                                    className="transition-colors duration-300 hover:text-pink-700"
                                 >
                                     <FileEdit />
                                 </a>
@@ -193,16 +189,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             await fetch(`${BASE_WRITINGS_URL}/articles/${article.filename}.md`)
         ).text();
 
-        const content = new MarkdownIt({})
-            .use(markdownItPrism)
-            .render(markdown)
-            .replace(
-                /<a([^>]+)>(.+?)<\/a>/gim,
-                `<a$1 target="_blank" rel="noopener noreferrer" title="$2" aria-label="$2">$2</a>`,
-            )
-            .replace(/<img([^>]+)>/gim, `<img$1 class="rounded-lg" />`);
-
-        return { props: { article, content } };
+        return {
+            props: { article, content: renderMarkdown(markdown, true, true) },
+        };
     } else {
         return {
             redirect: {

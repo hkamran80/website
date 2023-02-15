@@ -36,7 +36,7 @@ const License: NextPage = () => {
                     </h2>
                 </div>
 
-                <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-400">
+                <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
                     <ul>
                         <li>
                             <strong>Attribution Required</strong>
