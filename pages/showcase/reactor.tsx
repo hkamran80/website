@@ -56,7 +56,7 @@ const Reactor: NextPage = () => {
                                 href="https://go.hkamran.com/add-reactor"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="align-center flex w-full justify-center rounded-full bg-hk-grey p-4 text-center font-medium text-white transition-colors duration-200 ease-in-out hover:text-pink-400"
+                                className="align-center flex w-full justify-center rounded-full bg-hk-grey p-4 text-center font-medium text-white transition-colors duration-200 ease-in-out hover:text-pink-700"
                             >
                                 Add Reactor to your Discord server
                             </a>

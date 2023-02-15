@@ -15,7 +15,7 @@ const WritingTags = ({
                 <Fragment key={index}>
                     <NavLink
                         href={`/${basePath}/${slugify(tag)}`}
-                        className="text-pink-400 transition-colors duration-300 hover:text-pink-400"
+                        className="text-pink-700 transition-colors duration-300 hover:text-pink-600"
                     >
                         {tag}
                     </NavLink>{" "}

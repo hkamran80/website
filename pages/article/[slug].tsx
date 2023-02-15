@@ -152,7 +152,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                                     href={`https://github.com/hkamran80/articles/blob/main/markdown/articles/${article.filename}.md`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="transition-colors duration-300 hover:text-pink-400"
+                                    className="transition-colors duration-300 hover:text-pink-700"
                                 >
                                     <FileEdit />
                                 </a>
