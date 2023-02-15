@@ -1,6 +1,7 @@
 import MarkdownIt from "markdown-it";
 import markdownItLinkAttributes from "markdown-it-link-attributes";
 import markdownItPrism from "markdown-it-prism";
+import markdownItImageFigures from "markdown-it-image-figures";
 
 export const renderMarkdown = (
     content: string,
@@ -14,17 +15,27 @@ export const renderMarkdown = (
             rel: "noopener noreferrer",
         },
     });
+    
     if (code) {
         md = md.use(markdownItPrism, { plugins: ["toolbar", "autoloader"] });
     }
 
-    let markdown = md.render(content);
     if (images) {
-        markdown = markdown.replace(
-            /<img([^>]+)>/gim,
-            `<img$1 class="rounded-lg" />`,
+        md = md.use(markdownItImageFigures, {
+            figcaption: "alt",
+            lazy: true,
+            async: true,
+            classes: "rounded-lg",
+        });
+    }
+
+    let rendered = md.render(content);
+    if (images) {
+        rendered = rendered.replace(
+            /(?<!figure>)<img (.*) alt=\"(.*)\"\>/gim,
+            `<img $1 alt="$2" class="rounded-lg" />`,
         );
     }
 
-    return markdown;
+    return rendered;
 };

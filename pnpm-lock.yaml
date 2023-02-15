@@ -27,6 +27,7 @@ specifiers:
   formdata-polyfill: ^4.0.10
   lucide-react: ^0.102.0
   markdown-it: ^12.3.2
+  markdown-it-image-figures: ^2.1.1
   markdown-it-link-attributes: ^4.0.1
   markdown-it-prism: ^2.2.4
   next: ^13.0.5
@@ -54,6 +55,7 @@ dependencies:
   feed: 4.2.2
   lucide-react: 0.102.0_sh5qlbywuemxd2y3xkrw2y2kr4
   markdown-it: 12.3.2
+  markdown-it-image-figures: 2.1.1_markdown-it@12.3.2
   markdown-it-link-attributes: 4.0.1
   markdown-it-prism: 2.2.4
   next: 13.0.5_biqbaboplfbrettd7655fr4n2y
@@ -1831,6 +1833,15 @@ packages:
     dependencies:
       prop-types: 15.8.1
       react: 18.2.0
+    dev: false
+
+  /markdown-it-image-figures/2.1.1_markdown-it@12.3.2:
+    resolution: {integrity: sha512-mwXSQ2nPeVUzCMIE3HlLvjRioopiqyJLNph0pyx38yf9mpqFDhNGnMpAXF9/A2Xv0oiF2cVyg9xwfF0HNAz05g==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      markdown-it: '*'
+    dependencies:
+      markdown-it: 12.3.2
     dev: false
 
   /markdown-it-link-attributes/4.0.1:
