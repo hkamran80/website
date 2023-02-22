@@ -18,14 +18,26 @@ const revalidationHandler = async (
             .json({ error: 'Missing required "path" parameter' });
     }
 
+    const finalOutput: {
+        [path: string]: { revalidated: boolean } | { error: string };
+    } = {};
+    let success = true;
+
     (req.query.path as string).split(",").forEach(async (path) => {
         try {
             await res.revalidate(path);
-            return res.json({ revalidated: true });
+            finalOutput[path] = { revalidated: true };
         } catch (error) {
-            return res.status(500).json({ error: "Error revalidating" });
+            finalOutput[path] = { error: "Error revalidating" };
+            success = false;
         }
     });
+
+    if (success) {
+        return res.json(finalOutput);
+    } else {
+        return res.status(500).json(finalOutput);
+    }
 };
 
 export default revalidationHandler;
