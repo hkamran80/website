@@ -49,7 +49,10 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                             },
                             images: [
                                 {
-                                    url: `https://assets.hkamran.com/graphics/article/${article.id}`,
+                                    url:
+                                        article.published !== ""
+                                            ? `https://assets.hkamran.com/graphics/article/${article.id}`
+                                            : "https://assets.hkamran.com/graphics/article/unpublished",
                                     width: 1000,
                                     height: 500,
                                     alt: `Featured image for ${article.title}`,
@@ -70,7 +73,11 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                         }/article/${article.id}`}
                         title={article.title}
                         description={article.description}
-                        images={[`https://assets.hkamran.com/graphics/article/${article.id}`]}
+                        images={[
+                            article.published !== ""
+                                ? `https://assets.hkamran.com/graphics/article/${article.id}`
+                                : "https://assets.hkamran.com/graphics/article/unpublished",
+                        ]}
                         datePublished={`${article.published}T07:00:00.000-08:00`}
                         authorName={[
                             { name: "H. Kamran", url: "https://hkamran.com" },
@@ -117,7 +124,11 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                     <div className="mx-auto mt-6 max-w-5xl">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                            src={`https://assets.hkamran.com/graphics/article/${article.id}`}
+                            src={
+                                article.published !== ""
+                                    ? `https://assets.hkamran.com/graphics/article/${article.id}`
+                                    : "https://assets.hkamran.com/graphics/article/unpublished"
+                            }
                             className="rounded-lg"
                             alt={`Featured image for ${article.title}`}
                             loading="eager"
