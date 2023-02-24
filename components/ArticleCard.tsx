@@ -1,18 +1,18 @@
 import Image from "next/image";
-import type { Article } from "@/types/writings";
+import type { Writing } from "@/types/writings";
 
 const ArticleCard = ({
     article,
     topPadding = true,
 }: {
-    article: Article;
+    article: Writing;
     topPadding?: boolean;
 }) => {
     return (
         <div className={topPadding ? "mt-1 pt-5" : undefined}>
             <div className="grid grid-cols-1 items-center gap-y-4 hover:cursor-pointer sm:grid-cols-3 md:gap-8">
                 <Image
-                    src={article.heroImage}
+                    src={`https://assets.hkamran.com/graphics/article/${article.id}`}
                     className="w-full rounded-lg object-cover object-center"
                     alt={`Featured image for ${article.title}`}
                     width={1000}
