@@ -8,14 +8,19 @@ import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import { FileEdit } from "lucide-react";
 import { renderMarkdown } from "@/lib/markdown";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import type { Article } from "@/types/writings";
+import type { Writing } from "@/types/writings";
 
 type Props = {
-    article: Article;
+    article: Writing;
     content: string;
 };
 
-const Article: NextPage<Props> = ({ article, content }) => {
+const Writing: NextPage<Props> = ({ article, content }) => {
+    const articleImage =
+        article.published !== ""
+            ? `https://assets.hkamran.com/graphics/article/${article.id}`
+            : "https://assets.hkamran.com/graphics/article/unpublished";
+
     return (
         <Layout>
             {article && (
@@ -49,7 +54,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                             },
                             images: [
                                 {
-                                    url: article.heroImage,
+                                    url: articleImage,
                                     width: 1000,
                                     height: 500,
                                     alt: `Featured image for ${article.title}`,
@@ -70,7 +75,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                         }/article/${article.id}`}
                         title={article.title}
                         description={article.description}
-                        images={[article.heroImage]}
+                        images={[articleImage]}
                         datePublished={`${article.published}T07:00:00.000-08:00`}
                         authorName={[
                             { name: "H. Kamran", url: "https://hkamran.com" },
@@ -117,7 +122,7 @@ const Article: NextPage<Props> = ({ article, content }) => {
                     <div className="mx-auto mt-6 max-w-5xl">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                            src={article.heroImage}
+                            src={articleImage}
                             className="rounded-lg"
                             alt={`Featured image for ${article.title}`}
                             loading="eager"
@@ -169,7 +174,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const res = await fetch(WRITINGS_URL);
     const writings = await res.json();
 
-    const paths = (writings.articles as Article[]).map((article) => ({
+    const paths = (writings.articles as Writing[]).map((article) => ({
         params: { slug: article.id },
     }));
 
@@ -180,7 +185,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const res = await fetch(WRITINGS_URL);
     const writings = await res.json();
 
-    const article = (writings.articles as Article[]).find(
+    const article = (writings.articles as Writing[]).find(
         (article) => article.id === params?.slug,
     );
 
@@ -202,4 +207,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
 };
 
-export default Article;
+export default Writing;

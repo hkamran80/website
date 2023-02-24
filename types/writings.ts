@@ -7,10 +7,6 @@ export type Writing = {
     filename: string;
 };
 
-export type Article = Writing & {
-    heroImage: string;
-};
-
 export type WritingTags = {
     [tagName: string]: string[];
 };
