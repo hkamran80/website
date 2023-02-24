@@ -16,6 +16,11 @@ type Props = {
 };
 
 const Writing: NextPage<Props> = ({ article, content }) => {
+    const articleImage =
+        article.published !== ""
+            ? `https://assets.hkamran.com/graphics/article/${article.id}`
+            : "https://assets.hkamran.com/graphics/article/unpublished";
+
     return (
         <Layout>
             {article && (
@@ -49,10 +54,7 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                             },
                             images: [
                                 {
-                                    url:
-                                        article.published !== ""
-                                            ? `https://assets.hkamran.com/graphics/article/${article.id}`
-                                            : "https://assets.hkamran.com/graphics/article/unpublished",
+                                    url: articleImage,
                                     width: 1000,
                                     height: 500,
                                     alt: `Featured image for ${article.title}`,
@@ -73,11 +75,7 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                         }/article/${article.id}`}
                         title={article.title}
                         description={article.description}
-                        images={[
-                            article.published !== ""
-                                ? `https://assets.hkamran.com/graphics/article/${article.id}`
-                                : "https://assets.hkamran.com/graphics/article/unpublished",
-                        ]}
+                        images={[articleImage]}
                         datePublished={`${article.published}T07:00:00.000-08:00`}
                         authorName={[
                             { name: "H. Kamran", url: "https://hkamran.com" },
@@ -124,11 +122,7 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                     <div className="mx-auto mt-6 max-w-5xl">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                            src={
-                                article.published !== ""
-                                    ? `https://assets.hkamran.com/graphics/article/${article.id}`
-                                    : "https://assets.hkamran.com/graphics/article/unpublished"
-                            }
+                            src={articleImage}
                             className="rounded-lg"
                             alt={`Featured image for ${article.title}`}
                             loading="eager"
