@@ -9,10 +9,10 @@ import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
 import { socialIcons } from "../data/navigation";
 import { WebPageJsonLd } from "next-seo";
 import type { GetStaticProps, NextPage } from "next";
-import type { Article } from "@/types/writings";
+import type { Writing } from "@/types/writings";
 
 type Props = {
-    latestArticle: Article;
+    latestArticle: Writing;
     featuredShowcase: Creation[];
 };
 
@@ -176,7 +176,7 @@ export const getStaticProps: GetStaticProps = async () => {
     ).filter(({ featured }) => featured === true);
 
     const latestArticle = (
-        (await (await fetch(WRITINGS_URL)).json()).articles as Article[]
+        (await (await fetch(WRITINGS_URL)).json()).articles as Writing[]
     )
         .filter(({ published }) => published !== "")
         .sort(({ published: publishedA }, { published: publishedB }) => {

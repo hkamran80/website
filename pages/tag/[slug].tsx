@@ -5,12 +5,12 @@ import Layout from "@/components/Layout";
 import NavLink from "@/components/NavLink";
 import NoteCard from "@/components/NoteCard";
 import { arrayUnique, getTags, sortByPublishDate } from "@/lib/writings";
-import { Article, Writing } from "@/types/writings";
+import { Writing } from "@/types/writings";
 import { WebPageJsonLd } from "next-seo";
 import { WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-type Props = { tag: string; articles: Article[]; notes: Writing[] };
+type Props = { tag: string; articles: Writing[]; notes: Writing[] };
 
 const Tag: NextPage<Props> = ({ tag, articles, notes }) => {
     return (
@@ -89,7 +89,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const writings = await res.json();
 
     const articleTags = Object.keys(
-        getTags(writings.articles as Article[], true),
+        getTags(writings.articles as Writing[], true),
     );
     const noteTags = Object.keys(getTags(writings.notes as Writing[], true));
 
@@ -106,20 +106,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     const tag = params?.slug as string;
 
-    const articleRawTags = getTags(writings.articles as Article[]);
+    const articleRawTags = getTags(writings.articles as Writing[]);
     const noteRawTags = getTags(writings.notes as Writing[]);
 
-    const articleTags = getTags(writings.articles as Article[], true);
+    const articleTags = getTags(writings.articles as Writing[], true);
     const noteTags = getTags(writings.notes as Writing[], true);
 
-    const articles: Article[] =
+    const articles: Writing[] =
         Object.keys(articleTags).indexOf(tag) !== -1
             ? articleTags[tag]
                   .map(
                       (slug) =>
-                          (writings.articles as Article[]).find(
+                          (writings.articles as Writing[]).find(
                               (article) => article.id === slug,
-                          ) as Article,
+                          ) as Writing,
                   )
                   .sort(sortByPublishDate)
             : [];

@@ -3,14 +3,14 @@ import feather from "feather-icons";
 import Head from "next/head";
 import Layout from "@/components/Layout";
 import NavLink from "@/components/NavLink";
-import { Article } from "@/types/writings";
+import { Writing } from "@/types/writings";
 import { sortByPublishDate } from "@/lib/writings";
 import { WebPageJsonLd } from "next-seo";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
 
 type Props = {
-    articles: Article[];
+    articles: Writing[];
 };
 
 const Articles: NextPage<Props> = ({ articles }) => {
@@ -57,7 +57,7 @@ const Articles: NextPage<Props> = ({ articles }) => {
 export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(WRITINGS_URL);
     const writings = await res.json();
-    const articles = (writings.articles as Article[]).sort(sortByPublishDate);
+    const articles = (writings.articles as Writing[]).sort(sortByPublishDate);
 
     return { props: { articles } };
 };
