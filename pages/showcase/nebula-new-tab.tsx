@@ -372,7 +372,9 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
 
 // TODO: Convert to Incremental Static Regeneration
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await fetch("https://assets.hkamran.com/changelog/nebula-new-tab");
+    const res = await fetch(
+        "https://assets.hkamran.com/changelog/nebula-new-tab",
+    );
     const rawChangelog = (await res.json()) as ReleaseDetails[];
 
     const changelog = Object.entries(rawChangelog)
