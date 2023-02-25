@@ -50,7 +50,7 @@ export default function Layout({
                     className={classNames(
                         "mx-auto flex-none",
                         !footerClasses || footerClasses.indexOf("pb-") === -1
-                            ? "pb-10"
+                            ? "py-14"
                             : "",
                         !footer
                             ? "space-y-4 text-center text-xs text-gray-500"
