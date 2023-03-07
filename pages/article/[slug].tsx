@@ -195,7 +195,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ).text();
 
         return {
-            props: { article, content: renderMarkdown(markdown, true, true) },
+            props: {
+                article,
+                content: renderMarkdown(markdown, true, true, true),
+            },
         };
     } else {
         return {
