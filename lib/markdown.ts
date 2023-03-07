@@ -2,11 +2,13 @@ import MarkdownIt from "markdown-it";
 import markdownItLinkAttributes from "markdown-it-link-attributes";
 import markdownItPrism from "markdown-it-prism";
 import markdownItImageFigures from "markdown-it-image-figures";
+import markdownItFootnote from "markdown-it-footnote";
 
 export const renderMarkdown = (
     content: string,
     code: boolean = false,
     images: boolean = false,
+    footnotes: boolean = false,
 ): string => {
     let md = new MarkdownIt({}).use(markdownItLinkAttributes, {
         matcher: (href: string) => !href.startsWith("https://hkamran.com"),
@@ -27,6 +29,10 @@ export const renderMarkdown = (
             async: true,
             classes: "rounded-lg",
         });
+    }
+
+    if (footnotes) {
+        md = md.use(markdownItFootnote);
     }
 
     let rendered = md.render(content);
