@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+type RevalidationOutput = { revalidated: boolean } | { error: string };
+
 const revalidationHandler = async (
     req: NextApiRequest,
     res: NextApiResponse,
@@ -19,19 +21,42 @@ const revalidationHandler = async (
     }
 
     const finalOutput: {
-        [path: string]: { revalidated: boolean } | { error: string };
+        [path: string]: RevalidationOutput;
     } = {};
     let success = true;
 
-    (req.query.path as string).split(",").forEach(async (path) => {
+    const revalidatePath = async (
+        path: string,
+    ): Promise<RevalidationOutput> => {
         try {
             await res.revalidate(path);
-            finalOutput[path] = { revalidated: true };
+            return { revalidated: true };
         } catch (error) {
-            finalOutput[path] = { error: "Error revalidating" };
+            return { error: "Error revalidating" };
+        }
+    };
+
+    const paths = (req.query.path as string).split(",");
+    if (paths.length > 1) {
+        const outputs = await Promise.all(
+            paths.map((path) => revalidatePath(path)),
+        );
+
+        outputs.forEach((output, index) => {
+            if (output.hasOwnProperty("error")) {
+                success = false;
+            }
+            
+            finalOutput[paths[index]] = output;
+        });
+    } else if (paths.length === 1) {
+        const output = await revalidatePath(req.query.path as string);
+        if (output.hasOwnProperty("error")) {
             success = false;
         }
-    });
+
+        finalOutput[req.query.path as string] = output;
+    }
 
     if (success) {
         return res.json(finalOutput);
