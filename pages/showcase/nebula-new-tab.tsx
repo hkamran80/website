@@ -29,13 +29,8 @@ type Props = { changelog: Release[] };
 
 const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
     const [currentVersion, setCurrentVersion] = useState<Release | null>(null);
-    const [screenshotElementValues, setScreenshotElementValues] = useState<{
-        src: string;
-        alt: string;
-    }>({
-        src: "nebula-new-tab-screenshot-chrome",
-        alt: "Nebula Screenshot (Chrome)",
-    });
+    const [screenshotElementValues, setScreenshotElementValues] =
+        useState<string>("Chrome");
 
     useEffect(() => {
         if (changelog) {
@@ -50,10 +45,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                 .match(/-(moz|webkit|ms)/);
 
             if (browserPrefix && browserPrefix[1] === "moz") {
-                setScreenshotElementValues({
-                    src: "nebula-new-tab-screenshot-firefox",
-                    alt: "Nebula Screenshot (Firefox)",
-                });
+                setScreenshotElementValues("Firefox");
             }
         }
     }, [changelog]);
@@ -139,21 +131,21 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
 
                             <picture className="inline-block">
                                 <source
-                                    srcSet={`/nebula-new-tab/${screenshotElementValues.src}.avif`}
+                                    srcSet={`https://assets.hkamran.com/images/nebula-new-tab/avif/${screenshotElementValues.toLowerCase()}`}
                                     type="image/avif"
                                     width="1920"
                                     height="1080"
                                 />
                                 <source
-                                    srcSet={`/nebula-new-tab/${screenshotElementValues.src}.webp`}
+                                    srcSet={`https://assets.hkamran.com/images/nebula-new-tab/webp/${screenshotElementValues.toLowerCase()}`}
                                     type="image/webp"
                                     width="1920"
                                     height="1080"
                                 />
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
-                                    src={`/nebula-new-tab/${screenshotElementValues.src}.png`}
-                                    alt={screenshotElementValues.alt}
+                                    src={`https://assets.hkamran.com/images/nebula-new-tab/png/${screenshotElementValues.toLowerCase()}`}
+                                    alt={`Nebula Screenshot (${screenshotElementValues})`}
                                     loading="lazy"
                                     decoding="async"
                                     width="1920"
