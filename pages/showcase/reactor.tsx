@@ -8,12 +8,12 @@ const commands = [
     {
         command: "/add-reaction",
         description:
-            "Configure Reactor to add a specified emoji to a specified user's messages",
+            "Add an emoji to a specified user's messages",
     },
     {
         command: "/remove-reaction",
         description:
-            "Configure Reactor to remove a specified user's emoji, if set",
+            "Remove a user's emoji, if one was previously set",
     },
 ];
 
