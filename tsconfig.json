@@ -27,7 +27,8 @@
         "**/*.ts",
         "**/*.tsx",
         "lib/feed.mjs",
-        "pages/photography.tsx.tmp"
+        "pages/photography.tsx.tmp",
+        "next-sitemap.config.js"
     ],
     "exclude": ["node_modules"]
 }
