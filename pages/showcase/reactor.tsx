@@ -7,13 +7,11 @@ import type { NextPage } from "next";
 const commands = [
     {
         command: "/add-reaction",
-        description:
-            "Add an emoji to a specified user's messages",
+        description: "Add an emoji to a specified user's messages",
     },
     {
         command: "/remove-reaction",
-        description:
-            "Remove a user's emoji, if one was previously set",
+        description: "Remove a user's emoji, if one was previously set",
     },
 ];
 

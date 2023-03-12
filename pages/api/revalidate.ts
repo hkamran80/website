@@ -46,7 +46,7 @@ const revalidationHandler = async (
             if (output.hasOwnProperty("error")) {
                 success = false;
             }
-            
+
             finalOutput[paths[index]] = output;
         });
     } else if (paths.length === 1) {
