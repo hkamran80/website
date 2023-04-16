@@ -3,6 +3,7 @@ import Head from "next/head";
 import Layout from "@/components/Layout";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 const PrivacyPolicy: NextPage = () => {
     return (
@@ -12,11 +13,7 @@ const PrivacyPolicy: NextPage = () => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/legal/license`}
+                id={`${getBaseUrl()}/legal/privacy`}
             />
 
             <div className="mx-auto max-w-2xl">

@@ -7,6 +7,7 @@ import { resizeIcon } from "@hkamran/utility-web";
 import { useEffect, useState } from "react";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
     const [gradeBeforeFinal, setGradeBeforeFinal] = useState<number | null>(
@@ -35,11 +36,7 @@ const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/program/overall-grade-after-final-calculator`}
+                id={`${getBaseUrl()}/program/overall-grade-after-final-calculator`}
                 description="Calculate the grade you'll get after taking a final"
             />
 

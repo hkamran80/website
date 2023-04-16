@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
 import { UNSPLASH_URL } from "data/constants";
+import { getBaseUrl } from "@/lib/urls";
 
 const License: NextPage = () => {
     return (
@@ -13,11 +14,7 @@ const License: NextPage = () => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/legal/license`}
+                id={`${getBaseUrl()}/legal/license`}
             />
 
             <div className="mx-auto max-w-2xl">

@@ -8,6 +8,7 @@ import { WebPageJsonLd } from "next-seo";
 import { Writing } from "@/types/writings";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 type Props = { notes: Writing[] };
 
@@ -19,11 +20,7 @@ const Notes: NextPage<Props> = ({ notes }) => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/notes`}
+                id={`${getBaseUrl()}/notes`}
             />
 
             <h1 className="flex items-center text-3xl font-semibold">

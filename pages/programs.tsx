@@ -5,6 +5,7 @@ import ProgramCard from "@/components/ProgramCard";
 import { programs } from "../data/pages";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 const Programs: NextPage = () => {
     return (
@@ -14,11 +15,7 @@ const Programs: NextPage = () => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/programs`}
+                id={`${getBaseUrl()}/programs`}
             />
 
             <h1 className="text-3xl font-semibold">Programs</h1>

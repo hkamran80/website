@@ -9,6 +9,7 @@ import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
 import { renderMarkdown } from "@/lib/markdown";
+import { getBaseUrl } from "@/lib/urls";
 
 type Props = {
     note: Writing;
@@ -25,11 +26,7 @@ const Note: NextPage<Props> = ({ note, content }) => {
             <NextSeo
                 title={note.title}
                 description={note.description}
-                canonical={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/note/${note.id}`}
+                canonical={`${getBaseUrl()}/note/${note.id}`}
                 openGraph={{
                     title: note.title,
                     description: note.description,
@@ -50,11 +47,7 @@ const Note: NextPage<Props> = ({ note, content }) => {
             />
 
             <ArticleJsonLd
-                url={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/note/${note.id}`}
+                url={`${getBaseUrl()}/note/${note.id}`}
                 title={note.title}
                 description={note.description}
                 images={[]}
