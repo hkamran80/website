@@ -56,6 +56,13 @@ const Footer = () => {
                 </p>
                 <p className="space-x-3">
                     <NavLink
+                        href="/sponsor"
+                        className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                    >
+                        Sponsor
+                    </NavLink>
+
+                    <NavLink
                         href="/legal/license"
                         className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                     >

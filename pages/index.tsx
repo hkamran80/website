@@ -41,6 +41,10 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                         footerClasses="pb-12 text-gray-500 justify-center flex flex-col space-y-4 justify-center"
                         footer={
                             <>
+                                <NavLink href="/sponsor" className="text-center uppercase tracking-widest transition duration-300 hover:scale-125 hover:text-pink-700">
+                                    Sponsor
+                                </NavLink>
+
                                 <div className="flex flex-row justify-center space-x-7">
                                     {socialIcons.map(({ url, icon }, index) => (
                                         <a
