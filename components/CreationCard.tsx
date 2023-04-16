@@ -1,4 +1,5 @@
 import type { Creation } from "@/types/creations";
+import { slugify } from "@hkamran/utility-strings";
 import { classNames } from "@hkamran/utility-web";
 import { Globe } from "lucide-react";
 import { siGithub } from "simple-icons/icons";
@@ -8,7 +9,11 @@ const CreationCard = ({ creation }: { creation: Creation }) => {
         <div
             className={classNames(
                 "group flex h-full flex-col space-y-4 rounded-lg p-6 text-sm font-light transition-colors duration-300 hover:bg-hk-grey",
-                creation.site ? "hover:bg-hk-grey-hover" : "",
+                creation.site
+                    ? `hover:bg-hk-grey-hover umami--click--${slugify(
+                          creation.name,
+                      )}-site`
+                    : "",
             )}
         >
             <div className="space-y-1">
@@ -28,7 +33,9 @@ const CreationCard = ({ creation }: { creation: Creation }) => {
                         rel="noopener noreferrer"
                         title={`${creation.name} source code`}
                         aria-label={`${creation.name} source code`}
-                        className="flex-1 text-center"
+                        className={`flex-1 text-center umami--click--${slugify(
+                            creation.name,
+                        )}-repository`}
                     >
                         <svg
                             role="img"
