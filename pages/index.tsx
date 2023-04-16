@@ -10,6 +10,7 @@ import { socialIcons } from "../data/navigation";
 import { WebPageJsonLd } from "next-seo";
 import type { GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
+import { getBaseUrl } from "@/lib/urls";
 
 type Props = {
     latestArticle: Writing;
@@ -24,11 +25,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/`}
+                id={`${getBaseUrl()}/`}
             />
 
             <main>

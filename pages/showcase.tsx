@@ -5,6 +5,7 @@ import { Creation } from "@/types/creations";
 import { SHOWCASE_URL } from "../data/constants";
 import { WebPageJsonLd } from "next-seo";
 import type { GetStaticProps, NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 const alphabeticalSort = (
     { name: rawNameA }: { name: string },
@@ -26,11 +27,7 @@ const Showcase: NextPage<Props> = ({ showcase }) => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/showcase`}
+                id={`${getBaseUrl()}/showcase`}
             />
 
             <h1 className="text-3xl font-semibold">Showcase</h1>

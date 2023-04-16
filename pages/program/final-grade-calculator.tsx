@@ -7,6 +7,7 @@ import { resizeIcon } from "@hkamran/utility-web";
 import { useEffect, useState } from "react";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 const messages = (score: number): string => {
     if (score > 100) {
@@ -41,11 +42,7 @@ const FinalGradeCalculatorProgram: NextPage = () => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/program/final-grade-calculator`}
+                id={`${getBaseUrl()}/program/final-grade-calculator`}
                 description="Calculate the score you need to get on a final to get a particular grade"
             />
 

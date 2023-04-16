@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 const TextReverseProgram: NextPage = () => {
     const [text, setText] = useState<string>("");
@@ -23,11 +24,7 @@ const TextReverseProgram: NextPage = () => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/program/text-reverser`}
+                id={`${getBaseUrl()}/program/text-reverser`}
                 description="Reverse some text, because why not?"
             />
 

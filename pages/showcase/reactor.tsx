@@ -3,6 +3,7 @@ import Head from "next/head";
 import Layout from "@/components/Layout";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 const commands = [
     {
@@ -23,11 +24,7 @@ const Reactor: NextPage = () => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/showcase/reactor`}
+                id={`${getBaseUrl()}/showcase/reactor`}
             />
 
             <Layout>

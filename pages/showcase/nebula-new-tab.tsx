@@ -13,6 +13,7 @@ import {
     Image as FeatherImage,
 } from "react-feather";
 import type { Release, ReleaseDetails } from "@/types/releaseNotes";
+import { getBaseUrl } from "@/lib/urls";
 
 const downloadLinks = {
     Chrome: "https://github.com/hkamran80/nebula-new-tab#chromium-based-browsers-chrome-brave-etc",
@@ -57,11 +58,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/showcase/nebula-new-tab`}
+                id={`${getBaseUrl()}/showcase/nebula-new-tab`}
             />
 
             <Layout>

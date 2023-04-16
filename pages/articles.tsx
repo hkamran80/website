@@ -8,6 +8,7 @@ import { sortByPublishDate } from "@/lib/writings";
 import { WebPageJsonLd } from "next-seo";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 type Props = {
     articles: Writing[];
@@ -21,11 +22,7 @@ const Articles: NextPage<Props> = ({ articles }) => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/articles`}
+                id={`${getBaseUrl()}/articles`}
             />
 
             <h1 className="flex items-center text-3xl font-semibold">

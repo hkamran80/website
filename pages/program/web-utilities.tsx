@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import { useEffect, useState } from "react";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 const WebUtilitiesProgram: NextPage = () => {
     const [userAgent, setUserAgent] = useState<string>("");
@@ -22,11 +23,7 @@ const WebUtilitiesProgram: NextPage = () => {
             </Head>
 
             <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/program/web-utilities`}
+                id={`${getBaseUrl()}/program/web-utilities`}
                 description="Some helpful web utilities"
             />
 
