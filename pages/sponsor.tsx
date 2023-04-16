@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import { UNSPLASH_URL } from "data/constants";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import { getBaseUrl } from "@/lib/urls";
 
 const Sponsor: NextPage = () => {
     return (
@@ -12,13 +13,7 @@ const Sponsor: NextPage = () => {
                 <title>Sponsor | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${
-                    typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin
-                        : ""
-                }/sponsor`}
-            />
+            <WebPageJsonLd id={`${getBaseUrl()}/sponsor`} />
 
             <div className="mx-auto max-w-2xl">
                 <Breadcrumbs basePath="/" baseLabel="Sponsor" />
