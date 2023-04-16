@@ -1,5 +1,7 @@
 import NavLink from "./NavLink";
 import { links, socialIcons } from "../data/navigation";
+import { slugify } from "@hkamran/utility-strings";
+import { classNames } from "@hkamran/utility-web";
 
 const Footer = () => {
     return (
@@ -17,6 +19,9 @@ const Footer = () => {
                             aria-label={icon.title}
                             target="_blank"
                             rel="noopener noreferrer me"
+                            className={`umami--click--${slugify(
+                                icon.title,
+                            )}-link-social`}
                         >
                             <svg
                                 role="img"
@@ -37,7 +42,12 @@ const Footer = () => {
                         <NavLink
                             key={index}
                             href={href}
-                            className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                            className={classNames(
+                                "transition-colors duration-200 ease-in-out hover:text-gray-300",
+                                href.includes("unsplash")
+                                    ? "umami--click--unsplash-navbar"
+                                    : "",
+                            )}
                             target={!href.startsWith("/") ? "_blank" : ""}
                         >
                             {name}

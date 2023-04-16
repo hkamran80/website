@@ -10,6 +10,7 @@ import { socialIcons } from "../data/navigation";
 import { WebPageJsonLd } from "next-seo";
 import type { GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
+import { slugify } from "@hkamran/utility-strings";
 
 type Props = {
     latestArticle: Writing;
@@ -51,6 +52,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                                             aria-label={icon.title}
                                             target="_blank"
                                             rel="noopener noreferrer me"
+                                             className={`umami--click--${slugify(icon.title)}-link-social`}
                                         >
                                             <svg
                                                 role="img"
