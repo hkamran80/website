@@ -1,12 +1,20 @@
-export const alphabeticalSort = (stringA: string, stringB: string) => {
+/**
+ * Sort an array alphabetically
+ * @param {string} stringB
+ * @param {string} stringA
+ * @returns {number} A number to sort with
+ */
+export const alphabeticalSort = (stringA: string, stringB: string): number => {
     const lowerStringA = stringA.toLowerCase(),
         lowerStringB = stringB.toLowerCase();
 
-    return lowerStringA < lowerStringB
-        ? -1
-        : lowerStringA > lowerStringB
-        ? 1
-        : 0;
+    if (lowerStringA < lowerStringB) {
+        return 1;
+    } else if (lowerStringA > lowerStringB) {
+        return -1;
+    }
+
+    return 0;
 };
 
 /**
