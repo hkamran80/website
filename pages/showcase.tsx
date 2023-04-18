@@ -1,21 +1,12 @@
-import CreationCard from "@/components/CreationCardLinked";
-import Head from "next/head";
-import Layout from "@/components/Layout";
-import { Creation } from "@/types/creations";
-import { SHOWCASE_URL } from "../data/constants";
-import { WebPageJsonLd } from "next-seo";
+import CreationCard from '@/components/CreationCardLinked';
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import { alphabeticalSort } from '@/lib/sort';
+import { Creation } from '@/types/creations';
+import { getBaseUrl } from '@/lib/urls';
+import { SHOWCASE_URL } from '../data/constants';
+import { WebPageJsonLd } from 'next-seo';
 import type { GetStaticProps, NextPage } from "next";
-import { getBaseUrl } from "@/lib/urls";
-
-const alphabeticalSort = (
-    { name: rawNameA }: { name: string },
-    { name: rawNameB }: { name: string },
-) => {
-    const nameA = rawNameA.toLowerCase(),
-        nameB = rawNameB.toLowerCase();
-
-    return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
-};
 
 type Props = { showcase: Creation[] };
 
@@ -32,14 +23,14 @@ const Showcase: NextPage<Props> = ({ showcase }) => {
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
                 {showcase
                     .filter(({ featured }) => featured)
-                    .sort(alphabeticalSort)
+                    .sort((a, b) => alphabeticalSort(a.name, b.name))
                     .map((creation, index) => (
                         <CreationCard key={index} creation={creation} />
                     ))}
 
                 {showcase
                     .filter(({ featured }) => !featured)
-                    .sort(alphabeticalSort)
+                    .sort((a, b) => alphabeticalSort(a.name, b.name))
                     .map((creation, index) => (
                         <CreationCard key={index} creation={creation} />
                     ))}

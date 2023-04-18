@@ -1,17 +1,18 @@
-import ArticleCard from "@/components/ArticleCard";
-import CreationCard from "@/components/CreationCardLinked";
-import Head from "next/head";
-import Layout from "@/components/Layout";
-import NavLink from "@/components/NavLink";
-import { ChevronDown } from "react-feather";
-import { Creation } from "@/types/creations";
-import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
-import { socialIcons } from "../data/navigation";
-import { WebPageJsonLd } from "next-seo";
+import ArticleCard from '@/components/ArticleCard';
+import CreationCard from '@/components/CreationCardLinked';
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import NavLink from '@/components/NavLink';
+import { alphabeticalSort } from '@/lib/sort';
+import { ChevronDown } from 'react-feather';
+import { Creation } from '@/types/creations';
+import { getBaseUrl } from '@/lib/urls';
+import { SHOWCASE_URL, WRITINGS_URL } from '../data/constants';
+import { slugify } from '@hkamran/utility-strings';
+import { socialIcons } from '../data/navigation';
+import { WebPageJsonLd } from 'next-seo';
 import type { GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
-import { getBaseUrl } from "@/lib/urls";
-import { slugify } from "@hkamran/utility-strings";
 
 type Props = {
     latestArticle: Writing;
@@ -25,9 +26,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                 <title>H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/`}
-            />
+            <WebPageJsonLd id={`${getBaseUrl()}/`} />
 
             <main>
                 <section
@@ -41,7 +40,10 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                         footerClasses="pb-12 text-gray-500 justify-center flex flex-col space-y-4 justify-center"
                         footer={
                             <>
-                                <NavLink href="/sponsor" className="text-center uppercase tracking-widest transition duration-300 hover:scale-125 hover:text-pink-700">
+                                <NavLink
+                                    href="/sponsor"
+                                    className="text-center uppercase tracking-widest transition duration-300 hover:scale-125 hover:text-pink-700"
+                                >
                                     Sponsor
                                 </NavLink>
 
@@ -53,7 +55,9 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                                             aria-label={icon.title}
                                             target="_blank"
                                             rel="noopener noreferrer me"
-                                             className={`umami--click--${slugify(icon.title)}-link-social`}
+                                            className={`umami--click--${slugify(
+                                                icon.title,
+                                            )}-link-social`}
                                         >
                                             <svg
                                                 role="img"
@@ -142,21 +146,8 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
 
                             <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
                                 {featuredShowcase
-                                    .sort(
-                                        (
-                                            { name: rawNameA },
-                                            { name: rawNameB },
-                                        ) => {
-                                            const nameA =
-                                                    rawNameA.toLowerCase(),
-                                                nameB = rawNameB.toLowerCase();
-
-                                            return nameA < nameB
-                                                ? -1
-                                                : nameA > nameB
-                                                ? 1
-                                                : 0;
-                                        },
+                                    .sort((a, b) =>
+                                        alphabeticalSort(a.name, b.name),
                                     )
                                     .map((creation, index) => (
                                         <CreationCard
