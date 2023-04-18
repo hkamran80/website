@@ -2,24 +2,6 @@ import { slugify } from "@hkamran/utility-strings";
 import type { Writing, WritingTags } from "@/types/writings";
 
 /**
- * Sort an array by the `Writing` type's `published` property
- * @param {Writing} writing0
- * @param {Writing} writing1
- * @returns {number} A number to sort with
- */
-export const sortByPublishDate = (
-    { published: publishedA }: { published: string },
-    { published: publishedB }: { published: string },
-): number => {
-    if (publishedA < publishedB) {
-        return 1;
-    } else if (publishedA > publishedB) {
-        return -1;
-    }
-    return 0;
-};
-
-/**
  * Generate a list of tags from an array of `Writing` objects
  * @param {Writing[]} writings An array of `Writing` objects
  * @param {boolean} [slugifyTag=false] Whether to slugify the tag names or not (defaults to `false`)

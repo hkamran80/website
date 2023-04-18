@@ -4,11 +4,11 @@ import Head from "next/head";
 import Layout from "@/components/Layout";
 import NavLink from "@/components/NavLink";
 import { Writing } from "@/types/writings";
-import { sortByPublishDate } from "@/lib/writings";
 import { WebPageJsonLd } from "next-seo";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
 import { getBaseUrl } from "@/lib/urls";
+import { sortByDate } from "@/lib/sort";
 
 type Props = {
     articles: Writing[];
@@ -21,9 +21,7 @@ const Articles: NextPage<Props> = ({ articles }) => {
                 <title>Articles | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/articles`}
-            />
+            <WebPageJsonLd id={`${getBaseUrl()}/articles`} />
 
             <h1 className="flex items-center text-3xl font-semibold">
                 <span className="flex-1">Articles</span>
@@ -54,7 +52,9 @@ const Articles: NextPage<Props> = ({ articles }) => {
 export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(WRITINGS_URL);
     const writings = await res.json();
-    const articles = (writings.articles as Writing[]).sort(sortByPublishDate);
+    const articles = (writings.articles as Writing[]).sort((a, b) =>
+        sortByDate(new Date(a.published), new Date(b.published)),
+    );
 
     return { props: { articles } };
 };

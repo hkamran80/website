@@ -4,11 +4,12 @@ import Head from "next/head";
 import Layout from "@/components/Layout";
 import NavLink from "@/components/NavLink";
 import NoteCard from "@/components/NoteCard";
-import { arrayUnique, getTags, sortByPublishDate } from "@/lib/writings";
+import { arrayUnique, getTags } from "@/lib/writings";
 import { Writing } from "@/types/writings";
 import { WebPageJsonLd } from "next-seo";
 import { WRITINGS_URL } from "../../data/constants";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { sortByDate } from "@/lib/sort";
 
 type Props = { tag: string; articles: Writing[]; notes: Writing[] };
 
@@ -121,7 +122,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                               (article) => article.id === slug,
                           ) as Writing,
                   )
-                  .sort(sortByPublishDate)
+                  .sort((a, b) =>
+        sortByDate(new Date(a.published), new Date(b.published)),)
             : [];
 
     const notes: Writing[] =
@@ -133,7 +135,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                               (note) => note.id === slug,
                           ) as Writing,
                   )
-                  .sort(sortByPublishDate)
+                  .sort((a, b) =>
+        sortByDate(new Date(a.published), new Date(b.published)),)
             : [];
 
     const rawTags = arrayUnique([

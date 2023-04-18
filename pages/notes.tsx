@@ -3,12 +3,12 @@ import Head from "next/head";
 import Layout from "@/components/Layout";
 import NavLink from "@/components/NavLink";
 import NoteCard from "@/components/NoteCard";
-import { sortByPublishDate } from "@/lib/writings";
 import { WebPageJsonLd } from "next-seo";
 import { Writing } from "@/types/writings";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
 import { getBaseUrl } from "@/lib/urls";
+import { sortByDate } from "@/lib/sort";
 
 type Props = { notes: Writing[] };
 
@@ -50,7 +50,8 @@ const Notes: NextPage<Props> = ({ notes }) => {
 export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(WRITINGS_URL);
     const writings = await res.json();
-    const notes = (writings.notes as Writing[]).sort(sortByPublishDate);
+    const notes = (writings.notes as Writing[]).sort((a, b) =>
+    sortByDate(new Date(a.published), new Date(b.published)),)
 
     return { props: { notes } };
 };
