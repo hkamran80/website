@@ -26,9 +26,7 @@ const Showcase: NextPage<Props> = ({ showcase }) => {
                 <title>Showcase | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/showcase`}
-            />
+            <WebPageJsonLd id={`${getBaseUrl()}/showcase`} />
 
             <h1 className="text-3xl font-semibold">Showcase</h1>
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -40,20 +38,7 @@ const Showcase: NextPage<Props> = ({ showcase }) => {
                     ))}
 
                 {showcase
-                    .filter(
-                        ({ featured, status }) =>
-                            !featured && status === "Completed",
-                    )
-                    .sort(alphabeticalSort)
-                    .map((creation, index) => (
-                        <CreationCard key={index} creation={creation} />
-                    ))}
-
-                {showcase
-                    .filter(
-                        ({ featured, status }) =>
-                            !featured && status === "In Progress",
-                    )
+                    .filter(({ featured }) => !featured)
                     .sort(alphabeticalSort)
                     .map((creation, index) => (
                         <CreationCard key={index} creation={creation} />
