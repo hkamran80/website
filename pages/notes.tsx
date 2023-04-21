@@ -19,9 +19,7 @@ const Notes: NextPage<Props> = ({ notes }) => {
                 <title>Notes | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/notes`}
-            />
+            <WebPageJsonLd id={`${getBaseUrl()}/notes`} />
 
             <h1 className="flex items-center text-3xl font-semibold">
                 <span className="flex-1">Notes</span>
@@ -51,7 +49,8 @@ export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(WRITINGS_URL);
     const writings = await res.json();
     const notes = (writings.notes as Writing[]).sort((a, b) =>
-    sortByDate(new Date(a.published), new Date(b.published)),)
+        sortByDate(new Date(a.published), new Date(b.published)),
+    );
 
     return { props: { notes } };
 };

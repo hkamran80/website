@@ -12,9 +12,7 @@ const PrivacyPolicy: NextPage = () => {
                 <title>Privacy Policy | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/legal/privacy`}
-            />
+            <WebPageJsonLd id={`${getBaseUrl()}/legal/privacy`} />
 
             <div className="mx-auto max-w-2xl">
                 <Breadcrumbs
