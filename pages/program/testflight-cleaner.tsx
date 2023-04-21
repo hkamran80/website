@@ -16,7 +16,7 @@ const TestflightCleanerProgram: NextPage = () => {
     useEffect(() => {
         checkForErrors();
         cleanCsv();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [csvData]);
 
     const processCsv = (csv: string, delimiter = ",") =>
@@ -132,6 +132,8 @@ const TestflightCleanerProgram: NextPage = () => {
                     <div className="mt-6">
                         <div className="grid grid-cols-1 gap-x-4 gap-y-1 md:grid-cols-2">
                             <div className="space-y-4 md:col-span-2">
+                                <p className="text-sm text-gray-400">All data that you upload is stored locally in your browser. Nothing is ever transmitted to any server.</p>
+
                                 <form className="grid grid-cols-1 gap-4 pb-4 md:grid-cols-6">
                                     <div className="md:col-span-5">
                                         <label
