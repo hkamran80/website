@@ -10,6 +10,7 @@ specifiers:
     "@hkamran/utility-web": ^1.0.1
     "@next/bundle-analyzer": ^12.2.3
     "@next/env": ^13.2.4
+    "@tailwindcss/forms": ^0.5.3
     "@tailwindcss/typography": ^0.5.9
     "@types/feather-icons": ^4.7.0
     "@types/markdown-it": ^12.2.3
@@ -75,6 +76,7 @@ devDependencies:
     "@hkamran/prettier-config": 1.1.1
     "@next/bundle-analyzer": 12.2.3
     "@next/env": 13.2.4
+    "@tailwindcss/forms": 0.5.3_tailwindcss@3.2.7
     "@tailwindcss/typography": 0.5.9_tailwindcss@3.2.7
     "@types/feather-icons": 4.7.0
     "@types/markdown-it": 12.2.3
@@ -486,6 +488,18 @@ packages:
             }
         dependencies:
             tslib: 2.4.1
+
+    /@tailwindcss/forms/0.5.3_tailwindcss@3.2.7:
+        resolution:
+            {
+                integrity: sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==,
+            }
+        peerDependencies:
+            tailwindcss: ">=3.0.0 || >= 3.0.0-alpha.1"
+        dependencies:
+            mini-svg-data-uri: 1.4.4
+            tailwindcss: 3.2.7_postcss@8.4.14
+        dev: true
 
     /@tailwindcss/typography/0.5.9_tailwindcss@3.2.7:
         resolution:
@@ -2606,6 +2620,14 @@ packages:
         dependencies:
             braces: 3.0.2
             picomatch: 2.3.1
+        dev: true
+
+    /mini-svg-data-uri/1.4.4:
+        resolution:
+            {
+                integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==,
+            }
+        hasBin: true
         dev: true
 
     /minimatch/3.1.2:
