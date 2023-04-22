@@ -325,8 +325,8 @@ const TestflightCleanerProgram: NextPage = () => {
                                             htmlFor="leave-malformed-rows"
                                             className="ml-2 text-sm font-medium text-gray-400"
                                         >
-                                            Leave malformed data in the table,
-                                            but highlight it
+                                            Leave malformed/duplicated data in
+                                            the table, but highlight it
                                         </label>
                                     </div>
                                 </form>
@@ -441,13 +441,23 @@ const TestflightCleanerProgram: NextPage = () => {
                                             </table>
                                         </section>
 
-                                        <button
-                                            type="button"
-                                            className="w-full rounded-lg bg-hk-grey px-4 py-2 text-center text-sm text-white"
-                                            onClick={() => exportCsv()}
-                                        >
-                                            Export
-                                        </button>
+                                        <div className="space-y-4">
+                                            <button
+                                                type="button"
+                                                className="w-full rounded-lg bg-hk-grey px-4 py-2 text-center text-sm text-white"
+                                                onClick={() => exportCsv()}
+                                            >
+                                                Export
+                                            </button>
+
+                                            {leaveMalformedRows && (
+                                                <p className="prose prose-invert max-w-none text-sm">
+                                                    <strong>Note:</strong> The
+                                                    CSV export will only contain
+                                                    valid results.
+                                                </p>
+                                            )}
+                                        </div>
                                     </>
                                 )}
                             </div>
