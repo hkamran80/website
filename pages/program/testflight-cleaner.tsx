@@ -8,17 +8,16 @@ import type { NextPage } from "next";
 import { classNames } from "@hkamran/utility-web";
 
 type CsvRow = string[] | { row: string[]; flag: "malformed" | "duplicate" };
+type ParsingError = { error: string; preventBypass?: boolean };
 
 const TestflightCleanerProgram: NextPage = () => {
     const [csvFile, setCsvFile] = useState<File>();
-    const [useHeaders, setUseHeaders] = useState<boolean>(false);
     const [csvData, setCsvData] = useState<string[][]>([]);
-    const [errors, setErrors] = useState<
-        { error: string; preventBypass?: boolean }[]
-    >([]);
+    const [errors, setErrors] = useState<ParsingError[]>([]);
     const [errorChecked, setErrorChecked] = useState<boolean>(false);
     const [cleanedCsv, setCleanedCsv] = useState<CsvRow[]>([]);
 
+    const [useHeaders, setUseHeaders] = useState<boolean>(false);
     const [leaveMalformedRows, setLeaveMalformedRows] =
         useState<boolean>(false);
 
