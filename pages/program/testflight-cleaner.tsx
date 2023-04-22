@@ -1,6 +1,7 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import { ChevronsDown } from "lucide-react";
 import { classNames } from "@hkamran/utility-web";
 import { getBaseUrl } from "@/lib/urls";
 import { numberWithCommas } from "@hkamran/utility-strings";
@@ -200,6 +201,19 @@ const TestflightCleanerProgram: NextPage = () => {
         }
     };
 
+    const clear = () => {
+        setCsvFile(undefined);
+        setErrorChecked(false);
+        setErrors([]);
+        setCsvData([]);
+        setCleanedCsv([]);
+        setDuplicatedEmails([]);
+        (document.getElementById("file-input") as HTMLInputElement).value = "";
+
+        setUseHeaders(false);
+        setLeaveMalformedRows(false);
+    };
+
     const exportCsv = () => {
         if (cleanedCsv) {
             const blob = new Blob(
@@ -366,13 +380,40 @@ const TestflightCleanerProgram: NextPage = () => {
                                             id="testers"
                                             className="prose prose-invert max-w-none max-md:hidden"
                                         >
-                                            <h2>
-                                                Testers (
-                                                {numberWithCommas(
-                                                    cleanedCsv.length -
-                                                        (useHeaders ? 1 : 0),
-                                                )}
-                                                )
+                                            <h2 className="flex">
+                                                <span className="flex-1">
+                                                    Testers (
+                                                    {numberWithCommas(
+                                                        cleanedCsv.length -
+                                                            (useHeaders
+                                                                ? 1
+                                                                : 0),
+                                                    )}
+                                                    )
+                                                </span>
+
+                                                <button
+                                                    type="button"
+                                                    aria-label="Jump to bottom"
+                                                    title="Jump to bottom"
+                                                >
+                                                    <ChevronsDown
+                                                        size={24}
+                                                        onClick={() =>
+                                                            document
+                                                                .getElementById(
+                                                                    "export",
+                                                                )
+                                                                ?.scrollIntoView(
+                                                                    {
+                                                                        behavior:
+                                                                            "smooth",
+                                                                    },
+                                                                )
+                                                        }
+                                                        className="stroke-gray-500 transition duration-300 hover:scale-125 hover:stroke-pink-700"
+                                                    />
+                                                </button>
                                             </h2>
 
                                             <table>
@@ -461,7 +502,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                             </table>
                                         </section>
 
-                                        <div className="space-y-4">
+                                        <div id="export" className="space-y-4">
                                             <button
                                                 type="button"
                                                 className="w-full rounded-lg bg-hk-grey px-4 py-2 text-center text-sm text-white"
@@ -478,6 +519,14 @@ const TestflightCleanerProgram: NextPage = () => {
                                                 first result will be exported.
                                             </p>
                                         </div>
+
+                                        <button
+                                            type="button"
+                                            className="w-full rounded-lg bg-hk-grey px-4 py-2 text-center text-sm text-white"
+                                            onClick={() => clear()}
+                                        >
+                                            Clear
+                                        </button>
                                     </>
                                 )}
                             </div>
