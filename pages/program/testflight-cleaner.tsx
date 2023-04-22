@@ -3,6 +3,7 @@ import Head from "next/head";
 import Layout from "@/components/Layout";
 import { classNames } from "@hkamran/utility-web";
 import { getBaseUrl } from "@/lib/urls";
+import { numberWithCommas } from "@hkamran/utility-strings";
 import { useEffect, useState } from "react";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
@@ -62,7 +63,12 @@ const TestflightCleanerProgram: NextPage = () => {
 
         if (
             !csvData
-                .map((row) => row[2].replace(/(\r\n|\n|\r)/gm, "").trim())
+                .map((row) =>
+                    row[2]
+                        .replace(/(\r\n|\n|\r)/gm, "")
+                        .trim()
+                        .toLowerCase(),
+                )
                 .every(
                     (email) =>
                         email.match(
@@ -70,7 +76,12 @@ const TestflightCleanerProgram: NextPage = () => {
                         )?.length ?? 0 > 0,
                 ) ||
             !csvData
-                .map((row) => row[2].replace(/(\r\n|\n|\r)/gm, "").trim())
+                .map((row) =>
+                    row[2]
+                        .replace(/(\r\n|\n|\r)/gm, "")
+                        .trim()
+                        .toLowerCase(),
+                )
                 .every((email) => email.includes("@"))
         ) {
             setErrors([
@@ -85,7 +96,7 @@ const TestflightCleanerProgram: NextPage = () => {
     };
 
     const removeUnnecessaryStrings = (str: string): string =>
-        str.replace(/[^A-Za-z0-9.-\s]/g, "").trim();
+        str.replace(/[^A-Za-z0-9.-\s\u00C0-\u1FFF\u2800-\uFFFD]/g, "").trim();
 
     const cleanCsv = () => {
         if (
@@ -107,7 +118,10 @@ const TestflightCleanerProgram: NextPage = () => {
                     const cleanedRow = [
                         removeUnnecessaryStrings(row[0]),
                         removeUnnecessaryStrings(row[1]),
-                        row[2].replace(/(\r\n|\n|\r)/gm, "").trim(),
+                        row[2]
+                            .replace(/(\r\n|\n|\r)/gm, "")
+                            .trim()
+                            .toLowerCase(),
                     ];
 
                     if (
@@ -117,7 +131,8 @@ const TestflightCleanerProgram: NextPage = () => {
                                     ? previousRow
                                     : previousRow.row)[2]
                                     .replace(/(\r\n|\n|\r)/gm, "")
-                                    .trim() === cleanedRow[2],
+                                    .trim()
+                                    .toLowerCase() === cleanedRow[2],
                         )
                     ) {
                         return !leaveMalformedRows
@@ -353,8 +368,10 @@ const TestflightCleanerProgram: NextPage = () => {
                                         >
                                             <h2>
                                                 Testers (
-                                                {cleanedCsv.length -
-                                                    (useHeaders ? 1 : 0)}
+                                                {numberWithCommas(
+                                                    cleanedCsv.length -
+                                                        (useHeaders ? 1 : 0),
+                                                )}
                                                 )
                                             </h2>
 
