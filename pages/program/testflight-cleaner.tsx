@@ -1,11 +1,11 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
-import Head from "next/head";
-import Layout from "@/components/Layout";
-import { getBaseUrl } from "@/lib/urls";
-import { useEffect, useState } from "react";
-import { WebPageJsonLd } from "next-seo";
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import { classNames } from '@hkamran/utility-web';
+import { getBaseUrl } from '@/lib/urls';
+import { useEffect, useState } from 'react';
+import { WebPageJsonLd } from 'next-seo';
 import type { NextPage } from "next";
-import { classNames } from "@hkamran/utility-web";
 
 type CsvRow = string[] | { row: string[]; flag: "malformed" | "duplicate" };
 type ParsingError = { error: string; preventBypass?: boolean };
