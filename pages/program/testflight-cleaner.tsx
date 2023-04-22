@@ -24,10 +24,11 @@ const TestflightCleanerProgram: NextPage = () => {
     useEffect(() => {
         if (
             errorChecked &&
-            csvData &&
+            csvData.length > 0 &&
             (errors.length === 0 ||
-                errors.filter((error) => error.preventBypass === true)
-                    .length === 0)
+                (errors.length > 0 &&
+                    errors.filter((error) => error.preventBypass === true)
+                        .length === 0))
         ) {
             cleanCsv();
         }
@@ -97,19 +98,37 @@ const TestflightCleanerProgram: NextPage = () => {
     const cleanCsv = () => {
         if (
             errorChecked &&
-            csvData &&
+            csvData.length > 0 &&
             (errors.length === 0 ||
-                errors.filter((error) => error.preventBypass === true)
-                    .length === 0)
+                (errors.length > 0 &&
+                    errors.filter((error) => error.preventBypass === true)
+                        .length === 0))
         ) {
             const rows = useHeaders ? csvData.slice(1) : csvData;
             const cleanedRows = rows
                 .filter((row) => row[2].includes("@"))
-                .map((row) => [
-                    removeUnnecessaryStrings(row[0]),
-                    removeUnnecessaryStrings(row[1]),
-                    row[2].replace(/(\r\n|\n|\r)/gm, "").trim(),
-                ]);
+                .reduce((previous: string[][], row: string[]) => {
+                    if (
+                        previous.some(
+                            (previousRow) =>
+                                previousRow[2]
+                                    .replace(/(\r\n|\n|\r)/gm, "")
+                                    .trim() ===
+                                row[2].replace(/(\r\n|\n|\r)/gm, "").trim(),
+                        )
+                    ) {
+                        return previous;
+                    }
+
+                    return [
+                        ...previous,
+                        [
+                            removeUnnecessaryStrings(row[0]),
+                            removeUnnecessaryStrings(row[1]),
+                            row[2].replace(/(\r\n|\n|\r)/gm, "").trim(),
+                        ],
+                    ];
+                }, []);
 
             setCleanedCsv(
                 useHeaders
