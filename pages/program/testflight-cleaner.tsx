@@ -6,11 +6,15 @@ import { classNames } from "@hkamran/utility-web";
 import { getBaseUrl } from "@/lib/urls";
 import { numberWithCommas } from "@hkamran/utility-strings";
 import { useEffect, useState } from "react";
-import { WebPageJsonLd } from "next-seo";
+import { NextSeo, WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
 
 type CsvRow = string[] | { row: string[]; flag: "malformed" | "duplicate" };
 type ParsingError = { error: string; preventBypass?: boolean };
+
+const name = "TestFlight Cleaner";
+const description =
+    "Clean your TestFlight tester CSVs and avoid dealing with those pesky errors!";
 
 const TestflightCleanerProgram: NextPage = () => {
     const [csvFile, setCsvFile] = useState<File>();
@@ -239,12 +243,27 @@ const TestflightCleanerProgram: NextPage = () => {
     return (
         <>
             <Head>
-                <title>TestFlight Cleaner | H. Kamran</title>
+                <title>{name} | H. Kamran</title>
             </Head>
 
             <WebPageJsonLd
                 id={`${getBaseUrl()}/program/testflight-cleaner`}
-                description="Clean your TestFlight tester CSVs and avoid dealing with those pesky errors!"
+                description={description}
+            />
+
+            <NextSeo
+                title={name}
+                description={description}
+                canonical={`${getBaseUrl()}/program/testflight-cleaner`}
+                openGraph={{
+                    title: name,
+                    description,
+                    url: `${getBaseUrl()}/program/testflight-cleaner`,
+                    type: "website",
+                }}
+                twitter={{
+                    cardType: "summary",
+                }}
             />
 
             <Layout>
@@ -252,16 +271,15 @@ const TestflightCleanerProgram: NextPage = () => {
                     <Breadcrumbs
                         basePath="/programs"
                         baseLabel="Programs"
-                        currentLabel="TestFlight Cleaner"
+                        currentLabel={name}
                     />
 
                     <div className="space-y-2">
                         <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                            TestFlight Cleaner
+                            {name}
                         </h1>
                         <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                            Clean your TestFlight tester CSVs and avoid dealing
-                            with those pesky errors!
+                            {description}
                         </h2>
                     </div>
 
