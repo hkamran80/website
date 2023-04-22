@@ -361,7 +361,12 @@ const TestflightCleanerProgram: NextPage = () => {
                                             id="testers"
                                             className="prose prose-invert max-w-none max-md:hidden"
                                         >
-                                            <h2>Testers</h2>
+                                            <h2>
+                                                Testers (
+                                                {cleanedCsv.length -
+                                                    (useHeaders ? 1 : 0)}
+                                                )
+                                            </h2>
 
                                             <table>
                                                 {useHeaders &&
