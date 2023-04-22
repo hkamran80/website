@@ -16,6 +16,7 @@ const TestflightCleanerProgram: NextPage = () => {
     const [errors, setErrors] = useState<ParsingError[]>([]);
     const [errorChecked, setErrorChecked] = useState<boolean>(false);
     const [cleanedCsv, setCleanedCsv] = useState<CsvRow[]>([]);
+    const [duplicatedEmails, setDuplicatedEmails] = useState<string[]>([]);
 
     const [useHeaders, setUseHeaders] = useState<boolean>(false);
     const [leaveMalformedRows, setLeaveMalformedRows] =
@@ -84,7 +85,7 @@ const TestflightCleanerProgram: NextPage = () => {
     };
 
     const removeUnnecessaryStrings = (str: string): string =>
-        str.replace(/[^A-Za-z0-9.]/g, "").trim();
+        str.replace(/[^A-Za-z0-9.-\s]/g, "").trim();
 
     const cleanCsv = () => {
         if (
@@ -150,6 +151,16 @@ const TestflightCleanerProgram: NextPage = () => {
                     ? [csvData[0].map(removeUnnecessaryStrings), ...cleanedRows]
                     : cleanedRows,
             );
+
+            setDuplicatedEmails(
+                cleanedRows.reduce((previous: string[], row) => {
+                    if (!Array.isArray(row) && row.flag === "duplicate") {
+                        return [...previous, row.row[2]];
+                    }
+
+                    return previous;
+                }, []),
+            );
         }
     };
 
@@ -161,6 +172,7 @@ const TestflightCleanerProgram: NextPage = () => {
             setErrorChecked(false);
             setErrors([]);
             setCsvData([]);
+            setDuplicatedEmails([]);
 
             const text = e.target?.result;
             if (text) {
@@ -401,11 +413,14 @@ const TestflightCleanerProgram: NextPage = () => {
                                                                             columnIndex ===
                                                                                 2
                                                                                 ? classNames(
-                                                                                      !Array.isArray(
+                                                                                      (!Array.isArray(
                                                                                           row,
                                                                                       ) &&
                                                                                           row.flag ===
-                                                                                              "duplicate"
+                                                                                              "duplicate") ||
+                                                                                          duplicatedEmails?.includes(
+                                                                                              value,
+                                                                                          )
                                                                                           ? "text-yellow-500"
                                                                                           : "",
                                                                                       !Array.isArray(
