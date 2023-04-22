@@ -10,26 +10,46 @@ const TestflightCleanerProgram: NextPage = () => {
     const [csvFile, setCsvFile] = useState<File>();
     const [useHeaders, setUseHeaders] = useState<boolean>(false);
     const [csvData, setCsvData] = useState<string[][]>([]);
-    const [errors, setErrors] = useState<string[]>([]);
+    const [errors, setErrors] = useState<
+        { error: string; description?: string; preventBypass?: boolean }[]
+    >([]);
+    const [errorChecked, setErrorChecked] = useState<boolean>(false);
     const [cleanedCsv, setCleanedCsv] = useState<string[][]>([]);
 
     useEffect(() => {
         checkForErrors();
-        cleanCsv();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [csvData]);
+
+    useEffect(() => {
+        if (
+            errorChecked &&
+            csvData &&
+            (errors.length === 0 ||
+                errors.filter((error) => error.preventBypass === true)
+                    .length === 0)
+        ) {
+            cleanCsv();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [errorChecked, useHeaders]);
 
     const processCsv = (csv: string, delimiter = ",") =>
         setCsvData(csv.split("\n").map((row) => row.split(delimiter)));
 
     const checkForErrors = () => {
+        setErrors([]);
+
         if (!csvData.every((row) => row.length === 3)) {
             const over = csvData.every((row) => row.length > 3);
             setErrors([
                 ...errors,
-                `${
-                    over ? "Too many columns" : "Not enough columns"
-                }. TestFlight CSVs should have three columns: first name, last name, and email.`,
+                {
+                    error: `${
+                        over ? "Too many columns" : "Not enough columns"
+                    }. TestFlight CSVs should have three columns: first name, last name, and email.`,
+                    preventBypass: true,
+                },
             ]);
         }
 
@@ -40,24 +60,56 @@ const TestflightCleanerProgram: NextPage = () => {
                     (email) =>
                         email.match(
                             /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g,
-                        )?.length !== 0,
+                        )?.length ?? 0 > 0,
                 )
         ) {
-            setErrors([...errors, "Some emails are malformed."]);
+            setErrors([
+                ...errors,
+                {
+                    error: "Some emails are malformed.",
+                    description:
+                        "TestFlight Cleaner will skip rows with malformed content",
+                },
+            ]);
         }
+
+        if (
+            !csvData
+                .map((row) => row[2].replace(/(\r\n|\n|\r)/gm, "").trim())
+                .every((email) => email.includes("@"))
+        ) {
+            setErrors([
+                ...errors,
+                {
+                    error: "Some emails aren't emails (no @ symbol!).",
+                    description:
+                        "TestFlight Cleaner will skip rows with malformed content",
+                },
+            ]);
+        }
+
+        setErrorChecked(true);
     };
 
     const removeUnnecessaryStrings = (str: string): string =>
         str.replace(/[^A-Za-z0-9.]/g, "").trim();
 
     const cleanCsv = () => {
-        if (csvData && errors.length === 0) {
+        if (
+            errorChecked &&
+            csvData &&
+            (errors.length === 0 ||
+                errors.filter((error) => error.preventBypass === true)
+                    .length === 0)
+        ) {
             const rows = useHeaders ? csvData.slice(1) : csvData;
-            const cleanedRows = rows.map((row) => [
-                removeUnnecessaryStrings(row[0]),
-                removeUnnecessaryStrings(row[1]),
-                row[2].replace(/(\r\n|\n|\r)/gm, "").trim(),
-            ]);
+            const cleanedRows = rows
+                .filter((row) => row[2].includes("@"))
+                .map((row) => [
+                    removeUnnecessaryStrings(row[0]),
+                    removeUnnecessaryStrings(row[1]),
+                    row[2].replace(/(\r\n|\n|\r)/gm, "").trim(),
+                ]);
 
             setCleanedCsv(
                 useHeaders
@@ -72,6 +124,10 @@ const TestflightCleanerProgram: NextPage = () => {
         const reader = new FileReader();
 
         reader.onload = (e) => {
+            setErrorChecked(false);
+            setErrors([]);
+            setCsvData([]);
+
             const text = e.target?.result;
             if (text) {
                 processCsv(text.toString());
@@ -132,7 +188,11 @@ const TestflightCleanerProgram: NextPage = () => {
                     <div className="mt-6">
                         <div className="grid grid-cols-1 gap-x-4 gap-y-1 md:grid-cols-2">
                             <div className="space-y-4 md:col-span-2">
-                                <p className="text-sm text-gray-400">All data that you upload is stored locally in your browser. Nothing is ever transmitted to any server.</p>
+                                <p className="text-sm text-gray-400">
+                                    All data that you upload is stored locally
+                                    in your browser. Nothing is ever transmitted
+                                    to any server.
+                                </p>
 
                                 <form className="grid grid-cols-1 gap-4 pb-4 md:grid-cols-6">
                                     <div className="md:col-span-5">
@@ -196,12 +256,24 @@ const TestflightCleanerProgram: NextPage = () => {
                                 </form>
 
                                 {errors.length > 0 && (
-                                    <section id="errors">
-                                        <strong>Errors</strong>
+                                    <section
+                                        id="errors"
+                                        className="prose prose-invert max-w-none"
+                                    >
+                                        <h2>Errors</h2>
 
-                                        <ul className="list-inside list-disc text-red-500">
+                                        <ul className="">
                                             {errors.map((error, index) => (
-                                                <li key={index}>{error}</li>
+                                                <li key={index}>
+                                                    <strong className="text-red-500">
+                                                        {error.error}
+                                                    </strong>
+                                                    {error.description && (
+                                                        <p className="text-gray-400">
+                                                            {error.description}
+                                                        </p>
+                                                    )}
+                                                </li>
                                             ))}
                                         </ul>
                                     </section>
