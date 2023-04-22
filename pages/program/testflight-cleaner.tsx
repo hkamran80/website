@@ -364,28 +364,33 @@ const TestflightCleanerProgram: NextPage = () => {
                                             <h2>Testers</h2>
 
                                             <table>
-                                                {useHeaders && Array.isArray(cleanedCsv[0]) && (
-                                                    <thead>
-                                                        <tr>
-                                                            {(
-                                                                cleanedCsv[0] as string[]
-                                                            ).map(
-                                                                (
-                                                                    header,
-                                                                    index,
-                                                                ) => (
-                                                                    <th
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                    >
-                                                                        {header}
-                                                                    </th>
-                                                                ),
-                                                            )}
-                                                        </tr>
-                                                    </thead>
-                                                )}
+                                                {useHeaders &&
+                                                    Array.isArray(
+                                                        cleanedCsv[0],
+                                                    ) && (
+                                                        <thead>
+                                                            <tr>
+                                                                {(
+                                                                    cleanedCsv[0] as string[]
+                                                                ).map(
+                                                                    (
+                                                                        header,
+                                                                        index,
+                                                                    ) => (
+                                                                        <th
+                                                                            key={
+                                                                                index
+                                                                            }
+                                                                        >
+                                                                            {
+                                                                                header
+                                                                            }
+                                                                        </th>
+                                                                    ),
+                                                                )}
+                                                            </tr>
+                                                        </thead>
+                                                    )}
 
                                                 <tbody>
                                                     {(useHeaders
