@@ -14,7 +14,7 @@ const TestflightCleanerProgram: NextPage = () => {
     const [useHeaders, setUseHeaders] = useState<boolean>(false);
     const [csvData, setCsvData] = useState<string[][]>([]);
     const [errors, setErrors] = useState<
-        { error: string; description?: string; preventBypass?: boolean }[]
+        { error: string; preventBypass?: boolean }[]
     >([]);
     const [errorChecked, setErrorChecked] = useState<boolean>(false);
     const [cleanedCsv, setCleanedCsv] = useState<CsvRow[]>([]);
@@ -74,8 +74,6 @@ const TestflightCleanerProgram: NextPage = () => {
                 ...errors,
                 {
                     error: "Some emails are malformed.",
-                    description:
-                        "TestFlight Cleaner will skip rows with malformed content",
                 },
             ]);
         }
@@ -89,8 +87,6 @@ const TestflightCleanerProgram: NextPage = () => {
                 ...errors,
                 {
                     error: "Some emails aren't emails (no @ symbol!).",
-                    description:
-                        "TestFlight Cleaner will skip rows with malformed content",
                 },
             ]);
         }
@@ -340,15 +336,11 @@ const TestflightCleanerProgram: NextPage = () => {
 
                                         <ul className="">
                                             {errors.map((error, index) => (
-                                                <li key={index}>
-                                                    <strong className="text-red-500">
-                                                        {error.error}
-                                                    </strong>
-                                                    {error.description && (
-                                                        <p className="text-gray-400">
-                                                            {error.description}
-                                                        </p>
-                                                    )}
+                                                <li
+                                                    key={index}
+                                                    className="text-red-500"
+                                                >
+                                                    {error.error}
                                                 </li>
                                             ))}
                                         </ul>
