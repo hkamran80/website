@@ -23,9 +23,7 @@ const Reactor: NextPage = () => {
                 <title>Reactor | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/showcase/reactor`}
-            />
+            <WebPageJsonLd id={`${getBaseUrl()}/showcase/reactor`} />
 
             <Layout>
                 <div className="mx-auto max-w-2xl">

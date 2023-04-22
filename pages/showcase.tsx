@@ -1,11 +1,11 @@
-import CreationCard from '@/components/CreationCardLinked';
-import Head from 'next/head';
-import Layout from '@/components/Layout';
-import { alphabeticalSort } from '@/lib/sort';
-import { Creation } from '@/types/creations';
-import { getBaseUrl } from '@/lib/urls';
-import { SHOWCASE_URL } from '../data/constants';
-import { WebPageJsonLd } from 'next-seo';
+import CreationCard from "@/components/CreationCardLinked";
+import Head from "next/head";
+import Layout from "@/components/Layout";
+import { alphabeticalSort } from "@/lib/sort";
+import { Creation } from "@/types/creations";
+import { getBaseUrl } from "@/lib/urls";
+import { SHOWCASE_URL } from "../data/constants";
+import { WebPageJsonLd } from "next-seo";
 import type { GetStaticProps, NextPage } from "next";
 
 type Props = { showcase: Creation[] };

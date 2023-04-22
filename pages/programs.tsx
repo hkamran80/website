@@ -14,9 +14,7 @@ const Programs: NextPage = () => {
                 <title>Programs | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/programs`}
-            />
+            <WebPageJsonLd id={`${getBaseUrl()}/programs`} />
 
             <h1 className="text-3xl font-semibold">Programs</h1>
             <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">

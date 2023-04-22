@@ -13,9 +13,7 @@ const License: NextPage = () => {
                 <title>License | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/legal/license`}
-            />
+            <WebPageJsonLd id={`${getBaseUrl()}/legal/license`} />
 
             <div className="mx-auto max-w-2xl">
                 <Breadcrumbs
