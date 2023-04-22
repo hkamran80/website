@@ -68,17 +68,7 @@ const TestflightCleanerProgram: NextPage = () => {
                         email.match(
                             /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g,
                         )?.length ?? 0 > 0,
-                )
-        ) {
-            setErrors([
-                ...errors,
-                {
-                    error: "Some emails are malformed.",
-                },
-            ]);
-        }
-
-        if (
+                ) ||
             !csvData
                 .map((row) => row[2].replace(/(\r\n|\n|\r)/gm, "").trim())
                 .every((email) => email.includes("@"))
@@ -86,7 +76,7 @@ const TestflightCleanerProgram: NextPage = () => {
             setErrors([
                 ...errors,
                 {
-                    error: "Some emails aren't emails (no @ symbol!).",
+                    error: "Some emails are malformed",
                 },
             ]);
         }
