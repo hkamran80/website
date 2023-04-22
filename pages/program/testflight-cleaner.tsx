@@ -5,6 +5,9 @@ import { getBaseUrl } from "@/lib/urls";
 import { useEffect, useState } from "react";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import { classNames } from "@hkamran/utility-web";
+
+type CsvRow = string[] | { row: string[]; flag: "malformed" | "duplicate" };
 
 const TestflightCleanerProgram: NextPage = () => {
     const [csvFile, setCsvFile] = useState<File>();
@@ -14,7 +17,10 @@ const TestflightCleanerProgram: NextPage = () => {
         { error: string; description?: string; preventBypass?: boolean }[]
     >([]);
     const [errorChecked, setErrorChecked] = useState<boolean>(false);
-    const [cleanedCsv, setCleanedCsv] = useState<string[][]>([]);
+    const [cleanedCsv, setCleanedCsv] = useState<CsvRow[]>([]);
+
+    const [leaveMalformedRows, setLeaveMalformedRows] =
+        useState<boolean>(false);
 
     useEffect(() => {
         checkForErrors();
@@ -33,7 +39,7 @@ const TestflightCleanerProgram: NextPage = () => {
             cleanCsv();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [errorChecked, useHeaders]);
+    }, [errorChecked, useHeaders, leaveMalformedRows]);
 
     const processCsv = (csv: string, delimiter = ",") =>
         setCsvData(csv.split("\n").map((row) => row.split(delimiter)));
@@ -105,30 +111,54 @@ const TestflightCleanerProgram: NextPage = () => {
                         .length === 0))
         ) {
             const rows = useHeaders ? csvData.slice(1) : csvData;
-            const cleanedRows = rows
-                .filter((row) => row[2].includes("@"))
-                .reduce((previous: string[][], row: string[]) => {
+
+            const filteredRows = leaveMalformedRows
+                ? rows
+                : rows.filter((row) => (row as string[])[2].includes("@"));
+
+            const cleanedRows = filteredRows.reduce(
+                (previous: CsvRow[], row: string[]): CsvRow[] => {
+                    const cleanedRow = [
+                        removeUnnecessaryStrings(row[0]),
+                        removeUnnecessaryStrings(row[1]),
+                        row[2].replace(/(\r\n|\n|\r)/gm, "").trim(),
+                    ];
+
                     if (
                         previous.some(
                             (previousRow) =>
-                                previousRow[2]
+                                (Array.isArray(previousRow)
+                                    ? previousRow
+                                    : previousRow.row)[2]
                                     .replace(/(\r\n|\n|\r)/gm, "")
-                                    .trim() ===
-                                row[2].replace(/(\r\n|\n|\r)/gm, "").trim(),
+                                    .trim() === cleanedRow[2],
                         )
                     ) {
-                        return previous;
+                        return !leaveMalformedRows
+                            ? previous
+                            : [
+                                  ...previous,
+                                  {
+                                      row: cleanedRow,
+                                      flag: "duplicate",
+                                  },
+                              ];
                     }
 
-                    return [
-                        ...previous,
-                        [
-                            removeUnnecessaryStrings(row[0]),
-                            removeUnnecessaryStrings(row[1]),
-                            row[2].replace(/(\r\n|\n|\r)/gm, "").trim(),
-                        ],
-                    ];
-                }, []);
+                    if (leaveMalformedRows && !row[2].includes("@")) {
+                        return [
+                            ...previous,
+                            {
+                                row: cleanedRow,
+                                flag: "malformed",
+                            } as CsvRow,
+                        ];
+                    }
+
+                    return [...previous, cleanedRow];
+                },
+                [] as CsvRow[],
+            );
 
             setCleanedCsv(
                 useHeaders
@@ -161,7 +191,12 @@ const TestflightCleanerProgram: NextPage = () => {
     const exportCsv = () => {
         if (cleanedCsv) {
             const blob = new Blob(
-                [cleanedCsv.map((row) => row.join(",")).join("\n")],
+                [
+                    cleanedCsv
+                        .filter(Array.isArray)
+                        .map((row) => row.join(","))
+                        .join("\n"),
+                ],
                 { type: "text/csv" },
             );
 
@@ -257,7 +292,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                     <div className="flex items-center md:col-span-2">
                                         <input
                                             checked={useHeaders}
-                                            id="checked-checkbox"
+                                            id="use-headers"
                                             type="checkbox"
                                             value=""
                                             className="h-4 w-4 rounded-lg border-hk-grey-hover bg-hk-grey text-pink-700 focus:ring-2 focus:ring-pink-700"
@@ -266,10 +301,32 @@ const TestflightCleanerProgram: NextPage = () => {
                                             }
                                         />
                                         <label
-                                            htmlFor="checked-checkbox"
+                                            htmlFor="use-headers"
                                             className="ml-2 text-sm font-medium text-gray-400"
                                         >
                                             Use first row as headers
+                                        </label>
+                                    </div>
+
+                                    <div className="flex items-center md:col-span-4">
+                                        <input
+                                            checked={leaveMalformedRows}
+                                            id="leave-malformed-rows"
+                                            type="checkbox"
+                                            value=""
+                                            className="h-4 w-4 rounded-lg border-hk-grey-hover bg-hk-grey text-pink-700 focus:ring-2 focus:ring-pink-700"
+                                            onChange={(e) =>
+                                                setLeaveMalformedRows(
+                                                    e.target.checked,
+                                                )
+                                            }
+                                        />
+                                        <label
+                                            htmlFor="leave-malformed-rows"
+                                            className="ml-2 text-sm font-medium text-gray-400"
+                                        >
+                                            Leave malformed data in the table,
+                                            but highlight it
                                         </label>
                                     </div>
                                 </form>
@@ -307,10 +364,12 @@ const TestflightCleanerProgram: NextPage = () => {
                                             <h2>Testers</h2>
 
                                             <table>
-                                                {useHeaders && (
+                                                {useHeaders && Array.isArray(cleanedCsv[0]) && (
                                                     <thead>
                                                         <tr>
-                                                            {cleanedCsv[0].map(
+                                                            {(
+                                                                cleanedCsv[0] as string[]
+                                                            ).map(
                                                                 (
                                                                     header,
                                                                     index,
@@ -332,16 +391,44 @@ const TestflightCleanerProgram: NextPage = () => {
                                                     {(useHeaders
                                                         ? cleanedCsv.slice(1)
                                                         : cleanedCsv
-                                                    ).map((row, index) => (
-                                                        <tr key={index}>
-                                                            {row.map(
+                                                    ).map((row, rowIndex) => (
+                                                        <tr key={rowIndex}>
+                                                            {(Array.isArray(row)
+                                                                ? row
+                                                                : row.row
+                                                            ).map(
                                                                 (
                                                                     value,
-                                                                    index,
+                                                                    columnIndex,
                                                                 ) => (
                                                                     <td
                                                                         key={
-                                                                            index
+                                                                            columnIndex
+                                                                        }
+                                                                        className={
+                                                                            ((useHeaders &&
+                                                                                rowIndex !==
+                                                                                    0) ||
+                                                                                !useHeaders) &&
+                                                                            columnIndex ===
+                                                                                2
+                                                                                ? classNames(
+                                                                                      !Array.isArray(
+                                                                                          row,
+                                                                                      ) &&
+                                                                                          row.flag ===
+                                                                                              "duplicate"
+                                                                                          ? "text-yellow-500"
+                                                                                          : "",
+                                                                                      !Array.isArray(
+                                                                                          row,
+                                                                                      ) &&
+                                                                                          row.flag ===
+                                                                                              "malformed"
+                                                                                          ? "text-red-500"
+                                                                                          : "",
+                                                                                  )
+                                                                                : undefined
                                                                         }
                                                                     >
                                                                         {value}
