@@ -206,14 +206,14 @@ const TestflightCleanerProgram: NextPage = () => {
 
                     <div className="mt-6">
                         <div className="grid grid-cols-1 gap-x-4 gap-y-1 md:grid-cols-2">
-                            <div className="space-y-4 md:col-span-2">
+                            <div className="space-y-8 md:col-span-2">
                                 <p className="text-sm text-gray-400">
                                     All data that you upload is stored locally
                                     in your browser. Nothing is ever transmitted
                                     to any server.
                                 </p>
 
-                                <form className="grid grid-cols-1 gap-4 pb-4 md:grid-cols-6">
+                                <form className="grid grid-cols-1 gap-4 md:grid-cols-6">
                                     <div className="md:col-span-5">
                                         <label
                                             htmlFor="file-input"
@@ -301,9 +301,11 @@ const TestflightCleanerProgram: NextPage = () => {
                                 {cleanedCsv.length > 0 && (
                                     <>
                                         <section
-                                            id="preview"
+                                            id="testers"
                                             className="prose prose-invert max-w-none max-md:hidden"
                                         >
+                                            <h2>Testers</h2>
+
                                             <table>
                                                 {useHeaders && (
                                                     <thead>
