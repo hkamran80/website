@@ -1,10 +1,10 @@
-import Breadcrumbs from '@/components/Breadcrumbs';
-import Head from 'next/head';
-import Layout from '@/components/Layout';
-import { classNames } from '@hkamran/utility-web';
-import { getBaseUrl } from '@/lib/urls';
-import { useEffect, useState } from 'react';
-import { WebPageJsonLd } from 'next-seo';
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Head from "next/head";
+import Layout from "@/components/Layout";
+import { classNames } from "@hkamran/utility-web";
+import { getBaseUrl } from "@/lib/urls";
+import { useEffect, useState } from "react";
+import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
 
 type CsvRow = string[] | { row: string[]; flag: "malformed" | "duplicate" };
@@ -325,10 +325,7 @@ const TestflightCleanerProgram: NextPage = () => {
 
                                         <ul className="">
                                             {errors.map((error, index) => (
-                                                <li
-                                                    key={index}
-                                                    className="text-red-500"
-                                                >
+                                                <li key={index}>
                                                     {error.error}
                                                 </li>
                                             ))}
@@ -441,13 +438,13 @@ const TestflightCleanerProgram: NextPage = () => {
                                                 Export
                                             </button>
 
-                                            {leaveMalformedRows && (
-                                                <p className="prose prose-invert max-w-none text-sm">
-                                                    <strong>Note:</strong> The
-                                                    CSV export will only contain
-                                                    valid results.
-                                                </p>
-                                            )}
+                                            <p className="prose prose-invert max-w-none text-sm">
+                                                <strong>Note:</strong> The CSV
+                                                export will only contain valid
+                                                results. In the case of
+                                                duplicated entries, only the
+                                                first result will be exported.
+                                            </p>
                                         </div>
                                     </>
                                 )}
