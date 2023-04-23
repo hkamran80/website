@@ -55,7 +55,7 @@ const Website = ({ Component, pageProps }: AppProps) => {
                     async
                     defer
                     data-website-id="550f7666-3836-423b-8a19-f2e6746eeda5"
-                    src="https://umami.unisontech.org/umami.js"
+                    src="https://umami.unisontech.org/script.js"
                 />
             )}
 
