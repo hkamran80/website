@@ -9,9 +9,9 @@ export const alphabeticalSort = (stringA: string, stringB: string): number => {
         lowerStringB = stringB.toLowerCase();
 
     if (lowerStringA < lowerStringB) {
-        return 1;
-    } else if (lowerStringA > lowerStringB) {
         return -1;
+    } else if (lowerStringA > lowerStringB) {
+        return 1;
     }
 
     return 0;

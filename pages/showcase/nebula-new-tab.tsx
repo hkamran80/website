@@ -57,9 +57,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                 <title>Nebula New Tab | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/showcase/nebula-new-tab`}
-            />
+            <WebPageJsonLd id={`${getBaseUrl()}/showcase/nebula-new-tab`} />
 
             <Layout>
                 <div className="mx-auto max-w-5xl">

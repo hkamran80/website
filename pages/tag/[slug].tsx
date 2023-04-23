@@ -123,7 +123,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                           ) as Writing,
                   )
                   .sort((a, b) =>
-        sortByDate(new Date(a.published), new Date(b.published)),)
+                      sortByDate(new Date(a.published), new Date(b.published)),
+                  )
             : [];
 
     const notes: Writing[] =
@@ -136,7 +137,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                           ) as Writing,
                   )
                   .sort((a, b) =>
-        sortByDate(new Date(a.published), new Date(b.published)),)
+                      sortByDate(new Date(a.published), new Date(b.published)),
+                  )
             : [];
 
     const rawTags = arrayUnique([
