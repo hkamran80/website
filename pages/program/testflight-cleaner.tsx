@@ -339,7 +339,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                             id="use-headers"
                                             type="checkbox"
                                             value=""
-                                            className="h-4 w-4 rounded-lg border-hk-grey-hover bg-hk-grey text-pink-700 focus:ring-2 focus:ring-pink-700"
+                                            className="h-4 w-4 rounded-lg border-hk-grey-hover bg-hk-grey-light text-pink-700 focus:ring-2 focus:ring-pink-700"
                                             onChange={(e) =>
                                                 setUseHeaders(e.target.checked)
                                             }
@@ -358,7 +358,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                             id="leave-malformed-rows"
                                             type="checkbox"
                                             value=""
-                                            className="h-4 w-4 rounded-lg border-hk-grey-hover bg-hk-grey text-pink-700 focus:ring-2 focus:ring-pink-700"
+                                            className="h-4 w-4 rounded-lg border-hk-grey-hover bg-hk-grey-light text-pink-700 focus:ring-2 focus:ring-pink-700"
                                             onChange={(e) =>
                                                 setLeaveMalformedRows(
                                                     e.target.checked,

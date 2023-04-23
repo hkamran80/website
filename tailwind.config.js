@@ -14,6 +14,7 @@ module.exports = {
             colors: {
                 "hk-grey": "#151515",
                 "hk-grey-hover": "#1e1e1e",
+                "hk-grey-light": "#313131",
             },
             typography: {
                 DEFAULT: {
