@@ -154,7 +154,12 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                         ) : (
                             <div className="flex justify-center text-sm uppercase tracking-wide text-gray-300">
                                 <a
-                                    href={`https://github.com/hkamran80/articles/blob/main/markdown/articles/${article.filename}.md`}
+                                    href={`https://github.com/hkamran80/articles/blob/${
+                                        article.published === "" &&
+                                        article.branchName
+                                            ? article.branchName
+                                            : "main"
+                                    }/markdown/articles/${article.filename}.md`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="transition-colors duration-300 hover:text-pink-700"
