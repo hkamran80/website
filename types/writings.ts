@@ -5,6 +5,7 @@ export type Writing = {
     tags: string[];
     published: string;
     filename: string;
+    branchName?: string;
 };
 
 export type WritingTags = {

@@ -191,7 +191,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     if (article) {
         const markdown = await (
-            await fetch(`${BASE_WRITINGS_URL}/articles/${article.filename}.md`)
+            await fetch(
+                `${
+                    article.published !== "" && article.branchName
+                        ? BASE_WRITINGS_URL.replace("/main/",`/${article.branchName}/`)
+                        : BASE_WRITINGS_URL
+                }/articles/${article.filename}.md`,
+            )
         ).text();
 
         return {
