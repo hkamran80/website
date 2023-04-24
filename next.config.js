@@ -1,3 +1,11 @@
+const ContentSecurityPolicy = `
+  default-src 'self';
+  script-src 'self';
+  style-src 'self';
+  font-src 'self';
+  report-to https://hkamran.report-uri.com/r/d/csp/wizard
+`;
+
 const securityHeaders = [
     {
         key: "X-Content-Type-Options",
@@ -26,6 +34,10 @@ const securityHeaders = [
     {
         key: "X-DNS-Prefetch-Control",
         value: "on",
+    },
+    {
+        key: "Content-Security-Policy",
+        value: ContentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
     },
 ];
 
