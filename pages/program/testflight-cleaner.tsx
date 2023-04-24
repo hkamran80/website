@@ -151,7 +151,13 @@ const TestflightCleanerProgram: NextPage = () => {
                               ];
                     }
 
-                    if (leaveMalformedRows && !row[2].includes("@")) {
+                    if (
+                        leaveMalformedRows &&
+                        (!row[2].includes("@") ||
+                            row[2].match(
+                                /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g,
+                            ) === null)
+                    ) {
                         return [
                             ...previous,
                             {
