@@ -1,7 +1,8 @@
+// Switch to hashes/nonce
 const ContentSecurityPolicy = `
-  default-src 'self';
-  script-src 'self';
-  style-src 'self';
+  default-src 'self' vitals.vercel-insights.com giscus.app assets.hkamran.com data:;
+  script-src 'self' umami.unisontech.org vercel.live;
+  style-src 'self' 'unsafe-inline' data:;
   font-src 'self';
   report-to https://hkamran.report-uri.com/r/d/csp/wizard
 `;
