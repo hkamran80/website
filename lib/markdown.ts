@@ -3,8 +3,8 @@ import markdownItLinkAttributes from "markdown-it-link-attributes";
 import markdownItPrism from "markdown-it-prism";
 import markdownItImageFigures from "markdown-it-image-figures";
 import markdownItFootnote from "markdown-it-footnote";
-import "prismjs/plugins/toolbar";
-import "prismjs/plugins/autoloader";
+import "prismjs/plugins/toolbar/prism-toolbar";
+import "prismjs/plugins/autoloader/prism-autoloader";
 
 export const renderMarkdown = (
     content: string,
