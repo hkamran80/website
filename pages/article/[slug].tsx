@@ -183,7 +183,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         params: { slug: article.id },
     }));
 
-    return { paths, fallback: false };
+    return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

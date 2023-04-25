@@ -115,7 +115,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         params: { slug: note.id },
     }));
 
-    return { paths, fallback: false };
+    return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

@@ -50,6 +50,15 @@ const TestflightCleanerProgram: NextPage = () => {
     const processCsv = (csv: string, delimiter = ",") =>
         setCsvData(csv.split("\n").map((row) => row.split(delimiter)));
 
+    const checkEmailValidity = (email: string): boolean => {
+        return (
+            email.includes("@") &&
+            email.match(
+                /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g,
+            ) !== null
+        );
+    };
+
     const checkForErrors = () => {
         setErrors([]);
 
@@ -74,20 +83,7 @@ const TestflightCleanerProgram: NextPage = () => {
                         .trim()
                         .toLowerCase(),
                 )
-                .every(
-                    (email) =>
-                        email.match(
-                            /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g,
-                        )?.length ?? 0 > 0,
-                ) ||
-            !csvData
-                .map((row) =>
-                    row[2]
-                        .replace(/(\r\n|\n|\r)/gm, "")
-                        .trim()
-                        .toLowerCase(),
-                )
-                .every((email) => email.includes("@"))
+                .every((email) => !checkEmailValidity(email))
         ) {
             setErrors([
                 ...errors,
@@ -153,10 +149,7 @@ const TestflightCleanerProgram: NextPage = () => {
 
                     if (
                         leaveMalformedRows &&
-                        (!row[2].includes("@") ||
-                            row[2].match(
-                                /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g,
-                            ) === null)
+                        !checkEmailValidity(cleanedRow[2])
                     ) {
                         return [
                             ...previous,
