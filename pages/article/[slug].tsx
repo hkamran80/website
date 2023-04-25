@@ -177,8 +177,8 @@ const Writing: NextPage<Props> = ({ article, content }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const res = await fetch(WRITINGS_URL);
-    console.debug(await res.text());
     const writings = await res.json();
+    console.debug(writings);
 
     const paths = (writings.articles as Writing[]).map((article) => ({
         params: { slug: article.id },
