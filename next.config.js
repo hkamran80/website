@@ -4,7 +4,8 @@ const ContentSecurityPolicy = `
   script-src 'self' umami.unisontech.org;
   style-src 'self' 'unsafe-inline' data:;
   font-src 'self';
-  report-to https://hkamran.report-uri.com/r/d/csp/wizard
+  report-to https://hkamran.report-uri.com/r/d/csp/wizard;
+  report-uri https://hkamran.report-uri.com/r/d/csp/wizard;
 `;
 
 const securityHeaders = [
@@ -21,6 +22,10 @@ const securityHeaders = [
         value: "1; mode=block",
     },
     {
+        key: "X-DNS-Prefetch-Control",
+        value: "on",
+    },
+    {
         key: "Strict-Transport-Security",
         value: "max-age=63072000; includeSubDomains; preload",
     },
@@ -31,10 +36,6 @@ const securityHeaders = [
     {
         key: "Permissions-Policy",
         value: "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(self), xr-spatial-tracking=(), clipboard-read=(), clipboard-write=(), gamepad=(), speaker-selection=(), conversion-measurement=(), focus-without-user-activation=(), hid=(), idle-detection=(), interest-cohort=(), serial=(), sync-script=(), trust-token-redemption=(), unload=(), window-placement=(), vertical-scroll=()",
-    },
-    {
-        key: "X-DNS-Prefetch-Control",
-        value: "on",
     },
     {
         key: "Content-Security-Policy",
