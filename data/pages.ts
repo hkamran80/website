@@ -15,6 +15,13 @@ export const programs: Page[] = [
         centerContent: true,
     },
     {
+        id: "testflight-cleaner",
+        name: "TestFlight CSV Cleaner",
+        description:
+            "Clean your TestFlight tester CSVs and avoid dealing with those pesky errors!",
+        centerContent: true,
+    },
+    {
         id: "text-reverser",
         name: "Text Reverser",
         description: "Reverse some text, because why not?",
@@ -24,13 +31,6 @@ export const programs: Page[] = [
         id: "web-utilities",
         name: "Web Utilites",
         description: "Some helpful web utilities",
-        centerContent: true,
-    },
-    {
-        id: "testflight-cleaner",
-        name: "TestFlight CSV Cleaner",
-        description:
-            "Clean your TestFlight tester CSVs and avoid dealing with those pesky errors!",
         centerContent: true,
     },
 ];
