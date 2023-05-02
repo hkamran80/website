@@ -13,6 +13,7 @@ import { socialIcons } from "../data/navigation";
 import { WebPageJsonLd } from "next-seo";
 import type { GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
+import SocialLinks from "@/components/SocialLinks";
 
 type Props = {
     latestArticle: Writing;
@@ -48,28 +49,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
                                 </NavLink>
 
                                 <div className="flex flex-row justify-center space-x-7">
-                                    {socialIcons.map(({ url, icon }, index) => (
-                                        <a
-                                            key={index}
-                                            href={url}
-                                            aria-label={icon.title}
-                                            target="_blank"
-                                            rel="noopener noreferrer me"
-                                            className={`umami--click--${slugify(
-                                                icon.title,
-                                            )}-link-social`}
-                                        >
-                                            <svg
-                                                role="img"
-                                                viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-6 w-6 fill-gray-500 transition duration-300 hover:scale-125 hover:fill-pink-700"
-                                            >
-                                                <title>{icon.title}</title>
-                                                <path d={icon.path} />
-                                            </svg>
-                                        </a>
-                                    ))}
+                                    <SocialLinks classNames="h-6 w-6 fill-gray-500 transition duration-300 hover:scale-125 hover:fill-pink-700" />
                                 </div>
 
                                 <button type="button" className="mx-auto">

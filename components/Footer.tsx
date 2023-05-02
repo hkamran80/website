@@ -2,6 +2,7 @@ import NavLink from "./NavLink";
 import { links, socialIcons } from "../data/navigation";
 import { slugify } from "@hkamran/utility-strings";
 import { classNames } from "@hkamran/utility-web";
+import SocialLinks from "./SocialLinks";
 
 const Footer = () => {
     return (
@@ -12,28 +13,7 @@ const Footer = () => {
                     rights reserved.
                 </p>
                 <div className="flex flex-row justify-center space-x-5 md:justify-start">
-                    {socialIcons.map(({ url, icon }, index) => (
-                        <a
-                            key={index}
-                            href={url}
-                            aria-label={icon.title}
-                            target="_blank"
-                            rel="noopener noreferrer me"
-                            className={`umami--click--${slugify(
-                                icon.title,
-                            )}-link-social`}
-                        >
-                            <svg
-                                role="img"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-4 w-4 fill-gray-500 transition-colors duration-200 ease-in-out hover:fill-gray-300"
-                            >
-                                <title>{icon.title}</title>
-                                <path d={icon.path} />
-                            </svg>
-                        </a>
-                    ))}
+                    <SocialLinks classNames="h-4 w-4 fill-gray-500 transition-colors duration-200 ease-in-out hover:fill-gray-300" />
                 </div>
             </div>
             <div className="col-span-2 space-y-4 md:text-right">
