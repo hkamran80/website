@@ -37,7 +37,7 @@ const Articles: NextPage<Props> = ({ articles }) => {
                 />
             </h1>
             <div className="flex flex-col h-feed hfeed">
-                <span className="hidden p-name site-title">H. Kamran</span>
+                <span className="hidden p-name site-title">Articles | H. Kamran</span>
                 {articles
                     .filter(({ published }) => published !== "")
                     .map((article, index) => (
