@@ -36,13 +36,16 @@ const Articles: NextPage<Props> = ({ articles }) => {
                     }}
                 />
             </h1>
-            <div className="flex flex-col">
+            <div className="flex flex-col h-feed hfeed">
+                <span className="hidden p-name site-title">H. Kamran</span>
                 {articles
                     .filter(({ published }) => published !== "")
                     .map((article, index) => (
-                        <NavLink key={index} href={`/article/${article.id}`}>
-                            <ArticleCard article={article} />
-                        </NavLink>
+                        <div key={index} className="h-entry hentry">
+                            <NavLink href={`/article/${article.id}`} className="u-url" rel="bookmark">
+                                <ArticleCard article={article} />
+                            </NavLink>
+                        </div>
                     ))}
             </div>
         </Layout>
