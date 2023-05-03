@@ -54,12 +54,16 @@ const nextConfig = {
         return config;
     },
     async headers() {
-        return [
-            {
-                source: "/:path*",
-                headers: securityHeaders,
-            },
-        ];
+        if (process.env.NODE_ENV !== "development") {
+            return [
+                {
+                    source: "/:path*",
+                    headers: securityHeaders,
+                },
+            ];
+        } else {
+            return [];
+        }
     },
     async rewrites() {
         return [
