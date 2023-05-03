@@ -1,7 +1,9 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import NavLink from "@/components/NavLink";
 import { classNames } from "@hkamran/utility-web";
+import { getBaseUrl } from "@/lib/urls";
 import { Listbox } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import { WebPageJsonLd } from "next-seo";
@@ -13,7 +15,6 @@ import {
     Image as FeatherImage,
 } from "react-feather";
 import type { Release, ReleaseDetails } from "@/types/releaseNotes";
-import { getBaseUrl } from "@/lib/urls";
 
 const downloadLinks = {
     Chrome: "https://github.com/hkamran80/nebula-new-tab#chromium-based-browsers-chrome-brave-etc",
@@ -85,15 +86,13 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                 >
                                     {Object.entries(downloadLinks).map(
                                         ([browser, link], index) => (
-                                            <a
+                                            <NavLink
                                                 key={index}
                                                 href={link}
-                                                target="_blank"
                                                 className="rounded-full bg-hk-grey p-4 text-center font-medium text-white shadow-lg transition-colors duration-200 ease-in-out hover:text-purple-400"
-                                                rel="noopener noreferrer"
                                             >
                                                 Install in {browser}
-                                            </a>
+                                            </NavLink>
                                         ),
                                     )}
                                 </div>
@@ -102,23 +101,13 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                     {Object.entries(jumpLinks).map(
                                         ([label, link], index) => (
                                             // eslint-disable-next-line react/jsx-no-target-blank
-                                            <a
+                                            <NavLink
                                                 key={index}
                                                 href={link}
-                                                target={
-                                                    link.startsWith("http")
-                                                        ? "_blank"
-                                                        : ""
-                                                }
-                                                rel={
-                                                    link.startsWith("http")
-                                                        ? "noopener noreferrer"
-                                                        : ""
-                                                }
                                                 className="rounded-lg bg-purple-900 p-2 text-center text-white transition-colors duration-200 ease-in-out hover:bg-purple-800"
                                             >
                                                 {label}
-                                            </a>
+                                            </NavLink>
                                         ),
                                     )}
                                 </div>
@@ -183,23 +172,19 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                 </dt>
                                                 <dd className="mt-2 text-base text-gray-500">
                                                     Powered by{" "}
-                                                    <a
+                                                    <NavLink
                                                         href="https://unsplash.com/?utm_source=nebula-new-tab&utm_medium=referral"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
                                                         className="underline"
                                                     >
                                                         Unsplash
-                                                    </a>
+                                                    </NavLink>
                                                     ,{" "}
-                                                    <a
+                                                    <NavLink
                                                         href="https://unsplash.com/collections/935518/night-sky?utm_source=nebula-new-tab&utm_medium=referral"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
                                                         className="underline"
                                                     >
                                                         these background images
-                                                    </a>{" "}
+                                                    </NavLink>{" "}
                                                     are clean and simple, just
                                                     like Nebula
                                                     <p className="mt-1 text-sm">

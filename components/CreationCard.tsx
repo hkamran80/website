@@ -1,8 +1,9 @@
-import type { Creation } from "@/types/creations";
-import { slugify } from "@hkamran/utility-strings";
+import NavLink from "./NavLink";
 import { classNames } from "@hkamran/utility-web";
 import { Globe } from "lucide-react";
 import { siGithub } from "simple-icons/icons";
+import { slugify } from "@hkamran/utility-strings";
+import type { Creation } from "@/types/creations";
 
 const CreationCard = ({ creation }: { creation: Creation }) => {
     return (
@@ -27,10 +28,8 @@ const CreationCard = ({ creation }: { creation: Creation }) => {
                 )}
 
                 {creation.repository && (
-                    <a
+                    <NavLink
                         href={creation.repository}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         title={`${creation.name} source code`}
                         aria-label={`${creation.name} source code`}
                         className={`flex-1 text-center umami--click--${slugify(
@@ -46,7 +45,7 @@ const CreationCard = ({ creation }: { creation: Creation }) => {
                             <title>{siGithub.title}</title>
                             <path d={siGithub.path} />
                         </svg>
-                    </a>
+                    </NavLink>
                 )}
             </div>
         </div>

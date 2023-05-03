@@ -1,10 +1,10 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import NavLink from "@/components/NavLink";
+import { getBaseUrl } from "@/lib/urls";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
-import { getBaseUrl } from "@/lib/urls";
-import NavLink from "@/components/NavLink";
 
 const Uses: NextPage = () => {
     return (

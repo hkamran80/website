@@ -1,8 +1,7 @@
 import NavLink from "./NavLink";
-import { links, socialIcons } from "../data/navigation";
-import { slugify } from "@hkamran/utility-strings";
-import { classNames } from "@hkamran/utility-web";
 import SocialLinks from "./SocialLinks";
+import { classNames } from "@hkamran/utility-web";
+import { links } from "../data/navigation";
 
 const Footer = () => {
     return (

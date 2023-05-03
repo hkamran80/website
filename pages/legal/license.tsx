@@ -1,10 +1,11 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import NavLink from "@/components/NavLink";
+import { getBaseUrl } from "@/lib/urls";
+import { UNSPLASH_URL } from "data/constants";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
-import { UNSPLASH_URL } from "data/constants";
-import { getBaseUrl } from "@/lib/urls";
 
 const License: NextPage = () => {
     return (
@@ -86,13 +87,9 @@ const License: NextPage = () => {
                             </p>
                             <p>
                                 Contact me at{" "}
-                                <a
-                                    href="mailto:hkamran@hkamran.com?subject=Potential%20Sponsorship%2FEndorsement&body=Dear%20H.%20Kamran%2C%0D%0A%0D%0AI'd%20like%20to%20discuss%20a%20potential%20sponsorship%2Fendorsement%20of%20This%20Product.%0D%0A%0D%0ASincerely%2C%0D%0AYour%20Name%20Here"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
+                                <NavLink href="mailto:hkamran@hkamran.com?subject=Potential%20Sponsorship%2FEndorsement&body=Dear%20H.%20Kamran%2C%0D%0A%0D%0AI'd%20like%20to%20discuss%20a%20potential%20sponsorship%2Fendorsement%20of%20This%20Product.%0D%0A%0D%0ASincerely%2C%0D%0AYour%20Name%20Here">
                                     hkamran@hkamran.com
-                                </a>{" "}
+                                </NavLink>{" "}
                                 if you want to consider a sponsored/promoted
                                 feature.
                             </p>
@@ -113,21 +110,11 @@ const License: NextPage = () => {
 
                     <p className="text-xs">
                         <sup>1</sup>: Photos distributed on{" "}
-                        <a
-                            href={UNSPLASH_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Unsplash
-                        </a>{" "}
-                        are subject to the{" "}
-                        <a
-                            href="https://unsplash.com/license"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <NavLink href={UNSPLASH_URL}>Unsplash</NavLink> are
+                        subject to the{" "}
+                        <NavLink href="https://unsplash.com/license">
                             Unsplash License
-                        </a>
+                        </NavLink>
                         . Please provide attribution, even though it is not
                         required by the Unsplash License.
                     </p>

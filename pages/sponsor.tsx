@@ -1,10 +1,10 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import { UNSPLASH_URL } from "data/constants";
+import NavLink from "@/components/NavLink";
+import { getBaseUrl } from "@/lib/urls";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
-import { getBaseUrl } from "@/lib/urls";
 
 const Sponsor: NextPage = () => {
     return (
@@ -16,7 +16,7 @@ const Sponsor: NextPage = () => {
             <WebPageJsonLd id={`${getBaseUrl()}/sponsor`} />
 
             <div className="mx-auto max-w-2xl">
-                <Breadcrumbs basePath="/" baseLabel="Sponsor" />
+                <Breadcrumbs baseLabel="Sponsor" />
 
                 <div className="space-y-2">
                     <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
@@ -28,66 +28,38 @@ const Sponsor: NextPage = () => {
                     <p>
                         Thank you for thinking of sponsoring me! I create and
                         maintain open-source projects, like{" "}
-                        <a
-                            href="https://2fa.directory"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <NavLink href="https://2fa.directory">
                             2fa.directory
-                        </a>
+                        </NavLink>
                         , and my own apps{" "}
-                        <a
-                            href="https://schedules.unisontech.org/?utm_source=hksponsor"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <NavLink href="https://schedules.unisontech.org/?utm_source=hksponsor">
                             Schedules
-                        </a>{" "}
+                        </NavLink>{" "}
                         and{" "}
-                        <a
-                            href="https://13willow.com/project/ramadan-taskminder?utm_source=hksponsor"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <NavLink href="https://13willow.com/project/ramadan-taskminder?utm_source=hksponsor">
                             Ramadan Taskminder
-                        </a>
+                        </NavLink>
                         . Sponsoring me allows me to invest more time into
                         maintaining and creating projects.
                     </p>
 
                     <p>
                         You can do so through{" "}
-                        <a
-                            href="https://github.com/sponsors/hkamran80"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <NavLink href="https://github.com/sponsors/hkamran80">
                             GitHub Sponsors
-                        </a>
+                        </NavLink>
                         ,{" "}
-                        <a
-                            href="https://ko-fi.com/hkamran"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <NavLink href="https://ko-fi.com/hkamran">
                             Ko-fi
-                        </a>
+                        </NavLink>
                         ,{" "}
-                        <a
-                            href="https://www.buymeacoffee.com/hkamran"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <NavLink href="https://www.buymeacoffee.com/hkamran">
                             Buy Me a Coffee
-                        </a>
+                        </NavLink>
                         , or{" "}
-                        <a
-                            href="https://liberapay.com/hkamran/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <NavLink href="https://liberapay.com/hkamran/">
                             Liberapay
-                        </a>
+                        </NavLink>
                         .
                     </p>
                 </div>

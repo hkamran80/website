@@ -26,7 +26,10 @@ const ArticleCard = ({
                 <div className="col-span-2 space-y-2">
                     <p className="text-sm text-gray-400">
                         {article.published !== "" ? (
-                            <time dateTime={article.published} className="dt-published published">
+                            <time
+                                dateTime={article.published}
+                                className="dt-published published"
+                            >
                                 {new Date(
                                     `${article.published}T12:00:00-07:00`,
                                 ).toLocaleDateString(undefined, {
@@ -40,11 +43,11 @@ const ArticleCard = ({
                         )}
                     </p>
 
-                    <p className="text-xl font-semibold text-gray-200 p-name entry-title">
+                    <p className="p-name entry-title text-xl font-semibold text-gray-200">
                         {article.title}
                     </p>
 
-                    <p className="text-base text-gray-400 p-summary entry-summary">
+                    <p className="p-summary entry-summary text-base text-gray-400">
                         {article.description}
                     </p>
 

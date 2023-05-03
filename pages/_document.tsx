@@ -149,8 +149,14 @@ class WebsiteDocument extends Document {
                     />
 
                     {/* IndieAuth */}
-                    <link rel="webmention" href="https://webmention.io/hkamran.com/webmention" />
-                    <link rel="pingback" href="https://webmention.io/hkamran.com/xmlrpc" />
+                    <link
+                        rel="webmention"
+                        href="https://webmention.io/hkamran.com/webmention"
+                    />
+                    <link
+                        rel="pingback"
+                        href="https://webmention.io/hkamran.com/xmlrpc"
+                    />
                 </Head>
                 <body>
                     <style>{styles}</style>

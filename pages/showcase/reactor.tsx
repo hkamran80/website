@@ -1,9 +1,10 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import NavLink from "@/components/NavLink";
+import { getBaseUrl } from "@/lib/urls";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
-import { getBaseUrl } from "@/lib/urls";
 
 const commands = [
     {
@@ -45,14 +46,12 @@ const Reactor: NextPage = () => {
 
                     <div className="mt-6">
                         <div className="pt-2">
-                            <a
+                            <NavLink
                                 href="https://go.hkamran.com/add-reactor"
-                                target="_blank"
-                                rel="noopener noreferrer"
                                 className="align-center flex w-full justify-center rounded-full bg-hk-grey p-4 text-center font-medium text-white transition-colors duration-200 ease-in-out hover:text-pink-700"
                             >
                                 Add Reactor to your Discord server
-                            </a>
+                            </NavLink>
 
                             <div className="prose prose-invert mt-8 max-w-none prose-a:text-pink-700">
                                 <h2>What Does Reactor Do?</h2>
