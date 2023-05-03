@@ -9,17 +9,33 @@ const NavLink = ({
     className,
     conditionalClassNames,
     target,
+    rel,
 }: {
     href: string;
     children: React.ReactNode;
     className?: string;
     conditionalClassNames?: string;
     target?: HTMLAttributeAnchorTarget;
+    rel?: string;
 }) => {
     const { asPath } = useRouter();
 
     if (href === asPath) {
         return <span className={className}>{children}</span>;
+    } else if (href.startsWith("http")) {
+        return (
+            <a
+                href={`${href.includes("?") ? `${href}&`:`${href}?`}ref=hkamran.com`}
+                className={classNames(
+                    className ?? "",
+                    conditionalClassNames ?? "",
+                )}
+                target={target ?? "_blank"}
+                rel={rel ?? "noopener noreferrer"}
+            >
+                {children}
+            </a>
+        );
     } else {
         return (
             <Link
@@ -29,6 +45,7 @@ const NavLink = ({
                     conditionalClassNames ?? "",
                 )}
                 target={target}
+                rel={rel}
             >
                 {children}
             </Link>
