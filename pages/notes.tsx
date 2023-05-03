@@ -34,11 +34,14 @@ const Notes: NextPage<Props> = ({ notes }) => {
                     }}
                 />
             </h1>
-            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 h-feed hfeed">
+                <span className="hidden p-name site-title">Notes | H. Kamran</span>
                 {notes.map((note, index) => (
-                    <NavLink key={index} href={`/note/${note.id}`}>
+                        <div key={index} className="h-entry hentry">
+                    <NavLink  href={`/note/${note.id}`} className="u-url" rel="bookmark">
                         <NoteCard note={note} />
                     </NavLink>
+                    </div>
                 ))}
             </div>
         </Layout>
