@@ -10,21 +10,22 @@ const Uses: NextPage = () => {
     return (
         <Layout>
             <Head>
-                <title>Uses | H. Kamran</title>
+                <title>My Setup | H. Kamran</title>
             </Head>
 
             <WebPageJsonLd id={`${getBaseUrl()}/uses`} />
 
             <div className="mx-auto max-w-2xl">
-                <Breadcrumbs basePath="/" baseLabel="Uses" />
+                <Breadcrumbs baseLabel="My Setup" />
 
                 <div className="space-y-2">
                     <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                        Uses
+                        My Setup
                     </h1>
-                    <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                        A list of things I use
-                    </h2>
+                    <p className="text-center font-light leading-snug text-gray-300 sm:text-left">
+                        This is by no means a comprehensive list. It&apos;s just
+                        the essentials.
+                    </p>
                 </div>
 
                 <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
@@ -83,10 +84,6 @@ const Uses: NextPage = () => {
                     </ul>
 
                     <h2>Software</h2>
-                    <p>
-                        This is by no means a comprehensive list. It&apos;s just
-                        the software I use on a constant basis.
-                    </p>
 
                     <ul>
                         <li>
@@ -265,40 +262,34 @@ const Uses: NextPage = () => {
                     </ul>
 
                     <h2>Services</h2>
-                    <p>
-                        This is by no means a comprehensive list. It&apos;s just
-                        the services I use on a constant basis.
-                    </p>
 
                     <ul>
                         <li>
                             <p>
-                                <strong>
-                                    Figma
-                                </strong>
+                                <strong>Figma</strong>
                             </p>
                             <p>
-                                Figma is an amazing design tool, and I use it for much more than it&apos;s intended.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <strong>
-                                    Vercel
-                                </strong>
-                            </p>
-                            <p>
-                               I host a few of my websites, particularly the Next.js ones, on Vercel. This website is hosted on Vercel!
+                                Figma is an amazing design tool, and I use it
+                                for much more than it&apos;s intended.
                             </p>
                         </li>
                         <li>
                             <p>
-                                <strong>
-                                    Netlify
-                                </strong>
+                                <strong>Vercel</strong>
                             </p>
                             <p>
-                               Most of my non-Next.js sites are on Netlify. I love the platform!
+                                I host a few of my websites, particularly the
+                                Next.js ones, on Vercel. This website is hosted
+                                on Vercel!
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <strong>Netlify</strong>
+                            </p>
+                            <p>
+                                Most of my non-Next.js sites are on Netlify. I
+                                love the platform!
                             </p>
                         </li>
                     </ul>
