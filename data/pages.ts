@@ -16,7 +16,7 @@ export const programs: Page[] = [
     },
     {
         id: "testflight-cleaner",
-        name: "TestFlight CSV Cleaner",
+        name: "TestFlight Cleaner",
         description:
             "Clean your TestFlight tester CSVs and avoid dealing with those pesky errors!",
         centerContent: true,
