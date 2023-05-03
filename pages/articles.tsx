@@ -1,14 +1,14 @@
 import ArticleCard from "@/components/ArticleCard";
-import feather from "feather-icons";
 import Head from "next/head";
 import Layout from "@/components/Layout";
 import NavLink from "@/components/NavLink";
-import { Writing } from "@/types/writings";
+import { getBaseUrl } from "@/lib/urls";
+import { Rss } from "lucide-react";
+import { sortByDate } from "@/lib/sort";
 import { WebPageJsonLd } from "next-seo";
+import { Writing } from "@/types/writings";
 import { WRITINGS_URL } from "../data/constants";
 import type { GetStaticProps, NextPage } from "next";
-import { getBaseUrl } from "@/lib/urls";
-import { sortByDate } from "@/lib/sort";
 
 type Props = {
     articles: Writing[];
@@ -25,24 +25,29 @@ const Articles: NextPage<Props> = ({ articles }) => {
 
             <h1 className="flex items-center text-3xl font-semibold">
                 <span className="flex-1">Articles</span>
-                <a
+                <NavLink
                     href="/feed/atom"
                     target="_blank"
                     rel="nofollow noreferrer"
                     title="Atom feed"
                     className="text-gray-400"
-                    dangerouslySetInnerHTML={{
-                        __html: feather.icons.rss.toSvg(),
-                    }}
-                />
+                >
+                    <Rss />
+                </NavLink>
             </h1>
-            <div className="flex flex-col h-feed hfeed">
-                <span className="hidden p-name site-title">Articles | H. Kamran</span>
+            <div className="h-feed hfeed flex flex-col">
+                <span className="p-name site-title hidden">
+                    Articles | H. Kamran
+                </span>
                 {articles
                     .filter(({ published }) => published !== "")
                     .map((article, index) => (
                         <div key={index} className="h-entry hentry">
-                            <NavLink href={`/article/${article.id}`} className="u-url" rel="bookmark">
+                            <NavLink
+                                href={`/article/${article.id}`}
+                                className="u-url"
+                                rel="bookmark"
+                            >
                                 <ArticleCard article={article} />
                             </NavLink>
                         </div>

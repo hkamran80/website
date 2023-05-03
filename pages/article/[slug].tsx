@@ -2,6 +2,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Giscus from "@giscus/react";
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import NavLink from "@/components/NavLink";
 import WritingTags from "@/components/WritingTags";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
@@ -153,19 +154,17 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                             />
                         ) : (
                             <div className="flex justify-center text-sm uppercase tracking-wide text-gray-300">
-                                <a
+                                <NavLink
                                     href={`https://github.com/hkamran80/articles/blob/${
                                         article.published === "" &&
                                         article.branchName
                                             ? article.branchName
                                             : "main"
                                     }/markdown/articles/${article.filename}.md`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
                                     className="transition-colors duration-300 hover:text-pink-700"
                                 >
                                     <FileEdit />
-                                </a>
+                                </NavLink>
                             </div>
                         )}
                     </div>

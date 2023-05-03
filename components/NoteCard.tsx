@@ -7,7 +7,10 @@ const NoteCard = ({ note }: { note: Writing }) => {
                 <div className="col-span-2">
                     <p className="text-sm text-gray-400">
                         {note.published !== "" ? (
-                            <time dateTime={note.published} className="dt-published published">
+                            <time
+                                dateTime={note.published}
+                                className="dt-published published"
+                            >
                                 {new Date(
                                     `${note.published}T12:00:00-07:00`,
                                 ).toLocaleDateString(undefined, {
@@ -22,10 +25,10 @@ const NoteCard = ({ note }: { note: Writing }) => {
                     </p>
 
                     <span className="mt-2 block">
-                        <p className="text-xl font-semibold text-gray-200 p-name entry-title">
+                        <p className="p-name entry-title text-xl font-semibold text-gray-200">
                             {note.title}
                         </p>
-                        <p className="mt-2 text-base text-gray-400 p-summary entry-summary">
+                        <p className="p-summary entry-summary mt-2 text-base text-gray-400">
                             {note.description}
                         </p>
                     </span>

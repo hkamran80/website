@@ -1,9 +1,10 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import NavLink from "@/components/NavLink";
+import { getBaseUrl } from "@/lib/urls";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
-import { getBaseUrl } from "@/lib/urls";
 
 const PrivacyPolicy: NextPage = () => {
     return (
@@ -36,8 +37,8 @@ const PrivacyPolicy: NextPage = () => {
                         respect your privacy and comply with any applicable law
                         and regulation regarding any personal information I may
                         collect about you, including across my website,{" "}
-                        <a href="https://hkamran.com">https://hkamran.com</a>,
-                        and other sites I own and operate.
+                        <NavLink href="/">https://hkamran.com</NavLink>, and
+                        other sites I own and operate.
                     </p>
 
                     <h3>Information I Collect</h3>
@@ -234,13 +235,9 @@ const PrivacyPolicy: NextPage = () => {
                     <p>
                         H. Kamran
                         <br />
-                        <a
-                            href=" mailto:hkamran@hkamran.com?subject=Question%20about%20the%20Privacy%20Policy&body=Dear%20H.%20Kamran%2C%0D%0A%0D%0AYour%20question%20here...%0D%0A%0D%0ASincerely%2C%0D%0AYour%20name%20here%0D%0AYour%20contact%20information"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <NavLink href=" mailto:hkamran@hkamran.com?subject=Question%20about%20the%20Privacy%20Policy&body=Dear%20H.%20Kamran%2C%0D%0A%0D%0AYour%20question%20here...%0D%0A%0D%0ASincerely%2C%0D%0AYour%20name%20here%0D%0AYour%20contact%20information">
                             hkamran@hkamran.com
-                        </a>
+                        </NavLink>
                     </p>
                 </div>
             </div>
