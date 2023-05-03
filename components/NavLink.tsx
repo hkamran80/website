@@ -9,12 +9,14 @@ const NavLink = ({
     className,
     conditionalClassNames,
     target,
+    rel,
 }: {
     href: string;
     children: React.ReactNode;
     className?: string;
     conditionalClassNames?: string;
     target?: HTMLAttributeAnchorTarget;
+    rel?: string
 }) => {
     const { asPath } = useRouter();
 
@@ -29,6 +31,7 @@ const NavLink = ({
                     conditionalClassNames ?? "",
                 )}
                 target={target}
+                rel={rel}
             >
                 {children}
             </Link>
