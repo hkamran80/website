@@ -157,6 +157,7 @@ class WebsiteDocument extends Document {
                         rel="pingback"
                         href="https://webmention.io/hkamran.com/xmlrpc"
                     />
+                    <link href="https://github.com/hkamran80" rel="me authn" />
                 </Head>
                 <body>
                     <style>{styles}</style>
