@@ -3,7 +3,7 @@ export type HeaderProps = {
     description?: string;
 };
 
-export type ProgramHeaderProps = Required<HeaderProps> & {
+export type DynamicHeaderProps = HeaderProps & {
     id: string;
-    type?: "program" | "showcase";
+    type?: "program" | "showcase" | "tag";
 };

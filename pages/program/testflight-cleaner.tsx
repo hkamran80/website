@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import ProgramHeader from "@/components/program/header";
+import DynamicHeader from "@/components/DynamicHeader";
 import { ChevronsDown } from "lucide-react";
 import { classNames } from "@hkamran/utility-web";
 import { numberWithCommas } from "@hkamran/utility-strings";
@@ -249,7 +249,7 @@ const TestflightCleanerProgram: NextPage = () => {
 
             <Layout>
                 <div className="mx-auto max-w-2xl">
-                    <ProgramHeader
+                    <DynamicHeader
                         id="testflight-cleaner"
                         name={name}
                         description={description}

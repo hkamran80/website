@@ -1,27 +1,28 @@
-import Breadcrumbs from "../navigation/Breadcrumbs";
-import PageHeader from "../pages/header";
+import Breadcrumbs from "./navigation/Breadcrumbs";
+import PageHeader from "./pages/header";
 import { getBaseUrl } from "@/lib/urls";
 import { NextSeo, WebPageJsonLd } from "next-seo";
-import type { ProgramHeaderProps } from "@/types/components";
+import type { DynamicHeaderProps } from "@/types/components";
 
 const typeMap = {
     basePath: {
         program: "/programs",
         showcase: "/showcase",
+        tag: undefined,
     },
-    baseLabel: { program: "Programs", showcase: "Showcase" },
+    baseLabel: { program: "Programs", showcase: "Showcase", tag: "Tags" },
 };
 
-const ProgramHeader = ({
+const DynamicHeader = ({
     id,
     name,
     description,
     type = "program",
-}: ProgramHeaderProps) => {
+}: DynamicHeaderProps) => {
     return (
         <>
             <WebPageJsonLd
-                id={`${getBaseUrl()}/program${type}${id}`}
+                id={`${getBaseUrl()}/program/${type}${id}`}
                 description={description}
             />
 
@@ -51,4 +52,4 @@ const ProgramHeader = ({
     );
 };
 
-export default ProgramHeader;
+export default DynamicHeader;

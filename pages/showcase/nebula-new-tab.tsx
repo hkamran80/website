@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Layout from '@/components/Layout';
 import NavLink from '@/components/navigation/NavLink';
 import NebulaNewTabFeature from '@/components/showcase/nebula-new-tab-feature';
-import ProgramHeader from '@/components/program/header';
+import DynamicHeader from '@/components/DynamicHeader';
 import {
     ChevronDown,
     Clock,
@@ -59,7 +59,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
 
             <Layout>
                 <div className="mx-auto max-w-5xl">
-                    <ProgramHeader
+                    <DynamicHeader
                         id="nebula-new-tab"
                         type="showcase"
                         name="Nebula New Tab"

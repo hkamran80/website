@@ -2,7 +2,7 @@ import feather from "feather-icons";
 import Head from "next/head";
 import InputField from "@/components/InputField";
 import Layout from "@/components/Layout";
-import ProgramHeader from "@/components/program/header";
+import DynamicHeader from "@/components/DynamicHeader";
 import { programs } from "@/data/programs";
 import { resizeIcon } from "@hkamran/utility-web";
 import { useEffect, useState } from "react";
@@ -47,7 +47,7 @@ const FinalGradeCalculatorProgram: NextPage = () => {
 
             <Layout>
                 <div className="mx-auto max-w-2xl">
-                    <ProgramHeader
+                    <DynamicHeader
                         id={metadata.id}
                         name={metadata.name}
                         description={metadata.description}
