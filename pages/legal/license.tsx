@@ -1,7 +1,7 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
+import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import NavLink from "@/components/NavLink";
+import NavLink from "@/components/navigation/NavLink";
 import { getBaseUrl } from "@/lib/urls";
 import { UNSPLASH_URL } from "data/constants";
 import { WebPageJsonLd } from "next-seo";

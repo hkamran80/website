@@ -1,5 +1,5 @@
 import Head from "next/head";
-import NavLink from "@/components/NavLink";
+import NavLink from "@/components/navigation/NavLink";
 import { classNames } from "@hkamran/utility-web";
 import type { NextPage } from "next";
 

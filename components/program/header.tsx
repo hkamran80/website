@@ -1,4 +1,4 @@
-import Breadcrumbs from "../Breadcrumbs";
+import Breadcrumbs from "../navigation/Breadcrumbs";
 import PageHeader from "../pages/header";
 import { getBaseUrl } from "@/lib/urls";
 import { NextSeo, WebPageJsonLd } from "next-seo";

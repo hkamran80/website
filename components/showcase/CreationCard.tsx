@@ -1,4 +1,4 @@
-import NavLink from "./NavLink";
+import NavLink from "../navigation/NavLink";
 import { classNames } from "@hkamran/utility-web";
 import { Globe } from "lucide-react";
 import { siGithub } from "simple-icons/icons";

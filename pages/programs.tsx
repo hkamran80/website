@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import NavLink from "@/components/NavLink";
+import NavLink from "@/components/navigation/NavLink";
 import ProgramCard from "@/components/ProgramCard";
 import { programs } from "../data/programs";
 import { WebPageJsonLd } from "next-seo";

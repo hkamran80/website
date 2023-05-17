@@ -1,9 +1,9 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
+import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import Giscus from "@giscus/react";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import NavLink from "@/components/NavLink";
-import WritingTags from "@/components/WritingTags";
+import NavLink from "@/components/navigation/NavLink";
+import WritingTags from "@/components/writings/WritingTags";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import { FileEdit } from "lucide-react";

@@ -1,9 +1,9 @@
-import ArticleCard from "@/components/ArticleCard";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import ArticleCard from "@/components/writings/ArticleCard";
+import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import NavLink from "@/components/NavLink";
-import NoteCard from "@/components/NoteCard";
+import NavLink from "@/components/navigation/NavLink";
+import NoteCard from "@/components/writings/NoteCard";
 import { arrayUnique, getTags } from "@/lib/writings";
 import { Writing } from "@/types/writings";
 import { WebPageJsonLd } from "next-seo";

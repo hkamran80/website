@@ -1,4 +1,4 @@
-import CreationCard from "@/components/CreationCardLinked";
+import CreationCard from "@/components/showcase/CreationCardLinked";
 import Head from "next/head";
 import Layout from "@/components/Layout";
 import { alphabeticalSort } from "@/lib/sort";

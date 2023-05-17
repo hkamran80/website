@@ -1,4 +1,4 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
+import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import Head from "next/head";
 import InputField from "@/components/InputField";
 import Layout from "@/components/Layout";
