@@ -10,6 +10,12 @@ const revalidationHandler = async (
         return res.status(405).json({ error: "POST requests only" });
     }
 
+    if (!Object.keys(req.headers).includes("X-API-Token")) {
+        return res
+            .status(401)
+            .json({ error: 'Missing required "X-API-Token" header' });
+    }
+
     if (req.headers["X-API-Token"] !== process.env.REVALIDATION_TOKEN) {
         return res.status(401).json({ error: "Invalid token" });
     }

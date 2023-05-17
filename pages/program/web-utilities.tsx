@@ -1,11 +1,16 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
+import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import Head from "next/head";
 import InputField from "@/components/InputField";
 import Layout from "@/components/Layout";
+import DynamicHeader from "@/components/DynamicHeader";
+import { programs } from "@/data/programs";
 import { useEffect, useState } from "react";
-import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
-import { getBaseUrl } from "@/lib/urls";
+import type { Page } from "@/types/pages";
+
+const metadata = programs.find(
+    ({ id }) => id === "overall-grade-after-final-calculator",
+) as Page;
 
 const WebUtilitiesProgram: NextPage = () => {
     const [userAgent, setUserAgent] = useState<string>("");
@@ -19,30 +24,16 @@ const WebUtilitiesProgram: NextPage = () => {
     return (
         <>
             <Head>
-                <title>Web Utilities | H. Kamran</title>
+                <title>{metadata.name} | H. Kamran</title>
             </Head>
-
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/program/web-utilities`}
-                description="Some helpful web utilities"
-            />
 
             <Layout>
                 <div className="mx-auto max-w-2xl">
-                    <Breadcrumbs
-                        basePath="/programs"
-                        baseLabel="Programs"
-                        currentLabel="Web Utilities"
+                    <DynamicHeader
+                        id={metadata.id}
+                        name={metadata.name}
+                        description={metadata.description}
                     />
-
-                    <div className="space-y-2">
-                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                            Web Utilities
-                        </h1>
-                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                            Some helpful web utilities
-                        </h2>
-                    </div>
 
                     <div className="mt-6">
                         <div className="grid grid-cols-1 gap-x-4 gap-y-1 md:grid-cols-2">

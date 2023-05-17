@@ -1,8 +1,8 @@
-import ArticleCard from "@/components/ArticleCard";
-import CreationCard from "@/components/CreationCardLinked";
+import ArticleCard from "@/components/writings/ArticleCard";
+import CreationCard from "@/components/showcase/CreationCardLinked";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import NavLink from "@/components/NavLink";
+import NavLink from "@/components/navigation/NavLink";
 import { alphabeticalSort } from "@/lib/sort";
 import { ChevronDown } from "react-feather";
 import { Creation } from "@/types/creations";
@@ -13,7 +13,7 @@ import { socialIcons } from "../data/navigation";
 import { WebPageJsonLd } from "next-seo";
 import type { GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
-import SocialLinks from "@/components/SocialLinks";
+import SocialLinks from "@/components/navigation/SocialLinks";
 
 type Props = {
     latestArticle: Writing;

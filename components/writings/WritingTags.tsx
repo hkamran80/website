@@ -1,4 +1,4 @@
-import NavLink from "./NavLink";
+import NavLink from "../navigation/NavLink";
 import { Fragment } from "react";
 import { slugify } from "@hkamran/utility-strings";
 

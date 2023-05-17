@@ -3,12 +3,12 @@ import { DefaultSeoProps } from "next-seo";
 const config: DefaultSeoProps = {
     defaultTitle: "H. Kamran",
     description:
-        "I'm a developer, experienced in Python, JavaScript, TypeScript, Vue.js, Java, Kotlin, Swift, and SwiftUI. I also enjoy taking photos and writing articles on topics that interest me or seem useful.",
+        "Hello world! I'm a developer who writes articles on things that interest me or I find useful, and takes photos!",
     themeColor: "#BE154D",
     openGraph: {
         type: "website",
         locale: "en_US",
-        url: "https://hkamran.com/",
+        url: "https://hkamran.com",
         siteName: "H. Kamran",
         profile: { firstName: "H.", lastName: "Kamran" },
         images: [

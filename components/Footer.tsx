@@ -1,5 +1,5 @@
-import NavLink from "./NavLink";
-import SocialLinks from "./SocialLinks";
+import NavLink from "./navigation/NavLink";
+import SocialLinks from "./navigation/SocialLinks";
 import { classNames } from "@hkamran/utility-web";
 import { links } from "../data/navigation";
 

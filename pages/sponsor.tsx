@@ -1,10 +1,11 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
+import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import NavLink from "@/components/NavLink";
+import NavLink from "@/components/navigation/NavLink";
 import { getBaseUrl } from "@/lib/urls";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import PageHeader from "@/components/pages/PageHeader";
 
 const Sponsor: NextPage = () => {
     return (
@@ -18,11 +19,7 @@ const Sponsor: NextPage = () => {
             <div className="mx-auto max-w-2xl">
                 <Breadcrumbs baseLabel="Sponsor" />
 
-                <div className="space-y-2">
-                    <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                        Sponsor
-                    </h1>
-                </div>
+                <PageHeader name="Sponsor" />
 
                 <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
                     <p>

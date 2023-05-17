@@ -1,5 +1,5 @@
 import Footer from "./Footer";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./navigation/NavigationBar";
 import { classNames } from "@hkamran/utility-web";
 
 export default function Layout({

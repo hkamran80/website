@@ -1,15 +1,16 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
+import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import Giscus from "@giscus/react";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import NavLink from "@/components/NavLink";
-import WritingTags from "@/components/WritingTags";
+import NavLink from "@/components/navigation/NavLink";
+import WritingTags from "@/components/writings/WritingTags";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
 import { FileEdit } from "lucide-react";
 import { renderMarkdown } from "@/lib/markdown";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
+import WritingHeader from "@/components/writings/WritingHeader";
 
 type Props = {
     article: Writing;
@@ -30,95 +31,15 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                         <title>{article.title} | H. Kamran</title>
                     </Head>
 
-                    <NextSeo
+                    <WritingHeader
+                        id={article.id}
                         title={article.title}
                         description={article.description}
-                        canonical={`${
-                            typeof window !== "undefined" &&
-                            window.location.origin
-                                ? window.location.origin
-                                : ""
-                        }/article/${article.id}`}
-                        openGraph={{
-                            title: article.title,
-                            description: article.description,
-                            url: `${
-                                typeof window !== "undefined" &&
-                                window.location.origin
-                                    ? window.location.origin
-                                    : ""
-                            }/article/${article.id}`,
-                            type: "article",
-                            article: {
-                                publishedTime: `${article.published}T07:00:00.000-08:00`,
-                                tags: article.tags,
-                            },
-                            images: [
-                                {
-                                    url: articleImage,
-                                    width: 1000,
-                                    height: 500,
-                                    alt: `Featured image for ${article.title}`,
-                                },
-                            ],
-                        }}
-                        twitter={{
-                            cardType: "summary_large_image",
-                        }}
+                        publishDate={article.published}
+                        image={articleImage}
+                        tags={article.tags}
+                        type="article"
                     />
-
-                    <ArticleJsonLd
-                        url={`${
-                            typeof window !== "undefined" &&
-                            window.location.origin
-                                ? window.location.origin
-                                : ""
-                        }/article/${article.id}`}
-                        title={article.title}
-                        description={article.description}
-                        images={[articleImage]}
-                        datePublished={`${article.published}T07:00:00.000-08:00`}
-                        authorName={[
-                            { name: "H. Kamran", url: "https://hkamran.com" },
-                        ]}
-                        publisherName="H. Kamran"
-                        publisherLogo="https://hkamran.com/profile.png"
-                        isAccessibleForFree={true}
-                    />
-
-                    <Breadcrumbs
-                        baseLabel="Articles"
-                        basePath="/articles"
-                        currentLabel={article.title}
-                    />
-
-                    <div className="space-y-2">
-                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                            {article.title}
-                        </h1>
-                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                            {article.description}
-                        </h2>
-                        <h3 className="text-center font-light leading-snug text-gray-400 sm:text-left sm:text-xl">
-                            {article.published !== "" ? (
-                                <time dateTime={article.published}>
-                                    {new Date(
-                                        `${article.published}T12:00:00-07:00`,
-                                    ).toLocaleDateString(undefined, {
-                                        year: "numeric",
-                                        month: "long",
-                                        day: "numeric",
-                                    })}
-                                </time>
-                            ) : (
-                                "Unpublished"
-                            )}
-
-                            <span className="ml-1 mr-2">•</span>
-
-                            <WritingTags basePath="tag" tags={article.tags} />
-                        </h3>
-                    </div>
 
                     <div className="mx-auto mt-6 max-w-5xl">
                         {/* eslint-disable-next-line @next/next/no-img-element */}

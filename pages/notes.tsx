@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import NavLink from "@/components/NavLink";
-import NoteCard from "@/components/NoteCard";
+import NavLink from "@/components/navigation/NavLink";
+import NoteCard from "@/components/writings/NoteCard";
 import { getBaseUrl } from "@/lib/urls";
 import { Rss } from "lucide-react";
 import { sortByDate } from "@/lib/sort";

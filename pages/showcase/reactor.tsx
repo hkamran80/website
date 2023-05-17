@@ -1,9 +1,8 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import NavLink from "@/components/NavLink";
-import { getBaseUrl } from "@/lib/urls";
-import { WebPageJsonLd } from "next-seo";
+import NavLink from "@/components/navigation/NavLink";
+import DynamicHeader from "@/components/DynamicHeader";
+
 import type { NextPage } from "next";
 
 const commands = [
@@ -24,25 +23,14 @@ const Reactor: NextPage = () => {
                 <title>Reactor | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd id={`${getBaseUrl()}/showcase/reactor`} />
-
             <Layout>
                 <div className="mx-auto max-w-2xl">
-                    <Breadcrumbs
-                        basePath="/showcase"
-                        baseLabel="Showcase"
-                        currentLabel="Reactor"
+                    <DynamicHeader
+                        id="reactor"
+                        type="showcase"
+                        name="Reactor"
+                        description="Automatically add reactions to specific users' messages"
                     />
-
-                    <div className="space-y-2">
-                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                            Reactor
-                        </h1>
-                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                            Automatically add reactions to specific users&apos;
-                            messages
-                        </h2>
-                    </div>
 
                     <div className="mt-6">
                         <div className="pt-2">
