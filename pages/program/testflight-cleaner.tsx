@@ -146,21 +146,15 @@ const TestflightCleanerProgram: NextPage = () => {
                                     .toLowerCase() === cleanedRow[2],
                         )
                     ) {
-                        return !leaveMalformedRows
-                            ? previous
-                            : [
-                                  ...previous,
-                                  {
-                                      row: cleanedRow,
-                                      flag: "duplicate",
-                                  },
-                              ];
+                        return [
+                            ...previous,
+                            {
+                                row: cleanedRow,
+                                flag: "duplicate",
+                            },
+                        ];
                     }
-
-                    if (
-                        leaveMalformedRows &&
-                        !checkEmailValidity(cleanedRow[2])
-                    ) {
+                    if (!checkEmailValidity(cleanedRow[2])) {
                         return [
                             ...previous,
                             {
@@ -481,48 +475,67 @@ const TestflightCleanerProgram: NextPage = () => {
                                                             {(Array.isArray(row)
                                                                 ? row
                                                                 : row.row
-                                                            ).map(
-                                                                (
-                                                                    value,
-                                                                    columnIndex,
-                                                                ) => (
-                                                                    <td
-                                                                        key={
-                                                                            columnIndex
-                                                                        }
-                                                                        className={
-                                                                            ((useHeaders &&
-                                                                                rowIndex !==
-                                                                                    0) ||
-                                                                                !useHeaders) &&
-                                                                            columnIndex ===
-                                                                                2
-                                                                                ? classNames(
-                                                                                      (!Array.isArray(
-                                                                                          row,
-                                                                                      ) &&
-                                                                                          row.flag ===
-                                                                                              "duplicate") ||
-                                                                                          duplicatedEmails?.includes(
-                                                                                              value,
-                                                                                          )
-                                                                                          ? "text-yellow-500"
-                                                                                          : "",
-                                                                                      !Array.isArray(
-                                                                                          row,
-                                                                                      ) &&
-                                                                                          row.flag ===
-                                                                                              "malformed"
-                                                                                          ? "text-red-500"
-                                                                                          : "",
-                                                                                  )
-                                                                                : undefined
-                                                                        }
-                                                                    >
-                                                                        {value}
-                                                                    </td>
-                                                                ),
-                                                            )}
+                                                            )
+                                                                .filter(() =>
+                                                                    leaveMalformedRows
+                                                                        ? true
+                                                                        : !(
+                                                                              !Array.isArray(
+                                                                                  row,
+                                                                              ) &&
+                                                                              [
+                                                                                  "malformed",
+                                                                                  "duplicate",
+                                                                              ].includes(
+                                                                                  row.flag,
+                                                                              )
+                                                                          ),
+                                                                )
+                                                                .map(
+                                                                    (
+                                                                        value,
+                                                                        columnIndex,
+                                                                    ) => (
+                                                                        <td
+                                                                            key={
+                                                                                columnIndex
+                                                                            }
+                                                                            className={
+                                                                                leaveMalformedRows &&
+                                                                                ((useHeaders &&
+                                                                                    rowIndex !==
+                                                                                        0) ||
+                                                                                    !useHeaders) &&
+                                                                                columnIndex ===
+                                                                                    2
+                                                                                    ? classNames(
+                                                                                          (!Array.isArray(
+                                                                                              row,
+                                                                                          ) &&
+                                                                                              row.flag ===
+                                                                                                  "duplicate") ||
+                                                                                              duplicatedEmails?.includes(
+                                                                                                  value,
+                                                                                              )
+                                                                                              ? "text-yellow-500"
+                                                                                              : "",
+                                                                                          !Array.isArray(
+                                                                                              row,
+                                                                                          ) &&
+                                                                                              row.flag ===
+                                                                                                  "malformed"
+                                                                                              ? "text-red-500"
+                                                                                              : "",
+                                                                                      )
+                                                                                    : undefined
+                                                                            }
+                                                                        >
+                                                                            {
+                                                                                value
+                                                                            }
+                                                                        </td>
+                                                                    ),
+                                                                )}
                                                         </tr>
                                                     ))}
                                                 </tbody>
