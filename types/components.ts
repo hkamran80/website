@@ -5,4 +5,5 @@ export type HeaderProps = {
 
 export type ProgramHeaderProps = Required<HeaderProps> & {
     id: string;
+    type?: "program" | "showcase";
 };

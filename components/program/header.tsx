@@ -4,22 +4,35 @@ import { getBaseUrl } from "@/lib/urls";
 import { NextSeo, WebPageJsonLd } from "next-seo";
 import type { ProgramHeaderProps } from "@/types/components";
 
-const ProgramHeader = ({ id, name, description }: ProgramHeaderProps) => {
+const typeMap = {
+    basePath: {
+        program: "/programs",
+        showcase: "/showcase",
+    },
+    baseLabel: { program: "Programs", showcase: "Showcase" },
+};
+
+const ProgramHeader = ({
+    id,
+    name,
+    description,
+    type = "program",
+}: ProgramHeaderProps) => {
     return (
         <>
             <WebPageJsonLd
-                id={`${getBaseUrl()}/program/${id}`}
+                id={`${getBaseUrl()}/program${type}${id}`}
                 description={description}
             />
 
             <NextSeo
                 title={name}
                 description={description}
-                canonical={`${getBaseUrl()}/program/${id}`}
+                canonical={`${getBaseUrl()}/${type}/${id}`}
                 openGraph={{
                     title: name,
                     description,
-                    url: `${getBaseUrl()}/program/${id}`,
+                    url: `${getBaseUrl()}/${type}/${id}`,
                     type: "website",
                 }}
                 twitter={{
@@ -28,8 +41,8 @@ const ProgramHeader = ({ id, name, description }: ProgramHeaderProps) => {
             />
 
             <Breadcrumbs
-                basePath="/programs"
-                baseLabel="Programs"
+                basePath={typeMap.basePath[type]}
+                baseLabel={typeMap.baseLabel[type]}
                 currentLabel={name}
             />
 

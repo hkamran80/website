@@ -1,19 +1,18 @@
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
-import Head from "next/head";
-import Layout from "@/components/Layout";
-import NavLink from "@/components/navigation/NavLink";
-import { classNames } from "@hkamran/utility-web";
-import { getBaseUrl } from "@/lib/urls";
-import { Listbox } from "@headlessui/react";
-import { useEffect, useState } from "react";
-import { WebPageJsonLd } from "next-seo";
-import type { GetStaticProps, NextPage } from "next";
+import Head from 'next/head';
+import Layout from '@/components/Layout';
+import NavLink from '@/components/navigation/NavLink';
+import NebulaNewTabFeature from '@/components/showcase/nebula-new-tab-feature';
+import ProgramHeader from '@/components/program/header';
 import {
     ChevronDown,
     Clock,
     Globe,
-    Image as FeatherImage,
-} from "react-feather";
+    Image as FeatherImage
+    } from 'lucide-react';
+import { classNames } from '@hkamran/utility-web';
+import { Listbox } from '@headlessui/react';
+import { useEffect, useState } from 'react';
+import type { GetStaticProps, NextPage } from "next";
 import type { Release, ReleaseDetails } from "@/types/releaseNotes";
 
 const downloadLinks = {
@@ -58,24 +57,14 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                 <title>Nebula New Tab | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd id={`${getBaseUrl()}/showcase/nebula-new-tab`} />
-
             <Layout>
                 <div className="mx-auto max-w-5xl">
-                    <Breadcrumbs
-                        basePath="/showcase"
-                        baseLabel="Showcase"
-                        currentLabel="Nebula New Tab"
+                    <ProgramHeader
+                        id="nebula-new-tab"
+                        type="showcase"
+                        name="Nebula New Tab"
+                        description="A clean and simple new tab page"
                     />
-
-                    <div className="space-y-2">
-                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                            Nebula New Tab
-                        </h1>
-                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                            A clean and simple new tab page
-                        </h2>
-                    </div>
 
                     <div className="mt-6">
                         <div>
@@ -148,93 +137,62 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
 
                                 <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                                     <dl className="space-y-10 lg:grid lg:grid-cols-4 lg:gap-8 lg:space-y-0">
-                                        <div>
-                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900 text-white">
-                                                <Clock />
-                                            </div>
-                                            <div className="mt-5">
-                                                <dt className="text-lg font-medium leading-6 text-gray-100">
-                                                    Time and Date
-                                                </dt>
-                                                <dd className="mt-2 text-base text-gray-500">
-                                                    A key feature of Nebula
-                                                </dd>
-                                            </div>
-                                        </div>
+                                        <NebulaNewTabFeature
+                                            icon={<Clock />}
+                                            name="Time and Date"
+                                        >
+                                            A key feature of Nebula
+                                        </NebulaNewTabFeature>
 
-                                        <div>
-                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900 text-white">
-                                                <FeatherImage />
-                                            </div>
-                                            <div className="mt-5">
-                                                <dt className="text-lg font-medium leading-6 text-gray-100">
-                                                    Background Images
-                                                </dt>
-                                                <dd className="mt-2 text-base text-gray-500">
-                                                    Powered by{" "}
-                                                    <NavLink
-                                                        href="https://unsplash.com/?utm_source=nebula-new-tab&utm_medium=referral"
-                                                        className="underline"
-                                                    >
-                                                        Unsplash
-                                                    </NavLink>
-                                                    ,{" "}
-                                                    <NavLink
-                                                        href="https://unsplash.com/collections/935518/night-sky?utm_source=nebula-new-tab&utm_medium=referral"
-                                                        className="underline"
-                                                    >
-                                                        these background images
-                                                    </NavLink>{" "}
-                                                    are clean and simple, just
-                                                    like Nebula
-                                                    <p className="mt-1 text-sm">
-                                                        Backgrounds refresh
-                                                        every twelve hours or
-                                                        manually in settings
-                                                    </p>
-                                                </dd>
-                                            </div>
-                                        </div>
+                                        <NebulaNewTabFeature
+                                            icon={<FeatherImage />}
+                                            name="Background Images"
+                                        >
+                                            Powered by{" "}
+                                            <NavLink
+                                                href="https://unsplash.com/?utm_source=nebula-new-tab&utm_medium=referral"
+                                                className="underline"
+                                            >
+                                                Unsplash
+                                            </NavLink>
+                                            ,{" "}
+                                            <NavLink
+                                                href="https://unsplash.com/collections/935518/night-sky?utm_source=nebula-new-tab&utm_medium=referral"
+                                                className="underline"
+                                            >
+                                                these background images
+                                            </NavLink>{" "}
+                                            are clean and simple, just like
+                                            Nebula
+                                            <p className="mt-1 text-sm">
+                                                Backgrounds refresh every twelve
+                                                hours or manually in settings
+                                            </p>
+                                        </NebulaNewTabFeature>
 
-                                        <div>
-                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900 text-white">
-                                                <Globe />
-                                            </div>
-                                            <div className="mt-5">
-                                                <dt className="text-lg font-medium leading-6 text-gray-100">
-                                                    Top Sites
-                                                </dt>
-                                                <dd className="mt-2 text-base text-gray-500">
-                                                    View your top visited sites
-                                                    in Nebula
-                                                    <p className="mt-1 text-sm">
-                                                        This feature can be
-                                                        turned on from the
-                                                        settings menu
-                                                    </p>
-                                                </dd>
-                                            </div>
-                                        </div>
+                                        <NebulaNewTabFeature
+                                            icon={<Globe />}
+                                            name="Top Sites"
+                                        >
+                                            View your top visited sites in
+                                            Nebula
+                                            <p className="mt-1 text-sm">
+                                                This feature can be turned on
+                                                from the settings menu
+                                            </p>
+                                        </NebulaNewTabFeature>
 
-                                        <div>
-                                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-900 text-white">
-                                                <Clock />
-                                            </div>
-                                            <div className="mt-5">
-                                                <dt className="text-lg font-medium leading-6 text-gray-100">
-                                                    24-Hour Time
-                                                </dt>
-                                                <dd className="mt-2 text-base text-gray-500">
-                                                    An essential feature in many
-                                                    people&quot;s eyes
-                                                    <p className="mt-1 text-sm">
-                                                        This feature can be
-                                                        turned on from the
-                                                        settings menu
-                                                    </p>
-                                                </dd>
-                                            </div>
-                                        </div>
+                                        <NebulaNewTabFeature
+                                            icon={<Clock />}
+                                            name="24-Hour Time"
+                                        >
+                                            An essential feature in many
+                                            people&apos;s eyes
+                                            <p className="mt-1 text-sm">
+                                                This feature can be turned on
+                                                from the settings menu
+                                            </p>
+                                        </NebulaNewTabFeature>
                                     </dl>
                                 </div>
                             </div>
