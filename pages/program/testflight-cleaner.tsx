@@ -154,7 +154,7 @@ const TestflightCleanerProgram: NextPage = () => {
                             },
                         ];
                     }
-                    
+
                     if (!checkEmailValidity(cleanedRow[2])) {
                         return [
                             ...previous,
@@ -189,7 +189,6 @@ const TestflightCleanerProgram: NextPage = () => {
     };
 
     const upload = () => {
-        const file = csvFile;
         const reader = new FileReader();
 
         reader.onload = (e) => {
@@ -204,8 +203,8 @@ const TestflightCleanerProgram: NextPage = () => {
             }
         };
 
-        if (file) {
-            reader.readAsText(file);
+        if (csvFile) {
+            reader.readAsText(csvFile);
         }
     };
 
