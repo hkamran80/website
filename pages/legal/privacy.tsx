@@ -5,6 +5,7 @@ import NavLink from "@/components/navigation/NavLink";
 import { getBaseUrl } from "@/lib/urls";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
+import PageHeader from "@/components/pages/header";
 
 const PrivacyPolicy: NextPage = () => {
     return (
@@ -22,14 +23,10 @@ const PrivacyPolicy: NextPage = () => {
                     currentLabel="Privacy Policy"
                 />
 
-                <div className="space-y-2">
-                    <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                        Privacy Policy
-                    </h1>
-                    <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                        Last Updated: March 3, 2022
-                    </h2>
-                </div>
+                <PageHeader
+                    name="Privacy Policy"
+                    description="Last Updated: March 3, 2022"
+                />
 
                 <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
                     <p>

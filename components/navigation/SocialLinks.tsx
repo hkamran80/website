@@ -1,6 +1,6 @@
 import NavLink from "./NavLink";
 import { slugify } from "@hkamran/utility-strings";
-import { socialIcons } from "data/navigation";
+import { socialIcons } from "@/data/navigation";
 
 type Props = {
     /**
