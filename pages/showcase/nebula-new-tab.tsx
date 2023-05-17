@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Layout from '@/components/Layout';
 import NavLink from '@/components/navigation/NavLink';
-import NebulaNewTabFeature from '@/components/showcase/nebula-new-tab-feature';
+import NebulaNewTabFeature from '@/components/showcase/NebulaNewTabFeature';
 import DynamicHeader from '@/components/DynamicHeader';
 import {
     ChevronDown,

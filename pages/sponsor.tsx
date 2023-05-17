@@ -5,7 +5,7 @@ import NavLink from "@/components/navigation/NavLink";
 import { getBaseUrl } from "@/lib/urls";
 import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
-import PageHeader from "@/components/pages/header";
+import PageHeader from "@/components/pages/PageHeader";
 
 const Sponsor: NextPage = () => {
     return (

@@ -2,7 +2,7 @@ import Breadcrumbs from '@/components/navigation/Breadcrumbs';
 import Head from 'next/head';
 import Layout from '@/components/Layout';
 import NavLink from '@/components/navigation/NavLink';
-import PageHeader from '@/components/pages/header';
+import PageHeader from '@/components/pages/PageHeader';
 import { getBaseUrl } from '@/lib/urls';
 import { UNSPLASH_URL } from '@/data/constants';
 import { WebPageJsonLd } from 'next-seo';
