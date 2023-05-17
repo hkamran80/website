@@ -11,14 +11,12 @@ type Props = {
 
 const SocialLinks = ({ classNames }: Props) => (
     <>
-        {socialIcons.map(({ url, icon, rels }, index) => (
+        {socialIcons.map(({ url, icon }, index) => (
             <NavLink
                 key={index}
                 href={url}
                 aria-label={icon.title}
-                rel={`noopener noreferrer me${
-                    rels ? ` ${rels.join(" ")}` : null
-                }`}
+                rel="noopener noreferrer me"
                 className={`umami--click--${slugify(icon.title)}-link-social`}
             >
                 <svg
