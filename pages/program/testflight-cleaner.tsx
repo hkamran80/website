@@ -154,6 +154,7 @@ const TestflightCleanerProgram: NextPage = () => {
                             },
                         ];
                     }
+                    
                     if (!checkEmailValidity(cleanedRow[2])) {
                         return [
                             ...previous,
