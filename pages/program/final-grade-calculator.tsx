@@ -1,13 +1,17 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
 import feather from "feather-icons";
 import Head from "next/head";
 import InputField from "@/components/InputField";
 import Layout from "@/components/Layout";
+import ProgramHeader from "@/components/program/header";
+import { programs } from "@/data/programs";
 import { resizeIcon } from "@hkamran/utility-web";
 import { useEffect, useState } from "react";
-import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
-import { getBaseUrl } from "@/lib/urls";
+import type { Page } from "@/types/pages";
+
+const metadata = programs.find(
+    ({ id }) => id === "final-grade-calculator",
+) as Page;
 
 const messages = (score: number): string => {
     if (score > 100) {
@@ -38,31 +42,16 @@ const FinalGradeCalculatorProgram: NextPage = () => {
     return (
         <>
             <Head>
-                <title>Final Grade Calculator | H. Kamran</title>
+                <title>{metadata.name} | H. Kamran</title>
             </Head>
-
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/program/final-grade-calculator`}
-                description="Calculate the score you need to get on a final to get a particular grade"
-            />
 
             <Layout>
                 <div className="mx-auto max-w-2xl">
-                    <Breadcrumbs
-                        basePath="/programs"
-                        baseLabel="Programs"
-                        currentLabel="Final Grade Calculator"
+                    <ProgramHeader
+                        id={metadata.id}
+                        name={metadata.name}
+                        description={metadata.description}
                     />
-
-                    <div className="space-y-2">
-                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                            Final Grade Calculator
-                        </h1>
-                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                            Calculate the score you need to get on a final to
-                            get a particular grade
-                        </h2>
-                    </div>
 
                     <div className="mt-6">
                         <div className="grid grid-cols-1 gap-x-4 gap-y-1 md:grid-cols-2">

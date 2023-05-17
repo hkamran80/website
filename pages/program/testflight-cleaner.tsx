@@ -1,12 +1,10 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import ProgramHeader from "@/components/program/header";
 import { ChevronsDown } from "lucide-react";
 import { classNames } from "@hkamran/utility-web";
-import { getBaseUrl } from "@/lib/urls";
 import { numberWithCommas } from "@hkamran/utility-strings";
 import { useEffect, useState } from "react";
-import { NextSeo, WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
 
 type CsvRow = string[] | { row: string[]; flag: "malformed" | "duplicate" };
@@ -249,42 +247,13 @@ const TestflightCleanerProgram: NextPage = () => {
                 <title>{name} | H. Kamran</title>
             </Head>
 
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/program/testflight-cleaner`}
-                description={description}
-            />
-
-            <NextSeo
-                title={name}
-                description={description}
-                canonical={`${getBaseUrl()}/program/testflight-cleaner`}
-                openGraph={{
-                    title: name,
-                    description,
-                    url: `${getBaseUrl()}/program/testflight-cleaner`,
-                    type: "website",
-                }}
-                twitter={{
-                    cardType: "summary",
-                }}
-            />
-
             <Layout>
                 <div className="mx-auto max-w-2xl">
-                    <Breadcrumbs
-                        basePath="/programs"
-                        baseLabel="Programs"
-                        currentLabel={name}
+                    <ProgramHeader
+                        id="testflight-cleaner"
+                        name={name}
+                        description={description}
                     />
-
-                    <div className="space-y-2">
-                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                            {name}
-                        </h1>
-                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                            {description}
-                        </h2>
-                    </div>
 
                     <div className="mt-6">
                         <div className="grid grid-cols-1 gap-x-4 gap-y-1 md:grid-cols-2">

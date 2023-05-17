@@ -1,13 +1,17 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
 import feather from "feather-icons";
 import Head from "next/head";
 import InputField from "@/components/InputField";
 import Layout from "@/components/Layout";
+import ProgramHeader from "@/components/program/header";
+import { programs } from "@/data/programs";
 import { resizeIcon } from "@hkamran/utility-web";
 import { useEffect, useState } from "react";
-import { WebPageJsonLd } from "next-seo";
 import type { NextPage } from "next";
-import { getBaseUrl } from "@/lib/urls";
+import type { Page } from "@/types/pages";
+
+const metadata = programs.find(
+    ({ id }) => id === "overall-grade-after-final-calculator",
+) as Page;
 
 const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
     const [gradeBeforeFinal, setGradeBeforeFinal] = useState<number | null>(
@@ -32,31 +36,16 @@ const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
     return (
         <>
             <Head>
-                <title>Overall Grade After Final Calculator | H. Kamran</title>
+                <title>{metadata.name} | H. Kamran</title>
             </Head>
-
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/program/overall-grade-after-final-calculator`}
-                description="Calculate the grade you'll get after taking a final"
-            />
 
             <Layout>
                 <div className="mx-auto max-w-2xl">
-                    <Breadcrumbs
-                        basePath="/programs"
-                        baseLabel="Programs"
-                        currentLabel="Overall Grade After Final Calculator"
+                    <ProgramHeader
+                        id={metadata.id}
+                        name={metadata.name}
+                        description={metadata.description}
                     />
-
-                    <div className="space-y-2">
-                        <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                            Overall Grade After Final Calculator
-                        </h1>
-                        <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                            Calculate the grade you&apos;ll get after taking a
-                            final
-                        </h2>
-                    </div>
 
                     <div className="mt-6">
                         <div className="grid grid-cols-1 gap-x-4 gap-y-1 md:grid-cols-2">
