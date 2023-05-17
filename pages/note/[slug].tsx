@@ -10,6 +10,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
 import { renderMarkdown } from "@/lib/markdown";
 import { getBaseUrl } from "@/lib/urls";
+import WritingHeader from "@/components/writings/WritingHeader";
 
 type Props = {
     note: Writing;
@@ -23,77 +24,14 @@ const Note: NextPage<Props> = ({ note, content }) => {
                 <title>{note.title} | H. Kamran</title>
             </Head>
 
-            <NextSeo
+            <WritingHeader
+                id={note.id}
                 title={note.title}
                 description={note.description}
-                canonical={`${getBaseUrl()}/note/${note.id}`}
-                openGraph={{
-                    title: note.title,
-                    description: note.description,
-                    url: `${
-                        typeof window !== "undefined" && window.location.origin
-                            ? window.location.origin
-                            : ""
-                    }/note/${note.id}`,
-                    type: "article",
-                    article: {
-                        publishedTime: `${note.published}T07:00:00.000-08:00`,
-                        tags: note.tags,
-                    },
-                }}
-                twitter={{
-                    cardType: "summary_large_image",
-                }}
+                publishDate={note.published}
+                tags={note.tags}
+                type="note"
             />
-
-            <ArticleJsonLd
-                url={`${getBaseUrl()}/note/${note.id}`}
-                title={note.title}
-                description={note.description}
-                images={[]}
-                datePublished={`${note.published}T12:00:00-07:00`}
-                authorName={[{ name: "H. Kamran", url: "https://hkamran.com" }]}
-                publisherName="H. Kamran"
-                publisherLogo="https://hkamran.com/profile.png"
-                isAccessibleForFree={true}
-            />
-
-            <Breadcrumbs
-                baseLabel="Notes"
-                basePath="/notes"
-                currentLabel={note.title}
-            />
-
-            <div className="space-y-2">
-                <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                    {note.title}
-                </h1>
-                <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
-                    {note.description}
-                </h2>
-                <h3 className="text-center font-light leading-snug text-gray-400 sm:text-left sm:text-xl">
-                    {note.published !== "" ? (
-                        <time dateTime={note.published}>
-                            {new Date(
-                                `${note.published}T12:00:00-07:00`,
-                            ).toLocaleDateString(undefined, {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric",
-                            })}
-                        </time>
-                    ) : (
-                        "Unpublished"
-                    )}
-
-                    {note.tags && (
-                        <>
-                            <span className="ml-1 mr-2">•</span>
-                            <WritingTags basePath="notes" tags={note.tags} />
-                        </>
-                    )}
-                </h3>
-            </div>
 
             <div className="mx-auto mt-6 max-w-3xl">
                 <article
