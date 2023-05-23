@@ -1,6 +1,7 @@
 // Switch to hashes/nonce
 const ContentSecurityPolicy = `
   default-src 'self' vitals.vercel-insights.com giscus.app assets.hkamran.com data: umami.unisontech.org;
+  img-src 'self' assets.hkamran.com i.ibb.co;
   script-src 'self' umami.unisontech.org;
   style-src 'self' 'unsafe-inline' data:;
   font-src 'self';
@@ -47,7 +48,7 @@ const securityHeaders = [
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ["i.imgur.com", "images.unsplash.com", "assets.hkamran.com"],
+        domains: ["assets.hkamran.com"],
     },
     webpack: (config) => {
         config.experiments = { topLevelAwait: true, layers: true };
