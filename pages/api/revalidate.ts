@@ -10,13 +10,17 @@ const revalidationHandler = async (
         return res.status(405).json({ error: "POST requests only" });
     }
 
-    if (!Object.keys(req.headers).includes("X-API-Token")) {
+    if (
+        !Object.keys(req.headers)
+            .map((header) => header.toLowerCase())
+            .includes("x-api-key")
+    ) {
         return res
             .status(401)
-            .json({ error: 'Missing required "X-API-Token" header' });
+            .json({ error: 'Missing required "x-api-key" header' });
     }
 
-    if (req.headers["X-API-Token"] !== process.env.REVALIDATION_TOKEN) {
+    if (req.headers["x-api-key"] !== process.env.REVALIDATION_TOKEN) {
         return res.status(401).json({ error: "Invalid token" });
     }
 
