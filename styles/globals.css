@@ -5,3 +5,7 @@
 body {
     @apply bg-black text-white;
 }
+
+section.footnotes {
+    @apply text-sm;
+}
