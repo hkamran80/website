@@ -158,6 +158,9 @@ class WebsiteDocument extends Document {
                         href="https://webmention.io/hkamran.com/xmlrpc"
                     />
                     <link href="https://github.com/hkamran80" rel="me authn" />
+
+                    {/* Dark Reader */}
+                    <meta name="darkreader-lock" />
                 </Head>
                 <body>
                     <style>{styles}</style>
