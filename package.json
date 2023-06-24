@@ -19,7 +19,7 @@
         "@hkamran/utility-web": "^1.0.1",
         "feather-icons": "^4.29.0",
         "feed": "^4.2.2",
-        "lucide-react": "^0.102.0",
+        "lucide-react": "^0.233.0",
         "markdown-it": "^12.3.2",
         "markdown-it-footnote": "^3.0.3",
         "markdown-it-image-figures": "^2.1.1",
