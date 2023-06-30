@@ -1,148 +1,145 @@
-import ArticleCard from "@/components/writings/ArticleCard";
-import CreationCard from "@/components/showcase/CreationCardLinked";
+import { WebPageJsonLd } from "next-seo";
 import Head from "next/head";
+import { ChevronDown } from "react-feather";
+
 import Layout from "@/components/Layout";
 import NavLink from "@/components/navigation/NavLink";
+import SocialLinks from "@/components/navigation/SocialLinks";
+import CreationCard from "@/components/showcase/CreationCardLinked";
+import ArticleCard from "@/components/writings/ArticleCard";
+import { SHOWCASE_URL, WRITINGS_URL } from "@/data/constants";
 import { alphabeticalSort } from "@/lib/sort";
-import { ChevronDown } from "react-feather";
-import { Creation } from "@/types/creations";
 import { getBaseUrl } from "@/lib/urls";
-import { SHOWCASE_URL, WRITINGS_URL } from "../data/constants";
-import { slugify } from "@hkamran/utility-strings";
-import { socialIcons } from "../data/navigation";
-import { WebPageJsonLd } from "next-seo";
+import { Creation } from "@/types/creations";
 import type { GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
-import SocialLinks from "@/components/navigation/SocialLinks";
 
 type Props = {
     latestArticle: Writing;
     featuredShowcase: Creation[];
 };
 
-const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => {
-    return (
-        <>
-            <Head>
-                <title>H. Kamran</title>
-            </Head>
+const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => (
+    <>
+        <Head>
+            <title>H. Kamran</title>
+        </Head>
 
-            <WebPageJsonLd id={`${getBaseUrl()}/`} />
+        <WebPageJsonLd id={`${getBaseUrl()}/`} />
 
-            <main>
-                <section
-                    id="overview"
-                    className="mx-auto flex h-screen max-w-5xl flex-col"
+        <main>
+            <section
+                id="overview"
+                className="mx-auto flex h-screen max-w-5xl flex-col"
+            >
+                <Layout
+                    navigationBar={true}
+                    containerClasses="mt-6 md:mt-0"
+                    childrenClasses="my-auto flex flex-col space-y-8"
+                    footerClasses="pb-12 text-gray-500 justify-center flex flex-col space-y-4 justify-center"
+                    footer={
+                        <>
+                            <NavLink
+                                href="/sponsor"
+                                className="text-center uppercase tracking-widest transition duration-300 hover:scale-125 hover:text-pink-700"
+                            >
+                                Sponsor
+                            </NavLink>
+
+                            <div className="flex flex-row justify-center space-x-7">
+                                <SocialLinks classNames="h-6 w-6 fill-gray-500 transition duration-300 hover:scale-125 hover:fill-pink-700" />
+                            </div>
+
+                            <button type="button" className="mx-auto">
+                                <ChevronDown
+                                    size={48}
+                                    onClick={() =>
+                                        document
+                                            .getElementById("creations")
+                                            ?.scrollIntoView({
+                                                behavior: "smooth",
+                                            })
+                                    }
+                                    className="stroke-gray-500 transition duration-300 hover:scale-125 hover:stroke-pink-700"
+                                />
+                            </button>
+                        </>
+                    }
                 >
-                    <Layout
-                        navigationBar={true}
-                        containerClasses="mt-6 md:mt-0"
-                        childrenClasses="my-auto flex flex-col space-y-8"
-                        footerClasses="pb-12 text-gray-500 justify-center flex flex-col space-y-4 justify-center"
-                        footer={
-                            <>
-                                <NavLink
-                                    href="/sponsor"
-                                    className="text-center uppercase tracking-widest transition duration-300 hover:scale-125 hover:text-pink-700"
-                                >
-                                    Sponsor
-                                </NavLink>
+                    <div className="mx-auto flex max-w-3xl grow flex-col items-center justify-center space-y-2 px-0 text-center uppercase">
+                        <span className="text-sm tracking-wider md:text-2xl">
+                            H. Kamran
+                        </span>
+                        <span className="text-3xl font-extrabold leading-tight tracking-wide text-pink-700 md:text-7xl md:leading-tight">
+                            Developer and
+                            <br />
+                            Amateur Photographer
+                        </span>
+                    </div>
+                </Layout>
+            </section>
 
-                                <div className="flex flex-row justify-center space-x-7">
-                                    <SocialLinks classNames="h-6 w-6 fill-gray-500 transition duration-300 hover:scale-125 hover:fill-pink-700" />
-                                </div>
+            <section
+                id="creations"
+                className="mx-auto flex h-screen max-w-5xl flex-col text-white"
+            >
+                <Layout childrenClasses="space-y-12" footerClasses="py-14">
+                    <section>
+                        <div className="flex w-full items-center">
+                            <span className="flex-1 uppercase tracking-wide text-gray-300">
+                                Latest Article
+                            </span>
 
-                                <button type="button" className="mx-auto">
-                                    <ChevronDown
-                                        size={48}
-                                        onClick={() =>
-                                            document
-                                                .getElementById("creations")
-                                                ?.scrollIntoView({
-                                                    behavior: "smooth",
-                                                })
-                                        }
-                                        className="stroke-gray-500 transition duration-300 hover:scale-125 hover:stroke-pink-700"
-                                    />
-                                </button>
-                            </>
-                        }
-                    >
-                        <div className="mx-auto flex max-w-3xl grow flex-col items-center justify-center space-y-2 px-0 text-center uppercase">
-                            <span className="text-sm tracking-wider md:text-2xl">
-                                H. Kamran
-                            </span>
-                            <span className="text-3xl font-extrabold leading-tight tracking-wide text-pink-700 md:text-7xl md:leading-tight">
-                                Developer and
-                                <br />
-                                Amateur Photographer
-                            </span>
+                            <NavLink
+                                href="/articles"
+                                className="text-sm uppercase text-gray-500 transition-colors duration-200 ease-in hover:text-pink-700"
+                            >
+                                See All
+                            </NavLink>
                         </div>
-                    </Layout>
-                </section>
 
-                <section
-                    id="creations"
-                    className="mx-auto flex h-screen max-w-5xl flex-col text-white"
-                >
-                    <Layout childrenClasses="space-y-12" footerClasses="py-14">
-                        <section>
-                            <div className="flex w-full items-center">
-                                <span className="flex-1 uppercase tracking-wide text-gray-300">
-                                    Latest Article
-                                </span>
+                        <div className="mt-4">
+                            <NavLink href={`/article/${latestArticle.id}`}>
+                                <ArticleCard
+                                    article={latestArticle}
+                                    topPadding={false}
+                                />
+                            </NavLink>
+                        </div>
+                    </section>
 
-                                <NavLink
-                                    href="/articles"
-                                    className="text-sm uppercase text-gray-500 transition-colors duration-200 ease-in hover:text-pink-700"
-                                >
-                                    See All
-                                </NavLink>
-                            </div>
+                    <section>
+                        <div className="flex w-full items-center">
+                            <span className="flex-1 uppercase tracking-wide text-gray-300">
+                                Featured Showcase
+                            </span>
 
-                            <div className="mt-4">
-                                <NavLink href={`/article/${latestArticle.id}`}>
-                                    <ArticleCard
-                                        article={latestArticle}
-                                        topPadding={false}
+                            <NavLink
+                                href="/showcase"
+                                className="text-sm uppercase text-gray-500 transition-colors duration-200 ease-in hover:text-pink-700"
+                            >
+                                See All
+                            </NavLink>
+                        </div>
+
+                        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+                            {featuredShowcase
+                                .sort((a, b) =>
+                                    alphabeticalSort(a.name, b.name)
+                                )
+                                .map((creation, index) => (
+                                    <CreationCard
+                                        key={index}
+                                        creation={creation}
                                     />
-                                </NavLink>
-                            </div>
-                        </section>
-
-                        <section>
-                            <div className="flex w-full items-center">
-                                <span className="flex-1 uppercase tracking-wide text-gray-300">
-                                    Featured Showcase
-                                </span>
-
-                                <NavLink
-                                    href="/showcase"
-                                    className="text-sm uppercase text-gray-500 transition-colors duration-200 ease-in hover:text-pink-700"
-                                >
-                                    See All
-                                </NavLink>
-                            </div>
-
-                            <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
-                                {featuredShowcase
-                                    .sort((a, b) =>
-                                        alphabeticalSort(a.name, b.name),
-                                    )
-                                    .map((creation, index) => (
-                                        <CreationCard
-                                            key={index}
-                                            creation={creation}
-                                        />
-                                    ))}
-                            </div>
-                        </section>
-                    </Layout>
-                </section>
-            </main>
-        </>
-    );
-};
+                                ))}
+                        </div>
+                    </section>
+                </Layout>
+            </section>
+        </main>
+    </>
+);
 
 export const getStaticProps: GetStaticProps = async () => {
     const featuredShowcase = (

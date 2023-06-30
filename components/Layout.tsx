@@ -1,6 +1,7 @@
+import { classNames } from "@hkamran/utility-web";
+
 import Footer from "./Footer";
 import NavigationBar from "./navigation/NavigationBar";
-import { classNames } from "@hkamran/utility-web";
 
 export default function Layout({
     navigationBar,
@@ -24,7 +25,7 @@ export default function Layout({
             className={classNames(
                 containerClasses
                     ? containerClasses
-                    : "h-screen bg-black text-white",
+                    : "h-screen bg-black text-white"
             )}
         >
             <div className="mx-auto flex h-screen max-w-5xl flex-col">
@@ -39,7 +40,7 @@ export default function Layout({
                         className={classNames(
                             "w-full",
                             center ? "m-auto" : "",
-                            childrenClasses ? childrenClasses : "mb-10",
+                            childrenClasses ? childrenClasses : "mb-10"
                         )}
                     >
                         {children}
@@ -55,7 +56,7 @@ export default function Layout({
                         !footer
                             ? "space-y-4 text-center text-xs text-gray-500"
                             : "",
-                        footerClasses ? footerClasses : "",
+                        footerClasses ? footerClasses : ""
                     )}
                 >
                     {footer || footer === false ? footer : <Footer />}

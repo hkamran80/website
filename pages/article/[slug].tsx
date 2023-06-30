@@ -1,16 +1,14 @@
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import Giscus from "@giscus/react";
+import { FileEdit } from "lucide-react";
 import Head from "next/head";
+
 import Layout from "@/components/Layout";
 import NavLink from "@/components/navigation/NavLink";
-import WritingTags from "@/components/writings/WritingTags";
-import { ArticleJsonLd, NextSeo } from "next-seo";
-import { BASE_WRITINGS_URL, WRITINGS_URL } from "../../data/constants";
-import { FileEdit } from "lucide-react";
+import WritingHeader from "@/components/writings/WritingHeader";
+import { BASE_WRITINGS_URL, WRITINGS_URL } from "@/data/constants";
 import { renderMarkdown } from "@/lib/markdown";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { Writing } from "@/types/writings";
-import WritingHeader from "@/components/writings/WritingHeader";
 
 type Props = {
     article: Writing;
@@ -112,7 +110,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const writings = await res.json();
 
     const article = (writings.articles as Writing[]).find(
-        (article) => article.id === params?.slug,
+        (article) => article.id === params?.slug
     );
 
     if (article) {
@@ -122,10 +120,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                     article.published === "" && article.branchName
                         ? BASE_WRITINGS_URL.replace(
                               "/main/",
-                              `/${article.branchName}/`,
+                              `/${article.branchName}/`
                           )
                         : BASE_WRITINGS_URL
-                }/articles/${article.filename}.md`,
+                }/articles/${article.filename}.md`
             )
         ).text();
 

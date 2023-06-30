@@ -1,7 +1,9 @@
-import { NextSeo, ArticleJsonLd } from "next-seo";
+import { ArticleJsonLd, NextSeo } from "next-seo";
+
+import { getBaseUrl } from "@/lib/urls";
+
 import Breadcrumbs from "../navigation/Breadcrumbs";
 import WritingTags from "./WritingTags";
-import { getBaseUrl } from "@/lib/urls";
 
 type Props = {
     id: string;
@@ -91,7 +93,7 @@ const WritingHeader = ({
                     {publishDate !== "" ? (
                         <time dateTime={publishDate}>
                             {new Date(
-                                `${publishDate}T12:00:00-07:00`,
+                                `${publishDate}T12:00:00-07:00`
                             ).toLocaleDateString(undefined, {
                                 year: "numeric",
                                 month: "long",

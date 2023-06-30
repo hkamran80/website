@@ -1,7 +1,9 @@
+import { NextSeo, WebPageJsonLd } from "next-seo";
+
+import { getBaseUrl } from "@/lib/urls";
+
 import Breadcrumbs from "./navigation/Breadcrumbs";
 import PageHeader from "./pages/PageHeader";
-import { getBaseUrl } from "@/lib/urls";
-import { NextSeo, WebPageJsonLd } from "next-seo";
 import type { DynamicHeaderProps } from "@/types/components";
 
 const typeMap = {

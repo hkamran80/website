@@ -1,4 +1,5 @@
 import { slugify } from "@hkamran/utility-strings";
+
 import type { Writing, WritingTags } from "@/types/writings";
 
 /**
@@ -9,19 +10,18 @@ import type { Writing, WritingTags } from "@/types/writings";
  */
 export const getTags = (
     writings: Writing[],
-    slugifyTag: boolean = false,
-): WritingTags => {
-    return Object.fromEntries(
+    slugifyTag: boolean = false
+): WritingTags =>
+    Object.fromEntries(
         Array.from(
-            new Set(writings.flatMap((writing: Writing) => writing.tags)),
+            new Set(writings.flatMap((writing: Writing) => writing.tags))
         ).map((tag) => [
             slugifyTag ? slugify(tag) : tag,
             writings
                 .filter(({ tags }) => tags.indexOf(tag) !== -1)
                 .map(({ id }) => id),
-        ]),
+        ])
     );
-};
 
 /**
  * Remove duplicate entries from an array
@@ -29,10 +29,10 @@ export const getTags = (
  * @returns {any[]} The array without duplicate entries
  */
 export const arrayUnique = (array: any[]): any[] => {
-    var a = array.concat();
+    const a = array.concat();
 
-    for (var i = 0; i < a.length; ++i) {
-        for (var j = i + 1; j < a.length; ++j) {
+    for (let i = 0; i < a.length; ++i) {
+        for (let j = i + 1; j < a.length; ++j) {
             if (a[i] === a[j]) a.splice(j--, 1);
         }
     }

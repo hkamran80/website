@@ -1,13 +1,14 @@
+import { SimpleIcon } from "simple-icons";
 import {
     siGithub,
-    siTwitter,
-    siStackoverflow,
-    siMedium,
-    siUnsplash,
     siMastodon,
+    siMedium,
+    siStackoverflow,
+    siTwitter,
+    siUnsplash,
 } from "simple-icons/icons";
+
 import { UNSPLASH_URL } from "./constants";
-import { SimpleIcon } from "simple-icons";
 
 type Social = {
     url: string;
@@ -18,7 +19,7 @@ export const socialIcons: Social[] = [
     {
         url: "https://github.com/hkamran80",
         icon: siGithub,
-        color: null
+        color: null,
     },
     { url: "https://twitter.com/hkamran80", icon: siTwitter, color: "#1DA1F2" },
     { url: "https://vmst.io/@hkamran", icon: siMastodon, color: null },

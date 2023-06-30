@@ -1,15 +1,16 @@
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+
+import DynamicHeader from "@/components/DynamicHeader";
 import InputField from "@/components/InputField";
 import Layout from "@/components/Layout";
-import DynamicHeader from "@/components/DynamicHeader";
+import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import { programs } from "@/data/programs";
-import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import type { Page } from "@/types/pages";
 
 const metadata = programs.find(
-    ({ id }) => id === "overall-grade-after-final-calculator",
+    ({ id }) => id === "overall-grade-after-final-calculator"
 ) as Page;
 
 const WebUtilitiesProgram: NextPage = () => {

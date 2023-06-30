@@ -1,8 +1,10 @@
-import Image from "next/image";
-import NavLink from "./NavLink";
 import { classNames } from "@hkamran/utility-web";
-import { links } from "../../data/navigation";
+import Image from "next/image";
 import { useRouter } from "next/router";
+
+import { links } from "@/data/navigation";
+
+import NavLink from "./NavLink";
 
 const NavigationBar = () => {
     const router = useRouter();
@@ -30,14 +32,14 @@ const NavigationBar = () => {
                                 aliases
                                     .map(
                                         (alias) =>
-                                            router.asPath.indexOf(alias) !== -1,
+                                            router.asPath.indexOf(alias) !== -1
                                     )
                                     .filter((alias) => alias).length > 0
                                 ? "text-pink-700 underline underline-offset-4"
                                 : "text-gray-500 hover:text-pink-700",
                             href.includes("unsplash")
                                 ? "umami--click--unsplash-navbar"
-                                : "",
+                                : ""
                         )}
                         target={!href.startsWith("/") ? "_blank" : ""}
                         conditionalClassNames="hover:cursor-pointer"

@@ -4,7 +4,7 @@ type RevalidationOutput = { revalidated: boolean } | { error: string };
 
 const revalidationHandler = async (
     req: NextApiRequest,
-    res: NextApiResponse,
+    res: NextApiResponse
 ) => {
     if (req.method !== "POST") {
         return res.status(405).json({ error: "POST requests only" });
@@ -36,7 +36,7 @@ const revalidationHandler = async (
     let success = true;
 
     const revalidatePath = async (
-        path: string,
+        path: string
     ): Promise<RevalidationOutput> => {
         try {
             await res.revalidate(path);
@@ -49,7 +49,7 @@ const revalidationHandler = async (
     const paths = (req.query.path as string).split(",");
     if (paths.length > 1) {
         const outputs = await Promise.all(
-            paths.map((path) => revalidatePath(path)),
+            paths.map((path) => revalidatePath(path))
         );
 
         outputs.forEach((output, index) => {

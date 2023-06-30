@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { classNames } from "@hkamran/utility-web";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { type HTMLAttributeAnchorTarget } from "react";
 
@@ -33,7 +33,7 @@ const NavLink = ({
                 }ref=hkamran.com`}
                 className={classNames(
                     className ?? "",
-                    conditionalClassNames ?? "",
+                    conditionalClassNames ?? ""
                 )}
                 target={target ?? "_blank"}
                 rel={rel ?? "noopener noreferrer"}
@@ -48,7 +48,7 @@ const NavLink = ({
                 href={href}
                 className={classNames(
                     className ?? "",
-                    conditionalClassNames ?? "",
+                    conditionalClassNames ?? ""
                 )}
                 target={target}
                 rel={rel}

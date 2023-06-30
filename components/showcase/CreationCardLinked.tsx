@@ -1,5 +1,5 @@
-import CreationCard from "./CreationCard";
 import NavLink from "../navigation/NavLink";
+import CreationCard from "./CreationCard";
 import type { Creation } from "@/types/creations";
 
 const CreationCardLinked = ({ creation }: { creation: Creation }) => {

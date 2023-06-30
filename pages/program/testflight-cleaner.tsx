@@ -1,10 +1,11 @@
-import Head from "next/head";
-import Layout from "@/components/Layout";
-import DynamicHeader from "@/components/DynamicHeader";
-import { ChevronsDown } from "lucide-react";
-import { classNames } from "@hkamran/utility-web";
 import { numberWithCommas } from "@hkamran/utility-strings";
+import { classNames } from "@hkamran/utility-web";
+import { ChevronsDown } from "lucide-react";
+import Head from "next/head";
 import { useEffect, useState } from "react";
+
+import DynamicHeader from "@/components/DynamicHeader";
+import Layout from "@/components/Layout";
 import type { NextPage } from "next";
 
 type CsvRow = string[] | { row: string[]; flag: "malformed" | "duplicate" };
@@ -26,34 +27,14 @@ const TestflightCleanerProgram: NextPage = () => {
     const [leaveMalformedRows, setLeaveMalformedRows] =
         useState<boolean>(false);
 
-    useEffect(() => {
-        checkForErrors();
-    }, [csvData]);
-
-    useEffect(() => {
-        if (
-            errorChecked &&
-            csvData.length > 0 &&
-            (errors.length === 0 ||
-                (errors.length > 0 &&
-                    errors.filter((error) => error.preventBypass === true)
-                        .length === 0))
-        ) {
-            cleanCsv();
-        }
-    }, [errorChecked, useHeaders, leaveMalformedRows]);
-
     const processCsv = (csv: string, delimiter = ",") =>
         setCsvData(csv.split("\n").map((row) => row.split(delimiter)));
 
-    const checkEmailValidity = (email: string): boolean => {
-        return (
-            email.includes("@") &&
-            email.match(
-                /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g,
-            ) !== null
-        );
-    };
+    const checkEmailValidity = (email: string): boolean =>
+        email.includes("@") &&
+        email.match(
+            /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g
+        ) !== null;
 
     const checkForErrors = () => {
         setErrors([]);
@@ -77,7 +58,7 @@ const TestflightCleanerProgram: NextPage = () => {
                     row[2]
                         .replace(/(\r\n|\n|\r)/gm, "")
                         .trim()
-                        .toLowerCase(),
+                        .toLowerCase()
                 )
                 .every((email) => !checkEmailValidity(email))
         ) {
@@ -97,11 +78,11 @@ const TestflightCleanerProgram: NextPage = () => {
             .replace(/[^A-Za-z0-9.-\s\u00C0-\u1FFF\u2800-\uFFFD]/g, "")
             .replace(
                 /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
-                "",
+                ""
             )
             .replace(
                 /[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2580-\u27BF]|\uD83E[\uDD10-\uDDFF]|/g,
-                "",
+                ""
             )
             .trim();
 
@@ -139,7 +120,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                     : previousRow.row)[2]
                                     .replace(/(\r\n|\n|\r)/gm, "")
                                     .trim()
-                                    .toLowerCase() === cleanedRow[2],
+                                    .toLowerCase() === cleanedRow[2]
                         )
                     ) {
                         return [
@@ -163,13 +144,13 @@ const TestflightCleanerProgram: NextPage = () => {
 
                     return [...previous, cleanedRow];
                 },
-                [] as CsvRow[],
+                [] as CsvRow[]
             );
 
             setCleanedCsv(
                 useHeaders
                     ? [csvData[0].map(removeUnnecessaryStrings), ...cleanedRows]
-                    : cleanedRows,
+                    : cleanedRows
             );
 
             setDuplicatedEmails(
@@ -179,7 +160,7 @@ const TestflightCleanerProgram: NextPage = () => {
                     }
 
                     return previous;
-                }, []),
+                }, [])
             );
         }
     };
@@ -226,7 +207,7 @@ const TestflightCleanerProgram: NextPage = () => {
                         .map((row) => row.join(","))
                         .join("\n"),
                 ],
-                { type: "text/csv" },
+                { type: "text/csv" }
             );
 
             const element = document.createElement("a");
@@ -238,6 +219,23 @@ const TestflightCleanerProgram: NextPage = () => {
             document.body.removeChild(element);
         }
     };
+
+    useEffect(() => {
+        checkForErrors();
+    }, [csvData]);
+
+    useEffect(() => {
+        if (
+            errorChecked &&
+            csvData.length > 0 &&
+            (errors.length === 0 ||
+                (errors.length > 0 &&
+                    errors.filter((error) => error.preventBypass === true)
+                        .length === 0))
+        ) {
+            cleanCsv();
+        }
+    }, [errorChecked, useHeaders, leaveMalformedRows]);
 
     return (
         <>
@@ -282,7 +280,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                                     0 > 0
                                                 ) {
                                                     setCsvFile(
-                                                        e.target.files![0],
+                                                        e.target.files![0]
                                                     );
                                                 }
                                             }}
@@ -331,7 +329,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                             className="h-4 w-4 rounded-lg border-hk-grey-hover bg-hk-grey-light text-pink-700 focus:ring-2 focus:ring-pink-700"
                                             onChange={(e) =>
                                                 setLeaveMalformedRows(
-                                                    e.target.checked,
+                                                    e.target.checked
                                                 )
                                             }
                                         />
@@ -375,7 +373,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                                         cleanedCsv.length -
                                                             (useHeaders
                                                                 ? 1
-                                                                : 0),
+                                                                : 0)
                                                     )}
                                                     )
                                                 </span>
@@ -390,13 +388,13 @@ const TestflightCleanerProgram: NextPage = () => {
                                                         onClick={() =>
                                                             document
                                                                 .getElementById(
-                                                                    "export",
+                                                                    "export"
                                                                 )
                                                                 ?.scrollIntoView(
                                                                     {
                                                                         behavior:
                                                                             "smooth",
-                                                                    },
+                                                                    }
                                                                 )
                                                         }
                                                         className="stroke-gray-500 transition duration-300 hover:scale-125 hover:stroke-pink-700"
@@ -407,7 +405,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                             <table>
                                                 {useHeaders &&
                                                     Array.isArray(
-                                                        cleanedCsv[0],
+                                                        cleanedCsv[0]
                                                     ) && (
                                                         <thead>
                                                             <tr>
@@ -416,7 +414,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                                                 ).map(
                                                                     (
                                                                         header,
-                                                                        index,
+                                                                        index
                                                                     ) => (
                                                                         <th
                                                                             key={
@@ -427,7 +425,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                                                                 header
                                                                             }
                                                                         </th>
-                                                                    ),
+                                                                    )
                                                                 )}
                                                             </tr>
                                                         </thead>
@@ -448,20 +446,20 @@ const TestflightCleanerProgram: NextPage = () => {
                                                                         ? true
                                                                         : !(
                                                                               !Array.isArray(
-                                                                                  row,
+                                                                                  row
                                                                               ) &&
                                                                               [
                                                                                   "malformed",
                                                                                   "duplicate",
                                                                               ].includes(
-                                                                                  row.flag,
+                                                                                  row.flag
                                                                               )
-                                                                          ),
+                                                                          )
                                                                 )
                                                                 .map(
                                                                     (
                                                                         value,
-                                                                        columnIndex,
+                                                                        columnIndex
                                                                     ) => (
                                                                         <td
                                                                             key={
@@ -477,22 +475,22 @@ const TestflightCleanerProgram: NextPage = () => {
                                                                                     2
                                                                                     ? classNames(
                                                                                           (!Array.isArray(
-                                                                                              row,
+                                                                                              row
                                                                                           ) &&
                                                                                               row.flag ===
                                                                                                   "duplicate") ||
                                                                                               duplicatedEmails?.includes(
-                                                                                                  value,
+                                                                                                  value
                                                                                               )
                                                                                               ? "text-yellow-500"
                                                                                               : "",
                                                                                           !Array.isArray(
-                                                                                              row,
+                                                                                              row
                                                                                           ) &&
                                                                                               row.flag ===
                                                                                                   "malformed"
                                                                                               ? "text-red-500"
-                                                                                              : "",
+                                                                                              : ""
                                                                                       )
                                                                                     : undefined
                                                                             }
@@ -501,7 +499,7 @@ const TestflightCleanerProgram: NextPage = () => {
                                                                                 value
                                                                             }
                                                                         </td>
-                                                                    ),
+                                                                    )
                                                                 )}
                                                         </tr>
                                                     ))}

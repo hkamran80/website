@@ -1,5 +1,5 @@
-import { classNames } from "@hkamran/utility-web";
 import { slugify } from "@hkamran/utility-strings";
+import { classNames } from "@hkamran/utility-web";
 
 type InputFieldType = "text" | "number";
 type InputFieldProps = {
@@ -23,7 +23,7 @@ const InputField = ({ ...props }: InputFieldProps) => {
         <div
             className={classNames(
                 "mb-3 w-full items-center",
-                props.classes || "",
+                props.classes || ""
             )}
         >
             <label
@@ -42,7 +42,7 @@ const InputField = ({ ...props }: InputFieldProps) => {
                         "relative w-full appearance-none rounded-lg border-0 bg-hk-grey px-3 py-3 text-sm shadow outline-none focus:outline-none",
                         !props.disabled ? "focus:ring focus:ring-pink-400" : "",
                         props.svg ? "pr-10" : "",
-                        props.copyAll ? "select-all" : "",
+                        props.copyAll ? "select-all" : ""
                     )}
                     step={props.step}
                     value={props.value}

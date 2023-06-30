@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
 const styles = `/* latin-ext */
 @font-face {
@@ -110,6 +110,7 @@ const styles = `/* latin-ext */
 }`;
 
 class WebsiteDocument extends Document {
+    // eslint-disable-next-line no-restricted-syntax
     render() {
         return (
             <Html lang="en">

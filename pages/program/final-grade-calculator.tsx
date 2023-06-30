@@ -1,16 +1,17 @@
+import { resizeIcon } from "@hkamran/utility-web";
 import feather from "feather-icons";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+
+import DynamicHeader from "@/components/DynamicHeader";
 import InputField from "@/components/InputField";
 import Layout from "@/components/Layout";
-import DynamicHeader from "@/components/DynamicHeader";
 import { programs } from "@/data/programs";
-import { resizeIcon } from "@hkamran/utility-web";
-import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import type { Page } from "@/types/pages";
 
 const metadata = programs.find(
-    ({ id }) => id === "final-grade-calculator",
+    ({ id }) => id === "final-grade-calculator"
 ) as Page;
 
 const messages = (score: number): string => {
@@ -31,7 +32,7 @@ const FinalGradeCalculatorProgram: NextPage = () => {
 
     useEffect(() => {
         if (currentGrade && gradeWanted && finalWeight) {
-            let score =
+            const score =
                 (gradeWanted * 100 - currentGrade * (100 - finalWeight)) /
                 finalWeight;
 
@@ -106,7 +107,7 @@ const FinalGradeCalculatorProgram: NextPage = () => {
                                     value={scoreNeeded || ""}
                                     valueUpdate={(value) => {}}
                                     svg={resizeIcon(
-                                        feather.icons.percent.toSvg(),
+                                        feather.icons.percent.toSvg()
                                     )}
                                     disabled
                                 />

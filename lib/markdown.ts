@@ -1,11 +1,13 @@
+/* eslint-disable import/no-unassigned-import */
+
 import MarkdownIt from "markdown-it";
-import markdownItLinkAttributes from "markdown-it-link-attributes";
-import markdownItReplaceLink from "markdown-it-replace-link";
-import markdownItPrism from "markdown-it-prism";
-import markdownItImageFigures from "markdown-it-image-figures";
 import markdownItFootnote from "markdown-it-footnote";
-import "prismjs/plugins/toolbar/prism-toolbar";
+import markdownItImageFigures from "markdown-it-image-figures";
+import markdownItLinkAttributes from "markdown-it-link-attributes";
+import markdownItPrism from "markdown-it-prism";
+import markdownItReplaceLink from "markdown-it-replace-link";
 import "prismjs/plugins/autoloader/prism-autoloader";
+import "prismjs/plugins/toolbar/prism-toolbar";
 
 const checkIfLocalLink = (link: string) =>
     link.startsWith("/") || link.startsWith("https://hkamran.com");
@@ -14,7 +16,7 @@ export const renderMarkdown = (
     content: string,
     code: boolean = false,
     images: boolean = false,
-    footnotes: boolean = false,
+    footnotes: boolean = false
 ): string => {
     let md = new MarkdownIt({})
         .use(markdownItLinkAttributes, {
@@ -58,7 +60,7 @@ export const renderMarkdown = (
     if (images) {
         rendered = rendered.replace(
             /(?<!figure>)<img (.*) alt=\"(.*)\"\>/gim,
-            `<img $1 alt="$2" class="rounded-lg" />`,
+            `<img $1 alt="$2" class="rounded-lg" />`
         );
     }
 

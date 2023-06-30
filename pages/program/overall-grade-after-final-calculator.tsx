@@ -1,21 +1,22 @@
+import { resizeIcon } from "@hkamran/utility-web";
 import feather from "feather-icons";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+
+import DynamicHeader from "@/components/DynamicHeader";
 import InputField from "@/components/InputField";
 import Layout from "@/components/Layout";
-import DynamicHeader from "@/components/DynamicHeader";
 import { programs } from "@/data/programs";
-import { resizeIcon } from "@hkamran/utility-web";
-import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import type { Page } from "@/types/pages";
 
 const metadata = programs.find(
-    ({ id }) => id === "overall-grade-after-final-calculator",
+    ({ id }) => id === "overall-grade-after-final-calculator"
 ) as Page;
 
 const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
     const [gradeBeforeFinal, setGradeBeforeFinal] = useState<number | null>(
-        null,
+        null
     );
     const [finalScore, setFinalScore] = useState<number | null>(null);
     const [finalWeight, setFinalWeight] = useState<number | null>(null);
@@ -23,8 +24,8 @@ const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
 
     useEffect(() => {
         if (gradeBeforeFinal && finalScore && finalWeight) {
-            let finalWeightDecimal = finalWeight / 100;
-            let score =
+            const finalWeightDecimal = finalWeight / 100;
+            const score =
                 ((1 - finalWeightDecimal) * (gradeBeforeFinal / 100) +
                     finalWeightDecimal * (finalScore / 100)) *
                 100;
@@ -100,7 +101,7 @@ const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
                                     value={gradeAfterFinal || ""}
                                     valueUpdate={(value) => {}}
                                     svg={resizeIcon(
-                                        feather.icons.percent.toSvg(),
+                                        feather.icons.percent.toSvg()
                                     )}
                                     disabled
                                 />

@@ -1,81 +1,77 @@
-import ArticleCard from '@/components/writings/ArticleCard';
-import DynamicHeader from '@/components/DynamicHeader';
-import Head from 'next/head';
-import Layout from '@/components/Layout';
-import NavLink from '@/components/navigation/NavLink';
-import NoteCard from '@/components/writings/NoteCard';
-import { arrayUnique, getTags } from '@/lib/writings';
-import { sortByDate } from '@/lib/sort';
-import { Writing } from '@/types/writings';
-import { WRITINGS_URL } from '../../data/constants';
+import Head from "next/head";
+
+import DynamicHeader from "@/components/DynamicHeader";
+import Layout from "@/components/Layout";
+import NavLink from "@/components/navigation/NavLink";
+import ArticleCard from "@/components/writings/ArticleCard";
+import NoteCard from "@/components/writings/NoteCard";
+import { WRITINGS_URL } from "@/data/constants";
+import { sortByDate } from "@/lib/sort";
+import { arrayUnique, getTags } from "@/lib/writings";
+import { Writing } from "@/types/writings";
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 type Props = { id: string; tag: string; articles: Writing[]; notes: Writing[] };
 
-const Tag: NextPage<Props> = ({ id, tag, articles, notes }) => {
-    return (
-        <Layout>
-            <Head>
-                <title>{tag} | H. Kamran</title>
-            </Head>
+const Tag: NextPage<Props> = ({ id, tag, articles, notes }) => (
+    <Layout>
+        <Head>
+            <title>{tag} | H. Kamran</title>
+        </Head>
 
-            <DynamicHeader id={id} type="tag" name={tag} />
+        <DynamicHeader id={id} type="tag" name={tag} />
 
-            {articles.length > 0 ? (
-                <>
-                    <h2 className="mx-auto mt-4 text-center text-2xl font-semibold md:text-left">
-                        Articles
-                    </h2>
+        {articles.length > 0 ? (
+            <>
+                <h2 className="mx-auto mt-4 text-center text-2xl font-semibold md:text-left">
+                    Articles
+                </h2>
 
-                    <div className="flex flex-col">
-                        {articles
-                            .filter(({ published }) => published !== "")
-                            .map((article, index) => (
-                                <NavLink
-                                    key={index}
-                                    href={`/article/${article.id}`}
-                                >
-                                    <ArticleCard article={article} />
-                                </NavLink>
-                            ))}
-                    </div>
-                </>
-            ) : (
-                ""
-            )}
+                <div className="flex flex-col">
+                    {articles
+                        .filter(({ published }) => published !== "")
+                        .map((article, index) => (
+                            <NavLink
+                                key={index}
+                                href={`/article/${article.id}`}
+                            >
+                                <ArticleCard article={article} />
+                            </NavLink>
+                        ))}
+                </div>
+            </>
+        ) : (
+            ""
+        )}
 
-            {notes.length > 0 ? (
-                <>
-                    <h2 className="mx-auto mt-8 text-center text-2xl font-semibold md:text-left">
-                        Notes
-                    </h2>
+        {notes.length > 0 ? (
+            <>
+                <h2 className="mx-auto mt-8 text-center text-2xl font-semibold md:text-left">
+                    Notes
+                </h2>
 
-                    <div className="flex flex-col">
-                        {notes
-                            .filter(({ published }) => published !== "")
-                            .map((article, index) => (
-                                <NavLink
-                                    key={index}
-                                    href={`/note/${article.id}`}
-                                >
-                                    <NoteCard note={article} />
-                                </NavLink>
-                            ))}
-                    </div>
-                </>
-            ) : (
-                ""
-            )}
-        </Layout>
-    );
-};
+                <div className="flex flex-col">
+                    {notes
+                        .filter(({ published }) => published !== "")
+                        .map((article, index) => (
+                            <NavLink key={index} href={`/note/${article.id}`}>
+                                <NoteCard note={article} />
+                            </NavLink>
+                        ))}
+                </div>
+            </>
+        ) : (
+            ""
+        )}
+    </Layout>
+);
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const res = await fetch(WRITINGS_URL);
     const writings = await res.json();
 
     const articleTags = Object.keys(
-        getTags(writings.articles as Writing[], true),
+        getTags(writings.articles as Writing[], true)
     );
     const noteTags = Object.keys(getTags(writings.notes as Writing[], true));
 
@@ -104,11 +100,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                   .map(
                       (slug) =>
                           (writings.articles as Writing[]).find(
-                              (article) => article.id === slug,
-                          ) as Writing,
+                              (article) => article.id === slug
+                          ) as Writing
                   )
                   .sort((a, b) =>
-                      sortByDate(new Date(a.published), new Date(b.published)),
+                      sortByDate(new Date(a.published), new Date(b.published))
                   )
             : [];
 
@@ -118,11 +114,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                   .map(
                       (slug) =>
                           (writings.notes as Writing[]).find(
-                              (note) => note.id === slug,
-                          ) as Writing,
+                              (note) => note.id === slug
+                          ) as Writing
                   )
                   .sort((a, b) =>
-                      sortByDate(new Date(a.published), new Date(b.published)),
+                      sortByDate(new Date(a.published), new Date(b.published))
                   )
             : [];
 
