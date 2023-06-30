@@ -28,7 +28,6 @@ const TestflightCleanerProgram: NextPage = () => {
 
     useEffect(() => {
         checkForErrors();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [csvData]);
 
     useEffect(() => {
@@ -42,7 +41,6 @@ const TestflightCleanerProgram: NextPage = () => {
         ) {
             cleanCsv();
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [errorChecked, useHeaders, leaveMalformedRows]);
 
     const processCsv = (csv: string, delimiter = ",") =>
