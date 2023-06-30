@@ -19,21 +19,20 @@ const DynamicHeader = ({
     description,
     type = "program",
 }: DynamicHeaderProps) => {
+    const url = `${getBaseUrl()}/${type}${id}`;
+
     return (
         <>
-            <WebPageJsonLd
-                id={`${getBaseUrl()}/program/${type}${id}`}
-                description={description}
-            />
+            <WebPageJsonLd id={url} description={description} />
 
             <NextSeo
                 title={name}
                 description={description}
-                canonical={`${getBaseUrl()}/${type}/${id}`}
+                canonical={url}
                 openGraph={{
                     title: name,
                     description,
-                    url: `${getBaseUrl()}/${type}/${id}`,
+                    url: url,
                     type: "website",
                 }}
                 twitter={{
