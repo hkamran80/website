@@ -43,7 +43,6 @@ const WebUtilitiesProgram: NextPage = () => {
                                     placeholder="User Agent"
                                     label="User Agent"
                                     value={userAgent}
-                                    valueUpdate={(value) => {}}
                                     readonly
                                     copyAll
                                 />

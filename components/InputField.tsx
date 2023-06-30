@@ -7,7 +7,7 @@ type InputFieldProps = {
     placeholder: string;
     label: string;
     value: string | number | undefined;
-    valueUpdate: (value: string | number) => void;
+    valueUpdate?: (value: string | number) => void;
     classes?: string;
     svg?: string;
     step?: string | number;
@@ -49,10 +49,14 @@ const InputField = ({ ...props }: InputFieldProps) => {
                     readOnly={props.readonly}
                     aria-readonly={props.readonly}
                     disabled={props.disabled}
-                    onChange={async (e) => {
-                        const { value } = e.currentTarget;
-                        props.valueUpdate(value);
-                    }}
+                    onChange={
+                        props.valueUpdate
+                            ? async (e) => {
+                                  const { value } = e.currentTarget;
+                                  props.valueUpdate!(value);
+                              }
+                            : undefined
+                    }
                 />
 
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
