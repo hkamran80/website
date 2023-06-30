@@ -43,6 +43,7 @@ const Writing: NextPage<Props> = ({ article, content }) => {
 
                     <div className="mx-auto mt-6 max-w-5xl">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
+                        {/* TODO: Convert to `next/image` */}
                         <img
                             src={articleImage}
                             className="rounded-lg"

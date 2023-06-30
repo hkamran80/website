@@ -89,7 +89,6 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                 <div className="my-5 mx-auto grid grid-cols-1 gap-4 md:grid-cols-3">
                                     {Object.entries(jumpLinks).map(
                                         ([label, link], index) => (
-                                            // eslint-disable-next-line react/jsx-no-target-blank
                                             <NavLink
                                                 key={index}
                                                 href={link}
