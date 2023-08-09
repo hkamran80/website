@@ -14,6 +14,10 @@ module.exports = {
                 allow: "/",
                 disallow: ["/_next/", "/api/", "/*.png"],
             },
+            {
+                userAgent: "GPTBot",
+                disallow: "/",
+            },
         ],
     },
 };
