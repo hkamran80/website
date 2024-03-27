@@ -8,19 +8,25 @@ import { programs } from "@/data/programs";
 import type { NextPage } from "next";
 import type { Page } from "@/types/pages";
 
-const metadata = programs.find(
-    ({ id }) => id === "overall-grade-after-final-calculator"
-) as Page;
+const metadata = programs.find(({ id }) => id === "duck-compose") as Page;
 
 const TextReverseProgram: NextPage = () => {
-    const [text, setText] = useState<string>("");
-    const [reversedText, setReversedText] = useState<string | null>(null);
+    const [duckEmail, setDuckEmail] = useState<string>("");
+    const [toEmail, setToEmail] = useState<string>("");
+    const [composedEmail, setComposedEmail] = useState<string | null>(null);
 
     useEffect(() => {
-        if (text) {
-            setReversedText(text.split("").reverse().join(""));
-        }
-    }, [text]);
+        if (
+            duckEmail &&
+            toEmail &&
+            duckEmail.includes("@") &&
+            toEmail.includes("@")
+            // duckEmail.split("@").slice(-1).includes(".") &&
+            // toEmail.split("@").slice(-1).includes(".")
+        )
+            setComposedEmail(toEmail.replace("@", "_at_") + "_" + duckEmail);
+        else setComposedEmail("");
+    }, [duckEmail, toEmail]);
 
     return (
         <>
@@ -40,11 +46,22 @@ const TextReverseProgram: NextPage = () => {
                         <div className="grid grid-cols-1 gap-x-4 gap-y-1 md:grid-cols-2">
                             <InputField
                                 type="text"
-                                placeholder="Text"
-                                label="Text"
-                                value={text}
+                                placeholder="name@duck.com"
+                                label="Duck Address"
+                                value={duckEmail}
                                 valueUpdate={(value) =>
-                                    setText(value as string)
+                                    setDuckEmail(value as string)
+                                }
+                                classes="md:col-span-2"
+                            />
+
+                            <InputField
+                                type="text"
+                                placeholder="recipient@example.com"
+                                label="To Email"
+                                value={toEmail}
+                                valueUpdate={(value) =>
+                                    setToEmail(value as string)
                                 }
                                 classes="md:col-span-2"
                             />
@@ -61,9 +78,9 @@ const TextReverseProgram: NextPage = () => {
 
                                 <InputField
                                     type="text"
-                                    placeholder="Reversed Text"
-                                    label="Reversed Text"
-                                    value={reversedText || ""}
+                                    placeholder="recipient_at_example.com_name@duck.com"
+                                    label="Send Email to"
+                                    value={composedEmail || ""}
                                     disabled
                                     copyAll
                                 />

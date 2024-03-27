@@ -33,4 +33,10 @@ export const programs: Page[] = [
         description: "Some helpful web utilities",
         centerContent: true,
     },
+    {
+        id: "duck-compose",
+        name: "Duck Address Composer",
+        description: "Easily generate the email to send from a Duck Address",
+        centerContent: true,
+    },
 ];
