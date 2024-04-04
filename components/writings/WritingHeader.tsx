@@ -93,7 +93,7 @@ const WritingHeader = ({
                     {publishDate !== "" ? (
                         <time dateTime={publishDate}>
                             {new Date(
-                                `${publishDate}T12:00:00-07:00`
+                                `${publishDate}T12:00:00-07:00`,
                             ).toLocaleDateString(undefined, {
                                 year: "numeric",
                                 month: "long",

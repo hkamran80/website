@@ -9,7 +9,7 @@ import type { NextPage } from "next";
 import type { Page } from "@/types/pages";
 
 const metadata = programs.find(
-    ({ id }) => id === "overall-grade-after-final-calculator"
+    ({ id }) => id === "overall-grade-after-final-calculator",
 ) as Page;
 
 const TextReverseProgram: NextPage = () => {

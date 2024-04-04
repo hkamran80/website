@@ -32,14 +32,14 @@ const NavigationBar = () => {
                                 aliases
                                     .map(
                                         (alias) =>
-                                            router.asPath.indexOf(alias) !== -1
+                                            router.asPath.indexOf(alias) !== -1,
                                     )
                                     .filter((alias) => alias).length > 0
                                 ? "text-pink-700 underline underline-offset-4"
                                 : "text-gray-500 hover:text-pink-700",
                             href.includes("unsplash")
                                 ? "umami--click--unsplash-navbar"
-                                : ""
+                                : "",
                         )}
                         target={!href.startsWith("/") ? "_blank" : ""}
                         conditionalClassNames="hover:cursor-pointer"

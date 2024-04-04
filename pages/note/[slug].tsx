@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const writings = await res.json();
 
     const note = (writings.notes as Writing[]).find(
-        (note) => note.id === params?.slug
+        (note) => note.id === params?.slug,
     );
 
     if (note) {
@@ -62,7 +62,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             await fetch(`${BASE_WRITINGS_URL}/notes/${note.filename}.md`)
         ).text();
 
-        return { props: { note, content: renderMarkdown(markdown, true) } };
+        return {
+            props: { note, content: renderMarkdown(markdown, { code: true }) },
+        };
     } else {
         return {
             redirect: {

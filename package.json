@@ -23,6 +23,7 @@
         "lucide-react": "^0.102.0",
         "markdown-it": "^12.3.2",
         "markdown-it-footnote": "^3.0.3",
+        "markdown-it-github-alerts": "^0.3.0",
         "markdown-it-image-figures": "^2.1.1",
         "markdown-it-link-attributes": "^4.0.1",
         "markdown-it-prism": "^2.2.4",

@@ -11,7 +11,7 @@ import type { NextPage } from "next";
 import type { Page } from "@/types/pages";
 
 const metadata = programs.find(
-    ({ id }) => id === "final-grade-calculator"
+    ({ id }) => id === "final-grade-calculator",
 ) as Page;
 
 const messages = (score: number): string => {
@@ -107,7 +107,7 @@ const FinalGradeCalculatorProgram: NextPage = () => {
                                     value={scoreNeeded || ""}
                                     valueUpdate={(value) => {}}
                                     svg={resizeIcon(
-                                        feather.icons.percent.toSvg()
+                                        feather.icons.percent.toSvg(),
                                     )}
                                     disabled
                                 />

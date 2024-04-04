@@ -26,7 +26,7 @@ const Footer = () => (
                             "transition-colors duration-200 ease-in-out hover:text-gray-300",
                             href.includes("unsplash")
                                 ? "umami--click--unsplash-navbar"
-                                : ""
+                                : "",
                         )}
                         target={!href.startsWith("/") ? "_blank" : ""}
                     >

@@ -110,7 +110,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const writings = await res.json();
 
     const article = (writings.articles as Writing[]).find(
-        (article) => article.id === params?.slug
+        (article) => article.id === params?.slug,
     );
 
     if (article) {
@@ -120,17 +120,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                     article.published === "" && article.branchName
                         ? BASE_WRITINGS_URL.replace(
                               "/main/",
-                              `/${article.branchName}/`
+                              `/${article.branchName}/`,
                           )
                         : BASE_WRITINGS_URL
-                }/articles/${article.filename}.md`
+                }/articles/${article.filename}.md`,
             )
         ).text();
 
         return {
             props: {
                 article,
-                content: renderMarkdown(markdown, true, true, true),
+                content: renderMarkdown(markdown, {
+                    code: true,
+                    images: true,
+                    footnotes: true,
+                }),
             },
         };
     } else {

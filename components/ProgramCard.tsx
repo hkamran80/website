@@ -5,7 +5,7 @@ import type { Page } from "@/types/pages";
 const ProgramCard = ({ program }: { program: Page }) => (
     <div
         className={`h-full rounded-lg transition-colors duration-300 hover:bg-hk-grey-hover umami--click--${slugify(
-            program.name
+            program.name,
         )}-program`}
         aria-label={program.name}
     >

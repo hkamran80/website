@@ -36,7 +36,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
 
         if (typeof window !== "undefined" && typeof document !== "undefined") {
             const browserPrefix = Object.values(
-                window.getComputedStyle(document.documentElement)
+                window.getComputedStyle(document.documentElement),
             )
                 .join("")
                 .match(/-(moz|webkit|ms)/);
@@ -78,7 +78,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                             >
                                                 Install in {browser}
                                             </NavLink>
-                                        )
+                                        ),
                                     )}
                                 </div>
 
@@ -92,7 +92,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                             >
                                                 {label}
                                             </NavLink>
-                                        )
+                                        ),
                                     )}
                                 </div>
                             </div>
@@ -229,7 +229,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                         {changelog.map(
                                                             (
                                                                 version,
-                                                                index
+                                                                index,
                                                             ) => (
                                                                 <Listbox.Option
                                                                     key={index}
@@ -240,7 +240,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                                             "relative cursor-default select-none py-2 px-4 text-gray-100 transition-colors duration-200",
                                                                             active
                                                                                 ? "bg-purple-900"
-                                                                                : ""
+                                                                                : "",
                                                                         )
                                                                     }
                                                                     value={
@@ -255,7 +255,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                                                 "block truncate",
                                                                                 selected
                                                                                     ? "font-medium"
-                                                                                    : "font-normal"
+                                                                                    : "font-normal",
                                                                             )}
                                                                         >
                                                                             Version{" "}
@@ -265,7 +265,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                                         </span>
                                                                     )}
                                                                 </Listbox.Option>
-                                                            )
+                                                            ),
                                                         )}
                                                     </Listbox.Options>
                                                 </div>
@@ -282,7 +282,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                     <li key={index}>
                                                         {change}
                                                     </li>
-                                                )
+                                                ),
                                             )}
                                     </ul>
                                 </div>
@@ -298,7 +298,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
 // TODO: Convert to Incremental Static Regeneration
 export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(
-        "https://assets.hkamran.com/changelog/nebula-new-tab"
+        "https://assets.hkamran.com/changelog/nebula-new-tab",
     );
     const rawChangelog = (await res.json()) as ReleaseDetails[];
 
@@ -307,7 +307,7 @@ export const getStaticProps: GetStaticProps = async () => {
         .map(([version, release]) => ({
             version,
             date: new Date(
-                `${release.releaseDate}T20:00:00`
+                `${release.releaseDate}T20:00:00`,
             ).toLocaleDateString(undefined, {
                 year: "numeric",
                 month: "long",

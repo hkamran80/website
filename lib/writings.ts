@@ -10,17 +10,17 @@ import type { Writing, WritingTags } from "@/types/writings";
  */
 export const getTags = (
     writings: Writing[],
-    slugifyTag: boolean = false
+    slugifyTag: boolean = false,
 ): WritingTags =>
     Object.fromEntries(
         Array.from(
-            new Set(writings.flatMap((writing: Writing) => writing.tags))
+            new Set(writings.flatMap((writing: Writing) => writing.tags)),
         ).map((tag) => [
             slugifyTag ? slugify(tag) : tag,
             writings
                 .filter(({ tags }) => tags.indexOf(tag) !== -1)
                 .map(({ id }) => id),
-        ])
+        ]),
     );
 
 /**

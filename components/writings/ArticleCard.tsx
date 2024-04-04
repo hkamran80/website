@@ -31,7 +31,7 @@ const ArticleCard = ({
                             className="dt-published published"
                         >
                             {new Date(
-                                `${article.published}T12:00:00-07:00`
+                                `${article.published}T12:00:00-07:00`,
                             ).toLocaleDateString(undefined, {
                                 year: "numeric",
                                 month: "long",
