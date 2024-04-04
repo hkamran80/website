@@ -12,7 +12,7 @@ section.footnotes {
 
 /* Markdown Alerts */
 .markdown-alert {
-    @apply mb-5 flex items-start rounded-md bg-hk-grey px-4 py-1 ring-2 ring-inset ring-hk-grey text-sm;
+    @apply mb-5 flex items-start rounded-md bg-hk-grey px-4 py-1 text-sm ring-2 ring-inset ring-hk-grey;
 }
 
 .markdown-alert-note {

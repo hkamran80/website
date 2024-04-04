@@ -60,7 +60,7 @@ const Error404: NextPage = () => (
                                 "inline-block py-2.5 px-10",
                                 "text-sm font-bold text-pink-700 no-underline hover:text-pink-600",
                                 "border-2 border-pink-700 hover:border-pink-600",
-                                index === 0 ? "md:col-span-2" : ""
+                                index === 0 ? "md:col-span-2" : "",
                             )}
                         >
                             {name}

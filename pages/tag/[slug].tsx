@@ -71,7 +71,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const writings = await res.json();
 
     const articleTags = Object.keys(
-        getTags(writings.articles as Writing[], true)
+        getTags(writings.articles as Writing[], true),
     );
     const noteTags = Object.keys(getTags(writings.notes as Writing[], true));
 
@@ -100,11 +100,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                   .map(
                       (slug) =>
                           (writings.articles as Writing[]).find(
-                              (article) => article.id === slug
-                          ) as Writing
+                              (article) => article.id === slug,
+                          ) as Writing,
                   )
                   .sort((a, b) =>
-                      sortByDate(new Date(a.published), new Date(b.published))
+                      sortByDate(new Date(a.published), new Date(b.published)),
                   )
             : [];
 
@@ -114,11 +114,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                   .map(
                       (slug) =>
                           (writings.notes as Writing[]).find(
-                              (note) => note.id === slug
-                          ) as Writing
+                              (note) => note.id === slug,
+                          ) as Writing,
                   )
                   .sort((a, b) =>
-                      sortByDate(new Date(a.published), new Date(b.published))
+                      sortByDate(new Date(a.published), new Date(b.published)),
                   )
             : [];
 

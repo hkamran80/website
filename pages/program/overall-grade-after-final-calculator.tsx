@@ -11,12 +11,12 @@ import type { NextPage } from "next";
 import type { Page } from "@/types/pages";
 
 const metadata = programs.find(
-    ({ id }) => id === "overall-grade-after-final-calculator"
+    ({ id }) => id === "overall-grade-after-final-calculator",
 ) as Page;
 
 const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
     const [gradeBeforeFinal, setGradeBeforeFinal] = useState<number | null>(
-        null
+        null,
     );
     const [finalScore, setFinalScore] = useState<number | null>(null);
     const [finalWeight, setFinalWeight] = useState<number | null>(null);
@@ -101,7 +101,7 @@ const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
                                     value={gradeAfterFinal || ""}
                                     valueUpdate={(value) => {}}
                                     svg={resizeIcon(
-                                        feather.icons.percent.toSvg()
+                                        feather.icons.percent.toSvg(),
                                     )}
                                     disabled
                                 />

@@ -125,7 +125,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => (
                         <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
                             {featuredShowcase
                                 .sort((a, b) =>
-                                    alphabeticalSort(a.name, b.name)
+                                    alphabeticalSort(a.name, b.name),
                                 )
                                 .map((creation, index) => (
                                     <CreationCard

@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(WRITINGS_URL);
     const writings = await res.json();
     const articles = (writings.articles as Writing[]).sort((a, b) =>
-        sortByDate(new Date(a.published), new Date(b.published))
+        sortByDate(new Date(a.published), new Date(b.published)),
     );
 
     return { props: { articles } };

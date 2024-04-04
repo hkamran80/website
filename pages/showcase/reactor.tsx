@@ -89,7 +89,7 @@ const Reactor: NextPage = () => (
                                                 </td>
                                                 <td>{description}</td>
                                             </tr>
-                                        )
+                                        ),
                                     )}
                                 </tbody>
                             </table>

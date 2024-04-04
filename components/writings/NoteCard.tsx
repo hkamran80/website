@@ -11,7 +11,7 @@ const NoteCard = ({ note }: { note: Writing }) => (
                             className="dt-published published"
                         >
                             {new Date(
-                                `${note.published}T12:00:00-07:00`
+                                `${note.published}T12:00:00-07:00`,
                             ).toLocaleDateString(undefined, {
                                 year: "numeric",
                                 month: "long",
