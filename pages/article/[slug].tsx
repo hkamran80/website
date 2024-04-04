@@ -130,7 +130,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         return {
             props: {
                 article,
-                content: renderMarkdown(markdown, true, true, true),
+                content: renderMarkdown(markdown, {
+                    code: true,
+                    images: true,
+                    footnotes: true,
+                }),
             },
         };
     } else {

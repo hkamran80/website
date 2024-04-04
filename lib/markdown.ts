@@ -13,12 +13,20 @@ import "prismjs/plugins/toolbar/prism-toolbar";
 const checkIfLocalLink = (link: string) =>
     link.startsWith("/") || link.startsWith("https://hkamran.com");
 
+type Options = Partial<Record<"code" | "images" | "footnotes", boolean>>;
+
+const defaultOptions: Options = {
+    code: false,
+    images: false,
+    footnotes: false,
+};
+
 export const renderMarkdown = (
     content: string,
-    code: boolean = false,
-    images: boolean = false,
-    footnotes: boolean = false,
+    userOptions: Options = defaultOptions,
 ): string => {
+    const options = { ...defaultOptions, ...userOptions };
+
     let md = new MarkdownIt({})
         .use(markdownItLinkAttributes, {
             matcher: (href: string) => !checkIfLocalLink(href),
@@ -49,11 +57,11 @@ export const renderMarkdown = (
             },
         });
 
-    if (code) {
+    if (options.code) {
         md = md.use(markdownItPrism, { plugins: ["toolbar", "autoloader"] });
     }
 
-    if (images) {
+    if (options.images) {
         md = md.use(markdownItImageFigures, {
             figcaption: "alt",
             lazy: true,
@@ -62,12 +70,12 @@ export const renderMarkdown = (
         });
     }
 
-    if (footnotes) {
+    if (options.footnotes) {
         md = md.use(markdownItFootnote);
     }
 
     let rendered = md.render(content);
-    if (images) {
+    if (options.images) {
         rendered = rendered.replace(
             /(?<!figure>)<img (.*) alt=\"(.*)\"\>/gim,
             `<img $1 alt="$2" class="rounded-lg" />`,
