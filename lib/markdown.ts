@@ -41,9 +41,16 @@ export const renderMarkdown = (
                 if (checkIfLocalLink(link)) {
                     return link;
                 } else {
-                    return `${link}${
-                        link.includes("?") ? "&" : "?"
-                    }ref=hkamran.com`;
+                    if (!link.includes("#"))
+                        return `${link}${
+                            link.includes("?") ? "&" : "?"
+                        }ref=hkamran.com`;
+                    else {
+                        const [url, selector] = link.split("#");
+                        return `${url}${
+                            url.includes("?") ? "&" : "?"
+                        }ref=hkamran.com#${selector}`;
+                    }
                 }
             },
         })
