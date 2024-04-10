@@ -1,7 +1,7 @@
 import { slugify } from "@hkamran/utility-strings";
 import { classNames } from "@hkamran/utility-web";
 import { Globe } from "lucide-react";
-import { siGithub } from "simple-icons/icons";
+import { siGithub } from "simple-icons";
 
 import NavLink from "../navigation/NavLink";
 import type { Creation } from "@/types/creations";

@@ -7,7 +7,7 @@ import {
     siTwitter,
     siUnsplash,
     siBluesky,
-} from "simple-icons/icons";
+} from "simple-icons";
 
 import { UNSPLASH_URL } from "./constants";
 
