@@ -6,6 +6,7 @@ import {
     siStackoverflow,
     siTwitter,
     siUnsplash,
+    siBluesky,
 } from "simple-icons/icons";
 
 import { UNSPLASH_URL } from "./constants";
@@ -23,6 +24,11 @@ export const socialIcons: Social[] = [
     },
     { url: "https://twitter.com/hkamran80", icon: siTwitter, color: "#1DA1F2" },
     { url: "https://vmst.io/@hkamran", icon: siMastodon, color: null },
+    {
+        url: "https://bsky.app/profile/hkamran.com",
+        icon: siBluesky,
+        color: null,
+    },
     {
         url: "https://stackoverflow.com/users/7313822/h-kamran",
         icon: siStackoverflow,
