@@ -23,6 +23,10 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => (
     <>
         <Head>
             <title>H. Kamran</title>
+            <meta
+                name="impact-site-verification"
+                value="8f46ce2a-a8ae-4b92-a1a5-e1a2cb05cd05"
+            />
         </Head>
 
         <WebPageJsonLd id={`${getBaseUrl()}/`} />
