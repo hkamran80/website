@@ -58,8 +58,7 @@ const Uses: NextPage = () => (
                             <strong>Logitech G602 mouse</strong>
                         </p>
                         <p>
-                            This mouse has a lot of buttons, which I take full
-                            advantage of.
+                            It has a lot of buttons and it&apos;s comfortable.
                         </p>
                     </li>
                     <li>
@@ -78,7 +77,11 @@ const Uses: NextPage = () => (
                             <NavLink href="https://2fa.directory">
                                 2fa.directory
                             </NavLink>
-                            .
+                            . Check out{" "}
+                            <NavLink href="/article/securing-your-digital-life">
+                                my article on securing your digital life
+                            </NavLink>{" "}
+                            if you want to know more.
                         </p>
                     </li>
                 </ul>
@@ -109,7 +112,7 @@ const Uses: NextPage = () => (
                         </p>
                         <p>
                             I don&apos;t like Chrome or Edge, so I use Firefox.
-                            I have it loaded with extensions like{" "}
+                            I have it loaded with many extensions, including{" "}
                             <NavLink href="https://ublockorigin.com">
                                 uBlock Origin
                             </NavLink>
@@ -162,15 +165,15 @@ const Uses: NextPage = () => (
                             <NavLink href="https://addons.mozilla.org/firefox/addon/videospeed">
                                 Video Speed Controller
                             </NavLink>
+                            ,{" "}
+                            <NavLink href="https://addons.mozilla.org/firefox/addon/tab-mover">
+                                Tab Mover
+                            </NavLink>
                             , and my very own new tab extension{" "}
                             <NavLink href="/showcase/nebula-new-tab">
                                 Nebula New Tab
                             </NavLink>
-                            . I cannot recommend{" "}
-                            <NavLink href="https://addons.mozilla.org/firefox/addon/tab-mover">
-                                Tab Mover
-                            </NavLink>{" "}
-                            highly enough.
+                            .
                         </p>
                     </li>
                     <li>
@@ -181,6 +184,7 @@ const Uses: NextPage = () => (
                             I love VS Code. All my text-editing and programming
                             work is done in here.
                         </p>
+                        <p className="italic">Note to self: learn Vim/Neovim</p>
                     </li>
                     <li>
                         <p>
@@ -189,8 +193,20 @@ const Uses: NextPage = () => (
                             </strong>
                         </p>
                         <p>
-                            I use Vercel&apos;s Hyper terminal with{" "}
-                            <code>zsh</code>.
+                            I like it better than the built-in Terminal and
+                            iTerm2.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <strong>Zsh</strong>
+                        </p>
+                        <p>
+                            My Zsh configuration is available in{" "}
+                            <NavLink href="https://github.com/hkamran80/dotfiles">
+                                my dotfiles repository
+                            </NavLink>
+                            .
                         </p>
                     </li>
                     <li>
@@ -219,6 +235,19 @@ const Uses: NextPage = () => (
                     </li>
                     <li>
                         <p>
+                            <strong>BatteryBoi</strong>
+                        </p>
+                        <p>
+                            In addition to Apple Juice, I also use BatteryBoi,
+                            which I find a lot more pleasing to use with more
+                            reactive notifications. The only downside (and
+                            reason I still have Apple Juice) is because it
+                            doesn&apos;t support as many notification options as
+                            Apple Juice.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
                             <strong>Spotify</strong>
                         </p>
                         <p>
@@ -232,27 +261,23 @@ const Uses: NextPage = () => (
                     <li>
                         <p>
                             <strong>
-                                <NavLink href="https://mimestream.com">
-                                    Mimestream
+                                <NavLink
+                                    href="https://raycast.com/?via=hkamran"
+                                    noReferrer
+                                >
+                                    Raycast
                                 </NavLink>
                             </strong>
                         </p>
-                        <p>Mimestream is an amazing Gmail client.</p>
-                    </li>
-                    <li>
                         <p>
-                            <strong>Todoist</strong>
+                            Raycast is a better Spotlight and Alfred for macOS.
                         </p>
-                        <p>
-                            Todoist is a great app that helps me keep track of
-                            what I need to do.
+                        <p className="text-sm italic">
+                            Full disclosure: this is an affiliate link. You
+                            receive a 10% discount and I receive a 30%
+                            commission on any sales of Raycast Pro through this
+                            link.
                         </p>
-                    </li>
-                    <li>
-                        <p>
-                            <strong>Raycast</strong>
-                        </p>
-                        <p>Raycast is a better Spotlight and Alfred.</p>
                     </li>
                 </ul>
 
@@ -263,10 +288,7 @@ const Uses: NextPage = () => (
                         <p>
                             <strong>Figma</strong>
                         </p>
-                        <p>
-                            Figma is an amazing design tool, and I use it for
-                            much more than it&apos;s intended.
-                        </p>
+                        <p>Figma is an amazing design tool.</p>
                     </li>
                     <li>
                         <p>
@@ -275,7 +297,7 @@ const Uses: NextPage = () => (
                         <p>
                             I host a few of my websites, particularly the
                             Next.js ones, on Vercel. This website is hosted on
-                            Vercel!
+                            Vercel.
                         </p>
                     </li>
                     <li>
@@ -283,8 +305,8 @@ const Uses: NextPage = () => (
                             <strong>Netlify</strong>
                         </p>
                         <p>
-                            Most of my non-Next.js sites are on Netlify. I love
-                            the platform!
+                            Most of my non-Next.js sites are on Netlify.
+                            It&apos;s a great platform.
                         </p>
                     </li>
                 </ul>

@@ -10,6 +10,7 @@ type Props = {
     conditionalClassNames?: string;
     target?: HTMLAttributeAnchorTarget;
     rel?: string;
+    noReferrer?: boolean;
 } & Partial<Pick<HTMLAnchorElement, "title" | "ariaLabel">>;
 
 const NavLink = ({
@@ -19,6 +20,7 @@ const NavLink = ({
     conditionalClassNames,
     target,
     rel,
+    noReferrer,
     ...rest
 }: Props) => {
     const { asPath } = useRouter();
@@ -28,9 +30,13 @@ const NavLink = ({
     } else if (href.startsWith("http")) {
         return (
             <a
-                href={`${
-                    href.includes("?") ? `${href}&` : `${href}?`
-                }ref=hkamran.com`}
+                href={
+                    noReferrer === true
+                        ? href
+                        : `${
+                              href.includes("?") ? `${href}&` : `${href}?`
+                          }ref=hkamran.com`
+                }
                 className={classNames(
                     className ?? "",
                     conditionalClassNames ?? "",
