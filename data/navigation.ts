@@ -1,13 +1,13 @@
-import { SimpleIcon } from "simple-icons";
 import {
     siGithub,
     siMastodon,
     siMedium,
     siStackoverflow,
-    siTwitter,
     siUnsplash,
     siBluesky,
+    type SimpleIcon,
 } from "simple-icons";
+import { siTwitter } from "simple-icons11";
 
 import { UNSPLASH_URL } from "./constants";
 
