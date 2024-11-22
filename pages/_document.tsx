@@ -128,18 +128,18 @@ class WebsiteDocument extends Document {
 
                     {/* Feeds */}
                     <link
-                        key="rss-feed"
-                        rel="alternative"
-                        type="application/rss+xml"
-                        title="Articles and notes (RSS)"
-                        href="https://assets.hkamran.com/website/feed.rss"
-                    />
-                    <link
                         key="atom-feed"
                         rel="alternative"
                         type="application/atom+xml"
                         title="Articles and notes (Atom)"
                         href="https://assets.hkamran.com/website/feed.atom"
+                    />
+                    <link
+                        key="rss-feed"
+                        rel="alternative"
+                        type="application/rss+xml"
+                        title="Articles and notes (RSS)"
+                        href="https://assets.hkamran.com/website/feed.rss"
                     />
                     <link
                         key="json-feed"
