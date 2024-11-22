@@ -48,14 +48,14 @@ const Website = ({ Component, pageProps }: AppProps) => (
         />
 
         {process.env.NODE_ENV === "development" ||
-        typeof window === "undefined" ? (
+            typeof window === "undefined" ? (
             ""
         ) : (
             <Script
                 async
                 defer
                 data-website-id="550f7666-3836-423b-8a19-f2e6746eeda5"
-                src="https://umami.unisontech.org/script.js"
+                src="https://u.13willow.com/script.js"
             />
         )}
 
