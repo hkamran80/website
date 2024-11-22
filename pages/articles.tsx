@@ -27,7 +27,7 @@ const Articles: NextPage<Props> = ({ articles }) => (
         <h1 className="flex items-center text-3xl font-semibold">
             <span className="flex-1">Articles</span>
             <NavLink
-                href="/feed/atom"
+                href="https://assets.hkamran.com/website/feed.atom"
                 target="_blank"
                 rel="nofollow noreferrer"
                 title="Atom feed"

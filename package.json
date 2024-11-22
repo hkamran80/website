@@ -5,8 +5,7 @@
     "scripts": {
         "dev": "next dev",
         "dev:analyze": "ANALYZE=true next dev",
-        "generate-feeds": "node --es-module-specifier-resolution=node ./lib/feed.mjs",
-        "build": "pnpm generate-feeds; next build; next-sitemap",
+        "build": "next build; next-sitemap",
         "start": "next start",
         "lint": "next lint",
         "lint:fix": "next lint --fix",
