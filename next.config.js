@@ -1,8 +1,8 @@
 // Switch to hashes/nonce
 const ContentSecurityPolicy = `
-  default-src 'self' vitals.vercel-insights.com giscus.app assets.hkamran.com data: umami.unisontech.org;
+  default-src 'self' vitals.vercel-insights.com giscus.app assets.hkamran.com data: u.13willow.com;
   img-src 'self' assets.hkamran.com i.ibb.co;
-  script-src 'self' umami.unisontech.org;
+  script-src 'self' u.13willow.com;
   style-src 'self' 'unsafe-inline' data:;
   font-src 'self';
   report-to https://hkamran.report-uri.com/r/d/csp/wizard;
