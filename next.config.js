@@ -1,4 +1,5 @@
-// Switch to hashes/nonce
+/* eslint-disable no-restricted-syntax */
+// TODO: Switch to hashes/nonce
 const ContentSecurityPolicy = `
   default-src 'self' vitals.vercel-insights.com giscus.app assets.hkamran.com data: umami.unisontech.org;
   img-src 'self' assets.hkamran.com i.ibb.co;
@@ -66,18 +67,6 @@ const nextConfig = {
             return [];
         }
     },
-    async rewrites() {
-        return [
-            {
-                source: "/feed",
-                destination: "/feed.rss",
-            },
-            {
-                source: "/feed/:slug",
-                destination: "/feed.:slug",
-            },
-        ];
-    },
     async redirects() {
         return [
             {
@@ -104,6 +93,8 @@ const nextConfig = {
             { source: "/article", destination: "/articles", permanent: true },
             { source: "/note", destination: "/notes", permanent: true },
             { source: "/tag", destination: "/articles", permanent: true },
+            {source:"/feed", destination:"https://assets.hkamran.com/website/feed.rss",permanent:true},
+            {source:"/feed/:slug", destination:"https://assets.hkamran.com/website/feed.:slug",permanent:true},
         ];
     },
 };

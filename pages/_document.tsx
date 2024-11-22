@@ -126,27 +126,27 @@ class WebsiteDocument extends Document {
                         key="keywords"
                     />
 
-                    {/* RSS Feeds */}
+                    {/* Feeds */}
                     <link
                         key="rss-feed"
                         rel="alternative"
                         type="application/rss+xml"
-                        title="RSS feed for H. Kamran's articles and notes"
-                        href="/feed"
+                        title="Articles and notes (RSS)"
+                        href="https://assets.hkamran.com/website/feed.rss"
                     />
                     <link
                         key="atom-feed"
                         rel="alternative"
                         type="application/atom+xml"
-                        title="Atom feed for H. Kamran's articles and notes"
-                        href="/feed/atom"
+                        title="Articles and notes (Atom)"
+                        href="https://assets.hkamran.com/website/feed.atom"
                     />
                     <link
                         key="json-feed"
                         rel="alternative"
                         type="application/feed+json"
-                        title="JSON feed for H. Kamran's articles and notes"
-                        href="/feed/json"
+                        title="Articles and notes (JSON)"
+                        href="https://assets.hkamran.com/website/feed.json"
                     />
 
                     {/* IndieAuth */}
