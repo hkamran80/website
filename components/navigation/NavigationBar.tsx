@@ -21,7 +21,7 @@ const NavigationBar = () => {
                 />
             </NavLink>
 
-            <div className="space-x-4 md:space-x-8">
+            <div className="flex flex-wrap gap-x-4 md:gap-x-8 gap-y-2">
                 {links.map(({ href, name, aliases }, index) => (
                     <NavLink
                         key={index}
