@@ -12,10 +12,11 @@ import type { Writing } from "@/types/writings";
 
 type Props = {
     article: Writing;
+    tableOfContents: string;
     content: string;
 };
 
-const Writing: NextPage<Props> = ({ article, content }) => {
+const Writing: NextPage<Props> = ({ article, tableOfContents, content }) => {
     const articleImage =
         article.published !== ""
             ? `https://assets.hkamran.com/graphics/article/${article.id}`
@@ -49,12 +50,20 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                             loading="eager"
                         />
 
-                        <article
-                            className="prose prose-invert my-7 mx-auto max-w-3xl prose-a:text-pink-700 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
-                            dangerouslySetInnerHTML={{
-                                __html: content,
-                            }}
-                        />
+                        <div className="relative flex max-w-7xl mx-auto flex-col lg:flex-row">
+                            <div className="lg:w-1/4 lg:sticky my-7 top-10 lg:h-1/5 lg:pr-6">
+                                <div className="lg:px-4 space-y-2">
+                                    <h2 className="font-bold text-lg">Table of Contents</h2>
+                                    <div dangerouslySetInnerHTML={{ __html: tableOfContents }} />
+                                </div>
+                            </div>
+
+                            <article
+                                className="prose prose-invert my-7 mx-auto max-w-3xl prose-a:text-pink-700 prose-blockquote:mx-6 prose-pre:bg-hk-grey "
+                                dangerouslySetInnerHTML={{
+                                    __html: content,
+                                }} />
+                        </div>
 
                         {article.published !== "" ? (
                             <Giscus
@@ -75,12 +84,11 @@ const Writing: NextPage<Props> = ({ article, content }) => {
                         ) : (
                             <div className="flex justify-center text-sm uppercase tracking-wide text-gray-300">
                                 <NavLink
-                                    href={`https://github.com/hkamran80/articles/blob/${
-                                        article.published === "" &&
+                                    href={`https://github.com/hkamran80/articles/blob/${article.published === "" &&
                                         article.branchName
-                                            ? article.branchName
-                                            : "main"
-                                    }/markdown/articles/${article.filename}.md`}
+                                        ? article.branchName
+                                        : "main"
+                                        }/markdown/articles/${article.filename}.md`}
                                     className="transition-colors duration-300 hover:text-pink-700"
                                 >
                                     <FileEdit />
@@ -116,25 +124,32 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     if (article) {
         const markdown = await (
             await fetch(
-                `${
-                    article.published === "" && article.branchName
-                        ? BASE_WRITINGS_URL.replace(
-                              "/main/",
-                              `/${article.branchName}/`,
-                          )
-                        : BASE_WRITINGS_URL
+                `${article.published === "" && article.branchName
+                    ? BASE_WRITINGS_URL.replace(
+                        "/main/",
+                        `/${article.branchName}/`,
+                    )
+                    : BASE_WRITINGS_URL
                 }/articles/${article.filename}.md`,
             )
         ).text();
 
+        let content = renderMarkdown(markdown, {
+            code: true,
+            images: true,
+            footnotes: true,
+            toc: true,
+        })
+
+        const TOC_REGEX = /(\<nav.*<\/nav\>)/m
+        const tableOfContents = TOC_REGEX.exec(content)![0];
+        content = content.replace(TOC_REGEX, "");
+
         return {
             props: {
                 article,
-                content: renderMarkdown(markdown, {
-                    code: true,
-                    images: true,
-                    footnotes: true,
-                }),
+                tableOfContents,
+                content,
             },
         };
     } else {
