@@ -50,7 +50,7 @@ const Writing: NextPage<Props> = ({ article, tableOfContents, content }) => {
                             loading="eager"
                         />
 
-                        <div className="relative flex max-w-7xl mx-auto flex-col lg:flex-row">
+                        <div className="lg:flex mx-auto lg:flex-row">
                             <div className="lg:w-1/4 lg:sticky my-7 top-10 lg:h-1/5 lg:pr-6">
                                 <div className="lg:px-4 space-y-2">
                                     <h2 className="font-bold text-lg">Table of Contents</h2>
