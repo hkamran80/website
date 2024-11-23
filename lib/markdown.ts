@@ -7,19 +7,25 @@ import markdownItLinkAttributes from "markdown-it-link-attributes";
 import markdownItPrism from "markdown-it-prism";
 import markdownItReplaceLink from "markdown-it-replace-link";
 import markdownItGitHubAlerts from "markdown-it-github-alerts";
+import markdownItAnchor from "markdown-it-anchor"
+import markdownItTocDoneRight from "markdown-it-toc-done-right";
+import { slugify } from "@hkamran/utility-strings";
 import "prismjs/plugins/autoloader/prism-autoloader";
 import "prismjs/plugins/toolbar/prism-toolbar";
 
 const checkIfLocalLink = (link: string) =>
     link.startsWith("/") || link.startsWith("https://hkamran.com");
 
-type Options = Partial<Record<"code" | "images" | "footnotes", boolean>>;
+type Options = Partial<Record<"code" | "images" | "footnotes" | "toc", boolean>>;
 
 const defaultOptions: Options = {
     code: false,
     images: false,
     footnotes: false,
+    toc: false,
 };
+
+const slugifySection = (s: string) => `section-${slugify(s)}`;
 
 export const renderMarkdown = (
     content: string,
@@ -42,14 +48,12 @@ export const renderMarkdown = (
                     return link;
                 } else {
                     if (!link.includes("#"))
-                        return `${link}${
-                            link.includes("?") ? "&" : "?"
-                        }ref=hkamran.com`;
+                        return `${link}${link.includes("?") ? "&" : "?"
+                            }ref=hkamran.com`;
                     else {
                         const [url, selector] = link.split("#");
-                        return `${url}${
-                            url.includes("?") ? "&" : "?"
-                        }ref=hkamran.com#${selector}`;
+                        return `${url}${url.includes("?") ? "&" : "?"
+                            }ref=hkamran.com#${selector}`;
                     }
                 }
             },
@@ -62,7 +66,8 @@ export const renderMarkdown = (
                 warning: "",
                 caution: "",
             },
-        });
+        })
+        .use(markdownItAnchor, { slugify: slugifySection })
 
     if (options.code) {
         md = md.use(markdownItPrism, { plugins: ["toolbar", "autoloader"] });
@@ -81,7 +86,10 @@ export const renderMarkdown = (
         md = md.use(markdownItFootnote);
     }
 
-    let rendered = md.render(content);
+    if (options.toc)
+        md = md.use(markdownItTocDoneRight, { level: 2, listType: "ul", listClass: "space-y-1 list-inside list-disc", slugify: slugifySection, linkClass: "text-gray-400 hover:text-white transition-colors duration-150" });
+
+    let rendered = md.render(!options.toc ? content : `[toc]\n${content}`);
     if (options.images) {
         rendered = rendered.replace(
             /(?<!figure>)<img (.*) alt=\"(.*)\"\>/gim,

@@ -10,6 +10,11 @@ section.footnotes {
     @apply text-sm;
 }
 
+/* Table of Contents */
+nav.table-of-contents li ul {
+    @apply ml-4;
+}
+
 /* Markdown Alerts */
 .markdown-alert {
     @apply mb-5 flex items-start rounded-md bg-hk-grey px-4 py-1 text-sm ring-2 ring-inset ring-hk-grey;
