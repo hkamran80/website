@@ -59,10 +59,11 @@ const Writing: NextPage<Props> = ({ article, tableOfContents, content }) => {
                             </div>
 
                             <article
-                                className="prose prose-invert my-7 mx-auto max-w-3xl prose-a:text-pink-700 prose-blockquote:mx-6 prose-pre:bg-hk-grey "
+                                className="prose prose-invert my-7 mx-auto max-w-3xl prose-a:text-pink-700 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
                                 dangerouslySetInnerHTML={{
                                     __html: content,
-                                }} />
+                                }}
+                            />
                         </div>
 
                         {article.published !== "" ? (
