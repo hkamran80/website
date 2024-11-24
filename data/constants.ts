@@ -6,3 +6,8 @@ export const BASE_WRITINGS_URL =
 export const SHOWCASE_URL = "https://assets.hkamran.com/showcase";
 export const UNSPLASH_URL =
     "https://unsplash.com/@hkamran?utm_source=hkwebsite&utm_medium=referral";
+
+export const EVENT_NAMES = {
+    OUTBOUND: "outbound-link",
+    SOCIAL: "social-link",
+}

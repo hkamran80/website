@@ -12,6 +12,7 @@ import markdownItTocDoneRight from "markdown-it-toc-done-right";
 import { slugify } from "@hkamran/utility-strings";
 import "prismjs/plugins/autoloader/prism-autoloader";
 import "prismjs/plugins/toolbar/prism-toolbar";
+import { EVENT_NAMES } from "@/data/constants";
 
 const checkIfLocalLink = (link: string) =>
     link.startsWith("/") || link.startsWith("https://hkamran.com");
@@ -78,7 +79,7 @@ export const renderMarkdown = (
                 const href = token.attrGet("href");
 
                 if (href && !checkIfLocalLink(href)) {
-                    token.attrSet("data-umami-event", "outbound-link");
+                    token.attrSet("data-umami-event", EVENT_NAMES.OUTBOUND);
                     token.attrSet("data-umami-event-url", href.replace("&ref=hkamran.com", "").replace("?ref=hkamran.com", ""));
                 }
 

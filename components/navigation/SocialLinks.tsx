@@ -2,6 +2,7 @@ import { slugify } from "@hkamran/utility-strings";
 
 import { socialIcons } from "@/data/navigation";
 
+import { EVENT_NAMES } from "@/data/constants";
 import NavLink from "./NavLink";
 
 type Props = {
@@ -24,7 +25,7 @@ const SocialLinks = ({ classNames, location }: Props) => (
                 href={url}
                 aria-label={icon.title}
                 rel="noopener noreferrer me"
-                data-umami-event="social-link"
+                data-umami-event={EVENT_NAMES.SOCIAL}
                 data-umami-event-platform={icon.title}
                 data-umami-event-location={location ?? "social-links"}
             >

@@ -2,6 +2,7 @@ import { classNames } from "@hkamran/utility-web";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { type HTMLAttributeAnchorTarget } from "react";
+import { EVENT_NAMES } from "@/data/constants";
 
 type Props = {
     href: string;
@@ -42,7 +43,7 @@ const NavLink = ({
                 )}
                 target={target ?? "_blank"}
                 rel={rel ?? "noopener noreferrer"}
-                {...(href.includes("unsplash.com") ? { "data-umami-event": "social-link", "data-umami-event-platform": "Unsplash" } : { "data-umami-event": "outbound-link", "data-umami-event-url": href })}
+                {...(href.includes("unsplash.com") ? { "data-umami-event": EVENT_NAMES.SOCIAL, "data-umami-event-platform": "Unsplash" } : { "data-umami-event": EVENT_NAMES.OUTBOUND, "data-umami-event-url": href })}
                 {...rest}
             >
                 {children}
