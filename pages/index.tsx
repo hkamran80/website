@@ -40,7 +40,7 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => (
                     footer={
                         <>
                             <div className="flex flex-row justify-center space-x-7">
-                                <SocialLinks classNames="h-6 w-6 fill-gray-500 transition duration-300 hover:scale-125 hover:fill-pink-700" />
+                                <SocialLinks classNames="h-6 w-6 fill-gray-500 transition duration-300 hover:scale-125 hover:fill-pink-700" location="landing" />
                             </div>
 
                             <button type="button" className="mx-auto">
