@@ -68,6 +68,23 @@ export const renderMarkdown = (
             },
         })
         .use(markdownItAnchor, { slugify: slugifySection })
+        .use((md) => {
+            const defaultRender =
+                md.renderer.rules.link_open ||
+                ((tokens, idx, options, _, self) => self.renderToken(tokens, idx, options));
+
+            md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+                const token = tokens[idx];
+                const href = token.attrGet("href");
+
+                if (href && !checkIfLocalLink(href)) {
+                    token.attrSet("data-umami-event", "outbound-link");
+                    token.attrSet("data-umami-event-url", href.replace("&ref=hkamran.com", "").replace("?ref=hkamran.com", ""));
+                }
+
+                return defaultRender(tokens, idx, options, env, self);
+            };
+        });
 
     if (options.code) {
         md = md.use(markdownItPrism, { plugins: ["toolbar", "autoloader"] });
