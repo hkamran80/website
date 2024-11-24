@@ -9,7 +9,7 @@ const CreationCardLinked = ({ creation }: { creation: Creation }) => {
             return (
                 <NavLink
                     href={creation.site}
-                    data-umami-event-source={`creation:${slugify(creation.name)}`}
+                    data-umami-event-group={`creation:${slugify(creation.name)}`}
                     data-umami-event-location="creation-site"
                 >
                     <CreationCard creation={creation} />

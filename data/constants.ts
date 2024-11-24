@@ -8,6 +8,22 @@ export const UNSPLASH_URL =
     "https://unsplash.com/@hkamran?utm_source=hkwebsite&utm_medium=referral";
 
 export const EVENT_NAMES = {
+    /**
+     * The outbound link event
+     * 
+     * There are three properties associated with it:
+     * - `url` (required)
+     * - `location`: the relative location of the link
+     * - `group`: the group name
+     */
     OUTBOUND: "outbound-link",
+
+    /**
+     * The social link event
+     * 
+     * There are two properties:
+     * - `platform` (required)
+     * - `location` (required): the relative location of the link
+     */
     SOCIAL: "social-link",
 }

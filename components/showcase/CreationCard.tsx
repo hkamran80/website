@@ -31,7 +31,7 @@ const CreationCard = ({ creation }: { creation: Creation }) => (
                     title={`${creation.name} source code`}
                     aria-label={`${creation.name} source code`}
                     className="flex-1 text-center"
-                    data-umami-event-source={`creation:${slugify(creation.name)}`}
+                    data-umami-event-group={`creation:${slugify(creation.name)}`}
                     data-umami-event-location="creation-repository"
                 >
                     <svg
