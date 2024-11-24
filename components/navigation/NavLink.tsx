@@ -40,7 +40,7 @@ const NavLink = ({
                 className={classNames(
                     className ?? "",
                     conditionalClassNames ?? "",
-                )}
+                ) || undefined}
                 target={target ?? "_blank"}
                 rel={rel ?? "noopener noreferrer"}
                 {...(href.includes("unsplash.com") ? { "data-umami-event": EVENT_NAMES.SOCIAL, "data-umami-event-platform": "Unsplash" } : { "data-umami-event": EVENT_NAMES.OUTBOUND, "data-umami-event-url": href })}
@@ -56,7 +56,7 @@ const NavLink = ({
                 className={classNames(
                     className ?? "",
                     conditionalClassNames ?? "",
-                )}
+                ) || undefined}
                 target={target}
                 rel={rel}
                 data-umami-event={EVENT_NAMES.LOCAL}
