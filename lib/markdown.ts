@@ -15,7 +15,7 @@ import "prismjs/plugins/toolbar/prism-toolbar";
 import { EVENT_NAMES } from "@/data/constants";
 
 const checkIfLocalLink = (link: string) =>
-    link.startsWith("/") || link.startsWith("https://hkamran.com");
+    link.startsWith("/") || link.startsWith("#") || link.startsWith("https://hkamran.com");
 
 type Options = Partial<Record<"code" | "images" | "footnotes" | "toc", boolean>>;
 
@@ -78,9 +78,16 @@ export const renderMarkdown = (
                 const token = tokens[idx];
                 const href = token.attrGet("href");
 
-                if (href && !checkIfLocalLink(href)) {
-                    token.attrSet("data-umami-event", EVENT_NAMES.OUTBOUND);
-                    token.attrSet("data-umami-event-url", href.replace("&ref=hkamran.com", "").replace("?ref=hkamran.com", ""));
+                if (href) {
+                    if (!checkIfLocalLink(href)) {
+                        token.attrSet("data-umami-event", EVENT_NAMES.OUTBOUND);
+                        token.attrSet("data-umami-event-url", href.replace("&ref=hkamran.com", "").replace("?ref=hkamran.com", ""));
+                    } else {
+                        if (!href.startsWith("#")) {
+                            token.attrSet("data-umami-event", EVENT_NAMES.LOCAL);
+                            token.attrSet("data-umami-event-url", href);
+                        }
+                    }
                 }
 
                 return defaultRender(tokens, idx, options, env, self);
