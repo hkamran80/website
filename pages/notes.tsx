@@ -29,6 +29,7 @@ const Notes: NextPage<Props> = ({ notes }) => (
                 rel="nofollow noreferrer"
                 title="Atom feed"
                 className="text-gray-400"
+                data-umami-event-location="page:notes"
             >
                 <Rss />
             </NavLink>
@@ -41,6 +42,7 @@ const Notes: NextPage<Props> = ({ notes }) => (
                         href={`/note/${note.id}`}
                         className="u-url"
                         rel="bookmark"
+                        data-umami-event-location="page:notes"
                     >
                         <NoteCard note={note} />
                     </NavLink>

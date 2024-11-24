@@ -32,6 +32,8 @@ const Articles: NextPage<Props> = ({ articles }) => (
                 rel="nofollow noreferrer"
                 title="Atom feed"
                 className="text-gray-400"
+                data-umami-event-location="page:articles"
+
             >
                 <Rss />
             </NavLink>
@@ -48,6 +50,7 @@ const Articles: NextPage<Props> = ({ articles }) => (
                             href={`/article/${article.id}`}
                             className="u-url"
                             rel="bookmark"
+                            data-umami-event-location="page:articles"
                         >
                             <ArticleCard article={article} />
                         </NavLink>

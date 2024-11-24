@@ -59,6 +59,8 @@ const NavLink = ({
                 )}
                 target={target}
                 rel={rel}
+                data-umami-event={EVENT_NAMES.LOCAL}
+                data-umami-event-url={href}
                 {...rest}
             >
                 {children}

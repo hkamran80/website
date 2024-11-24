@@ -36,6 +36,7 @@ const Reactor: NextPage = () => (
                         <NavLink
                             href="https://go.hkamran.com/add-reactor"
                             className="align-center flex w-full justify-center rounded-full bg-hk-grey p-4 text-center font-medium text-white transition-colors duration-200 ease-in-out hover:text-pink-700"
+                            data-umami-event-location="showcase:reactor"
                         >
                             Add Reactor to your Discord server
                         </NavLink>
@@ -72,10 +73,10 @@ const Reactor: NextPage = () => (
                             <table>
                                 <thead>
                                     <tr>
-                                        <th style={{ fontWeight: 900 }}>
+                                        <th>
                                             Command
                                         </th>
-                                        <th style={{ fontWeight: 900 }}>
+                                        <th>
                                             Description
                                         </th>
                                     </tr>

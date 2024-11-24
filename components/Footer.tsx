@@ -24,7 +24,7 @@ const Footer = () => (
                         href={href}
                         className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                         target={!href.startsWith("/") ? "_blank" : ""}
-                        {...(href.includes("unsplash.com") && { "data-umami-event-location": "footer" })}
+                        data-umami-event-location="footer"
                     >
                         {name}
                     </NavLink>
@@ -34,6 +34,7 @@ const Footer = () => (
                 <NavLink
                     href="/uses"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                    data-umami-event-location="footer"
                 >
                     My Setup
                 </NavLink>
@@ -41,6 +42,7 @@ const Footer = () => (
                 <NavLink
                     href="/sponsor"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                    data-umami-event-location="footer"
                 >
                     Sponsor
                 </NavLink>
@@ -48,6 +50,7 @@ const Footer = () => (
                 <NavLink
                     href="/legal/license"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                    data-umami-event-location="footer"
                 >
                     License
                 </NavLink>
@@ -55,6 +58,7 @@ const Footer = () => (
                 <NavLink
                     href="/legal/privacy"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                    data-umami-event-location="footer"
                 >
                     Privacy Policy
                 </NavLink>

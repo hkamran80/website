@@ -75,6 +75,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                 key={index}
                                                 href={link}
                                                 className="rounded-full bg-hk-grey p-4 text-center font-medium text-white shadow-lg transition-colors duration-200 ease-in-out hover:text-purple-400"
+                                                data-umami-event-location="showcase:nebulanewtab"
                                             >
                                                 Install in {browser}
                                             </NavLink>
@@ -89,6 +90,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                                 key={index}
                                                 href={link}
                                                 className="rounded-lg bg-purple-900 p-2 text-center text-white transition-colors duration-200 ease-in-out hover:bg-purple-800"
+                                                data-umami-event-location="showcase:nebulanewtab"
                                             >
                                                 {label}
                                             </NavLink>
@@ -147,6 +149,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                             <NavLink
                                                 href="https://unsplash.com/?utm_source=nebula-new-tab&utm_medium=referral"
                                                 className="underline"
+                                                data-umami-event-location="showcase:nebulanewtab"
                                             >
                                                 Unsplash
                                             </NavLink>
@@ -154,6 +157,7 @@ const NebulaNewTab: NextPage<Props> = ({ changelog }) => {
                                             <NavLink
                                                 href="https://unsplash.com/collections/935518/night-sky?utm_source=nebula-new-tab&utm_medium=referral"
                                                 className="underline"
+                                                data-umami-event-location="showcase:nebulanewtab"
                                             >
                                                 these background images
                                             </NavLink>{" "}

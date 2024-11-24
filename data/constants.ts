@@ -19,6 +19,16 @@ export const EVENT_NAMES = {
     OUTBOUND: "outbound-link",
 
     /**
+     * The local link event
+     * 
+     * There are three properties associated with it:
+     * - `url` (required)
+     * - `location`: the relative location of the link
+     * - `group`: the group name
+     */
+    LOCAL: "local-link",
+
+    /**
      * The social link event
      * 
      * There are two properties:
