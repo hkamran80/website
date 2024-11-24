@@ -13,7 +13,7 @@ const Footer = () => (
                 rights reserved.
             </p>
             <div className="flex flex-row justify-center space-x-5 md:justify-start">
-                <SocialLinks classNames="h-4 w-4 fill-gray-500 transition-colors duration-200 ease-in-out hover:fill-gray-300" />
+                <SocialLinks classNames="h-4 w-4 fill-gray-500 transition-colors duration-200 ease-in-out hover:fill-gray-300" location="footer" />
             </div>
         </div>
         <div className="col-span-2 space-y-4 md:text-right">
@@ -22,13 +22,9 @@ const Footer = () => (
                     <NavLink
                         key={index}
                         href={href}
-                        className={classNames(
-                            "transition-colors duration-200 ease-in-out hover:text-gray-300",
-                            href.includes("unsplash")
-                                ? "umami--click--unsplash-navbar"
-                                : "",
-                        )}
+                        className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                         target={!href.startsWith("/") ? "_blank" : ""}
+                        data-umami-event-location="footer"
                     >
                         {name}
                     </NavLink>
@@ -38,6 +34,7 @@ const Footer = () => (
                 <NavLink
                     href="/uses"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                    data-umami-event-location="footer"
                 >
                     My Setup
                 </NavLink>
@@ -45,6 +42,7 @@ const Footer = () => (
                 <NavLink
                     href="/sponsor"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                    data-umami-event-location="footer"
                 >
                     Sponsor
                 </NavLink>
@@ -52,6 +50,7 @@ const Footer = () => (
                 <NavLink
                     href="/legal/license"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                    data-umami-event-location="footer"
                 >
                     License
                 </NavLink>
@@ -59,6 +58,7 @@ const Footer = () => (
                 <NavLink
                     href="/legal/privacy"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                    data-umami-event-location="footer"
                 >
                     Privacy Policy
                 </NavLink>

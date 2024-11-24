@@ -1,5 +1,3 @@
-import type { Icon } from "lucide-react";
-
 type Props = {
     icon: React.ReactNode;
     name: string;

@@ -2,6 +2,7 @@ import { slugify } from "@hkamran/utility-strings";
 
 import { socialIcons } from "@/data/navigation";
 
+import { EVENT_NAMES } from "@/data/constants";
 import NavLink from "./NavLink";
 
 type Props = {
@@ -9,9 +10,14 @@ type Props = {
      * CSS class names to apply to the SVG element
      */
     classNames?: string;
+
+    /**
+     * The location of the element
+     */
+    location?: string;
 };
 
-const SocialLinks = ({ classNames }: Props) => (
+const SocialLinks = ({ classNames, location }: Props) => (
     <>
         {socialIcons.map(({ url, icon }, index) => (
             <NavLink
@@ -19,7 +25,9 @@ const SocialLinks = ({ classNames }: Props) => (
                 href={url}
                 aria-label={icon.title}
                 rel="noopener noreferrer me"
-                className={`umami--click--${slugify(icon.title)}-link-social`}
+                data-umami-event={EVENT_NAMES.SOCIAL}
+                data-umami-event-platform={icon.title}
+                data-umami-event-location={location ?? "social-links"}
             >
                 <svg
                     role="img"

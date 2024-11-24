@@ -11,9 +11,7 @@ const CreationCard = ({ creation }: { creation: Creation }) => (
         className={classNames(
             "group flex h-full flex-col space-y-4 rounded-lg p-6 text-sm font-light transition-colors duration-300 hover:bg-hk-grey",
             creation.site
-                ? `hover:bg-hk-grey-hover umami--click--${slugify(
-                      creation.name,
-                  )}-site`
+                ? `hover:bg-hk-grey-hover`
                 : "",
         )}
     >
@@ -32,9 +30,9 @@ const CreationCard = ({ creation }: { creation: Creation }) => (
                     href={creation.repository}
                     title={`${creation.name} source code`}
                     aria-label={`${creation.name} source code`}
-                    className={`flex-1 text-center umami--click--${slugify(
-                        creation.name,
-                    )}-repository`}
+                    className="flex-1 text-center"
+                    data-umami-event-group={`creation:${slugify(creation.name)}`}
+                    data-umami-event-location="creation-repository"
                 >
                     <svg
                         role="img"
