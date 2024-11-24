@@ -24,7 +24,7 @@ const Footer = () => (
                         href={href}
                         className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                         target={!href.startsWith("/") ? "_blank" : ""}
-                        {...(href.includes("unsplash.com") && { "data-umami-event": "social-link", "data-umami-event-platform": "Unsplash", "data-umami-event-location": "footer" })}
+                        {...(href.includes("unsplash.com") && { "data-umami-event-location": "footer" })}
                     >
                         {name}
                     </NavLink>

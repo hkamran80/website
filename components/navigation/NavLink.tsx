@@ -33,9 +33,8 @@ const NavLink = ({
                 href={
                     noReferrer === true
                         ? href
-                        : `${
-                              href.includes("?") ? `${href}&` : `${href}?`
-                          }ref=hkamran.com`
+                        : `${href.includes("?") ? `${href}&` : `${href}?`
+                        }ref=hkamran.com`
                 }
                 className={classNames(
                     className ?? "",
@@ -43,6 +42,7 @@ const NavLink = ({
                 )}
                 target={target ?? "_blank"}
                 rel={rel ?? "noopener noreferrer"}
+                {...(href.includes("unsplash.com") ? { "data-umami-event": "social-link", "data-umami-event-platform": "Unsplash" } : { "data-umami-event": "outbound-link", "data-umami-event-url": href })}
                 {...rest}
             >
                 {children}

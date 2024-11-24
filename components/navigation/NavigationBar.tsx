@@ -40,7 +40,7 @@ const NavigationBar = () => {
                         )}
                         target={!href.startsWith("/") ? "_blank" : ""}
                         conditionalClassNames="hover:cursor-pointer"
-                        {...(href.includes("unsplash.com") && { "data-umami-event": "social-link", "data-umami-event-platform": "Unsplash", "data-umami-event-location": "navbar" })}
+                        {...(href.includes("unsplash.com") && { "data-umami-event-location": "navbar" })}
                     >
                         {name}
                     </NavLink>
