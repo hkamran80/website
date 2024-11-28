@@ -31,6 +31,7 @@ const slugifySection = (s: string) => `section-${slugify(s)}`;
 export const renderMarkdown = (
     content: string,
     userOptions: Options = defaultOptions,
+    source: string | undefined = undefined,
 ): string => {
     const options = { ...defaultOptions, ...userOptions };
 
@@ -88,6 +89,8 @@ export const renderMarkdown = (
                             token.attrSet("data-umami-event-url", href);
                         }
                     }
+
+                    if (source) token.attrSet("data-umami-event-location", source);
                 }
 
                 return defaultRender(tokens, idx, options, env, self);

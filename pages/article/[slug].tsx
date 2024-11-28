@@ -140,7 +140,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             images: true,
             footnotes: true,
             toc: true,
-        })
+        }, `article:${article.id}`)
 
         const TOC_REGEX = /(\<nav.*<\/nav\>)/m
         const tableOfContents = TOC_REGEX.exec(content)![0];
