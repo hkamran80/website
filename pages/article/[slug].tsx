@@ -35,6 +35,7 @@ const Writing: NextPage<Props> = ({ article, tableOfContents, content }) => {
                         title={article.title}
                         description={article.description}
                         publishDate={article.published}
+                        updateDate={article.updated}
                         image={articleImage}
                         tags={article.tags}
                         type="article"
