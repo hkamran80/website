@@ -30,6 +30,7 @@ const WritingHeader = ({
     type,
 }: Props) => {
     const url = `${getBaseUrl()}/${type}/${id}`;
+    const publishedTimestamp = publishDate.includes("T") ? publishDate : `${publishDate}T07:00:00.000-08:00`;
 
     return (
         <>
@@ -43,19 +44,19 @@ const WritingHeader = ({
                     url,
                     type: "article",
                     article: {
-                        publishedTime: `${publishDate}T07:00:00.000-08:00`,
+                        publishedTime: publishedTimestamp,
                         tags: tags,
                     },
                     images:
                         type === "article"
                             ? [
-                                  {
-                                      url: image!,
-                                      width: 1000,
-                                      height: 500,
-                                      alt: `Featured image for ${title}`,
-                                  },
-                              ]
+                                {
+                                    url: image!,
+                                    width: 1000,
+                                    height: 500,
+                                    alt: `Featured image for ${title}`,
+                                },
+                            ]
                             : [],
                 }}
                 twitter={{
@@ -69,7 +70,7 @@ const WritingHeader = ({
                 title={title}
                 description={description}
                 images={type === "article" ? [image!] : []}
-                datePublished={`${publishDate}T07:00:00.000-08:00`}
+                datePublished={publishedTimestamp}
                 authorName={[{ name: "H. Kamran", url: "https://hkamran.com" }]}
                 publisherName="H. Kamran"
                 publisherLogo="https://hkamran.com/profile.png"
@@ -91,10 +92,8 @@ const WritingHeader = ({
                 </h2>
                 <h3 className="text-center font-light leading-snug text-gray-400 sm:text-left sm:text-xl">
                     {publishDate !== "" ? (
-                        <time dateTime={publishDate}>
-                            {new Date(
-                                `${publishDate}T12:00:00-07:00`,
-                            ).toLocaleDateString(undefined, {
+                        <time dateTime={publishedTimestamp}>
+                            {new Date(publishedTimestamp).toLocaleDateString(undefined, {
                                 year: "numeric",
                                 month: "long",
                                 day: "numeric",
