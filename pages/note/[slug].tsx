@@ -23,6 +23,7 @@ const Note: NextPage<Props> = ({ note, content }) => (
             title={note.title}
             description={note.description}
             publishDate={note.published}
+            updateDate={note.updated}
             tags={note.tags}
             type="note"
         />

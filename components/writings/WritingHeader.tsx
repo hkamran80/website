@@ -10,6 +10,7 @@ type Props = {
     title: string;
     description: string;
     publishDate: string;
+    updateDate?: string;
     image?: string;
     tags: string[];
     type: "article" | "note";
@@ -25,6 +26,7 @@ const WritingHeader = ({
     title,
     description,
     publishDate,
+    updateDate,
     image,
     tags,
     type,
@@ -45,6 +47,7 @@ const WritingHeader = ({
                     type: "article",
                     article: {
                         publishedTime: publishedTimestamp,
+                        modifiedTime: updateDate,
                         tags: tags,
                     },
                     images:
@@ -71,6 +74,7 @@ const WritingHeader = ({
                 description={description}
                 images={type === "article" ? [image!] : []}
                 datePublished={publishedTimestamp}
+                dateModified={updateDate}
                 authorName={[{ name: "H. Kamran", url: "https://hkamran.com" }]}
                 publisherName="H. Kamran"
                 publisherLogo="https://hkamran.com/profile.png"
@@ -102,6 +106,17 @@ const WritingHeader = ({
                     ) : (
                         "Unpublished"
                     )}
+
+                    {updateDate ? <>
+                        <span className="ml-1 mr-2">•</span>
+                        <time dateTime={updateDate}>
+                            {new Date(updateDate).toLocaleDateString(undefined, {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })}
+                        </time>
+                    </> : null}
 
                     <span className="ml-1 mr-2">•</span>
 

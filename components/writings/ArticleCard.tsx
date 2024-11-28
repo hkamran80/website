@@ -41,6 +41,17 @@ const ArticleCard = ({
                     ) : (
                         "Unpublished"
                     )}
+
+                    {article.updated ? <>
+                        <span className="mx-1">•</span>
+                        <time dateTime={article.updated} className="dt-updated updated">
+                            {new Date(article.updated).toLocaleDateString(undefined, {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })}
+                        </time>
+                    </> : null}
                 </p>
 
                 <p className="p-name entry-title text-xl font-semibold text-gray-200">

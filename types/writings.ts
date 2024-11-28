@@ -4,6 +4,7 @@ export type Writing = {
     description: string;
     tags: string[];
     published: string;
+    updated?: string;
     filename: string;
     branchName?: string;
 };
