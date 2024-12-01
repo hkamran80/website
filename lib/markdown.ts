@@ -70,8 +70,8 @@ export const renderMarkdown = (
                 caution: "",
             },
         })
-        .use(markdownItAnchor, { slugify: slugifySection })
         .use(markdownItAttrs, { allowedAttributes: ["id", "class"] })
+        .use(markdownItAnchor, { slugify: slugifySection })
         .use((md) => {
             const defaultRender =
                 md.renderer.rules.link_open ||
