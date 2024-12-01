@@ -9,6 +9,7 @@ import markdownItReplaceLink from "markdown-it-replace-link";
 import markdownItGitHubAlerts from "markdown-it-github-alerts";
 import markdownItAnchor from "markdown-it-anchor"
 import markdownItTocDoneRight from "markdown-it-toc-done-right";
+import markdownItAttrs from "markdown-it-attrs";
 import { slugify } from "@hkamran/utility-strings";
 import "prismjs/plugins/autoloader/prism-autoloader";
 import "prismjs/plugins/toolbar/prism-toolbar";
@@ -70,6 +71,7 @@ export const renderMarkdown = (
             },
         })
         .use(markdownItAnchor, { slugify: slugifySection })
+        .use(markdownItAttrs, { allowedAttributes: ["id", "class"] })
         .use((md) => {
             const defaultRender =
                 md.renderer.rules.link_open ||
