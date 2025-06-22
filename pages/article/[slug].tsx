@@ -44,18 +44,26 @@ const Writing: NextPage<Props> = ({ article, tableOfContents, content }) => {
                     <div className="mx-auto mt-6 max-w-5xl">
                         {/* TODO: Convert to `next/image` */}
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                            src={articleImage}
-                            className="rounded-lg"
-                            alt={`Featured image for ${article.title}`}
-                            loading="eager"
-                        />
+                        {article.published !== "" && (
+                            <img
+                                src={articleImage}
+                                className="rounded-lg"
+                                alt={`Featured image for ${article.title}`}
+                                loading="eager"
+                            />
+                        )}
 
                         <div className="lg:flex mx-auto lg:flex-row">
                             <div className="lg:w-1/4 lg:sticky my-7 top-10 lg:h-1/5 lg:pr-6">
                                 <div className="lg:px-4 space-y-2">
-                                    <h2 className="font-bold text-lg">Table of Contents</h2>
-                                    <div dangerouslySetInnerHTML={{ __html: tableOfContents }} />
+                                    <h2 className="font-bold text-lg">
+                                        Table of Contents
+                                    </h2>
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: tableOfContents,
+                                        }}
+                                    />
                                 </div>
                             </div>
 
@@ -86,11 +94,12 @@ const Writing: NextPage<Props> = ({ article, tableOfContents, content }) => {
                         ) : (
                             <div className="flex justify-center text-sm uppercase tracking-wide text-gray-300">
                                 <NavLink
-                                    href={`https://github.com/hkamran80/articles/blob/${article.published === "" &&
+                                    href={`https://github.com/hkamran80/articles/blob/${
+                                        article.published === "" &&
                                         article.branchName
-                                        ? article.branchName
-                                        : "main"
-                                        }/markdown/articles/${article.filename}.md`}
+                                            ? article.branchName
+                                            : "main"
+                                    }/markdown/articles/${article.filename}.md`}
                                     className="transition-colors duration-300 hover:text-pink-700"
                                 >
                                     <FileEdit />
@@ -126,24 +135,29 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     if (article) {
         const markdown = await (
             await fetch(
-                `${article.published === "" && article.branchName
-                    ? BASE_WRITINGS_URL.replace(
-                        "/main/",
-                        `/${article.branchName}/`,
-                    )
-                    : BASE_WRITINGS_URL
+                `${
+                    article.published === "" && article.branchName
+                        ? BASE_WRITINGS_URL.replace(
+                              "/main/",
+                              `/${article.branchName}/`,
+                          )
+                        : BASE_WRITINGS_URL
                 }/articles/${article.filename}.md`,
             )
         ).text();
 
-        let content = renderMarkdown(markdown, {
-            code: true,
-            images: true,
-            footnotes: true,
-            toc: true,
-        }, `article:${article.id}`)
+        let content = renderMarkdown(
+            markdown,
+            {
+                code: true,
+                images: true,
+                footnotes: true,
+                toc: true,
+            },
+            `article:${article.id}`,
+        );
 
-        const TOC_REGEX = /(\<nav.*<\/nav\>)/m
+        const TOC_REGEX = /(\<nav.*<\/nav\>)/m;
         const tableOfContents = TOC_REGEX.exec(content)![0];
         content = content.replace(TOC_REGEX, "");
 
