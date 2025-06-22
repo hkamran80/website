@@ -32,7 +32,11 @@ const WritingHeader = ({
     type,
 }: Props) => {
     const url = `${getBaseUrl()}/${type}/${id}`;
-    const publishedTimestamp = publishDate.includes("T") ? publishDate : `${publishDate}T07:00:00.000-08:00`;
+
+    const isPublished = publishDate !== "";
+    const publishedTimestamp = publishDate.includes("T")
+        ? publishDate
+        : `${publishDate}T07:00:00.000-08:00`;
 
     return (
         <>
@@ -51,20 +55,22 @@ const WritingHeader = ({
                         tags: tags,
                     },
                     images:
-                        type === "article"
+                        type === "article" && isPublished
                             ? [
-                                {
-                                    url: image!,
-                                    width: 1000,
-                                    height: 500,
-                                    alt: `Featured image for ${title}`,
-                                },
-                            ]
+                                  {
+                                      url: image!,
+                                      width: 1000,
+                                      height: 500,
+                                      alt: `Featured image for ${title}`,
+                                  },
+                              ]
                             : [],
                 }}
                 twitter={{
                     cardType:
-                        type === "article" ? "summary_large_image" : "summary",
+                        type === "article" && isPublished
+                            ? "summary_large_image"
+                            : "summary",
                 }}
             />
 
@@ -72,7 +78,7 @@ const WritingHeader = ({
                 url={`${getBaseUrl()}/${type}/${id}`}
                 title={title}
                 description={description}
-                images={type === "article" ? [image!] : []}
+                images={type === "article" && isPublished ? [image!] : []}
                 datePublished={publishedTimestamp}
                 dateModified={updateDate}
                 authorName={[{ name: "H. Kamran", url: "https://hkamran.com" }]}
@@ -97,26 +103,34 @@ const WritingHeader = ({
                 <h3 className="text-center font-light leading-snug text-gray-400 sm:text-left sm:text-xl">
                     {publishDate !== "" ? (
                         <time dateTime={publishedTimestamp}>
-                            {new Date(publishedTimestamp).toLocaleDateString(undefined, {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric",
-                            })}
+                            {new Date(publishedTimestamp).toLocaleDateString(
+                                undefined,
+                                {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                },
+                            )}
                         </time>
                     ) : (
                         "Unpublished"
                     )}
 
-                    {updateDate ? <>
-                        <span className="ml-1 mr-2">•</span>
-                        <time dateTime={updateDate}>
-                            {new Date(updateDate).toLocaleDateString(undefined, {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric",
-                            })}
-                        </time>
-                    </> : null}
+                    {updateDate ? (
+                        <>
+                            <span className="ml-1 mr-2">•</span>
+                            <time dateTime={updateDate}>
+                                {new Date(updateDate).toLocaleDateString(
+                                    undefined,
+                                    {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    },
+                                )}
+                            </time>
+                        </>
+                    ) : null}
 
                     <span className="ml-1 mr-2">•</span>
 
