@@ -148,11 +148,12 @@ const License: NextPage = () => (
                 <h4 id="ai-license-terms-and-conditions">
                     Terms and Conditions
                 </h4>
+
                 <p>
                     You accept and agree to these license terms by downloading,
                     cloning, extracting, mirroring, ripping, photographing,
                     scraping, syndicating, or by otherwise copying content from
-                    this website for &quot;AI&quot; related use as defined
+                    this website for &quot;AI&quot;-related use as defined
                     above.
                 </p>
 
@@ -175,6 +176,12 @@ const License: NextPage = () => (
                     business details, content usage, and the license fee you
                     want to pay. I will reply to your email with a PDF invoice
                     attached. The invoice must be paid within 30 days.
+                </p>
+
+                <p>
+                    You agree that this license shall be effective retroactively
+                    to the start of any &quot;AI&quot;-related use as defined
+                    above.
                 </p>
 
                 <p>
