@@ -30,6 +30,15 @@ const License: NextPage = () => (
             />
 
             <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
+                <p>
+                    Unless otherwise noted, the copyright of all content on this site (and its redirects) belongs to H. Kamran. This includes, but is not limited to, text and images, visual design, source code, articles, notes,
+                    programs, showcase items, photos, and any other
+                    content on this site.
+                </p>
+
+                <p>Copyright &copy; 2025 H. Kamran. All rights reserved.</p>
+
+
                 <ul>
                     <li>
                         <strong>Attribution Required</strong>
@@ -89,19 +98,12 @@ const License: NextPage = () => (
                 </ul>
 
                 <p>
-                    For the purposes of the this license, the term
-                    &quot;content&quot; refers to any of my articles, notes,
-                    programs, showcase items, photos<sup>1</sup>, or any other
-                    content on this site.
-                </p>
-
-                <p>
                     I reserve the right to change the above terms at any time
                     without prior notification.
                 </p>
 
                 <p className="text-xs">
-                    <sup>1</sup>: Photos distributed on{" "}
+                    Photos distributed on{" "}
                     <NavLink href={UNSPLASH_URL}>Unsplash</NavLink> are subject
                     to the{" "}
                     <NavLink href="https://unsplash.com/license">
