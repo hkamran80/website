@@ -14,14 +14,10 @@ const PrivacyPolicy: NextPage = () => (
             <title>Privacy Policy | H. Kamran</title>
         </Head>
 
-        <WebPageJsonLd id={`${getBaseUrl()}/legal/privacy`} />
+        <WebPageJsonLd id={`${getBaseUrl()}/privacy`} />
 
         <div className="mx-auto max-w-2xl">
-            <Breadcrumbs
-                basePath="/"
-                baseLabel="Legal"
-                currentLabel="Privacy Policy"
-            />
+            <Breadcrumbs baseLabel="Privacy Policy" />
 
             <PageHeader
                 name="Privacy Policy"

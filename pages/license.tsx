@@ -15,14 +15,10 @@ const License: NextPage = () => (
             <title>License | H. Kamran</title>
         </Head>
 
-        <WebPageJsonLd id={`${getBaseUrl()}/legal/license`} />
+        <WebPageJsonLd id={`${getBaseUrl()}/license`} />
 
         <div className="mx-auto max-w-2xl">
-            <Breadcrumbs
-                basePath="/"
-                baseLabel="Legal"
-                currentLabel="License"
-            />
+            <Breadcrumbs baseLabel="License" />
 
             <PageHeader
                 name="License"

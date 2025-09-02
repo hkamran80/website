@@ -19,4 +19,4 @@ then submit a pull request ([learn about pull requests](https://docs.github.com/
 
 ## License
 
-The license for my website and the accompanying content can be found on [my website](https://hkamran.com/legal/license).
+The license for my website and the accompanying content can be found on [my website](https://hkamran.com/license).

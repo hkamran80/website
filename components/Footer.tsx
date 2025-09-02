@@ -56,7 +56,7 @@ const Footer = () => (
                 </NavLink>
 
                 <NavLink
-                    href="/legal/license"
+                    href="/license"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                     data-umami-event-location="footer"
                 >
@@ -64,7 +64,7 @@ const Footer = () => (
                 </NavLink>
 
                 <NavLink
-                    href="/legal/privacy"
+                    href="/privacy"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                     data-umami-event-location="footer"
                 >
