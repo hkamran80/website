@@ -9,7 +9,7 @@ import { getBaseUrl } from "@/lib/urls";
 import type { NextPage } from "next";
 
 const PrivacyPolicy: NextPage = () => (
-    <Layout showAntiAIParagraph={false}>
+    <Layout includeAntiAIMeasures={false}>
         <Head>
             <title>Privacy Policy | H. Kamran</title>
         </Head>
