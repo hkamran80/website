@@ -19,7 +19,11 @@ const Programs: NextPage = () => (
         <h1 className="text-3xl font-semibold">Programs</h1>
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
             {programs.map((program, index) => (
-                <NavLink key={index} href={`/program/${program.id}`} data-umami-event-location="page:programs">
+                <NavLink
+                    key={index}
+                    href={`/program/${program.id}`}
+                    data-umami-event-location="page:programs"
+                >
                     <ProgramCard program={program} />
                 </NavLink>
             ))}

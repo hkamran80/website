@@ -247,6 +247,7 @@ const TestflightCleanerProgram: NextPage = () => {
                 <div className="mx-auto max-w-2xl">
                     <DynamicHeader
                         id="testflight-cleaner"
+                        type="program"
                         name={name}
                         description={description}
                     />

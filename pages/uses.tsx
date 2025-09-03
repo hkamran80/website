@@ -1,32 +1,12 @@
-import { WebPageJsonLd } from "next-seo";
-import Head from "next/head";
-
 import Layout from "@/components/Layout";
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import NavLink from "@/components/navigation/NavLink";
-import { getBaseUrl } from "@/lib/urls";
+import DynamicHeader from "@/components/DynamicHeader";
 import type { NextPage } from "next";
 
 const Uses: NextPage = () => (
     <Layout>
-        <Head>
-            <title>My Setup | H. Kamran</title>
-        </Head>
-
-        <WebPageJsonLd id={`${getBaseUrl()}/uses`} />
-
         <div className="mx-auto max-w-2xl">
-            <Breadcrumbs baseLabel="My Setup" />
-
-            <div className="space-y-2">
-                <h1 className="mx-auto text-center text-4xl font-semibold md:text-left">
-                    My Setup
-                </h1>
-                <p className="text-center font-light leading-snug text-gray-300 sm:text-left">
-                    This is by no means a comprehensive list. It&apos;s just the
-                    essentials.
-                </p>
-            </div>
+            <DynamicHeader id="uses" name="My Setup" description="This is by no means a comprehensive list. It's just the essentials." />
 
             <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
                 <h2>Hardware</h2>

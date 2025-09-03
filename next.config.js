@@ -93,8 +93,18 @@ const nextConfig = {
             { source: "/article", destination: "/articles", permanent: true },
             { source: "/note", destination: "/notes", permanent: true },
             { source: "/tag", destination: "/articles", permanent: true },
-            {source:"/feed", destination:"https://assets.hkamran.com/website/feed.rss",permanent:true},
-            {source:"/feed/:slug", destination:"https://assets.hkamran.com/website/feed.:slug",permanent:true},
+            {
+                source: "/feed",
+                destination: "https://assets.hkamran.com/website/feed.rss",
+                permanent: true,
+            },
+            {
+                source: "/feed/:slug",
+                destination: "https://assets.hkamran.com/website/feed.:slug",
+                permanent: true,
+            },
+            { source: "/legal/:slug", destination: "/:slug", permanent: true },
+            { source: "/sponsor", destination: "/support", permanent: true },
         ];
     },
 };

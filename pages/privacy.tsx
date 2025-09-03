@@ -1,31 +1,16 @@
-import { WebPageJsonLd } from "next-seo";
-import Head from "next/head";
-
 import Layout from "@/components/Layout";
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import NavLink from "@/components/navigation/NavLink";
-import PageHeader from "@/components/pages/PageHeader";
-import { getBaseUrl } from "@/lib/urls";
+import DynamicHeader from "@/components/DynamicHeader";
 import type { NextPage } from "next";
 
 const PrivacyPolicy: NextPage = () => (
-    <Layout>
-        <Head>
-            <title>Privacy Policy | H. Kamran</title>
-        </Head>
-
-        <WebPageJsonLd id={`${getBaseUrl()}/legal/privacy`} />
-
+    <Layout includeAntiAIMeasures={false}>
         <div className="mx-auto max-w-2xl">
-            <Breadcrumbs
-                basePath="/"
-                baseLabel="Legal"
-                currentLabel="Privacy Policy"
-            />
-
-            <PageHeader
+            <DynamicHeader
+                id="privacy"
                 name="Privacy Policy"
-                description="Last Updated: March 3, 2022"
+                description="Your privacy is important to me. It is my policy to respect your privacy and comply with any applicable law and regulation regarding any personal information I may collect about you, including across my website and my other sites."
+                pageDescription="Last Updated: September 2, 2025"
             />
 
             <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
@@ -34,8 +19,8 @@ const PrivacyPolicy: NextPage = () => (
                     your privacy and comply with any applicable law and
                     regulation regarding any personal information I may collect
                     about you, including across my website,{" "}
-                    <NavLink href="/">https://hkamran.com</NavLink>, and other
-                    sites I own and operate.
+                    <NavLink href="/">https://hkamran.com</NavLink>, and my
+                    other sites.
                 </p>
 
                 <h3>Information I Collect</h3>

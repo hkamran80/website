@@ -14,9 +14,9 @@ const PageHeader = ({ name, description }: HeaderProps) => {
             {header}
 
             {description && (
-                <h2 className="text-center text-xl font-light leading-snug text-gray-300 sm:text-left sm:text-2xl">
+                <p className="text-center font-light leading-snug text-gray-300 sm:text-left">
                     {description}
-                </h2>
+                </p>
             )}
         </div>
     );

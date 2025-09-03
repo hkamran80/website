@@ -2,6 +2,7 @@ import { DefaultSeoProps } from "next-seo";
 
 const config: DefaultSeoProps = {
     defaultTitle: "H. Kamran",
+    titleTemplate: "%s | H. Kamran",
     description:
         "Hello world! I'm a developer who writes articles on things that interest me or I find useful, and takes photos!",
     themeColor: "#BE154D",
