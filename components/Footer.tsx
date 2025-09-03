@@ -56,6 +56,14 @@ const Footer = () => (
                 </NavLink>
 
                 <NavLink
+                    href="/ai-policy"
+                    className="transition-colors duration-200 ease-in-out hover:text-gray-300"
+                    data-umami-event-location="footer"
+                >
+                    &quot;AI&quot; Policy
+                </NavLink>
+
+                <NavLink
                     href="/license"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                     data-umami-event-location="footer"
