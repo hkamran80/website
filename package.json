@@ -9,7 +9,8 @@
         "start": "next start",
         "lint": "next lint",
         "lint:fix": "next lint --fix",
-        "format": "prettier . --write"
+        "format": "prettier . --write --check",
+        "format:legacy": "prettier . --write"
     },
     "dependencies": {
         "@badrap/bar-of-progress": "^0.2.2",
@@ -45,6 +46,7 @@
         "@hkamran/prettier-config": "^1.1.1",
         "@next/bundle-analyzer": "^12.2.3",
         "@next/env": "^13.2.4",
+        "@prettier/plugin-oxc": "^0.0.4",
         "@tailwindcss/forms": "^0.5.7",
         "@tailwindcss/typography": "^0.5.13",
         "@types/feather-icons": "^4.29.4",
@@ -67,7 +69,7 @@
         "node-domexception": "^2.0.1",
         "node-fetch": "^3.3.2",
         "postcss": "^8.4.39",
-        "prettier": "^3.3.2",
+        "prettier": "^3.6.2",
         "prettier-plugin-tailwindcss": "^0.6.5",
         "prop-types": "^15.8.1",
         "tailwindcss": "^3.4.4",
