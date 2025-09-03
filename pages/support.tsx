@@ -1,25 +1,12 @@
-import { WebPageJsonLd } from "next-seo";
-import Head from "next/head";
-
 import Layout from "@/components/Layout";
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import NavLink from "@/components/navigation/NavLink";
-import PageHeader from "@/components/pages/PageHeader";
-import { getBaseUrl } from "@/lib/urls";
+import DynamicHeader from "@/components/DynamicHeader";
 import type { NextPage } from "next";
 
 const Support: NextPage = () => (
     <Layout>
-        <Head>
-            <title>Support | H. Kamran</title>
-        </Head>
-
-        <WebPageJsonLd id={`${getBaseUrl()}/support`} />
-
         <div className="mx-auto max-w-2xl">
-            <Breadcrumbs baseLabel="Support" />
-
-            <PageHeader name="Support" />
+            <DynamicHeader id="support" name="Support" />
 
             <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
                 <p>
@@ -43,7 +30,7 @@ const Support: NextPage = () => (
                 <p>
                     You can do so through{" "}
                     <NavLink href="https://github.com/supports/hkamran80">
-                        GitHub Supports
+                        GitHub Sponsors
                     </NavLink>
                     , <NavLink href="https://ko-fi.com/hkamran">Ko-fi</NavLink>,{" "}
                     <NavLink href="https://www.buymeacoffee.com/hkamran">

@@ -1,28 +1,17 @@
-import { WebPageJsonLd } from "next-seo";
-import Head from "next/head";
-
 import Layout from "@/components/Layout";
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import NavLink from "@/components/navigation/NavLink";
-import PageHeader from "@/components/pages/PageHeader";
 import { UNSPLASH_URL } from "@/data/constants";
-import { getBaseUrl } from "@/lib/urls";
+import DynamicHeader from "@/components/DynamicHeader";
 import type { NextPage } from "next";
 
 const License: NextPage = () => (
     <Layout includeAntiAIMeasures={false}>
-        <Head>
-            <title>License | H. Kamran</title>
-        </Head>
-
-        <WebPageJsonLd id={`${getBaseUrl()}/license`} />
-
         <div className="mx-auto max-w-2xl">
-            <Breadcrumbs baseLabel="License" />
-
-            <PageHeader
+            <DynamicHeader
+                id="license"
                 name="License"
-                description="Last Updated: September 2, 2025"
+                description="The license for all content on this site and its redirects"
+                pageDescription="Last Updated: September 2, 2025"
             />
 
             <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
