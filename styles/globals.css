@@ -87,3 +87,10 @@ nav.table-of-contents li ul {
 a[data-footnote-ref] {
     text-decoration: none;
 }
+
+/**
+ * Round images
+ */
+article img {
+    @apply rounded-md;
+}
