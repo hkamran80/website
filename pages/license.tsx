@@ -10,7 +10,7 @@ import { getBaseUrl } from "@/lib/urls";
 import type { NextPage } from "next";
 
 const License: NextPage = () => (
-    <Layout>
+    <Layout showAntiAIParagraph={false}>
         <Head>
             <title>License | H. Kamran</title>
         </Head>

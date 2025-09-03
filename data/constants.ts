@@ -10,7 +10,7 @@ export const UNSPLASH_URL =
 export const EVENT_NAMES = {
     /**
      * The outbound link event
-     * 
+     *
      * There are three properties associated with it:
      * - `url` (required)
      * - `location`: the relative location of the link
@@ -20,7 +20,7 @@ export const EVENT_NAMES = {
 
     /**
      * The local link event
-     * 
+     *
      * There are three properties associated with it:
      * - `url` (required)
      * - `location`: the relative location of the link
@@ -30,10 +30,25 @@ export const EVENT_NAMES = {
 
     /**
      * The social link event
-     * 
+     *
      * There are two properties:
      * - `platform` (required)
      * - `location` (required): the relative location of the link
      */
     SOCIAL: "social-link",
-}
+};
+
+export const RANDOM_LANGUAGES = [
+    "French",
+    "Spanish",
+    "German",
+    "Japanese",
+    "Mandarin",
+    "Hindi",
+    "Urdu",
+    "Catalan",
+    "Swedish",
+    "Danish",
+    "Dutch",
+    "Finnish",
+];

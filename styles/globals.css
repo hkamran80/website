@@ -52,3 +52,20 @@ nav.table-of-contents li ul {
 .markdown-alert p {
     @apply my-3;
 }
+
+/*
+ * Hide Visually
+ *
+ * Based on [Eric Bailey's code](https://github.com/ericwbailey/ericwbailey.website/blob/cabbea9f7dbec8e6dfab6e135bb145d734a8802e/source/sass/logic/_mixin.hide-visually.scss)
+ * */
+.hide-visually {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
