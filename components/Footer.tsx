@@ -48,11 +48,11 @@ const Footer = () => (
                 </NavLink>
 
                 <NavLink
-                    href="/sponsor"
+                    href="/support"
                     className="transition-colors duration-200 ease-in-out hover:text-gray-300"
                     data-umami-event-location="footer"
                 >
-                    Sponsor
+                    Support
                 </NavLink>
 
                 <NavLink

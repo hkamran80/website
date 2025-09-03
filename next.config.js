@@ -104,6 +104,7 @@ const nextConfig = {
                 permanent: true,
             },
             { source: "/legal/:slug", destination: "/:slug", permanent: true },
+            { source: "/sponsor", destination: "/support", permanent: true },
         ];
     },
 };
