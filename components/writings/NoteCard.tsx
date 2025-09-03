@@ -11,7 +11,9 @@ const NoteCard = ({ note }: { note: Writing }) => (
                             className="dt-published published"
                         >
                             {new Date(
-                                note.published.includes("T") ? note.published : `${note.published}T07:00:00.000-08:00`,
+                                note.published.includes("T")
+                                    ? note.published
+                                    : `${note.published}T07:00:00.000-08:00`,
                             ).toLocaleDateString(undefined, {
                                 year: "numeric",
                                 month: "long",

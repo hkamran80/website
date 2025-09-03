@@ -73,12 +73,8 @@ const Reactor: NextPage = () => (
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>
-                                            Command
-                                        </th>
-                                        <th>
-                                            Description
-                                        </th>
+                                        <th>Command</th>
+                                        <th>Description</th>
                                     </tr>
                                 </thead>
                                 <tbody>

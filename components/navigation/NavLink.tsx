@@ -34,16 +34,25 @@ const NavLink = ({
                 href={
                     noReferrer === true
                         ? href
-                        : `${href.includes("?") ? `${href}&` : `${href}?`
-                        }ref=hkamran.com`
+                        : `${
+                              href.includes("?") ? `${href}&` : `${href}?`
+                          }ref=hkamran.com`
                 }
-                className={classNames(
-                    className ?? "",
-                    conditionalClassNames ?? "",
-                ) || undefined}
+                className={
+                    classNames(className ?? "", conditionalClassNames ?? "") ||
+                    undefined
+                }
                 target={target ?? "_blank"}
                 rel={rel ?? "noopener noreferrer"}
-                {...(href.includes("unsplash.com") ? { "data-umami-event": EVENT_NAMES.SOCIAL, "data-umami-event-platform": "Unsplash" } : { "data-umami-event": EVENT_NAMES.OUTBOUND, "data-umami-event-url": href })}
+                {...(href.includes("unsplash.com")
+                    ? {
+                          "data-umami-event": EVENT_NAMES.SOCIAL,
+                          "data-umami-event-platform": "Unsplash",
+                      }
+                    : {
+                          "data-umami-event": EVENT_NAMES.OUTBOUND,
+                          "data-umami-event-url": href,
+                      })}
                 {...rest}
             >
                 {children}
@@ -53,10 +62,10 @@ const NavLink = ({
         return (
             <Link
                 href={href}
-                className={classNames(
-                    className ?? "",
-                    conditionalClassNames ?? "",
-                ) || undefined}
+                className={
+                    classNames(className ?? "", conditionalClassNames ?? "") ||
+                    undefined
+                }
                 target={target}
                 rel={rel}
                 data-umami-event={EVENT_NAMES.LOCAL}

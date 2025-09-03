@@ -48,7 +48,7 @@ const Website = ({ Component, pageProps }: AppProps) => (
         />
 
         {process.env.NODE_ENV === "development" ||
-            typeof window === "undefined" ? (
+        typeof window === "undefined" ? (
             ""
         ) : (
             <Script

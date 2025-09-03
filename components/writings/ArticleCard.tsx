@@ -31,7 +31,9 @@ const ArticleCard = ({
                             className="dt-published published"
                         >
                             {new Date(
-                                article.published.includes("T") ? article.published : `${article.published}T07:00:00.000-08:00`,
+                                article.published.includes("T")
+                                    ? article.published
+                                    : `${article.published}T07:00:00.000-08:00`,
                             ).toLocaleDateString(undefined, {
                                 year: "numeric",
                                 month: "long",
@@ -42,16 +44,24 @@ const ArticleCard = ({
                         "Unpublished"
                     )}
 
-                    {article.updated ? <>
-                        <span className="mx-1">•</span>
-                        <time dateTime={article.updated} className="dt-updated updated">
-                            {new Date(article.updated).toLocaleDateString(undefined, {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric",
-                            })}
-                        </time>
-                    </> : null}
+                    {article.updated ? (
+                        <>
+                            <span className="mx-1">•</span>
+                            <time
+                                dateTime={article.updated}
+                                className="dt-updated updated"
+                            >
+                                {new Date(article.updated).toLocaleDateString(
+                                    undefined,
+                                    {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    },
+                                )}
+                            </time>
+                        </>
+                    ) : null}
                 </p>
 
                 <p className="p-name entry-title text-xl font-semibold text-gray-200">

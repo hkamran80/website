@@ -33,7 +33,6 @@ const Articles: NextPage<Props> = ({ articles }) => (
                 title="Atom feed"
                 className="text-gray-400"
                 data-umami-event-location="page:articles"
-
             >
                 <Rss />
             </NavLink>

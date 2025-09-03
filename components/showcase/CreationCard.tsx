@@ -10,9 +10,7 @@ const CreationCard = ({ creation }: { creation: Creation }) => (
     <div
         className={classNames(
             "group flex h-full flex-col space-y-4 rounded-lg p-6 text-sm font-light transition-colors duration-300 hover:bg-hk-grey",
-            creation.site
-                ? `hover:bg-hk-grey-hover`
-                : "",
+            creation.site ? `hover:bg-hk-grey-hover` : "",
         )}
     >
         <div className="space-y-1">
