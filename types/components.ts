@@ -5,5 +5,9 @@ export type HeaderProps = {
 
 export type DynamicHeaderProps = HeaderProps & {
     id: string;
+    /**
+     * A description to be shown on the page
+     */
+    pageDescription?: string;
     type?: "program" | "showcase" | "tag";
 };

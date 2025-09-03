@@ -19,9 +19,10 @@ const DynamicHeader = ({
     id,
     name,
     description,
-    type = "program",
+    pageDescription,
+    type,
 }: DynamicHeaderProps) => {
-    const url = `${getBaseUrl()}/${type}${id}`;
+    const url = `${getBaseUrl()}/${type ?? ""}${id}`;
 
     return (
         <>
@@ -43,12 +44,15 @@ const DynamicHeader = ({
             />
 
             <Breadcrumbs
-                basePath={typeMap.basePath[type]}
-                baseLabel={typeMap.baseLabel[type]}
-                currentLabel={name}
+                basePath={type && typeMap.basePath[type]}
+                baseLabel={type ? typeMap.baseLabel[type] : name}
+                currentLabel={type && name}
             />
 
-            <PageHeader name={name} description={description} />
+            <PageHeader
+                name={name}
+                description={pageDescription ?? description}
+            />
         </>
     );
 };

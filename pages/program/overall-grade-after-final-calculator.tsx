@@ -44,6 +44,7 @@ const OverallGradeAfterFinalCalculatorProgram: NextPage = () => {
                 <div className="mx-auto max-w-2xl">
                     <DynamicHeader
                         id={metadata.id}
+                        type="program"
                         name={metadata.name}
                         description={metadata.description}
                     />
