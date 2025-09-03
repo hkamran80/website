@@ -24,6 +24,7 @@ import { remarkAlert } from "remark-github-blockquote-alert";
 import rehypeRewrite from "rehype-rewrite";
 import remarkRemoveComments from "remark-remove-comments";
 import rehypeShiki from "@shikijs/rehype";
+import rehypeFigure from "rehype-figure";
 import { EVENT_NAMES } from "@/data/constants";
 
 const checkIfLocalLink = (link: string) =>
@@ -178,12 +179,18 @@ export const renderMarkdownRemark = async (
         .use(remarkRemoveComments)
         .use(remarkRehype)
         .use(rehypeShiki, { theme: "vitesse-black" })
+        .use(rehypeFigure, { className: "image" })
         .use(rehypeSanitize, {
             ...defaultSchema,
             clobberPrefix: null,
-            ancestors: { ...defaultSchema.ancestors, path: ["svg"] },
+            ancestors: {
+                ...defaultSchema.ancestors,
+                path: ["svg"],
+                figcaption: ["figure"],
+            },
             attributes: {
                 ...defaultSchema.attributes,
+                figure: ["className"],
                 div: [...(defaultSchema.attributes?.div ?? []), "className"],
                 p: [...(defaultSchema.attributes?.p ?? []), "className"],
                 pre: ["className", "style", "tabindex"],
@@ -191,7 +198,13 @@ export const renderMarkdownRemark = async (
                 svg: ["className", "viewBox", "version", "ariaHidden"],
                 path: ["d"],
             },
-            tagNames: [...(defaultSchema.tagNames ?? []), "svg", "path"],
+            tagNames: [
+                ...(defaultSchema.tagNames ?? []),
+                "svg",
+                "path",
+                "figure",
+                "figcaption",
+            ],
         })
         .use(rehypeRewrite, {
             selector: "p.markdown-alert-title",
