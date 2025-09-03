@@ -12,9 +12,9 @@ const Footer = () => (
                     rights reserved.
                 </p>
                 <p>
-                    This site is designed and made exclusively by humans only.
-                    No &quot;AI&quot; was used in the making of any of the
-                    content on this site.
+                    This site is designed and made exclusively by humans. No
+                    &quot;AI&quot; was used in the making of any of the content
+                    on this site.
                 </p>
             </div>
             <div className="flex flex-row justify-center space-x-5 md:justify-start">
