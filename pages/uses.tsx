@@ -6,7 +6,11 @@ import type { NextPage } from "next";
 const Uses: NextPage = () => (
     <Layout>
         <div className="mx-auto max-w-2xl">
-            <DynamicHeader id="uses" name="My Setup" description="This is by no means a comprehensive list. It's just the essentials." />
+            <DynamicHeader
+                id="uses"
+                name="My Setup"
+                description="This is by no means a comprehensive list. It's just the essentials."
+            />
 
             <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
                 <h2>Hardware</h2>
