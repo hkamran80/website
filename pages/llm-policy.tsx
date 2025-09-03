@@ -1,35 +1,26 @@
-import { WebPageJsonLd } from "next-seo";
-import Head from "next/head";
-
 import Layout from "@/components/Layout";
-import Breadcrumbs from "@/components/navigation/Breadcrumbs";
-import PageHeader from "@/components/pages/PageHeader";
-import { getBaseUrl } from "@/lib/urls";
 import NavLink from "@/components/navigation/NavLink";
+import DynamicHeader from "@/components/DynamicHeader";
 import type { NextPage } from "next";
 
 const AIPolicy: NextPage = () => (
     <Layout includeAntiAIMeasures={false}>
-        <Head>
-            <title>&quot;AI&quot; Policy | H. Kamran</title>
-        </Head>
-
-        <WebPageJsonLd id={`${getBaseUrl()}/ai-policy`} />
-
         <div className="mx-auto max-w-2xl">
-            <Breadcrumbs baseLabel='"AI" Policy' />
-
-            <PageHeader
-                name='"AI" Policy'
-                description="Last Updated: September 2, 2025"
+            <DynamicHeader
+                id="llm-policy"
+                name="LLM Policy"
+                description='This policy explains my use of large language models (LLMs), commonly (but incorrectly) known as "artificial intelligence" or "AI", in my work.'
+                pageDescription="Last Updated: September 2, 2025"
             />
 
             <div className="prose prose-invert mt-6 max-w-none prose-a:text-pink-700">
                 <p>
-                    This policy explains my use of &quot;artificial
-                    intelligence&quot; (&quot;AI&quot;) in my work. The acronym
-                    &quot;AI&quot; is used to refer to large language models,
-                    generative &quot;AI&quot;, and the like.
+                    This policy explains my use of large language models (LLMs),
+                    commonly (but incorrectly) known as &quot;artificial
+                    intelligence&quot; or &quot;AI&quot;, in my work. In this
+                    policy, &quot;LLM&quot; and &quot;LLMs&quot; refer to both
+                    large language models and the broader field of
+                    &quot;AI&quot;, such as generative &quot;AI&quot;.
                 </p>
 
                 <p>
@@ -41,22 +32,21 @@ const AIPolicy: NextPage = () => (
 
                 <blockquote>
                     <p>
-                        TL;DR — I do not currently use &quot;AI&quot; in my
-                        personal or professional work.
+                        TL;DR — I do not currently use LLMs in my personal or
+                        professional work.
                     </p>
                 </blockquote>
 
                 <p>
-                    I will not knowingly use &quot;AI&quot; to produce any of my
-                    work, including, but not limited to, code, design, and
+                    I will not knowingly use LLMs to produce any of my work,
+                    including, but not limited to, code, design, and
                     communication. I intend to make all reasonable efforts to
-                    avoid &quot;AI&quot; with my work.
+                    avoid LLMs in my work.
                 </p>
 
                 <p>
-                    Given how &quot;AI&quot; is being imposed by almost everyone
-                    and how its deployment is accelerating with no regard to
-                    humanity or{" "}
+                    Given how LLMs are being imposed on everyone and how its
+                    deployment is accelerating with no regard to humanity or{" "}
                     <NavLink href="https://apnews.com/article/ai-data-center-climate-impact-environment-c6218681ffdbad5bf427b47347fddcb9">
                         the
                     </NavLink>{" "}
@@ -64,18 +54,18 @@ const AIPolicy: NextPage = () => (
                         planet
                     </NavLink>
                     , it is impossible to stay unexposed. While I abstain from
-                    &quot;AI&quot; usage, my clients and colleagues may not do
-                    so. At times, it may be necessary to integrate
-                    &quot;AI&quot; output in my work on the condition that I am
-                    not held accountable or responsible for the combined work.
+                    LLM usage, my clients and colleagues may not do so. At
+                    times, it may be necessary to integrate LLM output in my
+                    work on the condition that I am not held accountable or
+                    responsible for the combined work.
                 </p>
 
                 <h3>Moral and Ethical Issues</h3>
 
                 <p>
-                    &quot;AI&quot; is trained on copyrighted work.
-                    &quot;AI&quot; companies have accumulated massive datasets
-                    without respecting copyright licenses. Meta (Facebook){" "}
+                    LLMs are trained on copyrighted work. &quot;AI&quot;
+                    companies have accumulated massive datasets without
+                    respecting copyright licenses. Meta (Facebook){" "}
                     <NavLink href="https://arstechnica.com/tech-policy/2025/02/meta-torrented-over-81-7tb-of-pirated-books-to-train-ai-authors-say/">
                         trained its models on pirated books
                     </NavLink>
@@ -119,18 +109,16 @@ const AIPolicy: NextPage = () => (
                 </p>
 
                 <p>
-                    If all these &quot;AI&quot; companies think &quot;AI&quot;
-                    training is &quot;fair use&quot;, how come they are signing
-                    all of these licensing agreements? Is there any value in
-                    copyright now if any &quot;AI&quot; model can be trained on
-                    anything?
+                    If all these &quot;AI&quot; companies think LLM training is
+                    &quot;fair use&quot;, how come they are signing all of these
+                    licensing agreements? Is there any value in copyright now if
+                    any LLM model can be trained on anything?
                 </p>
 
                 <h3>Misuse and Harm</h3>
 
                 <p>
-                    &quot;AI&quot; crawlers have no respect for the web&apos;s
-                    rules. They{" "}
+                    LLM crawlers have no respect for the web&apos;s rules. They{" "}
                     <NavLink href="https://www.reuters.com/technology/artificial-intelligence/multiple-ai-companies-bypassing-web-standard-scrape-publisher-sites-licensing-2024-06-21/">
                         blatantly ignore
                     </NavLink>{" "}
@@ -155,23 +143,22 @@ const AIPolicy: NextPage = () => (
                     <NavLink href="https://news.itsfoss.com/curl-ai-slop/">
                         maintainers
                     </NavLink>
-                    . New &quot;AI&quot; bots are{" "}
+                    . New LLMs are{" "}
                     <NavLink href="https://github.com/ai-robots-txt/ai.robots.txt/blob/main/table-of-bot-metrics.md">
                         created every day
                     </NavLink>
-                    . &quot;AI&quot; is a significant cause in the{" "}
+                    . LLMs are a significant cause in the{" "}
                     <NavLink href="https://doi.org/10.1177/27523543251344971">
                         rise of misinformation
                     </NavLink>
-                    . Elon Musk, someone who supports fascist and far-right
-                    ideologies, someone who{" "}
+                    . Elon Musk, who has been known to share{" "}
                     <NavLink href="https://www.salon.com/2025/01/21/it-was-a-nazi-salute-historian-dismisses-claim-that-musks-raised-arm-was-mere-awkward-gesture/">
-                        performed a Nazi salute
-                    </NavLink>
-                    , has an &quot;AI&quot; company, xAI, which created Grok,
-                    which{" "}
+                        fascist
+                    </NavLink>{" "}
+                    and far-right ideologies, owns the &quot;AI&quot; company
+                    xAI and its Grok LLM, which{" "}
                     <NavLink href="https://www.forbes.com/sites/tylerroush/2025/07/09/elon-musk-claims-grok-manipulated-by-x-users-after-chatbot-praises-hitler/">
-                        called itself &quot;MechaHitler&quot;
+                        once called itself &quot;MechaHitler&quot;
                     </NavLink>
                     .
                 </p>
@@ -200,23 +187,21 @@ const AIPolicy: NextPage = () => (
                 <h3>Quality Issues</h3>
 
                 <p>
-                    The quality of &quot;AI&quot;-generated code leaves much to
-                    be desired. It does not meet the quality I expect and
-                    require. &quot;AI&quot;-generated code frequently
-                    hallucinates APIs and syntax, and often generates invalid
-                    code.
+                    The quality of LLM-generated code leaves much to be desired.
+                    It does not meet the quality I expect and require.
+                    LLM-generated code frequently hallucinates APIs and syntax,
+                    and often generates invalid code.
                 </p>
 
                 <p>
-                    There is no reason for me to use &quot;AI&quot; for
-                    communication. I am confident in my own ability to
-                    communicate without unnecessary noise that would be included
-                    if &quot;AI&quot; was used.
+                    There is no reason for me to use an LLM for communication. I
+                    am confident in my own ability to communicate without
+                    unnecessary noise that would be included if an LLM was used.
                 </p>
 
                 <p>
-                    Using &quot;AI&quot; for design makes no sense because it is
-                    random, which is not what good design is based on.
+                    Using an LLM for design makes no sense because it is random,
+                    which is not what good design is based on.
                 </p>
             </div>
         </div>
