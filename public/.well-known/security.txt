@@ -1,0 +1,8 @@
+# Our security address
+Contact: mailto:hkamran@hkamran.com
+
+# Our preferred language
+Preferred-Languages: en
+
+Canonical: https://hkamran.com/.well-known/security.txt
+Expires: 2026-09-03T00:00:00z
