@@ -12,7 +12,7 @@ import type { Writing } from "@/types/writings";
 
 type Props = {
     article: Writing;
-    tableOfContents: string;
+    tableOfContents: string | null;
     content: string;
 };
 
@@ -54,18 +54,20 @@ const Writing: NextPage<Props> = ({ article, tableOfContents, content }) => {
                         )}
 
                         <div className="lg:flex mx-auto lg:flex-row">
-                            <div className="lg:w-1/4 lg:sticky my-7 top-10 lg:h-1/5 lg:pr-6">
-                                <div className="lg:px-4 space-y-2">
-                                    <h2 className="font-bold text-lg">
-                                        Table of Contents
-                                    </h2>
-                                    <div
-                                        dangerouslySetInnerHTML={{
-                                            __html: tableOfContents,
-                                        }}
-                                    />
+                            {tableOfContents && (
+                                <div className="lg:w-1/4 lg:sticky my-7 top-10 lg:h-1/5 lg:pr-6">
+                                    <div className="lg:px-4 space-y-2">
+                                        <h2 className="font-bold text-lg">
+                                            Table of Contents
+                                        </h2>
+                                        <div
+                                            dangerouslySetInnerHTML={{
+                                                __html: tableOfContents,
+                                            }}
+                                        />
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                             <article
                                 className="prose prose-invert my-7 mx-auto max-w-3xl prose-a:text-pink-700 prose-blockquote:mx-6 prose-pre:bg-hk-grey"
@@ -146,20 +148,27 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             )
         ).text();
 
+        const toc = article.toc ?? true;
         let content = renderMarkdown(
             markdown,
             {
                 code: true,
                 images: true,
                 footnotes: true,
-                toc: true,
+                toc,
             },
             `article:${article.id}`,
         );
 
+        let tableOfContents = null;
         const TOC_REGEX = /(\<nav.*<\/nav\>)/m;
-        const tableOfContents = TOC_REGEX.exec(content)![0];
-        content = content.replace(TOC_REGEX, "");
+        if (toc) {
+            const tocRegex = TOC_REGEX.exec(content);
+            if (tocRegex && tocRegex.length > 0) {
+                tableOfContents = tocRegex[0];
+                content = content.replace(TOC_REGEX, "");
+            }
+        }
 
         return {
             props: {

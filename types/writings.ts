@@ -3,6 +3,7 @@ export type Writing = {
     title: string;
     description: string;
     tags: string[];
+    toc?: boolean;
     published: string;
     updated?: string;
     filename: string;
