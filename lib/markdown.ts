@@ -14,12 +14,14 @@ import { slugify } from "@hkamran/utility-strings";
 import "prismjs/plugins/autoloader/prism-autoloader";
 import "prismjs/plugins/toolbar/prism-toolbar";
 
-import { unified } from "unified"
-import rehypeSanitize from 'rehype-sanitize'
-import rehypeStringify from 'rehype-stringify'
-import remarkParse from 'remark-parse'
-import remarkRehype from 'remark-rehype'
-import remarkGfm from "remark-gfm"
+import { unified } from "unified";
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import rehypeStringify from "rehype-stringify";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import remarkGfm from "remark-gfm";
+import { remarkAlert } from "remark-github-blockquote-alert";
+import rehypeRewrite from "rehype-rewrite";
 import { EVENT_NAMES } from "@/data/constants";
 
 const checkIfLocalLink = (link: string) =>
@@ -62,12 +64,14 @@ export const renderMarkdown = (
                     return link;
                 } else {
                     if (!link.includes("#"))
-                        return `${link}${link.includes("?") ? "&" : "?"
-                            }ref=hkamran.com`;
+                        return `${link}${
+                            link.includes("?") ? "&" : "?"
+                        }ref=hkamran.com`;
                     else {
                         const [url, selector] = link.split("#");
-                        return `${url}${url.includes("?") ? "&" : "?"
-                            }ref=hkamran.com#${selector}`;
+                        return `${url}${
+                            url.includes("?") ? "&" : "?"
+                        }ref=hkamran.com#${selector}`;
                     }
                 }
             },
@@ -168,13 +172,31 @@ export const renderMarkdownRemark = async (
     const md = await unified()
         .use(remarkParse)
         .use(remarkGfm)
+        .use(remarkAlert)
         .use(remarkRehype)
-        .use(rehypeSanitize, { clobberPrefix: null })
+        .use(rehypeSanitize, {
+            ...defaultSchema,
+            clobberPrefix: null,
+            ancestors: { ...defaultSchema.ancestors, path: ["svg"] },
+            attributes: {
+                ...defaultSchema.attributes,
+                div: [...(defaultSchema.attributes?.div ?? []), "className"],
+                p: [...(defaultSchema.attributes?.p ?? []), "className"],
+                svg: ["className", "viewBox", "version", "ariaHidden"],
+                path: ["d"],
+            },
+            tagNames: [...(defaultSchema.tagNames ?? []), "svg", "path"],
+        })
+        .use(rehypeRewrite, {
+            selector: "p.markdown-alert-title",
+            rewrite: (node) => {
+                if (node.type === "element") {
+                    node.children = [node.children[0]];
+                }
+            },
+        })
         .use(rehypeStringify)
-        .process(content)
+        .process(content);
 
-    return String(md)
-
-
-
-}
+    return String(md);
+};
