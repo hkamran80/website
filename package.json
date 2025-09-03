@@ -45,6 +45,7 @@
         "remark-github-blockquote-alert": "^2.0.0",
         "remark-parse": "^11.0.0",
         "remark-rehype": "^11.1.2",
+        "remark-remove-comments": "^1.1.1",
         "remark-toc": "^9.0.0",
         "simple-icons": "^13.0.0",
         "simple-icons11": "npm:simple-icons@11",
