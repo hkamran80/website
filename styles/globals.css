@@ -69,3 +69,21 @@ nav.table-of-contents li ul {
     white-space: nowrap;
     width: 1px;
 }
+
+/**
+ * Remark footnote back-reference character
+ *
+ * Source: https://github.com/syntax-tree/mdast-util-to-hast/issues/69#issuecomment-1399248049
+ */
+.footnotes a[data-footnote-backref] {
+    font-family: initial;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+/**
+ * Remark footnote reference character
+ */
+a[data-footnote-ref] {
+    text-decoration: none;
+}

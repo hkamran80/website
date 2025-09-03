@@ -13,6 +13,13 @@ import markdownItAttrs from "markdown-it-attrs";
 import { slugify } from "@hkamran/utility-strings";
 import "prismjs/plugins/autoloader/prism-autoloader";
 import "prismjs/plugins/toolbar/prism-toolbar";
+
+import { unified } from "unified"
+import rehypeSanitize from 'rehype-sanitize'
+import rehypeStringify from 'rehype-stringify'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import remarkGfm from "remark-gfm"
 import { EVENT_NAMES } from "@/data/constants";
 
 const checkIfLocalLink = (link: string) =>
@@ -55,14 +62,12 @@ export const renderMarkdown = (
                     return link;
                 } else {
                     if (!link.includes("#"))
-                        return `${link}${
-                            link.includes("?") ? "&" : "?"
-                        }ref=hkamran.com`;
+                        return `${link}${link.includes("?") ? "&" : "?"
+                            }ref=hkamran.com`;
                     else {
                         const [url, selector] = link.split("#");
-                        return `${url}${
-                            url.includes("?") ? "&" : "?"
-                        }ref=hkamran.com#${selector}`;
+                        return `${url}${url.includes("?") ? "&" : "?"
+                            }ref=hkamran.com#${selector}`;
                     }
                 }
             },
@@ -152,3 +157,24 @@ export const renderMarkdown = (
 
     return rendered;
 };
+
+export const renderMarkdownRemark = async (
+    content: string,
+    userOptions: Options = defaultOptions,
+    source: string | undefined = undefined,
+): Promise<string> => {
+    const options = { ...defaultOptions, ...userOptions };
+
+    const md = await unified()
+        .use(remarkParse)
+        .use(remarkGfm)
+        .use(remarkRehype)
+        .use(rehypeSanitize, { clobberPrefix: null })
+        .use(rehypeStringify)
+        .process(content)
+
+    return String(md)
+
+
+
+}
