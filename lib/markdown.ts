@@ -25,6 +25,8 @@ import rehypeRewrite from "rehype-rewrite";
 import remarkRemoveComments from "remark-remove-comments";
 import rehypeShiki from "@shikijs/rehype";
 import rehypeFigure from "rehype-figure";
+import remarkDirective from 'remark-directive'
+import remarkDirectiveRehype from 'remark-directive-rehype'
 import { EVENT_NAMES } from "@/data/constants";
 
 const checkIfLocalLink = (link: string) =>
@@ -174,6 +176,8 @@ export const renderMarkdownRemark = async (
 
     const md = await unified()
         .use(remarkParse)
+        .use(remarkDirective)
+        .use(remarkDirectiveRehype)
         .use(remarkGfm)
         .use(remarkAlert)
         .use(remarkRemoveComments)
