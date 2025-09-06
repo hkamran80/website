@@ -1,18 +1,18 @@
 import { unified } from "unified";
-import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
-import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import remarkGfm from "remark-gfm";
-import { remarkAlert } from "remark-github-blockquote-alert";
-import rehypeRewrite from "rehype-rewrite";
-import remarkRemoveComments from "remark-remove-comments";
-import rehypeShiki from "@shikijs/rehype";
-import rehypeFigure from "rehype-figure";
 import remarkDirective from "remark-directive";
 import remarkDirectiveRehype from "remark-directive-rehype";
-import rehypeToc from "@jsdevtools/rehype-toc";
+import remarkGfm from "remark-gfm";
+import { remarkAlert } from "remark-github-blockquote-alert";
+import remarkRemoveComments from "remark-remove-comments";
+import remarkRehype from "remark-rehype";
+import rehypeShiki from "@shikijs/rehype";
+import rehypeFigure from "rehype-figure";
 import rehypeSlug from "rehype-slug";
+import rehypeToc from "@jsdevtools/rehype-toc";
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import rehypeRewrite from "rehype-rewrite";
+import rehypeStringify from "rehype-stringify";
 import { EVENT_NAMES } from "@/data/constants";
 
 const isLocalLink = (link: string) =>
