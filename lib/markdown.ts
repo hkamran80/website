@@ -27,6 +27,8 @@ import rehypeShiki from "@shikijs/rehype";
 import rehypeFigure from "rehype-figure";
 import remarkDirective from 'remark-directive'
 import remarkDirectiveRehype from 'remark-directive-rehype'
+import rehypeToc from '@jsdevtools/rehype-toc'
+import rehypeSlug from 'rehype-slug'
 import { EVENT_NAMES } from "@/data/constants";
 
 const checkIfLocalLink = (link: string) =>
@@ -184,6 +186,10 @@ export const renderMarkdownRemark = async (
         .use(remarkRehype)
         .use(rehypeShiki, { theme: "vitesse-black" })
         .use(rehypeFigure, { className: "image" })
+        .use(rehypeSlug)
+        .use(rehypeToc, {
+            headings: ["h2", "h3", "h4", "h5", "h6"], cssClasses: { list: "", listItem: "", link: "" },
+        })
         .use(rehypeSanitize, {
             ...defaultSchema,
             clobberPrefix: null,
@@ -196,6 +202,7 @@ export const renderMarkdownRemark = async (
                 ...defaultSchema.attributes,
                 figure: ["className"],
                 div: [...(defaultSchema.attributes?.div ?? []), "className"],
+                nav: ["className"],
                 p: [...(defaultSchema.attributes?.p ?? []), "className"],
                 pre: ["className", "style", "tabindex"],
                 span: ["className", "style"],
@@ -204,6 +211,7 @@ export const renderMarkdownRemark = async (
             },
             tagNames: [
                 ...(defaultSchema.tagNames ?? []),
+                "nav",
                 "svg",
                 "path",
                 "figure",
@@ -243,7 +251,7 @@ export const renderMarkdownRemark = async (
                         node.properties["data-umami-event-url"] = href
                     }
 
-                    if (source) node.properties["data-umami-event-location"] = source
+                    if (source && !href.startsWith("#")) node.properties["data-umami-event-location"] = source
                 }
             },
         })
