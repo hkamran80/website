@@ -20,10 +20,16 @@ const isLocalLink = (link: string) =>
     link.startsWith("#") ||
     link.startsWith("https://hkamran.com");
 
+type Options = Partial<Record<"toc", boolean>>;
+const defaultOptions = { toc: true };
+
 export const renderMarkdown = async (
     content: string,
+    userOptions: Options = defaultOptions,
     source: string | undefined = undefined,
 ): Promise<string> => {
+    const options = { ...defaultOptions, ...userOptions };
+
     const md = await unified()
         .use(remarkParse)
         .use(remarkDirective)
@@ -38,6 +44,7 @@ export const renderMarkdown = async (
         .use(rehypeToc, {
             headings: ["h2", "h3", "h4", "h5", "h6"],
             cssClasses: { list: "", listItem: "", link: "" },
+            customizeTOC: (toc) => (options.toc ? toc : false),
         })
         .use(rehypeSanitize, {
             ...defaultSchema,

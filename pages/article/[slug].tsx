@@ -152,7 +152,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ).text();
 
         const toc = article.toc ?? true;
-        let content = await renderMarkdown(markdown, `article:${article.id}`);
+        let content = await renderMarkdown(
+            markdown,
+            { toc },
+            `article:${article.id}`,
+        );
 
         let tableOfContents = null;
         const TOC_REGEX = /(\<nav.*<\/nav\>)/m;
