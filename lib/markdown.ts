@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unassigned-import */
-
 import { unified } from "unified";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
@@ -17,7 +15,7 @@ import rehypeToc from "@jsdevtools/rehype-toc";
 import rehypeSlug from "rehype-slug";
 import { EVENT_NAMES } from "@/data/constants";
 
-const checkIfLocalLink = (link: string) =>
+const isLocalLink = (link: string) =>
     link.startsWith("/") ||
     link.startsWith("#") ||
     link.startsWith("https://hkamran.com");
@@ -85,7 +83,7 @@ export const renderMarkdown = async (
                 if (node.type === "element" && "href" in node.properties) {
                     const href = node.properties.href as string;
 
-                    if (!checkIfLocalLink(href)) {
+                    if (!isLocalLink(href)) {
                         node.properties.target = "_blank";
                         node.properties.rel = "noopener noreferrer";
 
