@@ -16,11 +16,11 @@ section.footnotes {
 }
 
 .toc ol {
-@apply space-y-1 list-inside list-disc
+    @apply space-y-1 list-inside list-disc;
 }
 
 .toc a {
-    @apply text-gray-400 hover:text-white transition-colors duration-150
+    @apply text-gray-400 hover:text-white transition-colors duration-150;
 }
 
 /* Prose */

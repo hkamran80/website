@@ -123,7 +123,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
         params: { slug: article.id },
     }));
 
-    return { paths, fallback: "blocking" };
+    return {
+        paths,
+        fallback: "blocking",
+    };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -149,16 +152,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ).text();
 
         const toc = article.toc ?? true;
-        let content = renderMarkdown(
-            markdown,
-            {
-                code: true,
-                images: true,
-                footnotes: true,
-                toc,
-            },
-            `article:${article.id}`,
-        );
+        let content = await renderMarkdown(markdown, `article:${article.id}`);
 
         let tableOfContents = null;
         const TOC_REGEX = /(\<nav.*<\/nav\>)/m;
