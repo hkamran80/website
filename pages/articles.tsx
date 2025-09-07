@@ -31,7 +31,7 @@ const Articles: NextPage<Props> = ({ articles }) => (
                 target="_blank"
                 rel="nofollow noreferrer"
                 title="Atom feed"
-                className="text-gray-400"
+                className="text-orange-500"
                 data-umami-event-location="page:articles"
             >
                 <Rss />
