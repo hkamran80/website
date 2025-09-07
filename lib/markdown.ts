@@ -71,20 +71,25 @@ export const renderMarkdown = async (
             ],
         })
         .use(rehypeRewrite, {
-            selector: "p.markdown-alert-title",
-            // Remove the alert title text
+            selector: ".markdown-alert-title, a",
             rewrite: (node) => {
-                if (node.type === "element") {
+                if (node.type !== "element") return node;
+
+                // Remove the alert title text
+                if (
+                    node.tagName === "p" &&
+                    "className" in node.properties &&
+                    (node.properties.className as string).includes(
+                        "markdown-alert-title",
+                    )
+                ) {
                     node.children = [node.children[0]];
                 }
-            },
-        })
-        .use(rehypeRewrite, {
-            selector: "a",
-            // Umami events, outbound links
-            rewrite: (node) => {
-                if (node.type === "element" && "href" in node.properties) {
+
+                // Umami events, outbound links
+                if (node.tagName === "a" && "href" in node.properties) {
                     const href = node.properties.href as string;
+                    if (href.startsWith("#")) return node;
 
                     if (!isLocalLink(href)) {
                         node.properties.target = "_blank";
@@ -100,12 +105,12 @@ export const renderMarkdown = async (
                             const [url, selector] = href.split("#");
                             node.properties.href = `${url}${url.includes("?") ? "&" : "?"}ref=hkamran.com#${selector}`;
                         }
-                    } else if (!href.startsWith("#")) {
+                    } else {
                         node.properties["data-umami-event"] = EVENT_NAMES.LOCAL;
                         node.properties["data-umami-event-url"] = href;
                     }
 
-                    if (source && !href.startsWith("#"))
+                    if (source)
                         node.properties["data-umami-event-location"] = source;
                 }
             },
