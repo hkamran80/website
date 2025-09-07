@@ -66,9 +66,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         return {
             props: {
                 note,
-                content: renderMarkdown(
+                content: await renderMarkdown(
                     markdown,
-                    { code: true },
+                    { toc: false },
                     `note:${note.id}`,
                 ),
             },

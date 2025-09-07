@@ -123,7 +123,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
         params: { slug: article.id },
     }));
 
-    return { paths, fallback: "blocking" };
+    return {
+        paths,
+        fallback: "blocking",
+    };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -149,14 +152,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ).text();
 
         const toc = article.toc ?? true;
-        let content = renderMarkdown(
+        let content = await renderMarkdown(
             markdown,
-            {
-                code: true,
-                images: true,
-                footnotes: true,
-                toc,
-            },
+            { toc },
             `article:${article.id}`,
         );
 

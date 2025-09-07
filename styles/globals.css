@@ -11,8 +11,16 @@ section.footnotes {
 }
 
 /* Table of Contents */
-nav.table-of-contents li ul {
+.toc li ol {
     @apply ml-4;
+}
+
+.toc ol {
+    @apply space-y-1 list-inside list-disc;
+}
+
+.toc a {
+    @apply text-gray-400 hover:text-white transition-colors duration-150;
 }
 
 /* Prose */
@@ -68,4 +76,24 @@ nav.table-of-contents li ul {
     position: absolute;
     white-space: nowrap;
     width: 1px;
+}
+
+/* Footnotes */
+
+/* Back reference character */
+/** Source: https://github.com/syntax-tree/mdast-util-to-hast/issues/69#issuecomment-1399248049 */
+.footnotes a[data-footnote-backref] {
+    font-family: initial;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+/** Reference character */
+a[data-footnote-ref] {
+    text-decoration: none;
+}
+
+/* Round article images */
+article img {
+    @apply rounded-md;
 }
