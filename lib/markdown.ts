@@ -1,7 +1,5 @@
 import { unified } from "unified";
 import remarkParse from "remark-parse";
-import remarkDirective from "remark-directive";
-import remarkDirectiveRehype from "remark-directive-rehype";
 import remarkGfm from "remark-gfm";
 import { remarkAlert } from "remark-github-blockquote-alert";
 import remarkRemoveComments from "remark-remove-comments";
@@ -32,8 +30,6 @@ export const renderMarkdown = async (
 
     const md = await unified()
         .use(remarkParse)
-        .use(remarkDirective)
-        .use(remarkDirectiveRehype)
         .use(remarkGfm)
         .use(remarkAlert)
         .use(remarkRemoveComments)
