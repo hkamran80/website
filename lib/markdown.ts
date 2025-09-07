@@ -18,12 +18,12 @@ const isLocalLink = (link: string) =>
     link.startsWith("#") ||
     link.startsWith("https://hkamran.com");
 
-type Options = Partial<Record<"toc", boolean>>;
-const defaultOptions = { toc: true };
+type Options = Record<"toc", boolean>;
+const defaultOptions: Options = { toc: true };
 
 export const renderMarkdown = async (
     content: string,
-    userOptions: Options = defaultOptions,
+    userOptions: Partial<Options> = defaultOptions,
     source: string | undefined = undefined,
 ): Promise<string> => {
     const options = { ...defaultOptions, ...userOptions };
