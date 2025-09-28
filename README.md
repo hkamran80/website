@@ -1,22 +1,46 @@
-# Website
+# Astro Starter Kit: Basics
 
-My [personal website](https://hkamran.com) is powered by [Next.js](https://nextjs.org)
-and is deployed by [Vercel](https://vercel.com). My [articles](https://hkamran.com/articles)
-and [notes](https://hkamran.com/notes) are stored in [a dedicated repository](https://github.com/hkamran80/articles).
+```sh
+pnpm create astro@latest -- --template basics
+```
 
-## Development
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-1. Install [`pnpm`](https://pnpm.io)
-2. Clone this repository
-3. `pnpm install`
-4. `pnpm dev`
+## 🚀 Project Structure
 
-## Contributions
+Inside of your Astro project, you'll see the following folders and files:
 
-If you would like to update any part of my website, please
-[fork this repository](https://github.com/hkamran80/website/fork), make your contributions,
-then submit a pull request ([learn about pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)).
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
+```
 
-## License
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-The license for my website and the accompanying content can be found on [my website](https://hkamran.com/license).
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `pnpm install`         | Installs dependencies                            |
+| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
+| `pnpm build`           | Build your production site to `./dist/`          |
+| `pnpm preview`         | Preview your build locally, before deploying     |
+| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
