@@ -21,7 +21,7 @@
         "@jsdevtools/rehype-toc": "^3.0.2",
         "feather-icons": "^4.29.2",
         "feed": "^4.2.2",
-        "lucide-react": "^0.400.0",
+        "lucide-react": "^0.543.0",
         "next": "^13.0.5",
         "next-seo": "^6.5.0",
         "react": "18.2.0",
