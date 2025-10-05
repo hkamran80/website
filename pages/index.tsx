@@ -115,7 +115,11 @@ const Home: NextPage<Props> = ({ latestArticle, featuredShowcase }) => (
                 id="creations"
                 className="mx-auto flex h-screen max-w-5xl flex-col text-white"
             >
-                <Layout childrenClasses="space-y-12" footerClasses="py-14">
+                <Layout
+                    childrenClasses="space-y-12"
+                    footerClasses="py-14"
+                    includeBanner={false}
+                >
                     <section>
                         <div className="flex w-full items-center">
                             <span className="flex-1 uppercase tracking-wide text-gray-300">
