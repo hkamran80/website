@@ -2,7 +2,7 @@
 // TODO: Switch to hashes/nonce
 const ContentSecurityPolicy = `
   default-src 'self' vitals.vercel-insights.com giscus.app assets.hkamran.com data: u.13willow.com;
-  img-src 'self' assets.hkamran.com i.ibb.co;
+  img-src 'self' assets.hkamran.com i.ibb.co https://journals.plos.org/plosone/article/figure/image;
   script-src 'self' u.13willow.com;
   style-src 'self' 'unsafe-inline' data:;
   font-src 'self';
