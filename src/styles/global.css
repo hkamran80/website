@@ -1,7 +1,26 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+html.dark {
+    @apply bg-black;
+}
+
 .hidden {
     display: none;
+}
+
+/* Colours */
+.text-c-normal {
+    @apply text-black dark:text-white;
+}
+
+.text-c-light {
+    @apply text-gray-600 dark:text-gray-400
+}
+
+.text-c-lighter {
+    @apply text-gray-400 dark:text-gray-500
 }
 
 /* Theme Toggle */

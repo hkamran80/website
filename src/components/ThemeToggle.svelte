@@ -17,9 +17,9 @@ import {Sun,Moon}from "@lucide/svelte"
   }
 
   $: if (rootEl && theme === 'light') {
-    rootEl.classList.remove('theme-dark');
+    rootEl.classList.remove('dark');
   } else if (rootEl && theme === 'dark') {
-    rootEl.classList.add('theme-dark');
+    rootEl.classList.add('dark');
   }
 
   const icons = [
