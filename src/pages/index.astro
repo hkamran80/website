@@ -1,11 +1,100 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const showcase = [
+    [
+        "2fa.directory",
+        "An open source project that aims to improve online security by providing a directory of websites and services that support two-factor authentication.",
+        "https://2fa.directory",
+    ],
+    [
+        "Ramadan Taskminder",
+        "Stay on top of your daily tasks. Keep track of your Qur'an reading.",
+        "https://13willow.com/project/ramadan-taskminder",
+    ],
+    [
+        "Schedules",
+        "An app for all bell schedules. It tells you exactly how much time is remaining in a period, as well as the next period and its starting time.",
+        "https://schedules.unisontech.org",
+    ],
+    [
+        "HTTP Monitor Bot",
+        "A Cloudflare Worker designed to monitor an HTTP service, then update cState with the status",
+    ],
+];
 ---
 
 <Layout>
-  <Welcome />
+    <Container>
+        <main class="place-items-center pt-16 pb-8 md:pt-12">
+            <section>
+                <h1
+                    class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter"
+                >
+                    Hello world, I'm H. Kamran
+                </h1>
+                <p class="text-lg mt-4 text-slate-600 -max-w-xl">
+                    I'm a developer who <a href="#" class="underline"
+                        >takes photos</a
+                    > and follows U.S. federal and state actions in my free time.
+                </p>
+            </section>
+
+            <section class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <header class="text-slate-600">Latest Article</header>
+                    <main class="mt-2">
+                        <img
+                            src="https://hkamran.com/_next/image?url=https%3A%2F%2Fassets.hkamran.com%2Fgraphics%2Farticle%2Ff1-2024-abu-dhabi&w=2048&q=75"
+                            class="rounded-md"
+                        />
+
+                        <section class="mt-2">
+                            <p class="font-semibold">
+                                Formula 1 Abu Dhabi Grand Prix 2024
+                            </p>
+                            <p class="text-slate-600 tracking-tight">
+                                A semi-live blog of the penalties, critical
+                                flags, classifications, and more throughout the
+                                Abu Dhabi Grand Prix weekend.
+                            </p>
+                            <p class="text-slate-400 tracking-tight">
+                                December 6, 2025
+                            </p>
+                        </section>
+                    </main>
+                </div>
+
+                <div>
+                    <header class="text-slate-600">Featured Projects</header>
+                    <main>
+                        <ul class="gap-4">
+                            {
+                                showcase.map((item) => (
+                                    <li class="mt-2">
+                                        <p class="font-semibold">
+                                            {item.length >= 3 ? (
+                                                <a
+                                                    href={item[2]}
+                                                    class="underline"
+                                                >
+                                                    {item[0]}
+                                                </a>
+                                            ) : (
+                                                item[0]
+                                            )}
+                                        </p>
+                                        <p class="text-slate-600 tracking-tight">
+                                            {item[1]}
+                                        </p>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </main>
+                </div>
+            </section>
+        </main>
+    </Container>
 </Layout>
