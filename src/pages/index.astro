@@ -1,17 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
+import {Code} from"@lucide/astro"
 
 const showcase = [
     [
         "2fa.directory",
         "An open source project that aims to improve online security by providing a directory of websites and services that support two-factor authentication.",
         "https://2fa.directory",
+        "https://github.com/2factorauth/twofactorauth",
     ],
     [
         "Ramadan Taskminder",
         "Stay on top of your daily tasks. Keep track of your Qur'an reading.",
         "https://13willow.com/project/ramadan-taskminder",
+        "https://github.com/hkamran80/ramadan-taskminder",
     ],
     [
         "Schedules",
@@ -21,6 +24,8 @@ const showcase = [
     [
         "HTTP Monitor Bot",
         "A Cloudflare Worker designed to monitor an HTTP service, then update cState with the status",
+        undefined,
+        "https://github.com/hkamran80/http-monitor-bot",
     ],
 ];
 ---
@@ -73,8 +78,9 @@ const showcase = [
                             {
                                 showcase.map((item) => (
                                     <li class="mt-2">
-                                        <p class="font-semibold">
-                                            {item.length >= 3 ? (
+                                <p class="font-semibold flex">
+                                    <span class="flex-1">
+                                            {item.length >= 3 && item[2] ? (
                                                 <a
                                                     href={item[2]}
                                                     class="underline"
@@ -84,6 +90,11 @@ const showcase = [
                                             ) : (
                                                 item[0]
                                             )}
+                                    </span>
+                                    {item.length >= 4 &&
+<a href={item[3]} class="hover:text-gray-700 dark:hover:text-gray-300">
+                                        <Code size={18}/>
+                                    </a>}
                                         </p>
                                         <p class="text-c-light tracking-tight">
                                             {item[1]}

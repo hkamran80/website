@@ -16,11 +16,11 @@ html.dark {
 }
 
 .text-c-light {
-    @apply text-gray-600 dark:text-gray-400
+    @apply text-gray-600 dark:text-gray-400;
 }
 
 .text-c-lighter {
-    @apply text-gray-400 dark:text-gray-500
+    @apply text-gray-400 dark:text-gray-500;
 }
 
 /* Theme Toggle */
