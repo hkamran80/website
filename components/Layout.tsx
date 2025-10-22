@@ -52,13 +52,6 @@ export default function Layout({
                             on November 4.
                         </p>
                         <NavLink
-                            href="https://registertovote.ca.gov"
-                            className="flex-none rounded-full bg-white/10 px-3.5 py-1 text-sm font-semibold text-white shadow-sm ring-white/20 hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                        >
-                            Register to vote{" "}
-                            <span aria-hidden="true">&rarr;</span>
-                        </NavLink>
-                        <NavLink
                             href="https://stopelectionrigging.com"
                             className="flex-none rounded-full bg-white/10 px-3.5 py-1 text-sm font-semibold text-white shadow-sm ring-white/20 hover:bg-white/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                         >
