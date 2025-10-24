@@ -1,5 +1,10 @@
 import { defineCollection, z } from "astro:content";
 
+const convertToDate = (dateString: string): Date =>
+    new Date(
+        dateString + (!dateString.includes("T") ? "T07:00:00.000-08:00" : ""),
+    );
+
 const posts = defineCollection({
     loader: async () => {
         const response = await fetch(
@@ -18,22 +23,12 @@ const posts = defineCollection({
                 ...post,
                 ...(post.published
                     ? {
-                          published: new Date(
-                              post.published +
-                                  (!post.published.includes("T")
-                                      ? "T07:00:00.000-08:00"
-                                      : ""),
-                          ),
+                          published: convertToDate(post.published),
                       }
                     : {}),
                 ...(post.updated
                     ? {
-                          updated: new Date(
-                              post.updated +
-                                  (!post.updated.includes("T")
-                                      ? "T07:00:00.000-08:00"
-                                      : ""),
-                          ),
+                          updated: convertToDate(post.updated),
                       }
                     : {}),
             };
