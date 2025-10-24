@@ -13,7 +13,31 @@ const posts = defineCollection({
                 type: "article",
             })),
             ...data.notes.map((note) => ({ ...note, type: "note" })),
-        ];
+        ].map((post) => {
+            return {
+                ...post,
+                ...(post.published
+                    ? {
+                          published: new Date(
+                              post.published +
+                                  (!post.published.includes("T")
+                                      ? "T07:00:00.000-08:00"
+                                      : ""),
+                          ),
+                      }
+                    : {}),
+                ...(post.updated
+                    ? {
+                          updated: new Date(
+                              post.updated +
+                                  (!post.updated.includes("T")
+                                      ? "T07:00:00.000-08:00"
+                                      : ""),
+                          ),
+                      }
+                    : {}),
+            };
+        });
     },
     schema: z.object({
         id: z.string(),
@@ -22,18 +46,8 @@ const posts = defineCollection({
         description: z.string(),
         tags: z.string().array(),
         toc: z.boolean().optional(),
-        published: z.literal("").or(
-            z
-                .string()
-                .date()
-                .or(z.string().datetime({ offset: true })),
-        ),
-        updated: z.optional(
-            z
-                .string()
-                .date()
-                .or(z.string().datetime({ offset: true })),
-        ),
+        published: z.date().or(z.literal("")),
+        updated: z.optional(z.date().or(z.literal(""))),
         filename: z.string(),
         branchName: z.string().optional(),
     }),
@@ -44,7 +58,7 @@ const showcase = defineCollection({
         const response = await fetch("https://assets.hkamran.com/showcase");
         const data = await response.json();
 
-        return data.map(item => ({ ...item, id: item.name }));
+        return data.map((item) => ({ ...item, id: item.name }));
     },
     schema: z.object({
         id: z.string(),

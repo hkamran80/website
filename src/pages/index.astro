@@ -5,6 +5,9 @@ import { Code } from "@lucide/astro";
 import { getCollection } from "astro:content";
 
 const showcase = await getCollection("showcase", ({ data }) => data.featured);
+const latestPost = (await getCollection("posts"))
+    .sort((a, b) => b.data.published - a.data.published)
+    .find((post) => post.data.type === "article");
 ---
 
 <Layout>
@@ -28,21 +31,33 @@ const showcase = await getCollection("showcase", ({ data }) => data.featured);
                     <header class="text-c-light">Latest Article</header>
                     <main class="mt-2">
                         <img
-                            src="https://assets.hkamran.com/graphics/article/f1-2024-abu-dhabi"
+                            src={`https://assets.hkamran.com/graphics/article/${latestPost.id}`}
                             class="rounded-md"
                         />
 
                         <section class="mt-2">
                             <p class="font-semibold">
-                                Formula 1 Abu Dhabi Grand Prix 2024
+                                {latestPost.data.title}
                             </p>
                             <p class="text-c-light tracking-tight">
-                                A semi-live blog of the penalties, critical
-                                flags, classifications, and more throughout the
-                                Abu Dhabi Grand Prix weekend.
+                                {latestPost.data.description}
                             </p>
                             <p class="text-c-lighter tracking-tight">
-                                December 6, 2025
+                                <time
+                                    datetime={latestPost.data.published.toISOString()}
+                                    class="dt-published published"
+                                >
+                                    {
+                                        latestPost.data.published.toLocaleDateString(
+                                            undefined,
+                                            {
+                                                year: "numeric",
+                                                month: "long",
+                                                day: "numeric",
+                                            },
+                                        )
+                                    }
+                                </time>
                             </p>
                         </section>
                     </main>
