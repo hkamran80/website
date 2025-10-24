@@ -4,7 +4,9 @@ import Container from "../components/container.astro";
 import { Code } from "@lucide/astro";
 import { getCollection } from "astro:content";
 
-const showcase = await getCollection("showcase", ({ data }) => data.featured);
+const showcase = (
+    await getCollection("showcase", ({ data }) => data.featured)
+).sort((a, b) => a.data.name.localeCompare(b.data.name));
 const latestPost = (await getCollection("posts"))
     .sort((a, b) => b.data.published - a.data.published)
     .find((post) => post.data.type === "article");
