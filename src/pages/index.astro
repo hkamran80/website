@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
-import { Code } from "@lucide/astro";
+import ShowcaseItem from "../components/ShowcaseItem.astro";
+
 import { getCollection } from "astro:content";
 
 const showcase = (
@@ -71,34 +72,7 @@ const latestPost = (await getCollection("posts"))
                         <ul class="gap-4">
                             {
                                 showcase.map((item) => (
-                                    <li class="mt-2">
-                                        <p class="font-semibold flex">
-                                            <span class="flex-1">
-                                                {item.data.site ? (
-                                                    <a
-                                                        href={item.data.site}
-                                                        class="underline"
-                                                    >
-                                                        {item.data.name}
-                                                    </a>
-                                                ) : (
-                                                    item.data.name
-                                                )}
-                                            </span>
-                                            {item.data.repository && (
-                                                <a
-                                                    href={item.data.repository}
-                                                    class="hover:text-gray-700 dark:hover:text-gray-300"
-                                                    aria-label={`${item.data.name} repository`}
-                                                >
-                                                    <Code size={18} />
-                                                </a>
-                                            )}
-                                        </p>
-                                        <p class="text-c-light tracking-tight">
-                                            {item.data.description}
-                                        </p>
-                                    </li>
+                                    <ShowcaseItem item={item} />
                                 ))
                             }
                         </ul>

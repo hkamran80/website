@@ -1,0 +1,39 @@
+---
+import {Code} from"@lucide/astro"
+import type { getCollection } from "astro:content";
+interface Props {
+    item: Awaited<ReturnType<typeof getCollection<"showcase">>>[number];
+}
+
+const { item } = Astro.props;
+---
+
+<li class="mt-2">
+    <p class="font-semibold flex">
+        <span class="flex-1">
+            {
+                item.data.site ? (
+                    <a href={item.data.site} class="underline">
+                        {item.data.name}
+                    </a>
+                ) : (
+                    item.data.name
+                )
+            }
+        </span>
+        {
+            item.data.repository && (
+                <a
+                    href={item.data.repository}
+                    class="hover:text-gray-700 dark:hover:text-gray-300"
+                    aria-label={`${item.data.name} repository`}
+                >
+                    <Code size={18} />
+                </a>
+            )
+        }
+    </p>
+    <p class="text-c-light tracking-tight">
+        {item.data.description}
+    </p>
+</li>
