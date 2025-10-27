@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import ShowcaseItem from "../components/ShowcaseItem.astro";
+import { getCollection } from "astro:content";
+
+const showcase = (await getCollection("showcase")).sort((a, b) =>
+    a.data.name.localeCompare(b.data.name),
+);
+---
+
+<Layout>
+    <Container>
+        <main class="place-items-center pt-16 pb-8 md:pt-12">
+            <h1
+                class="text-3xl lg:text-4xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter"
+            >
+                Showcase
+            </h1>
+
+            <div class="max-w-3xl mx-auto">
+                <section class="mt-8">
+                    <h2
+                        class="text-2xl font-semibold lg:tracking-tight xl:tracking-tighter"
+                    >
+                        Featured
+                    </h2>
+                    <ul class="gap-4">
+                        {
+                            showcase
+                                .filter((item) => item.data.featured)
+                                .map((item) => <ShowcaseItem item={item} />)
+                        }
+                    </ul>
+                </section>
+
+                <section class="mt-4">
+                    <h2
+                        class="text-2xl font-semibold lg:tracking-tight xl:tracking-tighter"
+                    >
+                        All
+                    </h2>
+
+                    <ul class="gap-4">
+                        {
+                            showcase
+                                .filter((item) => !item.data.featured)
+                                .map((item) => <ShowcaseItem item={item} />)
+                        }
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </Container>
+</Layout>
