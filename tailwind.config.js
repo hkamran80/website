@@ -1,6 +1,5 @@
-import type { Config } from "tailwindcss";
-
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
     theme: {
         extend: {
             typography: {
@@ -23,4 +22,4 @@ export default {
             },
         },
     },
-} satisfies Config;
+};
