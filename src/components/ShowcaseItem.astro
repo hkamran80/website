@@ -1,6 +1,7 @@
 ---
-import {Code} from"@lucide/astro"
+import { Code } from "@lucide/astro";
 import type { getCollection } from "astro:content";
+
 interface Props {
     item: Awaited<ReturnType<typeof getCollection<"showcase">>>[number];
 }
@@ -12,8 +13,8 @@ const { item } = Astro.props;
     <p class="font-semibold flex">
         <span class="flex-1">
             {
-                item.data.site ? (
-                    <a href={item.data.site} class="underline">
+                item.data.url ? (
+                    <a href={item.data.url} class="underline">
                         {item.data.name}
                     </a>
                 ) : (
