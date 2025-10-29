@@ -1,0 +1,27 @@
+---
+import Layout from "./Layout.astro";
+import Container from "../components/container.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout>
+    <Container>
+        <main class="place-items-center pt-16 pb-8 md:pt-12 max-w-3xl mx-auto">
+            <header class="flex flex-col space-y-2">
+                <h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold">
+                    {frontmatter.title}
+                </h1>
+                <p class="font-light leading-snug text-c-light">
+                    {frontmatter.subtitle}
+                </p>
+            </header>
+
+            <article
+                class="prose dark:prose-invert mt-6 max-w-none prose-a:text-pink-600"
+            >
+                <slot />
+            </article>
+        </main>
+    </Container>
+</Layout>

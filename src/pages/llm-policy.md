@@ -1,0 +1,58 @@
+---
+layout: ../layouts/MarkdownPageLayout.astro
+title: LLM Policy
+subtitle: "Last Updated: September 2, 2025"
+---
+
+This policy explains my use of large language models (LLMs), commonly (but incorrectly) known as "artificial intelligence" or "AI", in my work.
+In this policy, "LLM" and "LLMs" refer to both large language models and the broader field of "AI", such as generative "AI".
+
+This policy is subject to change at any time without notice.
+
+## Overview
+
+> TL;DR — I do not currently use LLMs in my personal or professional work.
+
+I will not knowingly use LLMs to produce any of my work, including, but not limited to, code, design, and communication.
+I intend to make all reasonable efforts to avoid LLMs in my work.
+
+Given how LLMs are being imposed on everyone and how its deployment is accelerating with no regard to humanity or [the planet](https://www.pbs.org/newshour/show/the-growing-environmental-impact-of-ai-data-centers-energy-demands), it is impossible to stay unexposed.
+While I abstain from LLM usage, my clients and colleagues may not do so.
+At times, it may be necessary to integrate LLM output in my work on the condition that I am not held accountable or responsible for the combined work.
+
+## Moral and Ethical Issues
+
+LLMs are trained on copyrighted work.
+"AI" companies have accumulated massive datasets without respecting copyright licenses.
+Meta (Facebook) [trained its models on pirated books](https://arstechnica.com/tech-policy/2025/02/meta-torrented-over-81-7tb-of-pirated-books-to-train-ai-authors-say/).
+[The New York Times](https://www.theverge.com/2023/12/27/24016212/new-york-times-openai-microsoft-lawsuit-copyright-infringement) and a [few other](https://mashable.com/article/the-intercept-raw-story-alternet-openai-lawsuit-copyright-infringement) newspapers are suing OpenAI and Microsoft for copyright infringement.
+Disney and Universal are [suing Midjourney for the same thing](https://www.nytimes.com/2025/06/11/business/media/disney-universal-midjourney-ai.html).
+Some media organizations, like [the Associated Press](https://www.ap.org/media-center/ap-in-the-news/2023/chatgpt-maker-openai-signs-deal-with-ap-to-license-news-stories/), [the Financial Times](https://aboutus.ft.com/press_release/openai), [Vox Media](https://www.voxmedia.com/2024/5/29/24166483/vox-media-openai-strategic-content-and-product-partnership), [The Atlantic](https://www.theatlantic.com/press-releases/archive/2024/05/atlantic-product-content-partnership-openai/678529/), and [more](https://mashable.com/article/all-the-media-companies-that-have-licensing-deals-with-openai-so-far) have signed licensing agreements with OpenAI.
+
+If all these "AI" companies think LLM training is "fair use", how come they are signing all of these licensing agreements?
+Is there any value in copyright now if any LLM model can be trained on anything?
+
+## Misuse and Harm
+
+LLM crawlers have no respect for the web's rules.
+They [blatantly ignore](https://www.reuters.com/technology/artificial-intelligence/multiple-ai-companies-bypassing-web-standard-scrape-publisher-sites-licensing-2024-06-21/) the long-standing [`robots.txt` standard](https://en.wikipedia.org/wiki/Robots.txt) (formally known as [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309.html): the Robots Exclusion Protocol).
+They use [residential proxies](https://blog.cloudflare.com/residential-proxy-bot-detection-using-machine-learning/) to circumvent anti-crawling measures.
+They are responsible for [attacking open-source infrastructure](https://thelibre.news/foss-infrastructure-is-under-attack-by-ai-companies/) and [maintainers](https://news.itsfoss.com/curl-ai-slop/).
+New LLMs are [created every day](https://github.com/ai-robots-txt/ai.robots.txt/blob/main/table-of-bot-metrics.md).
+LLMs are a significant cause in the [rise of misinformation](https://doi.org/10.1177/27523543251344971).
+Elon Musk, who has been known to share [fascist](https://www.salon.com/2025/01/21/it-was-a-nazi-salute-historian-dismisses-claim-that-musks-raised-arm-was-mere-awkward-gesture/) and far-right ideologies, owns the "AI" company xAI and its Grok LLM, which [once called itself "MechaHitler"](https://www.forbes.com/sites/tylerroush/2025/07/09/elon-musk-claims-grok-manipulated-by-x-users-after-chatbot-praises-hitler/).
+
+They also do considerable harm to the environment.
+"AI" data centres are using tremendous amounts of [water](https://www.theatlantic.com/technology/archive/2024/03/ai-water-climate-microsoft/677602/) (see also: [arXiv](https://arxiv.org/abs/2304.03271)) and [energy](https://news.mit.edu/2025/explained-generative-ai-environmental-impact-0117).
+They are major polluters of water, noise, and [air](https://arstechnica.com/tech-policy/2025/04/elon-musks-xai-accused-of-lying-to-black-communities-about-harmful-pollution/), ruining the lives of nearby residents.
+
+## Quality Issues
+
+The quality of LLM-generated code leaves much to be desired.
+It does not meet the quality I expect and require.
+LLM-generated code frequently hallucinates APIs and syntax, and often generates invalid code.
+
+There is no reason for me to use an LLM for communication.
+I am confident in my own ability to communicate without unnecessary noise that would be included if an LLM was used.
+
+Using an LLM for design makes no sense because it is random, which is not what good design is based on.
