@@ -1,9 +1,9 @@
 ---
 import { Image } from "astro:assets";
-import type { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-    post: Awaited<ReturnType<typeof getCollection<"posts">>>[number];
+    post: CollectionEntry<"posts">;
 }
 
 const { post } = Astro.props;

@@ -1,9 +1,9 @@
 ---
 import { Code } from "@lucide/astro";
-import type { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-    item: Awaited<ReturnType<typeof getCollection<"showcase">>>[number];
+    item: CollectionEntry<"showcase">;
 }
 
 const { item } = Astro.props;
