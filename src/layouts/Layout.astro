@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Head from "../components/Head.astro";
 import NavigationBar from "../components/NavigationBar.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -11,6 +12,8 @@ import Footer from "../components/Footer.astro";
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <title>H. Kamran</title>
+
+        <Head />
     </head>
     <body>
         <NavigationBar />
@@ -18,15 +21,6 @@ import Footer from "../components/Footer.astro";
         <Footer />
     </body>
 </html>
-
-<style>
-    html,
-    body {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
 
 <style is:global>
     /* Improve Page speed */

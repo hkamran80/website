@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -14,4 +14,16 @@ export default defineConfig({
     },
 
     integrations: [svelte()],
+
+    experimental: {
+        fonts: [
+            {
+                provider: fontProviders.google(),
+                name: "Nunito Sans",
+                cssVariable: "--font-nunito-sans",
+                weights: ["400 700"],
+                subsets: ["latin", "latin-ext"],
+            },
+        ],
+    },
 });
