@@ -9,6 +9,10 @@ import svelte from "@astrojs/svelte";
 export default defineConfig({
     site: "https://hkamran.com",
 
+    image: {
+        domains: ["hkamran.com"],
+    },
+
     vite: {
         plugins: [tailwindcss()],
     },

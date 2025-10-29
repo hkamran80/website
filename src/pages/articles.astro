@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import { getCollection } from "astro:content";
+import { sortByDate } from "../lib/sort.ts";
+
+const articles = (
+    await getCollection(
+        "posts",
+        ({ data }) => data.type === "article" && data.published !== "",
+    )
+).sort((a, b) =>
+    sortByDate(new Date(a.data.published), new Date(b.data.published)),
+);
+---
+
+<Layout>
+    <Container>
+        <main class="place-items-center pt-16 pb-8 md:pt-12">
+            <h1
+                class="text-3xl lg:text-4xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter"
+            >
+                Articles
+            </h1>
+
+            <section class="mt-8 space-y-6">
+                {articles.map((post) => <ArticleCard post={post} />)}
+            </section>
+        </main>
+    </Container>
+</Layout>
