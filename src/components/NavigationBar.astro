@@ -1,11 +1,11 @@
 ---
 import Container from "./container.astro";
-import ThemeToggle from "./ThemeToggle.svelte"
+import ThemeToggle from "./ThemeToggle.svelte";
 
 const menuItems = [
     {
-        title: "Showcase",
-        path: "/showcase",
+        title: "Projects",
+        path: "/projects",
     },
     {
         title: "Articles",
@@ -25,14 +25,22 @@ const menuItems = [
 <Container>
     <header class="flex flex-col lg:flex-row justify-between items-center my-5">
         <div class="flex w-full lg:w-auto items-center justify-between">
-            <a href="/" class="text-lg font-bold"
-            >
-                H. Kamran
-            </a>
+            <a href="/" class="text-lg font-bold"> H. Kamran </a>
         </div>
 
         <ul class="flex flex-col lg:flex-row lg:gap-1">
-            {menuItems.map(item =>             <li><a href={item.path} class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">{item.title}</a></li>)}
+            {
+                menuItems.map((item) => (
+                    <li>
+                        <a
+                            href={item.path}
+                            class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+                        >
+                            {item.title}
+                        </a>
+                    </li>
+                ))
+            }
         </ul>
 
         <ThemeToggle client:load />
