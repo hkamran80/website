@@ -13,7 +13,7 @@ const Banner = () => (
                     <circle r="1" cx="1" cy="1" />
                 </svg>
                 California voted heavily in favour of Prop. 50, NYC elected
-                Zohran Mamdani, and states across the nation said no to Trump
+                Zohran Mamdani, and voters across the country said no to Trump
             </p>
             <NavLink
                 href="https://apnews.com/projects/election-results-2025/"
