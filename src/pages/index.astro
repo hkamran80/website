@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
+import { Image } from "astro:assets";
 import ShowcaseItem from "../components/ShowcaseItem.astro";
 
 import { getCollection } from "astro:content";
@@ -33,9 +34,13 @@ const latestPost = (await getCollection("posts"))
                 <div>
                     <header class="text-c-light">Latest Article</header>
                     <main class="mt-2">
-                        <img
+                        <Image
                             src={`https://assets.hkamran.com/graphics/article/${latestPost.id}`}
+                            alt={`Featured image for ${latestPost.data.title}`}
+                            width={2000}
+                            height={1000}
                             class="rounded-md"
+                            priority
                         />
 
                         <section class="mt-2">
