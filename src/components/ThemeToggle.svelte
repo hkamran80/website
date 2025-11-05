@@ -53,12 +53,15 @@ import {Sun,Moon}from "@lucide/svelte"
     display: inline-flex;
     align-items: center;
     height: 100%;
-    padding: 0.33em 0.67em;
     padding-top: 8px;
-    margin-left: 10px;
     gap: 0.6em;
     border-radius: 99em;
     background-color: var(--theme-code-inline-bg);
+}
+
+@media (width >= 48rem) {
+    padding: 0.33em 0.67em;
+    margin-left: 10px;
 }
 
 .theme-toggle > label:focus-within {
