@@ -4,9 +4,10 @@ import type { CollectionEntry } from "astro:content";
 
 interface Props {
     post: CollectionEntry<"posts">;
+    priority?: boolean;
 }
 
-const { post } = Astro.props;
+const { post, priority } = Astro.props;
 ---
 
 <article class="grid grid-cols-1 items-center gap-y-4 sm:grid-cols-3 md:gap-8">
@@ -14,10 +15,11 @@ const { post } = Astro.props;
         post.data.published && (
             <Image
                 src={`https://assets.hkamran.com/graphics/article/${post.id}`}
-                alt={`Featured image for ${post.data.title}`}
+                alt={post.data.imgAlt!}
                 width={2000}
                 height={1000}
                 class="rounded-md"
+                priority={priority}
             />
         )
     }

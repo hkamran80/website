@@ -41,6 +41,7 @@ const posts = defineCollection({
         description: z.string(),
         tags: z.string().array(),
         toc: z.boolean().optional(),
+        imgAlt: z.string().optional(),
         published: z.date().or(z.literal("")),
         updated: z.optional(z.date().or(z.literal(""))),
         filename: z.string(),

@@ -25,7 +25,11 @@ const articles = (
             </h1>
 
             <section class="mt-8 space-y-6">
-                {articles.map((post) => <ArticleCard post={post} />)}
+                {
+                    articles.map((post, index) => (
+                        <ArticleCard post={post} priority={index < 2} />
+                    ))
+                }
             </section>
         </main>
     </Container>
