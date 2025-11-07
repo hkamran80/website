@@ -11,12 +11,16 @@
         "format": "prettier . --write --check"
     },
     "dependencies": {
+        "@astrojs/sitemap": "^3.6.0",
         "@astrojs/svelte": "^7.2.0",
         "@lucide/astro": "^0.546.0",
         "@lucide/svelte": "^0.546.0",
         "@tailwindcss/vite": "^4.1.15",
         "astro": "^5.14.8",
         "astro-navbar": "^2.4.0",
+        "astro-robots-txt": "^1.0.0",
+        "simple-icons-astro": "^15.19.0",
+        "simple-icons-astro11": "npm:simple-icons-astro@11.15.0",
         "svelte": "^5.41.1",
         "tailwindcss": "^4.1.15",
         "typescript": "^5.9.3"

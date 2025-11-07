@@ -1,13 +1,13 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
-
 import tailwindcss from "@tailwindcss/vite";
-
 import svelte from "@astrojs/svelte";
+import robotsTxt from "astro-robots-txt";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://hkamran.com",
+    site: "https://beta.hkamran.com",
 
     image: {
         domains: ["hkamran.com"],
@@ -17,7 +17,14 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
 
-    integrations: [svelte()],
+    integrations: [
+        svelte(),
+        robotsTxt({
+            host: true,
+            policy: [{ userAgent: "*", disallow: "/_astro/" }],
+        }),
+        sitemap({ xslURL: "/sitemap.xslt" }),
+    ],
 
     experimental: {
         fonts: [
@@ -31,3 +38,4 @@ export default defineConfig({
         ],
     },
 });
+
