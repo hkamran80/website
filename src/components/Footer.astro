@@ -1,14 +1,18 @@
 ---
-const links = [
-    ["Projects", "Articles", "Notes", "Programs"],
-    ["My Setup", "Support", "LLM Policy", "License", "Privacy Policy"],
+import { links } from "../navigation";
+
+const extraPages: typeof links = [
+    { href: "/uses", name: "My Setup" },
+    { href: "/llm-policy", name: "LLM Policy" },
+    { href: "/license", name: "License" },
+    { href: "/privacy", name: "Privacy Policy" },
 ];
 ---
 
 <footer
-    class="mb-10 flex flex-col lg:flex-row justify-between text-xs text-gray-500 max-w-(--breakpoint-xl) mx-auto px-5"
+    class="mb-10 flex flex-col lg:flex-row justify-between text-xs text-gray-500 max-w-(--breakpoint-xl) mx-auto px-5 py-6 md:py-0"
 >
-    <section class="max-w-lg gap-1 flex-1 w-full">
+    <section class="gap-1 flex-1 w-full">
         <p>
             Copyright &copy; {new Date().getFullYear()} H. Kamran. All rights reserved.
         </p>
@@ -18,22 +22,35 @@ const links = [
         </p>
     </section>
 
-    <section class="text-right">
-        {
-            links.map((linkGroup) => (
-                <ul class="flex flex-row gap-2 mb-1">
-                    {linkGroup.map((link) => (
-                        <li>
-                            <a
-                                href="#"
-                                class="text-gray-500 hover:text-gray-900 dark:hover:text-gray-100"
-                            >
-                                {link}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            ))
-        }
+    <section class="space-y-4 md:text-right">
+        <ul class="space-x-4 list-none flex flex-row">
+            {
+                links.map((link) => (
+                    <li>
+                        <a
+                            href={link.href}
+                            class="text-gray-500 hover:text-gray-900 dark:hover:text-gray-100"
+                        >
+                            {link.name}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+
+        <ul class="space-x-4 list-none flex flex-row">
+            {
+                extraPages.map((link) => (
+                    <li>
+                        <a
+                            href={link.href}
+                            class="text-gray-500 hover:text-gray-900 dark:hover:text-gray-100"
+                        >
+                            {link.name}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
     </section>
 </footer>

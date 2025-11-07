@@ -1,25 +1,7 @@
 ---
 import Container from "./container.astro";
 import ThemeToggle from "./ThemeToggle.svelte";
-
-const menuItems = [
-    {
-        title: "Projects",
-        path: "/projects",
-    },
-    {
-        title: "Articles",
-        path: "/articles",
-    },
-    {
-        title: "Notes",
-        path: "/notes",
-    },
-    {
-        title: "Programs",
-        path: "/programs",
-    },
-];
+import { links } from "../navigation.ts";
 ---
 
 <Container>
@@ -32,13 +14,13 @@ const menuItems = [
 
         <ul class="flex flex-row gap-4 lg:gap-1">
             {
-                menuItems.map((item) => (
+                links.map((link) => (
                     <li>
                         <a
-                            href={item.path}
+                            href={link.href}
                             class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
                         >
-                            {item.title}
+                            {link.name}
                         </a>
                     </li>
                 ))
