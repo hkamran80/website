@@ -12,7 +12,7 @@ const { post, priority } = Astro.props;
 
 <article class="grid grid-cols-1 items-center gap-y-4 sm:grid-cols-3 md:gap-8">
     {
-        post.data.published && (
+        post.data.published && post.data.type === "article" && (
             <Image
                 src={`https://assets.hkamran.com/graphics/article/${post.id}`}
                 alt={post.data.imgAlt!}
