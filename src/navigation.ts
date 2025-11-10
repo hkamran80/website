@@ -1,15 +1,15 @@
 export type CommonLink = {
-    name: string
-    href: string
-    aliases?: string[]
-}
+    name: string;
+    href: string;
+    aliases?: string[];
+};
 
 export const links: CommonLink[] = [
     { href: "/projects", name: "Projects" },
     { href: "/articles", name: "Articles", aliases: ["/article", "/tag"] },
     { href: "/notes", name: "Notes", aliases: ["/note", "/tag"] },
     { href: "/programs", name: "Programs", aliases: ["/program"] },
-    { href: "https://unsplash.com/@hkamran", name: "Photos" }
+    { href: "https://unsplash.com/@hkamran", name: "Photos" },
 ];
 
 export enum EventNames {
@@ -41,4 +41,4 @@ export enum EventNames {
      * - `location` (required): the relative location of the link
      */
     Social = "social-link",
-};
+}

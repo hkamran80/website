@@ -3,7 +3,10 @@ import type { CollectionEntry } from "astro:content";
 
 const feedImageLengths: Record<string, number> = {};
 
-export const generateFeed = async (site: string, posts: CollectionEntry<"posts">) => {
+export const generateFeed = async (
+    site: string,
+    posts: CollectionEntry<"posts">,
+) => {
     const author: Author = {
         name: "H. Kamran",
         email: "hkamran@hkamran.com",
@@ -68,7 +71,7 @@ export const generateFeed = async (site: string, posts: CollectionEntry<"posts">
         }
 
         feed.addItem(entry);
-    };
+    }
 
     return feed;
 };
