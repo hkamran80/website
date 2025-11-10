@@ -7,7 +7,10 @@ import { getCollection, render } from "astro:content";
 import { slugify } from "@hkamran/utility-strings";
 
 export const getStaticPaths = async () => {
-    const posts = await getCollection("posts");
+    const posts = await getCollection(
+        "posts",
+        ({ data }) => data.type === "article",
+    );
     return posts.map((post) => ({
         params: { id: post.id },
         props: { post },
