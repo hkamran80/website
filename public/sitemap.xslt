@@ -28,7 +28,7 @@
             </head>
             <body>
                 <main>
-                    <h1>Pages on <xsl:value-of select="$hostname" /></h1>
+                    <h1><xsl:value-of select="$hostname" /></h1>
 
                     <p id="viewpara" style="display:none;">
                         <a id="viewlink" href="" role="button">View as a tree</a>
@@ -48,7 +48,6 @@
                         </xsl:for-each>
                     </ul>
                     <p><xsl:value-of select="count(sitemap:urlset/sitemap:url)" /> pages</p>
-                    <p><small>Powered by <a href="https://www.sitemap.style/"><img referrerpolicy="origin" src="https://www.sitemap.style/favicon.svg" style="height:1em;padding-right:0.25em;vertical-align:middle;" />Sitemap.Style</a></small></p>
                 </main>
             </body>
         </html>
