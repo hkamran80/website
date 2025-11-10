@@ -26,7 +26,7 @@ export default defineConfig({
     site: "https://beta.hkamran.com",
 
     image: {
-        domains: ["hkamran.com"],
+        domains: ["assets.hkamran.com"],
     },
 
     vite: {
