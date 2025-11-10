@@ -14,6 +14,8 @@ import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import rehypeRewrite from "rehype-rewrite";
 import { EventNames } from "./src/navigation";
 
+import netlify from "@astrojs/netlify";
+
 const isLocalLink = (link: string) =>
     link.startsWith("/") ||
     link.startsWith("#") ||
@@ -159,5 +161,11 @@ export default defineConfig({
                 subsets: ["latin", "latin-ext"],
             },
         ],
+    },
+
+    adapter: netlify(),
+
+    redirects: {
+        "/article/[...slug]": "/articles/[...slug]",
     },
 });

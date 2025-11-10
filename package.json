@@ -11,6 +11,7 @@
         "format": "prettier . --write --check"
     },
     "dependencies": {
+        "@astrojs/netlify": "^6.6.0",
         "@astrojs/sitemap": "^3.6.0",
         "@astrojs/svelte": "^7.2.0",
         "@hkamran/utility-strings": "^1.0.5",
