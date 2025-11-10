@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Container from "../../components/container.astro";
+import PageHeader from "../../components/PageHeader.astro";
 import Link from "../../components/Link.astro";
 import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
@@ -24,15 +25,11 @@ const { Content, headings } = await render(post);
 <Layout>
     <Container>
         <main class="place-items-center pt-16 pb-8 md:pt-12">
-            <header class="flex flex-col space-y-2">
-                <h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold">
-                    {post.data.title}
-                </h1>
-                <p class="font-light leading-snug text-c-light">
-                    {post.data.description}
-                </p>
-
-                <p class="font-light leading-snug text-c-light">
+            <PageHeader
+                title={post.data.title}
+                subtitle={post.data.description}
+            >
+                <Fragment slot="description">
                     {
                         post.data.published && post.data.updated && (
                             <time>
@@ -103,21 +100,21 @@ const { Content, headings } = await render(post);
                             </Fragment>
                         ))
                     }
-                </p>
+                </Fragment>
+            </PageHeader>
 
-                {
-                    post.data.published && (
-                        <Image
-                            src={`https://assets.hkamran.com/graphics/article/${post.id}`}
-                            alt={post.data.imgAlt!}
-                            width={2000}
-                            height={1000}
-                            class="rounded-md max-w-3xl mx-auto mt-6"
-                            priority
-                        />
-                    )
-                }
-            </header>
+            {
+                post.data.published && (
+                    <Image
+                        src={`https://assets.hkamran.com/graphics/article/${post.id}`}
+                        alt={post.data.imgAlt!}
+                        width={2000}
+                        height={1000}
+                        class="rounded-md max-w-3xl mx-auto mt-6"
+                        priority
+                    />
+                )
+            }
 
             <article
                 class="prose dark:prose-invert mt-6 max-w-3xl mx-auto prose-a:text-pink-600"

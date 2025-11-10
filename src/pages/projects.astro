@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
 import ShowcaseItem from "../components/ShowcaseItem.astro";
 import { getCollection } from "astro:content";
 
@@ -12,11 +13,7 @@ const showcase = (await getCollection("showcase")).sort((a, b) =>
 <Layout>
     <Container>
         <main class="place-items-center pt-16 pb-8 md:pt-12 max-w-3xl mx-auto">
-            <h1
-                class="text-3xl lg:text-4xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter"
-            >
-                Projects
-            </h1>
+            <PageHeader title="Projects" />
 
             <section class="mt-8">
                 <h2

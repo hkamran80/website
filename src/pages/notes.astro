@@ -1,11 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
 import PostCard from "../components/PostCard.astro";
 import { getCollection } from "astro:content";
 import { sortByDate } from "../lib/sort.ts";
 
-const notes= (
+const notes = (
     await getCollection(
         "posts",
         ({ data }) => data.type === "note" && data.published !== "",
@@ -18,20 +19,11 @@ const notes= (
 <Layout>
     <Container>
         <main class="place-items-center pt-16 pb-8 md:pt-12">
-            <h1
-                class="text-3xl lg:text-4xl xl:text-5xl font-bold lg:tracking-tight xl:tracking-tighter"
-            >
-                Notes
-            </h1>
+            <PageHeader title="Notes" />
 
             <section class="mt-8 space-y-6">
-                {
-                    notes.map((post, index) => (
-                        <PostCard post={post} />
-                    ))
-                }
+                {notes.map((post, index) => <PostCard post={post} />)}
             </section>
         </main>
     </Container>
 </Layout>
-
