@@ -1,7 +1,10 @@
 ---
-import { links } from "../navigation";
+import { Github, Mastodon, Bluesky } from "simple-icons-astro";
+import { Twitter } from "simple-icons-astro11";
+import { links, type CommonLink } from "../navigation";
+import Link from "./Link.astro";
 
-const extraPages: typeof links = [
+const extraPages: CommonLink[] = [
     { href: "/uses", name: "My Setup" },
     { href: "/llm-policy", name: "LLM Policy" },
     { href: "/license", name: "License" },
@@ -17,22 +20,46 @@ const extraPages: typeof links = [
             Copyright &copy; {new Date().getFullYear()} H. Kamran. All rights reserved.
         </p>
         <p>
-            This site is designed and made exclusively by humans.<wbr /> No "AI"
-            was used in the making of any of the content on this site.
+            This site is designed and made exclusively by humans.<wbr />
+            <Link
+                href="/llm-policy"
+                class="underline hover:text-gray-900 dark:hover:text-gray-100"
+                >No "AI" was used</Link
+            > in the making of any of the content on this site.
+        </p>
+
+        <p class="mt-2">
+            <ul class="flex flex-row gap-x-4">
+                <li>
+                    <Link href="https://github.com/hkamran80">
+                        <Github size={16} />
+                    </Link>
+                </li>
+                <li>
+                    <Link href="https://twitter.com/hkamran80">
+                        <Twitter size={16} />
+                    </Link>
+                </li>
+                <li>
+                    <Link href="https://vmst.io/@hkamran">
+                        <Mastodon size={16} />
+                    </Link>
+                </li>
+                <li>
+                    <Link href="https://bsky.app/profile/hkamran.com">
+                        <Bluesky size={16} />
+                    </Link>
+                </li>
+            </ul>
         </p>
     </section>
 
-    <section class="space-y-4 md:text-right">
+    <section class="space-y-2 md:text-right">
         <ul class="space-x-4 list-none flex flex-row">
             {
                 links.map((link) => (
                     <li>
-                        <a
-                            href={link.href}
-                            class="text-gray-500 hover:text-gray-900 dark:hover:text-gray-100"
-                        >
-                            {link.name}
-                        </a>
+                        <Link href={link.href}>{link.name}</Link>
                     </li>
                 ))
             }
@@ -42,15 +69,18 @@ const extraPages: typeof links = [
             {
                 extraPages.map((link) => (
                     <li>
-                        <a
-                            href={link.href}
-                            class="text-gray-500 hover:text-gray-900 dark:hover:text-gray-100"
-                        >
-                            {link.name}
-                        </a>
+                        <Link href={link.href}>{link.name}</Link>
                     </li>
                 ))
             }
         </ul>
     </section>
 </footer>
+
+<style>
+    @reference "../styles/global.css";
+
+    a {
+        @apply text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 ease-in-out;
+    }
+</style>
