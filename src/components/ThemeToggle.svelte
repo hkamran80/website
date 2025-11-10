@@ -1,5 +1,6 @@
 <script>
-import {Sun,Moon}from "@lucide/svelte"
+import Sun from "@lucide/svelte/icons/sun"
+import Moon from "@lucide/svelte/icons/moon"
 
   const rootEl = typeof document !== 'undefined' ? document.documentElement : null;
   const themes = ['light', 'dark'];
@@ -12,6 +13,7 @@ import {Sun,Moon}from "@lucide/svelte"
   }
 
   function handleChange(event) {
+    console.log(event)
     theme = event.target.value;
     localStorage.setItem('theme', theme);
   }
