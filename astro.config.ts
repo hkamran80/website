@@ -164,8 +164,4 @@ export default defineConfig({
     },
 
     adapter: netlify(),
-
-    redirects: {
-        "/article/[...slug]": "/articles/[...slug]",
-    },
 });

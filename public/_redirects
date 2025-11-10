@@ -1,0 +1,1 @@
+/article/*      /articles/:splat        301
