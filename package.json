@@ -13,6 +13,7 @@
     "dependencies": {
         "@astrojs/sitemap": "^3.6.0",
         "@astrojs/svelte": "^7.2.0",
+        "@hkamran/utility-strings": "^1.0.5",
         "@jsdevtools/rehype-toc": "^3.0.2",
         "@lucide/astro": "^0.546.0",
         "@lucide/svelte": "^0.546.0",
