@@ -33,7 +33,10 @@ export default defineConfig({
 
     markdown: {
         shikiConfig: {
-            theme: "vitesse-black",
+            themes: {
+                light: "vitesse-light",
+                dark: "vitesse-black",
+            },
         },
         smartypants: false,
         remarkPlugins: [remarkAlert, remarkRemoveComments],
