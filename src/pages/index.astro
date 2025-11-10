@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
+import Link from "../components/Link.astro";
 import { Image } from "astro:assets";
 import ShowcaseItem from "../components/ShowcaseItem.astro";
 
@@ -24,8 +25,9 @@ const latestPost = (await getCollection("posts"))
                     Hello world, I'm H. Kamran
                 </h1>
                 <p class="text-lg mt-4 text-c-light -max-w-xl">
-                    I'm a developer who <a href="#" class="underline"
-                        >takes photos</a
+                    I'm a developer who <Link
+                        href="https://unsplash.com/@hkamran"
+                        class="underline">takes photos</Link
                     > and follows government actions across the U.S., the EU, and
                     occasionally the UK in my free time.
                 </p>

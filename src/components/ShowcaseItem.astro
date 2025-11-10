@@ -1,4 +1,5 @@
 ---
+import Link from "./Link.astro";
 import { Code } from "@lucide/astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -14,9 +15,9 @@ const { item } = Astro.props;
         <span class="flex-1">
             {
                 item.data.url ? (
-                    <a href={item.data.url} class="underline">
+                    <Link href={item.data.url} class="underline">
                         {item.data.name}
-                    </a>
+                    </Link>
                 ) : (
                     item.data.name
                 )
@@ -24,13 +25,13 @@ const { item } = Astro.props;
         </span>
         {
             item.data.repository && (
-                <a
+                <Link
                     href={item.data.repository}
                     class="hover:text-gray-700 dark:hover:text-gray-300"
                     aria-label={`${item.data.name} repository`}
                 >
                     <Code size={18} />
-                </a>
+                </Link>
             )
         }
     </p>
