@@ -9,7 +9,11 @@ const convertToDate = (dateString: string): Date =>
 export const postsLoader = (): Loader => {
     return {
         name: "posts-loader",
-        load: async ({ store, parseData }: LoaderContext): Promise<void> => {
+        load: async ({
+            store,
+            parseData,
+            renderMarkdown,
+        }: LoaderContext): Promise<void> => {
             const response = await fetch(
                 "https://raw.githubusercontent.com/hkamran80/articles/main/markdown/contents.json",
             );
@@ -43,14 +47,19 @@ export const postsLoader = (): Loader => {
                     data: post,
                 });
 
-                const postContentUrl = `https://raw.githubusercontent.com/hkamran80/articles/${!post.published && post.branchName ? post.branchName : "main"}/markdown/${post.type}s/${post.id}.md`;
+                const postContentUrl = `https://raw.githubusercontent.com/hkamran80/articles/${!post.published && post.branchName ? post.branchName : "main"}/markdown/${post.type}s/${post.filename}.md`;
                 const postContentResponse = await fetch(postContentUrl);
 
-                let body: string | undefined = undefined;
-                if (postContentResponse.ok)
+                let body: string | undefined = undefined,
+                    rendered:
+                        | Awaited<ReturnType<typeof renderMarkdown>>
+                        | undefined = undefined;
+                if (postContentResponse.ok) {
                     body = await postContentResponse.text();
+                    rendered = await renderMarkdown(body);
+                }
 
-                store.set({ id: post.id, data, body });
+                store.set({ id: post.id, data, body, rendered });
             }
         },
         schema: z.object({

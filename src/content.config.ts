@@ -1,9 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import { postsLoader } from "./lib/postsLoader";
 
-const posts = defineCollection({
-    loader: postsLoader(),
-});
+const posts = defineCollection({ loader: postsLoader() });
 
 const showcase = defineCollection({
     loader: async () => {
