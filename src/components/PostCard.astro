@@ -14,8 +14,8 @@ const { post, priority } = Astro.props;
     {
         post.data.published && post.data.type === "article" && (
             <Image
-                src={`https://assets.hkamran.com/graphics/article/${post.id}`}
-                alt={post.data.imgAlt!}
+                src={post.data.img!.src}
+                alt={post.data.img!.alt}
                 width={2000}
                 height={1000}
                 class="rounded-md"

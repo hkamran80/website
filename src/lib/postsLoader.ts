@@ -38,6 +38,14 @@ export const postsLoader = (): Loader => {
                               updated: convertToDate(post.updated),
                           }
                         : {}),
+                    ...(post.imgAlt
+                        ? {
+                              img: {
+                                  src: `https://assets.hkamran.com/graphics/article/${post.id}`,
+                                  alt: post.imgAlt,
+                              },
+                          }
+                        : {}),
                 };
             });
 
@@ -69,7 +77,12 @@ export const postsLoader = (): Loader => {
             description: z.string(),
             tags: z.string().array(),
             toc: z.boolean().optional(),
-            imgAlt: z.string().optional(),
+            img: z
+                .object({
+                    src: z.string(),
+                    alt: z.string(),
+                })
+                .optional(),
             published: z.date().or(z.literal("")),
             updated: z.optional(z.date().or(z.literal(""))),
             filename: z.string(),

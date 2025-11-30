@@ -19,7 +19,7 @@ export const getStaticPaths = async () => {
 };
 
 const { post } = Astro.props;
-const { Content, headings } = await render(post);
+const { Content } = await render(post);
 ---
 
 <Layout>
@@ -106,8 +106,8 @@ const { Content, headings } = await render(post);
             {
                 post.data.published && (
                     <Image
-                        src={`https://assets.hkamran.com/graphics/article/${post.id}`}
-                        alt={post.data.imgAlt!}
+                        src={post.data.img!.src}
+                        alt={post.data.img!.alt}
                         width={2000}
                         height={1000}
                         class="rounded-md max-w-3xl mx-auto mt-6"
