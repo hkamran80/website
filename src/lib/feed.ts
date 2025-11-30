@@ -5,13 +5,17 @@ const feedImageLengths: Record<string, number> = {};
 
 export const generateFeed = async (
     site: string,
-    posts: CollectionEntry<"posts">,
+    posts: CollectionEntry<"posts">[],
 ) => {
     const author: Author = {
         name: "H. Kamran",
         email: "hkamran@hkamran.com",
         link: site,
     };
+
+    const firstPostData = posts.find(
+        (post) => post.data.published !== "",
+    )!.data;
 
     const feed = new Feed({
         title: "H. Kamran",
@@ -22,7 +26,10 @@ export const generateFeed = async (
         image: `${site}profile.png`,
         favicon: `${site}favicon.png`,
         copyright: `© ${new Date().getFullYear()} H. Kamran. All rights reserved.`,
-        updated: posts[0].data.updated || posts[0].data.published,
+        updated:
+            firstPostData.updated !== "" || firstPostData.published !== ""
+                ? ((firstPostData.updated || firstPostData.published) as Date)
+                : undefined,
         feedLinks: {
             rss: `${site}feed.rss`,
             atom: `${site}feed.atom`,
@@ -32,6 +39,8 @@ export const generateFeed = async (
     });
 
     for (const post of posts) {
+        if (post.data.published === "") continue;
+
         let entry: Item = {
             id: post.id,
             title: post.data.title,
@@ -39,7 +48,7 @@ export const generateFeed = async (
             description: post.data.description,
             // TODO: Use full-text
             content: post.data.description,
-            date: post.data.published,
+            date: post.data.published as Date,
             author: [author],
         };
 
