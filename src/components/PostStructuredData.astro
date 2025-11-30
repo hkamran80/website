@@ -1,0 +1,49 @@
+---
+import { Author } from "../lib/structuredData";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+    post: CollectionEntry<"posts">;
+};
+
+const {
+    post: { data: post },
+} = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site);
+
+const structuredData =
+    post.published !== ""
+        ? {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: post.title,
+              description: post.description,
+              datePublished: post.published.toISOString(),
+              dateModified: post.updated?.toISOString() ?? undefined,
+              url: url.toString(),
+              thumbnailUrl: post.img?.src ?? undefined,
+              image: post.img
+                  ? {
+                        "@type": "ImageObject",
+                        url: post.img.src,
+                        width: 2000,
+                        height: 1000,
+                        caption: post.img.alt,
+                    }
+                  : undefined,
+              author: Author,
+              copyrightHolder: Author,
+              copyrightYear: post.published.getFullYear(),
+              copyrightNotice:
+                  "Copyright © 2025 H. Kamran. All rights reserved.",
+              inLanguage: "en-US",
+              keywords: post.tags,
+          }
+        : {};
+---
+
+<script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+/>

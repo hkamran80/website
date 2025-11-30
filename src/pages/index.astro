@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import WebsiteStructuredData from "../components/WebsiteStructuredData.astro";
 import Container from "../components/container.astro";
 import Link from "../components/Link.astro";
 import { Image } from "astro:assets";
@@ -16,6 +17,7 @@ const latestPost = (await getCollection("posts"))
 ---
 
 <Layout>
+    <WebsiteStructuredData slot="structured-data" />
     <Container>
         <main class="place-items-center pt-16 pb-8 md:pt-12">
             <section>

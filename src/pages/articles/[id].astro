@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import PostStructuredData from "../../components/PostStructuredData.astro";
 import Container from "../../components/container.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import Link from "../../components/Link.astro";
@@ -23,6 +24,7 @@ const { Content } = await render(post);
 ---
 
 <Layout>
+    <PostStructuredData slot="structured-data" post={post} />
     <Container>
         <main class="place-items-center pt-16 pb-8 md:pt-12">
             <PageHeader

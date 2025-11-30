@@ -1,0 +1,21 @@
+---
+import { Author } from "../lib/structuredData";
+
+const url = new URL(Astro.url.pathname, Astro.site);
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    url: url.toString(),
+    author: Author,
+    copyrightHolder: Author,
+    copyrightYear: 2020,
+    copyrightNotice: "Copyright © 2025 H. Kamran. All rights reserved.",
+    inLanguage: "en-US",
+};
+---
+
+<script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+/>
