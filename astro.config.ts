@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import svelte from "@astrojs/svelte";
 import robotsTxt from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 
@@ -143,7 +142,6 @@ export default defineConfig({
     },
 
     integrations: [
-        svelte(),
         robotsTxt({
             host: true,
             policy: [{ userAgent: "*", disallow: "/_astro/" }],

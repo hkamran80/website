@@ -1,0 +1,143 @@
+---
+import Sun from "@lucide/astro/icons/sun";
+import Moon from "@lucide/astro/icons/moon";
+---
+
+<div class="theme-toggle">
+    <label for="theme-toggle-light">
+        <span class="sr-only">Use light theme</span>
+        <Sun size="20" />
+
+        <input
+            id="theme-toggle-light"
+            type="radio"
+            name="theme-toggle"
+            value="light"
+            title="Use light theme"
+            aria-label="Use light theme"
+        />
+    </label>
+
+    <label for="theme-toggle-dark">
+        <span class="sr-only">Use dark theme</span>
+        <Moon size="20" />
+
+        <input
+            id="theme-toggle-dark"
+            type="radio"
+            name="theme-toggle"
+            value="dark"
+            title="Use dark theme"
+            aria-label="Use dark theme"
+        />
+    </label>
+</div>
+
+<script>
+    const rootElement =
+        typeof document !== "undefined" ? document.documentElement : null;
+    const lightLabel = document.querySelector("label[for=theme-toggle-light]");
+    const lightRadio = lightLabel!.querySelector("input");
+    const darkLabel = document.querySelector("label[for=theme-toggle-dark]");
+    const darkRadio = darkLabel!.querySelector("input");
+
+    const setTheme = (theme: "light" | "dark" | string) => {
+        if (
+            !rootElement ||
+            !lightLabel ||
+            !lightRadio ||
+            !darkLabel ||
+            !darkRadio
+        )
+            return;
+
+        if (theme === "light") {
+            rootElement.classList.remove("dark");
+
+            lightLabel.classList.add("checked");
+            darkLabel.classList.remove("checked");
+
+            lightRadio.checked = true;
+            darkRadio.checked = false;
+        } else {
+            rootElement.classList.add("dark");
+
+            lightLabel.classList.remove("checked");
+            darkLabel.classList.add("checked");
+
+            lightRadio.checked = false;
+            darkRadio.checked = true;
+        }
+    };
+
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+        setTheme(localStorage.getItem("theme")!);
+    } else if (
+        typeof window !== "undefined" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+        setTheme("dark");
+    }
+
+    const handleChange = (event: Event) => {
+        const theme = event.target.value;
+
+        setTheme(theme);
+        localStorage.setItem("theme", theme);
+    };
+
+    document
+        .querySelectorAll("input[name=theme-toggle]")
+        .forEach((toggle) => toggle.addEventListener("change", handleChange));
+</script>
+
+<style>
+    .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        height: 100%;
+        padding-top: 8px;
+        gap: 0.6em;
+        border-radius: 99em;
+        background-color: var(--theme-code-inline-bg);
+    }
+
+    @media (width >= 48rem) {
+        .theme-toggle {
+            padding: 0.33em 0.67em;
+            margin-left: 10px;
+        }
+    }
+
+    .theme-toggle > label:focus-within {
+        outline: 2px solid transparent;
+        box-shadow:
+            0 0 0 0.08em var(--theme-accent),
+            0 0 0 0.12em white;
+    }
+
+    .theme-toggle > label {
+        color: var(--theme-code-inline-text);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
+    .theme-toggle .checked {
+        color: var(--theme-accent);
+        opacity: 1;
+    }
+
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+    }
+</style>

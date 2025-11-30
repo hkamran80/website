@@ -13,7 +13,6 @@
     "dependencies": {
         "@astrojs/netlify": "^6.6.0",
         "@astrojs/sitemap": "^3.6.0",
-        "@astrojs/svelte": "^7.2.0",
         "@hkamran/utility-strings": "^1.0.5",
         "@jsdevtools/rehype-toc": "^3.0.2",
         "@lucide/astro": "^0.546.0",
@@ -32,7 +31,6 @@
         "remark-remove-comments": "^1.1.1",
         "simple-icons-astro": "^15.19.0",
         "simple-icons-astro11": "npm:simple-icons-astro@11.15.0",
-        "svelte": "^5.41.1",
         "tailwindcss": "^4.1.15",
         "typescript": "^5.9.3"
     },
@@ -42,7 +40,6 @@
         "@tailwindcss/typography": "^0.5.19",
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
-        "prettier-plugin-svelte": "^3.4.0",
         "prettier-plugin-tailwindcss": "^0.7.1"
     },
     "prettier": "@hkamran/prettier-config"

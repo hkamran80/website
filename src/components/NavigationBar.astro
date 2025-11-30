@@ -1,7 +1,7 @@
 ---
 import Container from "./container.astro";
 import Link from "./Link.astro";
-import ThemeToggle from "./ThemeToggle.svelte";
+import ThemeToggle from "./ThemeToggle.astro";
 import { links } from "../navigation.ts";
 ---
 
@@ -28,6 +28,6 @@ import { links } from "../navigation.ts";
             }
         </ul>
 
-        <ThemeToggle client:load />
+        <ThemeToggle />
     </header>
 </Container>
