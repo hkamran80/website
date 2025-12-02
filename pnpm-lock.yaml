@@ -32,6 +32,9 @@ importers:
       astro:
         specifier: ^5.14.8
         version: 5.14.8(@netlify/blobs@10.3.3)(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1)
+      astro-masonry:
+        specifier: ^1.2.2
+        version: 1.2.2
       astro-navbar:
         specifier: ^2.4.0
         version: 2.4.0
@@ -1607,6 +1610,9 @@ packages:
   ast-module-types@6.0.1:
     resolution: {integrity: sha512-WHw67kLXYbZuHTmcdbIrVArCq5wxo6NEuj3hiYAWr8mwJeC+C2mMCIBIWCiDoCye/OF/xelc+teJ1ERoWmnEIA==}
     engines: {node: '>=18'}
+
+  astro-masonry@1.2.2:
+    resolution: {integrity: sha512-416VOoR+6dVjOyM2pxlQFj4AiFIV6NdA6WFUFqkVTitaG61o+5Sz0YTA20FAW7xnbIVWru9h6XIWNeEy3hiPmA==}
 
   astro-navbar@2.4.0:
     resolution: {integrity: sha512-UhQnU8lz3a0NKL5gTBXFwYg1CVzP/DNlw1z6qW7f9Q1j33oMHdjwX/TmC2/xkJTKeq4a2RxgaqeJ+6CxCxRELg==}
@@ -5770,6 +5776,8 @@ snapshots:
   array-iterate@2.0.1: {}
 
   ast-module-types@6.0.1: {}
+
+  astro-masonry@1.2.2: {}
 
   astro-navbar@2.4.0: {}
 

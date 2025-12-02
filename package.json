@@ -19,6 +19,7 @@
         "@lucide/svelte": "^0.546.0",
         "@tailwindcss/vite": "^4.1.15",
         "astro": "^5.14.8",
+        "astro-masonry": "^1.2.2",
         "astro-navbar": "^2.4.0",
         "astro-robots-txt": "^1.0.0",
         "feed": "^5.1.0",
