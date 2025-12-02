@@ -14,10 +14,6 @@ export const generateFeed = async (
         link: site.slice(0, -1),
     };
 
-    const firstPostData = posts.find(
-        (post) => post.data.published !== "",
-    )!.data;
-
     const feed = new Feed({
         title: "H. Kamran",
         description: "The feed of both my articles and my notes",
@@ -28,8 +24,8 @@ export const generateFeed = async (
         favicon: `${site}favicon.png`,
         copyright: `© ${new Date().getFullYear()} H. Kamran. All rights reserved.`,
         updated:
-            firstPostData.updated !== "" || firstPostData.published !== ""
-                ? ((firstPostData.updated || firstPostData.published) as Date)
+            posts[0].data.updated !== "" || posts[0].data.published !== ""
+                ? ((posts[0].data.updated || posts[0].data.published) as Date)
                 : undefined,
         feedLinks: {
             rss: `${site}feed.rss`,
@@ -40,8 +36,6 @@ export const generateFeed = async (
     });
 
     for (const post of posts) {
-        if (post.data.published === "") continue;
-
         let entry: Item = {
             id: post.id,
             title: post.data.title,
