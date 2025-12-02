@@ -1,9 +1,9 @@
 ---
 import { EventNames } from "../navigation";
 
-interface Props
-    extends Pick<HTMLAnchorElement, "href">,
-        Partial<Omit<HTMLAnchorElement, "href" | "children">> {
+type Props = 
+    Pick<HTMLAnchorElement, "href">&
+Partial<Omit<HTMLAnchorElement, "href" | "children"> >&{
     class?: string;
     noAttribution?: boolean;
     noLocalTarget?: boolean;
@@ -45,6 +45,8 @@ if (href.startsWith("/")) {
 }
 ---
 
-<a href={newHref} {...customAttributes} {...dataAttributes} class={className}>
-    <slot />
-</a>
+<>
+    <a href={newHref} {...customAttributes} {...dataAttributes} class={className}>
+        <slot />
+    </a>
+</>
