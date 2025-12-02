@@ -21,7 +21,7 @@ export const generateFeed = async (
         id: site.slice(0, -1),
         link: site.slice(0, -1),
         language: "en-US",
-        image: `${site}profile.png`,
+        image: `${site}icon.png`,
         favicon: `${site}favicon.png`,
         copyright: `© ${new Date().getFullYear()} H. Kamran. All rights reserved.`,
         updated:
