@@ -7,7 +7,7 @@ const feeds: Record<
     "rss" | "atom" | "json",
     {
         generator: "rss2" | "atom1" | "json1";
-        contentType: "application/xml" | "applciation/json";
+        contentType: "application/xml" | "application/json";
     }
 > = {
     rss: {
@@ -15,7 +15,7 @@ const feeds: Record<
         contentType: "application/xml",
     },
     atom: { generator: "atom1", contentType: "application/xml" },
-    json: { generator: "json1", contentType: "applciation/json" },
+    json: { generator: "json1", contentType: "application/json" },
 };
 
 export const GET: APIRoute = async ({ site: siteUrl, params }) => {
@@ -23,7 +23,7 @@ export const GET: APIRoute = async ({ site: siteUrl, params }) => {
     if (!params.feed || !Object.keys(feeds).includes(params.feed))
         return new Response(undefined, { status: 500 });
 
-    const feedConfiguration = feeds[params.feed];
+    const feedConfiguration = feeds[params.feed as keyof typeof feeds];
 
     const posts = (
         await getCollection("posts", ({ data }) => data.published !== "")
