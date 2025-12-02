@@ -1,59 +1,69 @@
 ---
-import {Image}from"astro:assets"
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
 import PageHeader from "../components/PageHeader.astro";
-import {Masonry}from"astro-masonry"
-import Link from "../components/Link.astro"
+import { Masonry } from "astro-masonry";
+import Link from "../components/Link.astro";
 import { getCollection } from "astro:content";
 import { sortByDate } from "../lib/sort.ts";
 
-const photos= (
-    await getCollection(
-        "photos",
-    )
-).sort((a, b) =>
+const photos = (await getCollection("photos")).sort((a, b) =>
     sortByDate(new Date(a.data.created_at), new Date(b.data.created_at)),
 );
 ---
 
 <Layout>
     <Container>
-        <main class="place-items-center pt-16 pb-8 md:pt-12">
+        <main class="place-items-center pt-2 pb-8 md:pt-8">
             <PageHeader title="Photos">
                 <Fragment slot="subtitle">
-                    Photos are subject to <Link href="https://unsplash.com/license" class="underline underline-offset-2">the Unsplash License</Link>. Attribution is strongly recommended.
+                    Photos are subject to <Link
+                        href="https://unsplash.com/license"
+                        class="underline underline-offset-2"
+                        >the Unsplash License</Link
+                    >. Attribution is strongly recommended.
                 </Fragment>
             </PageHeader>
 
             <section class="mt-8">
-<Masonry
-    breakpointCols={{
-      default: 4,
-      1200: 3,
-      700: 2,
-      500: 1,
-    }}
-    class="flex gap-4"
-    columnClass=""
-  >
-    {
-      photos.map((photo, index) => (
-                    <Link href={photo.data.links.html} data-index={index}>
-                        <figure class="mb-4">
-            <Image
-              src={photo.data.urls.regular}
-                        alt={photo.data.description||"No description"}
-              inferSize
-              loading="lazy"
-/>
+                <Masonry
+                    breakpointCols={{
+                        default: 4,
+                        1200: 3,
+                        700: 2,
+                        500: 1,
+                    }}
+                    class="flex gap-4"
+                    columnClass=""
+                >
+                    {
+                        photos.map((photo, index) => (
+                            <Link
+                                href={photo.data.links.html}
+                                data-index={index}
+                            >
+                                <figure class="mb-4">
+                                    <Image
+                                        src={photo.data.urls.regular}
+                                        alt={
+                                            photo.data.description ||
+                                            "No description"
+                                        }
+                                        inferSize
+                                        loading="lazy"
+                                    />
 
-                            {photo.data.description &&  <figcaption class="text-c-light">{photo.data.description}</figcaption> }
-                        </figure>
-                    </Link>
-      ))
-    }
-  </Masonry>
+                                    {photo.data.description && (
+                                        <figcaption class="text-c-light">
+                                            {photo.data.description}
+                                        </figcaption>
+                                    )}
+                                </figure>
+                            </Link>
+                        ))
+                    }
+                </Masonry>
             </section>
         </main>
     </Container>
@@ -62,11 +72,11 @@ const photos= (
 <style>
     @reference "../styles/global.css";
 
-figure img {
-@apply w-full rounded-md
-}
+    figure img {
+        @apply w-full rounded-md;
+    }
 
-figcaption {
-@apply text-sm mt-2
-}
+    figcaption {
+        @apply text-sm mt-2;
+    }
 </style>

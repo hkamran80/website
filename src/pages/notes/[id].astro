@@ -25,7 +25,7 @@ const { Content } = await render(post);
 <Layout>
     <PostStructuredData slot="structured-data" post={post} />
     <Container>
-        <main class="place-items-center pt-16 pb-8 md:pt-12">
+        <main class="place-items-center pt-2 pb-8 md:pt-8">
             <PageHeader
                 title={post.data.title}
                 subtitle={post.data.description}
@@ -112,4 +112,3 @@ const { Content } = await render(post);
         </main>
     </Container>
 </Layout>
-
