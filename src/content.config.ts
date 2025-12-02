@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { postsLoader } from "./lib/postsLoader";
+import postsLoader from "./lib/postsLoader";
 import unsplashLoader from "./lib/unsplashLoader";
 
 const posts = defineCollection({ loader: postsLoader() });

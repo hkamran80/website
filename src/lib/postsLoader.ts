@@ -6,7 +6,7 @@ const convertToDate = (dateString: string): Date =>
         dateString + (!dateString.includes("T") ? "T07:00:00.000-08:00" : ""),
     );
 
-export const postsLoader = (): Loader => {
+const loader = (): Loader => {
     return {
         name: "posts-loader",
         load: async ({
@@ -90,3 +90,5 @@ export const postsLoader = (): Loader => {
         }),
     };
 };
+
+export default loader;
