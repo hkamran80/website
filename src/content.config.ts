@@ -1,5 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { postsLoader } from "./lib/postsLoader";
+import unsplashLoader from "./lib/unsplashLoader";
 
 const posts = defineCollection({ loader: postsLoader() });
 
@@ -28,4 +29,10 @@ const showcase = defineCollection({
     }),
 });
 
-export const collections = { posts, showcase };
+const photos = defineCollection({
+    loader: unsplashLoader({
+        apiKey: import.meta.env.UNSPLASH_API_KEY,
+    }),
+});
+
+export const collections = { posts, showcase, photos };
