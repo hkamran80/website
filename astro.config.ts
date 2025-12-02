@@ -167,6 +167,6 @@ export default defineConfig({
         "/git": "https://github.com/hkamran80",
         "/mastodon": "https://vmst.io/@hkamran",
         "/twitter": "https://twitter.com/hkamran80",
-        "/bluesky": "https://bsky.app/profile/hkamran.com"
-    }
+        "/bluesky": "https://bsky.app/profile/hkamran.com",
+    },
 });

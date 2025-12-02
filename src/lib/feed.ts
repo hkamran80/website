@@ -1,5 +1,6 @@
 import { type Author, Feed, type Item } from "feed";
 import type { CollectionEntry } from "astro:content";
+import { renderMarkdown } from "./markdown";
 
 const feedImageLengths: Record<string, number> = {};
 
@@ -10,7 +11,7 @@ export const generateFeed = async (
     const author: Author = {
         name: "H. Kamran",
         email: "hkamran@hkamran.com",
-        link: site,
+        link: site.slice(0, -1),
     };
 
     const firstPostData = posts.find(
@@ -20,9 +21,9 @@ export const generateFeed = async (
     const feed = new Feed({
         title: "H. Kamran",
         description: "The feed of both my articles and my notes",
-        id: site,
-        link: site,
-        language: "en",
+        id: site.slice(0, -1),
+        link: site.slice(0, -1),
+        language: "en-US",
         image: `${site}profile.png`,
         favicon: `${site}favicon.png`,
         copyright: `© ${new Date().getFullYear()} H. Kamran. All rights reserved.`,
@@ -46,10 +47,14 @@ export const generateFeed = async (
             title: post.data.title,
             link: `${site}${post.data.type}s/${post.id}`,
             description: post.data.description,
-            // TODO: Use full-text
-            content: post.data.description,
             date: post.data.published as Date,
             author: [author],
+            content: post.body
+                ? await renderMarkdown(
+                      post.body +
+                          "\n\n---\n\nThanks for reading! Follow me on [Mastodon](https://hkamran.com/mastodon) and [Bluesky](https://hkamran.com/bluesky). Subscribe to my [posts feed](https://hkamran.com/feed.atom).",
+                  )
+                : undefined,
         };
 
         if (post.data.type === "article") {
