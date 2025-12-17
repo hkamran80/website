@@ -16,6 +16,7 @@
         "@hkamran/utility-strings": "^1.0.5",
         "@jsdevtools/rehype-toc": "^3.0.2",
         "@lucide/astro": "^0.546.0",
+        "@netlify/edge-functions": "^3.0.3",
         "@tailwindcss/vite": "^4.1.15",
         "astro": "^5.14.8",
         "astro-masonry": "^1.2.2",

@@ -23,6 +23,9 @@ importers:
       '@lucide/astro':
         specifier: ^0.546.0
         version: 0.546.0(astro@5.14.8(@netlify/blobs@10.3.3)(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))
+      '@netlify/edge-functions':
+        specifier: ^3.0.3
+        version: 3.0.3
       '@tailwindcss/vite':
         specifier: ^4.1.15
         version: 4.1.15(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))
@@ -753,6 +756,10 @@ packages:
     resolution: {integrity: sha512-1vW3R+Rc2JxL6qITndlT87N94GPjJ6gH2ntXW3IDdLzSABoU9XCHw4lRzDw+bhgSLTm0oyOwQA2+hhFvstznNQ==}
     engines: {node: '>=18.0.0'}
 
+  '@netlify/edge-functions@3.0.3':
+    resolution: {integrity: sha512-grElRK+rTBdYrPsULPKrhcHhrW+fwpDRLPbGByqa6Xrz0fhzcFJ2D9ijxEQ/onFcSVPYHT1u1mI48GhS5bZ/Ag==}
+    engines: {node: '>=18.0.0'}
+
   '@netlify/functions-dev@1.1.0':
     resolution: {integrity: sha512-dJcYL+g2Ao80q9YJW+HsQI4uG10xDI0ad2meaoE+JRTHep38kW6Nf4cwMzH7SkoSqt4Rovpys3JaW1Dvbbu9Cg==}
     engines: {node: '>=20.6.1'}
@@ -819,6 +826,10 @@ packages:
 
   '@netlify/types@2.2.0':
     resolution: {integrity: sha512-XOWlZ2wPpdRKkAOcQbjIf/Qz7L4RjcSVINVNQ9p3F6U8V6KSEOsB3fPrc6Ly8EOeJioHUepRPuzHzJE/7V5EsA==}
+    engines: {node: ^18.14.0 || >=20}
+
+  '@netlify/types@2.3.0':
+    resolution: {integrity: sha512-5gxMWh/S7wr0uHKSTbMv4bjWmWSpwpeLYvErWeVNAPll5/QNFo9aWimMAUuh8ReLY3/fg92XAroVVu7+z27Snw==}
     engines: {node: ^18.14.0 || >=20}
 
   '@netlify/vite-plugin@2.7.11':
@@ -4845,6 +4856,10 @@ snapshots:
     dependencies:
       '@netlify/types': 2.2.0
 
+  '@netlify/edge-functions@3.0.3':
+    dependencies:
+      '@netlify/types': 2.3.0
+
   '@netlify/functions-dev@1.1.0(rollup@4.52.3)':
     dependencies:
       '@netlify/blobs': 10.3.3
@@ -4979,6 +4994,8 @@ snapshots:
   '@netlify/types@2.1.0': {}
 
   '@netlify/types@2.2.0': {}
+
+  '@netlify/types@2.3.0': {}
 
   '@netlify/vite-plugin@2.7.11(rollup@4.52.3)(vite@6.4.1(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))':
     dependencies:
