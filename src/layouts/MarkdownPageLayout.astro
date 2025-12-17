@@ -6,7 +6,7 @@ import PageHeader from "../components/PageHeader.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<Layout>
+<Layout title={frontmatter.title}>
     <Container>
         <main class="place-items-center pt-16 pb-8 md:pt-12 max-w-3xl mx-auto">
             <PageHeader
