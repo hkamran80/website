@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import robotsTxt from "astro-robots-txt";
+import robotsTxt, { type PolicyItem } from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
 
 import { remarkAlert } from "remark-github-blockquote-alert";
@@ -19,6 +19,27 @@ const isLocalLink = (link: string) =>
     link.startsWith("/") ||
     link.startsWith("#") ||
     link.startsWith("https://hkamran.com");
+
+const getLLMRobots = async () => {
+    const robotsTxt = await fetch(
+        "https://raw.githubusercontent.com/ai-robots-txt/ai.robots.txt/main/robots.txt",
+    );
+    const txt = await robotsTxt.text();
+
+    return txt
+        .split("\n")
+        .filter(
+            (line) =>
+                line.startsWith("User-agent:") &&
+                line !== "User-agent: Applebot",
+        )
+        .map(
+            (line): PolicyItem => ({
+                userAgent: line.split(": ")[1].trim(),
+                disallow: "*",
+            }),
+        );
+};
 
 // https://astro.build/config
 export default defineConfig({
@@ -144,7 +165,10 @@ export default defineConfig({
     integrations: [
         robotsTxt({
             host: true,
-            policy: [{ userAgent: "*", disallow: "/_astro/" }],
+            policy: [
+                { userAgent: "*", disallow: "/_astro/" },
+                ...(await getLLMRobots()),
+            ],
         }),
         sitemap({ xslURL: "/sitemap.xslt" }),
     ],
