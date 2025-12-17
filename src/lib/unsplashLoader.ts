@@ -18,9 +18,6 @@ const loader = (options: { apiKey: string; perPage?: number }): Loader => ({
         links: z.object({ html: z.string().url() }),
     }),
     load: async ({ parseData, store }: LoaderContext): Promise<void> => {
-        console.log(
-            `https://api.unsplash.com/users/hkamran/photos?per_page=${options.perPage || 50}`,
-        );
         const response = await fetch(
             `https://api.unsplash.com/users/hkamran/photos?per_page=${options.perPage || 50}`,
             {
