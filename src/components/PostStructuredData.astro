@@ -19,7 +19,10 @@ const structuredData =
               headline: post.title,
               description: post.description,
               datePublished: post.published.toISOString(),
-              dateModified: post.updated !== "" ? (post.updated as Date).toISOString() : undefined,
+              dateModified:
+                  post.updated && post.updated !== ""
+                      ? (post.updated as Date).toISOString()
+                      : undefined,
               url: url.toString(),
               thumbnailUrl: post.img?.src ?? undefined,
               image: post.img
