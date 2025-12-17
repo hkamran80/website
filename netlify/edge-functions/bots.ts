@@ -28,7 +28,7 @@ export default async (request: Request) => {
     // Check against our list of known "AI" bots
     const isBot =
         bots.some((bot) => userAgent.includes(bot)) || userAgent === "google";
-    console.log(`  ${isBot ? "Blocking" : "Allowing"} request.`);
+    console.log(`\t${isBot ? "Blocking" : "Allowing"} request.`);
 
     // If the requester is an AI bot, redirect to a 10 GB file 😈
     if (isBot)
