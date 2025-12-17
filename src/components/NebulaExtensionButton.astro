@@ -1,0 +1,41 @@
+---
+import Link from "./Link.astro";
+
+type Props = {
+    href: string;
+    browser: "chrome" | "firefox" | "edge";
+};
+
+const browsers: Record<Props["browser"], string> = {
+    chrome: "Google Chrome",
+    firefox: "Mozilla Firefox",
+    edge: "Microsoft Edge",
+};
+
+const { href, browser } = Astro.props;
+
+const browserName = browser[0].toUpperCase() + browser.slice(1);
+const browserFullName = browsers[browser];
+---
+
+<Link
+    class="inline-flex items-center gap-3 rounded-md bg-white px-4 py-2 text-neutral-900 outline-none hover:bg-[#1b181f] hover:inner-border-neutral-600 inner-border inner-border-transparent hover:text-white transition cursor-pointer"
+    href={href}
+    title={`Nebula New Tab for ${browserName}`}
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        class="h-6 w-6 md:h-8 md:w-8"
+    >
+        <title>{browserFullName}</title>
+        <slot />
+    </svg>
+
+    {browserName}
+</Link>

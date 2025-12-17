@@ -35,4 +35,25 @@ const photos = defineCollection({
     }),
 });
 
-export const collections = { posts, showcase, photos };
+const nebulaChangelog = defineCollection({
+    loader: async () => {
+        const response = await fetch(
+            "https://assets.hkamran.com/changelog/nebula-new-tab",
+        );
+        const data = await response.json();
+
+        return Object.entries(data).map(([version, information]) => ({
+            id: version,
+            version,
+            ...information,
+        }));
+    },
+    schema: z.object({
+        id: z.string(),
+        version: z.string(),
+        releaseDate: z.string().date(),
+        changelog: z.string().array(),
+    }),
+});
+
+export const collections = { posts, showcase, photos, nebulaChangelog };
