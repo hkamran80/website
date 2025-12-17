@@ -15,7 +15,6 @@ Inspired by [many, many others](https://uses.tech).
 
 - **Pixel 7**
 
-  I love my Pixel.
   The Pixel version of Android is so clean.
   The only problem I have is that the [September 2025 Pixel Drop](https://www.androidauthority.com/google-pixel-drop-september-2025-3593796) uses way more battery than previously: I used to be able to charge my phone overnight and use it basically all day, but now I have to charge it after a few hours.
 
