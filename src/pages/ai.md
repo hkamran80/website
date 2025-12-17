@@ -73,6 +73,5 @@ Using an LLM for design makes no sense because it is random, which is not what g
 
 ---
 
-This is a `/ai` page.
-It is a [slash page](https://slashpages.net) that you can create on your website too.
+This is a [slash page](https://slashpages.net#ai) that you can create on your website too.
 If you do, consider listing it on [slashAI.page](https://slashai.page).

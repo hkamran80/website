@@ -84,5 +84,5 @@ Extensions:
 
 ---
 
-This is a [slash page](https://slashpages.net) that you can create on your website too.
+This is a [slash page](https://slashpages.net#uses) that you can create on your website too.
 If you do, consider listing it on [uses.tech](https://uses.tech).
