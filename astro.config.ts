@@ -164,6 +164,13 @@ export default defineConfig({
     adapter: netlify(),
 
     redirects: {
+        // Existing
+        // TODO: Articles
+        // TODO: Notes
+
+        "/llm-policy": "/ai",
+
+        // Social
         "/git": "https://github.com/hkamran80",
         "/mastodon": "https://vmst.io/@hkamran",
         "/twitter": "https://twitter.com/hkamran80",
