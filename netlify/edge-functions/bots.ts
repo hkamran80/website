@@ -22,10 +22,13 @@ const bots = txt
 export default async (request: Request) => {
     const userAgent =
         request.headers.get("user-agent")?.toLowerCase() ?? undefined;
+    console.log(`Request from ${userAgent}`)
+
     if (!userAgent) return;
 
     // Check against our list of known "AI" bots
     const isBot = bots.some((bot) => userAgent.includes(bot));
+    console.log(`  ${isBot ? "Blocking" : "Allowing"} request.`)
 
     // If the requester is an AI bot, redirect to a 10 GB file 😈
     if (isBot)
