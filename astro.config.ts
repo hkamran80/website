@@ -190,10 +190,11 @@ export default defineConfig({
 
     redirects: {
         // Existing
-        // TODO: Articles
-        // TODO: Notes
-
         "/llm-policy": "/ai",
+        "/article/[...slug]": "/articles/[...slug]",
+        "/note/[...slug]": "/notes/[...slug]",
+        "/creations/nebula-new-tab": "/projects/nebula-new-tab",
+        "/showcase/nebula-new-tab": "/projects/nebula-new-tab",
 
         // Social
         "/git": "https://github.com/hkamran80",
