@@ -1,0 +1,26 @@
+---
+import Layout from "./Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import type { CollectionEntry } from "astro:content";
+
+type Props = { utility: CollectionEntry<"utilities"> };
+const { utility } = Astro.props;
+---
+
+<Layout title={utility.data.name}>
+    <Container>
+        <main class="place-items-center pt-16 pb-8 md:pt-12 max-w-3xl mx-auto">
+            <PageHeader
+                title={utility.data.name}
+                subtitle={utility.data.description}
+            />
+
+            <article
+                class="prose dark:prose-invert mt-6 max-w-none prose-a:text-pink-600"
+            >
+                <slot />
+            </article>
+        </main>
+    </Container>
+</Layout>
