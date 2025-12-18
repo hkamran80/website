@@ -5,7 +5,7 @@ import Container from "../../components/container.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import Link from "../../components/Link.astro";
 import { Image } from "astro:assets";
-import { getCollection, render } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import { slugify } from "@hkamran/utility-strings";
 
 export const getStaticPaths = async () => {
@@ -19,11 +19,15 @@ export const getStaticPaths = async () => {
     }));
 };
 
+type Props = {
+    post: CollectionEntry<"posts">
+}
+
 const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout>
+<Layout title={post.data.title}>
     <PostStructuredData slot="structured-data" post={post} />
     <Container>
         <main class="place-items-center pt-2 pb-8 md:pt-8">
