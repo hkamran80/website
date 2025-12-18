@@ -146,5 +146,14 @@ const changelog = (await getCollection("nebulaChangelog")).sort((a, b) =>
     }
 </style>
 
+<style is:global>
+    @reference "../../styles/global.css";
+
+    #navigation {
+        @apply text-white;
+    }
+
+    #navigation li a {
+        @apply text-gray-400 hover:text-gray-100;
     }
 </style>
