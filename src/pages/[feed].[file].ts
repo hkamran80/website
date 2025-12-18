@@ -1,4 +1,4 @@
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import type { APIRoute } from "astro";
 import { sortByDate } from "../lib/sort.ts";
 import { generateFeed } from "../lib/feed.ts";
@@ -18,21 +18,37 @@ const feeds: Record<
     json: { generator: "json1", contentType: "application/json" },
 };
 
-export const getStaticPaths = () => [
-    { params: { file: "rss" } },
-    { params: { file: "atom" } },
-    { params: { file: "json" } },
-];
+const feedTypes = ["feed", "feed-articles", "feed-notes"];
+
+export const getStaticPaths = () =>
+    Object.keys(feeds).flatMap((feed) =>
+        feedTypes.map((feedType) => ({
+            params: { feed: feedType, file: feed },
+        })),
+    );
 
 export const GET: APIRoute = async ({ site: siteUrl, params }) => {
     if (!siteUrl) return new Response(undefined, { status: 500 });
-    if (!params.file || !Object.keys(feeds).includes(params.file))
+
+    if (!params.file || !Object.keys(feeds).includes(params.file) ||
+        !params.feed ||
+        params.feed === undefined ||
+        !feedTypes.includes(params.feed)
+    )
         return new Response(undefined, { status: 500 });
 
     const feedConfiguration = feeds[params.file as keyof typeof feeds];
 
+    const typeFilter = (post: CollectionEntry<"posts">["data"]) =>
+        params.feed === "feed"
+            ? true
+            : post.type === params.feed!.split("-")[1].slice(0, -1);
+
     const posts = (
-        await getCollection("posts", ({ data }) => data.published !== "")
+        await getCollection(
+            "posts",
+            ({ data }) => data.published !== "" && typeFilter(data),
+        )
     ).sort((a, b) =>
         sortByDate(new Date(a.data.published), new Date(b.data.published)),
     );
@@ -46,4 +62,3 @@ export const GET: APIRoute = async ({ site: siteUrl, params }) => {
         },
     });
 };
-
