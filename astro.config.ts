@@ -191,10 +191,14 @@ export default defineConfig({
     redirects: {
         // Existing
         "/llm-policy": "/ai",
+        "/blog/post/[...slug]": "/articles/[...slug]",
         "/article/[...slug]": "/articles/[...slug]",
         "/note/[...slug]": "/notes/[...slug]",
+        "/creations": "/projects",
+        "/showcase": "/projects",
         "/creations/nebula-new-tab": "/projects/nebula-new-tab",
         "/showcase/nebula-new-tab": "/projects/nebula-new-tab",
+        "/legal/license": "/license",
 
         // Social
         "/git": "https://github.com/hkamran80",
