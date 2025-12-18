@@ -5,15 +5,21 @@ import Container from "../components/container.astro";
 import Link from "../components/Link.astro";
 import { Image } from "astro:assets";
 import ShowcaseItem from "../components/ShowcaseItem.astro";
-
 import { getCollection } from "astro:content";
+import { sortByDate } from "../lib/sort.ts";
 
 const showcase = (
     await getCollection("showcase", ({ data }) => data.featured)
 ).sort((a, b) => a.data.name.localeCompare(b.data.name));
-const latestPost = (await getCollection("posts"))
-    .sort((a, b) => b.data.published - a.data.published)
-    .find((post) => post.data.type === "article");
+
+const latestPost = (
+    await getCollection(
+        "posts",
+        ({ data }) => data.type === "article" && data.published !== "",
+    )
+).sort((a, b) =>
+    sortByDate(new Date(a.data.published), new Date(b.data.published)),
+)[0];
 ---
 
 <Layout>
@@ -36,8 +42,8 @@ const latestPost = (await getCollection("posts"))
 
             <section class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                    <header class="text-c-light">Latest Article</header>
-                    <main class="mt-2">
+                    <header class="text-c-light mb-2">Latest Article</header>
+                    <Link href={`/articles/${latestPost.id}`}>
                         <Image
                             src={`https://assets.hkamran.com/graphics/article/${latestPost.id}`}
                             alt={latestPost.data.img!.alt}
@@ -56,23 +62,24 @@ const latestPost = (await getCollection("posts"))
                             </p>
                             <p class="text-c-lighter tracking-tight">
                                 <time
-                                    datetime={latestPost.data.published.toISOString()}
+                                    datetime={(
+                                        latestPost.data.published as Date
+                                    ).toISOString()}
                                     class="dt-published published"
                                 >
                                     {
-                                        latestPost.data.published.toLocaleDateString(
-                                            undefined,
-                                            {
-                                                year: "numeric",
-                                                month: "long",
-                                                day: "numeric",
-                                            },
-                                        )
+                                        (
+                                            latestPost.data.published as Date
+                                        ).toLocaleDateString(undefined, {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        })
                                     }
                                 </time>
                             </p>
                         </section>
-                    </main>
+                    </Link>
                 </div>
 
                 <div>
