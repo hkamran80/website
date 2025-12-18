@@ -107,14 +107,16 @@ const { Content } = await render(post);
 
             {
                 post.data.published && (
-                    <Image
-                        src={post.data.img!.src}
-                        alt={post.data.img!.alt}
-                        width={2000}
-                        height={1000}
-                        class="rounded-md max-w-3xl mx-auto mt-6"
-                        priority
-                    />
+                    <section class="max-w-3xl mx-auto mt-6">
+                        <Image
+                            src={post.data.img!.src}
+                            alt={post.data.img!.alt}
+                            width={2000}
+                            height={1000}
+                            class="rounded-md"
+                            priority
+                        />
+                    </section>
                 )
             }
 
