@@ -18,12 +18,18 @@ const feeds: Record<
     json: { generator: "json1", contentType: "application/json" },
 };
 
+export const getStaticPaths = () => [
+    { params: { file: "rss" } },
+    { params: { file: "atom" } },
+    { params: { file: "json" } },
+];
+
 export const GET: APIRoute = async ({ site: siteUrl, params }) => {
     if (!siteUrl) return new Response(undefined, { status: 500 });
-    if (!params.feed || !Object.keys(feeds).includes(params.feed))
+    if (!params.file || !Object.keys(feeds).includes(params.file))
         return new Response(undefined, { status: 500 });
 
-    const feedConfiguration = feeds[params.feed as keyof typeof feeds];
+    const feedConfiguration = feeds[params.file as keyof typeof feeds];
 
     const posts = (
         await getCollection("posts", ({ data }) => data.published !== "")
@@ -41,8 +47,3 @@ export const GET: APIRoute = async ({ site: siteUrl, params }) => {
     });
 };
 
-export const getStaticPaths = () => [
-    { params: { feed: "rss" } },
-    { params: { feed: "atom" } },
-    { params: { feed: "json" } },
-];
