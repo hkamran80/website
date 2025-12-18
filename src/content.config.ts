@@ -56,4 +56,48 @@ const nebulaChangelog = defineCollection({
     }),
 });
 
-export const collections = { posts, showcase, photos, nebulaChangelog };
+const utilities = defineCollection({
+    loader: () => [
+        {
+            id: "final-grade-calculator",
+            name: "Final Grade Calculator",
+            description:
+                "Calculate the grade you need to get on a final to get a particular grade",
+        },
+        {
+            id: "overall-grade-after-final-calculator",
+            name: "Overall Grade After Final Calculator",
+            description: "Calculate the grade you'll get after taking a final",
+        },
+        {
+            id: "testflight-cleaner",
+            name: "TestFlight Cleaner",
+            description:
+                "Clean your TestFlight tester CSVs and avoid dealing with those pesky errors!",
+        },
+        {
+            id: "text-reverser",
+            name: "Text Reverser",
+            description: "Does what it says on the tin",
+        },
+        {
+            id: "duck-compose",
+            name: "Duck Address Composer",
+            description:
+                "Easily generate the email to send from a Duck Address",
+        },
+    ],
+    schema: z.object({
+        id: z.string(),
+        name: z.string(),
+        description: z.string(),
+    }),
+});
+
+export const collections = {
+    posts,
+    showcase,
+    photos,
+    nebulaChangelog,
+    utilities,
+};

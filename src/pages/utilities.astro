@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import UtilityCard from "../components/UtilityCard.astro";
+import { getCollection } from "astro:content";
+
+const utilities = await getCollection("utilities");
+---
+
+<Layout title="Utilities">
+    <Container>
+        <main class="place-items-center pt-2 pb-8 md:pt-8 max-w-3xl mx-auto">
+            <PageHeader title="Utilities" />
+
+            <section class="mt-8">
+                <ul class="gap-4">
+                    {utilities.map((utility) => <UtilityCard item={utility} />)}
+                </ul>
+            </section>
+        </main>
+    </Container>
+</Layout>

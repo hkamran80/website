@@ -1,0 +1,25 @@
+---
+import Link from "./Link.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    item: CollectionEntry<"utilities">;
+}
+
+const { item } = Astro.props;
+---
+
+<li class="mt-2">
+    <p class="font-semibold text-lg">
+        {
+            (
+                <Link href={"/utilities/" + item.data.id} class="underline">
+                    {item.data.name}
+                </Link>
+            )
+        }
+    </p>
+    <p class="text-c-light tracking-tight">
+        {item.data.description}
+    </p>
+</li>
