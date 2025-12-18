@@ -49,7 +49,7 @@ const { Content } = await render(post);
                     }
 
                     {
-                        post.data.published ? (
+                        post.data.published && post.data.published !== "" ? (
                             <time
                                 datetime={post.data.published.toISOString()}
                                 class={`dt-published published ${post.data.updated && "hidden"}`}

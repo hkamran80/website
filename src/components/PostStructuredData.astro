@@ -14,7 +14,7 @@ const url = new URL(Astro.url.pathname, Astro.site);
 const updated = post.updated && post.updated !== "";
 
 const structuredData =
-    post.published !== ""
+    post.published && post.published !== ""
         ? {
               "@context": "https://schema.org",
               "@type": "Article",
@@ -70,10 +70,14 @@ const structuredData =
 <meta property="profile:last_name" content="Kamran" />
 <meta property="profile:gender" content="male" />
 
-<meta
-    property="article:published_time"
-    content={(post.published as Date).toISOString()}
-/>
+{
+    post.published && post.published !== "" && (
+        <meta
+            property="article:published_time"
+            content={(post.published as Date).toISOString()}
+        />
+    )
+}
 {
     updated && (
         <meta
