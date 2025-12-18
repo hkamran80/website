@@ -30,7 +30,9 @@ export const getStaticPaths = () =>
 export const GET: APIRoute = async ({ site: siteUrl, params }) => {
     if (!siteUrl) return new Response(undefined, { status: 500 });
 
-    if (!params.file || !Object.keys(feeds).includes(params.file) ||
+    if (
+        !params.file ||
+        !Object.keys(feeds).includes(params.file) ||
         !params.feed ||
         params.feed === undefined ||
         !feedTypes.includes(params.feed)
