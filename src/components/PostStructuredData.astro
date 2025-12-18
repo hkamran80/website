@@ -50,3 +50,10 @@ const structuredData =
     type="application/ld+json"
     set:html={JSON.stringify(structuredData)}
 />
+
+<meta property="og:title" content={post.title} />
+<meta name="description" content={post.description} />
+<meta property="og:description" content={post.description} />
+<meta property="og:type" content="article" />
+<meta property="og:url" content={url.toString()} />
+{post.img && <meta property="og:image" content={post.img.src} />}
