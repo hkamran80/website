@@ -27,7 +27,7 @@ const { Content } = await render(post);
 <Layout title={post.data.title}>
     <PostStructuredData slot="structured-data" post={post} />
     <Container>
-        <main class="place-items-center pt-2 pb-8 md:pt-8">
+        <main class="place-items-center pt-2 pb-8 md:pt-8 h-entry">
             <PageHeader
                 title={post.data.title}
                 subtitle={post.data.description}
@@ -93,7 +93,7 @@ const { Content } = await render(post);
                             <Fragment>
                                 <Link
                                     href={`/tags/${slugify(tag)}`}
-                                    class="text-pink-700 transition-colors duration-300 hover:text-pink-600"
+                                    class="text-pink-700 transition-colors duration-300 hover:text-pink-600 p-category"
                                 >
                                     {tag}
                                 </Link>
@@ -112,7 +112,7 @@ const { Content } = await render(post);
                             alt={post.data.img!.alt}
                             width={2000}
                             height={1000}
-                            class="rounded-md"
+                            class="rounded-md u-photo"
                             priority
                         />
                     </section>
@@ -120,7 +120,7 @@ const { Content } = await render(post);
             }
 
             <article
-                class="prose dark:prose-invert mt-6 max-w-3xl mx-auto prose-a:text-pink-600"
+                class="prose dark:prose-invert mt-6 max-w-3xl mx-auto prose-a:text-pink-600 e-content"
             >
                 <Content />
             </article>
