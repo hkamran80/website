@@ -1,1 +1,6 @@
+/blog/post/*    /articles/:splat        301
 /article/*      /articles/:splat        301
+/note/*         /notes/:splat           301
+
+/creations/*    /projects/:splat        301
+/showcase/*     /projects/:splat        301

@@ -190,17 +190,12 @@ export default defineConfig({
 
     redirects: {
         // Legacy
-        "/blog/post/[...slug]": "/articles/[...slug]",
         "/creations": "/projects",
-        "/creations/[...slug]": "/projects/[...slug]",
         "/legal/license": "/license",
 
         // Existing
         "/llm-policy": "/ai",
-        "/article/[...slug]": "/articles/[...slug]",
-        "/note/[...slug]": "/notes/[...slug]",
         "/showcase": "/projects",
-        "/showcase/[...slug]": "/projects/[...slug]",
         "/programs": "/utilities",
 
         // Social
