@@ -6,9 +6,9 @@ export type CommonLink = {
 
 export const links: CommonLink[] = [
     { href: "/projects", name: "Projects" },
-    { href: "/articles", name: "Articles", aliases: ["/article", "/tag"] },
-    { href: "/notes", name: "Notes", aliases: ["/note", "/tag"] },
-    { href: "/programs", name: "Programs", aliases: ["/program"] },
+    { href: "/articles", name: "Articles" },
+    { href: "/notes", name: "Notes" },
+    { href: "/utilities", name: "Utilities" },
     { href: "/photos", name: "Photos" },
 ];
 
