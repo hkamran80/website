@@ -189,16 +189,19 @@ export default defineConfig({
     adapter: netlify(),
 
     redirects: {
+        // Legacy
+        "/blog/post/[...slug]": "/articles/[...slug]",
+        "/creations": "/projects",
+        "/creations/[...slug]": "/projects/[...slug]",
+        "/legal/license": "/license",
+
         // Existing
         "/llm-policy": "/ai",
-        "/blog/post/[...slug]": "/articles/[...slug]",
         "/article/[...slug]": "/articles/[...slug]",
         "/note/[...slug]": "/notes/[...slug]",
-        "/creations": "/projects",
         "/showcase": "/projects",
-        "/creations/nebula-new-tab": "/projects/nebula-new-tab",
-        "/showcase/nebula-new-tab": "/projects/nebula-new-tab",
-        "/legal/license": "/license",
+        "/showcase/[...slug]": "/projects/[...slug]",
+        "/programs": "/utilities",
 
         // Social
         "/git": "https://github.com/hkamran80",
