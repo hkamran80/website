@@ -6,7 +6,6 @@
     >
     <xsl:output method="html" indent="yes" encoding="UTF-8"/>
     <xsl:template match="/">
-<xsl:message>Powered by <a href="https://www.sitemap.style/">Sitemap Style</a></xsl:message>
 
 <!-- get the hostname from the first url/loc -->
 <xsl:variable name="hostname" select="substring-before(substring-after(/sitemap:urlset/sitemap:url[1]/sitemap:loc, '://'), '/')" />
