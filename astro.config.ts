@@ -44,6 +44,7 @@ const getLLMRobots = async () => {
 // https://astro.build/config
 export default defineConfig({
     site: "https://beta.hkamran.com",
+    trailingSlash: "never",
 
     image: {
         domains: ["assets.hkamran.com", "images.unsplash.com"],
