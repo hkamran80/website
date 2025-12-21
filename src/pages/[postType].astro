@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Link from "../components/Link.astro";
+import PostCard from "../components/PostCard.astro";
+import { getCollection } from "astro:content";
+import { sortByDate } from "../lib/sort.ts";
+import type { CollectionEntry } from "astro:content";
+
+export const getStaticPaths = async () => {
+    const posts = (
+        await getCollection("posts", ({ data }) => data.published !== "")
+    ).sort((a, b) =>
+        sortByDate(new Date(a.data.published), new Date(b.data.published)),
+    );
+
+    const articles = posts.filter(({ data }) => data.type === "article");
+    const notes = posts.filter(({ data }) => data.type === "note");
+
+    return [
+        { params: { postType: "articles" }, props: { posts: articles } },
+        { params: { postType: "notes" }, props: { posts: notes } },
+    ];
+};
+
+type Props = {
+    posts: CollectionEntry<"posts">[];
+};
+
+const { postType: postTypeId } = Astro.params;
+const { posts } = Astro.props;
+
+const postType = postTypeId[0].toUpperCase() + postTypeId.slice(1);
+---
+
+<Layout title={postType}>
+    <Container>
+        <main class="place-items-center pt-2 pb-8 md:pt-8">
+            <PageHeader title={postType} />
+
+            <section class="flex flex-col mt-8 space-y-6">
+                {
+                    posts.map((post, index) => (
+                        <Link href={`/${postTypeId}/${post.id}`}>
+                            <PostCard post={post} priority={index < 2} />
+                        </Link>
+                    ))
+                }
+            </section>
+        </main>
+    </Container>
+</Layout>
