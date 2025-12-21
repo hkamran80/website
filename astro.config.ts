@@ -3,6 +3,7 @@ import { defineConfig, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import robotsTxt, { type PolicyItem } from "astro-robots-txt";
 import sitemap from "@astrojs/sitemap";
+import pagefind from "astro-pagefind"
 
 import { remarkAlert } from "remark-github-blockquote-alert";
 import remarkRemoveComments from "remark-remove-comments";
@@ -172,6 +173,7 @@ export default defineConfig({
             ],
         }),
         sitemap({ xslURL: "/sitemap.xslt" }),
+        pagefind()
     ],
 
     experimental: {
