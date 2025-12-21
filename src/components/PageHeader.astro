@@ -3,12 +3,19 @@ type Props = {
     title: string;
     subtitle?: string;
     description?: string;
+    index?: "ignore" | "ignore-all";
 };
 
-const { title, subtitle, description } = Astro.props;
+const { title, subtitle, description, index } = Astro.props;
+
+const dataAttributes: Record<string, string> = {};
+if (index) {
+    if (index === "ignore") dataAttributes["data-pagefind-ignore"] = "";
+    else dataAttributes["data-pagefind-ignore"] = "all";
+}
 ---
 
-<header class="flex flex-col space-y-2">
+<header class="flex flex-col space-y-2" {...dataAttributes}>
     <h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold p-name">
         {title}
     </h1>
