@@ -19,6 +19,15 @@ const { utility } = Astro.props;
             <article
                 class="prose dark:prose-invert mt-6 max-w-none prose-a:text-pink-600"
             >
+                <noscript>
+                    <p
+                        class="bg-pink-300 dark:bg-pink-700 px-4 py-2 rounded-md"
+                    >
+                        To use the {utility.data.name.toLowerCase()}, you will
+                        need to enable JavaScript.
+                    </p>
+                </noscript>
+
                 <slot />
             </article>
         </main>
