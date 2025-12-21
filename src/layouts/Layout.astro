@@ -5,13 +5,19 @@ import NavigationBar from "../components/NavigationBar.astro";
 import Footer from "../components/Footer.astro";
 import Feeds from "../components/Feeds.astro";
 
+type RobotDirective = "noindex";
+
 type Props = {
     title?: string;
+    robotDirective?: RobotDirective;
 };
 
-const { title: providedTitle } = Astro.props;
+const { title: providedTitle, robotDirective } = Astro.props;
 
 const title = providedTitle ? providedTitle + " | H. Kamran" : "H. Kamran";
+// This statement will go into effect upon PR merge
+const robots =
+    "noai, noimageai, noml" + (robotDirective ? ", " + robotDirective : "");
 ---
 
 <!doctype html>
@@ -48,7 +54,7 @@ const title = providedTitle ? providedTitle + " | H. Kamran" : "H. Kamran";
 </html>
 
 <style is:global>
-    /* Improve Page speed */
+    /* Improve page speed */
     /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
     img {
         content-visibility: auto;
