@@ -173,7 +173,11 @@ export default defineConfig({
             ],
         }),
         sitemap({ xslURL: "/sitemap.xslt" }),
-        pagefind()
+        pagefind({
+            indexConfig: {
+                forceLanguage: "en"
+            }
+        })
     ],
 
     experimental: {
