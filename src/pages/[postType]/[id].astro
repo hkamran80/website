@@ -22,11 +22,13 @@ type Props = {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const published = Boolean(post.data.published || post.data.published !== "");
 ---
 
 <Layout title={post.data.title}>
     <PostStructuredData slot="structured-data" post={post} />
-    <Container>
+    <Container index={published}>
         <main class="place-items-center pt-2 pb-8 md:pt-8 h-entry">
             <PageHeader
                 title={post.data.title}
@@ -34,7 +36,7 @@ const { Content } = await render(post);
             >
                 <Fragment slot="description">
                     {
-                        post.data.published && post.data.updated && (
+                        published && post.data.updated && (
                             <time>
                                 {new Intl.DateTimeFormat("en", {
                                     year: "numeric",
@@ -49,7 +51,7 @@ const { Content } = await render(post);
                     }
 
                     {
-                        post.data.published && post.data.published !== "" ? (
+                        published ? (
                             <time
                                 datetime={post.data.published.toISOString()}
                                 class={`dt-published published ${post.data.updated && "hidden"}`}
@@ -105,7 +107,7 @@ const { Content } = await render(post);
             </PageHeader>
 
             {
-                post.data.type === "article" && post.data.published && (
+                post.data.type === "article" && published && (
                     <section class="max-w-3xl mx-auto mt-6">
                         <Image
                             src={post.data.img!.src}
