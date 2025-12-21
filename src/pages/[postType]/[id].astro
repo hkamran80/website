@@ -33,6 +33,7 @@ const published = Boolean(post.data.published || post.data.published !== "");
             <PageHeader
                 title={post.data.title}
                 subtitle={post.data.description}
+                index="ignore"
             >
                 <Fragment slot="description">
                     {
