@@ -54,7 +54,7 @@ Inspired by [many, many others](https://uses.tech).
 My browser of choice is [**Firefox**](https://firefox.com).
 Even though they are [going all in on "AI"](https://www.windowscentral.com/software-apps/mozilla-says-firefox-will-evolve-into-an-ai-browser-and-nobody-is-happy-about-it-ive-never-seen-a-company-so-astoundingly-out-of-touch) (ugh), I still far prefer it to any Chromium-based browser or Safari.
 
-Extensions:
+### Extensions
 
 - [Bitwarden](https://bitwarden.com/download/#downloads-web-browser)
 - [uBlock Origin](https://addons.mozilla.org/firefox/addon/ublock-origin)
