@@ -28,11 +28,11 @@ const latestPost = (
         <main class="place-items-center pt-2 pb-8 md:pt-8">
             <section>
                 <h1
-                    class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-pink-600"
+                    class="text-5xl font-bold text-pink-600 lg:text-6xl lg:tracking-tight xl:text-7xl xl:tracking-tighter"
                 >
                     Hello world, I'm H. Kamran
                 </h1>
-                <p class="text-lg mt-4 text-c-light -max-w-xl">
+                <p class="text-c-light -max-w-xl mt-4 text-lg">
                     I'm a developer who <Link href="/photos" class="underline"
                         >takes photos</Link
                     >, is interested in data privacy and security, and follows
@@ -41,7 +41,7 @@ const latestPost = (
                 </p>
             </section>
 
-            <section class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <section class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
                 <div>
                     <header class="text-c-light mb-2">Latest Article</header>
                     <Link href={`/articles/${latestPost.id}`}>

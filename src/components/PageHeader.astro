@@ -9,13 +9,13 @@ const { title, subtitle, description } = Astro.props;
 ---
 
 <header class="flex flex-col space-y-2">
-    <h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold p-name">
+    <h1 class="p-name text-3xl font-bold lg:text-4xl xl:text-5xl">
         {title}
     </h1>
 
     {
         (subtitle || Astro.slots.has("subtitle")) && (
-            <p class="font-light leading-snug text-c-light p-summary">
+            <p class="text-c-light p-summary leading-snug font-light">
                 <slot name="subtitle">{subtitle}</slot>
             </p>
         )
@@ -23,7 +23,7 @@ const { title, subtitle, description } = Astro.props;
 
     {
         (description || Astro.slots.has("description")) && (
-            <p class="font-light leading-snug text-c-light">
+            <p class="text-c-light leading-snug font-light">
                 <slot name="description">{description}</slot>
             </p>
         )

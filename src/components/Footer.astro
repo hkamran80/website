@@ -16,9 +16,9 @@ const extraPages: CommonLink[] = [
 ---
 
 <footer
-    class="mb-10 flex flex-col lg:flex-row justify-between text-xs text-gray-500 max-w-(--breakpoint-xl) mx-auto px-5 py-6 md:py-0"
+    class="mx-auto mb-10 flex max-w-(--breakpoint-xl) flex-col justify-between px-5 py-6 text-xs text-gray-500 md:py-0 lg:flex-row"
 >
-    <section class="gap-1 flex-1 w-full">
+    <section class="w-full flex-1 gap-1">
         <p>
             Copyright &copy; {new Date().getFullYear()} H. Kamran. All rights reserved.
         </p>
@@ -58,7 +58,7 @@ const extraPages: CommonLink[] = [
     </section>
 
     <section class="space-y-2 md:text-right">
-        <ul class="space-x-4 list-none flex flex-row">
+        <ul class="flex list-none flex-row space-x-4">
             {
                 links.map((link) => (
                     <li>
@@ -68,7 +68,7 @@ const extraPages: CommonLink[] = [
             }
         </ul>
 
-        <ul class="space-x-4 list-none flex flex-row">
+        <ul class="flex list-none flex-row space-x-4">
             {
                 extraPages.map((link) => (
                     <li>
@@ -84,6 +84,6 @@ const extraPages: CommonLink[] = [
     @reference "../styles/global.css";
 
     a {
-        @apply text-gray-500 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200 ease-in-out;
+        @apply text-gray-500 transition-colors duration-200 ease-in-out hover:text-gray-900 dark:hover:text-gray-100;
     }
 </style>

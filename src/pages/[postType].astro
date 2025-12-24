@@ -39,7 +39,7 @@ const postType = postTypeId[0].toUpperCase() + postTypeId.slice(1);
         <main class="place-items-center pt-2 pb-8 md:pt-8">
             <PageHeader title={postType} />
 
-            <section class="flex flex-col mt-8 space-y-6">
+            <section class="mt-8 flex flex-col space-y-6">
                 {
                     posts.map((post, index) => (
                         <Link href={`/${postTypeId}/${post.id}`}>

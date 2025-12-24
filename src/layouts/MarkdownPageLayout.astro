@@ -8,14 +8,14 @@ const { frontmatter } = Astro.props;
 
 <Layout title={frontmatter.title}>
     <Container>
-        <main class="place-items-center pt-16 pb-8 md:pt-12 max-w-3xl mx-auto">
+        <main class="mx-auto max-w-3xl place-items-center pt-16 pb-8 md:pt-12">
             <PageHeader
                 title={frontmatter.title}
                 subtitle={frontmatter.subtitle}
             />
 
             <article
-                class="prose dark:prose-invert mt-6 max-w-none prose-a:text-pink-600"
+                class="prose mt-6 max-w-none dark:prose-invert prose-a:text-pink-600"
             >
                 <slot />
             </article>

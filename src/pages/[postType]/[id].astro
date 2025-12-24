@@ -27,7 +27,7 @@ const { Content } = await render(post);
 <Layout title={post.data.title}>
     <PostStructuredData slot="structured-data" post={post} />
     <Container>
-        <main class="place-items-center pt-2 pb-8 md:pt-8 h-entry">
+        <main class="h-entry place-items-center pt-2 pb-8 md:pt-8">
             <PageHeader
                 title={post.data.title}
                 subtitle={post.data.description}
@@ -93,7 +93,7 @@ const { Content } = await render(post);
                             <Fragment>
                                 <Link
                                     href={`/tags/${slugify(tag)}`}
-                                    class="text-pink-700 transition-colors duration-300 hover:text-pink-600 p-category"
+                                    class="p-category text-pink-700 transition-colors duration-300 hover:text-pink-600"
                                 >
                                     {tag}
                                 </Link>
@@ -106,13 +106,13 @@ const { Content } = await render(post);
 
             {
                 post.data.type === "article" && post.data.published && (
-                    <section class="max-w-3xl mx-auto mt-6">
+                    <section class="mx-auto mt-6 max-w-3xl">
                         <Image
                             src={post.data.img!.src}
                             alt={post.data.img!.alt}
                             width={2000}
                             height={1000}
-                            class="rounded-md u-photo"
+                            class="u-photo rounded-md"
                             priority
                         />
                     </section>
@@ -120,7 +120,7 @@ const { Content } = await render(post);
             }
 
             <article
-                class="prose dark:prose-invert mt-6 max-w-3xl mx-auto prose-a:text-pink-600 e-content"
+                class="e-content mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
             >
                 <Content />
             </article>
