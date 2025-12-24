@@ -1,0 +1,24 @@
+{
+    "tabWidth": 4,
+    "plugins": [
+        "@prettier/plugin-oxc",
+        "prettier-plugin-astro",
+        "prettier-plugin-tailwindcss"
+    ],
+    "overrides": [
+        {
+            "files": "*.astro",
+            "options": {
+                "parser": "astro"
+            }
+        },
+        {
+            "files": ["**/*.{ts,tsx}"],
+            "options": {
+                "parser": "oxc-ts",
+                "plugins": ["@prettier/plugin-oxc"]
+            }
+        }
+    ],
+    "tailwindStylesheet": "./src/styles/global.css"
+}
