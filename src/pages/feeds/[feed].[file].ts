@@ -42,9 +42,7 @@ export const GET: APIRoute = async ({ site: siteUrl, params }) => {
     const feedConfiguration = feeds[params.file as keyof typeof feeds];
 
     const typeFilter = (post: CollectionEntry<"posts">["data"]) =>
-        params.feed === "all"
-            ? true
-            : post.type === params.feed!.slice(0, -1);
+        params.feed === "all" ? true : post.type === params.feed!.slice(0, -1);
 
     const posts = (
         await getCollection(
