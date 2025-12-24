@@ -25,6 +25,10 @@ const structuredData =
                   ? (post.updated as Date).toISOString()
                   : undefined,
               url: url.toString(),
+              mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": url.toString(),
+              },
               thumbnailUrl: post.img?.src ?? undefined,
               image: post.img
                   ? {
@@ -35,7 +39,7 @@ const structuredData =
                         caption: post.img.alt,
                     }
                   : undefined,
-              author: Author,
+              author: { "@type": "Person", ...Author },
               copyrightHolder: Author,
               copyrightYear: post.published.getFullYear(),
               copyrightNotice:
@@ -46,29 +50,17 @@ const structuredData =
         : {};
 ---
 
-<script
-    is:inline
-    type="application/ld+json"
-    set:html={JSON.stringify(structuredData)}
-/>
-
-<link rel="canonical" href={url.toString()} />
-
-<meta property="og:title" content={post.title} />
 <meta property="og:type" content="article" />
-<meta property="og:url" content={url.toString()} />
 <meta name="description" content={post.description} />
 <meta property="og:description" content={post.description} />
+
+<meta property="article:author" content="H. Kamran" />
 
 {post.img && <meta property="og:image" content={post.img.src} />}
 {post.img && <meta property="og:image:alt" content={post.img.alt} />}
 {post.img && <meta property="og:image:type" content="image/png" />}
 {post.img && <meta property="og:image:width" content="2000" />}
 {post.img && <meta property="og:image:height" content="1000" />}
-
-<meta property="profile:first_name" content="H." />
-<meta property="profile:last_name" content="Kamran" />
-<meta property="profile:gender" content="male" />
 
 {
     post.published && post.published !== "" && (
@@ -88,3 +80,9 @@ const structuredData =
 }
 
 {post.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+
+<script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+/>

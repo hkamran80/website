@@ -1,6 +1,11 @@
 ---
 import { Author } from "../lib/structuredData";
 
+type Props = {
+    description?: string;
+};
+const { description } = Astro.props;
+
 const url = new URL(Astro.url.pathname, Astro.site);
 const structuredData = {
     "@context": "https://schema.org",
@@ -13,6 +18,10 @@ const structuredData = {
     inLanguage: "en-US",
 };
 ---
+
+<meta property="og:type" content="website" />
+{description && <meta name="description" content={description} />}
+{description && <meta property="og:description" content={description} />}
 
 <script
     is:inline

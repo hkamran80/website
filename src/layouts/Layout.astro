@@ -1,9 +1,10 @@
 ---
 import "../styles/global.css";
 import Head from "../components/Head.astro";
+import Feeds from "../components/Feeds.astro";
+import WebsiteStructuredData from "../components/WebsiteStructuredData.astro";
 import NavigationBar from "../components/NavigationBar.astro";
 import Footer from "../components/Footer.astro";
-import Feeds from "../components/Feeds.astro";
 
 type RobotDirective = "noindex";
 
@@ -13,11 +14,12 @@ type Props = {
 };
 
 const { title: providedTitle, robotDirective } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site);
 
 const title = providedTitle ? providedTitle + " | H. Kamran" : "H. Kamran";
 // This statement will go into effect upon PR merge
-const robots =
-    "noai, noimageai, noml" + (robotDirective ? ", " + robotDirective : "");
+// const robots =
+//     "noai, noimageai, noml" + (robotDirective ? ", " + robotDirective : "");
 ---
 
 <!doctype html>
@@ -35,8 +37,7 @@ const robots =
         <meta name="robots" content="noai, noimageai, noml, noindex" />
         <meta name="fediverse:creator" content="@hkamran@vmst.io" />
 
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="H. Kamran" />
+        <link rel="canonical" href={url.toString()} />
 
         <title>
             {title}
@@ -44,7 +45,15 @@ const robots =
 
         <Head />
 
-        <slot name="structured-data" />
+        <meta property="author" content="H. Kamran" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="H. Kamran" />
+        <meta property="og:title" content={title} />
+        <meta property="og:url" content={url.toString()} />
+
+        <slot name="structured-data">
+            <WebsiteStructuredData />
+        </slot>
     </head>
     <body>
         <NavigationBar />
