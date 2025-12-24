@@ -1,27 +1,21 @@
 ---
+import type { FeedTypes } from "../feeds.ts";
+
 type Props = {
-    feed: "combined" | "articles" | "notes";
+    feed: FeedTypes;
 };
 const { feed } = Astro.props;
-
-const file = feed !== "combined" ? `feed-${feed}` : "feed";
 ---
 
 <link
     rel="alternate"
     type="application/atom+xml"
     title={`Atom feed (${feed})`}
-    href=`/${file}.atom`
-/>
-<link
-    rel="alternate"
-    type="application/rss+xml"
-    title={`RSS feed (${feed})`}
-    href=`/${file}.rss`
+    href=`/feeds/${feed}.atom`
 />
 <link
     rel="alternate"
     type="application/feed+json"
     title={`JSON feed (${feed})`}
-    href=`/${file}.json`
+    href=`/feeds/${feed}.json`
 />

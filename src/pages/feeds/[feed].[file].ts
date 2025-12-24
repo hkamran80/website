@@ -1,7 +1,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import type { APIRoute } from "astro";
-import { sortByDate } from "../lib/sort.ts";
-import { generateFeed } from "../lib/feed.ts";
+import { sortByDate } from "../../lib/sort.ts";
+import { generateFeed } from "../../lib/feed.ts";
 
 const feeds: Record<
     "rss" | "atom" | "json",
@@ -18,7 +18,7 @@ const feeds: Record<
     json: { generator: "json1", contentType: "application/json" },
 };
 
-const feedTypes = ["feed", "feed-articles", "feed-notes"];
+const feedTypes = ["all", "articles", "notes"];
 
 export const getStaticPaths = () =>
     Object.keys(feeds).flatMap((feed) =>
@@ -42,9 +42,9 @@ export const GET: APIRoute = async ({ site: siteUrl, params }) => {
     const feedConfiguration = feeds[params.file as keyof typeof feeds];
 
     const typeFilter = (post: CollectionEntry<"posts">["data"]) =>
-        params.feed === "feed"
+        params.feed === "all"
             ? true
-            : post.type === params.feed!.split("-")[1].slice(0, -1);
+            : post.type === params.feed!.slice(0, -1);
 
     const posts = (
         await getCollection(
