@@ -21,6 +21,7 @@
         "astro": "^5.14.8",
         "astro-masonry": "^1.2.2",
         "astro-navbar": "^2.4.0",
+        "astro-pagefind": "^1.8.5",
         "astro-robots-txt": "^1.0.0",
         "feed": "^5.1.0",
         "rehype-figure": "^1.0.1",

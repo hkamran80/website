@@ -1,7 +1,26 @@
 ---
-const { class: className } = Astro.props;
+type Props = {
+    class?: string;
+    index?: boolean | "ignore" | "ignore-all" | "no-add";
+};
+const { class: className, index } = Astro.props;
+
+const dataAttributes: Record<string, string | boolean> = {};
+
+if (index !== "no-add") {
+    if (index === undefined || (index && typeof index === "boolean"))
+        dataAttributes["data-pagefind-body"] = index ?? "";
+    else if (index) {
+        if (index === "ignore-all")
+            dataAttributes["data-pagefind-ignore"] = "all";
+        else dataAttributes["data-pagefind-ignore"] = "";
+    }
+}
 ---
 
-<div class:list={["max-w-(--breakpoint-xl) mx-auto px-5", className]}>
+<div
+    class:list={["max-w-(--breakpoint-xl) mx-auto px-5", className]}
+    {...dataAttributes}
+>
     <slot />
 </div>
