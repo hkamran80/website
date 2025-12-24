@@ -8,7 +8,8 @@
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
-        "format": "prettier . --write --check"
+        "format": "prettier . --write --experimental-cli",
+        "format:check": "prettier . --check --experimental-cli"
     },
     "dependencies": {
         "@astrojs/netlify": "^6.6.0",
@@ -45,9 +46,8 @@
         "@hkamran/prettier-config": "^1.1.1",
         "@prettier/plugin-oxc": "^0.0.4",
         "@tailwindcss/typography": "^0.5.19",
-        "prettier": "^3.6.2",
+        "prettier": "^3.7.4",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-tailwindcss": "^0.7.1"
-    },
-    "prettier": "@hkamran/prettier-config"
+    }
 }
