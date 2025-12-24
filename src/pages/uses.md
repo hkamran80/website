@@ -75,6 +75,33 @@ Even though they are [going all in on "AI"](https://www.windowscentral.com/softw
 - [**Raycast**](https://raycast.com/?via=hkamran) (better than Spotlight and Alfred)
 - [**Notion Calendar**](https://www.notion.com/product/calendar) (the only Notion product I use because I was using it when it was still named [Cron](https://www.notion.com/blog/notion-acquires-cron))
 
+## Self-Hosted Services
+
+This is a subset of the services I run.
+
+- [**Authentik**](https://goauthentik.io)
+
+  SSO is a must in my opinion, especially when you have many services like I do.
+  I've looked into other systems like Authelia and Pocket ID, but haven't considered switching yet.
+
+- [**FreshRSS**](https://freshrss.org)
+
+  The best feed aggregator that I have found.
+  I use the web interface when I'm on my laptop and [Read You](https://github.com/ReadYouApp/ReadYou) when I'm on my phone.
+
+- [**Home Assistant**](https://www.home-assistant.io)
+
+  Home Assistant is the best smart home platform, aside from the [lack of support for SSO](https://github.com/orgs/home-assistant/discussions/48).
+
+- [**AirTrail**](https://airtrail.johan.ohly.dk)
+
+  I love visualizations and tracking my own data.
+  This is the best service for tracking all your past flights.
+
+- [**Paperless-ngx**](https://docs.paperless-ngx.com)
+
+  The best document manager.
+
 ## Cloud
 
 - Hosting provider: **Netlify**
