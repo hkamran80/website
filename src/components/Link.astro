@@ -6,6 +6,7 @@ type Props = Pick<HTMLAnchorElement, "href"> &
         class?: string;
         noAttribution?: boolean;
         noLocalTarget?: boolean;
+        noLog?: boolean;
     };
 
 const {
@@ -13,6 +14,7 @@ const {
     class: className,
     noAttribution,
     noLocalTarget,
+    noLog,
     ...props
 } = Astro.props;
 let customAttributes = {
@@ -21,11 +23,10 @@ let customAttributes = {
     target: !("target" in props) ? "_blank" : props.target,
 };
 
-let newHref = "";
+let newHref = href;
 let dataAttributes: Record<string, string> = { "data-umami-event": "" };
 
 if (href.startsWith("/")) {
-    newHref = href;
     dataAttributes["data-umami-event"] = EventNames.Local;
     dataAttributes["data-umami-event-url"] = href;
 
@@ -48,7 +49,7 @@ if (href.startsWith("/")) {
     <a
         href={newHref}
         {...customAttributes}
-        {...dataAttributes}
+        {...!noLog ? dataAttributes : {}}
         class={className}
     >
         <slot />
