@@ -4,6 +4,7 @@ import Fonts from "../components/Fonts.astro";
 import Feeds from "../components/Feeds.astro";
 import WebsiteStructuredData from "../components/WebsiteStructuredData.astro";
 import NavigationBar from "../components/NavigationBar.astro";
+import MicroformatMe from "../components/MicroformatMe.astro";
 import Footer from "../components/Footer.astro";
 
 type RobotDirective = "noindex";
@@ -39,9 +40,7 @@ const title = providedTitle ? providedTitle + " | H. Kamran" : "H. Kamran";
 
         <link rel="canonical" href={url.toString()} />
 
-        <title>
-            {title}
-        </title>
+        <title>{title}</title>
 
         <Fonts />
 
@@ -57,6 +56,7 @@ const title = providedTitle ? providedTitle + " | H. Kamran" : "H. Kamran";
     </head>
     <body>
         <NavigationBar />
+        <MicroformatMe />
         <slot />
         <Footer />
     </body>

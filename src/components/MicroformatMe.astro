@@ -1,0 +1,23 @@
+---
+import Link from "../components/Link.astro";
+---
+
+<div class="p-author h-card hidden">
+    <Link
+        href={Astro.site!.toString().slice(0, -1)}
+        class="p-name u-url"
+        rel="author"
+        noAttribution
+        noLog>H. Kamran</Link
+    >
+    <Link href="https://hkamran.com" class="u-uid" rel="me" noAttribution noLog
+        >Permalink</Link
+    >
+    <span class="p-region">California</span>
+    <span class="p-country-name">United States of America</span>
+    <span class="p-note">
+        I'm a California-based developer who takes photos, is interested in data
+        privacy and security, and follows government across the U.S., the EU,
+        and the UK.
+    </span>
+</div>
