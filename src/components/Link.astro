@@ -5,12 +5,20 @@ type Props = Pick<HTMLAnchorElement, "href"> &
     Partial<Omit<HTMLAnchorElement, "href" | "children">> & {
         class?: string;
         noAttribution?: boolean;
+        noLocalTarget?: boolean;
     };
 
-const { href, class: className, noAttribution, ...props } = Astro.props;
+const {
+    href,
+    class: className,
+    noAttribution,
+    noLocalTarget,
+    ...props
+} = Astro.props;
 let customAttributes = {
     ...props,
     rel: !("rel" in props) ? "noopener noreferrer" : props.rel,
+    target: !("target" in props) ? "_blank" : props.target,
 };
 
 let newHref = "";
@@ -20,6 +28,8 @@ if (href.startsWith("/")) {
     newHref = href;
     dataAttributes["data-umami-event"] = EventNames.Local;
     dataAttributes["data-umami-event-url"] = href;
+
+    if (!("target" in props) && !noLocalTarget) customAttributes.target = "";
 } else {
     if (href.includes("unsplash.com")) {
         dataAttributes["data-umami-event"] = EventNames.Social;
