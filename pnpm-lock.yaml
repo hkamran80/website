@@ -83,9 +83,6 @@ importers:
       simple-icons-astro:
         specifier: ^15.19.0
         version: 15.19.0(astro@5.14.8(@netlify/blobs@10.3.3)(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))
-      simple-icons-astro11:
-        specifier: npm:simple-icons-astro@11.15.0
-        version: simple-icons-astro@11.15.0(astro@5.14.8(@netlify/blobs@10.3.3)(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))
       tailwindcss:
         specifier: ^4.1.15
         version: 4.1.15
@@ -3620,11 +3617,6 @@ packages:
   signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
-
-  simple-icons-astro@11.15.0:
-    resolution: {integrity: sha512-B8AGsNPDzojwH3A+HQ3GAC7Q8BOIMu+mm+kl4Cs5ER5hvLqu1JK02qIgDc6akCC2cEIakRT+E1HUIOqKKGV4FQ==}
-    peerDependencies:
-      astro: '>=2.7.1'
 
   simple-icons-astro@15.19.0:
     resolution: {integrity: sha512-JpZwUCtq02bWsg1cAzvs1F1TBf2vloMUC5DKL139GgdyGfLLBnDJH9FnWaaS2j7rvs1SJWCXPn9one/6b7IPgg==}
@@ -8334,10 +8326,6 @@ snapshots:
       '@types/hast': 3.0.4
 
   signal-exit@4.1.0: {}
-
-  simple-icons-astro@11.15.0(astro@5.14.8(@netlify/blobs@10.3.3)(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1)):
-    dependencies:
-      astro: 5.14.8(@netlify/blobs@10.3.3)(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1)
 
   simple-icons-astro@15.19.0(astro@5.14.8(@netlify/blobs@10.3.3)(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
