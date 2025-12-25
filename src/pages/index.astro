@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
 import Link from "../components/Link.astro";
+import Social from "../components/Social.astro";
 import { Image } from "astro:assets";
 import ShowcaseItem from "../components/ShowcaseItem.astro";
 import { getCollection } from "astro:content";
@@ -37,6 +38,11 @@ const latestPost = (
                     government across the U.S., the EU, and the UK in my free
                     time.
                 </p>
+
+                <Social
+                    class="text-c-light mt-4"
+                    liClass="text-c-light-hover"
+                />
             </section>
 
             <section class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">

@@ -1,0 +1,51 @@
+---
+import Link from "./Link.astro";
+import Github from "simple-icons-astro/Github";
+import Mastodon from "simple-icons-astro/Mastodon";
+import Bluesky from "simple-icons-astro/Bluesky";
+import Twitter from "./TwitterIcon.astro";
+
+type Props = {
+    size?: number;
+    class?: string;
+    liClass?: string;
+};
+
+const { size: rawSize, class: className, liClass } = Astro.props;
+const size = rawSize ?? 20;
+---
+
+<ul class:list={["flex flex-row gap-x-4", className]}>
+    <li>
+        <Link
+            href="https://github.com/hkamran80"
+            rel="me"
+            class:list={[liClass]}
+        >
+            <Github size={size} />
+        </Link>
+    </li>
+    <li>
+        <Link href="https://vmst.io/@hkamran" rel="me" class:list={[liClass]}>
+            <Mastodon size={size} />
+        </Link>
+    </li>
+    <li>
+        <Link
+            href="https://bsky.app/profile/hkamran.com"
+            rel="me"
+            class:list={[liClass]}
+        >
+            <Bluesky size={size} />
+        </Link>
+    </li>
+    <li>
+        <Link
+            href="https://twitter.com/hkamran80"
+            rel="me"
+            class:list={[liClass]}
+        >
+            <Twitter size={size} />
+        </Link>
+    </li>
+</ul>
