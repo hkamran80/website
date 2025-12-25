@@ -1,10 +1,7 @@
 ---
-// import Github from "simple-icons-astro/Github.astro";
-// import Mastodon from "simple-icons-astro/Mastodon.astro";
-// import Bluesky from "simple-icons-astro/Bluesky.astro";
-// import Twitter from "simple-icons-astro11/Twitter.astro";
 import { links, type CommonLink } from "../navigation";
 import Link from "./Link.astro";
+import Social from "../components/Social.astro";
 
 const extraPages: CommonLink[] = [
     { href: "/uses", name: "My Setup" },
@@ -32,33 +29,14 @@ const extraPages: CommonLink[] = [
             > in the making of any of the content on this site.
         </p>
 
-        <!-- <p class="mt-2"> -->
-        <!--     <ul class="flex flex-row gap-x-4"> -->
-        <!--         <li> -->
-        <!--             <Link href="https://github.com/hkamran80"> -->
-        <!--                 <Github size={16} /> -->
-        <!--             </Link> -->
-        <!--         </li> -->
-        <!--         <li> -->
-        <!--             <Link href="https://twitter.com/hkamran80"> -->
-        <!--                 <Twitter size={16} /> -->
-        <!--             </Link> -->
-        <!--         </li> -->
-        <!--         <li> -->
-        <!--             <Link href="https://vmst.io/@hkamran"> -->
-        <!--                 <Mastodon size={16} /> -->
-        <!--             </Link> -->
-        <!--         </li> -->
-        <!--         <li> -->
-        <!--             <Link href="https://bsky.app/profile/hkamran.com"> -->
-        <!--                 <Bluesky size={16} /> -->
-        <!--             </Link> -->
-        <!--         </li> -->
-        <!--     </ul> -->
-        <!-- </p> -->
+        <Social
+            class="mt-2"
+            liClass="hover:text-gray-900 dark:hover:text-gray-100"
+            size={16}
+        />
     </section>
 
-    <section class="space-y-2 md:text-right">
+    <section class="mt-4 space-y-2 md:mt-0 md:text-right">
         <ul class="flex list-none flex-row space-x-4">
             {
                 links.map((link) => (
