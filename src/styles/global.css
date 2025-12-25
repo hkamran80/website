@@ -21,6 +21,10 @@ html.dark {
     @apply text-gray-600 dark:text-gray-400;
 }
 
+.text-c-light-hover {
+    @apply hover:text-gray-900 dark:hover:text-gray-100
+}
+
 /* TODO: Increase contrast */
 .text-c-lighter {
     @apply text-gray-400 dark:text-gray-500;
