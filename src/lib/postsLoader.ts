@@ -9,43 +9,60 @@ const convertToDate = (dateString: string): Date =>
 const loader = (): Loader => {
     return {
         name: "posts-loader",
+        schema: z.object({
+            id: z.string(),
+            title: z.string(),
+            description: z.string(),
+            tags: z.string().array(),
+            type: z.enum(["article", "note"]),
+            status: z.enum(["draft", "published", "updated"]),
+            // Only present if `type` is `article`
+            toc: z.boolean().optional(),
+            oldNotice: z.boolean().optional(),
+            // Only present if `type` is `article`
+            img: z
+                .object({
+                    src: z.string(),
+                    alt: z.string(),
+                })
+                .optional(),
+            // Only present if `status` is not `draft`
+            published: z.date().optional(),
+            // Only present if `status` is `updated`
+            updated: z.date().optional(),
+            filename: z.string().optional(),
+            branch: z.string().optional(),
+        }),
         load: async ({
             store,
             parseData,
             renderMarkdown,
         }: LoaderContext): Promise<void> => {
             const response = await fetch(
-                "https://raw.githubusercontent.com/hkamran80/articles/main/markdown/contents.json",
+                "https://raw.githubusercontent.com/hkamran80/articles/reorganize/index.json",
             );
-            const data = await response.json();
+            // TODO: Add actual type
+            const data = (await response.json()) as any[];
 
-            const posts = [
-                ...data.articles.map((article) => ({
-                    ...article,
-                    type: "article",
-                })),
-                ...data.notes.map((note) => ({ ...note, type: "note" })),
-            ].map((post) => {
+            const posts = data.map((post) => {
+                let converted: { [key: string]: string | Date | object } = {};
+
+                if (post.status !== "draft") {
+                    converted.published = convertToDate(post.published);
+
+                    if (post.type === "article")
+                        converted.img = {
+                            src: `https://assets.hkamran.com/graphics/article/${post.id}`,
+                            alt: post.imgAlt,
+                        };
+                }
+
+                if (post.status === "updated")
+                    converted.updated = convertToDate(post.updated);
+
                 return {
                     ...post,
-                    ...(post.published
-                        ? {
-                              published: convertToDate(post.published),
-                          }
-                        : {}),
-                    ...(post.updated
-                        ? {
-                              updated: convertToDate(post.updated),
-                          }
-                        : {}),
-                    ...(post.imgAlt
-                        ? {
-                              img: {
-                                  src: `https://assets.hkamran.com/graphics/article/${post.id}`,
-                                  alt: post.imgAlt,
-                              },
-                          }
-                        : {}),
+                    ...converted,
                 };
             });
 
@@ -55,7 +72,13 @@ const loader = (): Loader => {
                     data: post,
                 });
 
-                const postContentUrl = `https://raw.githubusercontent.com/hkamran80/articles/${!post.published && post.branchName ? post.branchName : "main"}/markdown/${post.type}s/${post.filename}.md`;
+                let branchName = "reorganize";
+                if (post.status === "draft") {
+                    if ("branch" in post) branchName = post.branch;
+                    else branchName = post.type + "/" + post.id;
+                }
+
+                const postContentUrl = `https://raw.githubusercontent.com/hkamran80/articles/${branchName}/posts/${post.filename ?? post.id}.md`;
                 const postContentResponse = await fetch(postContentUrl);
 
                 let body: string | undefined = undefined,
@@ -64,30 +87,17 @@ const loader = (): Loader => {
                         | undefined = undefined;
                 if (postContentResponse.ok) {
                     body = await postContentResponse.text();
+                    // TODO: Figure out how to pass arguments
                     rendered = await renderMarkdown(body);
-                }
+                } else
+                    console.error(
+                        `Failed to load content for ${post.id} (HTTP ${postContentResponse.status}): `,
+                        postContentUrl,
+                    );
 
                 store.set({ id: post.id, data, body, rendered });
             }
         },
-        schema: z.object({
-            id: z.string(),
-            type: z.enum(["article", "note"]),
-            title: z.string(),
-            description: z.string(),
-            tags: z.string().array(),
-            toc: z.boolean().optional(),
-            img: z
-                .object({
-                    src: z.string(),
-                    alt: z.string(),
-                })
-                .optional(),
-            published: z.date().or(z.literal("")),
-            updated: z.optional(z.date().or(z.literal(""))),
-            filename: z.string(),
-            branchName: z.string().optional(),
-        }),
     };
 };
 

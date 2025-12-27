@@ -10,10 +10,8 @@ import type { CollectionEntry } from "astro:content";
 
 export const getStaticPaths = async () => {
     const posts = (
-        await getCollection("posts", ({ data }) => data.published !== "")
-    ).sort((a, b) =>
-        sortByDate(new Date(a.data.published), new Date(b.data.published)),
-    );
+        await getCollection("posts", ({ data }) => data.status !== "draft")
+    ).sort((a, b) => sortByDate(a.data.published!, b.data.published!));
 
     const articles = posts.filter(({ data }) => data.type === "article");
     const notes = posts.filter(({ data }) => data.type === "note");

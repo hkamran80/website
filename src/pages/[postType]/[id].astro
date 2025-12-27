@@ -34,7 +34,7 @@ const { Content } = await render(post);
             >
                 <Fragment slot="description">
                     {
-                        post.data.published && post.data.updated && (
+                        post.data.status === "updated" && (
                             <time>
                                 {new Intl.DateTimeFormat("en", {
                                     year: "numeric",
@@ -49,12 +49,12 @@ const { Content } = await render(post);
                     }
 
                     {
-                        post.data.published && post.data.published !== "" ? (
+                        post.data.status !== "draft" ? (
                             <time
-                                datetime={post.data.published.toISOString()}
+                                datetime={post.data.published!.toISOString()}
                                 class={`dt-published published ${post.data.updated && "hidden"}`}
                             >
-                                {post.data.published.toLocaleDateString(
+                                {post.data.published!.toLocaleDateString(
                                     undefined,
                                     {
                                         year: "numeric",
@@ -69,12 +69,12 @@ const { Content } = await render(post);
                     }
 
                     {
-                        post.data.updated && (
+                        post.data.status === "updated" && (
                             <time
-                                datetime={post.data.updated.toISOString()}
+                                datetime={post.data.updated!.toISOString()}
                                 class="dt-updated updated hidden"
                             >
-                                {post.data.updated.toLocaleDateString(
+                                {post.data.updated!.toLocaleDateString(
                                     undefined,
                                     {
                                         year: "numeric",
@@ -105,18 +105,19 @@ const { Content } = await render(post);
             </PageHeader>
 
             {
-                post.data.type === "article" && post.data.published && (
-                    <section class="mx-auto mt-6 max-w-3xl">
-                        <Image
-                            src={post.data.img!.src}
-                            alt={post.data.img!.alt}
-                            width={2000}
-                            height={1000}
-                            class="u-photo rounded-md"
-                            priority
-                        />
-                    </section>
-                )
+                post.data.type === "article" &&
+                    post.data.status !== "draft" && (
+                        <section class="mx-auto mt-6 max-w-3xl">
+                            <Image
+                                src={post.data.img!.src}
+                                alt={post.data.img!.alt}
+                                width={2000}
+                                height={1000}
+                                class="u-photo rounded-md"
+                                priority
+                            />
+                        </section>
+                    )
             }
 
             <article

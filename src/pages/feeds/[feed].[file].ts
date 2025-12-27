@@ -47,11 +47,9 @@ export const GET: APIRoute = async ({ site: siteUrl, params }) => {
     const posts = (
         await getCollection(
             "posts",
-            ({ data }) => data.published !== "" && typeFilter(data),
+            ({ data }) => data.status !== "draft" && typeFilter(data),
         )
-    ).sort((a, b) =>
-        sortByDate(new Date(a.data.published), new Date(b.data.published)),
-    );
+    ).sort((a, b) => sortByDate(a.data.published!, b.data.published!));
 
     const site = siteUrl.toString();
     const feed = await generateFeed(site, posts);

@@ -15,11 +15,9 @@ const showcase = (
 const latestPost = (
     await getCollection(
         "posts",
-        ({ data }) => data.type === "article" && data.published !== "",
+        ({ data }) => data.type === "article" && data.status !== "draft",
     )
-).sort((a, b) =>
-    sortByDate(new Date(a.data.published), new Date(b.data.published)),
-)[0];
+).sort((a, b) => sortByDate(a.data.published!, b.data.published!))[0];
 ---
 
 <Layout>
@@ -67,19 +65,18 @@ const latestPost = (
                             </p>
                             <p class="text-c-lighter tracking-tight">
                                 <time
-                                    datetime={(
-                                        latestPost.data.published as Date
-                                    ).toISOString()}
+                                    datetime={latestPost.data.published!.toISOString()}
                                     class="dt-published published"
                                 >
                                     {
-                                        (
-                                            latestPost.data.published as Date
-                                        ).toLocaleDateString(undefined, {
-                                            year: "numeric",
-                                            month: "long",
-                                            day: "numeric",
-                                        })
+                                        latestPost.data.published!.toLocaleDateString(
+                                            undefined,
+                                            {
+                                                year: "numeric",
+                                                month: "long",
+                                                day: "numeric",
+                                            },
+                                        )
                                     }
                                 </time>
                             </p>
