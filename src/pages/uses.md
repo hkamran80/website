@@ -111,4 +111,4 @@ This is a subset of the services I run.
 
 ---
 
-This is a [slash page](https://slashpages.net#uses). See more at [uses.tech](https://uses.tech).
+See more `/uses` pages at [uses.tech](https://uses.tech).
