@@ -2,7 +2,11 @@ import { defineCollection, z } from "astro:content";
 import postsLoader from "./lib/postsLoader";
 import unsplashLoader from "./lib/unsplashLoader";
 
-const posts = defineCollection({ loader: postsLoader() });
+const posts = defineCollection({
+    loader: postsLoader({
+        apiKey: import.meta.env.GITHUB_API_KEY,
+    }),
+});
 
 const showcase = defineCollection({
     loader: async () => {

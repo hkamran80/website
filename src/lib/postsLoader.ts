@@ -6,7 +6,8 @@ const convertToDate = (dateString: string): Date =>
         dateString + (!dateString.includes("T") ? "T07:00:00.000-08:00" : ""),
     );
 
-const loader = (): Loader => {
+// TODO: Change `reorganize` to `main`
+const loader = (options: { apiKey: string }): Loader => {
     return {
         name: "posts-loader",
         schema: z.object({
@@ -65,6 +66,36 @@ const loader = (): Loader => {
                     ...converted,
                 };
             });
+
+            const branchResponse = await fetch(
+                "https://api.github.com/repos/hkamran80/articles/branches",
+                {
+                    headers: {
+                        Accept: "application/vnd.github+json",
+                        "X-GitHub-Api-Version": "2022-11-28",
+                        Authorization: `Bearer ${options.apiKey}`,
+                    },
+                },
+            );
+            const branches = (await branchResponse.json()) as {
+                name: string;
+            }[];
+            for (const branch of branches) {
+                if (
+                    branch.name.startsWith("article-r/") ||
+                    branch.name.startsWith("note-r/") ||
+                    branch.name.startsWith("post/")
+                ) {
+                    const response = await fetch(
+                        `https://raw.githubusercontent.com/hkamran80/articles/${branch.name}/index.json`,
+                    );
+                    // TODO: Add actual type
+                    const data = (await response.json()) as any[];
+
+                    const postId = branch.name.split("/")[1];
+                    posts.push(data.find(({ id }) => id === postId));
+                }
+            }
 
             for (const post of posts) {
                 const data = await parseData({
