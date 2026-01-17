@@ -202,7 +202,7 @@ export default defineConfig({
         ],
     },
 
-    // adapter: netlify(),
+    adapter: netlify(),
 
     redirects: {
         // Legacy
