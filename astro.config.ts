@@ -17,6 +17,8 @@ import { loadEnv } from "vite";
 
 import netlify from "@astrojs/netlify";
 
+const site = "https://beta.hkamran.com";
+
 const isLocalLink = (link: string) =>
     link.startsWith("/") ||
     link.startsWith("#") ||
@@ -50,11 +52,11 @@ const { GITHUB_API_KEY } = loadEnv(
 );
 const draftPosts = (await getPosts(GITHUB_API_KEY as string))
     .filter((post) => post.status === "draft")
-    .map((post) => `/${post.type + "s"}/${post.id}`);
+    .map((post) => `${site}/${post.type + "s"}/${post.id}`);
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://beta.hkamran.com",
+    site,
     trailingSlash: "never",
 
     image: {
@@ -184,7 +186,7 @@ export default defineConfig({
         }),
         sitemap({
             xslURL: "/sitemap.xslt",
-            filter: (page) => !draftPosts.some((draft) => draft.includes(page)),
+            filter: (page) => !draftPosts.includes(page),
         }),
     ],
 
