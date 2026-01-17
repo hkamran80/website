@@ -12,6 +12,8 @@ import rehypeToc from "@jsdevtools/rehype-toc";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import rehypeRewrite from "rehype-rewrite";
 import { EventNames } from "./src/navigation";
+import { getPosts } from "./src/lib/posts";
+import { loadEnv } from "vite";
 
 import netlify from "@astrojs/netlify";
 
@@ -40,6 +42,15 @@ const getLLMRobots = async () => {
             }),
         );
 };
+
+const { GITHUB_API_KEY } = loadEnv(
+    process.env.NODE_ENV as string,
+    process.cwd(),
+    "",
+);
+const draftPosts = (await getPosts(GITHUB_API_KEY as string))
+    .filter((post) => post.status === "draft")
+    .map((post) => `/${post.type + "s"}/${post.id}`);
 
 // https://astro.build/config
 export default defineConfig({
@@ -171,7 +182,10 @@ export default defineConfig({
                 ...(await getLLMRobots()),
             ],
         }),
-        sitemap({ xslURL: "/sitemap.xslt" }),
+        sitemap({
+            xslURL: "/sitemap.xslt",
+            filter: (page) => !draftPosts.some((draft) => draft.includes(page)),
+        }),
     ],
 
     experimental: {
@@ -186,7 +200,7 @@ export default defineConfig({
         ],
     },
 
-    adapter: netlify(),
+    // adapter: netlify(),
 
     redirects: {
         // Legacy
