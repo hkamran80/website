@@ -11,7 +11,7 @@ import { slugify } from "@hkamran/utility-strings";
 export const getStaticPaths = async () => {
     const posts = await getCollection("posts");
     return posts.map((post) => ({
-        params: { postType: post.data.type + "s", id: post.id },
+        params: { id: post.id },
         props: { post },
     }));
 };

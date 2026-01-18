@@ -4,79 +4,63 @@ import type { CollectionEntry } from "astro:content";
 
 interface Props {
     post: CollectionEntry<"posts">;
-    priority?: boolean;
 }
 
-const { post, priority } = Astro.props;
+const { post } = Astro.props;
 ---
 
-<article class="grid grid-cols-1 items-center gap-y-4 sm:grid-cols-3 md:gap-8">
-    {
-        post.data.published && post.data.type === "article" && (
-            <Image
-                src={post.data.img!.src}
-                alt={post.data.img!.alt}
-                width={2000}
-                height={1000}
-                class="rounded-md"
-                priority={priority}
-            />
-        )
-    }
+<article class="space-y-2">
+    <p class="p-name entry-title text-xl font-semibold">
+        {post.data.title}
+    </p>
 
-    <header class="col-span-2 space-y-2">
-        <p class="p-name entry-title text-xl font-semibold">
-            {post.data.title}
-        </p>
+    <p class="p-summary entry-summary text-c-light tracking-tight">
+        {post.data.description}
+    </p>
 
-        <p class="p-summary entry-summary text-c-light tracking-tight">
-            {post.data.description}
-        </p>
+    <p class="text-c-lighter tracking-tight">
+        {
+            post.data.published && post.data.updated && (
+                <time>
+                    {new Intl.DateTimeFormat("en", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    }).formatRange(post.data.published, post.data.updated)}
+                </time>
+            )
+        }
 
-        <p class="text-c-lighter tracking-tight">
-            {
-                post.data.published && post.data.updated && (
-                    <time>
-                        {new Intl.DateTimeFormat("en", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                        }).formatRange(post.data.published, post.data.updated)}
-                    </time>
-                )
-            }
+        {
+            post.data.published ? (
+                <time
+                    datetime={post.data.published.toISOString()}
+                    class={`dt-published published ${post.data.updated && "hidden"}`}
+                >
+                    {post.data.published.toLocaleDateString(undefined, {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    })}
+                </time>
+            ) : (
+                "Unpublished"
+            )
+        }
 
-            {
-                post.data.published ? (
-                    <time
-                        datetime={post.data.published.toISOString()}
-                        class={`dt-published published ${post.data.updated && "hidden"}`}
-                    >
-                        {post.data.published.toLocaleDateString(undefined, {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                        })}
-                    </time>
-                ) : (
-                    "Unpublished"
-                )
-            }
-
-            {
-                post.data.updated && (
-                    <time
-                        datetime={post.data.updated.toISOString()}
-                        class="dt-updated updated hidden"
-                    >
-                        {post.data.updated.toLocaleDateString(undefined, {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                        })}
-                    </time>
-                )
-            }
-        </p>
-    </header>
+        {
+            post.data.updated && (
+                <time
+                    datetime={post.data.updated.toISOString()}
+                    class="dt-updated updated hidden"
+                >
+                    {post.data.updated.toLocaleDateString(undefined, {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    })}
+                </time>
+            )
+        }
+    </p>
 </article>
