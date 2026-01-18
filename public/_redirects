@@ -2,5 +2,7 @@
 /article/*      /posts/:splat           301
 /note/*         /posts/:splat           301
 
+/tag/*          /tags/:splat            301
+
 /creations/*    /projects/:splat        301
 /showcase/*     /projects/:splat        301
