@@ -13,10 +13,7 @@ const showcase = (
 ).sort((a, b) => a.data.name.localeCompare(b.data.name));
 
 const latestPost = (
-    await getCollection(
-        "posts",
-        ({ data }) => data.type === "article" && data.status !== "draft",
-    )
+    await getCollection("posts", ({ data }) => data.status !== "draft")
 ).sort((a, b) => sortByDate(a.data.published!, b.data.published!))[0];
 ---
 
@@ -45,42 +42,31 @@ const latestPost = (
 
             <section class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
                 <div>
-                    <header class="text-c-light mb-2">Latest Article</header>
+                    <header class="text-c-light mb-2">Latest Post</header>
                     <Link href={`/articles/${latestPost.id}`}>
-                        <Image
-                            src={`https://assets.hkamran.com/graphics/article/${latestPost.id}`}
-                            alt={latestPost.data.img!.alt}
-                            width={2000}
-                            height={1000}
-                            class="rounded-md"
-                            priority
-                        />
-
-                        <section class="mt-2">
-                            <p class="font-semibold">
-                                {latestPost.data.title}
-                            </p>
-                            <p class="text-c-light tracking-tight">
-                                {latestPost.data.description}
-                            </p>
-                            <p class="text-c-lighter tracking-tight">
-                                <time
-                                    datetime={latestPost.data.published!.toISOString()}
-                                    class="dt-published published"
-                                >
-                                    {
-                                        latestPost.data.published!.toLocaleDateString(
-                                            undefined,
-                                            {
-                                                year: "numeric",
-                                                month: "long",
-                                                day: "numeric",
-                                            },
-                                        )
-                                    }
-                                </time>
-                            </p>
-                        </section>
+                        <p class="font-semibold">
+                            {latestPost.data.title}
+                        </p>
+                        <p class="text-c-light tracking-tight">
+                            {latestPost.data.description}
+                        </p>
+                        <p class="text-c-lighter tracking-tight">
+                            <time
+                                datetime={latestPost.data.published!.toISOString()}
+                                class="dt-published published"
+                            >
+                                {
+                                    latestPost.data.published!.toLocaleDateString(
+                                        undefined,
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )
+                                }
+                            </time>
+                        </p>
                     </Link>
                 </div>
 
