@@ -59,7 +59,7 @@ export const sitemap: SitemapItem[] = [
     { href: "/uses", name: "My Setup", description: "My current setup" },
     { href: "/photos", name: "Photos", description: "A collection of photos I have shared" },
     { href: "/posts", name: "Posts", description: "All my posts" },
-    { href: "/privacy", name: "Privacy", description: "My privacy policy" },
+    { href: "/privacy", name: "Privacy Policy", description: "My privacy policy" },
     { href: "/projects", name: "Projects", description: "A subset of my projects" },
     { href: "/sitemap", name: "Sitemap", description: "You are here!" },
     { href: "/slashes", name: "Slash Pages", description: "The slash pages I have" },
