@@ -213,6 +213,7 @@ export default defineConfig({
         "/llm-policy": "/ai",
         "/showcase": "/projects",
         "/programs": "/utilities",
+        "/support": "/tip",
 
         // Social
         "/git": "https://github.com/hkamran80",
