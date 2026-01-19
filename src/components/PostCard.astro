@@ -1,15 +1,14 @@
 ---
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 
-interface Props {
+type Props = {
     post: CollectionEntry<"posts">;
 }
 
 const { post } = Astro.props;
 ---
 
-<article class="space-y-2">
+<article class="space-y-1">
     <p class="p-name entry-title text-xl font-semibold">
         {post.data.title}
     </p>
