@@ -1,0 +1,109 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/container.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Link from "../../components/Link.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import {
+    chamberAbbreviation,
+    getNumberWithOrdinal,
+} from "../../lib/bill-analysis.ts";
+
+export const getStaticPaths = async () => {
+    const billAnalyses = await getCollection("billAnalyses");
+    return billAnalyses.map((analysis) => ({
+        params: { id: analysis.id },
+        props: { analysis },
+    }));
+};
+
+type Props = {
+    analysis: CollectionEntry<"billAnalyses">;
+};
+
+const { analysis } = Astro.props;
+const url = `https://www.congress.gov/bill/${getNumberWithOrdinal(Number(analysis.data.bill.congress))}-congress/${analysis.data.bill.chamber}-bill/${analysis.data.bill.number}`;
+---
+
+<Layout
+    title={`${
+        chamberAbbreviation[analysis.data.bill.chamber]
+    }. ${analysis.data.bill.number} | Bill Analysis`}
+>
+    <Container>
+        <main class="mx-auto max-w-3xl place-items-center pt-2 pb-8 md:pt-8">
+            <PageHeader
+                title={`${
+                    chamberAbbreviation[analysis.data.bill.chamber]
+                }. ${analysis.data.bill.number}: ${analysis.data.bill.title}`}
+            >
+                <Fragment slot="subtitle">
+                    {getNumberWithOrdinal(Number(analysis.data.bill.congress))} Congress
+                    &bull; <Link href={url} className="text-pink-600 underline"
+                        >View on Congress.gov</Link
+                    >
+                </Fragment>
+            </PageHeader>
+
+            <article
+                class="prose mt-6 max-w-none dark:prose-invert prose-a:text-pink-600"
+            >
+                <p>
+                    <strong
+                        >Sponsor{
+                            analysis.data.bill.sponsors.length !== 1 && "s"
+                        }:</strong
+                    >
+                    {analysis.data.bill.sponsors.join(", ")}
+
+                    <br />
+
+                    <strong
+                        >Cosponsor{
+                            analysis.data.bill.cosponsors.listed.length !== 1 ||
+                            analysis.data.bill.cosponsors.other !== 1
+                                ? "s"
+                                : ""
+                        }:</strong
+                    >
+                    {analysis.data.bill.cosponsors.listed.join(", ")}{
+                        analysis.data.bill.cosponsors.other > 0 ? (
+                            <>
+                                {" "}
+                                and{" "}
+                                <Link href={`${url}/cosponsors`}>
+                                    {analysis.data.bill.cosponsors.other}{" "}
+                                    {`other${analysis.data.bill.cosponsors.other !== 1 && "s"}`}
+                                </Link>
+                            </>
+                        ) : (
+                            ""
+                        )
+                    }
+                </p>
+
+                <p><strong>Summary:</strong> {analysis.data.summary}</p>
+
+                <p><strong>Background:</strong> {analysis.data.background}</p>
+
+                <p>
+                    <strong>Organizations in Support:</strong>
+                    {analysis.data.organizations.support.join(", ")}
+                </p>
+
+                <p>
+                    <strong>Organizations in Opposition:</strong>
+                    {analysis.data.organizations.oppose.join(", ")}
+                </p>
+
+                <p>
+                    <strong>Recommendation:</strong>
+                    {
+                        analysis.data.recommendation.action[0].toUpperCase() +
+                            analysis.data.recommendation.action.slice(1)
+                    }. {analysis.data.recommendation.reason}
+                </p>
+            </article>
+        </main>
+    </Container>
+</Layout>

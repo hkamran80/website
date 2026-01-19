@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Link from "../components/Link.astro";
+import { getCollection } from "astro:content";
+import {
+    chamberAbbreviation,
+    getNumberWithOrdinal,
+} from "../lib/bill-analysis.ts";
+
+const billAnalyses = await getCollection("billAnalyses");
+---
+
+<Layout title="Bill Analysis">
+    <Container>
+        <main class="mx-auto max-w-3xl place-items-center pt-2 pb-8 md:pt-8">
+            <PageHeader title="Bill Analysis" />
+
+            <section class="mt-8 flex flex-col space-y-6">
+                {
+                    billAnalyses.map((analysis) => (
+                        <Link href={`/bill-analysis/${analysis.id}`}>
+                            <article class="space-y-1">
+                                <p class="text-xl font-semibold">
+                                    <>
+                                        {chamberAbbreviation[
+                                            analysis.data.bill.chamber
+                                        ] + "."}
+                                    </>
+                                    {analysis.data.bill.number}:{" "}
+                                    {analysis.data.bill.title}
+                                </p>
+
+                                <p class="text-c-light tracking-tight">
+                                    {getNumberWithOrdinal(
+                                        Number(analysis.data.bill.congress),
+                                    )}{" "}
+                                    Congress, sponsored by{" "}
+                                    {analysis.data.bill.sponsors.join(", ")}
+                                </p>
+                            </article>
+                        </Link>
+                    ))
+                }
+            </section>
+        </main>
+    </Container>
+</Layout>

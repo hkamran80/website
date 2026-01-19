@@ -1,6 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import postsLoader from "./lib/postsLoader";
 import unsplashLoader from "./lib/unsplashLoader";
+import billAnalysesLoader from "./lib/bill-analyses-loader";
 
 const posts = defineCollection({
     loader: postsLoader({
@@ -98,10 +99,15 @@ const utilities = defineCollection({
     }),
 });
 
+const billAnalyses = defineCollection({
+    loader: billAnalysesLoader(),
+});
+
 export const collections = {
     posts,
     showcase,
     photos,
     nebulaChangelog,
     utilities,
+    billAnalyses,
 };
