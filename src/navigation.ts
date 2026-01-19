@@ -67,4 +67,5 @@ export const sitemap: SitemapItem[] = [
     { href: "/tags", name: "Tags", description: "A list of tags assigned to posts" },
     { href: "/tip", name: "Tip", description: "Ways to tip me" },
     { href: "/utilities", name: "Utilities", description: "Various utilities I have made" },
+    { href: "/verify", name: "Verify", description: "Verify my public identities" },
 ]
