@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Link from "../components/Link.astro";
+import { sitemap } from "../navigation.ts";
+---
+
+<Layout title="Sitemap">
+    <Container>
+        <main class="mx-auto max-w-3xl place-items-center pt-2 pb-8 md:pt-8">
+            <PageHeader
+                title="Sitemap"
+                subtitle="This page lists all regular pages on this website"
+            />
+
+            <section class="mt-8">
+                <ul class="grid grid-cols-1 gap-2 md:grid-cols-2">
+                    {
+                        sitemap.map((item) => (
+                            <li>
+                                <p class="text-lg font-semibold">
+                                    <Link
+                                        href={item.href}
+                                        class="text-pink-600 underline"
+                                    >
+                                        {item.name}
+                                    </Link>
+                                </p>
+
+                                <p class="text-c-light tracking-tight">
+                                    {item.description}
+                                </p>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </section>
+        </main>
+    </Container>
+</Layout>
