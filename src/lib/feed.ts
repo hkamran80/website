@@ -24,10 +24,9 @@ export const generateFeed = async (
         image: `${site}icon.png`,
         favicon: `${site}favicon.png`,
         copyright: `© ${new Date().getFullYear()} H. Kamran. All rights reserved.`,
-        updated:
-            posts[0].data.updated !== "" || posts[0].data.published !== ""
-                ? ((posts[0].data.updated || posts[0].data.published) as Date)
-                : undefined,
+        updated: posts[0].data.status === "updated" || posts[0].data.status === "published"
+            ? (posts[0].data.updated || posts[0].data.published)
+            : undefined,
         feedLinks: {
             rss: `${site}feed.rss`,
             atom: `${site}feed.atom`,
@@ -46,9 +45,9 @@ export const generateFeed = async (
             author: [author],
             content: post.body
                 ? await renderMarkdown(
-                      post.body +
-                          "\n\n---\n\nThanks for reading! Follow me on [Mastodon](https://hkamran.com/mastodon) and [Bluesky](https://hkamran.com/bluesky). Subscribe to my [posts feed](https://hkamran.com/feed.atom).",
-                  )
+                    post.body +
+                    "\n\n---\n\nThanks for reading! Follow me on [Mastodon](https://hkamran.com/mastodon) and [Bluesky](https://hkamran.com/bluesky). Subscribe to my [posts feed](https://hkamran.com/feed.atom).",
+                )
                 : undefined,
         };
 
