@@ -1,0 +1,25 @@
+## hkamran.com humans.txt ##
+
+# Copyright (c) H. Kamran.
+# https://humanstxt.org/
+
+/* TEAM */
+
+  Owner: H. Kamran
+  Site: https://hkamran.com
+  GitHub: @hkamran80
+  Social: https://hkamran.com/verify
+  Location: California, United States
+
+/* THANKS */
+
+  All the inspiring people on the Internet.
+
+/* SITE */
+
+  Last update: 2026-01-19
+  Language: English
+  Standards: HTML5, CSS3, JS
+  Components: Astro, Tailwind CSS
+  Software: Neovim, Netlify
+  License: https://hkamran.com/license
