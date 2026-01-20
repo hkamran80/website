@@ -1,0 +1,90 @@
+---
+import { getEntry } from "astro:content";
+import UtilityLayout from "../../layouts/UtilityLayout.astro";
+
+const utility = await getEntry("utilities", "duck-compose");
+---
+
+<UtilityLayout utility={utility}>
+    <section class="mt-4 grid gap-3">
+        <label
+            for="duck-address"
+            class="peer-disabled:cursor -not-allowed flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50"
+        >
+            Duck Address
+        </label>
+        <input
+            id="duck-address"
+            type="email"
+            class="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-md bg-neutral-100 px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-pink-400/50 focus-visible:ring-pink-700/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-neutral-900"
+            placeholder="name@duck.com"
+        />
+    </section>
+
+    <section class="mt-4 grid gap-3">
+        <label
+            for="recipient"
+            class="peer-disabled:cursor -not-allowed flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50"
+        >
+            Recipient
+        </label>
+        <input
+            id="recipient"
+            type="email"
+            class="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-md bg-neutral-100 px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-pink-400/50 focus-visible:ring-pink-700/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-neutral-900"
+            placeholder="recipient@example.com"
+        />
+    </section>
+
+    <hr />
+
+    <section class="mt-4 grid gap-3">
+        <label
+            for="email"
+            class="peer-disabled:cursor -not-allowed flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50"
+        >
+            Email
+        </label>
+        <input
+            id="email"
+            type="email"
+            class="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-md bg-neutral-100 px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-pink-400/50 focus-visible:ring-pink-700/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-neutral-900"
+            placeholder="recipient_at_example.com_name@duck.com"
+            readonly
+        />
+    </section>
+</UtilityLayout>
+
+<script>
+    const duckAddressElement = document.getElementById("duck-address"),
+        recipientElement = document.getElementById("recipient"),
+        composedElement = document.getElementById("email");
+
+    const compose = () => {
+        const duckAddress = duckAddressElement?.value,
+            recipient = recipientElement?.value;
+
+        console.log("DA", duckAddress);
+        console.log("RE", recipient);
+        console.log(
+            "V",
+            duckAddress &&
+                recipient &&
+                duckAddress.includes("@") &&
+                recipient.includes("@"),
+        );
+
+        if (
+            duckAddress &&
+            recipient &&
+            duckAddress.includes("@") &&
+            recipient.includes("@")
+        ) {
+            composedElement!.value =
+                recipient.replace("@", "_at_") + "_" + duckAddress;
+        }
+    };
+
+    duckAddressElement?.addEventListener("keyup", compose);
+    recipientElement?.addEventListener("keyup", compose);
+</script>
