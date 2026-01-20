@@ -8,7 +8,6 @@ import { remarkAlert } from "remark-github-blockquote-alert";
 import remarkRemoveComments from "remark-remove-comments";
 import rehypeFigure from "rehype-figure";
 import rehypeSlug from "rehype-slug";
-import rehypeToc from "@jsdevtools/rehype-toc";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import rehypeRewrite from "rehype-rewrite";
 import { EventNames } from "./src/navigation";
@@ -79,14 +78,14 @@ export default defineConfig({
         rehypePlugins: [
             [rehypeFigure, { className: "image" }],
             rehypeSlug,
-            [
-                rehypeToc,
-                {
-                    headings: ["h2", "h3", "h4", "h5", "h6"],
-                    cssClasses: { list: "", listItem: "", link: "" },
-                    // customizeTOC: (toc) => (options.toc ? toc : false),
-                },
-            ],
+            // [
+            //     rehypeToc,
+            //     {
+            //         headings: ["h2", "h3", "h4", "h5", "h6"],
+            //         cssClasses: { list: "", listItem: "", link: "" },
+            //         // customizeTOC: (toc) => (options.toc ? toc : false),
+            //     },
+            // ],
             [
                 rehypeSanitize,
                 {
