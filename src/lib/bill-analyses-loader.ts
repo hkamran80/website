@@ -9,7 +9,12 @@ const loader = (): Loader => {
             bill: z.object({
                 congress: z.string(),
                 chamber: z.enum(["senate", "house"]),
-                type: z.enum(["bill", "resolution", "joint-resolution", "concurrent-resolution"]),
+                type: z.enum([
+                    "bill",
+                    "resolution",
+                    "joint-resolution",
+                    "concurrent-resolution",
+                ]),
                 number: z.string(),
                 title: z.string(),
                 sponsors: z.string().array(),
