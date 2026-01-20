@@ -44,3 +44,25 @@ html.dark pre:has(code) span {
 img {
     content-visibility: auto;
 }
+
+/* TOC */
+.toc li ul {
+    @apply ml-4;
+}
+
+.toc ul {
+    @apply space-y-1;
+}
+
+.toc a {
+    @apply items-start pl-2 text-gray-600 transition-colors duration-150 hover:text-black dark:text-gray-400 dark:hover:text-white;
+}
+
+.toc li {
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+}
+
+.toc a.active {
+    @apply text-black dark:text-white;
+}

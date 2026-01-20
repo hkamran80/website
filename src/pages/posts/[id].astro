@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import PostStructuredData from "../../components/PostStructuredData.astro";
 import Container from "../../components/container.astro";
 import PageHeader from "../../components/PageHeader.astro";
+import TOC from "../../components/TOC.astro";
 import Link from "../../components/Link.astro";
 import { Image } from "astro:assets";
 import { getCollection, render, type CollectionEntry } from "astro:content";
@@ -21,7 +22,7 @@ type Props = {
 };
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { headings, Content } = await render(post);
 ---
 
 <Layout title={post.data.title}>
@@ -120,6 +121,14 @@ const { Content } = await render(post);
                     )
             }
 
+            {
+                headings && headings.length > 0 && post.data.toc !== false && (
+                    <nav class="article-toc">
+                        <h2 class="text-lg font-bold">Table of Contents</h2>
+                        <TOC headings={headings} />
+                    </nav>
+                )
+            }
             <article
                 class="e-content mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
             >
@@ -128,3 +137,17 @@ const { Content } = await render(post);
         </main>
     </Container>
 </Layout>
+
+<style>
+    @reference "../../styles/global.css";
+
+    .article-toc {
+        float: right;
+        width: 180px;
+        position: sticky;
+        top: 80px;
+        font-size: medium;
+        line-height: normal;
+        @apply mt-6;
+    }
+</style>

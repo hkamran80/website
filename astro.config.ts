@@ -8,6 +8,7 @@ import { remarkAlert } from "remark-github-blockquote-alert";
 import remarkRemoveComments from "remark-remove-comments";
 import rehypeFigure from "rehype-figure";
 import rehypeSlug from "rehype-slug";
+import rehypeSectionize from "@hbsnow/rehype-sectionize";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import rehypeRewrite from "rehype-rewrite";
 import { EventNames } from "./src/navigation";
@@ -78,6 +79,7 @@ export default defineConfig({
         rehypePlugins: [
             [rehypeFigure, { className: "image" }],
             rehypeSlug,
+            rehypeSectionize,
             // [
             //     rehypeToc,
             //     {
