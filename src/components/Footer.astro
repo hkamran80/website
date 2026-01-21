@@ -13,49 +13,58 @@ const extraPages: CommonLink[] = [
 ---
 
 <footer
-    class="mx-auto mb-10 flex max-w-(--breakpoint-xl) flex-col justify-between px-5 py-6 text-xs text-gray-500 md:py-0 lg:flex-row"
+    class="mx-auto mb-10 max-w-(--breakpoint-xl) px-5 py-6 text-xs text-gray-500 md:py-0"
 >
-    <section class="w-full flex-1 gap-1">
-        <p>
-            Copyright &copy; {new Date().getFullYear()} H. Kamran. All rights reserved.
-        </p>
-        <p>
-            This site is designed and made exclusively by humans.<wbr />
-            <Link
-                href="/ai"
-                class="underline hover:text-gray-900 dark:hover:text-gray-100"
-                >No "AI" was used</Link
-            > in the making of any of the content on this site.
-        </p>
+    <section class="flex flex-col justify-between lg:flex-row">
+        <section class="w-full flex-1 gap-1">
+            <p>
+                Copyright &copy; {new Date().getFullYear()} H. Kamran. All rights
+                reserved.
+            </p>
+            <p>
+                This site is designed and made exclusively by humans.<wbr />
+                <Link
+                    href="/ai"
+                    class="underline hover:text-gray-900 dark:hover:text-gray-100"
+                    >No "AI" was used</Link
+                > in the making of any of the content on this site.
+            </p>
 
-        <Social
-            class="mt-2"
-            liClass="hover:text-gray-900 dark:hover:text-gray-100"
-            size={16}
-        />
+            <Social
+                class="mt-2"
+                liClass="hover:text-gray-900 dark:hover:text-gray-100"
+                size={16}
+            />
+        </section>
+
+        <section class="mt-4 space-y-2 md:mt-0 md:text-right">
+            <ul class="flex list-none flex-row space-x-4">
+                {
+                    links.map((link) => (
+                        <li>
+                            <Link href={link.href}>{link.name}</Link>
+                        </li>
+                    ))
+                }
+            </ul>
+
+            <ul class="flex list-none flex-row space-x-4">
+                {
+                    extraPages.map((link) => (
+                        <li>
+                            <Link href={link.href}>{link.name}</Link>
+                        </li>
+                    ))
+                }
+            </ul>
+        </section>
     </section>
 
-    <section class="mt-4 space-y-2 md:mt-0 md:text-right">
-        <ul class="flex list-none flex-row space-x-4">
-            {
-                links.map((link) => (
-                    <li>
-                        <Link href={link.href}>{link.name}</Link>
-                    </li>
-                ))
-            }
-        </ul>
-
-        <ul class="flex list-none flex-row space-x-4">
-            {
-                extraPages.map((link) => (
-                    <li>
-                        <Link href={link.href}>{link.name}</Link>
-                    </li>
-                ))
-            }
-        </ul>
-    </section>
+    <!-- <section class="mt-6"> -->
+    <!--     <script -->
+    <!--         data-widget="mini" -->
+    <!--         src="https://sitesforpalestine.neocities.org/ring.js"></script> -->
+    <!-- </section> -->
 </footer>
 
 <style>
