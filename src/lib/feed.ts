@@ -17,7 +17,7 @@ export const generateFeed = async (
     const feed = new Feed({
         title: "H. Kamran",
         description:
-            "I'm a developer who takes photos and follows government actions across the U.S., the EU, and occasionally the UK in my free time.",
+            "I'm a California-based developer who takes photos, is interested in public transit and data privacy and security, and follows government across the U.S., the EU, and the UK.",
         id: site.slice(0, -1),
         link: site.slice(0, -1),
         language: "en-US",

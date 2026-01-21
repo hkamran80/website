@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
 import Link from "../components/Link.astro";
 import Social from "../components/Social.astro";
-import { Image } from "astro:assets";
 import ShowcaseItem from "../components/ShowcaseItem.astro";
 import { getCollection } from "astro:content";
 import { sortByDate } from "../lib/sort.ts";
@@ -30,8 +29,9 @@ const latestPost = (
                     I'm a California-based developer who <Link
                         href="/photos"
                         class="text-c-light-hover underline">takes photos</Link
-                    >, is interested in data privacy and security, and follows
-                    government across the U.S., the EU, and the UK.
+                    >, is interested in public transit and data privacy and
+                    security, and follows government across the U.S., the EU,
+                    and the UK.
                 </p>
 
                 <Social
