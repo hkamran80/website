@@ -6,7 +6,6 @@ import remarkRemoveComments from "remark-remove-comments";
 import remarkRehype from "remark-rehype";
 import rehypeFigure from "rehype-figure";
 import rehypeSlug from "rehype-slug";
-import rehypeToc from "@jsdevtools/rehype-toc";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import rehypeRewrite from "rehype-rewrite";
 import rehypeStringify from "rehype-stringify";
@@ -17,8 +16,8 @@ const isLocalLink = (link: string) =>
     link.startsWith("#") ||
     link.startsWith("https://hkamran.com");
 
-type Options = Record<"toc", boolean>;
-const defaultOptions: Options = { toc: false };
+type Options = {};
+const defaultOptions: Options = {};
 
 export const renderMarkdown = async (
     content: string,
@@ -34,11 +33,6 @@ export const renderMarkdown = async (
         .use(remarkRehype)
         .use(rehypeFigure, { className: "image" })
         .use(rehypeSlug)
-        .use(rehypeToc, {
-            headings: ["h2", "h3", "h4", "h5", "h6"],
-            cssClasses: { list: "", listItem: "", link: "" },
-            customizeTOC: (toc) => (options.toc ? toc : false),
-        })
         .use(rehypeSanitize, {
             ...defaultSchema,
             clobberPrefix: null,
@@ -51,7 +45,6 @@ export const renderMarkdown = async (
                 ...defaultSchema.attributes,
                 figure: ["className"],
                 div: [...(defaultSchema.attributes?.div ?? []), "className"],
-                nav: ["className"],
                 p: [...(defaultSchema.attributes?.p ?? []), "className"],
                 pre: ["className", "style", "tabindex"],
                 span: ["className", "style"],
@@ -60,7 +53,6 @@ export const renderMarkdown = async (
             },
             tagNames: [
                 ...(defaultSchema.tagNames ?? []),
-                "nav",
                 "svg",
                 "path",
                 "figure",

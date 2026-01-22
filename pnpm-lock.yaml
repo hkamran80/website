@@ -20,9 +20,6 @@ importers:
       '@hkamran/utility-strings':
         specifier: ^1.0.5
         version: 1.0.5
-      '@jsdevtools/rehype-toc':
-        specifier: ^3.0.2
-        version: 3.0.2
       '@lucide/astro':
         specifier: ^0.546.0
         version: 0.546.0(astro@5.14.8(@netlify/blobs@10.3.3)(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))
@@ -867,10 +864,6 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
-
-  '@jsdevtools/rehype-toc@3.0.2':
-    resolution: {integrity: sha512-n5JEf16Wr4mdkRMZ8wMP/wN9/sHmTjRPbouXjJH371mZ2LEGDl72t8tEsMRNFerQN/QJtivOxqK1frdGa4QK5Q==}
-    engines: {node: '>=10'}
 
   '@lucide/astro@0.546.0':
     resolution: {integrity: sha512-yHAL5eRQh8RBggN0y7ier88K2PpggKqEBjC5RhNvQGNLB+u7VlbzCRRNVfebzo9Q0L2nhylC/PcDAu+ZZt0FNg==}
@@ -5024,8 +5017,6 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
-
-  '@jsdevtools/rehype-toc@3.0.2': {}
 
   '@lucide/astro@0.546.0(astro@5.14.8(@netlify/blobs@10.3.3)(@types/node@24.5.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
