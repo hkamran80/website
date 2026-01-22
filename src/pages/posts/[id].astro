@@ -124,11 +124,14 @@ const { headings, Content } = await render(post);
             {
                 headings && headings.length > 0 && post.data.toc !== false && (
                     <nav class="article-toc">
-                        <h2 class="text-lg font-bold">Table of Contents</h2>
+                        <h2 class="mb-2 text-lg font-bold">
+                            Table of Contents
+                        </h2>
                         <TOC headings={headings} />
                     </nav>
                 )
             }
+
             <article
                 class="e-content mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
             >
