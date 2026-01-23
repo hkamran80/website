@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/MarkdownPageLayout.astro
 title: License
-subtitle: "Last Updated: September 2, 2025"
+subtitle: "Last Updated: January 22, 2025"
 ---
 
 Unless otherwise noted, the copyright of all content on this site (and its redirects) belongs to H. Kamran.
@@ -39,10 +39,6 @@ Copyright &copy; 2025 H. Kamran. All rights reserved.
 
 I reserve the right to change the above terms at any time without prior notification.
 
-<p class="text-xs">
-    Photos distributed on <a href="https://unsplash.com/@hkamran?utm_source=hkamran.com&utm_medium=referral">Unsplash</a> are subject to the <a href="https://unsplash.com/license">Unsplash License</a>. Attribution is strongly recommended.
-</p>
-
 ---
 
 ## "AI" License
@@ -54,14 +50,12 @@ A license is required on a per-project basis for purposes including, but not lim
 
 There are two license fee options available.
 
-- Single license fee of $100,000.00 (one hundred thousand USD) for all content
+- Single license fee of $1,000,000.00 (one million USD) for all content
 - $1.00 (one USD) per Unicode character of content (UTF-8)
 
-United States Dollars (USD) only. No cryptocurrency.
+All payments must be made in United States Dollars (USD). No cryptocurrency.
 
-<p class="text-xs">
-    For the purposes of this section only, "content" refers to any content published on or before the date of purchase.
-</p>
+For the purposes of this section only, "content" refers to any content published on or before the date of purchase.
 
 ### Terms and Conditions
 
@@ -77,10 +71,10 @@ I will not be liable for any damages arising from use of the content.
 All license fees are non-refundable.
 I reserve the right to refuse or revoke this license at any time.
 
-You must email <hkamran@hkamran.com> within 30 days of accepting these terms.
+You must email <hkamran@hkamran.com> within 7 days of accepting these terms.
 Please include your project and business details, content usage, and the license fee you want to pay.
 I will reply to your email with a PDF invoice attached.
-The invoice must be paid within 30 days.
+The invoice must be paid within 7 days.
 
 You agree that this license shall be effective retroactively to the start of any "AI"-related use as defined above.
 
