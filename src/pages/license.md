@@ -37,7 +37,7 @@ Copyright &copy; 2025 H. Kamran. All rights reserved.
 
     Contact me at [hkamran@hkamran.com](mailto:hkamran@hkamran.com?subject=Potential%20Sponsorship%2FEndorsement&body=Dear%20H.%20Kamran%2C%0D%0A%0D%0AI'd%20like%20to%20discuss%20a%20potential%20sponsorship%2Fendorsement%20of%20This%20Product.%0D%0A%0D%0ASincerely%2C%0D%0AYour%20Name%20Here) if you want to consider a sponsored/promoted feature.
 
-I reserve the right to change the above terms at any time without prior notification.
+I reserve the right to change the terms at any time without prior notification.
 
 ---
 
