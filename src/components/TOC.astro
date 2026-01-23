@@ -59,6 +59,13 @@ const toc = buildHierarchy(headings);
         left: 0;
         width: 100%;
         height: 100%;
+        display: none;
+    }
+
+    @media (width >= 64rem) {
+        svg.toc-progress {
+            display: block;
+        }
     }
 
     path.toc-marker {

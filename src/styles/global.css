@@ -51,11 +51,11 @@ img {
 }
 
 .toc ul {
-    @apply space-y-1;
+    @apply list-inside list-disc space-y-1 lg:list-none;
 }
 
 .toc a {
-    @apply items-start pl-2 text-gray-600 transition-colors duration-150 hover:text-black dark:text-gray-400 dark:hover:text-white;
+    @apply items-start text-gray-600 transition-colors duration-150 hover:text-black lg:pl-2 dark:text-gray-400 dark:hover:text-white;
 }
 
 .toc li {
@@ -64,5 +64,5 @@ img {
 }
 
 .toc a.active {
-    @apply text-black dark:text-white;
+    @apply lg:text-black lg:dark:text-white;
 }

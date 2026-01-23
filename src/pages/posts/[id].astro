@@ -145,12 +145,19 @@ const { headings, Content } = await render(post);
     @reference "../../styles/global.css";
 
     .article-toc {
-        float: right;
-        width: 180px;
-        position: sticky;
-        top: 80px;
         font-size: medium;
         line-height: normal;
         @apply mt-6;
+    }
+
+    @media (width >= 64rem) {
+        .article-toc {
+            float: right;
+            width: 180px;
+            position: sticky;
+            top: 80px;
+            font-size: medium;
+            line-height: normal;
+        }
     }
 </style>
