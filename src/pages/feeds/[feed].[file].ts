@@ -1,7 +1,13 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
 import { sortByDate } from "../../lib/sort.ts";
-import { generateFeed } from "../../lib/feed.ts";
+import {
+    setupFeed,
+    generatePostsFeed,
+    generateBillAnalysesFeed,
+} from "../../lib/feed.ts";
+import { feeds as feedMetadata, type FeedTypes } from "../../feeds.ts";
+import type { Feed } from "feed";
 
 const feeds: Record<
     "rss" | "atom" | "json",
@@ -18,7 +24,7 @@ const feeds: Record<
     json: { generator: "json1", contentType: "application/json" },
 };
 
-const feedTypes = ["all", "articles", "notes"];
+const feedTypes = Object.keys(feedMetadata);
 
 export const getStaticPaths = () =>
     Object.keys(feeds).flatMap((feed) =>
@@ -27,7 +33,10 @@ export const getStaticPaths = () =>
         })),
     );
 
-export const GET: APIRoute = async ({ site: siteUrl, params }) => {
+export const GET: APIRoute<
+    Record<string, any>,
+    { file: string; feed: FeedTypes }
+> = async ({ site: siteUrl, params }) => {
     if (!siteUrl) return new Response(undefined, { status: 500 });
 
     if (
@@ -41,22 +50,29 @@ export const GET: APIRoute = async ({ site: siteUrl, params }) => {
 
     const feedConfiguration = feeds[params.file as keyof typeof feeds];
 
-    const typeFilter = (post: CollectionEntry<"posts">["data"]) =>
-        params.feed === "all" ? true : post.type === params.feed!.slice(0, -1);
-
-    const posts = (
-        await getCollection(
-            "posts",
-            ({ data }) => data.status !== "draft" && typeFilter(data),
-        )
-    ).sort((a, b) => sortByDate(a.data.published!, b.data.published!));
-
     const site = siteUrl.toString();
-    const feed = await generateFeed(site, posts);
+    const feed = setupFeed(site, params.feed as FeedTypes);
+    let generated: Feed | undefined = undefined;
 
-    return new Response(feed[feedConfiguration.generator](), {
-        headers: {
-            "Content-Type": feedConfiguration.contentType,
-        },
-    });
+    if (params.feed === "all" || params.feed === "posts") {
+        const posts = (
+            await getCollection("posts", ({ data }) => data.status !== "draft")
+        ).sort((a, b) => sortByDate(a.data.published!, b.data.published!));
+        generated = await generatePostsFeed(feed, posts);
+    }
+
+    if (params.feed === "all" || params.feed === "bill-analyses") {
+        const billAnalyses = (await getCollection("billAnalyses")).sort(
+            (a, b) => sortByDate(a.data.published!, b.data.published!),
+        );
+        generated = await generateBillAnalysesFeed(feed, billAnalyses);
+    }
+
+    if (generated)
+        return new Response(generated[feedConfiguration.generator](), {
+            headers: {
+                "Content-Type": feedConfiguration.contentType,
+            },
+        });
+    else return new Response(undefined, { status: 500 });
 };

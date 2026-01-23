@@ -6,6 +6,7 @@ import WebsiteStructuredData from "../components/WebsiteStructuredData.astro";
 import NavigationBar from "../components/NavigationBar.astro";
 import MicroformatMe from "../components/MicroformatMe.astro";
 import Footer from "../components/Footer.astro";
+import { feeds, type FeedTypes } from "../feeds.ts";
 
 type RobotDirective = "noindex";
 
@@ -31,9 +32,7 @@ const title = providedTitle ? providedTitle + " | H. Kamran" : "H. Kamran";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="sitemap" href="/sitemap-index.xml" />
 
-        <Feeds feed="all" />
-        <Feeds feed="articles" />
-        <Feeds feed="notes" />
+        {Object.keys(feeds).map((feed) => <Feeds feed={feed as FeedTypes} />)}
 
         <meta name="robots" content="noai, noimageai, noml, noindex" />
         <meta name="fediverse:creator" content="@hkamran@vmst.io" />

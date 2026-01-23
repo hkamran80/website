@@ -33,6 +33,7 @@ const loader = (): Loader => {
                 action: z.enum(["support", "oppose"]),
                 reason: z.string(),
             }),
+            published: z.date(),
         }),
         load: async ({ store, parseData }: LoaderContext): Promise<void> => {
             const response = await fetch(
@@ -43,7 +44,10 @@ const loader = (): Loader => {
             for (const analysis of data) {
                 const data = await parseData({
                     id: analysis.id,
-                    data: analysis,
+                    data: {
+                        ...analysis,
+                        published: new Date(analysis.published),
+                    },
                 });
 
                 store.set({ id: analysis.id, data });

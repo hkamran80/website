@@ -1,21 +1,22 @@
 ---
-import type { FeedTypes } from "../feeds.ts";
+import { feeds, type FeedTypes } from "../feeds.ts";
 
 type Props = {
     feed: FeedTypes;
 };
 const { feed } = Astro.props;
+const name = feeds[feed].name;
 ---
 
 <link
     rel="alternate"
     type="application/atom+xml"
-    title={`Atom feed (${feed})`}
+    title={`Atom feed (${name})`}
     href=`/feeds/${feed}.atom`
 />
 <link
     rel="alternate"
     type="application/feed+json"
-    title={`JSON feed (${feed})`}
+    title={`JSON feed (${name})`}
     href=`/feeds/${feed}.json`
 />

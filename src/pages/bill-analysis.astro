@@ -15,7 +15,14 @@ const billAnalyses = await getCollection("billAnalyses");
 <Layout title="Bill Analysis">
     <Container>
         <main class="mx-auto max-w-3xl place-items-center pt-2 pb-8 md:pt-8">
-            <PageHeader title="Bill Analysis" />
+            <PageHeader title="Bill Analysis">
+                <Fragment slot="description">
+                    Subscribe to <Link
+                        href="/feeds"
+                        class="text-pink-600 underline">my web feeds</Link
+                    >
+                </Fragment>
+            </PageHeader>
 
             <section class="mt-8 flex flex-col space-y-6">
                 {

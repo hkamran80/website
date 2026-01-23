@@ -4,7 +4,7 @@ import Container from "../components/container.astro";
 import PageHeader from "../components/PageHeader.astro";
 import Link from "../components/Link.astro";
 import FeedItem from "../components/FeedItem.astro";
-import { feeds } from "../feeds.ts";
+import { feeds, type FeedTypes } from "../feeds.ts";
 ---
 
 <Layout title="Feeds">
@@ -18,7 +18,10 @@ import { feeds } from "../feeds.ts";
             <section class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
                 {
                     Object.entries(feeds).map(([feed, metadata]) => (
-                        <FeedItem feed={feed} metadata={metadata} />
+                        <FeedItem
+                            feed={feed as FeedTypes}
+                            metadata={metadata}
+                        />
                     ))
                 }
             </section>
