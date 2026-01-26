@@ -90,6 +90,7 @@ export const sitemap: SitemapItem[] = [
         name: "Photos",
         description: "A collection of photos I have shared",
     },
+    { href: "/posse", name: "POSSE", description: "My upcoming POSSE strategy" },
     { href: "/posts", name: "Posts", description: "All my posts" },
     {
         href: "/privacy",
