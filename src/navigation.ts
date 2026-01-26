@@ -1,4 +1,4 @@
-export type CommonLink = {
+type CommonLink = {
     name: string;
     href: string;
     aliases?: string[];
@@ -9,6 +9,14 @@ export const links: CommonLink[] = [
     { href: "/posts", name: "Posts" },
     { href: "/utilities", name: "Utilities" },
     { href: "/photos", name: "Photos" },
+];
+
+export const extraPages: CommonLink[] = [
+    { href: "/ai", name: "LLM Policy" },
+    { href: "/sitemap", name: "Sitemap" },
+    { href: "/colophon", name: "Colophon" },
+    { href: "/license", name: "License" },
+    { href: "/privacy", name: "Privacy Policy" },
 ];
 
 export enum EventNames {

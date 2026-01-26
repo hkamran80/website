@@ -1,5 +1,5 @@
 ---
-import { links, type CommonLink } from "../navigation";
+import { links, extraPages } from "../navigation";
 import Link from "./Link.astro";
 import Social from "../components/Social.astro";
 import { Image } from "astro:assets";
@@ -7,14 +7,6 @@ import noAI from "../assets/no-ai.svg";
 import peoplePledgeBadge from "../assets/people-pledge-badge.svg";
 import twkfBadge from "../assets/this-website-kills-fascists.svg";
 import madeByAHumanBadge from "../assets/made-by-a-human.svg";
-
-const extraPages: CommonLink[] = [
-    { href: "/ai", name: "LLM Policy" },
-    { href: "/sitemap", name: "Sitemap" },
-    { href: "/colophon", name: "Colophon" },
-    { href: "/license", name: "License" },
-    { href: "/privacy", name: "Privacy Policy" },
-];
 ---
 
 <footer
