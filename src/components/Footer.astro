@@ -20,7 +20,7 @@ const extraPages: CommonLink[] = [
 ---
 
 <footer
-    class="mx-auto mb-10 max-w-(--breakpoint-xl) px-5 py-6 text-xs text-gray-500 md:py-0"
+    class="mx-auto mb-10 max-w-(--breakpoint-xl) px-5 py-6 text-center text-xs text-gray-500 md:py-0 md:text-left"
 >
     <section class="flex flex-col justify-between lg:flex-row">
         <section class="w-full flex-1 gap-1">
@@ -38,8 +38,8 @@ const extraPages: CommonLink[] = [
             </p>
 
             <Social
-                class="mt-2"
-                liClass="hover:text-gray-900 dark:hover:text-gray-100"
+                class="mt-4 justify-center md:mt-2 md:justify-start"
+                liClass="hover:text-gray-900 dark:hover:text-gray-100 "
                 size={16}
             />
         </section>
@@ -67,7 +67,7 @@ const extraPages: CommonLink[] = [
         </section>
     </section>
 
-    <section id="badges" class="mt-6 flex space-x-2">
+    <section id="badges" class="mt-6 flex flex-wrap space-x-2">
         {
             /*    <script
         data-widget="mini"
@@ -82,6 +82,7 @@ src="https://sitesforpalestine.neocities.org/ring.js"></script> */
             <Image
                 src={peoplePledgeBadge}
                 alt="The People Pledge badge"
+                width={88}
                 height={31}
             />
         </Link>
@@ -90,6 +91,7 @@ src="https://sitesforpalestine.neocities.org/ring.js"></script> */
             <Image
                 src={madeByAHumanBadge}
                 alt="This website was made by a human"
+                width={88}
                 height={31}
             />
         </Link>
@@ -98,16 +100,23 @@ src="https://sitesforpalestine.neocities.org/ring.js"></script> */
             <Image
                 src={mastodonBadge}
                 alt="Follow me on Mastodon"
+                width={88}
                 height={31}
             />
         </Link>
 
-        <Image src={firefoxBadge} alt="You should use Firefox :)" height={31} />
+        <Image
+            src={firefoxBadge}
+            alt="You should use Firefox :)"
+            width={88}
+            height={31}
+        />
 
         <Link href="https://www.pixel-gegen-rechts.de">
             <Image
                 src={twkfBadge}
                 alt="This Website Kills Fascists badge"
+                width={88}
                 height={31}
             />
         </Link>
