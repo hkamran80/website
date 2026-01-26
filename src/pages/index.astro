@@ -59,7 +59,7 @@ const latestBillAnalysis = (await getCollection("billAnalyses")).sort((a, b) =>
                     <article>
                         <header class="text-c-light mb-2">Latest Post</header>
                         <Link href={`/articles/${latestPost.id}`}>
-                            <p class="font-semibold">
+                            <p class="text-lg font-semibold">
                                 {latestPost.data.title}
                             </p>
                             <p class="text-c-light tracking-tight">
@@ -90,7 +90,7 @@ const latestBillAnalysis = (await getCollection("billAnalyses")).sort((a, b) =>
                             Latest Bill Analysis
                         </header>
                         <Link href={`/bill-analysis/${latestBillAnalysis.id}`}>
-                            <p class="font-semibold">
+                            <p class="text-lg font-semibold">
                                 {
                                     chamberAbbreviation[
                                         latestBillAnalysis.data.bill.chamber
