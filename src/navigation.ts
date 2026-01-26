@@ -75,6 +75,11 @@ export const sitemap: SitemapItem[] = [
     { href: "/feeds", name: "Feeds", description: "My web feeds" },
     { href: "/", name: "Homepage", description: "Press start to begin" },
     {
+        href: "/ideas",
+        name: "Ideas",
+        description: "Projects I want to build, posts I want to write, etc.",
+    },
+    {
         href: "/license",
         name: "License",
         description: "The license for this site",
@@ -84,6 +89,7 @@ export const sitemap: SitemapItem[] = [
         name: "LLM Policy",
         description: "Policy on the use of large language models (LLMs)",
     },
+    { href: "/now", name: "Now", description: "What I'm up to" },
     { href: "/uses", name: "My Setup", description: "My current setup" },
     {
         href: "/photos",

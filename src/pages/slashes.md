@@ -9,6 +9,9 @@ This is a collection of my [slash pages](https://slashpages.net).
 - [`/colophon`](/colophon): How this site is built
 - [`/defaults`](/defaults): A list of apps I use
 - [`/feeds`](/feeds): A list of my web feeds
+- [`/ideas`](/ideas): Projects I want to build, posts I want to write, etc.
+- [`/now`](/now): What I'm up to
+- [`/posse`](/posse): My upcoming POSSE strategy
 - [`/sitemap`](/sitemap): A list of regular pages on this site
 - [`/slashes`](/slashes): You are here
 - [`/style`](/style): My style guide
