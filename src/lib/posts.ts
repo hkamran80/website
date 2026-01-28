@@ -58,7 +58,9 @@ export const getPosts = async (apiKey: string) => {
             const data = (await response.json()) as any[];
 
             const postId = branch.name.split("/")[1];
-            posts.push(data.find(({ id }) => id === postId));
+            const post = data.find(({ id }) => id === postId);
+
+            if (post.status === "draft") posts.push(post);
         }
     }
 
