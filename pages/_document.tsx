@@ -119,6 +119,7 @@ class WebsiteDocument extends Document {
                     <meta name="robots" content="index, follow" />
                     <meta name="author" content="H. Kamran" />
                     <meta name="copyright" content="H. Kamran" />
+                    <meta name="fediverse:creator" content="@hkamran@vmst.io" />
 
                     <meta
                         name="keywords"
