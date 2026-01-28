@@ -90,6 +90,11 @@ export const sitemap: SitemapItem[] = [
         description: "Policy on the use of large language models (LLMs)",
     },
     { href: "/now", name: "Now", description: "What I'm up to" },
+    {
+        href: "/now/archive",
+        name: "Now Archive",
+        description: "What I was up to",
+    },
     { href: "/uses", name: "My Setup", description: "My current setup" },
     {
         href: "/photos",
