@@ -9,10 +9,7 @@ Inspired by [many, many others](https://defaults.rknight.me).
 - **Mail Server:** Gmail and IONOS
 - **Notes:** Standard Notes
 - **To-Do:** Google Tasks
-- **~~iPhone~~ Photo Shooting:** Pixel camera
-
-  I [don't use](/uses#daily-drivers) an iPhone and never want to again.
-
+- **Photo Shooting:** Pixel camera
 - **Photo Management:** Google Photos
 - **Calendar:** Google Calendar + [Notion Calendar](/uses#macos)
 - **Cloud File Storage:** Google Drive and pCloud
@@ -28,6 +25,6 @@ Inspired by [many, many others](https://defaults.rknight.me).
 
   Does anyone know of a good self-hosted grocery list app with inventory support?
 
-- **Budgeting and Personal Finance:** Excel, Actual, and ~~Maybe~~ Sure
+- **Budgeting and Personal Finance:** Excel, Actual, and Sure (forked from Maybe)
 - **Music:** Spotify (yes, I know.)
 - **Password Management:** Bitwarden
