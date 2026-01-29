@@ -105,7 +105,7 @@ img {
 }
 
 /* Inputs */
-input:not([type=radio]) {
+input:not([type="radio"]) {
     @apply placeholder:text-neutral-400 dark:placeholder:text-neutral-600;
 }
 
