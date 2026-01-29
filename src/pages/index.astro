@@ -58,7 +58,7 @@ const latestBillAnalysis = (await getCollection("billAnalyses")).sort((a, b) =>
                 <section class="space-y-8">
                     <article>
                         <header class="text-c-light mb-2">Latest Post</header>
-                        <Link href={`/articles/${latestPost.id}`}>
+                        <Link href={`/posts/${latestPost.id}`}>
                             <p class="text-lg font-semibold">
                                 {latestPost.data.title}
                             </p>
