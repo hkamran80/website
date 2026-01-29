@@ -1,6 +1,8 @@
 /blog/post/*    /posts/:splat           301
 /article/*      /posts/:splat           301
 /note/*         /posts/:splat           301
+/articles/*     /posts/:splat           301
+/notes/*        /posts/:splat           301
 
 /tag/*          /tags/:splat            301
 
