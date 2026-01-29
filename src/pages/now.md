@@ -12,7 +12,7 @@ See [my ideas](/ideas) and [the archive](/now/archive).
 - GTFS-powered transit dashboard that helps me track all my transit stops
 
   I'm currently keeping track in a text file which, while it works, is not that ideal.
-  Bonus points if the dashboard can automatically detect when I get off, maybe through some integration with my favourite transit app, [Transit](https://transitapp.com)?
+  Bonus: if it can automatically detect when I arrive (maybe through some integration with my favourite transit app, [Transit](https://transitapp.com)).
 
 - Fanfiction dashboard that helps me keep track of all the stories I'm reading
 
