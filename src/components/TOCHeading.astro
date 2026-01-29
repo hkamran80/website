@@ -6,9 +6,11 @@ const { heading } = Astro.props;
 ---
 
 <li>
-    <a href={"#" + heading.slug}>
-        {heading.text}
-    </a>
+    <div>
+        <a href={"#" + heading.slug}>
+            {heading.text}
+        </a>
+    </div>
 
     {
         heading.subheadings.length > 0 && (

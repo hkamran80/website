@@ -55,7 +55,11 @@ img {
 }
 
 .toc a {
-    @apply items-start text-gray-600 transition-colors duration-150 hover:text-black lg:pl-2 dark:text-gray-400 dark:hover:text-white;
+    @apply items-start text-gray-600 transition-colors duration-150 hover:text-black dark:text-gray-400 dark:hover:text-white;
+}
+
+.toc div:has(> a) {
+    @apply lg:pl-2;
 }
 
 .toc li {
@@ -63,7 +67,7 @@ img {
     padding-bottom: 0.125rem;
 }
 
-.toc a.active {
+.toc div.active a {
     @apply lg:text-black lg:dark:text-white;
 }
 

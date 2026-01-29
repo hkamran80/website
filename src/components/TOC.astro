@@ -98,7 +98,7 @@ const toc = buildHierarchy(headings);
 
                 // Get the link to this section's heading
                 const link = document.querySelector(
-                    `nav.toc li a[href="#${id}"]`,
+                    `nav.toc li div:has(> a[href="#${id}"])`,
                 );
                 if (!link) return;
 
@@ -129,7 +129,7 @@ const toc = buildHierarchy(headings);
     function drawPath() {
         const path: SVGPathElement = document.querySelector("path.toc-marker")!;
         const links: HTMLAnchorElement[] = Array.from(
-            document.querySelectorAll("nav.toc a"),
+            document.querySelectorAll("nav.toc div:has(> a)"),
         );
         if (!links.length) return;
 
@@ -188,7 +188,7 @@ const toc = buildHierarchy(headings);
     function updatePath() {
         const path: SVGPathElement = document.querySelector("path.toc-marker")!;
         const pathLength = path.getTotalLength();
-        const activeLinks = document.querySelectorAll("nav.toc a.active");
+        const activeLinks = document.querySelectorAll("nav.toc div.active");
         let linkStart = pathLength;
         let linkEnd = 0;
         activeLinks.forEach((link) => {
