@@ -103,3 +103,13 @@ img {
 .markdown-alert p {
     @apply my-3;
 }
+
+/* Inputs */
+input:not([type=radio]) {
+    @apply placeholder:text-neutral-400 dark:placeholder:text-neutral-600;
+}
+
+/* Prose */
+#utility.prose hr {
+    @apply my-[2em]!;
+}
