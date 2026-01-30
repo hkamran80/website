@@ -64,16 +64,6 @@ const utility = await getEntry("utilities", "duck-compose");
         const duckAddress = duckAddressElement?.value,
             recipient = recipientElement?.value;
 
-        console.log("DA", duckAddress);
-        console.log("RE", recipient);
-        console.log(
-            "V",
-            duckAddress &&
-                recipient &&
-                duckAddress.includes("@") &&
-                recipient.includes("@"),
-        );
-
         if (
             duckAddress &&
             recipient &&
