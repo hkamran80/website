@@ -19,21 +19,25 @@ const size = rawSize ?? 20;
     <li>
         <Link
             href="https://github.com/hkamran80"
-            rel="me"
+            rel="me authn"
             class:list={[liClass]}
         >
             <Github size={size} />
         </Link>
     </li>
     <li>
-        <Link href="https://vmst.io/@hkamran" rel="me" class:list={[liClass]}>
+        <Link
+            href="https://vmst.io/@hkamran"
+            rel="me authn"
+            class:list={[liClass]}
+        >
             <Mastodon size={size} />
         </Link>
     </li>
     <li>
         <Link
             href="https://bsky.app/profile/hkamran.com"
-            rel="me"
+            rel="me authn atproto"
             class:list={[liClass]}
         >
             <Bluesky size={size} />
