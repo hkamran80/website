@@ -8,68 +8,27 @@ const utility = await getEntry("utilities", "final-grade-calculator");
 <UtilityLayout utility={utility}>
     <section class="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div class="grid gap-3">
-            <label
-                for="current-grade"
-                class="peer-disabled:cursor -not-allowed flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50"
-            >
-                Current Grade
-            </label>
-            <input
-                id="current-grade"
-                type="number"
-                class="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-md bg-neutral-100 px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-pink-400/50 focus-visible:ring-pink-700/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-neutral-900"
-                placeholder="Current grade"
-            />
+            <label for="current-grade">Current Grade</label>
+            <input id="current-grade" type="number" placeholder="Grade" />
         </div>
 
         <div class="grid gap-3">
-            <label
-                for="grade-wanted"
-                class="peer-disabled:cursor -not-allowed flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50"
-            >
-                Grade Wanted
-            </label>
-            <input
-                id="grade-wanted"
-                type="number"
-                class="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-md bg-neutral-100 px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-pink-400/50 focus-visible:ring-pink-700/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-neutral-900"
-                placeholder="Grade wanted"
-            />
+            <label for="grade-wanted">Grade Wanted</label>
+            <input id="grade-wanted" type="number" placeholder="Grade" />
         </div>
     </section>
 
     <section class="mt-4 grid gap-3">
-        <label
-            for="final-weight"
-            class="peer-disabled:cursor -not-allowed flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50"
-        >
-            Final Weight
-        </label>
-        <input
-            id="final-weight"
-            type="number"
-            class="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-md bg-neutral-100 px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-pink-400/50 focus-visible:ring-pink-700/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-neutral-900"
-            placeholder="Weight"
-        />
+        <label for="final-weight">Final Weight</label>
+        <input id="final-weight" type="number" placeholder="Weight" />
     </section>
 
     <hr />
 
     <section class="mt-4">
         <div class="grid gap-3">
-            <label
-                for="score"
-                class="peer-disabled:cursor -not-allowed flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50"
-            >
-                Score Needed
-            </label>
-            <input
-                id="score"
-                type="number"
-                class="placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-md bg-neutral-100 px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-pink-400/50 focus-visible:ring-pink-700/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-neutral-900"
-                placeholder="Score"
-                readonly
-            />
+            <label for="score">Score Needed</label>
+            <input id="score" type="number" placeholder="Score" readonly />
         </div>
 
         <p id="message"></p>
