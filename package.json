@@ -37,7 +37,7 @@
         "remark-remove-comments": "^1.1.1",
         "sharp": "^0.34.5",
         "simple-icons-astro": "^15.19.0",
-        "tailwindcss": "^4.1.15",
+        "tailwindcss": "^4.1.18",
         "typescript": "^5.9.3",
         "unified": "^11.0.5"
     },
