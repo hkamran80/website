@@ -1,11 +1,7 @@
 ---
-layout: ../layouts/MarkdownPageLayout.astro
-title: Now - January 26, 2026
-subtitle: What I'm up to
+layout: ../layouts/NowLayout.astro
+date: January 26, 2026
 ---
-
-This is a [`/now` page](https://nownownow.com/about).
-See [my ideas](/ideas) and [the archive](/now/archive).
 
 ## Projects
 

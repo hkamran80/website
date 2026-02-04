@@ -1,0 +1,39 @@
+---
+import MarkdownPageLayout from "./MarkdownPageLayout.astro";
+import Link from "../components/Link.astro";
+
+const { frontmatter: originalFrontmatter } = Astro.props;
+
+const frontmatter = {
+    ...originalFrontmatter,
+    title: originalFrontmatter.archive
+        ? `Then (${originalFrontmatter.date})`
+        : "Now",
+    subtitle: originalFrontmatter.archive
+        ? `What I was up to on ${originalFrontmatter.date}`
+        : `What I'm up to (last updated: ${originalFrontmatter.date})`,
+};
+---
+
+<MarkdownPageLayout frontmatter={frontmatter}>
+    <p>
+        This is a <Link href="https://nownownow.com/about"
+            ><code>/now</code> page</Link
+        >. See <Link href="/ideas">my ideas</Link>{
+            frontmatter.archive ? ", " : " and"
+        }
+        <a href="/now/archive">the archive</a>{
+            frontmatter.archive ? ", or " : ""
+        }{
+            frontmatter.archive ? (
+                <>
+                    <a href="/now">what I'm currently up to</a>
+                </>
+            ) : (
+                ""
+            )
+        }.
+    </p>
+
+    <slot />
+</MarkdownPageLayout>
