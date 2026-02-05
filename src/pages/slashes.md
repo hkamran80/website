@@ -13,6 +13,7 @@ This is a collection of my [slash pages](https://slashpages.net).
 - [`/interests`](/interests): An always in progress list of my interests.
 - [`/now`](/now): What I'm up to
 - [`/posse`](/posse): My upcoming POSSE strategy
+- [`/self-hosted`](/self-hosted): Some of the services I self-host
 - [`/sitemap`](/sitemap): A list of regular pages on this site
 - [`/slashes`](/slashes): You are here
 - [`/style`](/style): My style guide

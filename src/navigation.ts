@@ -122,6 +122,11 @@ export const sitemap: SitemapItem[] = [
         name: "Projects",
         description: "A subset of my projects",
     },
+    {
+        href: "/self-hosted",
+        name: "Self-hosted Services",
+        description: "Some of the services I self-host",
+    },
     { href: "/sitemap", name: "Sitemap", description: "You are here!" },
     {
         href: "/slashes",
