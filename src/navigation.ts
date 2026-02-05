@@ -80,6 +80,11 @@ export const sitemap: SitemapItem[] = [
         description: "Projects I want to build, posts I want to write, etc.",
     },
     {
+        href: "/interests",
+        name: "Interests",
+        description: "An always in progress list of my interests",
+    },
+    {
         href: "/license",
         name: "License",
         description: "The license for this site",
