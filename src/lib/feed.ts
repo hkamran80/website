@@ -13,7 +13,7 @@ export const setupFeed = (site: string, feed: FeedTypes): Feed => {
         link: site.slice(0, -1),
     };
 
-    return new Feed({
+    const webFeed = new Feed({
         title: `${feeds[feed].name} | H. Kamran`,
         description: `${feeds[feed].description}. I'm a California-based developer who takes photos, is interested in public transit and data privacy and security, and follows government across the U.S., the EU, and the UK.`,
         id: site.slice(0, -1),
@@ -29,6 +29,12 @@ export const setupFeed = (site: string, feed: FeedTypes): Feed => {
         },
         author,
     });
+    webFeed.addExtension({
+        name: "source:blogroll",
+        objects: `${site}blogroll.opml`,
+    });
+
+    return webFeed;
 };
 
 export const generatePostsFeed = async (

@@ -1,10 +1,12 @@
-/blog/post/*    /posts/:splat           301
-/article/*      /posts/:splat           301
-/note/*         /posts/:splat           301
-/articles/*     /posts/:splat           301
-/notes/*        /posts/:splat           301
+/blog/post/*                        /posts/:splat           301
+/article/*                          /posts/:splat           301
+/note/*                             /posts/:splat           301
+/articles/*                         /posts/:splat           301
+/notes/*                            /posts/:splat           301
 
-/tag/*          /tags/:splat            301
+/tag/*                              /tags/:splat            301
 
-/creations/*    /projects/:splat        301
-/showcase/*     /projects/:splat        301
+/creations/*                        /projects/:splat        301
+/showcase/*                         /projects/:splat        301
+
+/.well-known/recommendations.opml   /blogroll.opml          301     
