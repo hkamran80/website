@@ -8,7 +8,7 @@
   Owner: H. Kamran
   Site: https://hkamran.com
   GitHub: @hkamran80
-  Social: https://hkamran.com/verify
+  Socials: https://hkamran.com/verify
   Location: California, United States
 
 /* THANKS */
@@ -17,7 +17,7 @@
 
 /* SITE */
 
-  Last update: 2026-01-19
+  Last update: 2026-02-04
   Language: English
   Standards: HTML5, CSS3, JS
   Components: Astro, Tailwind CSS
