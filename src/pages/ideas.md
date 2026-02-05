@@ -1,12 +1,16 @@
 ---
 layout: ../layouts/MarkdownPageLayout.astro
 title: Ideas
-subtitle: "Projects I want to build, posts I want to write, etc. Last updated: February 3, 2026."
+subtitle: "Projects I want to build, posts I want to write, etc. Last updated on February 4, 2026."
 ---
 
 ## Projects
 
 - [POSSE system](/posse)
+- Automatic status updates for [my legislation tracker](/interests#government)
+- Recently played music page
+- Watched list syndication
+- Automatic post alerts on [social media](/verify)
 
 ## Posts
 
