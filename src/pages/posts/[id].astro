@@ -121,16 +121,7 @@ const { headings, Content } = await render(post);
                     )
             }
 
-            {
-                headings && headings.length > 0 && post.data.toc !== false && (
-                    <nav class="article-toc">
-                        <h2 class="mb-2 text-lg font-bold">
-                            Table of Contents
-                        </h2>
-                        <TOC headings={headings} />
-                    </nav>
-                )
-            }
+            {post.data.toc !== false && <TOC headings={headings} />}
 
             <article
                 class="e-content mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
@@ -171,7 +162,8 @@ const { headings, Content } = await render(post);
 {
     /* BUG: Giscus is currently broken because it matches based on pathname. V5 uses `article/[id]` but V6 uses `posts/[id]`. The discussions will need to be manually updated before reactivation. */
 }
-{/*
+{
+    /*
 <script
     src="https://giscus.app/client.js"
     id="comments"
@@ -189,25 +181,5 @@ const { headings, Content } = await render(post);
     data-loading="lazy"
     crossorigin="anonymous"
     async></script>
-    */}
-
-<style>
-    @reference "../../styles/global.css";
-
-    .article-toc {
-        font-size: medium;
-        line-height: normal;
-        @apply mt-6;
-    }
-
-    @media (width >= 64rem) {
-        .article-toc {
-            float: right;
-            width: 180px;
-            position: sticky;
-            top: 80px;
-            font-size: medium;
-            line-height: normal;
-        }
-    }
-</style>
+    */
+}

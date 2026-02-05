@@ -32,26 +32,55 @@ const { headings } = Astro.props;
 const toc = buildHierarchy(headings);
 ---
 
-<nav class="toc">
-    <ul>
-        {toc.map((heading) => <TOCHeading heading={heading} />)}
-    </ul>
+{
+    headings && headings.length > 0 && (
+        <nav class="article-toc">
+            <h2 class="mb-2 text-lg font-bold">Table of Contents</h2>
+            <nav class="toc">
+                <ul>
+                    {toc.map((heading) => (
+                        <TOCHeading heading={heading} />
+                    ))}
+                </ul>
 
-    <svg class="toc-progress" xmlns="http://www.w3.org/2000/svg">
-        <path
-            class="toc-marker"
-            fill="none"
-            stroke-width="2"
-            stroke-dasharray="1 0 0 1000"
-            stroke-dashoffset="1"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-    </svg>
-</nav>
+                <svg class="toc-progress" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        class="toc-marker"
+                        fill="none"
+                        stroke-width="2"
+                        stroke-dasharray="1 0 0 1000"
+                        stroke-dashoffset="1"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </nav>
+        </nav>
+    )
+}
 
 <style>
-    @reference "../styles/global.css";
+    @reference "tailwindcss";
 
+    /* Positioning */
+    .article-toc {
+        font-size: medium;
+        line-height: normal;
+        @apply mt-6;
+    }
+
+    @media (width >= 64rem) {
+        .article-toc {
+            float: right;
+            width: 180px;
+            position: sticky;
+            top: 80px;
+            font-size: medium;
+            line-height: normal;
+        }
+    }
+
+    /* Path */
     svg.toc-progress {
         pointer-events: none;
         position: absolute;
