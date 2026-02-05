@@ -58,6 +58,18 @@ const headings: MarkdownHeading[] = [
                 class="mx-auto max-w-3xl"
             >
                 <Fragment slot="subtitle">
+                    <time datetime={analysis.data.published.toISOString()}
+                        >{
+                            analysis.data.published.toLocaleDateString(
+                                undefined,
+                                {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                },
+                            )
+                        }</time
+                    > &bull;
                     {getNumberWithOrdinal(Number(analysis.data.bill.congress))} Congress
                     &bull; <Link href={url} className="text-pink-600 underline"
                         >View on Congress.gov</Link

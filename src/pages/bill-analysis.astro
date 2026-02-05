@@ -40,6 +40,19 @@ const billAnalyses = await getCollection("billAnalyses");
                                 </p>
 
                                 <p class="text-c-light tracking-tight">
+                                    <time
+                                        datetime={analysis.data.published.toISOString()}
+                                    >
+                                        {analysis.data.published.toLocaleDateString(
+                                            undefined,
+                                            {
+                                                year: "numeric",
+                                                month: "long",
+                                                day: "numeric",
+                                            },
+                                        )}
+                                    </time>
+                                    &bull;
                                     {getNumberWithOrdinal(
                                         Number(analysis.data.bill.congress),
                                     )}{" "}
