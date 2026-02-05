@@ -1,0 +1,16 @@
+---
+import { getEntry } from "astro:content";
+import UtilityLayout from "../../layouts/UtilityLayout.astro";
+import TestFlightCleaner from "./TestFlightCleaner.tsx";
+
+const utility = await getEntry("utilities", "testflight-cleaner");
+---
+
+<UtilityLayout utility={utility}>
+    <p class="text-sm text-gray-400">
+        All data that you upload is stored locally in your browser. Nothing is
+        ever transmitted to any server.
+    </p>
+
+    <TestFlightCleaner client:load />
+</UtilityLayout>
