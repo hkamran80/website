@@ -3,10 +3,10 @@ import { clsx as classNames } from "clsx";
 import { ChevronsDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
-type ErrorFlag = "malformed" | "duplicate"
+type ErrorFlag = "malformed" | "duplicate";
 type CsvRow = string[] | { row: string[]; flag: ErrorFlag };
 type ParsingError = {
-    error: ErrorFlag | "missing-columns" | "many-columns"
+    error: ErrorFlag | "missing-columns" | "many-columns";
     message?: string;
     preventBypass?: boolean;
 };
@@ -20,7 +20,7 @@ const TestFlightCleaner = () => {
     const [duplicatedEmails, setDuplicatedEmails] = useState<string[]>([]);
     const [duplicateFlag, setDuplicateFlag] = useState<boolean>(false);
 
-    const [useHeaders, setUseHeaders] = useState<boolean>(false);
+    const [useHeaders, setUseHeaders] = useState<boolean>(true);
     const [leaveMalformedRows, setLeaveMalformedRows] = useState<boolean>(true);
 
     const processCsv = (csv: string, delimiter = ",") =>
@@ -46,6 +46,9 @@ const TestFlightCleaner = () => {
                     preventBypass: true,
                 },
             ]);
+
+            setErrorChecked(true);
+            return;
         }
 
         if (
@@ -350,7 +353,9 @@ const TestFlightCleaner = () => {
                                             "There are missing columns."}
 
                                         {error.message && (
-                                            <p>{error.message}</p>
+                                            <p className="text-sm">
+                                                {error.message}
+                                            </p>
                                         )}
                                     </li>
                                 ))}
@@ -366,7 +371,7 @@ const TestFlightCleaner = () => {
                                         Testers (
                                         {numberWithCommas(
                                             cleanedCsv.length -
-                                            (useHeaders ? 1 : 0),
+                                                (useHeaders ? 1 : 0),
                                         )}
                                         )
                                     </span>
@@ -420,16 +425,16 @@ const TestFlightCleaner = () => {
                                                         leaveMalformedRows
                                                             ? true
                                                             : !(
-                                                                !Array.isArray(
-                                                                    row,
-                                                                ) &&
-                                                                [
-                                                                    "malformed",
-                                                                    "duplicate",
-                                                                ].includes(
-                                                                    row.flag,
-                                                                )
-                                                            ),
+                                                                  !Array.isArray(
+                                                                      row,
+                                                                  ) &&
+                                                                  [
+                                                                      "malformed",
+                                                                      "duplicate",
+                                                                  ].includes(
+                                                                      row.flag,
+                                                                  )
+                                                              ),
                                                     )
                                                     .map(
                                                         (
@@ -442,31 +447,31 @@ const TestFlightCleaner = () => {
                                                                 }
                                                                 className={
                                                                     leaveMalformedRows &&
-                                                                        ((useHeaders &&
-                                                                            rowIndex !==
+                                                                    ((useHeaders &&
+                                                                        rowIndex !==
                                                                             0) ||
-                                                                            !useHeaders) &&
-                                                                        columnIndex ===
+                                                                        !useHeaders) &&
+                                                                    columnIndex ===
                                                                         2
                                                                         ? classNames(
-                                                                            (!Array.isArray(
-                                                                                row,
-                                                                            ) &&
-                                                                                row.flag ===
-                                                                                "duplicate") ||
-                                                                                duplicatedEmails?.includes(
-                                                                                    value,
-                                                                                )
-                                                                                ? "text-yellow-500"
-                                                                                : "",
-                                                                            !Array.isArray(
-                                                                                row,
-                                                                            ) &&
-                                                                                row.flag ===
-                                                                                "malformed"
-                                                                                ? "text-red-500"
-                                                                                : "",
-                                                                        )
+                                                                              (!Array.isArray(
+                                                                                  row,
+                                                                              ) &&
+                                                                                  row.flag ===
+                                                                                      "duplicate") ||
+                                                                                  duplicatedEmails?.includes(
+                                                                                      value,
+                                                                                  )
+                                                                                  ? "text-yellow-500"
+                                                                                  : "",
+                                                                              !Array.isArray(
+                                                                                  row,
+                                                                              ) &&
+                                                                                  row.flag ===
+                                                                                      "malformed"
+                                                                                  ? "text-red-500"
+                                                                                  : "",
+                                                                          )
                                                                         : undefined
                                                                 }
                                                             >
