@@ -4,7 +4,7 @@ title: Colophon
 ---
 
 This site is built with [Astro](https://astro.build) and hosted on [Netlify](https://netlify.com).
-Styling is currently done with [Tailwind CSS](https://tailwindcss.com).
+Styling is done with a mixture of CSS and [Tailwind CSS](https://tailwindcss.com).
 The source code is on [GitHub](https://github.com/hkamran80/website).
 
 I previously used Vue.js and Next.js for this site.
