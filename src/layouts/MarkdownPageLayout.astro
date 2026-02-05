@@ -2,20 +2,24 @@
 import Layout from "./Layout.astro";
 import Container from "../components/container.astro";
 import PageHeader from "../components/PageHeader.astro";
+import TOC from "../components/TOC.astro";
 
-const { frontmatter } = Astro.props;
+const { frontmatter, headings } = Astro.props;
 ---
 
 <Layout title={frontmatter.title}>
     <Container>
-        <main class="mx-auto max-w-3xl place-items-center pt-16 pb-8 md:pt-12">
+        <main class="place-items-center pt-16 pb-8 md:pt-12">
             <PageHeader
                 title={frontmatter.title}
                 subtitle={frontmatter.subtitle}
+                class="mx-auto max-w-3xl"
             />
 
+            {frontmatter.toc === true && <TOC headings={headings} />}
+
             <article
-                class="prose mt-6 max-w-none dark:prose-invert prose-a:text-pink-600"
+                class="mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
             >
                 <slot />
             </article>
