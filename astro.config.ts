@@ -17,6 +17,8 @@ import { loadEnv } from "vite";
 
 import netlify from "@astrojs/netlify";
 
+import react from "@astrojs/react";
+
 const site = "https://beta.hkamran.com";
 
 const isLocalLink = (link: string) =>
@@ -181,6 +183,7 @@ export default defineConfig({
             xslURL: "/sitemap.xslt",
             filter: (page) => !draftPosts.includes(page),
         }),
+        react(),
     ],
 
     experimental: {

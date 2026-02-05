@@ -4,6 +4,8 @@
     "exclude": ["dist"],
     "compilerOptions": {
         "lib": ["DOM"],
-        "verbatimModuleSyntax": true
+        "verbatimModuleSyntax": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "react"
     }
 }
