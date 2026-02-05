@@ -3,11 +3,13 @@ import Layout from "../../layouts/Layout.astro";
 import Container from "../../components/container.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import Link from "../../components/Link.astro";
+import TOC from "../../components/TOC.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import {
     chamberAbbreviation,
     getNumberWithOrdinal,
 } from "../../lib/bill-analysis.ts";
+import type { MarkdownHeading } from "astro";
 
 export const getStaticPaths = async () => {
     const billAnalyses = await getCollection("billAnalyses");
@@ -23,6 +25,23 @@ type Props = {
 
 const { analysis } = Astro.props;
 const url = `https://www.congress.gov/bill/${getNumberWithOrdinal(Number(analysis.data.bill.congress))}-congress/${analysis.data.bill.chamber}-bill/${analysis.data.bill.number}`;
+
+const headings: MarkdownHeading[] = [
+    { depth: 2, slug: "sponsors", text: "Sponsors" },
+    { depth: 2, slug: "summary", text: "Summary" },
+    { depth: 2, slug: "background", text: "Background" },
+    {
+        depth: 2,
+        slug: "organizations-support",
+        text: "Organizations in Support",
+    },
+    {
+        depth: 2,
+        slug: "organizations-oppose",
+        text: "Organizations in Opposition",
+    },
+    { depth: 2, slug: "recommendation", text: "Recommendation" },
+];
 ---
 
 <Layout
@@ -31,11 +50,12 @@ const url = `https://www.congress.gov/bill/${getNumberWithOrdinal(Number(analysi
     }. ${analysis.data.bill.number} | Bill Analysis`}
 >
     <Container>
-        <main class="mx-auto max-w-3xl place-items-center pt-2 pb-8 md:pt-8">
+        <main class="place-items-center pt-2 pb-8 md:pt-8">
             <PageHeader
                 title={`${
                     chamberAbbreviation[analysis.data.bill.chamber]
                 }. ${analysis.data.bill.number}: ${analysis.data.bill.title}`}
+                class="mx-auto max-w-3xl"
             >
                 <Fragment slot="subtitle">
                     {getNumberWithOrdinal(Number(analysis.data.bill.congress))} Congress
@@ -45,64 +65,85 @@ const url = `https://www.congress.gov/bill/${getNumberWithOrdinal(Number(analysi
                 </Fragment>
             </PageHeader>
 
+            <TOC headings={headings} />
+
             <article
-                class="prose mt-6 max-w-none dark:prose-invert prose-a:text-pink-600"
+                class="mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
             >
-                <p>
-                    <strong
-                        >Sponsor{
-                            analysis.data.bill.sponsors.length !== 1 && "s"
-                        }:</strong
-                    >
-                    {analysis.data.bill.sponsors.join(", ")}
+                <section>
+                    <p id="sponsors">
+                        <strong
+                            >Sponsor{
+                                analysis.data.bill.sponsors.length !== 1 && "s"
+                            }:</strong
+                        >
+                        {analysis.data.bill.sponsors.join(", ")}
 
-                    <br />
+                        <br />
 
-                    <strong
-                        >Cosponsor{
-                            analysis.data.bill.cosponsors.listed.length !== 1 ||
-                            analysis.data.bill.cosponsors.other !== 1
-                                ? "s"
-                                : ""
-                        }:</strong
-                    >
-                    {analysis.data.bill.cosponsors.listed.join(", ")}{
-                        analysis.data.bill.cosponsors.other > 0 ? (
-                            <>
-                                {" "}
-                                and{" "}
-                                <Link href={`${url}/cosponsors`}>
-                                    {analysis.data.bill.cosponsors.other}{" "}
-                                    {`other${analysis.data.bill.cosponsors.other !== 1 && "s"}`}
-                                </Link>
-                            </>
-                        ) : (
-                            ""
-                        )
-                    }
-                </p>
+                        <strong
+                            >Cosponsor{
+                                analysis.data.bill.cosponsors.listed.length !==
+                                    1 ||
+                                analysis.data.bill.cosponsors.other !== 1
+                                    ? "s"
+                                    : ""
+                            }:</strong
+                        >
+                        {analysis.data.bill.cosponsors.listed.join(", ")}{
+                            analysis.data.bill.cosponsors.other > 0 ? (
+                                <>
+                                    {" "}
+                                    and{" "}
+                                    <Link href={`${url}/cosponsors`}>
+                                        {analysis.data.bill.cosponsors.other}{" "}
+                                        {`other${analysis.data.bill.cosponsors.other !== 1 && "s"}`}
+                                    </Link>
+                                </>
+                            ) : (
+                                ""
+                            )
+                        }
+                    </p>
+                </section>
 
-                <p><strong>Summary:</strong> {analysis.data.summary}</p>
+                <section>
+                    <p id="summary">
+                        <strong>Summary:</strong>
+                        {analysis.data.summary}
+                    </p>
+                </section>
 
-                <p><strong>Background:</strong> {analysis.data.background}</p>
+                <section>
+                    <p id="background">
+                        <strong>Background:</strong>
+                        {analysis.data.background}
+                    </p>
+                </section>
 
-                <p>
-                    <strong>Organizations in Support:</strong>
-                    {analysis.data.organizations.support.join(", ")}
-                </p>
+                <section>
+                    <p id="organizations-support">
+                        <strong>Organizations in Support:</strong>
+                        {analysis.data.organizations.support.join(", ")}
+                    </p>
+                </section>
 
-                <p>
-                    <strong>Organizations in Opposition:</strong>
-                    {analysis.data.organizations.oppose.join(", ")}
-                </p>
+                <section>
+                    <p id="organizations-oppose">
+                        <strong>Organizations in Opposition:</strong>
+                        {analysis.data.organizations.oppose.join(", ")}
+                    </p>
+                </section>
 
-                <p>
-                    <strong>Recommendation:</strong>
-                    {
-                        analysis.data.recommendation.action[0].toUpperCase() +
-                            analysis.data.recommendation.action.slice(1)
-                    }. {analysis.data.recommendation.reason}
-                </p>
+                <section>
+                    <p id="recommendation">
+                        <strong>Recommendation:</strong>
+                        {
+                            analysis.data.recommendation.action[0].toUpperCase() +
+                                analysis.data.recommendation.action.slice(1)
+                        }. {analysis.data.recommendation.reason}
+                    </p>
+                </section>
             </article>
         </main>
     </Container>
