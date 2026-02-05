@@ -3,12 +3,13 @@ type Props = {
     title: string;
     subtitle?: string;
     description?: string;
+    class?: string;
 };
 
-const { title, subtitle, description } = Astro.props;
+const { title, subtitle, description, class: className } = Astro.props;
 ---
 
-<header class="flex flex-col space-y-2">
+<header class:list={["flex flex-col space-y-2", className]}>
     <h1 class="p-name text-3xl font-bold lg:text-4xl xl:text-5xl">
         {title}
     </h1>
