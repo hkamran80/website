@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/MarkdownPageLayout.astro
 title: My Setup
+toc: true
 ---
 
 Inspired by [many, many others](https://uses.tech).
