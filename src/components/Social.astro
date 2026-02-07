@@ -9,9 +9,11 @@ type Props = {
     size?: number;
     class?: string;
     liClass?: string;
+    /** Disable attribution for IndieAuth socials */
+    noAttribution?: boolean;
 };
 
-const { size: rawSize, class: className, liClass } = Astro.props;
+const { size: rawSize, class: className, liClass, noAttribution } = Astro.props;
 const size = rawSize ?? 20;
 ---
 
@@ -21,6 +23,7 @@ const size = rawSize ?? 20;
             href="https://github.com/hkamran80"
             rel="me authn"
             class:list={[liClass]}
+            noAttribution={noAttribution}
         >
             <Github size={size} />
         </Link>
@@ -30,6 +33,7 @@ const size = rawSize ?? 20;
             href="https://vmst.io/@hkamran"
             rel="me authn"
             class:list={[liClass]}
+            noAttribution={noAttribution}
         >
             <Mastodon size={size} />
         </Link>
@@ -39,6 +43,7 @@ const size = rawSize ?? 20;
             href="https://bsky.app/profile/hkamran.com"
             rel="me authn atproto"
             class:list={[liClass]}
+            noAttribution={noAttribution}
         >
             <Bluesky size={size} />
         </Link>
