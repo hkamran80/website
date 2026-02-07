@@ -11,7 +11,7 @@ subtitle: Some of the services I self-host. Last updated on February 4, 2026.
 
 - [**Authentik**](https://goauthentik.io)
 
-  SSO is a must in my opinion, especially when you have many services like I do.
+  SSO is a must in my opinion, especially when you host many services like I do.
   I've looked into other systems like Authelia and Pocket ID, but haven't considered switching yet.
 
 - [**FreshRSS**](https://freshrss.org)
