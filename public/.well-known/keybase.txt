@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/hkamran
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://hkamran.com
+  * I am hkamran (https://keybase.io/hkamran) on keybase.
+  * I have a public key ASCNyOuzAGvFiqonElV9RHo3GKe4skfdQEL0Ezv8MUyfiAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01206f346bd96ebf1b5510d41786ed1625301ffcc39222df6758522c3a3c7febdc3c0a",
+      "host": "keybase.io",
+      "kid": "01208dc8ebb3006bc58aaa2712557d447a3718a7b8b247dd4042f4133bfc314c9f880a",
+      "uid": "457227489b2f4b84a9224d4e8022a919",
+      "username": "hkamran"
+    },
+    "merkle_root": {
+      "ctime": 1683158293,
+      "hash": "62d151414d9a5d5a7c80d65b925d203db20883d545e8a1952fdf532b8b906ef9e0e01cc09deee0f3f587aac2b0208b43b9b77e9f27c83bdaf58c66bc816a0cec",
+      "hash_meta": "e23b78eb58d32efa63d33448b83655dce25d203015504de63f0c625bc2963638",
+      "seqno": 24410008
+    },
+    "service": {
+      "entropy": "ay5ouDgIX9JbcE0VIxxNF4FI",
+      "hostname": "hkamran.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.0.4"
+  },
+  "ctime": 1683158332,
+  "expire_in": 504576000,
+  "prev": "955081009654ebbf9d39900082d190e379a88dc222dda6e1bf3d662fb8d121e6",
+  "seqno": 15,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgjcjrswBrxYqqJxJVfUR6NxinuLJH3UBC9BM7/DFMn4gKp3BheWxvYWTESpcCD8QglVCBAJZU67+dOZAAgtGQ43mojcIi3abhvz1mL7jRIebEIBJlh3fYegs3zpEUwKDbBCG71OlejInky0SYL6t6WJOoAgHCo3NpZ8RA1sp9fOwOH+a7xJVGhqCi+Hpq0SyjMkNKuPyis+3PHGHLIBzVz+YWXDwV0/pZ5cAUOaSV2qdhtpXCUZwZG8SzDahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIJ5glgnc0QwmeMJB6IIgX5e81EWGIdr46hWhBDJsjgd/o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/hkamran
+
+==================================================================
