@@ -2,6 +2,7 @@
 layout: ../layouts/MarkdownPageLayout.astro
 title: Verify
 subtitle: Verify my public identities
+toc: true
 ---
 
 If you see an account that looks like it might be me but isn't listed here, please let me know.
