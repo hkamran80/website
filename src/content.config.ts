@@ -2,6 +2,8 @@ import { defineCollection, z } from "astro:content";
 import postsLoader from "./lib/postsLoader";
 import unsplashLoader from "./lib/unsplashLoader";
 import billAnalysesLoader from "./lib/bill-analyses-loader";
+import { file } from "astro/loaders";
+import { parseOpml } from "feedsmith";
 
 const posts = defineCollection({
     loader: postsLoader({
@@ -103,6 +105,37 @@ const billAnalyses = defineCollection({
     loader: billAnalysesLoader(),
 });
 
+const blogroll = defineCollection({
+    loader: file("public/blogroll.opml", {
+        parser: (contents) => {
+            const opml = parseOpml(contents);
+
+            if (!opml.body || !opml.body.outlines) return [];
+
+            return opml.body.outlines.map((category) => ({
+                id: category.text!.includes(":")
+                    ? category.text!.split(": ")[1]
+                    : category.text,
+                entries: category.outlines!.map((entry) => ({
+                    name: entry.text,
+                    url: entry.htmlUrl,
+                    feedUrl: entry.xmlUrl,
+                })),
+            }));
+        },
+    }),
+    schema: z.object({
+        id: z.string(),
+        entries: z
+            .object({
+                name: z.string(),
+                url: z.string().url(),
+                feedUrl: z.string().url(),
+            })
+            .array(),
+    }),
+});
+
 export const collections = {
     posts,
     showcase,
@@ -110,4 +143,5 @@ export const collections = {
     nebulaChangelog,
     utilities,
     billAnalyses,
+    blogroll,
 };
