@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/MarkdownPageLayout.astro
 title: Ideas
-subtitle: "Projects I want to build, posts I want to write, etc. Last updated on February 4, 2026."
+subtitle: "Projects I want to build, posts I want to write, etc. Last updated on February 7, 2026."
 ---
 
 ## Projects
@@ -23,3 +23,4 @@ subtitle: "Projects I want to build, posts I want to write, etc. Last updated on
 - Open mobility and GTFS
 - How federal agencies may be breaking the law by not adopting Login.gov
 - Lobbying and campaign financing in the aftermath of [*Citizens United v. FEC*](https://en.wikipedia.org/wiki/Citizens_United_v._FEC)
+- Overview and analysis of various transit projects (e.g. IBX, COASTER realignment, Purple Line, BART extension, etc.)
