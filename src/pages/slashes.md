@@ -6,6 +6,7 @@ title: Slash Pages
 This is a collection of my [slash pages](https://slashpages.net).
 
 - [`/ai`](/ai): How I do not use "AI"
+- [`/blogroll`](/blogroll): A list of sites that I read, follow, or recommend
 - [`/colophon`](/colophon): How this site is built
 - [`/defaults`](/defaults): A list of apps I use
 - [`/feeds`](/feeds): A list of my web feeds

@@ -63,6 +63,11 @@ export const sitemap: SitemapItem[] = [
         description: "Analyses of legislative bills I have compiled",
     },
     {
+        href: "/blogroll",
+        name: "Blogroll",
+        description: "A list of sites that I read, follow, or recommend",
+    },
+    {
         href: "/colophon",
         name: "Colophon",
         description: "How this site is made",
