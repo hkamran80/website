@@ -15,62 +15,57 @@ const photos = (await getCollection("photos")).sort((a, b) =>
 
 <Layout title="Photos">
     <Container>
-        <main class="place-items-center pt-2 pb-8 md:pt-8">
-            <PageHeader title="Photos">
-                <Fragment slot="subtitle">
-                    Photos are subject to <Link
-                        href="https://unsplash.com/license"
-                        class="underline underline-offset-2"
-                        >the Unsplash License</Link
-                    >. Attribution is strongly recommended.
-                </Fragment>
-            </PageHeader>
+        <PageHeader title="Photos">
+            <Fragment slot="subtitle">
+                Photos are subject to <Link
+                    href="https://unsplash.com/license"
+                    class="underline underline-offset-2"
+                    >the Unsplash License</Link
+                >. Attribution is strongly recommended.
+            </Fragment>
+        </PageHeader>
 
-            <section class="mt-8">
-                <Masonry
-                    breakpointCols={{
-                        default: 4,
-                        1200: 3,
-                        700: 2,
-                        500: 1,
-                    }}
-                    class="flex gap-4"
-                    columnClass=""
-                >
-                    {
-                        photos.map((photo, index) => (
-                            <Link
-                                href={photo.data.links.html}
-                                data-index={index}
-                            >
-                                <figure class="mb-4">
-                                    <Image
-                                        src={photo.data.urls.regular}
-                                        alt={
-                                            photo.data.description ||
-                                            "No description"
-                                        }
-                                        inferSize
-                                        loading="lazy"
-                                    />
+        <section class="mt-8">
+            <Masonry
+                breakpointCols={{
+                    default: 4,
+                    1200: 3,
+                    700: 2,
+                    500: 1,
+                }}
+                class="flex gap-4"
+                columnClass=""
+            >
+                {
+                    photos.map((photo, index) => (
+                        <Link href={photo.data.links.html} data-index={index}>
+                            <figure class="mb-4">
+                                <Image
+                                    src={photo.data.urls.regular}
+                                    alt={
+                                        photo.data.description ||
+                                        "No description"
+                                    }
+                                    inferSize
+                                    loading="lazy"
+                                />
 
-                                    {photo.data.description && (
-                                        <figcaption class="text-c-light">
-                                            {photo.data.description}
-                                        </figcaption>
-                                    )}
-                                </figure>
-                            </Link>
-                        ))
-                    }
-                </Masonry>
-            </section>
-        </main>
+                                {photo.data.description && (
+                                    <figcaption class="text-c-light">
+                                        {photo.data.description}
+                                    </figcaption>
+                                )}
+                            </figure>
+                        </Link>
+                    ))
+                }
+            </Masonry>
+        </section>
     </Container>
 </Layout>
 
 <style>
-    @reference "../styles/global.css";
+    @reference "tailwindcss";
 
     figure img {
         @apply w-full rounded-md;

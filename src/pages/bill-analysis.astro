@@ -13,57 +13,54 @@ const billAnalyses = await getCollection("billAnalyses");
 ---
 
 <Layout title="Bill Analysis">
-    <Container>
-        <main class="mx-auto max-w-3xl place-items-center pt-2 pb-8 md:pt-8">
-            <PageHeader title="Bill Analysis">
-                <Fragment slot="description">
-                    Subscribe to <Link
-                        href="/feeds"
-                        class="text-pink-600 underline">my web feeds</Link
-                    >
-                </Fragment>
-            </PageHeader>
+    <Container width="narrow">
+        <PageHeader title="Bill Analysis">
+            <Fragment slot="description">
+                Subscribe to <Link href="/feeds" class="text-pink-600 underline"
+                    >my web feeds</Link
+                >
+            </Fragment>
+        </PageHeader>
 
-            <section class="mt-8 flex flex-col space-y-6">
-                {
-                    billAnalyses.map((analysis) => (
-                        <Link href={`/bill-analysis/${analysis.id}`}>
-                            <article class="space-y-1">
-                                <p class="text-xl font-semibold">
-                                    <>
-                                        {chamberAbbreviation[
-                                            analysis.data.bill.chamber
-                                        ] + "."}
-                                    </>
-                                    {analysis.data.bill.number}:{" "}
-                                    {analysis.data.bill.title}
-                                </p>
+        <section class="mt-8 flex flex-col space-y-6">
+            {
+                billAnalyses.map((analysis) => (
+                    <Link href={`/bill-analysis/${analysis.id}`}>
+                        <article class="space-y-1">
+                            <p class="text-xl font-semibold">
+                                <>
+                                    {chamberAbbreviation[
+                                        analysis.data.bill.chamber
+                                    ] + "."}
+                                </>
+                                {analysis.data.bill.number}:{" "}
+                                {analysis.data.bill.title}
+                            </p>
 
-                                <p class="text-c-light tracking-tight">
-                                    <time
-                                        datetime={analysis.data.published.toISOString()}
-                                    >
-                                        {analysis.data.published.toLocaleDateString(
-                                            undefined,
-                                            {
-                                                year: "numeric",
-                                                month: "long",
-                                                day: "numeric",
-                                            },
-                                        )}
-                                    </time>
-                                    &bull;
-                                    {getNumberWithOrdinal(
-                                        Number(analysis.data.bill.congress),
-                                    )}{" "}
-                                    Congress, sponsored by{" "}
-                                    {analysis.data.bill.sponsors.join(", ")}
-                                </p>
-                            </article>
-                        </Link>
-                    ))
-                }
-            </section>
-        </main>
+                            <p class="text-c-light tracking-tight">
+                                <time
+                                    datetime={analysis.data.published.toISOString()}
+                                >
+                                    {analysis.data.published.toLocaleDateString(
+                                        undefined,
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )}
+                                </time>
+                                &bull;
+                                {getNumberWithOrdinal(
+                                    Number(analysis.data.bill.congress),
+                                )}{" "}
+                                Congress, sponsored by{" "}
+                                {analysis.data.bill.sponsors.join(", ")}
+                            </p>
+                        </article>
+                    </Link>
+                ))
+            }
+        </section>
     </Container>
 </Layout>

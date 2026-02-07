@@ -9,20 +9,18 @@ const { frontmatter, headings } = Astro.props;
 
 <Layout title={frontmatter.title}>
     <Container>
-        <main class="place-items-center pt-16 pb-8 md:pt-12">
-            <PageHeader
-                title={frontmatter.title}
-                subtitle={frontmatter.subtitle}
-                class="mx-auto max-w-3xl"
-            />
+        <PageHeader
+            title={frontmatter.title}
+            subtitle={frontmatter.subtitle}
+            class="mx-auto max-w-3xl"
+        />
 
-            {frontmatter.toc === true && <TOC headings={headings} />}
+        {frontmatter.toc === true && <TOC headings={headings} />}
 
-            <article
-                class="mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
-            >
-                <slot />
-            </article>
-        </main>
+        <article
+            class="mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
+        >
+            <slot />
+        </article>
     </Container>
 </Layout>

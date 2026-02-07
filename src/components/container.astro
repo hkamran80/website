@@ -1,7 +1,17 @@
 ---
-const { class: className } = Astro.props;
+type Props = {
+    class?: string;
+    width?: "narrow";
+};
+const { class: className, width } = Astro.props;
 ---
 
-<div class:list={["mx-auto max-w-(--breakpoint-xl) px-5", className]}>
+<main
+    class:list={[
+        "mx-auto max-w-(--breakpoint-xl) place-items-center px-5 pt-2 pb-8 md:pt-8",
+        className,
+        width === "narrow" && "mx-auto max-w-3xl",
+    ]}
+>
     <slot />
-</div>
+</main>

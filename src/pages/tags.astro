@@ -16,26 +16,24 @@ const tags = Array.from(
 ---
 
 <Layout title="Tags">
-    <Container>
-        <main class="mx-auto max-w-3xl place-items-center pt-2 pb-8 md:pt-8">
-            <PageHeader title="Tags" />
+    <Container width="narrow">
+        <PageHeader title="Tags" />
 
-            <section class="mt-8">
-                <ul class="grid grid-cols-1 gap-2 md:grid-cols-2">
-                    {
-                        tags.map((tag) => (
-                            <li>
-                                <Link
-                                    href={`/tags/${slugify(tag)}`}
-                                    class="text-pink-600 underline"
-                                >
-                                    {tag}
-                                </Link>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </section>
-        </main>
+        <section class="mt-8">
+            <ul class="grid grid-cols-1 gap-2 md:grid-cols-2">
+                {
+                    tags.map((tag) => (
+                        <li>
+                            <Link
+                                href={`/tags/${slugify(tag)}`}
+                                class="text-pink-600 underline"
+                            >
+                                {tag}
+                            </Link>
+                        </li>
+                    ))
+                }
+            </ul>
+        </section>
     </Container>
 </Layout>

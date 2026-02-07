@@ -27,135 +27,126 @@ const { headings, Content } = await render(post);
 
 <Layout title={post.data.title}>
     <PostStructuredData slot="structured-data" post={post} />
-    <Container>
-        <main class="h-entry place-items-center pt-2 pb-8 md:pt-8">
-            <PageHeader
-                title={post.data.title}
-                subtitle={post.data.description}
-            >
-                <Fragment slot="description">
-                    {
-                        post.data.status === "updated" && (
-                            <time>
-                                {new Intl.DateTimeFormat("en", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                }).formatRange(
-                                    post.data.published,
-                                    post.data.updated,
-                                )}
-                            </time>
-                        )
-                    }
-
-                    {
-                        post.data.status !== "draft" ? (
-                            <time
-                                datetime={post.data.published!.toISOString()}
-                                class={`dt-published published ${post.data.updated && "hidden"}`}
-                            >
-                                {post.data.published!.toLocaleDateString(
-                                    undefined,
-                                    {
-                                        year: "numeric",
-                                        month: "long",
-                                        day: "numeric",
-                                    },
-                                )}
-                            </time>
-                        ) : (
-                            "Unpublished"
-                        )
-                    }
-
-                    {
-                        post.data.status === "updated" && (
-                            <time
-                                datetime={post.data.updated!.toISOString()}
-                                class="dt-updated updated hidden"
-                            >
-                                {post.data.updated!.toLocaleDateString(
-                                    undefined,
-                                    {
-                                        year: "numeric",
-                                        month: "long",
-                                        day: "numeric",
-                                    },
-                                )}
-                            </time>
-                        )
-                    }
-
-                    &bull;
-
-                    {
-                        post.data.tags.map((tag, index) => (
-                            <Fragment>
-                                <Link
-                                    href={`/tags/${slugify(tag)}`}
-                                    class="p-category text-pink-700 transition-colors duration-300 hover:text-pink-600"
-                                >
-                                    {tag}
-                                </Link>
-                                {index !== post.data.tags.length - 1 ? "⋅" : ""}
-                            </Fragment>
-                        ))
-                    }
-                </Fragment>
-            </PageHeader>
-
-            {
-                post.data.type === "article" &&
-                    post.data.status !== "draft" && (
-                        <section class="mx-auto mt-6 max-w-3xl">
-                            <Image
-                                src={post.data.img!.src}
-                                alt={post.data.img!.alt}
-                                width={2000}
-                                height={1000}
-                                class="u-photo rounded-md"
-                                priority
-                            />
-                        </section>
-                    )
-            }
-
-            {post.data.toc !== false && <TOC headings={headings} />}
-
-            <article
-                class="e-content mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
-            >
+    <Container class="h-entry">
+        <PageHeader title={post.data.title} subtitle={post.data.description}>
+            <Fragment slot="description">
                 {
-                    post.data.oldNotice && (
-                        <div
-                            class="markdown-alert markdown-alert-warning"
-                            dir="auto"
-                        >
-                            <p class="markdown-alert-title" dir="auto">
-                                <svg
-                                    class="octicon"
-                                    viewBox="0 0 16 16"
-                                    width="16"
-                                    height="16"
-                                    aria-hidden="true"
-                                >
-                                    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
-                                </svg>
-                            </p>
-                            <p>
-                                This article was written a while ago and may be
-                                out of date.
-                            </p>
-                        </div>
+                    post.data.status === "updated" && (
+                        <time>
+                            {new Intl.DateTimeFormat("en", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            }).formatRange(
+                                post.data.published,
+                                post.data.updated,
+                            )}
+                        </time>
                     )
                 }
 
-                <Content />
-            </article>
+                {
+                    post.data.status !== "draft" ? (
+                        <time
+                            datetime={post.data.published!.toISOString()}
+                            class={`dt-published published ${post.data.updated && "hidden"}`}
+                        >
+                            {post.data.published!.toLocaleDateString(
+                                undefined,
+                                {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                },
+                            )}
+                        </time>
+                    ) : (
+                        "Unpublished"
+                    )
+                }
 
-            <section class="giscus mx-auto mt-6 max-w-3xl"></section>
-        </main>
+                {
+                    post.data.status === "updated" && (
+                        <time
+                            datetime={post.data.updated!.toISOString()}
+                            class="dt-updated updated hidden"
+                        >
+                            {post.data.updated!.toLocaleDateString(undefined, {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })}
+                        </time>
+                    )
+                }
+
+                &bull;
+
+                {
+                    post.data.tags.map((tag, index) => (
+                        <Fragment>
+                            <Link
+                                href={`/tags/${slugify(tag)}`}
+                                class="p-category text-pink-700 transition-colors duration-300 hover:text-pink-600"
+                            >
+                                {tag}
+                            </Link>
+                            {index !== post.data.tags.length - 1 ? "⋅" : ""}
+                        </Fragment>
+                    ))
+                }
+            </Fragment>
+        </PageHeader>
+
+        {
+            post.data.type === "article" && post.data.status !== "draft" && (
+                <section class="mx-auto mt-6 max-w-3xl">
+                    <Image
+                        src={post.data.img!.src}
+                        alt={post.data.img!.alt}
+                        width={2000}
+                        height={1000}
+                        class="u-photo rounded-md"
+                        priority
+                    />
+                </section>
+            )
+        }
+
+        {post.data.toc !== false && <TOC headings={headings} />}
+
+        <article
+            class="e-content mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
+        >
+            {
+                post.data.oldNotice && (
+                    <div
+                        class="markdown-alert markdown-alert-warning"
+                        dir="auto"
+                    >
+                        <p class="markdown-alert-title" dir="auto">
+                            <svg
+                                class="octicon"
+                                viewBox="0 0 16 16"
+                                width="16"
+                                height="16"
+                                aria-hidden="true"
+                            >
+                                <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
+                            </svg>
+                        </p>
+                        <p>
+                            This article was written a while ago and may be out
+                            of date.
+                        </p>
+                    </div>
+                )
+            }
+
+            <Content />
+        </article>
+
+        <section class="giscus mx-auto mt-6 max-w-3xl"></section>
     </Container>
 </Layout>
 

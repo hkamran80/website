@@ -9,28 +9,24 @@ const { utility } = Astro.props;
 ---
 
 <Layout title={utility.data.name}>
-    <Container>
-        <main class="mx-auto max-w-3xl place-items-center pt-16 pb-8 md:pt-12">
-            <PageHeader
-                title={utility.data.name}
-                subtitle={utility.data.description}
-            />
+    <Container width="narrow">
+        <PageHeader
+            title={utility.data.name}
+            subtitle={utility.data.description}
+        />
 
-            <article
-                id="utility"
-                class="prose mt-6 max-w-none dark:prose-invert prose-a:text-pink-600"
-            >
-                <noscript>
-                    <p
-                        class="rounded-md bg-pink-300 px-4 py-2 dark:bg-pink-700"
-                    >
-                        To use the {utility.data.name}, you will need to enable
-                        JavaScript.
-                    </p>
-                </noscript>
+        <article
+            id="utility"
+            class="prose mt-6 max-w-none dark:prose-invert prose-a:text-pink-600"
+        >
+            <noscript>
+                <p class="rounded-md bg-pink-300 px-4 py-2 dark:bg-pink-700">
+                    To use the {utility.data.name}, you will need to enable
+                    JavaScript.
+                </p>
+            </noscript>
 
-                <slot />
-            </article>
-        </main>
+            <slot />
+        </article>
     </Container>
 </Layout>

@@ -40,19 +40,17 @@ const posts = (
 ---
 
 <Layout title={`${tag} | Posts`}>
-    <Container>
-        <main class="mx-auto max-w-3xl place-items-center pt-2 pb-8 md:pt-8">
-            <PageHeader title="Posts" subtitle={`Tagged "${tag}"`} />
+    <Container width="narrow">
+        <PageHeader title="Posts" subtitle={`Tagged "${tag}"`} />
 
-            <section class="mt-8 flex flex-col space-y-6">
-                {
-                    posts.map((post) => (
-                        <Link href={`/posts/${post.id}`}>
-                            <PostCard post={post} />
-                        </Link>
-                    ))
-                }
-            </section>
-        </main>
+        <section class="mt-8 flex flex-col space-y-6">
+            {
+                posts.map((post) => (
+                    <Link href={`/posts/${post.id}`}>
+                        <PostCard post={post} />
+                    </Link>
+                ))
+            }
+        </section>
     </Container>
 </Layout>

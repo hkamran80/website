@@ -1,35 +1,32 @@
 ---
-import Container from "./container.astro";
 import Link from "./Link.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import { links } from "../navigation.ts";
 ---
 
-<Container>
-    <header id="navigation">
-        <nav
-            class="my-5 flex flex-col items-start justify-between md:items-center lg:flex-row"
-        >
-            <div class="flex w-full items-center justify-between lg:w-auto">
-                <Link href="/" class="text-lg font-bold">H. Kamran</Link>
-            </div>
+<header id="navigation" class="mx-auto max-w-(--breakpoint-xl) px-5">
+    <nav
+        class="my-5 flex flex-col items-start justify-between md:items-center lg:flex-row"
+    >
+        <div class="flex w-full items-center justify-between lg:w-auto">
+            <Link href="/" class="text-lg font-bold">H. Kamran</Link>
+        </div>
 
-            <ul class="flex flex-row gap-4 lg:gap-1">
-                {
-                    links.map((link) => (
-                        <li>
-                            <Link
-                                href={link.href}
-                                class="flex items-center py-2 text-gray-600 hover:text-gray-900 lg:px-3 dark:text-gray-400 dark:hover:text-gray-100"
-                            >
-                                {link.name}
-                            </Link>
-                        </li>
-                    ))
-                }
-            </ul>
+        <ul class="flex flex-row gap-4 lg:gap-1">
+            {
+                links.map((link) => (
+                    <li>
+                        <Link
+                            href={link.href}
+                            class="flex items-center py-2 text-gray-600 hover:text-gray-900 lg:px-3 dark:text-gray-400 dark:hover:text-gray-100"
+                        >
+                            {link.name}
+                        </Link>
+                    </li>
+                ))
+            }
+        </ul>
 
-            <ThemeToggle />
-        </nav>
-    </header>
-</Container>
+        <ThemeToggle />
+    </nav>
+</header>

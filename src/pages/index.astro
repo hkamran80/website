@@ -26,115 +26,99 @@ const latestBillAnalysis = (await getCollection("billAnalyses")).sort((a, b) =>
 
 <Layout>
     <Container>
-        <main class="place-items-center pt-2 pb-8 md:pt-8">
-            <section>
-                <h1
-                    class="text-5xl font-bold text-pink-600 lg:text-6xl lg:tracking-tight xl:text-7xl xl:tracking-tighter"
-                >
-                    Hello world, I'm H. Kamran
-                </h1>
-                <p class="text-c-light mt-4 max-w-4xl text-lg">
-                    I'm a California-based developer who <Link
-                        href="/photos"
-                        class="text-c-light-hover underline">takes photos</Link
-                    >, is interested in public transit and <Link
-                        href="/posts/california-drop"
-                        class="text-c-light-hover underline">data privacy</Link
-                    > and
-                    <Link
-                        href="/posts/securing-your-digital-life"
-                        class="text-c-light-hover underline">security</Link
-                    >, and <Link
-                        href="/bill-analysis"
-                        class="text-c-light-hover underline"
-                        >follows government</Link
-                    > across the U.S., the EU, and the UK.
-                </p>
+        <section>
+            <h1
+                class="text-5xl font-bold text-pink-600 lg:text-6xl lg:tracking-tight xl:text-7xl xl:tracking-tighter"
+            >
+                Hello world, I'm H. Kamran
+            </h1>
+            <p class="text-c-light mt-4 max-w-4xl text-lg">
+                I'm a California-based developer who <Link
+                    href="/photos"
+                    class="text-c-light-hover underline">takes photos</Link
+                >, is interested in public transit and <Link
+                    href="/posts/california-drop"
+                    class="text-c-light-hover underline">data privacy</Link
+                > and
+                <Link
+                    href="/posts/securing-your-digital-life"
+                    class="text-c-light-hover underline">security</Link
+                >, and <Link
+                    href="/bill-analysis"
+                    class="text-c-light-hover underline"
+                    >follows government</Link
+                > across the U.S., the EU, and the UK.
+            </p>
 
-                <Social
-                    class="text-c-light mt-4"
-                    liClass="text-c-light-hover"
-                />
-            </section>
+            <Social class="text-c-light mt-4" liClass="text-c-light-hover" />
+        </section>
 
-            <section class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-                <section class="space-y-8">
-                    <article>
-                        <header class="text-c-light mb-2">Latest Post</header>
-                        <Link href={`/posts/${latestPost.id}`}>
-                            <p class="text-lg font-semibold">
-                                {latestPost.data.title}
-                            </p>
-                            <p class="text-c-light tracking-tight">
-                                {latestPost.data.description}
-                            </p>
-                            <p class="text-c-lighter tracking-tight">
-                                <time
-                                    datetime={latestPost.data.published!.toISOString()}
-                                    class="dt-published published"
-                                >
-                                    {
-                                        latestPost.data.published!.toLocaleDateString(
-                                            undefined,
-                                            {
-                                                year: "numeric",
-                                                month: "long",
-                                                day: "numeric",
-                                            },
-                                        )
-                                    }
-                                </time>
-                            </p>
-                        </Link>
-                    </article>
-
-                    <article>
-                        <header class="text-c-light mb-2">
-                            Latest Bill Analysis
-                        </header>
-                        <Link href={`/bill-analysis/${latestBillAnalysis.id}`}>
-                            <p class="text-lg font-semibold">
+        <section class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+            <section class="space-y-8">
+                <article>
+                    <header class="text-c-light mb-2">Latest Post</header>
+                    <Link href={`/posts/${latestPost.id}`}>
+                        <p class="text-lg font-semibold">
+                            {latestPost.data.title}
+                        </p>
+                        <p class="text-c-light tracking-tight">
+                            {latestPost.data.description}
+                        </p>
+                        <p class="text-c-lighter tracking-tight">
+                            <time
+                                datetime={latestPost.data.published!.toISOString()}
+                                class="dt-published published"
+                            >
                                 {
-                                    chamberAbbreviation[
-                                        latestBillAnalysis.data.bill.chamber
-                                    ]
-                                }. {latestBillAnalysis.data.bill.number}: {
-                                    latestBillAnalysis.data.bill.title
-                                }
-                            </p>
-                            <p class="text-c-light tracking-tight">
-                                {
-                                    getNumberWithOrdinal(
-                                        Number(
-                                            latestBillAnalysis.data.bill
-                                                .congress,
-                                        ),
-                                    )
-                                }{" "}
-                                Congress, sponsored by{" "}
-                                {
-                                    latestBillAnalysis.data.bill.sponsors.join(
-                                        ", ",
+                                    latestPost.data.published!.toLocaleDateString(
+                                        undefined,
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
                                     )
                                 }
-                            </p>
-                        </Link>
-                    </article>
-                </section>
+                            </time>
+                        </p>
+                    </Link>
+                </article>
 
-                <div>
-                    <header class="text-c-light">Featured Projects</header>
-                    <main>
-                        <ul class="gap-4">
+                <article>
+                    <header class="text-c-light mb-2">
+                        Latest Bill Analysis
+                    </header>
+                    <Link href={`/bill-analysis/${latestBillAnalysis.id}`}>
+                        <p class="text-lg font-semibold">
                             {
-                                showcase.map((item) => (
-                                    <ShowcaseItem item={item} />
-                                ))
+                                chamberAbbreviation[
+                                    latestBillAnalysis.data.bill.chamber
+                                ]
+                            }. {latestBillAnalysis.data.bill.number}: {
+                                latestBillAnalysis.data.bill.title
                             }
-                        </ul>
-                    </main>
-                </div>
+                        </p>
+                        <p class="text-c-light tracking-tight">
+                            {
+                                getNumberWithOrdinal(
+                                    Number(
+                                        latestBillAnalysis.data.bill.congress,
+                                    ),
+                                )
+                            }{" "}
+                            Congress, sponsored by{" "}
+                            {latestBillAnalysis.data.bill.sponsors.join(", ")}
+                        </p>
+                    </Link>
+                </article>
             </section>
-        </main>
+
+            <section>
+                <header class="text-c-light">Featured Projects</header>
+                <ul class="gap-4">
+                    {showcase.map((item) => <ShowcaseItem item={item} />)}
+                </ul>
+            </section>
+        </section>
     </Container>
 </Layout>
