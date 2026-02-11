@@ -60,6 +60,8 @@ export const getPosts = async (apiKey: string) => {
             const postId = branch.name.split("/")[1];
             const post = data.find(({ id }) => id === postId);
 
+            if (!("branch" in post)) post.branch = branch.name;
+
             if (post.status === "draft") posts.push(post);
         }
     }
