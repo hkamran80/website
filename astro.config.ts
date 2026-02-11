@@ -54,7 +54,7 @@ const { GITHUB_API_KEY } = loadEnv(
 );
 const draftPosts = (await getPosts(GITHUB_API_KEY as string))
     .filter((post) => post.status === "draft")
-    .map((post) => `${site}/${post.type + "s"}/${post.id}`);
+    .map((post) => `${site}/posts/${post.id}`);
 
 // https://astro.build/config
 export default defineConfig({
