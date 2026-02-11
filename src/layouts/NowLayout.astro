@@ -22,12 +22,12 @@ const frontmatter = {
         >. See <Link href="/ideas">my ideas</Link>{
             frontmatter.archive ? ", " : " and"
         }
-        <a href="/now/archive">the archive</a>{
+        <Link href="/now/archive">the archive</Link>{
             frontmatter.archive ? ", or " : ""
         }{
             frontmatter.archive ? (
                 <>
-                    <a href="/now">what I'm currently up to</a>
+                    <Link href="/now">what I'm currently up to</Link>
                 </>
             ) : (
                 ""
