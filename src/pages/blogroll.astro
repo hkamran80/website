@@ -46,12 +46,17 @@ const headings: MarkdownHeading[] = blogroll.map(({ id }) => ({
                                 {category.data.entries.map((entry) => (
                                     <tr>
                                         <td>
-                                            <a href={entry.url}>{entry.name}</a>
+                                            <Link href={entry.url}>
+                                                {entry.name}
+                                            </Link>
                                         </td>
                                         <td>
-                                            <a href={entry.feedUrl}>
+                                            <Link
+                                                href={entry.feedUrl}
+                                                noAttribution
+                                            >
                                                 Subscribe
-                                            </a>
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))}
