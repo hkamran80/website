@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Link from "../components/Link.astro";
+import { getCollection } from "astro:content";
+
+const userscripts = (await getCollection("userscripts")).sort((a, b) =>
+    a.data.name.localeCompare(b.data.name),
+);
+---
+
+<Layout title="Userscripts">
+    <Container width="narrow">
+        <PageHeader title="Userscripts" />
+
+        <section class="mt-8 flex flex-col space-y-6">
+            {
+                userscripts.map((userscript) => (
+                    <article class="space-y-0.5">
+                        <p class="p-name entry-title text-xl font-semibold">
+                            <Link href={userscript.data.url}>
+                                {userscript.data.name}
+                            </Link>
+                        </p>
+
+                        <p class="p-summary entry-summary text-c-light tracking-tight">
+                            {userscript.data.description}
+                        </p>
+
+                        <p class="text-c-lighter tracking-tight">
+                            Version {userscript.data.version}
+                        </p>
+                    </article>
+                ))
+            }
+        </section>
+    </Container>
+</Layout>

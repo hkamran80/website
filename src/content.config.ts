@@ -2,6 +2,7 @@ import { defineCollection, z } from "astro:content";
 import postsLoader from "./lib/postsLoader";
 import unsplashLoader from "./lib/unsplashLoader";
 import billAnalysesLoader from "./lib/bill-analyses-loader";
+import userscriptsLoader from "./lib/userscripts-loader";
 import { file } from "astro/loaders";
 import { parseOpml } from "feedsmith";
 
@@ -136,6 +137,10 @@ const blogroll = defineCollection({
     }),
 });
 
+const userscripts = defineCollection({
+    loader: userscriptsLoader(),
+});
+
 export const collections = {
     posts,
     showcase,
@@ -144,4 +149,5 @@ export const collections = {
     utilities,
     billAnalyses,
     blogroll,
+    userscripts,
 };

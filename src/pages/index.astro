@@ -6,10 +6,6 @@ import Social from "../components/Social.astro";
 import ShowcaseItem from "../components/ShowcaseItem.astro";
 import { getCollection } from "astro:content";
 import { sortByDate } from "../lib/sort.ts";
-import {
-    chamberAbbreviation,
-    getNumberWithOrdinal,
-} from "../lib/bill-analysis.ts";
 
 const showcase = (
     await getCollection("showcase", ({ data }) => data.featured)

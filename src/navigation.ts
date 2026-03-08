@@ -151,6 +151,11 @@ export const sitemap: SitemapItem[] = [
     },
     { href: "/tip", name: "Tip", description: "Ways to tip me" },
     {
+        href: "/userscripts",
+        name: "Userscripts",
+        description: "All my userscripts",
+    },
+    {
         href: "/utilities",
         name: "Utilities",
         description: "Various utilities I have made",
