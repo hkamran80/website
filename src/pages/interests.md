@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/MarkdownPageLayout.astro
 title: Interests
-subtitle: An always in progress list of my interests. Last updated on February 4, 2026.
+subtitle: An always in progress list of my interests. Last updated on March 8, 2026.
 toc: true
 ---
 
@@ -19,19 +19,17 @@ toc: true
 My taste in music has been (accurately) described as "eclectic" and "all over the place".
 My current fixation changes constantly.
 
+My all-time favourite artists are Taylor Swift, Olivia Rodrigo, and Sabrina Carpenter.
+
 My current favourite artists (in no particular order) are:
 
-- Taylor Swift (always)
-- Olivia Rodrigo (always)
-- Sabrina Carpenter (always)
 - Alex Warren
 - Reneé Rapp
 - Chappell Roan
-- Noah Kahan
-- Gracie Abrams
-- Rachel Platten
+- Zara Larsson
+- Rachel Bochner
 
-My favourite genres tend to be pop, Broadway (I love musicals), musicals, and the occasional rock.
+My favourite genres tend to be pop, musicals and Broadway, and the occasional rock.
 
 ## Public transit
 
@@ -49,6 +47,6 @@ I like open data and open standards, something that is combined with my love of 
 
 I like to follow all levels of government: local, state, federal, and international (mainly the UK and EU).
 I have a list of bills that I keep track of and call my representatives about in a massive spreadsheet.
-Now if I could only automatically update it with status updates...
+Now if I could only [automatically update](/ideas#projects) it with status updates...
 
 I've also written a [bill analysis](/bill-analysis) on the [Kids Online Safety Act (S. 1748, 119th Congress)](/bill-analysis/119-s1748), a bill that is a terrible idea in my opinion.
