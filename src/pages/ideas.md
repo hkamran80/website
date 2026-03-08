@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/MarkdownPageLayout.astro
 title: Ideas
-subtitle: "Projects I want to build, posts I want to write, etc. Last updated on February 7, 2026."
+subtitle: "Projects I want to build, posts I want to write, etc. Last updated on March 8, 2026."
 ---
 
 ## Projects
@@ -22,5 +22,5 @@ subtitle: "Projects I want to build, posts I want to write, etc. Last updated on
 - My SVG optimization guide
 - Open mobility and GTFS
 - How federal agencies may be breaking the law by not adopting Login.gov
-- Lobbying and campaign financing in the aftermath of [*Citizens United v. FEC*](https://en.wikipedia.org/wiki/Citizens_United_v._FEC)
-- Overview and analysis of various transit projects (e.g. IBX, COASTER realignment, Purple Line, BART extension, etc.)
+- Lobbying and campaign financing in the aftermath of [*Citizens United v. FEC*](https://en.wikipedia.org/wiki/Citizens_United_v._FEC) (2010) and [*Buckley v. Valeo*](https://en.wikipedia.org/wiki/Buckley_v._Valeo) (1976) (*see also:* [The Conversation](https://theconversation.com/50-years-ago-the-supreme-court-broke-campaign-finance-regulation-274939))
+- Overview and analysis of various transit projects (e.g. IBX, BART extensions, COASTER realignment, Purple Line, etc.)
