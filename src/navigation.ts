@@ -68,6 +68,11 @@ export const sitemap: SitemapItem[] = [
         description: "A list of sites that I read, follow, or recommend",
     },
     {
+        href: "/changelog",
+        name: "Changelog",
+        description: "How this site has changed",
+    },
+    {
         href: "/colophon",
         name: "Colophon",
         description: "How this site is made",
