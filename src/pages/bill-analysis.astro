@@ -8,8 +8,11 @@ import {
     chamberAbbreviation,
     getNumberWithOrdinal,
 } from "../lib/bill-analysis.ts";
+import { sortByDate } from "../lib/sort.ts";
 
-const billAnalyses = await getCollection("billAnalyses");
+const billAnalyses = (await getCollection("billAnalyses")).sort((a, b) =>
+    sortByDate(a.data.published!, b.data.published!),
+);
 ---
 
 <Layout title="Bill Analysis">
