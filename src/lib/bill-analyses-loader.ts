@@ -1,11 +1,14 @@
 import type { Loader, LoaderContext } from "astro/loaders";
 import { z } from "astro:content";
+import { chamberAbbreviation, getNumberWithOrdinal } from "./bill-analysis";
 
 const loader = (): Loader => {
     return {
         name: "bill-analyses-loader",
         schema: z.object({
             id: z.string(),
+            title: z.string(),
+            description: z.string(),
             bill: z.object({
                 congress: z.string(),
                 chamber: z.enum(["senate", "house"]),
@@ -47,6 +50,11 @@ const loader = (): Loader => {
                     data: {
                         ...analysis,
                         published: new Date(analysis.published),
+
+                        title: `${chamberAbbreviation[analysis.bill.chamber as "senate" | "house"]}. ${analysis.bill.number}: ${analysis.bill.title}`,
+                        description: `${getNumberWithOrdinal(
+                            Number(analysis.bill.congress),
+                        )} Congress, sponsored by ${analysis.bill.sponsors.join(", ")}`,
                     },
                 });
 

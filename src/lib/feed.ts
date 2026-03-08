@@ -105,13 +105,9 @@ export const generateBillAnalysesFeed = async (
     for (const analysis of analyses) {
         let entry: Item = {
             id: analysis.id,
-            title: `${
-                chamberAbbreviation[analysis.data.bill.chamber]
-            }. ${analysis.data.bill.number}: ${analysis.data.bill.title}`,
+            title: analysis.data.title,
             link: `${feed.options.link!}/bill-analysis/${analysis.id}`,
-            description: `${getNumberWithOrdinal(
-                Number(analysis.data.bill.congress),
-            )} Congress, sponsored by ${analysis.data.bill.sponsors.join(", ")}`,
+            description: analysis.data.description,
             date: analysis.data.published,
             author: [feed.options.author!],
             content: `<p><strong>Sponsor${

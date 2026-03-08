@@ -5,10 +5,7 @@ import PageHeader from "../../components/PageHeader.astro";
 import Link from "../../components/Link.astro";
 import TOC from "../../components/TOC.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
-import {
-    chamberAbbreviation,
-    getNumberWithOrdinal,
-} from "../../lib/bill-analysis.ts";
+import { getNumberWithOrdinal } from "../../lib/bill-analysis.ts";
 import type { MarkdownHeading } from "astro";
 
 export const getStaticPaths = async () => {
@@ -48,18 +45,9 @@ const headings: MarkdownHeading[] = [
 ].filter((heading) => Boolean(heading)) as MarkdownHeading[];
 ---
 
-<Layout
-    title={`${
-        chamberAbbreviation[analysis.data.bill.chamber]
-    }. ${analysis.data.bill.number} | Bill Analysis`}
->
+<Layout title={`${analysis.data.title} | Bill Analysis`}>
     <Container>
-        <PageHeader
-            title={`${
-                chamberAbbreviation[analysis.data.bill.chamber]
-            }. ${analysis.data.bill.number}: ${analysis.data.bill.title}`}
-            class="mx-auto max-w-3xl"
-        >
+        <PageHeader title={analysis.data.title} class="mx-auto max-w-3xl">
             <Fragment slot="subtitle">
                 <time datetime={analysis.data.published.toISOString()}
                     >{

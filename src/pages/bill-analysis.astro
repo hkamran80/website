@@ -31,13 +31,7 @@ const billAnalyses = (await getCollection("billAnalyses")).sort((a, b) =>
                     <Link href={`/bill-analysis/${analysis.id}`}>
                         <article class="space-y-1">
                             <p class="text-xl font-semibold">
-                                <>
-                                    {chamberAbbreviation[
-                                        analysis.data.bill.chamber
-                                    ] + "."}
-                                </>
-                                {analysis.data.bill.number}:{" "}
-                                {analysis.data.bill.title}
+                                {analysis.data.title}
                             </p>
 
                             <p class="text-c-light tracking-tight">
@@ -54,11 +48,7 @@ const billAnalyses = (await getCollection("billAnalyses")).sort((a, b) =>
                                     )}
                                 </time>
                                 &bull;
-                                {getNumberWithOrdinal(
-                                    Number(analysis.data.bill.congress),
-                                )}{" "}
-                                Congress, sponsored by{" "}
-                                {analysis.data.bill.sponsors.join(", ")}
+                                {analysis.data.description}
                             </p>
                         </article>
                     </Link>

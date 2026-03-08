@@ -94,24 +94,10 @@ const latestBillAnalysis = (await getCollection("billAnalyses")).sort((a, b) =>
                     </header>
                     <Link href={`/bill-analysis/${latestBillAnalysis.id}`}>
                         <p class="text-lg font-semibold">
-                            {
-                                chamberAbbreviation[
-                                    latestBillAnalysis.data.bill.chamber
-                                ]
-                            }. {latestBillAnalysis.data.bill.number}: {
-                                latestBillAnalysis.data.bill.title
-                            }
+                            {latestBillAnalysis.data.title}
                         </p>
                         <p class="text-c-light tracking-tight">
-                            {
-                                getNumberWithOrdinal(
-                                    Number(
-                                        latestBillAnalysis.data.bill.congress,
-                                    ),
-                                )
-                            }{" "}
-                            Congress, sponsored by{" "}
-                            {latestBillAnalysis.data.bill.sponsors.join(", ")}
+                            {latestBillAnalysis.data.description}
                         </p>
                     </Link>
                 </article>
