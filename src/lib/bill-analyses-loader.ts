@@ -38,7 +38,11 @@ const loader = (): Loader => {
             }),
             published: z.date(),
         }),
-        load: async ({ store, parseData }: LoaderContext): Promise<void> => {
+        load: async ({
+            store,
+            parseData,
+            renderMarkdown,
+        }: LoaderContext): Promise<void> => {
             const response = await fetch(
                 "https://assets.hkamran.com/bill-analyses",
             );
@@ -58,7 +62,22 @@ const loader = (): Loader => {
                     },
                 });
 
-                store.set({ id: analysis.id, data });
+                const body = `**Sponsor:** ${analysis.bill.sponsors.join(", ")}  
+**Cosponsors:** ${analysis.bill.cosponsors.listed.join(", ")}${analysis.bill.cosponsors.other > 0 ? ` and [${analysis.bill.cosponsors.other} other${analysis.bill.cosponsors.other !== 1 && "s"}](https://www.congress.gov/bill/${getNumberWithOrdinal(Number(analysis.bill.congress))}-congress/${analysis.bill.chamber}-bill/${analysis.bill.number}/cosponsors)` : ""}
+
+**Summary:** ${analysis.summary}
+
+**Background:** ${analysis.background}
+
+${analysis.organizations.support.length > 0 ? `**Organizations in Support:** ${analysis.organizations.support.join(", ")}` : ""}
+
+${analysis.organizations.oppose.length > 0 ? `**Organizations in Opposition:** ${analysis.organizations.oppose.join(", ")}` : ""}
+
+**Recommendation:** ${analysis.recommendation.action[0].toUpperCase() + analysis.recommendation.action.slice(1)}. ${analysis.recommendation.reason}`;
+
+                const rendered = await renderMarkdown(body);
+
+                store.set({ id: analysis.id, data, body, rendered });
             }
         },
     };

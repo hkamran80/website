@@ -37,6 +37,9 @@ export const setupFeed = (site: string, feed: FeedTypes): Feed => {
     return webFeed;
 };
 
+const feedFooter =
+    "\n\n---\n\nThanks for reading! Follow me on [Mastodon](https://hkamran.com/mastodon) and [Bluesky](https://hkamran.com/bluesky). Subscribe to my [feeds](https://hkamran.com/feeds).";
+
 export const generatePostsFeed = async (
     feed: Feed,
     posts: CollectionEntry<"posts">[],
@@ -56,10 +59,7 @@ export const generatePostsFeed = async (
             date: post.data.published as Date,
             author: [feed.options.author!],
             content: post.body
-                ? await renderMarkdown(
-                      post.body +
-                          "\n\n---\n\nThanks for reading! Follow me on [Mastodon](https://hkamran.com/mastodon) and [Bluesky](https://hkamran.com/bluesky). Subscribe to my [feeds](https://hkamran.com/feeds).",
-                  )
+                ? await renderMarkdown(post.body + feedFooter)
                 : undefined,
         };
 
@@ -110,55 +110,9 @@ export const generateBillAnalysesFeed = async (
             description: analysis.data.description,
             date: analysis.data.published,
             author: [feed.options.author!],
-            content: `<p><strong>Sponsor${
-                analysis.data.bill.sponsors.length !== 1 ? "s" : ""
-            }:</strong> ${analysis.data.bill.sponsors.join(", ")}
-<br />
-                    <strong>Cosponsor${
-                        analysis.data.bill.cosponsors.listed.length !== 1 ||
-                        analysis.data.bill.cosponsors.other !== 1
-                            ? "s"
-                            : ""
-                    }:</strong> ${analysis.data.bill.cosponsors.listed.join(", ")}${
-                        analysis.data.bill.cosponsors.other > 0
-                            ? `and <a href="https://www.congress.gov/bill/${getNumberWithOrdinal(Number(analysis.data.bill.congress))}-congress/${analysis.data.bill.chamber}-bill/${analysis.data.bill.number}/cosponsors" rel="noopener noreferrer">${analysis.data.bill.cosponsors.other} other${analysis.data.bill.cosponsors.other !== 1 ? "s" : ""}</a>`
-                            : ""
-                    }
-                </p>
-
-                <p><strong>Summary:</strong> ${analysis.data.summary}</p>
-
-                <p><strong>Background:</strong> ${analysis.data.background}</p>
-
-                ${
-                    analysis.data.organizations.support.length > 0 &&
-                    `<p>
-                    <strong>Organizations in Support:</strong>
-                    ${analysis.data.organizations.support.join(", ")}
-                </p>`
-                }
-
-                ${
-                    analysis.data.organizations.support.length > 0 &&
-                    `<p>
-                    <strong>Organizations in Opposition:</strong>
-                    ${analysis.data.organizations.oppose.join(", ")}
-                </p>`
-                }
-
-                <p>
-                    <strong>Recommendation:</strong>
-                    ${
-                        analysis.data.recommendation.action[0].toUpperCase() +
-                        analysis.data.recommendation.action.slice(1)
-                    }. ${analysis.data.recommendation.reason}
-                </p>
-
-<hr />
-
-<p>
-Thanks for reading! Follow me on <a href="https://hkamran.com/mastodon">Mastodon</a> and <a href="https://hkamran.com/bluesky">Bluesky</a>. Subscribe to my <a href="https://hkamran.com/feeds">feeds</a>.
-</p>`,
+            content: analysis.body
+                ? await renderMarkdown(analysis.body + feedFooter)
+                : undefined,
         };
 
         feed.addItem(entry);
