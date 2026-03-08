@@ -47,7 +47,12 @@ const headings: MarkdownHeading[] = [
 
 <Layout title={`${analysis.data.title} | Bill Analysis`}>
     <Container>
-        <PageHeader title={analysis.data.title} class="mx-auto max-w-3xl">
+        <PageHeader
+            title={analysis.data.title}
+            class="mx-auto max-w-3xl"
+            parent="Bill Analysis"
+            parent-url="/bill-analysis"
+        >
             <Fragment slot="subtitle">
                 <time datetime={analysis.data.published.toISOString()}
                     >{

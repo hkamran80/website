@@ -28,7 +28,12 @@ const { headings, Content } = await render(post);
 <Layout title={post.data.title}>
     <PostStructuredData slot="structured-data" post={post} />
     <Container class="h-entry">
-        <PageHeader title={post.data.title} subtitle={post.data.description}>
+        <PageHeader
+            title={post.data.title}
+            subtitle={post.data.description}
+            parent="Posts"
+            parent-url="/posts"
+        >
             <Fragment slot="description">
                 {
                     post.data.status === "updated" && (

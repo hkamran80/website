@@ -41,7 +41,12 @@ const posts = (
 
 <Layout title={`${tag} | Posts`}>
     <Container width="narrow">
-        <PageHeader title="Posts" subtitle={`Tagged "${tag}"`} />
+        <PageHeader
+            title="Posts"
+            subtitle={`Tagged "${tag}"`}
+            parent="Tags"
+            parent-url="/tags"
+        />
 
         <section class="mt-8 flex flex-col space-y-6">
             {
