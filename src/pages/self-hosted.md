@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/MarkdownPageLayout.astro
 title: Self-hosted Services
-subtitle: Some of the services I self-host. Last updated on February 4, 2026.
+subtitle: Some of the services I self-host. Last updated on March 8, 2026.
 ---
 
 - [**AirTrail**](https://airtrail.johan.ohly.dk)
@@ -33,7 +33,7 @@ subtitle: Some of the services I self-host. Last updated on February 4, 2026.
   The Jellyfin team has been doing some amazing work!
 
   On my laptop, I use [Jellyfin Desktop](https://github.com/jellyfin/jellyfin-desktop).
-  On my phone, I use [Findroid](https://github.com/jarnedemeulemeester/findroid) for watching media and the official [Jellyfin app](https://github.com/jellyfin/jellyfin-android) or [Streamyfin](https://github.com/streamyfin/streamyfin/) for Quick Connect.
+  On my phone, I use [Findroid](https://github.com/jarnedemeulemeester/findroid) for watching media and the official [Jellyfin app](https://github.com/jellyfin/jellyfin-android) or [Streamyfin](https://github.com/streamyfin/streamyfin/) for [Quick Connect](https://jellyfin.org/docs/general/server/quick-connect/).
 
 - [**linkding**](https://linkding.link)
 
@@ -46,6 +46,10 @@ subtitle: Some of the services I self-host. Last updated on February 4, 2026.
 - [**Sure**](https://sure.am)
 
   A personal finance app.
+
+- [**TRIP**](https://itskovacs-trip.netlify.app)
+
+  TRIP (Tourism and Recreational Interest Points) is my method of keeping track of where I want to go (e.g. attractions).
 
 - [**Umami**](https://umami.is)
 
