@@ -134,15 +134,21 @@ export const generateBillAnalysesFeed = async (
 
                 <p><strong>Background:</strong> ${analysis.data.background}</p>
 
-                <p>
+                ${
+                    analysis.data.organizations.support.length > 0 &&
+                    `<p>
                     <strong>Organizations in Support:</strong>
                     ${analysis.data.organizations.support.join(", ")}
-                </p>
+                </p>`
+                }
 
-                <p>
+                ${
+                    analysis.data.organizations.support.length > 0 &&
+                    `<p>
                     <strong>Organizations in Opposition:</strong>
                     ${analysis.data.organizations.oppose.join(", ")}
-                </p>
+                </p>`
+                }
 
                 <p>
                     <strong>Recommendation:</strong>

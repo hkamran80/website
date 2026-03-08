@@ -30,18 +30,22 @@ const headings: MarkdownHeading[] = [
     { depth: 2, slug: "sponsors", text: "Sponsors" },
     { depth: 2, slug: "summary", text: "Summary" },
     { depth: 2, slug: "background", text: "Background" },
-    {
-        depth: 2,
-        slug: "organizations-support",
-        text: "Organizations in Support",
-    },
-    {
-        depth: 2,
-        slug: "organizations-oppose",
-        text: "Organizations in Opposition",
-    },
+    analysis.data.organizations.support.length > 0
+        ? {
+              depth: 2,
+              slug: "organizations-support",
+              text: "Organizations in Support",
+          }
+        : undefined,
+    analysis.data.organizations.oppose.length > 0
+        ? {
+              depth: 2,
+              slug: "organizations-oppose",
+              text: "Organizations in Opposition",
+          }
+        : undefined,
     { depth: 2, slug: "recommendation", text: "Recommendation" },
-];
+].filter((heading) => Boolean(heading)) as MarkdownHeading[];
 ---
 
 <Layout
@@ -128,19 +132,27 @@ const headings: MarkdownHeading[] = [
                 </p>
             </section>
 
-            <section>
-                <p id="organizations-support">
-                    <strong>Organizations in Support:</strong>
-                    {analysis.data.organizations.support.join(", ")}
-                </p>
-            </section>
+            {
+                analysis.data.organizations.support.length > 0 && (
+                    <section>
+                        <p id="organizations-support">
+                            <strong>Organizations in Support:</strong>
+                            {analysis.data.organizations.support.join(", ")}
+                        </p>
+                    </section>
+                )
+            }
 
-            <section>
-                <p id="organizations-oppose">
-                    <strong>Organizations in Opposition:</strong>
-                    {analysis.data.organizations.oppose.join(", ")}
-                </p>
-            </section>
+            {
+                analysis.data.organizations.oppose.length > 0 && (
+                    <section>
+                        <p id="organizations-oppose">
+                            <strong>Organizations in Opposition:</strong>
+                            {analysis.data.organizations.oppose.join(", ")}
+                        </p>
+                    </section>
+                )
+            }
 
             <section>
                 <p id="recommendation">

@@ -1,4 +1,4 @@
-export const chamberAbbreviation = { senate: "S", house: "HR" } as const;
+export const chamberAbbreviation = { senate: "S", house: "H.R" } as const;
 
 export const getNumberWithOrdinal = (n: number): string => {
     const s = ["th", "st", "nd", "rd"],
