@@ -94,6 +94,11 @@ const utilities = defineCollection({
             description:
                 "Easily generate the email to send from a Duck Address",
         },
+        {
+            id: "mailchimp-rss",
+            name: "Mailchimp RSS",
+            description: "Quickly get the feed URL for a Mailchimp newsletter"
+        }
     ],
     schema: z.object({
         id: z.string(),
