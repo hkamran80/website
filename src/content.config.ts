@@ -97,8 +97,8 @@ const utilities = defineCollection({
         {
             id: "mailchimp-rss",
             name: "Mailchimp RSS",
-            description: "Quickly get the feed URL for a Mailchimp newsletter"
-        }
+            description: "Quickly get the feed URL for a Mailchimp newsletter",
+        },
     ],
     schema: z.object({
         id: z.string(),

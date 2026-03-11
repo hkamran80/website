@@ -5,7 +5,9 @@ import PageHeader from "../components/PageHeader.astro";
 import UtilityCard from "../components/UtilityCard.astro";
 import { getCollection } from "astro:content";
 
-const utilities = await getCollection("utilities");
+const utilities = (await getCollection("utilities")).sort((a, b) =>
+    a.data.name.localeCompare(b.data.name),
+);
 ---
 
 <Layout title="Utilities">
