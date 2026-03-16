@@ -32,7 +32,11 @@ const title = providedTitle ? providedTitle + " | H. Kamran" : "H. Kamran";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="sitemap" href="/sitemap-index.xml" />
 
-        {Object.keys(feeds).map((feed) => <Feeds feed={feed as FeedTypes} />)}
+        {
+            Object.entries(feeds)
+                .filter(([, metadata]) => metadata.featured === true)
+                .map(([feed]) => <Feeds feed={feed as FeedTypes} />)
+        }
         <link rel="blogroll" type="text/xml" href="/blogroll.opml" />
 
         <meta name="robots" content="noai, noimageai, noml, noindex" />
