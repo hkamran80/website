@@ -19,3 +19,5 @@ Released TBA
 - Add [bill analyses](/bill-analysis)
 - Add slash pages ([blogroll](/blogroll), [feeds](/feeds), [ideas](/ideas), [interests](/interests), [now](/now), [self-hosted](/self-hosted), [sitemap](/sitemap), [slashes](/slashes), [style](/style), [tip](/tip), [verify](/verify))
 - Add [photos page](/photos)
+- Add [`human.json`](/human.json) ([documentation](https://codeberg.org/robida/human.json))
+- Add [more feeds](/feeds) (e.g. bill analyses)
