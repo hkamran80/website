@@ -159,6 +159,7 @@ const { headings, Content } = await render(post);
     /* BUG: Giscus is currently broken because it matches based on pathname. V5 uses `article/[id]` but V6 uses `posts/[id]`. The discussions will need to be manually updated before reactivation. */
 }
 <script
+    is:inline
     src="https://giscus.app/client.js"
     integrity="sha384-UwLZGbJGvkTzz0719+xEzUm/idqwzs0yZN8aB9Se5vUXHbyRyDWw9yqZTIsOsJ7x"
     crossorigin="anonymous"
