@@ -69,7 +69,7 @@ img {
 }
 
 .toc li div {
-    display: inline;
+    @apply max-sm:inline;
 }
 
 .toc div.active a {
