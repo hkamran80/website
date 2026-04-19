@@ -68,6 +68,10 @@ img {
     padding-bottom: 0.125rem;
 }
 
+.toc li div {
+    display: inline;
+}
+
 .toc div.active a {
     @apply lg:text-black lg:dark:text-white;
 }
