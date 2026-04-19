@@ -209,9 +209,13 @@ export default defineConfig({
                 resources: [
                     "'self'",
                     "u.13willow.com",
-                    "https://giscus.app/client.js",
+                    "giscus.app",
                 ],
-                hashes: ["sha384-scriptHash"],
+                hashes: [
+                    "sha384-scriptHash",
+                    "sha512-scriptHash",
+                    "sha256-scriptHash"
+                ]
             },
         },
     },
