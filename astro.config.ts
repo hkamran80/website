@@ -196,7 +196,27 @@ export default defineConfig({
         },
     ],
 
-    adapter: netlify(),
+    security: {
+        csp: {
+            directives: [
+                "default-src 'self' giscus.app assets.hkamran.com u.13willow.com",
+                "img-src 'self' assets.hkamran.com i.ibb.co https://external-content.duckduckgo.com/iu/",
+                "font-src 'self'",
+                "report-to https://hkamran.report-uri.com/r/d/csp/wizard",
+                "report-uri https://hkamran.report-uri.com/r/d/csp/wizard",
+            ],
+            scriptDirective: {
+                resources: [
+                    "'self'",
+                    "u.13willow.com",
+                    "https://giscus.app/client.js",
+                ],
+                hashes: ["sha384-scriptHash"],
+            },
+        },
+    },
+
+    // adapter: netlify(),
 
     redirects: {
         // Legacy
