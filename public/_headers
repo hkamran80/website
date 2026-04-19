@@ -1,0 +1,45 @@
+/*
+   X-Content-Type-Options: nosniff
+   X-Frame-Options: SAMEORIGIN
+   X-XSS-Protection: 1; mode=block
+   X-DNS-Prefetch-Control: on
+   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+   Referrer-Policy: strict-origin-when-cross-origin
+   Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(self), xr-spatial-tracking=(), clipboard-read=(), clipboard-write=(), gamepad=(), speaker-selection=(), conversion-measurement=(), focus-without-user-activation=(), hid=(), idle-detection=(), interest-cohort=(), serial=(), sync-script=(), trust-token-redemption=(), unload=(), window-placement=(), vertical-scroll=()
+   Content-Security-Policy: default-src 'self' giscus.app assets.hkamran.com u.13willow.com; img-src 'self' assets.hkamran.com i.ibb.co https://external-content.duckduckgo.com/iu/; script-src 'self' u.13willow.com; style-src 'self' 'unsafe-inline' data:; font-src 'self'; report-to https://hkamran.report-uri.com/r/d/csp/wizard; report-uri https://hkamran.report-uri.com/r/d/csp/wizard;
+
+/*.css
+    Content-Type: text/css
+
+/*.js
+    Content-Type: text/javascript
+
+/*.txt
+    Content-Type: text/plain
+
+/*.svg
+    Content-Type: image/svg+xml
+
+/*.png
+    Content-Type: image/png
+
+/*.jpg
+    Content-Type: image/jpeg
+
+/*.json
+    Content-Type: application/json
+
+/*.xslt
+    Content-Type: text/xsl
+
+/*.opml
+    Content-Type: text/x-opml
+
+/*.rss
+    Content-Type: application/rss+xml
+
+/*.atom
+    Content-Type: application/atom+xml
+
+/feeds/*.json
+    Content-Type: application/feed+json
