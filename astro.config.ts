@@ -199,9 +199,10 @@ export default defineConfig({
     security: {
         csp: {
             directives: [
-                "default-src 'self' giscus.app assets.hkamran.com u.13willow.com",
+                "default-src 'self' assets.hkamran.com u.13willow.com",
                 "img-src 'self' assets.hkamran.com i.ibb.co https://external-content.duckduckgo.com/iu/",
                 "font-src 'self'",
+                "frame-src 'self' giscus.app",
                 "report-to https://hkamran.report-uri.com/r/d/csp/wizard",
                 "report-uri https://hkamran.report-uri.com/r/d/csp/wizard",
             ],
@@ -217,6 +218,18 @@ export default defineConfig({
                     "sha256-scriptHash"
                 ]
             },
+            styleDirective: {
+                resources: [
+                    "'self'",
+                    "sha384-j2+gI8m21l/f2qVy2CoqSSNPCE/cQE+L7yoSPcfjG8arf8V/KnHRLY47WrFaHCj0",
+                    "giscus.app"
+                ],
+                hashes: [
+                    "sha384-styleHash",
+                    "sha512-styleHash",
+                    "sha256-styleHash"
+                ]
+            }
         },
     },
 
