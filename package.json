@@ -12,9 +12,9 @@
         "format:check": "prettier . --check --experimental-cli --config-path .prettierrc"
     },
     "dependencies": {
-        "@astrojs/netlify": "^6.6.0",
-        "@astrojs/react": "^4.4.2",
-        "@astrojs/sitemap": "^3.6.0",
+        "@astrojs/netlify": "^7.0.7",
+        "@astrojs/react": "^5.0.3",
+        "@astrojs/sitemap": "^3.7.2",
         "@hbsnow/rehype-sectionize": "^1.0.7",
         "@hkamran/utility-strings": "^1.0.5",
         "@lucide/astro": "^0.546.0",
@@ -22,7 +22,7 @@
         "@tailwindcss/vite": "^4.1.15",
         "@types/react": "^19.2.11",
         "@types/react-dom": "^19.2.3",
-        "astro": "^5.14.8",
+        "astro": "^6.1.8",
         "astro-masonry": "^1.2.2",
         "astro-navbar": "^2.4.0",
         "astro-robots-txt": "^1.0.0",

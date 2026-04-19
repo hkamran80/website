@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import postsLoader from "./lib/postsLoader";
 import unsplashLoader from "./lib/unsplashLoader";
 import billAnalysesLoader from "./lib/bill-analyses-loader";
@@ -59,7 +60,7 @@ const nebulaChangelog = defineCollection({
     schema: z.object({
         id: z.string(),
         version: z.string(),
-        releaseDate: z.string().date(),
+        releaseDate: z.iso.date(),
         changelog: z.string().array(),
     }),
 });
@@ -135,8 +136,8 @@ const blogroll = defineCollection({
         entries: z
             .object({
                 name: z.string(),
-                url: z.string().url(),
-                feedUrl: z.string().url(),
+                url: z.url(),
+                feedUrl: z.url(),
             })
             .array(),
     }),

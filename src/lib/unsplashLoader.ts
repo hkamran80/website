@@ -1,5 +1,5 @@
 import type { Loader, LoaderContext } from "astro/loaders";
-import { z } from "astro:content";
+import { z } from "astro/zod";
 
 const loader = (options: { apiKey: string; perPage?: number }): Loader => ({
     name: "unsplash-loader",
@@ -10,12 +10,12 @@ const loader = (options: { apiKey: string; perPage?: number }): Loader => ({
         blur_hash: z.string(),
         description: z.string().nullable(),
         urls: z.object({
-            full: z.string().url(),
-            regular: z.string().url(),
-            small: z.string().url(),
-            thumb: z.string().url(),
+            full: z.url(),
+            regular: z.url(),
+            small: z.url(),
+            thumb: z.url(),
         }),
-        links: z.object({ html: z.string().url() }),
+        links: z.object({ html: z.url() }),
     }),
     load: async ({ parseData, store }: LoaderContext): Promise<void> => {
         const response = await fetch(

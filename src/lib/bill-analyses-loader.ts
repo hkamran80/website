@@ -1,5 +1,5 @@
 import type { Loader, LoaderContext } from "astro/loaders";
-import { z } from "astro:content";
+import { z } from "astro/zod";
 import { chamberAbbreviation, getNumberWithOrdinal } from "./bill-analysis";
 
 const loader = (): Loader => {

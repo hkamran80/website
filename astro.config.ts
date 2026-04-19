@@ -186,17 +186,15 @@ export default defineConfig({
         react(),
     ],
 
-    experimental: {
-        fonts: [
-            {
-                provider: fontProviders.google(),
-                name: "Nunito Sans",
-                cssVariable: "--font-nunito-sans",
-                weights: ["400 700"],
-                subsets: ["latin", "latin-ext"],
-            },
-        ],
-    },
+    fonts: [
+        {
+            provider: fontProviders.google(),
+            name: "Nunito Sans",
+            cssVariable: "--font-nunito-sans",
+            weights: ["400 700"],
+            subsets: ["latin", "latin-ext"],
+        },
+    ],
 
     adapter: netlify(),
 
