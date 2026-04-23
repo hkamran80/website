@@ -222,7 +222,8 @@ export default defineConfig({
                 resources: [
                     "'self'",
                     "sha384-j2+gI8m21l/f2qVy2CoqSSNPCE/cQE+L7yoSPcfjG8arf8V/KnHRLY47WrFaHCj0",
-                    "giscus.app"
+                    "giscus.app",
+                    "'unsafe-inline'"
                 ],
                 hashes: [
                     "sha384-styleHash",
