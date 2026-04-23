@@ -14,10 +14,15 @@ import rehypeRewrite from "rehype-rewrite";
 import { EventNames } from "./src/navigation";
 import { getPosts } from "./src/lib/posts";
 import { loadEnv } from "vite";
+import { transformerStyleToClass } from "@shikijs/transformers";
 
 import netlify from "@astrojs/netlify";
 
 import react from "@astrojs/react";
+
+const toClass = transformerStyleToClass({
+    classPrefix: "__shiki_",
+});
 
 const site = "https://beta.hkamran.com";
 
@@ -66,7 +71,37 @@ export default defineConfig({
     },
 
     vite: {
-        plugins: [tailwindcss()],
+        plugins: [
+            tailwindcss(),
+            {
+                name: "hash:shiki-append-class-css",
+                generateBundle(_, bundle) {
+                    const css = toClass.getCSS();
+                    for (const fileName in bundle) {
+                        if (
+                            Object.prototype.hasOwnProperty.call(
+                                bundle,
+                                fileName,
+                            )
+                        ) {
+                            const asset = bundle[fileName];
+                            if (
+                                asset.type === "asset" &&
+                                fileName.endsWith(".css")
+                            ) {
+                                console.log(
+                                    "\nAppending Shiki class definition to",
+                                    asset.fileName,
+                                );
+                                // append the class CSS to the end of the CSS file
+                                asset.source += css + "\n";
+                                break;
+                            }
+                        }
+                    }
+                },
+            },
+        ],
     },
 
     markdown: {
@@ -207,30 +242,26 @@ export default defineConfig({
                 "report-uri https://hkamran.report-uri.com/r/d/csp/wizard",
             ],
             scriptDirective: {
-                resources: [
-                    "'self'",
-                    "u.13willow.com",
-                    "giscus.app",
-                ],
+                resources: ["'self'", "u.13willow.com", "giscus.app"],
                 hashes: [
                     "sha384-scriptHash",
                     "sha512-scriptHash",
-                    "sha256-scriptHash"
-                ]
+                    "sha256-scriptHash",
+                ],
             },
             styleDirective: {
                 resources: [
                     "'self'",
                     "sha384-j2+gI8m21l/f2qVy2CoqSSNPCE/cQE+L7yoSPcfjG8arf8V/KnHRLY47WrFaHCj0",
                     "giscus.app",
-                    "'unsafe-inline'"
+                    "'unsafe-inline'",
                 ],
                 hashes: [
                     "sha384-styleHash",
                     "sha512-styleHash",
-                    "sha256-styleHash"
-                ]
-            }
+                    "sha256-styleHash",
+                ],
+            },
         },
     },
 
