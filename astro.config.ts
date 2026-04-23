@@ -14,15 +14,10 @@ import rehypeRewrite from "rehype-rewrite";
 import { EventNames } from "./src/navigation";
 import { getPosts } from "./src/lib/posts";
 import { loadEnv } from "vite";
-import { transformerStyleToClass } from "@shikijs/transformers";
 
 import netlify from "@astrojs/netlify";
 
 import react from "@astrojs/react";
-
-const toClass = transformerStyleToClass({
-    classPrefix: "__shiki_",
-});
 
 const site = "https://beta.hkamran.com";
 
@@ -71,46 +66,18 @@ export default defineConfig({
     },
 
     vite: {
-        plugins: [
-            tailwindcss(),
-            {
-                name: "hash:shiki-append-class-css",
-                generateBundle(_, bundle) {
-                    const css = toClass.getCSS();
-                    for (const fileName in bundle) {
-                        if (
-                            Object.prototype.hasOwnProperty.call(
-                                bundle,
-                                fileName,
-                            )
-                        ) {
-                            const asset = bundle[fileName];
-                            if (
-                                asset.type === "asset" &&
-                                fileName.endsWith(".css")
-                            ) {
-                                console.log(
-                                    "\nAppending Shiki class definition to",
-                                    asset.fileName,
-                                );
-                                // append the class CSS to the end of the CSS file
-                                asset.source += css + "\n";
-                                break;
-                            }
-                        }
-                    }
-                },
-            },
-        ],
+        plugins: [tailwindcss()],
     },
 
     markdown: {
-        shikiConfig: {
-            themes: {
-                light: "vitesse-light",
-                dark: "vitesse-black",
-            },
-        },
+        // NOTE: Syntax highlighting switched to Prism until Shiki CSP support is available
+        syntaxHighlight: "prism",
+        // shikiConfig: {
+        //     themes: {
+        //         light: "vitesse-light",
+        //         dark: "vitesse-black",
+        //     },
+        // },
         smartypants: false,
         remarkPlugins: [remarkAlert, remarkRemoveComments],
         rehypePlugins: [
@@ -254,7 +221,6 @@ export default defineConfig({
                     "'self'",
                     "sha384-j2+gI8m21l/f2qVy2CoqSSNPCE/cQE+L7yoSPcfjG8arf8V/KnHRLY47WrFaHCj0",
                     "giscus.app",
-                    "'unsafe-inline'",
                 ],
                 hashes: [
                     "sha384-styleHash",
