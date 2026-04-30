@@ -70,14 +70,12 @@ export default defineConfig({
     },
 
     markdown: {
-        // NOTE: Syntax highlighting switched to Prism until Shiki CSP support is available
-        syntaxHighlight: "prism",
-        // shikiConfig: {
-        //     themes: {
-        //         light: "vitesse-light",
-        //         dark: "vitesse-black",
-        //     },
-        // },
+        shikiConfig: {
+            themes: {
+                light: "vitesse-light",
+                dark: "vitesse-black",
+            },
+        },
         smartypants: false,
         remarkPlugins: [remarkAlert, remarkRemoveComments],
         rehypePlugins: [
@@ -219,14 +217,15 @@ export default defineConfig({
             styleDirective: {
                 resources: [
                     "'self'",
-                    "sha384-j2+gI8m21l/f2qVy2CoqSSNPCE/cQE+L7yoSPcfjG8arf8V/KnHRLY47WrFaHCj0",
+                    "'unsafe-inline'",
+                    // "sha384-j2+gI8m21l/f2qVy2CoqSSNPCE/cQE+L7yoSPcfjG8arf8V/KnHRLY47WrFaHCj0",
                     "giscus.app",
                 ],
-                hashes: [
-                    "sha384-styleHash",
-                    "sha512-styleHash",
-                    "sha256-styleHash",
-                ],
+                // hashes: [
+                //     "sha384-styleHash",
+                //     "sha512-styleHash",
+                //     "sha256-styleHash",
+                // ],
             },
         },
     },
