@@ -47,8 +47,8 @@ export const getPosts = async (apiKey: string) => {
     }[];
     for (const branch of branches) {
         if (
-            branch.name.startsWith("article-r/") ||
-            branch.name.startsWith("note-r/") ||
+            branch.name.startsWith("article/") ||
+            branch.name.startsWith("note/") ||
             branch.name.startsWith("post/")
         ) {
             const response = await fetch(
