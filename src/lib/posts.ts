@@ -47,23 +47,34 @@ export const getPosts = async (apiKey: string) => {
     }[];
     for (const branch of branches) {
         if (
-            branch.name.startsWith("article/") ||
-            branch.name.startsWith("note/") ||
-            branch.name.startsWith("post/")
-        ) {
-            const response = await fetch(
-                `https://raw.githubusercontent.com/hkamran80/articles/${branch.name}/index.json`,
-            );
-            // TODO: Add actual type
-            const data = (await response.json()) as any[];
+            !(
+                branch.name.startsWith("article/") ||
+                branch.name.startsWith("post/")
+            )
+        )
+            continue;
 
-            const postId = branch.name.split("/")[1];
-            const post = data.find(({ id }) => id === postId);
-
-            if (!("branch" in post)) post.branch = branch.name;
-
-            if (post.status === "draft") posts.push(post);
+        const response = await fetch(
+            `https://raw.githubusercontent.com/hkamran80/articles/${branch.name}/index.json`,
+        );
+        if (!response.ok) {
+            console.error(`Failed to get index for ${branch.name}.`);
+            continue;
         }
+
+        // TODO: Add actual type
+        const data = (await response.json()) as any[];
+
+        const postId = branch.name.split("/")[1];
+        const post = data.find(({ id }) => id === postId);
+        if (!post) {
+            console.error(`Failed to get post for ${branch.name}.`, data);
+            continue;
+        }
+
+        if (!Object.keys(post).includes("branch")) post.branch = branch.name;
+
+        if (post.status === "draft") posts.push(post);
     }
 
     return posts;
