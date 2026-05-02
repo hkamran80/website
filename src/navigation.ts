@@ -58,8 +58,8 @@ type SitemapItem = {
 
 export const sitemap: SitemapItem[] = [
     {
-        href: "/bill-analysis",
-        name: "Bill Analysis",
+        href: "/bill-analyses",
+        name: "Bill Analyses",
         description: "Analyses of legislative bills I have compiled",
     },
     {

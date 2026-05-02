@@ -15,9 +15,9 @@ const billAnalyses = (await getCollection("billAnalyses")).sort((a, b) =>
 );
 ---
 
-<Layout title="Bill Analysis">
+<Layout title="Bill Analyses">
     <Container width="narrow">
-        <PageHeader title="Bill Analysis">
+        <PageHeader title="Bill Analyses">
             <Fragment slot="description">
                 Subscribe to <Link href="/feeds" class="text-pink-600 underline"
                     >my web feeds</Link
@@ -28,7 +28,7 @@ const billAnalyses = (await getCollection("billAnalyses")).sort((a, b) =>
         <section class="mt-8 flex flex-col space-y-6">
             {
                 billAnalyses.map((analysis) => (
-                    <Link href={`/bill-analysis/${analysis.id}`}>
+                    <Link href={`/bill-analyses/${analysis.id}`}>
                         <article class="space-y-1">
                             <p class="text-xl font-semibold">
                                 {analysis.data.title}

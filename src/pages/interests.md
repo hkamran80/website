@@ -49,4 +49,4 @@ I like to follow all levels of government: local, state, federal, and internatio
 I have a list of bills that I keep track of and call my representatives about in a massive spreadsheet.
 Now if I could only [automatically update](/ideas#projects) it with status updates...
 
-I've also written a [bill analysis](/bill-analysis) on the [Kids Online Safety Act (S. 1748, 119th Congress)](/bill-analysis/119-s1748), a bill that is a terrible idea in my opinion.
+I've also written a [bill analysis](/bill-analyses) on the [Kids Online Safety Act (S. 1748, 119th Congress)](/bill-analyses/119-s1748), a bill that is a terrible idea in my opinion.

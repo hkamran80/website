@@ -40,7 +40,7 @@ const latestBillAnalysis = (await getCollection("billAnalyses")).sort((a, b) =>
                     href="/posts/securing-your-digital-life"
                     class="text-c-light-hover underline">security</Link
                 >, and <Link
-                    href="/bill-analysis"
+                    href="/bill-analyses"
                     class="text-c-light-hover underline"
                     >follows government</Link
                 > across the U.S., the EU, and the UK.
@@ -88,7 +88,7 @@ const latestBillAnalysis = (await getCollection("billAnalyses")).sort((a, b) =>
                     <header class="text-c-light mb-2">
                         Latest Bill Analysis
                     </header>
-                    <Link href={`/bill-analysis/${latestBillAnalysis.id}`}>
+                    <Link href={`/bill-analyses/${latestBillAnalysis.id}`}>
                         <p class="text-lg font-semibold">
                             {latestBillAnalysis.data.title}
                         </p>

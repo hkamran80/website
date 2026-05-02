@@ -106,7 +106,7 @@ export const generateBillAnalysesFeed = async (
         let entry: Item = {
             id: analysis.id,
             title: analysis.data.title,
-            link: `${feed.options.link!}/bill-analysis/${analysis.id}`,
+            link: `${feed.options.link!}/bill-analyses/${analysis.id}`,
             description: analysis.data.description,
             date: analysis.data.published,
             author: [feed.options.author!],
