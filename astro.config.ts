@@ -235,6 +235,7 @@ export default defineConfig({
             ? netlify()
             : undefined,
 
+    // NOTE: Only static redirects should be listed here. Dynamic redirects should be listed in `public/_redirects`.
     redirects: {
         // Legacy
         "/creations": "/projects",
