@@ -19,7 +19,7 @@ import netlify from "@astrojs/netlify";
 
 import react from "@astrojs/react";
 
-const site = "https://beta.hkamran.com";
+const site = "https://hkamran.com";
 
 const isLocalLink = (link: string) =>
     link.startsWith("/") ||
