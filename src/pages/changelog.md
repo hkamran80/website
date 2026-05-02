@@ -7,7 +7,7 @@ toc: true
 
 ## 6.0
 
-Released TBA
+Released 2025-05-02
 
 - Switch to Astro
 - Switch to Netlify
@@ -21,3 +21,4 @@ Released TBA
 - Add [photos page](/photos)
 - Add [`human.json`](/human.json) ([documentation](https://codeberg.org/robida/human.json))
 - Add [more feeds](/feeds) (e.g. bill analyses)
+- Change font to Fustat
