@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/MarkdownPageLayout.astro
 title: LLM Policy
-subtitle: "Last Updated: December 16, 2025"
+subtitle: "Last Updated: May 2, 2026"
 ---
 
 This policy explains my use of large language models (LLMs), commonly (but incorrectly) known as "artificial intelligence" or "AI", in my work.
@@ -12,8 +12,8 @@ This policy is subject to change at any time without notice.
 ## Summary
 
 Every word on this site and my other sites, was written by me, a human being.
-No image on this site or my other sites were generated with AI.
-I do not use any LLM for programming or research.
+No image on this site or my other sites were generated with "AI".
+I do not use LLMs for anything.
 
 I actively block LLM training bots as best as I possibly can.
 I consider what "AI" companies are doing — scraping the open web then asking permission — to be unethical.
@@ -24,8 +24,6 @@ If you send me an obviously LLM-generated message, I will ignore it because it s
 ---
 
 ## Overview
-
-> TL;DR — I do not currently use LLMs in my personal or professional work.
 
 I will not knowingly use LLMs to produce any of my work, including, but not limited to, code, design, and communication.
 I intend to make all reasonable efforts to avoid LLMs in my work.
