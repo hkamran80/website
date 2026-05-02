@@ -25,7 +25,10 @@ const { post } = Astro.props;
 const { headings, Content } = await render(post);
 ---
 
-<Layout title={post.data.title}>
+<Layout
+    title={post.data.title}
+    robotDirective={post.data.status === "draft" ? "noindex" : undefined}
+>
     <PostStructuredData slot="structured-data" post={post} />
     <Container class="h-entry">
         <PageHeader
