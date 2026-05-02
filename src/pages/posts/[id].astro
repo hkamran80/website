@@ -27,12 +27,6 @@ const { headings, Content } = await render(post);
 
 <Layout title={post.data.title}>
     <PostStructuredData slot="structured-data" post={post} />
-    <link
-        slot="styles"
-        href="/prism-gruvbox-dark.css"
-        rel="stylesheet"
-        integrity="asvgHLTB4ivT+6he2rwtEvGZGBxcRPKwCBN3hTfrwWaU6YnO/R9XmZdrM+/yaCgr"
-    />
     <Container class="h-entry">
         <PageHeader
             title={post.data.title}
