@@ -189,8 +189,8 @@ export default defineConfig({
     fonts: [
         {
             provider: fontProviders.google(),
-            name: "Nunito Sans",
-            cssVariable: "--font-nunito-sans",
+            name: "Fustat",
+            cssVariable: "--font-hk-sans",
             weights: ["400 700"],
             subsets: ["latin", "latin-ext"],
         },
