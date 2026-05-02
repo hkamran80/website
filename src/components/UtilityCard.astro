@@ -11,13 +11,7 @@ const { item } = Astro.props;
 
 <li class="mt-2">
     <p class="text-lg font-semibold">
-        {
-            (
-                <Link href={"/utilities/" + item.data.id} class="underline">
-                    {item.data.name}
-                </Link>
-            )
-        }
+        {(<Link href={"/utilities/" + item.data.id}>{item.data.name}</Link>)}
     </p>
     <p class="text-c-light tracking-tight">
         {item.data.description}

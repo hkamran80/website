@@ -15,9 +15,7 @@ const { item } = Astro.props;
         <span class="flex-1 text-lg">
             {
                 item.data.url ? (
-                    <Link href={item.data.url} class="underline">
-                        {item.data.name}
-                    </Link>
+                    <Link href={item.data.url}>{item.data.name}</Link>
                 ) : (
                     item.data.name
                 )
