@@ -21,7 +21,7 @@ const bots = txt
 export default async (request: Request) => {
     const userAgent =
         request.headers.get("user-agent")?.toLowerCase() ?? undefined;
-    console.log(`Request from ${userAgent}`);
+    console.log(`Request from ${userAgent} to ${new URL(request.url).pathname}`);
 
     if (!userAgent) return;
 
