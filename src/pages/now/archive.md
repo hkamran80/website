@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPageLayout.astro
-title: Now Archive
+title: Now and Then
 subtitle: An archive of my previous now pages
 ---
 

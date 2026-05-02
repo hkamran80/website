@@ -107,7 +107,7 @@ export const sitemap: SitemapItem[] = [
     { href: "/now", name: "Now", description: "What I'm up to" },
     {
         href: "/now/archive",
-        name: "Now Archive",
+        name: "Now and Then",
         description: "What I was up to",
     },
     { href: "/uses", name: "My Setup", description: "My current setup" },
