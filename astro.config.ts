@@ -230,7 +230,10 @@ export default defineConfig({
         },
     },
 
-    adapter: netlify(),
+    adapter:
+        (process.env.NODE_ENV as string) !== "development"
+            ? netlify()
+            : undefined,
 
     redirects: {
         // Legacy
