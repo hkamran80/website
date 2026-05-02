@@ -2,7 +2,6 @@ import type { Loader, LoaderContext } from "astro/loaders";
 import { z } from "astro/zod";
 import { getPosts } from "./posts";
 
-// TODO: Change `reorganize` to `main`
 const loader = (options: { apiKey: string }): Loader => {
     return {
         name: "posts-loader",
@@ -43,7 +42,7 @@ const loader = (options: { apiKey: string }): Loader => {
                     data: post,
                 });
 
-                let branchName = "reorganize";
+                let branchName = "main";
                 if (post.status === "draft") {
                     if ("branch" in post) branchName = post.branch;
                     else branchName = post.type + "/" + post.id;

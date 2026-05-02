@@ -5,7 +5,7 @@ const convertToDate = (dateString: string): Date =>
 
 export const getPosts = async (apiKey: string) => {
     const response = await fetch(
-        "https://raw.githubusercontent.com/hkamran80/articles/reorganize/index.json",
+        "https://raw.githubusercontent.com/hkamran80/articles/main/index.json",
     );
     // TODO: Add actual type
     const data = (await response.json()) as any[];
