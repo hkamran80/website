@@ -1,0 +1,2 @@
+[images]
+  remote_images = ["https://assets.hkamran.com/graphics/article/.*", "https://external-content.duckduckgo.com/iu/?u=.*"]

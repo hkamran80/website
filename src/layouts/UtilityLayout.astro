@@ -1,0 +1,34 @@
+---
+import Layout from "./Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import type { CollectionEntry } from "astro:content";
+
+type Props = { utility: CollectionEntry<"utilities"> };
+const { utility } = Astro.props;
+---
+
+<Layout title={utility.data.name}>
+    <Container width="narrow">
+        <PageHeader
+            title={utility.data.name}
+            subtitle={utility.data.description}
+            parent="Utilities"
+            parent-url="/utilities"
+        />
+
+        <article
+            id="utility"
+            class="prose mt-6 max-w-none dark:prose-invert prose-a:text-pink-600"
+        >
+            <noscript>
+                <p class="rounded-md bg-pink-300 px-4 py-2 dark:bg-pink-700">
+                    To use the {utility.data.name}, you will need to enable
+                    JavaScript.
+                </p>
+            </noscript>
+
+            <slot />
+        </article>
+    </Container>
+</Layout>

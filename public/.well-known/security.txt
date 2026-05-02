@@ -1,7 +1,7 @@
-# Our security address
+# My security address
 Contact: mailto:hkamran@hkamran.com
 
-# Our preferred language
+# My preferred language
 Preferred-Languages: en
 
 Canonical: https://hkamran.com/.well-known/security.txt

@@ -1,0 +1,110 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import Link from "../components/Link.astro";
+import Social from "../components/Social.astro";
+import ShowcaseItem from "../components/ShowcaseItem.astro";
+import { getCollection } from "astro:content";
+import { sortByDate } from "../lib/sort.ts";
+
+const showcase = (
+    await getCollection("showcase", ({ data }) => data.featured)
+).sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+const latestPost = (
+    await getCollection("posts", ({ data }) => data.status !== "draft")
+).sort((a, b) => sortByDate(a.data.published!, b.data.published!))[0];
+
+const latestBillAnalysis = (await getCollection("billAnalyses")).sort((a, b) =>
+    sortByDate(a.data.published!, b.data.published!),
+)[0];
+---
+
+<Layout>
+    <Container>
+        <section>
+            <h1
+                class="text-5xl font-bold text-pink-600 lg:text-6xl lg:tracking-tight xl:text-7xl xl:tracking-tighter"
+            >
+                Hello world, I'm H. Kamran
+            </h1>
+            <p class="text-c-light mt-4 max-w-4xl text-lg">
+                I'm a California-based developer who <Link
+                    href="/photos"
+                    class="text-c-light-hover underline">takes photos</Link
+                >, is interested in public transit and <Link
+                    href="/posts/california-drop"
+                    class="text-c-light-hover underline">data privacy</Link
+                > and
+                <Link
+                    href="/posts/securing-your-digital-life"
+                    class="text-c-light-hover underline">security</Link
+                >, and <Link
+                    href="/bill-analyses"
+                    class="text-c-light-hover underline"
+                    >follows government</Link
+                > across the U.S., the EU, and the UK.
+            </p>
+
+            <Social
+                class="text-c-light mt-4"
+                liClass="text-c-light-hover"
+                noAttribution
+            />
+        </section>
+
+        <section class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+            <section class="space-y-8">
+                <article>
+                    <header class="text-c-light mb-2">Latest Post</header>
+                    <Link href={`/posts/${latestPost.id}`}>
+                        <p class="text-lg font-semibold">
+                            {latestPost.data.title}
+                        </p>
+                        <p class="text-c-light tracking-tight">
+                            {latestPost.data.description}
+                        </p>
+                        <p class="text-c-lighter tracking-tight">
+                            <time
+                                datetime={latestPost.data.published!.toISOString()}
+                                class="dt-published published"
+                            >
+                                {
+                                    latestPost.data.published!.toLocaleDateString(
+                                        undefined,
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )
+                                }
+                            </time>
+                        </p>
+                    </Link>
+                </article>
+
+                <article>
+                    <header class="text-c-light mb-2">
+                        Latest Bill Analysis
+                    </header>
+                    <Link href={`/bill-analyses/${latestBillAnalysis.id}`}>
+                        <p class="text-lg font-semibold">
+                            {latestBillAnalysis.data.title}
+                        </p>
+                        <p class="text-c-light tracking-tight">
+                            {latestBillAnalysis.data.description}
+                        </p>
+                    </Link>
+                </article>
+            </section>
+
+            <section>
+                <header class="text-c-light">Featured Projects</header>
+                <ul class="gap-4">
+                    {showcase.map((item) => <ShowcaseItem item={item} />)}
+                </ul>
+            </section>
+        </section>
+    </Container>
+</Layout>

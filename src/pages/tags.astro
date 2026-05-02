@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Link from "../components/Link.astro";
+import { getCollection } from "astro:content";
+import { slugify } from "@hkamran/utility-strings";
+
+const tags = Array.from(
+    new Set(
+        (
+            await getCollection("posts", ({ data }) => data.status !== "draft")
+        ).flatMap((post) => post.data.tags),
+    ),
+).sort((a, b) => a.localeCompare(b));
+---
+
+<Layout title="Tags">
+    <Container width="narrow">
+        <PageHeader title="Tags" />
+
+        <section class="mt-8">
+            <ul class="grid grid-cols-1 gap-2 md:grid-cols-2">
+                {
+                    tags.map((tag) => (
+                        <li>
+                            <Link
+                                href={`/tags/${slugify(tag)}`}
+                                class="text-pink-600 underline"
+                            >
+                                {tag}
+                            </Link>
+                        </li>
+                    ))
+                }
+            </ul>
+        </section>
+    </Container>
+</Layout>

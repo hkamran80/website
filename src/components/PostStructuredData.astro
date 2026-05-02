@@ -1,0 +1,87 @@
+---
+import { Author } from "../lib/structuredData";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+    post: CollectionEntry<"posts">;
+};
+
+const {
+    post: { data: post },
+} = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site);
+
+const structuredData =
+    post.status !== "draft"
+        ? {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: post.title,
+              description: post.description,
+              datePublished: post.published!.toISOString(),
+              dateModified:
+                  post.status === "updated"
+                      ? post.updated!.toISOString()
+                      : undefined,
+              url: url.toString(),
+              mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": url.toString(),
+              },
+              thumbnailUrl: post.img?.src ?? undefined,
+              image: post.img
+                  ? {
+                        "@type": "ImageObject",
+                        url: post.img.src,
+                        width: 2000,
+                        height: 1000,
+                        caption: post.img.alt,
+                    }
+                  : undefined,
+              author: { "@type": "Person", ...Author },
+              copyrightHolder: Author,
+              copyrightYear: post.published!.getFullYear(),
+              copyrightNotice:
+                  "Copyright © 2025 H. Kamran. All rights reserved.",
+              inLanguage: "en-US",
+              keywords: post.tags,
+          }
+        : {};
+---
+
+<meta property="og:type" content="article" />
+<meta name="description" content={post.description} />
+<meta property="og:description" content={post.description} />
+
+<meta property="article:author" content="H. Kamran" />
+
+{post.img && <meta property="og:image" content={post.img.src} />}
+{post.img && <meta property="og:image:alt" content={post.img.alt} />}
+{post.img && <meta property="og:image:type" content="image/png" />}
+{post.img && <meta property="og:image:width" content="2000" />}
+{post.img && <meta property="og:image:height" content="1000" />}
+
+{
+    post.status === "published" && (
+        <meta
+            property="article:published_time"
+            content={post.published!.toISOString()}
+        />
+    )
+}
+{
+    post.status === "updated" && (
+        <meta
+            property="article:modified_time"
+            content={post.updated!.toISOString()}
+        />
+    )
+}
+
+{post.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+
+<script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+/>

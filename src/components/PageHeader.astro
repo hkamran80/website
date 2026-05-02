@@ -1,0 +1,55 @@
+---
+import Link from "./Link.astro";
+
+type Props = {
+    title: string;
+    subtitle?: string;
+    description?: string;
+    parent?: string;
+    "parent-url"?: string;
+    class?: string;
+};
+
+const {
+    title,
+    subtitle,
+    description,
+    parent,
+    "parent-url": parentUrl,
+    class: className,
+} = Astro.props;
+---
+
+<header class:list={["flex flex-col space-y-2", className]}>
+    {
+        parent && parentUrl && (
+            <nav class="text-c-light -mt-4 text-xs">
+                <Link href={parentUrl} class="text-c-light-hover">
+                    {parent}
+                </Link>
+                <span class="px-1">/</span>
+                <span class="text-gray-800 dark:text-gray-200">{title}</span>
+            </nav>
+        )
+    }
+
+    <h1 class="p-name text-3xl font-bold lg:text-4xl xl:text-5xl">
+        {title}
+    </h1>
+
+    {
+        (subtitle || Astro.slots.has("subtitle")) && (
+            <p class="text-c-light p-summary leading-snug font-light">
+                <slot name="subtitle">{subtitle}</slot>
+            </p>
+        )
+    }
+
+    {
+        (description || Astro.slots.has("description")) && (
+            <p class="text-c-light leading-snug font-light">
+                <slot name="description">{description}</slot>
+            </p>
+        )
+    }
+</header>

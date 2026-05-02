@@ -1,0 +1,121 @@
+---
+import { links, extraPages } from "../navigation";
+import Link from "./Link.astro";
+import Social from "../components/Social.astro";
+import { Image } from "astro:assets";
+import noAI from "../assets/no-ai.svg";
+import peoplePledgeBadge from "../assets/people-pledge-badge.svg";
+import twkfBadge from "../assets/this-website-kills-fascists.svg";
+import madeByAHumanBadge from "../assets/made-by-a-human.svg";
+---
+
+<footer
+    class="mx-auto mb-10 max-w-(--breakpoint-xl) px-5 py-6 text-center text-xs text-gray-500 md:py-0 md:text-left"
+>
+    <section class="flex flex-col justify-between lg:flex-row">
+        <section class="w-full flex-1 gap-1">
+            <p>
+                Copyright &copy; {new Date().getFullYear()} H. Kamran. All rights
+                reserved.
+            </p>
+            <p>
+                This site is designed and made exclusively by a human.<wbr />
+                <Link
+                    href="/ai"
+                    class="underline hover:text-gray-900 dark:hover:text-gray-100"
+                    >No "AI" was used</Link
+                > in the making of any of the content on this site.
+            </p>
+
+            <Social
+                class="mt-4 justify-center md:mt-2 md:justify-start"
+                liClass="hover:text-gray-900 dark:hover:text-gray-100 "
+                size={16}
+            />
+        </section>
+
+        <section class="mt-4 space-y-2 md:mt-0">
+            <ul class="flex list-none flex-row space-x-4">
+                {
+                    links.map((link) => (
+                        <li>
+                            <Link href={link.href}>{link.name}</Link>
+                        </li>
+                    ))
+                }
+            </ul>
+
+            <ul class="flex list-none flex-row space-x-4">
+                {
+                    extraPages.map((link) => (
+                        <li>
+                            <Link href={link.href}>{link.name}</Link>
+                        </li>
+                    ))
+                }
+            </ul>
+        </section>
+    </section>
+
+    <section id="badges" class="mt-6 flex flex-wrap space-x-2">
+        {
+            /*    <script
+        data-widget="mini"
+src="https://sitesforpalestine.neocities.org/ring.js"></script> */
+        }
+
+        <Link href="https://chriskirknielsen.com/blog/no-ai-icon-for-humans/">
+            <Image src={noAI} alt="A no-AI icon for humans" height={31} />
+        </Link>
+
+        <Link href="https://people.pledge.party">
+            <Image
+                src={peoplePledgeBadge}
+                alt="The People Pledge badge"
+                width={88}
+                height={31}
+            />
+        </Link>
+
+        <Link href="https://ko-fi.com/s/4662b19f61">
+            <Image
+                src={madeByAHumanBadge}
+                alt="This website was made by a human"
+                width={88}
+                height={31}
+            />
+        </Link>
+
+        <Link href="https://www.pixel-gegen-rechts.de">
+            <Image
+                src={twkfBadge}
+                alt="This Website Kills Fascists badge"
+                width={88}
+                height={31}
+            />
+        </Link>
+    </section>
+</footer>
+
+<style>
+    @reference "../styles/global.css";
+
+    a {
+        @apply text-gray-500 transition-colors duration-200 ease-in-out hover:text-gray-900 dark:hover:text-gray-100;
+    }
+
+    #badges img {
+        image-rendering: auto;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        image-rendering: -webkit-optimize-contrast;
+    }
+
+    section ul li:first-child {
+        @apply ml-auto;
+    }
+
+    section ul li:last-child {
+        @apply mr-auto md:mr-0;
+    }
+</style>

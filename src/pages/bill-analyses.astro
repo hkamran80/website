@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Link from "../components/Link.astro";
+import { getCollection } from "astro:content";
+import {
+    chamberAbbreviation,
+    getNumberWithOrdinal,
+} from "../lib/bill-analysis.ts";
+import { sortByDate } from "../lib/sort.ts";
+
+const billAnalyses = (await getCollection("billAnalyses")).sort((a, b) =>
+    sortByDate(a.data.published!, b.data.published!),
+);
+---
+
+<Layout title="Bill Analyses">
+    <Container width="narrow">
+        <PageHeader title="Bill Analyses">
+            <Fragment slot="description">
+                Subscribe to <Link href="/feeds" class="text-pink-600 underline"
+                    >my web feeds</Link
+                >
+            </Fragment>
+        </PageHeader>
+
+        <section class="mt-8 flex flex-col space-y-6">
+            {
+                billAnalyses.map((analysis) => (
+                    <Link href={`/bill-analyses/${analysis.id}`}>
+                        <article class="space-y-1">
+                            <p class="text-xl font-semibold">
+                                {analysis.data.title}
+                            </p>
+
+                            <p class="text-c-light tracking-tight">
+                                <time
+                                    datetime={analysis.data.published.toISOString()}
+                                >
+                                    {analysis.data.published.toLocaleDateString(
+                                        undefined,
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )}
+                                </time>
+                                &bull;
+                                {analysis.data.description}
+                            </p>
+                        </article>
+                    </Link>
+                ))
+            }
+        </section>
+    </Container>
+</Layout>

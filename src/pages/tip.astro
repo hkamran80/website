@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Link from "../components/Link.astro";
+---
+
+<Layout title="Tip">
+    <Container width="narrow">
+        <PageHeader title="Tip" />
+
+        <section class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <Link href="https://github.com/supports/hkamran80"
+                >GitHub Sponsors</Link
+            >
+            <Link href="https://ko-fi.com/hkamran">Ko-fi</Link>
+            <Link href="https://www.buymeacoffee.com/hkamran"
+                >Buy Me a Coffee</Link
+            >
+            <Link href="https://liberapay.com/hkamran/">Liberapay</Link>
+        </section>
+    </Container>
+</Layout>
+
+<style>
+    @reference "../styles/global.css";
+
+    a {
+        @apply text-pink-600 underline;
+    }
+</style>

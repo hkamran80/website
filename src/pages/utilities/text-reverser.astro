@@ -1,0 +1,32 @@
+---
+import { getEntry } from "astro:content";
+import UtilityLayout from "../../layouts/UtilityLayout.astro";
+
+const utility = await getEntry("utilities", "text-reverser");
+---
+
+<UtilityLayout utility={utility}>
+    <section class="mt-4 grid gap-3">
+        <label for="text">Text</label>
+        <input id="text" type="text" placeholder="Text" />
+    </section>
+
+    <hr />
+
+    <section class="mt-4 grid gap-3">
+        <label for="reversed">Reversed Text</label>
+        <input id="reversed" type="text" placeholder="txeT" readonly />
+    </section>
+</UtilityLayout>
+
+<script>
+    const textElement = document.getElementById("text"),
+        reversedElement = document.getElementById("reversed");
+
+    const reverse = () => {
+        const text = textElement?.value;
+        reversedElement!.value = text.split("").reverse().join("");
+    };
+
+    textElement?.addEventListener("keyup", reverse);
+</script>

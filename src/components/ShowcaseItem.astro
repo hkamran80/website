@@ -1,0 +1,39 @@
+---
+import Link from "./Link.astro";
+import Code from "@lucide/astro/icons/code";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    item: CollectionEntry<"showcase">;
+}
+
+const { item } = Astro.props;
+---
+
+<li class="mt-2">
+    <p class="flex font-semibold">
+        <span class="flex-1 text-lg">
+            {
+                item.data.url ? (
+                    <Link href={item.data.url}>{item.data.name}</Link>
+                ) : (
+                    item.data.name
+                )
+            }
+        </span>
+        {
+            item.data.repository && (
+                <Link
+                    href={item.data.repository}
+                    class="hover:text-gray-700 dark:hover:text-gray-300"
+                    aria-label={`${item.data.name} repository`}
+                >
+                    <Code size={18} />
+                </Link>
+            )
+        }
+    </p>
+    <p class="text-c-light tracking-tight">
+        {item.data.description}
+    </p>
+</li>

@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+import Fonts from "../components/Fonts.astro";
+import Feeds from "../components/Feeds.astro";
+import WebsiteStructuredData from "../components/WebsiteStructuredData.astro";
+import NavigationBar from "../components/NavigationBar.astro";
+import MicroformatMe from "../components/MicroformatMe.astro";
+import Footer from "../components/Footer.astro";
+import { feeds, type FeedTypes } from "../feeds.ts";
+
+type RobotDirective = "noindex";
+
+type Props = {
+    title?: string;
+    robotDirective?: RobotDirective;
+};
+
+const { title: providedTitle, robotDirective } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site);
+
+const title = providedTitle ? providedTitle + " | H. Kamran" : "H. Kamran";
+// This statement will go into effect upon PR merge
+// const robots =
+//     "noai, noimageai, noml" + (robotDirective ? ", " + robotDirective : "");
+---
+
+<!doctype html>
+<html lang="en" class="text-c-normal">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+
+        {
+            Object.entries(feeds)
+                .filter(([, metadata]) => metadata.featured === true)
+                .map(([feed]) => <Feeds feed={feed as FeedTypes} />)
+        }
+        <link rel="blogroll" type="text/xml" href="/blogroll.opml" />
+
+        <meta name="robots" content="noai, noimageai, noml, noindex" />
+        <meta name="fediverse:creator" content="@hkamran@vmst.io" />
+
+        <link
+            rel="webmention"
+            href="https://webmention.io/hkamran.com/webmention"
+        />
+        <link rel="human-json" href="/human.json" />
+
+        <link rel="canonical" href={url.toString()} />
+
+        <title>{title}</title>
+
+        <Fonts />
+
+        <meta property="author" content="H. Kamran" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="H. Kamran" />
+        <meta property="og:title" content={title} />
+        <meta property="og:url" content={url.toString()} />
+
+        <slot name="structured-data">
+            <WebsiteStructuredData />
+        </slot>
+
+        <slot name="styles" />
+    </head>
+    <body>
+        <NavigationBar />
+        <MicroformatMe />
+        <slot />
+        <Footer />
+
+        <script
+            is:inline
+            src="https://u.13willow.com/script.js"
+            async
+            defer
+            data-website-id="550f7666-3836-423b-8a19-f2e6746eeda5"
+            data-domains="hkamran.com,beta.hkamran.com"></script>
+    </body>
+</html>

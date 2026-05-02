@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Link from "../components/Link.astro";
+import FeedItem from "../components/FeedItem.astro";
+import { feeds, type FeedTypes } from "../feeds.ts";
+---
+
+<Layout title="Feeds">
+    <Container width="narrow">
+        <PageHeader
+            title="Feeds"
+            description="These are my web feeds. You can subscribe to them in any feed reader."
+        />
+
+        <section class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+            {
+                Object.entries(feeds).map(([feed, metadata]) => (
+                    <FeedItem feed={feed as FeedTypes} metadata={metadata} />
+                ))
+            }
+        </section>
+
+        <section
+            class="prose mt-8 max-w-none dark:prose-invert prose-a:text-pink-600"
+        >
+            <p>
+                If you're curious about web feeds, check out <Link
+                    href="https://aboutfeeds.com">About Feeds</Link
+                >. It explains what <abbr title="Really Simple Syndication"
+                    >RSS</abbr
+                > is and how to use it. Atom is a more modern and extensible format.
+                JSON Feeds are similar to RSS and Atom, but in JSON.
+            </p>
+            <p>
+                I use <Link href="https://freshrss.org">FreshRSS</Link> (self-hosted)
+                to follow feeds with <Link
+                    href="https://github.com/ReadYouApp/ReadYou">Read You</Link
+                > as a client on my Android devices. My <Link href="/uses"
+                    ><code>/uses</code></Link
+                > page has my current setup.
+            </p>
+        </section>
+    </Container>
+</Layout>

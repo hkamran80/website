@@ -1,0 +1,71 @@
+---
+import { getEntry } from "astro:content";
+import UtilityLayout from "../../layouts/UtilityLayout.astro";
+
+const utility = await getEntry("utilities", "final-grade-calculator");
+---
+
+<UtilityLayout utility={utility}>
+    <section class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="grid gap-3">
+            <label for="current-grade">Current Grade</label>
+            <input id="current-grade" type="number" placeholder="Grade" />
+        </div>
+
+        <div class="grid gap-3">
+            <label for="grade-wanted">Grade Wanted</label>
+            <input id="grade-wanted" type="number" placeholder="Grade" />
+        </div>
+    </section>
+
+    <section class="mt-4 grid gap-3">
+        <label for="final-weight">Final Weight</label>
+        <input id="final-weight" type="number" placeholder="Weight" />
+    </section>
+
+    <hr />
+
+    <section class="mt-4">
+        <div class="grid gap-3">
+            <label for="score">Score Needed</label>
+            <input id="score" type="number" placeholder="Score" readonly />
+        </div>
+
+        <p id="message"></p>
+    </section>
+</UtilityLayout>
+
+<script>
+    const currentGradeElement = document.getElementById("current-grade"),
+        gradeWantedElement = document.getElementById("grade-wanted"),
+        finalWeightElement = document.getElementById("final-weight"),
+        scoreElement = document.getElementById("score"),
+        messageElement = document.getElementById("message");
+
+    const computeScore = () => {
+        const currentGrade = Number(currentGradeElement?.value),
+            gradeWanted = Number(gradeWantedElement?.value),
+            finalWeight = Number(finalWeightElement?.value);
+
+        if (currentGrade && gradeWanted && finalWeight) {
+            const score =
+                (gradeWanted * 100 - currentGrade * (100 - finalWeight)) /
+                finalWeight;
+
+            scoreElement!.value = score.toFixed(2);
+
+            let message = "You can do it!";
+            if (score > 100) {
+                message = "It's not likely, but it may be possible.";
+            } else if (score < 0) {
+                message = "You can skip and pass!";
+            }
+
+            messageElement!.innerText = message;
+        }
+    };
+
+    currentGradeElement?.addEventListener("keyup", computeScore);
+    gradeWantedElement?.addEventListener("keyup", computeScore);
+    finalWeightElement?.addEventListener("keyup", computeScore);
+</script>

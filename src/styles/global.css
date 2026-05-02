@@ -1,0 +1,128 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+@config "../../tailwind.config.js";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html.dark {
+    @apply bg-black;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Colours */
+.text-c-normal {
+    @apply text-black dark:text-white;
+}
+
+.text-c-light {
+    @apply text-gray-600 dark:text-gray-400;
+}
+
+.text-c-light-hover {
+    @apply hover:text-gray-900 dark:hover:text-gray-100;
+}
+
+/* TODO: Increase contrast */
+.text-c-lighter {
+    @apply text-gray-400 dark:text-gray-500;
+}
+
+/* Shiki */
+html.dark pre:has(code),
+html.dark pre:has(code) span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* Improve page speed — https://css-tricks.com/almanac/properties/c/content-visibility/ */
+img {
+    content-visibility: auto;
+}
+
+/* TOC */
+.toc li ul {
+    @apply ml-4;
+}
+
+.toc ul {
+    @apply list-inside list-disc space-y-1 lg:list-none;
+}
+
+.toc a {
+    @apply items-start text-gray-600 transition-colors duration-150 hover:text-black dark:text-gray-400 dark:hover:text-white;
+}
+
+.toc div:has(> a) {
+    @apply lg:pl-2;
+}
+
+.toc li {
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+}
+
+.toc li div {
+    @apply max-sm:inline;
+}
+
+.toc div.active a {
+    @apply lg:text-black lg:dark:text-white;
+}
+
+/* Markdown Alerts */
+.markdown-alert {
+    @apply mb-5 flex items-start rounded-md bg-gray-100 px-4 py-1 text-sm ring-2 ring-gray-100 ring-inset dark:bg-gray-900 dark:ring-gray-900;
+}
+
+.markdown-alert-note {
+    @apply ring-blue-500;
+}
+
+.markdown-alert-tip {
+    @apply ring-green-500;
+}
+
+.markdown-alert-important {
+    @apply ring-purple-500;
+}
+
+.markdown-alert-warning {
+    @apply ring-yellow-500;
+}
+
+.markdown-alert-caution {
+    @apply ring-red-500;
+}
+
+.markdown-alert .octicon {
+    @apply mt-0.5 mr-3 ml-1 fill-black dark:fill-white;
+}
+
+.markdown-alert p {
+    @apply my-3;
+}
+
+/* Inputs */
+input:not([type="radio"]) {
+    @apply placeholder:text-neutral-400 dark:placeholder:text-neutral-600;
+}
+
+/* Utilities */
+#utility.prose hr {
+    @apply my-[2em]!;
+}
+
+#utility label:not(.default) {
+    @apply flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50;
+}
+
+#utility input:not([type="checkbox"]) {
+    @apply flex h-9 w-full min-w-0 rounded-md bg-neutral-100 px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-2 focus-visible:ring-[3px] focus-visible:ring-pink-400/50 focus-visible:ring-pink-700/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-red-500 aria-invalid:ring-red-500/20 md:text-sm dark:bg-neutral-900 dark:aria-invalid:ring-red-500/40;
+}

@@ -1,0 +1,61 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/container.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Link from "../../components/Link.astro";
+import { getCollection } from "astro:content";
+import PostCard from "../../components/PostCard.astro";
+import { slugify } from "@hkamran/utility-strings";
+import { sortByDate } from "../../lib/sort.ts";
+
+export const getStaticPaths = async () => {
+    const tags = Array.from(
+        new Set(
+            (
+                await getCollection(
+                    "posts",
+                    ({ data }) => data.status !== "draft",
+                )
+            ).flatMap((post) => post.data.tags),
+        ),
+    );
+
+    return tags.map((tag) => ({
+        params: { id: slugify(tag) },
+        props: { tag },
+    }));
+};
+
+type Props = {
+    tag: string;
+};
+const { tag } = Astro.props;
+
+const posts = (
+    await getCollection(
+        "posts",
+        ({ data }) => data.status !== "draft" && data.tags.includes(tag),
+    )
+).sort((a, b) => sortByDate(a.data.published!, b.data.published!));
+---
+
+<Layout title={`${tag} | Posts`}>
+    <Container width="narrow">
+        <PageHeader
+            title="Posts"
+            subtitle={`Tagged "${tag}"`}
+            parent="Tags"
+            parent-url="/tags"
+        />
+
+        <section class="mt-8 flex flex-col space-y-6">
+            {
+                posts.map((post) => (
+                    <Link href={`/posts/${post.id}`}>
+                        <PostCard post={post} />
+                    </Link>
+                ))
+            }
+        </section>
+    </Container>
+</Layout>

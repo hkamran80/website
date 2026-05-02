@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0" xmlns:frss="https://freshrss.org/opml">
+  <head>
+    <title>H. Kamran's Blogroll</title>
+    <dateCreated>Thu, 05 Feb 2026 09:35:26 -0800</dateCreated>
+  </head>
+  <body>
+    <outline text="Blogs">
+      <outline text="Aaron Parecki" type="rss" xmlUrl="https://aaronparecki.com/feed.xml" htmlUrl="https://aaronparecki.com"/>
+      <outline text="Alyssa Rosenzweig" type="rss" xmlUrl="https://rosenzweig.io/feed.xml" htmlUrl="https://rosenzweig.io/"/>
+      <outline text="Bill Hunt" type="rss" xmlUrl="https://billhunt.dev/feed.xml" htmlUrl="https://billhunt.dev/"/>
+      <outline text="Chris Given" type="rss" xmlUrl="https://chrisgiven.com/feeds/feed.xml" htmlUrl="https://chrisgiven.com/"/>
+      <outline text="Chris Smith" type="rss" xmlUrl="https://chameth.com/index.xml" htmlUrl="https://chameth.com/"/>
+      <outline text="Cory Dransfeldt" type="rss" xmlUrl="https://www.coryd.dev/feeds/posts.xml" htmlUrl="https://www.coryd.dev/feeds/posts.xml" frss:cssFullContentFilter=".badges"/>
+      <outline text="David Bushell" type="rss" xmlUrl="https://dbushell.com/merge/rss.xml" htmlUrl="https://dbushell.com/"/>
+      <outline text="Evan Hahn" type="rss" xmlUrl="https://evanhahn.com/blog/index.xml" htmlUrl="https://evanhahn.com/blog/"/>
+      <outline text="Farhan Ahmed" type="rss" xmlUrl="https://themacronaut.com/atom.xml" htmlUrl="https://themacronaut.com/"/>
+      <outline text="Human Transit" type="rss" xmlUrl="https://humantransit.org/feed" htmlUrl="https://humantransit.org/"/>
+      <outline text="Jeff Geerling" type="rss" xmlUrl="https://www.jeffgeerling.com/blog.xml" htmlUrl="https://www.jeffgeerling.com"/>
+      <outline text="Jeff Johnson" type="rss" xmlUrl="https://lapcatsoftware.com/articles/atom.xml" htmlUrl="https://lapcatsoftware.com/articles/index.html"/>
+      <outline text="jfx" type="rss" xmlUrl="https://jfx.ac/blog/index.xml" htmlUrl="https://jfx.ac/"/>
+      <outline text="Jon Seager" type="rss" xmlUrl="https://jnsgr.uk/posts/index.xml" htmlUrl="https://jnsgr.uk/posts/"/>
+      <outline text="Neil Brown" type="rss" xmlUrl="https://neilzone.co.uk/index.xml" htmlUrl="https://neilzone.co.uk/"/>
+      <outline text="Pedestrian Observations" type="rss" xmlUrl="https://pedestrianobservations.com/feed/" htmlUrl="https://pedestrianobservations.com/"/>
+      <outline text="Robb Knight" type="rss" xmlUrl="https://rknight.me/subscribe/posts/atom.xml" htmlUrl="https://rknight.me/blog/"/>
+      <outline text="Scott Helme" type="rss" xmlUrl="https://scotthelme.co.uk/rss/" htmlUrl="https://scotthelme.co.uk"/>
+      <outline text="STFN" type="rss" xmlUrl="https://stfn.pl/rss.xml" htmlUrl="https://stfn.pl/" frss:cssFullContentFilter="h1, style, script, hr, div"/>
+      <outline text="Troy Hunt" type="rss" xmlUrl="https://feeds.feedburner.com/TroyHunt" htmlUrl="https://www.troyhunt.com" frss:filtersActionRead="intitle:&quot;Weekly Update&quot;"/>
+      <outline text="ttntm" type="rss" xmlUrl="https://ttntm.me/everything.xml" htmlUrl="https://ttntm.me/everything/"/>
+      <outline text="WhyNotHugo" type="rss" xmlUrl="https://whynothugo.nl/posts.xml" htmlUrl="https://whynothugo.nl"/>
+    </outline>
+    <outline text="Blogs: Projects">
+      <outline text="Asahi Linux" type="rss" xmlUrl="https://asahilinux.org/blog/index.xml" htmlUrl="https://asahilinux.org/blog/" frss:cssFullContentFilter="#breadcrumbs, .blog-header, .post-bottom"/>
+      <outline text="Astro" type="rss" xmlUrl="https://astro.build/rss.xml" htmlUrl="https://astro.build" frss:cssFullContentFilter="article.prose"/>
+      <outline text="BookStack" type="rss" xmlUrl="https://www.bookstackapp.com/blog/index.xml" htmlUrl="https://www.bookstackapp.com/blog/" frss:cssFullContentFilter="h1, .post-date, #mc_embed_signup"/>
+      <outline text="Home Assistant" type="rss" xmlUrl="https://www.home-assistant.io/atom.xml" htmlUrl="https://www.home-assistant.io/"/>
+      <outline text="Homebrew" type="rss" xmlUrl="https://brew.sh/atom.xml" htmlUrl="https://brew.sh/"/>
+      <outline text="Immich" type="rss" xmlUrl="https://immich.app/blog/atom.xml" htmlUrl="https://immich.app/blog" frss:cssFullContentFilter="div ul:first-of-type, h1, div div.mt-6.flex"/>
+      <outline text="Jellyfin" type="rss" xmlUrl="https://jellyfin.org/posts/atom.xml" htmlUrl="https://jellyfin.org/posts"/>
+      <outline text="Podman" type="rss" xmlUrl="https://blog.podman.io/feed/" htmlUrl="https://blog.podman.io/"/>
+      <outline text="The Oxidation Compiler" type="rss" xmlUrl="https://oxc.rs/feeds/blog-en.atom" htmlUrl="https://oxc.rs/"/>
+      <outline text="The Python Package Index" type="rss" xmlUrl="https://blog.pypi.org/feed_rss_created.xml" htmlUrl="https://blog.pypi.org/"/>
+      <outline text="Zotero" type="rss" xmlUrl="https://feeds.feedburner.com/zotero" htmlUrl="https://www.zotero.org/blog"/>
+    </outline>
+    <outline text="Blogs: Organizations">
+      <outline text="18F" type="rss" xmlUrl="https://18f.gsa.gov/feed.xml" htmlUrl="https://18f.gsa.gov/blog/"/>
+      <outline text="AO3 News" type="rss" xmlUrl="https://archiveofourown.org/admin_posts.rss" htmlUrl="https://archiveofourown.org/admin_posts" frss:filtersActionRead="intitle:&quot;Five Things&quot;"/>
+      <outline text="Bay Area Rapid Transit" type="rss" xmlUrl="https://www.bart.gov/news/rss/rss.xml" htmlUrl="https://www.bart.gov/news/articles" frss:cssFullContentFilter=".field--datetime, h1"/>
+      <outline text="California Department of Technology" type="rss" xmlUrl="https://cdt.ca.gov/newsroom/feed/" htmlUrl="https://cdt.ca.gov/newsroom"/>
+      <outline text="Californians for Electric Rail" type="rss" xmlUrl="https://calelectricrail.org/feed/" htmlUrl="https://calelectricrail.org/"/>
+      <outline text="California Privacy Protection Agency" type="rss" xmlUrl="https://privacy.ca.gov/feed/" htmlUrl="https://privacy.ca.gov/" frss:cssFullContentFilter="h2, em"/>
+      <outline text="CA Office of Data and Innovation" type="rss" xmlUrl="https://innovation.ca.gov/feed.xml" htmlUrl="https://innovation.ca.gov/blog" frss:cssFullContentFilter=".byline"/>
+      <outline text="Cloudflare" type="rss" xmlUrl="https://blog.cloudflare.com/rss" htmlUrl="https://blog.cloudflare.com/"/>
+      <outline text="decoded.legal" type="rss" xmlUrl="https://decoded.legal/blog/index.xml" htmlUrl="https://decoded.legal/blog/"/>
+      <outline text="Electronic Frontier Foundation" type="rss" xmlUrl="https://www.eff.org/rss.xml" htmlUrl="https://www.eff.org/" frss:filtersActionRead="intitle:&quot;Podcast Episode: &quot;&#10;intitle:Speakeasy&#10;&quot;our new site, Digital Rights Bytes&quot;&#10;&quot;About the Event:&quot;&#10;intitle:&quot;Speaking Freely: &quot;"/>
+      <outline text="F-Droid" type="rss" xmlUrl="https://f-droid.org/feed.xml" htmlUrl="https://f-droid.org/en/"/>
+      <outline text="Fasten Health" type="rss" xmlUrl="https://blog.fastenhealth.com/feed.xml" htmlUrl="https://blog.fastenhealth.com/"/>
+      <outline text="FlightAware Engineering (Angle of Attack)" type="rss" xmlUrl="https://flightaware.engineering/rss/" htmlUrl="https://flightaware.engineering/"/>
+      <outline text="Free Law Project" type="rss" xmlUrl="https://free.law/feeds/all.atom.xml" htmlUrl="https://free.law/"/>
+      <outline text="Google Online Security" type="rss" xmlUrl="http://www.blogger.com/feeds/1176949257541686127/posts/default?redirect=false" htmlUrl="http://security.googleblog.com/"/>
+      <outline text="In Custodia Legis (Library of Congress)" type="rss" xmlUrl="https://blogs.loc.gov/law/feed/" htmlUrl="https://blogs.loc.gov/law"/>
+      <outline text="Interline Technologies" type="rss" xmlUrl="https://www.interline.io/blog/rss/" htmlUrl="https://www.interline.io/"/>
+      <outline text="Let's Encrypt" type="rss" xmlUrl="https://letsencrypt.org/feed.xml" htmlUrl="https://letsencrypt.org/"/>
+      <outline text="Mozilla Hacks" type="rss" xmlUrl="https://hacks.mozilla.org/feed/" htmlUrl="https://hacks.mozilla.org/"/>
+      <outline text="Mozilla Security" type="rss" xmlUrl="https://blog.mozilla.org/security/feed/" htmlUrl="https://blog.mozilla.org/security/"/>
+      <outline text="Netflix Technology" type="rss" xmlUrl="https://medium.com/@netflixtechblog/feed" htmlUrl="https://medium.com/@netflixtechblog?source=rss-c3aeaf49d8a4------2"/>
+      <outline text="noyb" type="rss" xmlUrl="https://noyb.eu/en/rss" htmlUrl="https://noyb.eu/en" frss:cssFullContentFilter=".node-meta"/>
+      <outline text="NYT Open" type="rss" xmlUrl="https://open.nytimes.com/feed" htmlUrl="https://open.nytimes.com/"/>
+      <outline text="Papers, Please!" type="rss" xmlUrl="https://papersplease.org/wp/feed/" htmlUrl="https://papersplease.org/wp"/>
+      <outline text="Proton" type="rss" xmlUrl="https://proton.me/blog/feed" htmlUrl="https://proton.me/blog/" frss:filtersActionRead="#Lumo&#10;#Proton+Drive"/>
+      <outline text="RideSD" type="rss" xmlUrl="https://www.ridesd.org/transportation-news?format=rss" htmlUrl="https://www.ridesd.org/transportation-news/"/>
+      <outline text="San Francisco Digital &amp; Data Services" type="rss" xmlUrl="https://medium.com/feed/san-francisco-digital-services" htmlUrl="https://medium.com/san-francisco-digital-services"/>
+      <outline text="ScanGov" type="rss" xmlUrl="https://docs.scangov.org/feed.xml" htmlUrl="https://docs.scangov.org/blog"/>
+      <outline text="Seamless Bay Area" type="rss" xmlUrl="https://www.seamlessbayarea.org/blog?format=rss" htmlUrl="https://www.seamlessbayarea.org/blog/"/>
+      <outline text="The SoCal Transiteer" type="rss" xmlUrl="https://socaltransiteer.substack.com/feed" htmlUrl="https://socaltransiteer.substack.com/"/>
+      <outline text="Transit" type="rss" xmlUrl="https://blog.transitapp.com/feed/" htmlUrl="https://blog.transitapp.com/"/>
+    </outline>
+  </body>
+</opml>

@@ -1,0 +1,68 @@
+---
+import { getEntry } from "astro:content";
+import UtilityLayout from "../../layouts/UtilityLayout.astro";
+
+const utility = await getEntry(
+    "utilities",
+    "overall-grade-after-final-calculator",
+);
+---
+
+<UtilityLayout utility={utility}>
+    <section class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="grid gap-3">
+            <label for="grade-before-final">Grade Before Final</label>
+            <input id="grade-before-final" type="number" placeholder="Grade" />
+        </div>
+
+        <div class="grid gap-3">
+            <label for="final-score">Final Score</label>
+            <input id="final-score" type="number" placeholder="Score" />
+        </div>
+    </section>
+
+    <section class="mt-4 grid gap-3">
+        <label for="final-weight">Final Weight</label>
+        <input id="final-weight" type="number" placeholder="Weight" />
+    </section>
+
+    <hr />
+
+    <section class="mt-4 grid gap-3">
+        <label for="grade-after-final">Grade After Final</label>
+        <input
+            id="grade-after-final"
+            type="number"
+            placeholder="Grade"
+            readonly
+        />
+    </section>
+</UtilityLayout>
+
+<script>
+    const gradeBeforeFinalElement =
+            document.getElementById("grade-before-final"),
+        finalScoreElement = document.getElementById("final-score"),
+        finalWeightElement = document.getElementById("final-weight"),
+        gradeAfterFinalElement = document.getElementById("grade-after-final");
+
+    const computeScore = () => {
+        const gradeBeforeFinal = Number(gradeBeforeFinalElement?.value),
+            finalScore = Number(finalScoreElement?.value),
+            finalWeight = Number(finalWeightElement?.value);
+
+        if (gradeBeforeFinal && finalScore && finalWeight) {
+            const finalWeightDecimal = finalWeight / 100;
+            const score =
+                ((1 - finalWeightDecimal) * (gradeBeforeFinal / 100) +
+                    finalWeightDecimal * (finalScore / 100)) *
+                100;
+
+            gradeAfterFinalElement!.value = score.toFixed(2);
+        }
+    };
+
+    gradeBeforeFinalElement?.addEventListener("keyup", computeScore);
+    finalScoreElement?.addEventListener("keyup", computeScore);
+    finalWeightElement?.addEventListener("keyup", computeScore);
+</script>

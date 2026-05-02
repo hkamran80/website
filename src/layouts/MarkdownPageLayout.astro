@@ -1,0 +1,40 @@
+---
+import Layout from "./Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import TOC from "../components/TOC.astro";
+import type { MarkdownHeading } from "astro";
+
+type Props = {
+    frontmatter: { title: string; subtitle?: string; toc?: boolean };
+    headings?: MarkdownHeading[];
+    parent?: string;
+    "parent-url"?: string;
+};
+
+const { frontmatter, headings, parent, "parent-url": parentUrl } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+    <Container>
+        <PageHeader
+            title={frontmatter.title}
+            subtitle={frontmatter.subtitle}
+            parent={parent}
+            parent-url={parentUrl}
+            class="mx-auto max-w-3xl"
+        />
+
+        {
+            frontmatter.toc === true && headings && headings.length > 0 && (
+                <TOC headings={headings!} />
+            )
+        }
+
+        <article
+            class="mx-auto prose mt-6 max-w-3xl dark:prose-invert prose-a:text-pink-600"
+        >
+            <slot />
+        </article>
+    </Container>
+</Layout>

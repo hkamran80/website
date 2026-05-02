@@ -1,0 +1,57 @@
+---
+import { EventNames } from "../navigation";
+
+type Props = Pick<HTMLAnchorElement, "href"> &
+    Partial<Omit<HTMLAnchorElement, "href" | "children">> & {
+        class?: string;
+        noAttribution?: boolean;
+        noLocalTarget?: boolean;
+        noLog?: boolean;
+    };
+
+const {
+    href,
+    class: className,
+    noAttribution,
+    noLocalTarget,
+    noLog,
+    ...props
+} = Astro.props;
+let customAttributes = {
+    ...props,
+    rel: !("rel" in props) ? "noopener noreferrer" : props.rel,
+    target: !("target" in props) ? "_blank" : props.target,
+};
+
+let newHref = href;
+let dataAttributes: Record<string, string> = { "data-umami-event": "" };
+
+if (href.startsWith("/")) {
+    dataAttributes["data-umami-event"] = EventNames.Local;
+    dataAttributes["data-umami-event-url"] = href;
+
+    if (!("target" in props) && !noLocalTarget) customAttributes.target = "";
+} else {
+    if (href.includes("unsplash.com")) {
+        dataAttributes["data-umami-event"] = EventNames.Social;
+        dataAttributes["data-umami-event-platform"] = "Unsplash";
+    } else {
+        dataAttributes["data-umami-event"] = EventNames.Outbound;
+        dataAttributes["data-umami-event-url"] = href;
+    }
+
+    if (!noAttribution)
+        newHref = href + (href.includes("?") ? "&" : "?") + "ref=hkamran.com";
+}
+---
+
+<>
+    <a
+        href={newHref}
+        {...customAttributes}
+        {...!noLog ? dataAttributes : {}}
+        class={className}
+    >
+        <slot />
+    </a>
+</>

@@ -1,0 +1,26 @@
+---
+import Link from "./Link.astro";
+import type { FeedTypes, Feed } from "../feeds.ts";
+
+type Props = {
+    feed: FeedTypes;
+    metadata: Feed;
+};
+
+const { feed, metadata } = Astro.props;
+---
+
+<div>
+    <p class="text-lg font-semibold">
+        {metadata.name}
+    </p>
+    <p class="text-c-light tracking-tight">
+        {metadata.description}
+    </p>
+
+    <p class="mt-1 text-sm">
+        <Link href={`/feeds/${feed}.atom`} class="underline">Atom</Link> &bull;
+        <Link href={`/feeds/${feed}.rss`} class="underline">RSS</Link> &bull;
+        <Link href={`/feeds/${feed}.json`} class="underline">JSON</Link>
+    </p>
+</div>

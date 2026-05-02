@@ -1,0 +1,84 @@
+---
+import { getEntry } from "astro:content";
+import UtilityLayout from "../../layouts/UtilityLayout.astro";
+import Link from "../../components/Link.astro";
+
+const utility = await getEntry("utilities", "mailchimp-rss");
+---
+
+<UtilityLayout utility={utility}>
+    <p class="text-sm">
+        This utility was inspired by Josh Müller's <Link
+            href="https://joshmuller.ca/writings/2023/subscribe-to-mailchimp-newsletters-with-rss/"
+            >How to Subscribe to Mailchimp Newsletters With RSS</Link
+        > post.
+    </p>
+
+    <section class="mt-4 grid gap-3">
+        <label for="subscription-url">Subscription URL</label>
+        <input
+            id="subscription-url"
+            type="url"
+            placeholder="https://xxxx.us7.list-manage.com/profile?u=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx&id=xxxxxxxxxxx&e=xxxxxxxxxxx&c=xxxxxxxxxxx"
+        />
+
+        <p class="text-sm">
+            A valid subscription URL use the <code>list-manage.com</code> domain and
+            must include the server location (e.g. <code>us7</code>), the <code
+                >u</code
+            > parameter (e.g. <code>?u=...</code>), and the <code>id</code> parameter
+            (e.g. <code>&id=...</code>).
+
+            <br /><br />
+
+            If you are converting an active subscription to a feed, copy the
+            "update subscription preferences" link at the bottom of the email
+            and paste it as the subscription URL.
+        </p>
+    </section>
+
+    <hr />
+
+    <section class="mt-4 grid gap-3">
+        <label for="feed-url">Email</label>
+        <input
+            id="feed-url"
+            type="url"
+            placeholder="https://us7.campaign-archive.com/feed?u=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx&id=xxxxxxxxxxx"
+            readonly
+        />
+    </section>
+</UtilityLayout>
+
+<script>
+    const subscriptionUrlElement = document.getElementById(
+            "subscription-url",
+        ) as HTMLInputElement,
+        feedUrlElement = document.getElementById(
+            "feed-url",
+        ) as HTMLInputElement;
+
+    const compose = () => {
+        const subscriptionUrl = subscriptionUrlElement?.value;
+
+        if (
+            subscriptionUrl &&
+            subscriptionUrl.includes("u=") &&
+            subscriptionUrl.includes("id=") &&
+            (subscriptionUrl.includes("list-manage.com") ||
+                subscriptionUrl.includes("campaign-archive.com"))
+        ) {
+            const url = new URL(subscriptionUrl);
+
+            const hostSplit = url.host.split(".");
+            const host = (hostSplit.length > 3 ? hostSplit.slice(1) : hostSplit)
+                .join(".")
+                .replace("list-manage", "campaign-archive");
+
+            feedUrlElement!.value = `https://${host}/feed?u=${url.searchParams.get("u")}&id=${url.searchParams.get("id")}`;
+        }
+    };
+
+    subscriptionUrlElement?.addEventListener("keyup", compose);
+    feedUrlElement?.addEventListener("keyup", compose);
+</script>
