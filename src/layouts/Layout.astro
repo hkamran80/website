@@ -19,9 +19,8 @@ const { title: providedTitle, robotDirective } = Astro.props;
 const url = new URL(Astro.url.pathname, Astro.site);
 
 const title = providedTitle ? providedTitle + " | H. Kamran" : "H. Kamran";
-// This statement will go into effect upon PR merge
-// const robots =
-//     "noai, noimageai, noml" + (robotDirective ? ", " + robotDirective : "");
+const robots =
+    "noai, noimageai, noml" + (robotDirective ? ", " + robotDirective : "");
 ---
 
 <!doctype html>
@@ -39,7 +38,7 @@ const title = providedTitle ? providedTitle + " | H. Kamran" : "H. Kamran";
         }
         <link rel="blogroll" type="text/xml" href="/blogroll.opml" />
 
-        <meta name="robots" content="noai, noimageai, noml, noindex" />
+        <meta name="robots" content={robots} />
         <meta name="fediverse:creator" content="@hkamran@vmst.io" />
 
         <link
