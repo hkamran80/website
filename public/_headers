@@ -42,3 +42,6 @@
 
 /feeds/*.json
     Content-Type: application/feed+json
+
+/*.xml
+    Content-Type: text/xml
