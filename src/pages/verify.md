@@ -9,7 +9,7 @@ If you see an account that looks like it might be me but isn't listed here, plea
 
 ## Active
 
-- Fediverse (Mastodon): [@hkamran@vmst.io](https://vmst.io/@hkamran)
+- Fediverse (Mastodon): [@hkamran@infosec.exchange](https://infosec.exchange/@hkamran)
 - Bluesky: [@hkamran.com](https://bsky.app/profile/hkamran.com)
 - GitHub: [hkamran80](https://github.com/hkamran80)
 - Twitter: [hkamran80](https://twitter.com/hkamran80)
