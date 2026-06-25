@@ -45,3 +45,6 @@
 
 /*.xml
     Content-Type: text/xml
+
+/.well-known/webfinger
+    Content-Type: application/jrd+json
