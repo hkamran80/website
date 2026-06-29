@@ -2,6 +2,7 @@ import process from "node:process";
 import { readFile } from "node:fs/promises";
 import { ATapult } from "atapult";
 import { getPosts } from "./src/lib/posts.ts";
+import { slugify } from "@hkamran/utility-strings";
 
 (async () => {
     const identifier = "hkamran.com";
@@ -35,9 +36,10 @@ import { getPosts } from "./src/lib/posts.ts";
         .filter((post) => post.status !== "draft")
         .map((post) => ({
             title: post.title,
-            description: post.description,
             publishedAt: post.published,
             path: `/${post.id}`,
+            description: post.description,
+            tags: post.tags.map((tag) => slugify(tag)),
         }));
 
     await ATapult(
