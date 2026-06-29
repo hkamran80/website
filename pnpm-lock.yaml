@@ -29,9 +29,6 @@ importers:
       '@lucide/astro':
         specifier: ^0.546.0
         version: 0.546.0(astro@6.1.8(@netlify/blobs@10.7.4)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))
-      '@mastrojs/atproto':
-        specifier: file:patched/@mastrojs/atproto
-        version: '@jsr/mastrojs__atproto@file:patched/@mastrojs/atproto'
       '@netlify/edge-functions':
         specifier: ^3.0.3
         version: 3.0.3
@@ -1011,9 +1008,6 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
-
-  '@jsr/mastrojs__atproto@file:patched/@mastrojs/atproto':
-    resolution: {directory: patched/@mastrojs/atproto, type: directory}
 
   '@lucide/astro@0.546.0':
     resolution: {integrity: sha512-yHAL5eRQh8RBggN0y7ier88K2PpggKqEBjC5RhNvQGNLB+u7VlbzCRRNVfebzo9Q0L2nhylC/PcDAu+ZZt0FNg==}
@@ -5504,10 +5498,6 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
-
-  '@jsr/mastrojs__atproto@file:patched/@mastrojs/atproto':
-    dependencies:
-      '@atproto/api': 0.20.22
 
   '@lucide/astro@0.546.0(astro@6.1.8(@netlify/blobs@10.7.4)(@types/node@24.12.2)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.3)(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:

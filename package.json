@@ -19,7 +19,6 @@
         "@hbsnow/rehype-sectionize": "^1.0.7",
         "@hkamran/utility-strings": "^1.0.5",
         "@lucide/astro": "^0.546.0",
-        "@mastrojs/atproto": "file:patched/@mastrojs/atproto",
         "@netlify/edge-functions": "^3.0.3",
         "@tailwindcss/vite": "^4.1.15",
         "@types/react": "^19.2.11",
