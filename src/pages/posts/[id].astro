@@ -30,11 +30,15 @@ const { headings, Content } = await render(post);
     title={post.data.title}
     robotDirective={post.data.status === "draft" ? "noindex" : undefined}
 >
-    <link
-        slot="standard-site"
-        rel="site.standard.document"
-        href={`at://did:plc:s63rvnxw37nv4dwnnxrpe7jb/site.standard.document/${rkeyFromDateString(post.data.published)}`}
-    />
+    {
+        post.data.status !== "draft" ? (
+            <link
+                slot="standard-site"
+                rel="site.standard.document"
+                href={`at://did:plc:s63rvnxw37nv4dwnnxrpe7jb/site.standard.document/${rkeyFromDateString(post.data.published)}`}
+            />
+        ) : undefined
+    }
     <PostStructuredData slot="structured-data" post={post} />
 
     <Container class="h-entry">
