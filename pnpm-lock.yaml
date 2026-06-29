@@ -53,6 +53,9 @@ importers:
       astro-robots-txt:
         specifier: ^1.0.0
         version: 1.0.0
+      atapult:
+        specifier: ^0.0.7
+        version: 0.0.7
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -189,6 +192,12 @@ packages:
 
   '@astrojs/underscore-redirects@1.0.3':
     resolution: {integrity: sha512-cxnGSw+sJigBLdX4TMSZKkzV6C3gMLJMucDk2W+n281Xhie68T2/9f1+1NMNDCZsc5i0FED7Qt5I10g2O9wtZg==}
+
+  '@atcute/tid@1.1.2':
+    resolution: {integrity: sha512-bmPuOX/TOfcm/vsK9vM98spjkcx2wgd9S2PeK5oLgEr8IbNRPq7iMCAPzOL1nu5XAW3LlkOYQEbYRcw5vcQ37w==}
+
+  '@atcute/time-ms@1.3.2':
+    resolution: {integrity: sha512-F+qOyR9pO55g1d/QmN+Gr+fimoUQQLusdGSB6pjV0wW5KPILR4oQ4e2ZhWzqUbeHLAgWvgoTTMsMDdz62Xa2tg==}
 
   '@atproto/api@0.20.22':
     resolution: {integrity: sha512-TdT9ktYc0FMmMZ8HjkMz13QcSCcYiesCGN81mFZd5owQASHVM9GBtAAmzpkrPyZhUkiIjgh/nUHk8xWVu+4dVA==}
@@ -1952,6 +1961,10 @@ packages:
 
   async@3.2.6:
     resolution: {integrity: sha512-htCUDlxyyCLMgaM3xXg0C0LW2xqfuQ6p05pCEIsXuyQ+a1koYKTuBMzRNwmybfLgvJDMd0r1LTn4+E0Ti6C2AA==}
+
+  atapult@0.0.7:
+    resolution: {integrity: sha512-E0ffrDhcwUFR5cYT+AxF0waQIljSo5g2rQvYmb3dy55yAkPv7Sr9g6S0k20nqS3BwnYF5cB2khCKfiwmYKlm4w==}
+    engines: {node: '>=20.x.x'}
 
   await-lock@3.0.0:
     resolution: {integrity: sha512-eO6fLiSnrJrMdjWMNK8zbVRXPs2TKJg78iKZd9wDpN3na5tcoV6EoeiOlMgk2QaAQ1gIrK1YuMsJHXWqz89tSA==}
@@ -4906,6 +4919,12 @@ snapshots:
 
   '@astrojs/underscore-redirects@1.0.3': {}
 
+  '@atcute/tid@1.1.2':
+    dependencies:
+      '@atcute/time-ms': 1.3.2
+
+  '@atcute/time-ms@1.3.2': {}
+
   '@atproto/api@0.20.22':
     dependencies:
       '@atproto/common-web': 0.5.2
@@ -6682,6 +6701,12 @@ snapshots:
   async-sema@3.1.1: {}
 
   async@3.2.6: {}
+
+  atapult@0.0.7:
+    dependencies:
+      '@atcute/tid': 1.1.2
+      '@atproto/api': 0.20.22
+      chalk: 4.1.2
 
   await-lock@3.0.0: {}
 

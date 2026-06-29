@@ -8,7 +8,7 @@ import Link from "../../components/Link.astro";
 import { Image } from "astro:assets";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import { slugify } from "@hkamran/utility-strings";
-import { rkeyFromUrl } from "@mastrojs/atproto";
+import { rkeyFromDateString } from "atapult";
 
 export const getStaticPaths = async () => {
     const posts = await getCollection("posts");
@@ -22,8 +22,6 @@ type Props = {
     post: CollectionEntry<"posts">;
 };
 
-const url = new URL(Astro.url.pathname, Astro.site);
-
 const { post } = Astro.props;
 const { headings, Content } = await render(post);
 ---
@@ -35,7 +33,7 @@ const { headings, Content } = await render(post);
     <link
         slot="standard-site"
         rel="site.standard.document"
-        href={`at://did:plc:s63rvnxw37nv4dwnnxrpe7jb/site.standard.document/${rkeyFromUrl(url)}`}
+        href={`at://did:plc:s63rvnxw37nv4dwnnxrpe7jb/site.standard.document/${rkeyFromDateString(post.data.published)}`}
     />
     <PostStructuredData slot="structured-data" post={post} />
 

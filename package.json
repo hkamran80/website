@@ -9,7 +9,8 @@
         "preview": "astro preview",
         "astro": "astro",
         "format": "prettier . --write --experimental-cli --config-path .prettierrc",
-        "format:check": "prettier . --check --experimental-cli --config-path .prettierrc"
+        "format:check": "prettier . --check --experimental-cli --config-path .prettierrc",
+        "atproto": "if [ -f .env ]; then node --env-file=./.env ./publishToAtmosphere.js; else node ./publishToAtmosphere.js; fi"
     },
     "dependencies": {
         "@astrojs/netlify": "^7.0.7",
@@ -27,6 +28,7 @@
         "astro-masonry": "^1.2.2",
         "astro-navbar": "^2.4.0",
         "astro-robots-txt": "^1.0.0",
+        "atapult": "^0.0.7",
         "clsx": "^2.1.1",
         "feed": "^5.1.0",
         "feedsmith": "^2.9.0",
