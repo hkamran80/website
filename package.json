@@ -13,7 +13,7 @@
         "atproto": "if [ -f .env ]; then node --env-file=./.env ./publishToAtmosphere.js; else node ./publishToAtmosphere.js; fi"
     },
     "dependencies": {
-        "@astrojs/netlify": "^7.0.7",
+        "@astrojs/netlify": "^7.0.13",
         "@astrojs/react": "^5.0.3",
         "@astrojs/sitemap": "^3.7.2",
         "@atproto/api": "^0.20.22",
