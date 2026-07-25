@@ -3,8 +3,8 @@ export const Author = {
     url: "https://hkamran.com",
     sameAs: [
         "https://github.com/hkamran80",
-        "https://twitter.com/hkamran80",
-        "https://infosec.exchange/@hkamran",
         "https://bsky.app/profile/hkamran.com",
+        "https://infosec.exchange/@hkamran",
+        "https://twitter.com/hkamran80",
     ],
 };
