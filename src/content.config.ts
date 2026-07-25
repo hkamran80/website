@@ -115,7 +115,9 @@ const billAnalyses = defineCollection({
 const blogroll = defineCollection({
     loader: file("public/blogroll.opml", {
         parser: (contents) => {
-            const opml = parseOpml(contents);
+            const opml = parseOpml(contents, {
+                extraOutlineAttributes: ["data:atmosphere"],
+            });
 
             if (!opml.body || !opml.body.outlines) return [];
 
@@ -127,6 +129,10 @@ const blogroll = defineCollection({
                     name: entry.text,
                     url: entry.htmlUrl,
                     feedUrl: entry.xmlUrl,
+                    atmosphere:
+                        "data:atmosphere" in entry
+                            ? entry["data:atmosphere"] === "true"
+                            : undefined,
                 })),
             }));
         },
@@ -138,6 +144,7 @@ const blogroll = defineCollection({
                 name: z.string(),
                 url: z.url(),
                 feedUrl: z.url(),
+                atmosphere: z.boolean().optional(),
             })
             .array(),
     }),
