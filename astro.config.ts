@@ -52,7 +52,9 @@ const { GITHUB_API_KEY } = loadEnv(
     process.cwd(),
     "",
 );
-const draftPosts = (await getPosts(GITHUB_API_KEY as string, false))
+const draftPosts = (
+    await getPosts(GITHUB_API_KEY as string, { fullText: false })
+)
     .filter((post) => post.status === "draft")
     .map((post) => `${site}/posts/${post.id}`);
 

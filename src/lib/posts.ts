@@ -48,16 +48,20 @@ type PostConverted = Omit<Post, "imgAlt"> & {
     content?: string | null;
 };
 
+type Options = { fullText?: boolean; excludeDrafts?: boolean };
 export const getPosts = async (
     apiKey: string,
-    fullText: boolean = true,
+    options: Options = { fullText: true, excludeDrafts: false },
 ): Promise<PostConverted[]> => {
     const response = await fetch(
         "https://raw.githubusercontent.com/hkamran80/articles/main/index.json",
     );
     const data = (await response.json()) as Post[];
+    const filteredData = options.excludeDrafts
+        ? data.filter(({ status }) => status !== "draft")
+        : data;
 
-    const posts: (PostConverted | Promise<PostConverted>)[] = data.map(
+    const posts: (PostConverted | Promise<PostConverted>)[] = filteredData.map(
         async (post) => {
             let converted: { [key: string]: string | Date | object | null } =
                 {};
@@ -75,7 +79,8 @@ export const getPosts = async (
             if (post.status === "updated")
                 converted.updated = convertToDate(post.updated as string);
 
-            if (fullText) converted.content = await getPostContent(post);
+            if (options.fullText)
+                converted.content = await getPostContent(post);
 
             return {
                 ...post,
@@ -84,54 +89,57 @@ export const getPosts = async (
         },
     );
 
-    const branchResponse = await fetch(
-        "https://api.github.com/repos/hkamran80/articles/branches",
-        {
-            headers: {
-                Accept: "application/vnd.github+json",
-                "X-GitHub-Api-Version": "2022-11-28",
-                Authorization: `Bearer ${apiKey}`,
+    if (!options.excludeDrafts) {
+        const branchResponse = await fetch(
+            "https://api.github.com/repos/hkamran80/articles/branches",
+            {
+                headers: {
+                    Accept: "application/vnd.github+json",
+                    "X-GitHub-Api-Version": "2022-11-28",
+                    Authorization: `Bearer ${apiKey}`,
+                },
             },
-        },
-    );
-    const branches = (await branchResponse.json()) as {
-        name: string;
-    }[];
-    for (const branch of branches) {
-        if (
-            !(
-                branch.name.startsWith("article/") ||
-                branch.name.startsWith("post/")
-            )
-        )
-            continue;
-
-        const response = await fetch(
-            `https://raw.githubusercontent.com/hkamran80/articles/${branch.name}/index.json`,
         );
-        if (!response.ok) {
-            console.error(`Failed to get index for ${branch.name}.`);
-            continue;
-        }
+        const branches = (await branchResponse.json()) as {
+            name: string;
+        }[];
+        for (const branch of branches) {
+            if (
+                !(
+                    branch.name.startsWith("article/") ||
+                    branch.name.startsWith("post/")
+                )
+            )
+                continue;
 
-        const data = (await response.json()) as Post[];
+            const response = await fetch(
+                `https://raw.githubusercontent.com/hkamran80/articles/${branch.name}/index.json`,
+            );
+            if (!response.ok) {
+                console.error(`Failed to get index for ${branch.name}.`);
+                continue;
+            }
 
-        const postId = branch.name.split("/")[1];
-        const post = data.find(({ id }) => id === postId);
-        if (!post) {
-            console.error(`Failed to get post for ${branch.name}.`, data);
-            continue;
-        }
+            const data = (await response.json()) as Post[];
 
-        if (!Object.keys(post).includes("branch")) post.branch = branch.name;
+            const postId = branch.name.split("/")[1];
+            const post = data.find(({ id }) => id === postId);
+            if (!post) {
+                console.error(`Failed to get post for ${branch.name}.`, data);
+                continue;
+            }
 
-        if (post.status === "draft") {
-            if (fullText)
-                posts.push({
-                    ...post,
-                    content: await getPostContent(post),
-                } as PostConverted);
-            else posts.push(post as PostConverted);
+            if (!Object.keys(post).includes("branch"))
+                post.branch = branch.name;
+
+            if (post.status === "draft") {
+                if (options.fullText)
+                    posts.push({
+                        ...post,
+                        content: await getPostContent(post),
+                    } as PostConverted);
+                else posts.push(post as PostConverted);
+            }
         }
     }
 
