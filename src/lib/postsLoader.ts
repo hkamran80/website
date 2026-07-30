@@ -36,36 +36,21 @@ const loader = (options: { apiKey: string }): Loader => {
         }: LoaderContext): Promise<void> => {
             const posts = await getPosts(options.apiKey);
 
-            for (const post of posts) {
+            for await (const post of posts) {
                 const data = await parseData({
                     id: post.id,
                     data: post,
                 });
 
-                let branchName = "main";
-                if (post.status === "draft") {
-                    if ("branch" in post) branchName = post.branch;
-                    else branchName = post.type + "/" + post.id;
-                }
-
-                const postContentUrl = `https://raw.githubusercontent.com/hkamran80/articles/${branchName}/posts/${post.filename ?? post.id}.md`;
-                const postContentResponse = await fetch(postContentUrl);
-
-                let body: string | undefined = undefined,
-                    rendered:
-                        | Awaited<ReturnType<typeof renderMarkdown>>
-                        | undefined = undefined;
-                if (postContentResponse.ok) {
-                    body = await postContentResponse.text();
-                    // TODO: Figure out how to pass arguments
-                    rendered = await renderMarkdown(body);
-                } else
-                    console.error(
-                        `Failed to load content for ${post.id} (HTTP ${postContentResponse.status}): `,
-                        postContentUrl,
-                    );
-
-                store.set({ id: post.id, data, body, rendered });
+                if ("content" in post && post.content) {
+                    const rendered = await renderMarkdown(post.content);
+                    store.set({
+                        id: post.id,
+                        data,
+                        body: post.content,
+                        rendered,
+                    });
+                } else console.error(`No content for ${post.id}. Skipping.`);
             }
         },
     };
