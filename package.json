@@ -14,7 +14,7 @@
         "clean:blogroll": "node scripts/clean-blogroll.ts"
     },
     "dependencies": {
-        "@astrojs/netlify": "^7.0.7",
+        "@astrojs/netlify": "^8.1.2",
         "@astrojs/react": "^5.0.3",
         "@astrojs/sitemap": "^3.7.2",
         "@atproto/api": "^0.20.22",
