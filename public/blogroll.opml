@@ -2,7 +2,7 @@
 <opml xmlns:frss="https://freshrss.org/opml" version="2.0" xmlns:data="https://hkamran.com/schema/data-v1">
   <head>
     <title>H. Kamran's Blogroll</title>
-    <dateCreated>Mon, 27 Jul 2026 21:19:13 -0700</dateCreated>
+    <dateCreated>Mon, 27 Jul 2026 21:33:00 -0700</dateCreated>
   </head>
   <body>
     <outline text="Blogs">
@@ -29,6 +29,7 @@
       <outline text="Cory Dransfeldt" type="rss" xmlUrl="https://www.coryd.dev/feeds/posts.xml" htmlUrl="https://www.coryd.dev/feeds/posts.xml" frss:cssFullContent="article div" frss:cssFullContentFilter=".badges"/>
       <outline text="Cyberleagle" type="rss" xmlUrl="https://www.blogger.com/feeds/229721367671779922/posts/default" htmlUrl="https://www.cyberleagle.com"/>
       <outline text="Dan Brown" type="rss" xmlUrl="https://danb.me/blog/index.xml" htmlUrl="https://danb.me/blog" frss:cssFullContent="div.container:nth-child(2)" frss:cssFullContentFilter=".post-meta, .post-footer"/>
+      <outline text="Daniel's Leaflets" type="rss" xmlUrl="https://dholms.leaflet.pub/atom" htmlUrl="https://dholms.leaflet.pub" data:atmosphere="true"/>
       <outline text="Daniel Kennett" type="rss" xmlUrl="https://ikennd.ac/atom.xml" htmlUrl="http://ikennd.ac"/>
       <outline text="Daniel Pietzsch" type="rss" xmlUrl="https://danielpietzsch.com/articles/feed.atom" htmlUrl="https://danielpietzsch.com/articles"/>
       <outline text="David Brownman" type="rss" xmlUrl="https://xavd.id/blog/feeds/rss.xml" htmlUrl="https://xavd.id"/>
