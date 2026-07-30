@@ -1,7 +1,10 @@
 allowBuilds:
   '@parcel/watcher': false
+  core-js: set this to true or false
   esbuild: false
   sharp: false
 onlyBuiltDependencies:
   - esbuild
   - sharp
+patchedDependencies:
+  atapult: patches/atapult.patch
