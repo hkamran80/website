@@ -1,7 +1,7 @@
 import process from "node:process";
 import { readFile } from "node:fs/promises";
 import { ATapult } from "atapult";
-import { getPosts } from "./src/lib/posts.ts";
+import { getPosts } from "../src/lib/posts.ts";
 import { slugify } from "@hkamran/utility-strings";
 
 (async () => {
