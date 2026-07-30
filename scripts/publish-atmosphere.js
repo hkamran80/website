@@ -47,6 +47,7 @@ import { slugify } from "@hkamran/utility-strings";
                 $type: "at.markpub.text",
                 markdown: post.content,
             },
+            flavor: "commonmark",
         },
     }));
 
