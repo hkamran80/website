@@ -31,16 +31,24 @@ import { slugify } from "@hkamran/utility-strings";
         },
     };
 
-    const posts = await getPosts(process.env.GITHUB_API_KEY);
-    const documents = posts
-        .filter((post) => post.status !== "draft")
-        .map((post) => ({
-            title: post.title,
-            publishedAt: post.published,
-            path: `/${post.id}`,
-            description: post.description,
-            tags: post.tags.map((tag) => slugify(tag)),
-        }));
+    const posts = await getPosts(process.env.GITHUB_API_KEY, {
+        fullText: true,
+        excludeDrafts: true,
+    });
+    const documents = posts.map((post) => ({
+        title: post.title,
+        publishedAt: post.published,
+        path: `/${post.id}`,
+        description: post.description,
+        tags: post.tags.map((tag) => slugify(tag)),
+        content: {
+            $type: "at.markpub.markdown",
+            text: {
+                $type: "at.markpub.text",
+                markdown: post.content,
+            },
+        },
+    }));
 
     await ATapult(
         {
