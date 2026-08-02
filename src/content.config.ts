@@ -3,9 +3,10 @@ import { z } from "astro/zod";
 import postsLoader from "./lib/postsLoader";
 import unsplashLoader from "./lib/unsplashLoader";
 import billAnalysesLoader from "./lib/bill-analyses-loader";
-import userscriptsLoader from "./lib/userscripts-loader";
 import { file } from "astro/loaders";
 import { parseOpml } from "feedsmith";
+import userscriptsLoader from "./lib/userscripts-loader";
+import { defineAtProtoCollection } from "@fujocoded/astro-atproto-loader";
 
 const posts = defineCollection({
     loader: postsLoader({
@@ -154,6 +155,61 @@ const userscripts = defineCollection({
     loader: userscriptsLoader(),
 });
 
+const books = defineAtProtoCollection({
+    source: {
+        repo: "hkamran.com",
+        collection: "buzz.bookhive.book",
+    },
+    transform: async ({ value, uri, fetchRecord }) => {
+        const bookRecord = await fetchRecord({
+            atUri: value.hiveBookUri,
+        });
+
+        let series;
+        if (bookRecord && bookRecord.value && bookRecord.value.series) {
+            const seriesObj = JSON.parse(bookRecord.value.series);
+            series = { ...seriesObj, position: Number(seriesObj.position) };
+        }
+
+        return {
+            id: uri,
+            data: {
+                title: value.title,
+                authors: value.authors,
+                status: (value.status as string).slice(19),
+                cover: String(value.cover?.ref) ?? undefined,
+                startedAt: value.startedAt
+                    ? new Date(value.startedAt as string)
+                    : undefined,
+                finishedAt: value.finishedAt
+                    ? new Date(value.finishedAt as string)
+                    : undefined,
+                hiveId: value.hiveId,
+                hiveBookUri: value.hiveBookUri,
+                series,
+            },
+        };
+    },
+    outputSchema: z.object({
+        title: z.string(),
+        authors: z.string(),
+        status: z.enum(["finished", "reading", "wantToRead", "abandoned"]),
+        cover: z.string(),
+        startedAt: z.date().optional(),
+        finishedAt: z.date().optional(),
+
+        hiveId: z.string(),
+        hiveBookUri: z.string(),
+
+        series: z
+            .object({
+                title: z.string(),
+                position: z.number(),
+            })
+            .optional(),
+    }),
+});
+
 export const collections = {
     posts,
     showcase,
@@ -163,4 +219,7 @@ export const collections = {
     billAnalyses,
     blogroll,
     userscripts,
+
+    // AT Protocol
+    books,
 };

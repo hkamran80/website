@@ -1,0 +1,46 @@
+---
+import Link from "./Link.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    item: CollectionEntry<"books">;
+}
+
+const { item } = Astro.props;
+---
+
+<li class="mt-2">
+    <p class="flex flex-col font-semibold md:flex-row">
+        <span class="flex-1 text-lg">
+            <Link href={`https://bookhive.buzz/books/${item.data.hiveId}`}>
+                {item.data.title}
+            </Link>
+        </span>
+
+        {
+            item.data.finishedAt ? (
+                <time
+                    datetime={item.data.finishedAt.toISOString()}
+                    class="text-c-light"
+                >
+                    {item.data.finishedAt.toLocaleDateString(undefined, {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    })}
+                </time>
+            ) : undefined
+        }
+    </p>
+    <p class="text-c-light tracking-tight">
+        {item.data.authors}
+        {
+            item.data.series ? (
+                <>
+                    &bull; {item.data.series.title} (Book{" "}
+                    {item.data.series.position})
+                </>
+            ) : undefined
+        }
+    </p>
+</li>

@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PageHeader from "../components/PageHeader.astro";
+import ReadingItem from "../components/ReadingItem.astro";
+import { getCollection } from "astro:content";
+
+const books = (
+    await getCollection("books", ({ data }) => data.status === "finished")
+).sort((a, b) => {
+    // Sort by author
+    const authorCompare = a.data.authors.localeCompare(b.data.authors);
+    if (authorCompare !== 0) return authorCompare;
+
+    // Check if series
+    if (a.data.series || b.data.series) {
+        // Sort by series title
+        const seriesCompare = (a.data.series?.title ?? "").localeCompare(
+            b.data.series?.title ?? "",
+        );
+        if (seriesCompare !== 0) return seriesCompare;
+
+        // Sort by series position
+        const aPosition = a.data.series.position,
+            bPosition = b.data.series.position;
+        if (aPosition > bPosition) return 1;
+        else if (bPosition > aPosition) return -1;
+    }
+
+    // Sort by title
+    return a.data.title.localeCompare(b.data.title);
+});
+
+const currentYear = new Date(new Date().getFullYear(), 0, 1);
+---
+
+<Layout title="Reading">
+    <Container width="narrow">
+        <PageHeader title="Reading" />
+
+        <section class="mt-8">
+            <h2
+                class="text-2xl font-semibold lg:tracking-tight xl:tracking-tighter"
+            >
+                Recently Read
+            </h2>
+            <ul class="gap-4">
+                {
+                    books
+                        .filter((item) => item.data.finishedAt > currentYear)
+                        .map((item) => <ReadingItem item={item} />)
+                }
+            </ul>
+        </section>
+
+        <hr class="my-6" />
+
+        <section>
+            <h2
+                class="text-2xl font-semibold lg:tracking-tight xl:tracking-tighter"
+            >
+                All
+            </h2>
+
+            <ul class="gap-4">
+                {books.map((item) => <ReadingItem item={item} />)}
+            </ul>
+        </section>
+    </Container>
+</Layout>
