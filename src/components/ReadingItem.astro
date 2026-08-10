@@ -10,8 +10,8 @@ const { item } = Astro.props;
 ---
 
 <li class="mt-2">
-    <p class="flex flex-col font-semibold md:flex-row">
-        <span class="flex-1 text-lg">
+    <p class="flex flex-col md:flex-row">
+        <span class="flex-1 text-lg font-semibold">
             <Link href={`https://bookhive.buzz/books/${item.data.hiveId}`}>
                 {item.data.title}
             </Link>
