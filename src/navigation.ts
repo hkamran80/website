@@ -133,6 +133,11 @@ export const sitemap: SitemapItem[] = [
         description: "A subset of my projects",
     },
     {
+        href: "/reading",
+        name: "Reading",
+        description: "The books I've read",
+    },
+    {
         href: "/self-hosted",
         name: "Self-hosted Services",
         description: "Some of the services I self-host",
