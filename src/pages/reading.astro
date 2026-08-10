@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
 import PageHeader from "../components/PageHeader.astro";
+import Link from "../components/Link.astro";
 import ReadingItem from "../components/ReadingItem.astro";
 import { getCollection } from "astro:content";
 
@@ -36,7 +37,14 @@ const currentYear = new Date(new Date().getFullYear(), 0, 1);
 
 <Layout title="Reading">
     <Container width="narrow">
-        <PageHeader title="Reading" />
+        <PageHeader title="Reading">
+            <Fragment slot="description">
+                The books I've read, tracked on my <Link
+                    href="https://bookhive.buzz/profile/hkamran.com"
+                    class="text-pink-600 underline">Bookhive account</Link
+                >
+            </Fragment>
+        </PageHeader>
 
         <section class="mt-8">
             <h2
