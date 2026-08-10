@@ -3,7 +3,7 @@ layout: ../layouts/MarkdownPageLayout.astro
 title: Colophon
 ---
 
-This is my personal site, built with [Astro](https://astro.build) and hosted on [Netlify](https://netlify.com).
+This is the sixth version of my personal site, currently built with [Astro](https://astro.build) and hosted on [Netlify](https://netlify.com).
 Styling is done with a mixture of CSS and [Tailwind CSS](https://tailwindcss.com).
 The source code is on [GitHub](https://github.com/hkamran80/website).
 
